@@ -397,7 +397,7 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
        String sqlStmt;
        String area;
        
-                 
+             
             // Prepara Variable para realizar el Query
             sqlStmt = "Select rol_user, sistema, admision, farmacia, cmp_user, dni_user, nombre_user, apellido_user, usuario_user, pass_user from usuarios Where usuario_user='"+cboUsuarios.getSelectedItem()+"' And pass_user='"+String.valueOf(txtpass.getPassword()) +"'";
             
@@ -438,7 +438,7 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                                 if("JAZABACHE".equals(user)||"HM".equals(user)||"AGARCIA".equals(user)
                                         ||"MPAZ".equals(user)||"MMARIÑOS".equals(user)||"JCARDENAS".equals(user)
                                         ||"HCERNA".equals(user)||"JCERQUIN".equals(user)||"JCORDOVAP".equals(user)
-                                        ||"JCORDOVA".equals(user)||"KGUEVARA".equals(user)){
+                                        ||"JCORDOVA".equals(user)||"KGUEVARA".equals(user)||"lobo".equals(user) ){
                                     Ocupacional1 s= new Ocupacional1();
                                     s.setVisible(true);
                                 }else{

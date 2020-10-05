@@ -476,7 +476,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
          Admision.Desktop.add(r);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          r.setFrameIcon(ricon);
-         r.setLocation(centradoXY(r));
+       // r.setLocation(centradoXY(r));
          r.show();
       }
       else{

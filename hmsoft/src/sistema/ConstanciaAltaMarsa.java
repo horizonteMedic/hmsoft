@@ -108,6 +108,7 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         jLabel7.setText("obteniendo resultado");
 
         FechaHoy.setDateFormatString("'TRUJILLO - ' EEEEE dd MMMMM yyyy");
+        FechaHoy.setEnabled(false);
 
         jLabel8.setText("realizó aislamiento social por ");
 

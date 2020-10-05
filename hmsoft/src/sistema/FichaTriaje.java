@@ -254,6 +254,11 @@ String[]Triaje = new String[]{};
                 chkAsistencialMouseClicked(evt);
             }
         });
+        chkAsistencial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAsistencialActionPerformed(evt);
+            }
+        });
 
         tipoPaciente.add(chkRocupacional);
         chkRocupacional.setSelected(true);
@@ -982,7 +987,7 @@ String[]Triaje = new String[]{};
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+            .addComponent(jSeparator1)
         );
 
         pack();
@@ -1035,10 +1040,13 @@ String[]Triaje = new String[]{};
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
      
          if (chkRocupacional.isSelected()) {
+              System.out.println("entro a ocupacional");
             if (!txtNumero.getText().isEmpty()) {
+                 System.out.println("entro a txt numero con datos");
                 if (!OrdenExiste()) {
+                     System.out.println("funcion orden existe");
                     if (rbOrden.isSelected()) {
-
+                            System.out.println("entrnado a la consulta"); 
                         String Sql = "select datos_paciente.nombres_pa,"
                                 + "datos_paciente.apellidos_pa,"
                                 + "datos_paciente.fecha_nacimiento_pa,"
@@ -1048,7 +1056,8 @@ String[]Triaje = new String[]{};
                                 + "FROM datos_paciente "
                                 + "INNER JOIN n_orden_ocupacional "
                                 + "ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa) "
-                                + "WHERE n_orden_ocupacional.n_orden='" + txtNumero.getText() + "'";
+                                + "WHERE n_orden_ocupacional.n_orden=" + txtNumero.getText() + ";";
+                        System.out.println(Sql);
                         oConn.FnBoolQueryExecute(Sql);
 
                         try {
@@ -1066,7 +1075,7 @@ String[]Triaje = new String[]{};
                                 habilitaTriaje(true);
                                 oConn.setResult.close();
                             } else {
-                                oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
+                                oFunc.SubSistemaMensajeError("No se encuentraa Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                                 oConn.setResult.close();
                             }
                         } catch (SQLException ex) {
@@ -1613,6 +1622,10 @@ boolean bResultado=true;
        // sbCargarDatosOcupacional(txtBuscar.getText());
         }
     }//GEN-LAST:event_txtBuscarActionPerformed
+
+    private void chkAsistencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAsistencialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAsistencialActionPerformed
 
 
    

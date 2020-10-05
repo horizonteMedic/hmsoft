@@ -289,6 +289,7 @@
         <Component class="com.toedter.calendar.JDateChooser" name="FechaHoy">
           <Properties>
             <Property name="dateFormatString" type="java.lang.String" value="&apos;TRUJILLO - &apos; EEEEE dd MMMMM yyyy"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
