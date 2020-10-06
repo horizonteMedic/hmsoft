@@ -1696,7 +1696,7 @@ clsConnection oConn = new clsConnection();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4))
@@ -1896,7 +1896,7 @@ clsConnection oConn = new clsConnection();
                         .addComponent(cboMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnMarca)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                     .addComponent(jScrollPane4))
@@ -2104,7 +2104,7 @@ clsConnection oConn = new clsConnection();
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(FechaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldSaturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2712,56 +2712,52 @@ txtNorden.requestFocus();
           if(pasar.equals("PC")) 
           {
               soloPc();  
-          if(valor==2)
+               if(valor==2)
               
-        if(OrdenExisteIn()){   
-           ActualizarIn();
-          // LimpiarIn();
-           
-       }else{
-           if(!txtNordenIn.getText().isEmpty()){
-            try {
-               if(validarIn()){
-                if(GrabarIn()){
-                    imprimirIn();
+                 if(OrdenExisteIn())
+                 {   
+                    ActualizarIn();
                     LimpiarIn();
+           
+                 }       
+                 else{
+                        if(!txtNordenIn.getText().isEmpty()){
+                            try {
+                                if(validarIn()){
+                                    if(GrabarIn()){
+                                        imprimirIn();
+                                        LimpiarIn();
+                                    }
+                                }
+                            } catch (SQLException ex) {
+                                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+                              }
+                        }
                 }
-               }
-            } catch (SQLException ex) {
-                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           }
-       }
+          } 
           
-          
-        
-        
-        
-        
-        
-       
-    } 
           else 
           {
           
-                 if(OrdenExisteIn()){   
-           ActualizarIn();
-          // LimpiarIn();
-           
-       }else{
-           if(!txtNordenIn.getText().isEmpty()){
-            try {
-               if(validarIn()){
-                if(GrabarIn()){
-                    imprimirIn();
+               if(OrdenExisteIn()){   
+                    ActualizarIn();
                     LimpiarIn();
-                }
+           
+               } 
+               else{
+                    if(!txtNordenIn.getText().isEmpty()){
+                        try {
+                            if(validarIn()){
+                                if(GrabarIn()){
+                                    imprimirIn();
+                                    LimpiarIn();
+                                }
+                            }
+                        } catch (SQLException ex) {
+                            Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+                          }
+                     }
                }
-            } catch (SQLException ex) {
-                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           }
-       }
           
           
           }
@@ -2773,7 +2769,7 @@ txtNorden.requestFocus();
     private void btnLimpiarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarInActionPerformed
         // TODO add your handling code here:
         LimpiarIn();
-                  negarPc();
+        negarPc();
     }//GEN-LAST:event_btnLimpiarInActionPerformed
     public static com.toedter.calendar.JDateChooser FechaNacimiento;
     private void txtNordenInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenInActionPerformed
@@ -2851,7 +2847,7 @@ else
             String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
             + " ct.fecha_examen,ct.chkigm_reactivo, ct.chkigm_noreactivo, \n" +
             "                   ct.chkigg_reactivo, ct.chkigg_noreactivo, ct.chkinvalido, "
-                    + "ct.cbomarca, ct.txtvrigm,ct.txtvrigg " +
+                    + "ct.cbomarca, ct.txtvrigm,ct.txtvrigg,n.tipoprueba " +
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
@@ -2872,6 +2868,10 @@ else
                     cboMarca.setSelectedItem(oConn.setResult.getString("cbomarca"));
                     txtVRIgm.setText(oConn.setResult.getString("txtvrigm"));
                     txtVRIgg.setText(oConn.setResult.getString("txtvrigg"));
+                    pasar=(oConn.setResult.getString("tipoprueba"));
+                    FechaHotel.setDate(oConn.setResult.getDate("fecha_examen"));
+                      if(pasar.equals("PC")) habilitarPc();
+                    
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
@@ -2908,7 +2908,9 @@ else
         cboMarca.getEditor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+  
+       //      System.out.println("EL INDICE ES" + cboMarca.getSelectedIndex() );
+            
                 if (cboMarca.getSelectedIndex() <= -1) {
                     
                 } 
@@ -2976,6 +2978,19 @@ else
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                            + "Sensabilidad: 92%\n"
                             + "Especificidad: 100% \n");
+                }
+               else if(cboMarca.getSelectedIndex()==8){
+//                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad: 94% \n"
+                            + "Especificidad: 100% \n"
+                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
+                            + "Especificidad del dispositivo de prueba IgM/IgG: 99.5 %");
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                           + "Sensabilidad: 94% \n"
+                            + "Especificidad: 100% \n"
+                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
+                            + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
                 }
             }
         });
@@ -3059,6 +3074,20 @@ else
                            + "Sensabilidad: 92%\n"
                             + "Especificidad: 100% \n");
                 }
+              else if(cboMarca.getSelectedIndex()==8){
+//                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad: 94% \n"
+                            + "Especificidad: 100% \n"
+                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
+                            + "Especificidad del dispositivo de prueba IgM/IgG: 99.5 %");
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                           + "Sensabilidad: 94% \n"
+                            + "Especificidad: 100% \n"
+                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
+                            + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
+                }
+
 
             }
         });

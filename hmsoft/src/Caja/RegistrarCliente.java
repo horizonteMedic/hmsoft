@@ -2934,7 +2934,7 @@ this.chkAltaTrabCal.setVisible(false);
                     + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                     + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                     + "n.visual_compl,n.trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,"
-                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica "
+                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                     + "WHERE n.n_orden = " + cod;
@@ -2959,6 +2959,7 @@ this.chkAltaTrabCal.setVisible(false);
                     txtPrecio.setText(oConn.setResult.getString("precio_po"));
                     txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                     txtNorden.setText(oConn.setResult.getString("n_orden"));
+                    cboTipoExamen.setSelectedItem(oConn.setResult.getString("tipoprueba"));
                     stip=oConn.setResult.getString("tipo_pago");
                      if("EFECTIVO".equals(stip)){
                         pago=true;
@@ -3630,9 +3631,9 @@ private void CargarTipoExamenes(){
 
     private void cboTipoExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTipoExamenActionPerformed
         cboTipoExamen.getEditor().addActionListener(new ActionListener() {
-            @Override
+            @Override   
             public void actionPerformed(ActionEvent e) {
-
+         
                 if(cboTipoExamen.getSelectedIndex()<=-1 )
                 {
 

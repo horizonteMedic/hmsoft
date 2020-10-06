@@ -1259,8 +1259,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
                    return false;
             }};
             String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata,\n" +
-"CASE WHEN n.chkcovid1 = 'TRUE' THEN 'C19-1'\n" +
-"     WHEN n.chkcovid2 = 'TRUE' THEN 'C19-2'END AS NUMEXACOVID,\n" +
+"CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1'\n" +
+"     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
+"     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
+"     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.'  END AS NUMEXACOVID,\n" +
 "CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO'\n" +
 "     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM,\n" +
 "CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO'\n" +
@@ -1316,8 +1318,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
               public boolean isCellEditable(int rowIndex, int columnIndex) {
                    return false;
             }};
-            String vSql="SELECT n.n_orden,CASE WHEN n.chkcovid1 ='TRUE' THEN 'PRUEBA 1' \n" +
-"             WHEN n.chkcovid2 ='TRUE' THEN 'PRUEBA 2' ELSE '.' END AS NUMPRUEBA,\n" +
+            String vSql="SELECT n.n_orden,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
+                    "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
+                    "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
+"             WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.' END AS NUMPRUEBA,\n" +
 "       CASE WHEN n.n_orden is not null THEN 'DNI' ELSE '.' END AS TIPODOC,\n" +
 "             d.cod_pa,d.apellidos_pa,d.nombres_pa,d.direccion_pa, \n" +
 "        d.fecha_nacimiento_pa,d.cel_pa, n.razon_empresa,n.razon_contrata,n.cargo_de,\n" +
