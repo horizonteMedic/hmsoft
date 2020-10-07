@@ -33,6 +33,8 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import sistema.Audiometria;
+import sistema.Ingreso;
+import static sistema.Ingreso.nombresede;
 import sistema.Odontograma;
 
 /**
@@ -42,6 +44,9 @@ import sistema.Odontograma;
 public final class RegistrarCliente extends javax.swing.JInternalFrame {
     clsFunciones oFunc = new clsFunciones();
     clsConnection oConn = new clsConnection();
+       Ingreso objet= new Ingreso();
+   String nomsede;
+   int codigosede;
     public static AddOcupacion addOcupacion;
     public static AgregarEmpresa addEmpresa;
     public static AgregarContrata addContrata;
@@ -68,6 +73,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         AltaDesabilitar();
         deshabilitarbotones();
         CargarServicios();
+        valorsede();
         CargarProfesionOcupacion();
         cboProfesion.setSelectedIndex(-1);
         CargarAlturaPo();
@@ -103,6 +109,38 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         hBotones(false);
         CargarTipoExamenes();
         ocultarOpcionesCovid();
+    }
+
+public void valorsede(){
+   nomsede=objet.nombresede;
+    jLabel48.setText(nomsede);
+    String sQuery;        
+        // Prepara el Query
+        sQuery ="select cod_sede from sede where nombre_sede= '"+nomsede+"';";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     codigosede=oConn.setResult.getInt("cod_sede");
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+      
     }
 
     private void hBotones(boolean btn) {
@@ -316,7 +354,7 @@ this.chkAltaTrabCal.setVisible(false);
         jLabel41 = new javax.swing.JLabel();
         txtBuscarCod = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        cboSedeClinica = new javax.swing.JComboBox();
+        jLabel48 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         chkAltaVisualCom = new javax.swing.JCheckBox();
         chkVisualCompl = new javax.swing.JCheckBox();
@@ -1588,34 +1626,20 @@ this.chkAltaTrabCal.setVisible(false);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sede Clinica"));
 
-        cboSedeClinica.setEditable(true);
-        cboSedeClinica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "HUAMACHUCO", "TRUJILLO" }));
-        cboSedeClinica.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cboSedeClinicaMouseClicked(evt);
-            }
-        });
-        cboSedeClinica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboSedeClinicaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(cboSedeClinica, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(cboSedeClinica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+                .addContainerGap()
+                .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
         );
 
         jLabel44.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -2674,7 +2698,7 @@ this.chkAltaTrabCal.setVisible(false);
             String Sql = "INSERT INTO n_orden_ocupacional(cod_pa, razon_empresa, razon_contrata,"
                     + " nom_ex, altura_po,mineral_po, fecha_apertura_po,nom_examen,precio_po,cargo_de,n_medico,n_hora,area_o,"
                     + "tipo_pago,n_fisttest,n_psicosen,n_testaltura,color,gruposan,grupofactorsan,cod_clinica,visual_compl,"
-                    + "trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba)";//
+                    + "trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede)";//
                
             Sql += " Values ('" + txtDniAlta.getText().toString() + "','"
                     + txtEmpresa.getText().toString() + "','"
@@ -2703,7 +2727,8 @@ this.chkAltaTrabCal.setVisible(false);
                     + chkAltaCovid2.isSelected() + "','"
                     + chkAltaManipAlimen.isSelected() + "','"
                     + txtObserv1.getText()+ "','"
-                    + txtObserv2.getText() + "'"+",'"+ cboTipoExamen.getSelectedItem().toString()+"') RETURNING n_orden;";
+                    + txtObserv2.getText() + "'"+",'"+ cboTipoExamen.getSelectedItem().toString()+"',"+
+                    codigosede+") RETURNING n_orden;";
                    //oFunc.SubSistemaMensajeError(Sql);
                    
             if (oConn.FnBoolQueryExecute(Sql)) {
@@ -2983,10 +3008,10 @@ this.chkAltaTrabCal.setVisible(false);
                     chkAltaManipAlimen.setSelected(oConn.setResult.getBoolean("manip_alimentos"));
                     txtObserv1.setText(oConn.setResult.getString("txtobserv1"));
                     txtObserv2.setText(oConn.setResult.getString("txtobserv2"));
-                    if(cboSedeClinica.getSelectedIndex()==0){
-                            jLabel44.setText(txtNorden.getText()+" - H");
+                    if(nomsede.equals("Trujillo")){
+                            jLabel44.setText(txtNorden.getText()+" - T");
                     }else {
-                        jLabel44.setText(txtNorden.getText()+" - T");
+                        jLabel44.setText(txtNorden.getText()+" - H");
                     }
                     txtDniAlta.setEditable(false);
                     hBotones(true);
@@ -3018,7 +3043,7 @@ this.chkAltaTrabCal.setVisible(false);
         chkAltaManipAlimen.setEnabled(true);
         txtObserv1.setEnabled(true);
         txtObserv2.setEnabled(true);
-        cboSedeClinica.setEnabled(true);
+        //cboSedeClinica.setEnabled(true);
         txtFechaAlta.setEnabled(true);
        
 
@@ -3192,10 +3217,10 @@ this.chkAltaTrabCal.setVisible(false);
                     jLabel44.setText(oConn.setResult.getString("cod_clinica"));
                     txtObserv1.setText(oConn.setResult.getString("txtobserv1"));
                     txtObserv2.setText(oConn.setResult.getString("txtobserv2"));
-                    if(cboSedeClinica.getSelectedIndex()==0){
-                            jLabel44.setText(txtNorden.getText()+" - H");
+                    if(nomsede.equals("Trujillo")){
+                            jLabel44.setText(txtNorden.getText()+" - T");
                     }else {
-                        jLabel44.setText(txtNorden.getText()+" - T");
+                        jLabel44.setText(txtNorden.getText()+" - H");
                     }
                     txtDniAlta.setEditable(false);
                     hBotones(true);
@@ -3247,18 +3272,6 @@ this.chkAltaTrabCal.setVisible(false);
             sbCargarOcupacional(txtBuscarCod.getText());
         
     }//GEN-LAST:event_txtBuscarCodKeyReleased
-
-    private void cboSedeClinicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboSedeClinicaMouseClicked
-        
-    }//GEN-LAST:event_cboSedeClinicaMouseClicked
-
-    private void cboSedeClinicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSedeClinicaActionPerformed
-        if(cboSedeClinica.getSelectedIndex()==0){
-                            jLabel44.setText(txtNorden.getText()+" - H");
-         }else{
-                            jLabel44.setText(txtNorden.getText()+" - T");
-                        }
-    }//GEN-LAST:event_cboSedeClinicaActionPerformed
 
     private void txtNorden1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNorden1ActionPerformed
 
@@ -3986,7 +3999,6 @@ private void CargarTipoExamenes(){
     private javax.swing.JComboBox cboNivelEstudio;
     private javax.swing.JComboBox cboProfesion;
     private javax.swing.JComboBox cboProvincia;
-    private javax.swing.JComboBox cboSedeClinica;
     private javax.swing.JComboBox cboSexo;
     private javax.swing.JComboBox cboTipoExamen;
     private javax.swing.JCheckBox chkA;
@@ -4064,6 +4076,7 @@ private void CargarTipoExamenes(){
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -4564,7 +4577,7 @@ private void CargarTipoExamenes(){
         chkAltaCovid1.setEnabled(false);
         chkAltaCovid2.setEnabled(false);
         chkAltaManipAlimen.setEnabled(false);
-        cboSedeClinica.setEnabled(false);       
+       // cboSedeClinica.setEnabled(false);       
     }
 
     public void AltaHabilitar() {
@@ -4594,7 +4607,7 @@ private void CargarTipoExamenes(){
         chkAltaManipAlimen.setEnabled(true);
         txtGrupoSan.setEnabled(true);
         txtFactorSan.setEnabled(true);
-        cboSedeClinica.setEnabled(true);
+//        cboSedeClinica.setEnabled(true);
         txtObserv1.setEnabled(true);
         txtObserv2.setEnabled(true);
     }
@@ -4637,12 +4650,11 @@ private void CargarTipoExamenes(){
         oConn.FnBoolQueryExecute(sql);
         try {
             if (oConn.setResult.next()) {
-
                 txtNorden.setText(oConn.setResult.getString("cod"));
-                if(cboSedeClinica.getSelectedIndex()==0){
-                            jLabel44.setText(txtNorden.getText()+" - H");
+                if(nomsede.equals("Trujillo")){
+                            jLabel44.setText(txtNorden.getText()+" - T");
                 }else {
-                        jLabel44.setText(txtNorden.getText()+" - T");
+                        jLabel44.setText(txtNorden.getText()+" - H");
                 }
             } else {
 

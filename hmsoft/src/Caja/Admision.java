@@ -6,12 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
+import sistema.Ingreso;
 
 
 public class Admision extends javax.swing.JFrame {
    Comprobantes t = new Comprobantes(); 
    RegistrarCliente r = new RegistrarCliente();
    PacientesEspera p = new PacientesEspera();
+   Ingreso elobjeto= new Ingreso();
    MenuEmpresas age;
    MenuContrata cont;
    ServiciosGenerales sg;
@@ -19,10 +21,12 @@ public class Admision extends javax.swing.JFrame {
    Reporteador re = new Reporteador();
    Valorizacion val = new Valorizacion();
    ControlFactura contfac=new ControlFactura();
+   public static String nombreSede;
+   
    public Admision() {
       initComponents();
       lblFecha.setText(Fecha());
-     
+     sede();
       lblUsuarioCaja.setText(clsGlobales.sNomOperador);
         this.setLocationRelativeTo(null);
       KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
@@ -46,7 +50,11 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         }
 });  
    }
-
+public void sede(){
+    nombreSede=elobjeto.nombresede;
+    // System.out.println("nombre sede:"+nombreSede);
+};
+   
    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

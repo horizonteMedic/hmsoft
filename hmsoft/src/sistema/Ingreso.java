@@ -38,6 +38,7 @@ public final class Ingreso extends javax.swing.JFrame {
    clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
    public JComboBox cboEmpresa;
+   public static String  nombresede;
    String emp;
        public Ingreso()  {
            
@@ -73,7 +74,7 @@ public final class Ingreso extends javax.swing.JFrame {
             
             fecha();
             CargarUsuarios();
-            
+            CargarSedes();
             
         }
     
@@ -106,20 +107,26 @@ public final class Ingreso extends javax.swing.JFrame {
         chkAdmision = new javax.swing.JCheckBox();
         chkFarmacia = new javax.swing.JCheckBox();
         jLabel14 = new javax.swing.JLabel();
+        cboSede = new javax.swing.JComboBox();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso a \"MEDSOFT\"");
         setIconImage(getIconImage());
+        setMinimumSize(new java.awt.Dimension(549, 263));
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblUsuario_L.setText("Usuario :");
+        getContentPane().add(lblUsuario_L, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 98, -1, -1));
 
         lblpass.setText("Contraseña :");
+        getContentPane().add(lblpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 128, -1, -1));
 
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +138,7 @@ public final class Ingreso extends javax.swing.JFrame {
                 txtpassKeyPressed(evt);
             }
         });
+        getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 125, 123, -1));
 
         btncancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
         btncancelar.setText("Cerrar");
@@ -139,14 +147,18 @@ public final class Ingreso extends javax.swing.JFrame {
                 btncancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(btncancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 225, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Datos de Acceso al Sistema");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 6, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/carnet.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 25, -1, 115));
 
         lblFecha.setText("Fecha :");
+        getContentPane().add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 153, -1, -1));
 
         txtFechaLogin.setEditable(false);
         txtFechaLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -155,8 +167,10 @@ public final class Ingreso extends javax.swing.JFrame {
                 txtFechaLoginKeyPressed(evt);
             }
         });
+        getContentPane().add(txtFechaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 153, 123, -1));
 
         lblHora.setText("Hora :");
+        getContentPane().add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 187, -1, -1));
 
         txtHoraLogin.setEditable(false);
         txtHoraLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -165,6 +179,7 @@ public final class Ingreso extends javax.swing.JFrame {
                 txtHoraLoginKeyPressed(evt);
             }
         });
+        getContentPane().add(txtHoraLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 183, 123, -1));
 
         cboUsuarios.setEditable(true);
         cboUsuarios.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione algun usuario" }));
@@ -187,9 +202,11 @@ public final class Ingreso extends javax.swing.JFrame {
                 cboUsuariosKeyPressed(evt);
             }
         });
+        getContentPane().add(cboUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 93, 256, -1));
 
         lbliduser.setText("id");
         lbliduser.setEnabled(false);
+        getContentPane().add(lbliduser, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 98, 18, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entrar.png"))); // NOI18N
         jButton1.setText("Entrar");
@@ -198,112 +215,54 @@ public final class Ingreso extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(341, 225, -1, -1));
 
         btIngreso.add(chkSistema);
         chkSistema.setSelected(true);
         chkSistema.setText("Sistema");
         chkSistema.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(chkSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 57, -1, -1));
 
         btIngreso.add(chkAdmision);
         chkAdmision.setText("Admisión");
         chkAdmision.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(chkAdmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 57, -1, -1));
 
         btIngreso.add(chkFarmacia);
         chkFarmacia.setText("Consultas");
         chkFarmacia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        getContentPane().add(chkFarmacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 57, -1, -1));
 
         jLabel14.setText("Ingresos Area :");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 61, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel3)
-                        .addGap(0, 87, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblHora, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblpass, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblUsuario_L, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(cboUsuarios, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtpass)
-                                            .addComponent(txtFechaLogin)
-                                            .addComponent(txtHoraLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbliduser, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chkSistema)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkAdmision)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkFarmacia)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btncancelar)
-                        .addGap(24, 24, 24))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(chkSistema)
-                            .addComponent(chkAdmision)
-                            .addComponent(chkFarmacia))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblUsuario_L)
-                            .addComponent(cboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbliduser))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblpass)
-                            .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFecha)
-                            .addComponent(txtFechaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblHora)
-                            .addComponent(txtHoraLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btncancelar)
-                            .addComponent(jButton1))))
-                .addContainerGap())
-        );
+        cboSede.setEditable(true);
+        cboSede.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione la sede" }));
+        cboSede.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboSedePopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        cboSede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboSedeActionPerformed(evt);
+            }
+        });
+        cboSede.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cboSedeKeyPressed(evt);
+            }
+        });
+        getContentPane().add(cboSede, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 25, 230, -1));
 
-        setSize(new java.awt.Dimension(499, 253));
+        jLabel15.setText("Sede:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 30, -1, -1));
+
+        setSize(new java.awt.Dimension(565, 302));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -362,18 +321,32 @@ enter(evt);
            
      }});
     }//GEN-LAST:event_cboUsuariosActionPerformed
+
+    private void cboSedePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboSedePopupMenuWillBecomeInvisible
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboSedePopupMenuWillBecomeInvisible
+
+    private void cboSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSedeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboSedeActionPerformed
+
+    private void cboSedeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboSedeKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboSedeKeyPressed
     public static void main(String args[]) {
              new Ingreso().setVisible(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btIngreso;
     private javax.swing.JButton btncancelar;
+    private javax.swing.JComboBox cboSede;
     private javax.swing.JComboBox cboUsuarios;
     private javax.swing.JCheckBox chkAdmision;
     private javax.swing.JCheckBox chkFarmacia;
     private javax.swing.JCheckBox chkSistema;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblFecha;
@@ -394,6 +367,8 @@ int key = evt.getKeyCode();
 }
 private void validar(){
 if (cboUsuarios.getSelectedIndex() > 0 ) {
+   nombresede =cboSede.getSelectedItem().toString();
+  // System.out.println("nombre de la sede :"+nombresede);
        String sqlStmt;
        String area;
        
@@ -474,7 +449,41 @@ Date dateHora = new Date();
         txtFechaLogin.setText(formato.format(dateHoy));
         txtHoraLogin.setText(FormatoHora.format(dateHora));
 }
-private void CargarUsuarios(){
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select nombre_Sede from sede order by cod_Sede";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     cboSede.addItem(oConn.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        cboSede.setSelectedIndex(1);
+
+
+}
+
+ private void CargarUsuarios(){
       String sQuery;        
         // Prepara el Query
         sQuery ="SELECT usuario_user FROM usuarios";

@@ -164,6 +164,11 @@ public class MenuEmpresas extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Razón Social :");
 
+        txtBuscarRazonSocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarRazonSocialActionPerformed(evt);
+            }
+        });
         txtBuscarRazonSocial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarRazonSocialKeyReleased(evt);
@@ -237,7 +242,7 @@ public class MenuEmpresas extends javax.swing.JInternalFrame {
                             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -441,6 +446,10 @@ txtEmail.requestFocus();        // TODO add your handling code here:
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
 btnAgregar.requestFocusInWindow();        // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtBuscarRazonSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarRazonSocialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarRazonSocialActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
