@@ -1,5 +1,6 @@
 package sistema;
 
+import Caja.Admision;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
@@ -39,6 +40,7 @@ clsConnection oConn = new clsConnection();
     String[]responsable = new String[]{};
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     public static AddMarcaCovid addMarca;
+   
     DefaultTableModel model;
    String pasar="df";
    int valor=1;
@@ -51,8 +53,7 @@ clsConnection oConn = new clsConnection();
         responsable = getRowsToVector("select nombre_user||' '||apellido_user as responsable FROM usuarios");
         CargarMarcaCovid();
         cboMarca.setSelectedIndex(-1);
-    }
-
+    } 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -2708,7 +2709,12 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_chkIggReactivoActionPerformed
 
     private void btnGrabarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarInActionPerformed
-        
+        System.out.println("el valor es: "+!pasar.equals("PC"));  
+        System.out.println("el valor de pc: "+pasar);  
+        if(pasar.isEmpty() || !pasar.equals("PC"))
+          {
+           pasar="P20";
+          }
           if(pasar.equals("PC")) 
           {
               soloPc();  
@@ -2735,7 +2741,7 @@ txtNorden.requestFocus();
                         }
                 }
           } 
-          
+         
           else 
           {
           
@@ -2791,14 +2797,16 @@ txtNorden.requestFocus();
                           txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                        System.out.println(pasar);
                          if(pasar.equals("PC")) habilitarPc();
-                          //soloPc(pasar);
+                         else 
+                             negarPc();
+                            //soloPc(pasar);
                           txtNordenIn.setEditable(false);
                        // FechaHoy.requestFocusInWindow();
                           oPe.fecha(FechaExIn);
                            oPe.fecha(FechaHotel);
                           
                          }else{
-                          oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
+                          oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");       
                       }
               } catch (SQLException ex) {
               oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
@@ -2871,6 +2879,7 @@ else
                     pasar=(oConn.setResult.getString("tipoprueba"));
                     FechaHotel.setDate(oConn.setResult.getDate("fecha_examen"));
                       if(pasar.equals("PC")) habilitarPc();
+                      else negarPc();
                     
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
