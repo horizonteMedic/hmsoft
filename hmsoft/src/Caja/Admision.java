@@ -21,6 +21,7 @@ public class Admision extends javax.swing.JFrame {
    Reporteador re = new Reporteador();
    Valorizacion val = new Valorizacion();
    ControlFactura contfac=new ControlFactura();
+
    public static String nombreSede;
    
    public Admision() {
@@ -79,9 +80,10 @@ public void sede(){
         jSeparator5 = new javax.swing.JToolBar.Separator();
         jButton21 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        jButton22 = new javax.swing.JButton();
-        btncerrar_caja = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
+        jButton22 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        btncerrar_caja = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -260,6 +262,11 @@ public void sede(){
         jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar2.add(jSeparator6);
 
+        jToolBar1.add(jToolBar2);
+
+        jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
+        jToolBar1.add(jSeparator4);
+
         jButton22.setForeground(new java.awt.Color(102, 102, 102));
         jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/creporte.png"))); // NOI18N
         jButton22.setMnemonic(KeyEvent.VK_F6);
@@ -275,7 +282,24 @@ public void sede(){
                 jButton22ActionPerformed(evt);
             }
         });
-        jToolBar2.add(jButton22);
+        jToolBar1.add(jButton22);
+
+        jButton23.setForeground(new java.awt.Color(102, 102, 102));
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sede_1.jpg"))); // NOI18N
+        jButton23.setMnemonic(KeyEvent.VK_F6);
+        jButton23.setText("Sedes");
+        jButton23.setToolTipText("F6 (Recoger Análisis Clinicos)");
+        jButton23.setFocusable(false);
+        jButton23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton23.setMaximumSize(new java.awt.Dimension(80, 72));
+        jButton23.setMinimumSize(new java.awt.Dimension(65, 72));
+        jButton23.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton23);
 
         btncerrar_caja.setForeground(new java.awt.Color(102, 102, 102));
         btncerrar_caja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar48x48.png"))); // NOI18N
@@ -292,12 +316,7 @@ public void sede(){
                 btncerrar_cajaActionPerformed(evt);
             }
         });
-        jToolBar2.add(btncerrar_caja);
-
-        jToolBar1.add(jToolBar2);
-
-        jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
-        jToolBar1.add(jSeparator4);
+        jToolBar1.add(btncerrar_caja);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -419,6 +438,7 @@ public void sede(){
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           t.setFrameIcon(ticon);
           t.setLocation(centradoXY(t));
+         // t.setVisible(true);
          //try {
            // t.setMaximum(true);
          //} catch (PropertyVetoException ex) {
@@ -530,7 +550,7 @@ public void sede(){
          Admision.Desktop.add(age);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          age.setFrameIcon(ricon);
-         age.setLocation(centradoXY(r));
+         age.setLocation(centradoXY(r)); 
          age.show();
       }
       else{
@@ -587,6 +607,11 @@ public void sede(){
           //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_jButton22ActionPerformed
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+      sede neo= new sede();
+      neo.setVisible(true);
+    }//GEN-LAST:event_jButton23ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -629,6 +654,7 @@ public void sede(){
     private javax.swing.JButton btnrclientes;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

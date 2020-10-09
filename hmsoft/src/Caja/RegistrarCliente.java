@@ -1500,6 +1500,11 @@ this.chkAltaTrabCal.setVisible(false);
         rbCredito.setBackground(new java.awt.Color(153, 204, 255));
         bgTipo.add(rbCredito);
         rbCredito.setText("Credito");
+        rbCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCreditoActionPerformed(evt);
+            }
+        });
 
         rbEfectivo.setBackground(new java.awt.Color(153, 204, 255));
         bgTipo.add(rbEfectivo);
@@ -3666,6 +3671,10 @@ private void CargarTipoExamenes(){
     private void tbOcupacionalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbOcupacionalKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbOcupacionalKeyPressed
+
+    private void rbCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCreditoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbCreditoActionPerformed
     
     private void print(Integer cod) {
 
