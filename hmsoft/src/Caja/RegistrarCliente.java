@@ -65,7 +65,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     public RegistrarCliente() {
         super();
         initComponents();
-
+       
         fecha();
         jtRegistroGeneral.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/agegar.png")));
         jtRegistroGeneral.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/reportes.png")));
@@ -139,7 +139,7 @@ public void valorsede(){
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+         
       
     }
 
@@ -3637,9 +3637,7 @@ private void CargarTipoExamenes(){
         }
         
         // selecciona
-        cboTipoExamen.setSelectedIndex(0);
-
-
+        cboTipoExamen.setSelectedIndex(1);
 }
 
 

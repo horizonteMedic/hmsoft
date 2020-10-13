@@ -939,7 +939,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                     .addComponent(txtRuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton4)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
@@ -1288,7 +1288,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "			(case when cs.chks12=true THEN 'EXPECTORACION,' END ),\n" +
 "			(case when cs.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
 "			',',\n" +
-"			cs.txtresultados)\n" +
+"			(case when c.txtobservaciones is not null THEN c.txtobservaciones END )) as observaciones\n" +
 "FROM datos_paciente as d \n" +
 "INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
 "LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
@@ -1369,7 +1369,28 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "             WHEN i.chkigm_noreactivo ='TRUE' THEN 'NEGATIVO' ELSE '.' END AS IGM,\n" +
 "        CASE WHEN i.chkigg_reactivo ='TRUE' THEN 'POSITIVO' \n" +
 "         WHEN i.chkigg_noreactivo ='TRUE' THEN 'NEGATIVO' ELSE '.' END AS IGG,\n" +
-"        f.txtdiagnostico as observaciones\n" +
+         
+                    "	 concat('IGM: ',(CASE WHEN i.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"     WHEN i.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
+"			'-IGG: ',(CASE WHEN i.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"     WHEN i.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END),\n" +
+"		 (case when c.chk_asintomatico=true then' ASINTOMATICO' end),\n" +
+"		(case when c.chk_sintomatico=true THEN '- SINTOMATICO, Con sintomas como: ' END ),\n" +
+"			(case when c.chks1=true THEN 'TOS,' END ),\n" +
+"			(case when c.chks2=true THEN 'DOLOR DE GARGANTA,' END ),\n" +
+"			(case when c.chks3=true THEN 'CONGESTION NASAL,' END ),\n" +
+"			(case when c.chks4=true THEN 'DIFICULTAD RESPIRATORIA,' END ),\n" +
+"			(case when c.chks5=true THEN 'FIEBRE/ESCALOFRIO,' END ),\n" +
+"			(case when c.chks6=true THEN 'MALESTAR GENERAL,' END ),\n" +
+"			(case when c.chks7=true THEN 'DIARREA,' END ),\n" +
+"			(case when c.chks8=true THEN 'NAUSEAS / VOMITOS,' END ),\n" +
+"			(case when c.chks9=true THEN 'CEFALEA,' END ),\n" +
+"			(case when c.chks10=true THEN 'IRRITABILIDAD/CONFUSION,' END ),\n" +
+"			(case when c.chks11=true THEN 'DOLOR,' END ),\n" +
+"			(case when c.chks12=true THEN 'EXPECTORACION,' END ),\n" +
+"			(case when c.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
+"			',',\n" +
+"			(case when f.txtdiagnostico is not null THEN f.txtdiagnostico END )) as Diagnostico\n" +       
 "  FROM datos_paciente AS d\n" +
 " INNER JOIN n_orden_ocupacional as n on(d.cod_pa=n.cod_pa)\n" +
 " LEFT JOIN examen_inmunologico as i on(n.n_orden=i.n_orden)\n" +

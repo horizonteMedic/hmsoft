@@ -33,7 +33,7 @@ public final class Ingreso extends javax.swing.JFrame {
     static final boolean PROCESO_CODIGO = true;
     static final boolean ADMISION_CODIGO = true;
      static final boolean FARMACIA_CODIGO = true;
-    
+    public static String doctor;
     
    clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
@@ -368,6 +368,7 @@ int key = evt.getKeyCode();
 private void validar(){
 if (cboUsuarios.getSelectedIndex() > 0 ) {
    nombresede =cboSede.getSelectedItem().toString();
+   doctor=cboUsuarios.getSelectedItem().toString();
   // System.out.println("nombre de la sede :"+nombresede);
        String sqlStmt;
        String area;
@@ -452,7 +453,7 @@ Date dateHora = new Date();
 private void CargarSedes(){
       String sQuery;        
         // Prepara el Query
-        sQuery ="select nombre_Sede from sede order by cod_Sede";
+        sQuery ="select nombre_Sede from sede where estado='1' order by cod_Sede";
         
         if (oConn.FnBoolQueryExecute(sQuery))
         {

@@ -7,30 +7,64 @@ package Caja;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author USER
+ * @author Josue
  */
 public class sede extends javax.swing.JFrame {
 
       clsFunciones  oFunc = new clsFunciones();
       clsConnection oConn = new clsConnection();
-      int estadoSede,operacion,id;  
+      int estadoSede,operacion;
+      String id="12";
          DefaultTableModel model;
     /**
      * Creates new form sede
      */
     public sede() {
         initComponents();
-//sbCargarDatosEmpresa("");       
+//sbCargarDatosEmpresa("");  
+//this.setAlwaysOnTop( true );
 mostrar();
+
+popuptable();
     }
+    
+            public void popuptable(){
+    JPopupMenu popupMenu=new JPopupMenu();
+    JMenuItem menuItem1=new JMenuItem("Eliminar Registro");
+    menuItem1.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            operacion=3;
+     int a =tabla.getSelectedRow();
+       System.out.println("la fila es:"+a);
+     
+     id= (String) tabla.getValueAt(a,0);
+     System.out.println("la id es :"+id);
+     
+           funcionosede();
+               JOptionPane.showMessageDialog(null, "Registro Eliminado");
+                    mostrar();
+        }
+    
+    });    
+    popupMenu.add(menuItem1);
+    tabla.setComponentPopupMenu(popupMenu);
+  
+    }  
+    
+    
   /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,7 +76,7 @@ mostrar();
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jTextFielddireccion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -66,7 +100,7 @@ mostrar();
         jLabel1.setText("SEDES:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 23, 66, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -77,18 +111,18 @@ mostrar();
                 "Codigo Sede", "Nombre Sede", "Direccion", "Comentario", "Estado"
             }
         ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                tablaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jTable1MouseEntered(evt);
+                tablaMouseEntered(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTable1MousePressed(evt);
+                tablaMousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabla);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 323, 693, 173));
 
@@ -103,7 +137,9 @@ mostrar();
         jLabel3.setText("Direccion:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 124, 78, -1));
 
-        jTextFieldNombre.setFont(new java.awt.Font("Ebrima", 3, 14)); // NOI18N
+        jTextFieldNombre.setFont(new java.awt.Font("Arial", 3, 14)); // NOI18N
+        jTextFieldNombre.setToolTipText("");
+        jTextFieldNombre.setVerifyInputWhenFocusTarget(false);
         getContentPane().add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 74, 233, 32));
 
         jLabel4.setFont(new java.awt.Font("Ebrima", 3, 14)); // NOI18N
@@ -205,7 +241,7 @@ mostrar();
            
  String [] titulos={"Codigo","Nombre de la sede","Dirección","Comentarios","Estado"};
     String [] registros = new String[5];
-    String sql="select cod_sede, nombre_sede, direccion,comentarios, estado from sede;";
+    String sql="select cod_sede, nombre_sede, direccion,comentarios, estado from sede order by cod_sede;";
       model = new DefaultTableModel(null,titulos);  
                        System.out.println("paso el model");
 
@@ -225,7 +261,7 @@ mostrar();
                  System.out.println("registro 0"+registros[0]);
                  
                  
-                  jTable1.setModel(model);
+                  tabla.setModel(model);
                 
                  oConn.setResult.close();
             } 
@@ -238,6 +274,28 @@ mostrar();
         }
 
 }
+     public boolean OrdenExisteIn()
+    {
+        boolean bResultado=false;
+        if(!jTextFieldNombre.getText().isEmpty()){
+        String sQuery;
+        sQuery  = "Select * from sede Where nombre_sede ='"+jTextFieldNombre.getText().toString()+"'";
+        oConn.FnBoolQueryExecute(sQuery);
+        try {
+            if (oConn.setResult.next())
+            {
+                bResultado = true;
+//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+//             txtNorden.setText(null);
+            }
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+        }
+        }       
+        return bResultado;
+     }   
+    
+    
     public void funcionosede(){
             
  
@@ -251,21 +309,45 @@ mostrar();
         System.out.println(sql);
     
     }
-    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
-          System.out.println("mouse presed");
-    }//GEN-LAST:event_jTable1MousePressed
+    
+    
+    private void tablaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMousePressed
+     if (evt.getClickCount() == 2) {
+     int a =tabla.getSelectedRow();
+     id= (String) tabla.getValueAt(a,0);
+     jTextFieldNombre.setText((String)  tabla.getValueAt(a,1));
+     jTextFielddireccion.setText((String)  tabla.getValueAt(a,2));
+     jTextAreacomentario.setText((String)  tabla.getValueAt(a,3));
+     String esta=(String) tabla.getValueAt(a,4);
+     if(esta.equals("1"))
+         jCheckBoxHabilitado.setSelected(true);
+     else
+          jCheckBoxHabilitado.setSelected(false);
+     }
+    }//GEN-LAST:event_tablaMousePressed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
       
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_tablaMouseClicked
 
-    private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
+    private void tablaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTable1MouseEntered
+    }//GEN-LAST:event_tablaMouseEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     operacion=1;
-     funcionosede();
+     if(!jTextFieldNombre.getText().isEmpty())
+     {
+     if(!OrdenExisteIn()){   
+        operacion=1;
+        funcionosede();
+        
+     }
+     else 
+          JOptionPane.showMessageDialog(null, "YA EXISTE UN REGISTRO CON EL MISMO NOMBRE");
+     }
+     else 
+     JOptionPane.showMessageDialog(null, "LLENE LOS DATOS PARA PODER REGISTRAR");
+     mostrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -273,8 +355,17 @@ mostrar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-   operacion=2;
-   funcionosede();
+ if(!jTextFieldNombre.getText().isEmpty())
+     {
+        if(!jTextFieldNombre.getText().isEmpty()){
+            operacion=2;
+            funcionosede();
+             JOptionPane.showMessageDialog(null, "SE ACTUALIZO CORRECTAMENTE");
+        }
+     }
+    else 
+     JOptionPane.showMessageDialog(null, "LLENE LOS DATOS PARA PODER ACTUALIZAR LOS REGISTROS");
+  mostrar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -336,9 +427,9 @@ mostrar();
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextAreacomentario;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFielddireccion;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

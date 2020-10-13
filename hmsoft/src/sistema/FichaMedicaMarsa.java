@@ -1699,7 +1699,7 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jtPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addComponent(jtFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
 
         pack();
@@ -1956,8 +1956,8 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
 //                    txtDiagnostico.setText(oConn.setResult.getString("txtdiagnostico"));
                     txtRecomendaciones.setText(oConn.setResult.getString("txtrecomendaciones"));
                     txtAnamnesis.setText("PACIENTE REFIERE ESTAR ".concat(txtEncuestaCovid.getText()));
-                     txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
-                            txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
+                    // txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
+                       //     txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
                     if(!txtIMC.getText().isEmpty()){
                            float imc = Float.parseFloat(txtIMC.getText().toString());
                             txtIMC.setForeground(Color.black);
@@ -2076,8 +2076,8 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
                             txtConclusionesRx.setText(oConn.setResult.getString("txtconclusionesradiograficas"));
                             txtHemoHema.setText(oConn.setResult.getString("txthemoglobina"));
                             txtAnamnesis.setText("PACIENTE REFIERE ESTAR ".concat(txtEncuestaCovid.getText()));
-                            txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
-                            txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
+                            //txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
+                            //txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
                             if(!txtIMC.getText().isEmpty()){
                            float imc = Float.parseFloat(txtIMC.getText().toString());
                             txtIMC.setForeground(Color.black);

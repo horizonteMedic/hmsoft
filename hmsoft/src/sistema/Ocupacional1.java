@@ -379,6 +379,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         mFichaResultadoPrueba = new javax.swing.JMenuItem();
         mConstanciaAltaMarsa = new javax.swing.JMenuItem();
         mConsentimientoInformadoCovid = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         Reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
         Reporte.setText("Reporte");
@@ -2005,6 +2006,15 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         mExamenMarsa.add(mConsentimientoInformadoCovid);
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        jMenuItem3.setText("6. Certificado Medico");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        mExamenMarsa.add(jMenuItem3);
 
         MenuOcupacional.add(mExamenMarsa);
 
@@ -3643,6 +3653,11 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_mConsentimientoInformadoCovidActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        contanciaSaludCovid obt = new contanciaSaludCovid();
+        obt.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -3764,6 +3779,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
