@@ -274,10 +274,8 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Component id="FechaHoy" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblHora" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblHora" alignment="0" min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="txtMuestra" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>

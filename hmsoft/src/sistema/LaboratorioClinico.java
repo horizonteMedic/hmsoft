@@ -2,6 +2,7 @@ package sistema;
 
 import Caja.Admision;
 import Caja.RegistrarCliente;
+import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsOperacionesUsuarios;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -23,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.*;
@@ -53,6 +56,8 @@ clsConnection oConn = new clsConnection();
         responsable = getRowsToVector("select nombre_user||' '||apellido_user as responsable FROM usuarios");
         CargarMarcaCovid();
         cboMarca.setSelectedIndex(-1);
+        timer.start();
+         txtSintoma.setEnabled(false);
     } 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -276,6 +281,24 @@ clsConnection oConn = new clsConnection();
         jTextFieldSaturacion = new javax.swing.JTextField();
         FechaHotel = new com.toedter.calendar.JDateChooser();
         jLabel73 = new javax.swing.JLabel();
+        chkAsintomatico = new javax.swing.JCheckBox();
+        chkSintomatico = new javax.swing.JCheckBox();
+        txtSintoma = new javax.swing.JTextField();
+        chkTos = new javax.swing.JCheckBox();
+        chkDolorG = new javax.swing.JCheckBox();
+        chkCongestionN = new javax.swing.JCheckBox();
+        chkDificultadR = new javax.swing.JCheckBox();
+        chkFiebre = new javax.swing.JCheckBox();
+        chkMalestar = new javax.swing.JCheckBox();
+        chkPerdidaOlf1 = new javax.swing.JCheckBox();
+        chkExpctoracion = new javax.swing.JCheckBox();
+        chkDolor = new javax.swing.JCheckBox();
+        chkIrritaibilidad = new javax.swing.JCheckBox();
+        chkCefalea = new javax.swing.JCheckBox();
+        chkNauseas = new javax.swing.JCheckBox();
+        chkDiarrea = new javax.swing.JCheckBox();
+        lblHora = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Laboratorio Clinico");
@@ -2076,36 +2099,136 @@ clsConnection oConn = new clsConnection();
 
         jLabel73.setText("Fecha de examen");
 
+        chkAsintomatico.setSelected(true);
+        chkAsintomatico.setText("Asintomático");
+        chkAsintomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAsintomaticoActionPerformed(evt);
+            }
+        });
+
+        chkSintomatico.setText("Sintomático");
+        chkSintomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSintomaticoActionPerformed(evt);
+            }
+        });
+
+        txtSintoma.setDragEnabled(true);
+
+        chkTos.setText("Tos");
+        chkTos.setEnabled(false);
+
+        chkDolorG.setText("Dolor de garganta");
+        chkDolorG.setEnabled(false);
+
+        chkCongestionN.setText("Congestión Nasal");
+        chkCongestionN.setEnabled(false);
+
+        chkDificultadR.setText("Dificultad respiratoria");
+        chkDificultadR.setEnabled(false);
+
+        chkFiebre.setText("Fiebre/ Escalofrio");
+        chkFiebre.setEnabled(false);
+
+        chkMalestar.setText("Malestar general");
+        chkMalestar.setEnabled(false);
+
+        chkPerdidaOlf1.setText("Perdida olfato o gusto");
+        chkPerdidaOlf1.setEnabled(false);
+        chkPerdidaOlf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPerdidaOlf1ActionPerformed(evt);
+            }
+        });
+
+        chkExpctoracion.setText("Expectoración");
+        chkExpctoracion.setEnabled(false);
+
+        chkDolor.setText("Dolor");
+        chkDolor.setEnabled(false);
+
+        chkIrritaibilidad.setText("Irritabilidad / confusión");
+        chkIrritaibilidad.setEnabled(false);
+
+        chkCefalea.setText("Cefalea");
+        chkCefalea.setEnabled(false);
+
+        chkNauseas.setText("Nauseas / vómitos");
+        chkNauseas.setEnabled(false);
+
+        chkDiarrea.setText("Diarrea");
+        chkDiarrea.setEnabled(false);
+
+        lblHora.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel74.setText("Otros sintomas:");
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLimpiarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGrabarIn))
+                .addContainerGap(185, Short.MAX_VALUE))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel65)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel66)
+                                .addGap(27, 27, 27))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel73)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FechaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldSaturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(67, 67, 67)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLimpiarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGrabarIn)))
+                        .addComponent(chkAsintomatico)
+                        .addGap(32, 32, 32)
+                        .addComponent(chkSintomatico)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel65)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel10Layout.createSequentialGroup()
-                                        .addComponent(jLabel66)
-                                        .addGap(27, 27, 27))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                                        .addComponent(jLabel73)
-                                        .addGap(18, 18, 18)))
+                                    .addComponent(chkDificultadR)
+                                    .addComponent(chkCongestionN)
+                                    .addComponent(chkTos)
+                                    .addComponent(chkDolorG)
+                                    .addComponent(chkFiebre)
+                                    .addComponent(chkMalestar))
+                                .addGap(2, 2, 2)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FechaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldSaturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(179, Short.MAX_VALUE))
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addComponent(chkIrritaibilidad)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(chkDiarrea)
+                                            .addComponent(chkExpctoracion)
+                                            .addComponent(chkDolor)
+                                            .addComponent(chkCefalea)
+                                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                                .addComponent(chkNauseas)
+                                                .addGap(145, 145, 145)
+                                                .addComponent(jLabel74)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(chkPerdidaOlf1))
+                        .addGap(40, 40, 40))))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2121,17 +2244,53 @@ clsConnection oConn = new clsConnection();
                         .addComponent(btnGrabarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(btnLimpiarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
-                .addComponent(jLabel65)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel66)
-                    .addComponent(jTextFieldSaturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel65)
+                    .addComponent(chkAsintomatico)
+                    .addComponent(chkSintomatico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FechaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel73))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel66)
+                            .addComponent(jTextFieldSaturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FechaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel73))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkTos, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkDiarrea, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkDolorG, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkNauseas, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel74))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkCongestionN, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkCefalea, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkDificultadR, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkIrritaibilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkFiebre, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkDolor, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkMalestar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkExpctoracion, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkPerdidaOlf1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
 
         jtLaboratorio.addTab("Examen Inmunologico", jPanel10);
@@ -2149,12 +2308,150 @@ clsConnection oConn = new clsConnection();
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jtLaboratorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 5, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void agregarSimtocasPc(){
+      if(OrdenExiste1()){  
+            Actualizar();
+         }else{
+              if(!txtNordenIn.getText().isEmpty()){
+            try {
+              
+                if(Grabar()){
+                  //  imprimir();
+                    limpiar();
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConstanciaSaludMarsa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           }
+         }
+    }
+    
+    private boolean Grabar() throws SQLException{
+        boolean bResult = false;
+              
+       String strSqlStmt ="INSERT INTO constancia_salud_marsa(\n" +
+"            n_orden, fecha_examen, hora_examen, txtmuestra, chk_asintomatico, \n" +
+"            chk_sintomatico, txtresultados, chks1, chks2, chks3, chks4, chks5, \n" +
+"            chks6, chks7, chks8, chks9, chks10, chks11, chks12, chks13)";       
+            strSqlStmt+= "values ('"+ txtNordenIn.getText().toString()+"',"
+                    + "'"+ FechaHotel.getDate()+"',"
+                    + "'"+ lblHora.getText()+"',"
+                    + "'MUESTRA PC',"
+                    + "'"+ chkAsintomatico.isSelected()+"',"
+                    + "'"+ chkSintomatico.isSelected()+"',"
+                    + "'"+txtSintoma.getText()+"',"
+                    +"'"+chkTos.isSelected()+ "',"
+                    +"'"+chkDolorG.isSelected()+ "',"
+                    +"'"+chkCongestionN.isSelected()+ "',"
+                    + "'"+chkDificultadR.isSelected()+ "',"
+                    + "'"+chkFiebre.isSelected()+ "',"
+                    + "'"+chkMalestar.isSelected()+ "',"
+                    + "'"+chkDiarrea.isSelected()+ "',"
+                    + "'"+chkNauseas.isSelected()+ "',"
+                    + "'"+chkCefalea.isSelected()+ "',"
+                    + "'"+chkIrritaibilidad.isSelected()+ "',"
+                    + "'"+chkDolor.isSelected()+ "',"
+                    + "'"+chkExpctoracion.isSelected()+ "',"
+                    + "'"+chkPerdidaOlf1.isSelected()+"' )";
+             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+                
+//                   oConn.setResult.next();
+            
+                   bResult = true;
+                       oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+               }
+              
+              
+                return bResult;       
+        }
+    
+    
+      private void Actualizar(){
+        String sCodigo=txtNordenIn.getText();
+        String strSqlStmt;
+        strSqlStmt="UPDATE constancia_salud_marsa\n" +
+                    "   SET  fecha_examen='"+FechaHotel.getDate()+"',"
+                +"hora_examen='"+lblHora.getText()+"',"
+                +"txtmuestra='MUESTRA PC',"
+                +"chk_asintomatico='"+chkAsintomatico.isSelected()+"',"
+                +"chk_sintomatico='"+chkSintomatico.isSelected()+"',"
+                + "txtresultados='"+txtSintoma.getText()+"'" ;
+              strSqlStmt+= ", chks1='"+chkTos.isSelected()+"'"
+                        + ", chks2='"+chkDolorG.isSelected()+"'"
+                        + ", chks3='"+chkCongestionN.isSelected()+"'"
+                        + ", chks4='"+chkDificultadR.isSelected()+"'"
+                        + ", chks5='"+chkFiebre.isSelected()+"'"
+                        + ", chks6='"+chkMalestar.isSelected()+"'"
+                        + ", chks7='"+chkDiarrea.isSelected()+"'"
+                        + ", chks8='"+chkNauseas.isSelected()+"'"
+                        + ", chks9='"+chkCefalea.isSelected()+"'"
+                        + ", chks10='"+chkIrritaibilidad.isSelected()+"'"
+                        + ", chks11='"+chkDolor.isSelected()+"'"
+                        + ", chks12='"+chkExpctoracion.isSelected()+"'"
+                        + ", chks13='"+chkPerdidaOlf1.isSelected()+"'"+
+                " WHERE n_orden='" + sCodigo + "'";
+            
+        //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+          //  imprimir();
+            limpiar();
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        
+    }
+    private void limpiar(){
+
+chkAsintomatico.setSelected(true);
+txtSintoma.setText(null);
+chkTos.setSelected(false);
+        chkDolorG.setSelected(false);
+        chkCongestionN.setSelected(false);
+        chkDificultadR.setSelected(false);
+        chkFiebre.setSelected(false);
+        chkMalestar.setSelected(false);
+        chkDiarrea.setSelected(false);
+        chkNauseas.setSelected(false);
+        chkCefalea.setSelected(false);
+        chkIrritaibilidad.setSelected(false);
+        chkDolor.setSelected(false);
+        chkExpctoracion.setSelected(false);
+        chkPerdidaOlf1.setSelected(false);
+chkSintomatico.setSelected(false);
+negarcheks();
+}
+    
+   public boolean OrdenExiste1()
+    {
+        boolean bResultado=false;
+        if(!txtNordenIn.getText().isEmpty()){
+        String sQuery;
+
+        sQuery  = "Select n_orden from constancia_salud_marsa Where n_orden ="+txtNordenIn.getText().toString();
+        oConn.FnBoolQueryExecute(sQuery);
+        try {
+            if (oConn.setResult.next())
+            {
+                bResultado = true;
+//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+//             txtNorden.setText(null);
+            }
+            oConn.setResult.close();
+            
+        } catch (SQLException ex) {
+         
+        }
+        }       
+        return bResultado;
+        } 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
       if(!txtNorden.getText().isEmpty()){
          if(! OrdenExiste()){
@@ -2707,16 +3004,32 @@ txtNorden.requestFocus();
         // TODO add your handling code here:
         bgInvalido.clearSelection();
     }//GEN-LAST:event_chkIggReactivoActionPerformed
-
+public void negarcheks(){
+ chkTos.setEnabled(false);
+        chkDolorG.setEnabled(false);
+        chkCongestionN.setEnabled(false);
+        chkDificultadR.setEnabled(false);
+        chkFiebre.setEnabled(false);
+        chkMalestar.setEnabled(false);
+        chkDiarrea.setEnabled(false);
+        chkNauseas.setEnabled(false);
+        chkCefalea.setEnabled(false);
+        chkIrritaibilidad.setEnabled(false);
+        chkDolor.setEnabled(false);
+        chkExpctoracion.setEnabled(false);
+        chkPerdidaOlf1.setEnabled(false);
+        txtSintoma.setEnabled(false);
+}
     private void btnGrabarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarInActionPerformed
         System.out.println("el valor es: "+!pasar.equals("PC"));  
         System.out.println("el valor de pc: "+pasar);  
-        if(pasar.isEmpty() || !pasar.equals("PC"))
+        if(pasar.isEmpty())
           {
            pasar="P20";
           }
           if(pasar.equals("PC")) 
           {
+            
               soloPc();  
                if(valor==2)
               
@@ -2767,7 +3080,7 @@ txtNorden.requestFocus();
           
           
           }
-          
+          limpiar();
           valor=1;
 
     }//GEN-LAST:event_btnGrabarInActionPerformed
@@ -2818,11 +3131,17 @@ txtNorden.requestFocus();
 public void  negarPc(){
     jTextFieldSaturacion.setEnabled(false);
     FechaHotel.setEnabled(false);
+    chkAsintomatico.setEnabled(false);
+    chkSintomatico.setEnabled(false);
     //jButton1.setEnabled(false);
 }
 public void  habilitarPc(){
     jTextFieldSaturacion.setEnabled(true);
     FechaHotel.setEnabled(true);
+    chkAsintomatico.setEnabled(true);
+    chkSintomatico.setEnabled(true);
+
+    
     //jButton1.setEnabled(true);
 }
 
@@ -2838,7 +3157,7 @@ public void  habilitarPc(){
             jTextFieldSaturacion.setText("");
             System.out.println(sql2);
         oConn.FnBoolQueryExecute(sql2);
-        
+          agregarSimtocasPc();
         }
 else
             JOptionPane.showMessageDialog(null, "LLENAR CO2 ","Sistema MEDSOFT",JOptionPane.ERROR_MESSAGE);
@@ -3105,6 +3424,64 @@ else
     private void FechaHotelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaHotelPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_FechaHotelPropertyChange
+ Timer timer = new Timer(1000, new ActionListener() {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Date HorNew = new Date();
+            SimpleDateFormat fechaforma = new SimpleDateFormat("hh:mm:ss a");
+            String FfechaSystemA = fechaforma.format(HorNew);
+
+            GestorTime.setFfechaSystem(FfechaSystemA);
+            lblHora.setText(GestorTime.getFfechaSystem());
+        }
+    });
+ 
+ 
+ 
+    private void chkAsintomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAsintomaticoActionPerformed
+        // TODO add your handling code here:
+        if(chkAsintomatico.isSelected())
+        chkSintomatico.setSelected(false);
+        chkTos.setEnabled(false);
+        chkDolorG.setEnabled(false);
+        chkCongestionN.setEnabled(false);
+        chkDificultadR.setEnabled(false);
+        chkFiebre.setEnabled(false);
+        chkMalestar.setEnabled(false);
+        chkDiarrea.setEnabled(false);
+        chkNauseas.setEnabled(false);
+        chkCefalea.setEnabled(false);
+        chkIrritaibilidad.setEnabled(false);
+        chkDolor.setEnabled(false);
+        chkExpctoracion.setEnabled(false);
+        chkPerdidaOlf1.setEnabled(false);
+        txtSintoma.setEnabled(false);
+    }//GEN-LAST:event_chkAsintomaticoActionPerformed
+
+    private void chkSintomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSintomaticoActionPerformed
+        // TODO add your handling code here:
+         if( chkSintomatico.isSelected())
+       chkAsintomatico.setSelected(false);
+        chkTos.setEnabled(true);
+        chkDolorG.setEnabled(true);
+        chkCongestionN.setEnabled(true);
+        chkDificultadR.setEnabled(true);
+        chkFiebre.setEnabled(true);
+        chkMalestar.setEnabled(true);
+        chkDiarrea.setEnabled(true);
+        chkNauseas.setEnabled(true);
+        chkCefalea.setEnabled(true);
+        chkIrritaibilidad.setEnabled(true);
+        chkDolor.setEnabled(true);
+        chkExpctoracion.setEnabled(true);
+        chkPerdidaOlf1.setEnabled(true);
+        txtSintoma.setEnabled(true);
+    }//GEN-LAST:event_chkSintomaticoActionPerformed
+
+    private void chkPerdidaOlf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerdidaOlf1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkPerdidaOlf1ActionPerformed
     private void Limpiar(){
         FechaExamen.setDate(null);
         txtNrecibo.setEditable(false);
@@ -3322,21 +3699,33 @@ else
     private javax.swing.JComboBox cboMarca;
     private javax.swing.JCheckBox chkA;
     private javax.swing.JCheckBox chkAB;
+    private javax.swing.JCheckBox chkAsintomatico;
     private javax.swing.JCheckBox chkB;
+    private javax.swing.JCheckBox chkCefalea;
+    private javax.swing.JCheckBox chkCongestionN;
     private javax.swing.JCheckBox chkConsultas;
+    private javax.swing.JCheckBox chkDiarrea;
+    private javax.swing.JCheckBox chkDificultadR;
+    private javax.swing.JCheckBox chkDolor;
+    private javax.swing.JCheckBox chkDolorG;
+    private javax.swing.JCheckBox chkExpctoracion;
     private javax.swing.JCheckBox chkFichaMedica;
+    private javax.swing.JCheckBox chkFiebre;
     private javax.swing.JCheckBox chkIggNoReactivo;
     private javax.swing.JCheckBox chkIggReactivo;
     private javax.swing.JCheckBox chkIgmNoReactivo;
     private javax.swing.JCheckBox chkIgmReactivo;
     private javax.swing.JCheckBox chkIncoloro;
     private javax.swing.JCheckBox chkInvalido;
+    private javax.swing.JCheckBox chkIrritaibilidad;
     private javax.swing.JCheckBox chkLigTurbio;
+    private javax.swing.JCheckBox chkMalestar;
     private javax.swing.JCheckBox chkMedicamentosa;
     private javax.swing.JCheckBox chkNAC;
     private javax.swing.JCheckBox chkNACreat;
     private javax.swing.JCheckBox chkNAG;
     private javax.swing.JCheckBox chkNAM;
+    private javax.swing.JCheckBox chkNauseas;
     private javax.swing.JCheckBox chkNegativo;
     private javax.swing.JCheckBox chkNoAplicaExamen;
     private javax.swing.JCheckBox chkNoReactivoC;
@@ -3344,11 +3733,14 @@ else
     private javax.swing.JCheckBox chkO;
     private javax.swing.JCheckBox chkOrden;
     private javax.swing.JCheckBox chkParticular;
+    private javax.swing.JCheckBox chkPerdidaOlf1;
     private javax.swing.JCheckBox chkPositivo;
     private javax.swing.JCheckBox chkReactivoC;
     private javax.swing.JCheckBox chkReactivoM;
     private javax.swing.JCheckBox chkRecibo;
     private javax.swing.JCheckBox chkRetiro;
+    private javax.swing.JCheckBox chkSintomatico;
+    private javax.swing.JCheckBox chkTos;
     private javax.swing.JCheckBox chkTransparente;
     private javax.swing.ButtonGroup gCocaina;
     private javax.swing.JLabel jLabel1;
@@ -3422,6 +3814,7 @@ else
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
@@ -3455,6 +3848,7 @@ else
     private javax.swing.JTextField jTextFieldSaturacion;
     private javax.swing.JTabbedPane jtLaboratorio;
     private javax.swing.JTabbedPane jtTriaje;
+    private javax.swing.JLabel lblHora;
     private javax.swing.JRadioButton rbRHnegativo;
     private javax.swing.JRadioButton rbRHpositivo;
     private javax.swing.JTable tblabclinico;
@@ -3504,6 +3898,7 @@ else
     private javax.swing.JTextField txtPusSU;
     private javax.swing.JTextField txtResponsable;
     private javax.swing.JTextField txtSangreEQ;
+    private javax.swing.JTextField txtSintoma;
     private javax.swing.JTextField txtUrobilinogenoEQ;
     private javax.swing.JTextField txtVIH;
     private javax.swing.JTextArea txtVRIgg;

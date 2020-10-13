@@ -1258,19 +1258,42 @@ public class Reporteador extends javax.swing.JInternalFrame {
               public boolean isCellEditable(int rowIndex, int columnIndex) {
                    return false;
             }};
-            String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata,\n" +
-"CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1'\n" +
-"     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
-"     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
-"     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.'  END AS NUMEXACOVID,\n" +
-"CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO'\n" +
-"     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM,\n" +
-"CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO'\n" +
-"     WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGG,c.txtobservaciones \n" +
-"FROM datos_paciente as d\n" +
-"INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa)\n" +
-"LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden)\n" +
-"LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" 
+            String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata, \n" +
+"CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
+"     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
+"     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
+"     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.'  END AS NUMEXACOVID, \n" +
+"CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM, \n" +
+"CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"     WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGG,\n" +
+"	 \n" +
+"	 concat('IGM: ',(CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
+"			'-IGG: ',(CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"     WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END),\n" +
+"		 (case when cs.chk_asintomatico=true then' ASINTOMATICO' end),\n" +
+"		(case when cs.chk_sintomatico=true THEN '- SINTOMATICO, Con sintomas como: ' END ),\n" +
+"			(case when cs.chks1=true THEN 'TOS,' END ),\n" +
+"			(case when cs.chks2=true THEN 'DOLOR DE GARGANTA,' END ),\n" +
+"			(case when cs.chks3=true THEN 'CONGESTION NASAL,' END ),\n" +
+"			(case when cs.chks4=true THEN 'DIFICULTAD RESPIRATORIA,' END ),\n" +
+"			(case when cs.chks5=true THEN 'FIEBRE/ESCALOFRIO,' END ),\n" +
+"			(case when cs.chks6=true THEN 'MALESTAR GENERAL,' END ),\n" +
+"			(case when cs.chks7=true THEN 'DIARREA,' END ),\n" +
+"			(case when cs.chks8=true THEN 'NAUSEAS / VOMITOS,' END ),\n" +
+"			(case when cs.chks9=true THEN 'CEFALEA,' END ),\n" +
+"			(case when cs.chks10=true THEN 'IRRITABILIDAD/CONFUSION,' END ),\n" +
+"			(case when cs.chks11=true THEN 'DOLOR,' END ),\n" +
+"			(case when cs.chks12=true THEN 'EXPECTORACION,' END ),\n" +
+"			(case when cs.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
+"			',',\n" +
+"			cs.txtresultados)\n" +
+"FROM datos_paciente as d \n" +
+"INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
+"LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
+"LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" +
+"left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) " 
 + "WHERE n.razon_empresa='"+txtEmpresa.getText().toString()+"' ";
     if(!txtContrata.getText().isEmpty()){
      vSql += "and n.razon_contrata='"+txtContrata.getText().toString()+"' ";                  
