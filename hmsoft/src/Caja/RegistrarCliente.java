@@ -1406,6 +1406,16 @@ this.chkAltaTrabCal.setVisible(false);
 
         jLabel4.setText("Nombre :");
 
+        txtBuscarNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtBuscarNombreMousePressed(evt);
+            }
+        });
+        txtBuscarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarNombreActionPerformed(evt);
+            }
+        });
         txtBuscarNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarNombreKeyReleased(evt);
@@ -1623,6 +1633,16 @@ this.chkAltaTrabCal.setVisible(false);
 
         jLabel41.setText("Codigo:");
 
+        txtBuscarCod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtBuscarCodMousePressed(evt);
+            }
+        });
+        txtBuscarCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarCodActionPerformed(evt);
+            }
+        });
         txtBuscarCod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarCodKeyReleased(evt);
@@ -2742,6 +2762,7 @@ this.chkAltaTrabCal.setVisible(false);
                     num = oConn.setResult.getString("n_orden");
                     txtNorden1.setText(num);
                     oFunc.SubSistemaMensajeInformacion("Alta Correctamente\nSu numero de Orden es :** " + num + " **");
+                    imprimir();
                     AltaDesabilitar();
                     AltaLimpiar();
                     txtDniAlta.setEditable(true);
@@ -2758,6 +2779,34 @@ this.chkAltaTrabCal.setVisible(false);
             oFunc.SubSistemaMensajeError("Llene todos los Campos");
         }
     }//GEN-LAST:event_btnGuardarAperturarActionPerformed
+   private boolean imprimir(){
+    boolean im = false;
+int seleccion = JOptionPane.showOptionDialog(
+    this, // Componente padre
+    "¿Desea Imprimir?", //Mensaje
+    "Seleccione una opción", // Título
+    JOptionPane.YES_NO_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,    // null para icono por defecto.
+    new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
+    "Si");
+    if (seleccion != -1)
+    {
+   if((seleccion + 1)==1)
+   {    System.out.println("el numero es "+Integer.valueOf(num));
+        print(Integer.valueOf(num));
+   //   printer(Integer.valueOf(txtNorden.getText().toString()));
+       im = true;
+   }
+   else
+   {
+      // PRESIONO NO
+     }
+    }
+    return im;
+
+}
+    
     public boolean OrdenExiste() {
         boolean bResultado = false;
 
@@ -3274,7 +3323,7 @@ this.chkAltaTrabCal.setVisible(false);
 
     private void txtBuscarCodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarCodKeyReleased
         
-            sbCargarOcupacional(txtBuscarCod.getText());
+           sbCargarOcupacional(txtBuscarCod.getText());
         
     }//GEN-LAST:event_txtBuscarCodKeyReleased
 
@@ -3673,6 +3722,22 @@ private void CargarTipoExamenes(){
     private void rbCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCreditoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbCreditoActionPerformed
+
+    private void txtBuscarCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCodActionPerformed
+         sbCargarOcupacional(txtBuscarCod.getText()); 
+    }//GEN-LAST:event_txtBuscarCodActionPerformed
+
+    private void txtBuscarCodMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarCodMousePressed
+       // sbCargarOcupacional(txtBuscarCod.getText());   
+    }//GEN-LAST:event_txtBuscarCodMousePressed
+
+    private void txtBuscarNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBuscarNombreMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarNombreMousePressed
+
+    private void txtBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarNombreActionPerformed
     
     private void print(Integer cod) {
 
@@ -3746,7 +3811,7 @@ private void CargarTipoExamenes(){
                 // viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
             }
-             if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)){
+             if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -3857,10 +3922,11 @@ private void CargarTipoExamenes(){
         };
         String Sql;
         if(!txtBuscarCod.getText().isEmpty()){
-            Sql= "select d.nombres_pa||''||d.apellidos_pa AS nombres, n.fecha_apertura_po,"
+           // System.out.println("si es este el error ");
+              Sql= "select d.nombres_pa||''||d.apellidos_pa AS nombres, n.fecha_apertura_po,"
                 + "n.n_orden,n.razon_empresa,n.razon_contrata,n.nom_examen,ca.n_orden as aptitud,"
                 + "a.n_orden as anexo7d,o.n_orden as observados,ac.n_orden as anexoc, "
-                + "bc.n_orden as conduccion,ba.n_orden as altura,csm.n_orden as covid,ctc.n_orden as tamizaje"
+                + "bc.n_orden as conduccion,ba.n_orden as altura,csm.n_orden as covid,ctc.n_orden as tamizaje  "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden) "
@@ -3871,7 +3937,7 @@ private void CargarTipoExamenes(){
                 +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"  
                 +" left join constancia_salud_marsa as csm ON (csm.n_orden=n.n_orden)" 
                 +" left join constancia_tamizaje_covid19 as ctc ON (n.n_orden=ctc.n_orden)"
-                + "where n.n_orden='" + valor + "'";
+                + "where n.n_orden=" + valor + "";
         }else{
             Sql= "select d.nombres_pa||''||d.apellidos_pa AS nombres, n.fecha_apertura_po,"
                 + "n.n_orden,n.razon_empresa,n.razon_contrata,n.nom_examen,ca.n_orden as aptitud,"

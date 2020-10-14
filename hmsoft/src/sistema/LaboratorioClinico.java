@@ -3307,18 +3307,23 @@ else
                            + "Sensabilidad: 92%\n"
                             + "Especificidad: 100% \n");
                 }
+                    else if(cboMarca.getSelectedIndex()==7){
+//                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                            + "IGM- SENSIBILIDAD: 92% \n"
+                            + "     ESPECIFICIDAD: 100 %");
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                          +   "IGG- SENSIBILIDAD: 96% \n"
+                            + "     ESPECIFICIDAD: 100 %");
+                }
                else if(cboMarca.getSelectedIndex()==8){
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                            + "Sensibilidad: 94% \n"
-                            + "Especificidad: 100% \n"
-                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
-                            + "Especificidad del dispositivo de prueba IgM/IgG: 99.5 %");
+                            + "IGM- SENSIBILIDAD: 97.5% \n"
+                            + "     ESPECIFICIDAD: 99.5 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 94% \n"
-                            + "Especificidad: 100% \n"
-                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
-                            + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
+                          +  "IGG-  SENSIBILIDAD: 97.5% \n"
+                            +"      ESPECIFICIDAD: 100 %");
                 }
             }
         });
@@ -3402,18 +3407,23 @@ else
                            + "Sensabilidad: 92%\n"
                             + "Especificidad: 100% \n");
                 }
-              else if(cboMarca.getSelectedIndex()==8){
+                         else if(cboMarca.getSelectedIndex()==7){
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                            + "Sensibilidad: 94% \n"
-                            + "Especificidad: 100% \n"
-                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
-                            + "Especificidad del dispositivo de prueba IgM/IgG: 99.5 %");
+                            + "IGM- SENSIBILIDAD: 92% \n"
+                            + "     ESPECIFICIDAD: 100 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 94% \n"
-                            + "Especificidad: 100% \n"
-                            + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.5% \n"
-                            + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
+                          +   "IGG- SENSIBILIDAD: 96% \n"
+                            + "     ESPECIFICIDAD: 100 %");
+                }
+              else if(cboMarca.getSelectedIndex()==8){
+//                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){           
+                        txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                            + "IGM- SENSIBILIDAD: 97.5% \n"
+                            + "     ESPECIFICIDAD: 99.5 %");
+                        txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                            + "IGG- SENSIBILIDAD: 97.5% \n"
+                            + "     ESPECIFICIDAD: 100 %");
                 }
 
 

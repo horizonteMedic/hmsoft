@@ -1829,6 +1829,8 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtBuscarNombre">
               <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtBuscarNombreMousePressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscarNombreActionPerformed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarNombreKeyReleased"/>
               </Events>
             </Component>
@@ -2165,6 +2167,8 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtBuscarCod">
               <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtBuscarCodMousePressed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscarCodActionPerformed"/>
                 <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarCodKeyReleased"/>
               </Events>
             </Component>

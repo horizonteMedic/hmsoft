@@ -1535,6 +1535,10 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
  }
 
 }
+
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Fdesde;
     private com.toedter.calendar.JDateChooser Fhasta;

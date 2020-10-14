@@ -9,13 +9,26 @@ import Clases.clsFunciones;
 import java.awt.KeyEventPostProcessor;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.IndexedColors;
 
 /**
  *
@@ -77,6 +90,7 @@ public class MenuContrata extends javax.swing.JInternalFrame {
         tbEmpresas = new javax.swing.JTable();
         btnLimpiar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Agregar Contratas");
@@ -207,14 +221,25 @@ public class MenuContrata extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
+        jButton1.setText("Exportar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -236,17 +261,17 @@ public class MenuContrata extends javax.swing.JInternalFrame {
                             .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(85, 85, 85)
                         .addComponent(txtBuscarRazonSocial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
@@ -254,51 +279,52 @@ public class MenuContrata extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCerrar)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnActualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLimpiar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLimpiar)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnCerrar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtBuscarRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addComponent(jLabel7)
-                .addGap(167, 167, 167))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtBuscarRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -324,6 +350,107 @@ public class MenuContrata extends javax.swing.JInternalFrame {
     private void txtRUCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRUCKeyTyped
        oFunc.NoLetras(evt);
     }//GEN-LAST:event_txtRUCKeyTyped
+public void generar(JTable table) {
+        HSSFWorkbook libro = new HSSFWorkbook();
+        HSSFSheet hoja = libro.createSheet("Reporte");
+           //  HSSFRow trow = hoja.createRow((short) 0);
+         // createTituloCell(libro, trow, 0, CellStyle.ALIGN_CENTER,CellStyle.VERTICAL_CENTER, "Titulo del Excel");
+
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de exel", "xls");
+        chooser.setFileFilter(filter);
+        chooser.setDialogTitle("Guardar archivo");
+        chooser.setMultiSelectionEnabled(false);
+        chooser.setAcceptAllFileFilterUsed(false);
+        //////////
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            String file = chooser.getSelectedFile().toString().concat(".xls");
+            ///////////////////////
+            HSSFFont fuente = libro.createFont();
+            HSSFFont fuente2 = libro.createFont();
+fuente.setFontHeightInPoints((short)8);         
+fuente.setFontName(HSSFFont.FONT_ARIAL);
+fuente.setColor(IndexedColors.WHITE.getIndex());
+fuente.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+///////////
+fuente2.setFontHeightInPoints((short)7);         
+fuente2.setFontName(HSSFFont.FONT_ARIAL);
+fuente2.setColor(IndexedColors.BLACK.getIndex());
+
+///////////////////
+HSSFCellStyle estiloCelda = libro.createCellStyle();
+HSSFCellStyle estiloCelda2 = libro.createCellStyle();
+
+estiloCelda.setWrapText(true);
+estiloCelda.setAlignment(HSSFCellStyle. ALIGN_CENTER);
+estiloCelda.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+estiloCelda.setFont(fuente);
+/////////////////////
+estiloCelda2.setWrapText(true);
+estiloCelda2.setAlignment(HSSFCellStyle. ALIGN_LEFT);
+estiloCelda2.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+estiloCelda2.setFont(fuente2);
+//////////////////
+// También, podemos establecer bordes...
+estiloCelda.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setBottomBorderColor((short)8);
+estiloCelda.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setLeftBorderColor((short)8);
+estiloCelda.setBorderRight(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setRightBorderColor((short)8);
+estiloCelda.setBorderTop(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setTopBorderColor((short)8);
+//////////
+estiloCelda2.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setBottomBorderColor((short)8);
+estiloCelda2.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setLeftBorderColor((short)8);
+estiloCelda2.setBorderRight(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setRightBorderColor((short)8);
+estiloCelda2.setBorderTop(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setTopBorderColor((short)8);
+///////////////////////
+estiloCelda.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
+estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+///////////////////////////////
+        // oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getColumnCount()));
+            //   oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getRowCount()));
+            for (int i = 0; i < table.getRowCount() ; i++) {
+                
+               if (i == 0) {
+                   HSSFRow fila = hoja.createRow(i);
+                 for (int j = 0; j < table.getColumnCount() ; j++) {
+                        HSSFCell celda = fila.createCell(j);
+                        celda.setCellValue(new HSSFRichTextString(table.getColumnModel().getColumn(j).getHeaderValue().toString().toUpperCase()));
+                       celda.setCellStyle(estiloCelda);
+                   }
+              } //else {
+                    HSSFRow fila = hoja.createRow(i+1);
+                    for (int j = 0; j < table.getColumnCount() ; j++) {
+                        HSSFCell celda = fila.createCell(j);
+                         
+                        if (table.getValueAt(i, j) != null) {
+                           
+                            celda.setCellValue(new HSSFRichTextString(table.getValueAt(i, j).toString()));
+                            hoja.autoSizeColumn(j);
+                            celda.setCellStyle(estiloCelda2); 
+                   // }
+                 }      
+                
+               }
+                try {
+                    try (FileOutputStream elFichero = new FileOutputStream(file)) {
+                        libro.write(elFichero);
+                    }
+                } catch (IOException e) {
+                }
+            }
+          oFunc.SubSistemaMensajeInformacion("REPORTE COMPLETO");
+ }
+
+}
+
+
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (txtRUC.getText().isEmpty() || txtRazonSocial.getText().isEmpty()|| txtDireccion.getText().isEmpty()) {
@@ -442,12 +569,17 @@ txtEmail.requestFocus();        // TODO add your handling code here:
 btnAgregar.requestFocusInWindow();        // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        generar(tbEmpresas);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

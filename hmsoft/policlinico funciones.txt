@@ -1,0 +1,84 @@
+42664426
+//import sistema.Ingreso;
+  // public static String lasedee;
+   //Ingreso nuevo=new Ingreso();
+  //  lasedee=nuevo.lasede;
+
+create table tipoPruebas(
+idTipo integer primary key,
+descripcion text	
+);
+insert into tipoPruebas values(1,'P1');
+insert into tipoPruebas values(2,'P2');
+insert into tipoPruebas values(3,'P3');
+insert into tipoPruebas values(4,'Pc');
+alter table n_orden_ocupacional add tipoPrueba text;
+update n_orden_ocupacional set tipoprueba=(case when trab_calientes=false and chkcovid1=false and chkcovid2=false  then 'ninguno'
+										   when chkcovid1=false and chkcovid2=false  and trab_calientes=true then 'Pc'
+										   when (chkcovid1=true or chkcovid1=null ) and chkcovid2=false   then 'P1'
+										   when chkcovid1=false and (chkcovid2=true or chkcovid2=null ) then 'P2'
+										   end);
+
+CREATE or replace FUNCTION spFuncionLLenadoPc(elOrden integer,feecha date, satu text ) RETURNS void AS $$
+BEGIN
+INSERT INTO fmedica_covid_marsa (n_orden,fecha,fecha_exra,txtrecomendaciones)values(elOrden,feecha,feecha,'llenado en laboratorio clinico');
+insert into triaje (n_orden,fecha_triaje,sat_02,conclusion) values(elOrden,feecha,satu,'llenado en laboratorio clinico por ser pc');
+insert into constancia_salud_marsa (n_orden,fecha_examen,hora_examen,txtmuestra) values(elOrden,feecha,current_timestamp,'muestra Pc');
+END;
+$$ LANGUAGE plpgsql;
+select *from  sede;
+create SEQUENCE books_sequence
+  start 1
+  increment 1;
+  ALTER TABLE sede DROP COLUMN cod_sede;
+alter table sede add cod_sede integer NOT NULL DEFAULT nextval('books_sequence');
+update sede set estado='1';
+alter table sede add estado bit;
+
+CREATE or replace FUNCTION spFuncionSedeOperaciones(
+	codecode integer,namename text, diredire text,coment text,estest bit, operacion integer ) RETURNS void AS $$
+BEGIN
+if(operacion =1)
+then
+insert into sede(nombre_sede,direccion,comentarios, estado) values(namename,diredire,coment,estest);
+end if;
+if(operacion=2)
+then
+update sede set nombre_sede=namename, direccion=diredire,comentarios=coment,estado=estest where cod_sede=codecode;
+end if;
+if(operacion=3)
+then
+delete from sede where cod_sede=codecode;
+end if;
+
+END;
+$$ LANGUAGE plpgsql;	
+
+// A PARTIR DE ACA ES EDITABLE
+select *from datos_paciente;
+select *from tipo_documento;
+select *from ficha_pruebas_rapidas_covidf100
+select *from n_orden_ocupacional
+
+CREATE or replace FUNCTION spfuncionRegistroAutomaticoPaciente(
+	fechaExamen date,tipoDoc text,codecode integer,nombrePac text, apellidosPac text, 
+	fechaNaci date,sexo char(1),email text,lugarNac text, nivelEstudio text, ocupacion text,
+	estadoCivil text, direccion text,departamento text, provincia text,distrito text, caserio text,
+	numFijo text,cunCel text,datosComtacto text, celContacto text,razonEmpresa text,razonContratista text,,
+	nombreExamen text, altura text, mineral text,fechaApertura text, precio money, 
+	) 
+	RETURNS void AS $$
+BEGIN
+declare verificarcod integer;
+set verificarcod=(select cod_pa from datos_paciente where cod_pa=codecode);
+if(verificarcod is null)
+then
+insert into datos_paciente values()
+end if;
+
+
+
+END;
+$$ LANGUAGE plpgsql;
+
+													'probando la sede','1');

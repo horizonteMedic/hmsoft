@@ -550,7 +550,7 @@ public void sede(){
          Admision.Desktop.add(age);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          age.setFrameIcon(ricon);
-         age.setLocation(centradoXY(r)); 
+        // age.setLocation(centradoXY(r)); 
          age.show();
       }
       else{
@@ -565,7 +565,7 @@ public void sede(){
          Admision.Desktop.add(cont);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          cont.setFrameIcon(ricon);
-         cont.setLocation(centradoXY(r));
+         //cont.setLocation(centradoXY(r));
          cont.show();
       }
       else{
@@ -580,7 +580,7 @@ public void sede(){
          Admision.Desktop.add(sg);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          sg.setFrameIcon(ricon);
-         sg.setLocation(centradoXY(r));
+        // sg.setLocation(centradoXY(r));
          sg.show();
       }
       else{
