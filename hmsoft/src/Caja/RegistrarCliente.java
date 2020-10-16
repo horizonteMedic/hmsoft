@@ -36,6 +36,21 @@ import sistema.Audiometria;
 import sistema.Ingreso;
 import static sistema.Ingreso.nombresede;
 import sistema.Odontograma;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.GeneralSecurityException;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+//import org.apache.axis.AxisProperties;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
 
 /**
  *
@@ -109,7 +124,92 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         hBotones(false);
         CargarTipoExamenes();
         ocultarOpcionesCovid();
+        autorizarCertificado();
     }
+public void autorizarCertificado()
+{
+        
+        TrustManager[] trustAllCerts = new TrustManager[] {
+new X509TrustManager()
+ { 
+     public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+return new X509Certificate[0]; }
+
+public void checkClientTrusted( 
+        java.security.cert.X509Certificate[] certs, String authType) {
+
+ } public void checkServerTrusted(
+ java.security.cert.X509Certificate[] certs, String authType) { 
+}
+ } 
+};
+
+// Install the all-trusting trust manager 
+try {
+ SSLContext sc = SSLContext.getInstance("ssl");
+ sc.init(null, trustAllCerts, new java.security.SecureRandom()); 
+HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+ } catch (GeneralSecurityException e) { }
+ // Now you can access an https URL without having the certificate in the truststore 
+try { 
+URL url = new URL("https://api.reniec.cloud/dni/")
+; } catch (MalformedURLException e) { }
+}
+
+public void comunirApiReniecDesconocida(){
+
+       String query_url = "https://api.reniec.cloud/dni/"+txtDni.getText();
+           String codeee="",json = "";
+           
+     //   System.out.println("el codigo json es: "+json);
+           try {
+//AxisProperties.setProperty("axis.socketSecureFactory","org.apache.axis.components.net.SunFakeTrustSocketFactory");
+
+               URL url = new URL(query_url);
+
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+                conn.setDoOutput(true);
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Content-Type", "application/json");
+                String input = json;
+                OutputStream os = conn.getOutputStream();
+                os.write(input.getBytes());
+                os.flush();
+         
+           InputStream in = new BufferedInputStream(conn.getInputStream());
+           String result = IOUtils.toString(in, "UTF-8");
+           JSONObject myResponse = new JSONObject(result);
+     System.out.println("el resultado:"+myResponse);
+           // JSONObject myResponse2 = myResponse.getJSONObject("data");
+         // System.out.println("RESPUESTA es: "+myResponse2.toString());
+      //   codeee=myResponse2.get("code").toString();
+           // System.out.println("apellidos paterno: "+myResponse.get("apellido_paterno").toString().replace("&Uuml;","Ü") );
+           // System.out.println("apellidos materno: "+myResponse.get("apellido_materno").toString().replace("&Uuml;","Ü") );
+           // System.out.println("nombres: "+myResponse.get("nombres").toString().replace("&Uuml;","Ü") );
+           txtNombre.setText(limpiarCaracteresEspeciales(myResponse.get("nombres").toString()));
+           txtApellidos.setText(limpiarCaracteresEspeciales(myResponse.get("apellido_paterno").toString()+" "+myResponse.get("apellido_materno").toString() ));
+            // resultado=myResponse2.get("message").toString();
+          //  insertar(a2,a3,codeee,resultado);
+          // System.out.println("el resultado:"+resultado);
+           
+           in.close();
+           conn.disconnect();
+           } catch (Exception e) {
+   			System.out.println(e);
+   		}
+
+}
+public String limpiarCaracteresEspeciales(String data){
+    
+//System.out.println("la data es:"+data);
+String retornar="";
+retornar=data.replace("&Uuml;","Ü");
+//System.out.println("la retornar es:"+retornar);
+retornar=retornar.replace("&Ntilde;","Ñ");
+
+return retornar;
+}
 
 public void valorsede(){
    nomsede=objet.nombresede;
@@ -2394,13 +2494,13 @@ this.chkAltaTrabCal.setVisible(false);
                 //txtDni.setText("");
                 txtNombre.requestFocus();
                 btnAgregar.setEnabled(true);
-
+                comunirApiReniecDesconocida();
                 btnLimpiar.setEnabled(true);
                 deshabilitarbotones();
                 oConn.setResult.close();
             }
         } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Cod Paciente:" + ex.getMessage().toString());
+            oFunc.SubSistemaMensajeInformacion("Cod Paciente:" + ex.getMessage().toString());     
         }
     }
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -2520,10 +2620,12 @@ this.chkAltaTrabCal.setVisible(false);
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
                 }
+                 System.out.println(strSqlStmt);   
+                
             }
 
         }
-        
+    
         jtRegistroGeneral.setSelectedIndex(1);
         LimpiarAlta();
         txtDniAlta.setText(dni);
@@ -2694,7 +2796,7 @@ this.chkAltaTrabCal.setVisible(false);
     private void btnLimpiarAperturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarAperturaActionPerformed
         LimpiarAlta();
     }//GEN-LAST:event_btnLimpiarAperturaActionPerformed
- 
+  
    private void LimpiarAlta(){
        AltaDesabilitar();
         AltaLimpiar();

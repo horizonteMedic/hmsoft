@@ -9,6 +9,9 @@ import Clases.clsConnection;
 import Clases.clsFunciones;
 import java.io.File;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -40,7 +43,7 @@ String edadd;
     public contanciaSaludCovid() {
         initComponents();
         cmpMedico();
-        this.setTitle("CONSTANCIA DE SALUD");
+        this.setTitle("CERTIFICADO MEDICO");
     }
 
     /**
@@ -52,6 +55,7 @@ String edadd;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
         jLabel13 = new javax.swing.JLabel();
         txtNorden = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -66,13 +70,14 @@ String edadd;
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         btnImp = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         txtimp = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextFieldNOMBREC = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,7 +123,7 @@ String edadd;
         jLabel9.setText("Se expide la presente a solicitud del interesado y se le indico descanso medico ");
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setText("por:");
+        jLabel10.setText("al");
 
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -154,54 +159,59 @@ String edadd;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(89, 89, 89)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel7)
+                            .addComponent(btnGuardar)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel13)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(89, 89, 89)))
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(15, 15, 15)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnLimpiar)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnImp)
+                                .addGap(30, 30, 30)
+                                .addComponent(txtimp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnGuardar)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnLimpiar)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(btnImp)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(txtimp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldNOMBREC))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtEdadIn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel6)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel8)))
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(17, 17, 17)
+                            .addComponent(jLabel8))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextFieldNOMBREC))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel5)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtEdadIn, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel6))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -234,17 +244,21 @@ String edadd;
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnImp)
-                    .addComponent(txtimp))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnImp)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnGuardar)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtimp))))
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("CERTIFICADO DE SALUD");
@@ -273,12 +287,22 @@ medicouser=objt.doctor;
 
 
 }
+
 private void Actualizar(){
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
-        strSqlStmt="update certificadoMedico set indicacion='"+jTextField3.getText()+"', cmp='"+cmppp+"',años="+edadd 
+        Date  fecha=jDateChooser1.getDate();
+        DateFormat f=new SimpleDateFormat("dd-MM-yyyy");
+        String fecha1=f.format(fecha); 
+        fecha1 +=" al ";
+        
+         Date  fecha2=jDateChooser2.getDate();
+        DateFormat f2=new SimpleDateFormat("dd-MM-yyyy");
+        String fee=f2.format(fecha2); 
+        fecha1 +=fee;
+        strSqlStmt="update certificadoMedico set indicacion='"+fecha1+"', cmp='"+jTextField4.getText()+"',años="+edadd 
              + " WHERE cod_Certificado =" + sCodigo + ";";
-            
+            System.out.println("la fechad e actualziacion es :"+strSqlStmt);
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
@@ -318,10 +342,18 @@ int seleccion = JOptionPane.showOptionDialog(
     
     private boolean Grabar() throws SQLException{
         boolean bResult = false;
-              
+            Date  fecha=jDateChooser1.getDate();
+        DateFormat f=new SimpleDateFormat("dd-MM-yyyy");
+        String fecha1=f.format(fecha); 
+        fecha1 +=" al ";
+        
+         Date  fecha2=jDateChooser2.getDate();
+        DateFormat f2=new SimpleDateFormat("dd-MM-yyyy");
+        String fee=f2.format(fecha2); 
+        fecha1 +=fee;   
        String strSqlStmt ="insert into certificadoMedico values("+txtNorden.getText()+",'"+
-              jTextField3.getText()+"','"+cmppp+"',"+edadd+");	";
-           
+            fecha1  +"','"+jTextField4.getText()+"',"+edadd+");	";
+        System.out.println("la fechad agregar es :"+strSqlStmt);    
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                 
 //                   oConn.setResult.next();
@@ -339,7 +371,7 @@ int seleccion = JOptionPane.showOptionDialog(
     
    private void printer(Integer cod){
                  Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+                parameters.put("orden",cod);      
                     try 
                 {          
                     String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "constancia_salud_covid.jasper";
@@ -450,9 +482,10 @@ jTextFieldDNI.setText(null);
 txtEdadIn.setText(null);
 txtNorden.setText(null);
 txtNorden.setEditable(true);
-jTextField3.setText(null);
+//jTextField3.setText(null);
 txtNorden.requestFocus();
-
+jDateChooser1.setDate(null);
+jDateChooser2.setDate(null);
 }
     private void txtNordenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNordenKeyTyped
         oFunc.NoLetras(evt);
@@ -467,9 +500,9 @@ txtNorden.requestFocus();
             print(Integer.valueOf(txtimp.getText().toString()));
         }
     }//GEN-LAST:event_btnImpActionPerformed
-  private void print(Integer cod){
+    private void print(Integer cod){
                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+                parameters.put("orden",cod);             
                 
                 try 
                 {
@@ -477,6 +510,7 @@ txtNorden.requestFocus();
                         JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                         JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
                         JasperViewer viewer = new JasperViewer(myPrint, false);
+                        JOptionPane.showMessageDialog(null,direccionReporte);
                         viewer.setTitle("CONSTANCIA SALUD MARSA");
                         // viewer.setAlwaysOnTop(true);
                         viewer.setVisible(true);
@@ -485,7 +519,8 @@ txtNorden.requestFocus();
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
                  
-  }
+ 
+ }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if(OrdenExiste()){
             Actualizar();
@@ -551,6 +586,9 @@ txtNorden.requestFocus();
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnImp;
     private javax.swing.JButton btnLimpiar;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -562,7 +600,6 @@ txtNorden.requestFocus();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldNOMBREC;

@@ -60,25 +60,51 @@ select *from tipo_documento;
 select *from ficha_pruebas_rapidas_covidf100
 select *from n_orden_ocupacional
 
+
+15145
+
+select *from datos_paciente
+
+select *from n_orden_ocupacional limit 10
+
+
 CREATE or replace FUNCTION spfuncionRegistroAutomaticoPaciente(
-	fechaExamen date,tipoDoc text,codecode integer,nombrePac text, apellidosPac text, 
+	fechaExamen date,tipoDoc text,codecode integer,nombrePac text, apellidoPa text,apellidoMat text, 
 	fechaNaci date,sexo char(1),email text,lugarNac text, nivelEstudio text, ocupacion text,
 	estadoCivil text, direccion text,departamento text, provincia text,distrito text, caserio text,
-	numFijo text,cunCel text,datosComtacto text, celContacto text,razonEmpresa text,razonContratista text,,
-	nombreExamen text, altura text, mineral text,fechaApertura text, precio money, 
+	numFijo text,cunCel text,razonEmpresa text,razonContratista text,puestoTrabajo text,area text,
+	nombreExamen text,explotacion text,mineral text, alturaLaboral text
 	) 
 	RETURNS void AS $$
+	declare verificarcod integer;
+ 	declare  genero text;
 BEGIN
-declare verificarcod integer;
+
+if(sexo='MASCULINO')
+THEN
+SET genero='M';
+END IF;
+if (sexo='FEMENINO')
+THEN
+SET genero='M';
+END IF;
 set verificarcod=(select cod_pa from datos_paciente where cod_pa=codecode);
-if(verificarcod is null)
+if (verificarcod is null)
 then
-insert into datos_paciente values()
+Insert INTO datos_paciente (cod_pa,nombres_pa,apellidos_pa,fecha_nacimiento_pa,sexo_pa,email_pa,
+							lugar_nac_pa,nivel_est_pa,ocupacion_pa,estado_civil_pa,direccion_pa,
+							departamento_pa,provincia_pa,distrito_pa,caserio_pa,tel_casa_pa,
+							cel_pa,fecha_registro_pa,hora_registro_pa)
+values(codecode,nombrePac,CONCAT(apellidoPa,' ',apellidoMat),fechaNaci,genero,email,lugarNac,nivelEstudio,
+								 ocupacion,estadoCivil,direccion,departamento,provincia,distrito,
+								 caserio,numFijo,cunCel,current_Date,current_time);
 end if;
-
-
-
+INSERT INTO n_orden_ocupacional(cod_pa, razon_empresa, razon_contrata, 
+                        nom_ex, altura_po,mineral_po, fecha_apertura_po,nom_examen,precio_po,
+					   cargo_de,n_medico,n_hora,area_o,tipo_pago)
+values(codecode,razonEmpresa,razonContratista,explotacion,alturaLaboral,mineral,current_Date,nombreExamen,
+	   'S/.0.00',puestoTrabajo,'FRANCK JHONATAN MESTAS VEGA',current_time,area,'EFECTIVO');
 END;
 $$ LANGUAGE plpgsql;
 
-													'probando la sede','1');
+									

@@ -728,7 +728,7 @@ int seleccion = JOptionPane.showOptionDialog(
     private void activar(boolean b){
     txtNombre.setEnabled(b);
     txtDNI.setEnabled(b);
-    FechaHoy.setEnabled(b);
+   FechaHoy.setEnabled(true);
    // atxtDiagnostico.setEnabled(!b);
 }
 private void limpiar(){
