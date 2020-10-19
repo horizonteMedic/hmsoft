@@ -2780,7 +2780,26 @@ this.chkAltaTrabCal.setVisible(false);
             }
         });
     }//GEN-LAST:event_cboMineralExpActionPerformed
+public void agregarAltaEpidemiologica(){
+ String sCodigo;
+        String sConsulta;
+        sConsulta = "select spAgregarPE("+num+");";
+        if (oConn.FnBoolQueryExecute(sConsulta)) {
+            try {
+                // Verifica resultados
+                while (oConn.setResult.next()) {
 
+                    // Obtiene los datos de la Consulta
+
+                }
+            oConn.setResult.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(rootPane, ex);
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+}
     private void cboMineralExpPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboMineralExpPopupMenuWillBecomeInvisible
         if (cboMineralExp.getSelectedIndex() <= -1) {
             oFunc.SubSistemaMensajeError("Ingrese / Seleccione Mineral Explotado");

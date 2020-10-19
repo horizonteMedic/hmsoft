@@ -6,6 +6,7 @@
 
 package sistema;
 
+import Caja.BuscarCliente;
 import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
@@ -15,6 +16,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.ParseException;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -78,7 +81,7 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         chkNegativo = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        FechaDesde = new com.toedter.calendar.JDateChooser();
+        FechaDesde1 = new com.toedter.calendar.JDateChooser();
         FechaHasta = new com.toedter.calendar.JDateChooser();
         jLabel17 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -86,6 +89,8 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         txtDiagnostico = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnImp = new javax.swing.JButton();
@@ -93,6 +98,10 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         txtNorden = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setClosable(true);
         setResizable(true);
@@ -158,7 +167,6 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         });
 
         btgSintoma.add(chkPositivo);
-        chkPositivo.setSelected(true);
         chkPositivo.setText("Positivo");
 
         btgSintoma.add(chkNegativo);
@@ -184,6 +192,13 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         jLabel11.setText(".Con Prueba Rapida");
 
         jLabel12.setText("<html>Se expide la presente a solicitud del interesado para los fines que crea por conveniente.</html>");
+
+        jLabel14.setBackground(new java.awt.Color(255, 0, 51));
+        jLabel14.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel14.setText("La fecha de los resultados son:");
+
+        jTextField1.setEditable(false);
+        jTextField1.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -222,26 +237,26 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FechaDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(FechaDesde1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(FechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(FechaHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(329, 329, 329))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(344, 344, 344)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jLabel14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(64, 64, 64)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
@@ -255,15 +270,22 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(chkIggPositivo)
                                 .addGap(30, 30, 30)
-                                .addComponent(chkIggNegativo))))
+                                .addComponent(chkIggNegativo)))
+                        .addGap(18, 18, 18)
+                        .addComponent(chkInvalido))
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(chkInvalido)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(149, 149, 149))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addGap(329, 329, 329))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,7 +311,7 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
-                    .addComponent(FechaDesde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FechaDesde1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(FechaHasta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -300,27 +322,29 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(chkIgmPositivo)
-                            .addComponent(chkIgmNegativo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(chkIgmNegativo)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(chkIggPositivo)
-                            .addComponent(chkIggNegativo)))
+                            .addComponent(chkIggNegativo)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(29, 29, 29)
                         .addComponent(chkInvalido)))
-                .addGap(8, 8, 8)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        FechaDesde.getDateEditor().addPropertyChangeListener(new java.beans.PropertyChangeListener(){
+        FechaDesde1.getDateEditor().addPropertyChangeListener(new java.beans.PropertyChangeListener(){
             public void propertyChange(java.beans.PropertyChangeEvent evt){
                 calcularDias();
             }
@@ -377,21 +401,31 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
             }
         });
 
+        jCheckBox1.setText("VERIFICAR HISTORIAL");
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("HISTORIAL:");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "N ORDEN", "FECHA", "RESULTADO"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(btnGuardar)
-                        .addGap(2, 2, 2)
-                        .addComponent(btnLimpiar)
-                        .addGap(77, 77, 77)
-                        .addComponent(btnImp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtimp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel13)
@@ -400,9 +434,29 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEditar))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGap(182, 182, 182)
+                        .addComponent(btnGuardar)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnLimpiar)
+                        .addGap(77, 77, 77)
+                        .addComponent(btnImp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtimp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox1)
+                        .addGap(107, 107, 107))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,15 +466,25 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                     .addComponent(jLabel13)
                     .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jLabel1))
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(btnGuardar)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnImp)
                     .addComponent(txtimp))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -432,17 +496,22 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         //activar(true);
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String fecha1=dateFormat.format(date); 
+        
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNorden.getText().isEmpty()){
         if(!OrdenExiste()){  
                
        String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
                + "d.fecha_nacimiento_pa,n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
-            "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido  "
+            "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,e.fecha_examen "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
+               + " and e.fecha_examen<>'"+fecha1+"' limit 1;";
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -452,12 +521,14 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         chkIgmPositivo.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
                           chkIgmNegativo.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
                           chkIggPositivo.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
+                           Fecha();
                           chkIggNegativo.setSelected(oConn.setResult.getBoolean("chkigg_noreactivo"));
                           chkInvalido.setSelected(oConn.setResult.getBoolean("chkinvalido"));
+                          jTextField1.setText(oConn.setResult.getString("fecha_examen"));
                         txtNorden.setEditable(false);
                      //   FechaHoy.requestFocusInWindow();
-                         Fecha();
                         
+                        sbCargarDatosEmpresa();
                          txtDiasDesc.requestFocus();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
@@ -506,7 +577,7 @@ private boolean Grabar() throws SQLException{
                     + "'"+ txtInstitucion.getText()+"',"
                     + "'"+ chkPositivo.isSelected()+"',"
                     + "'"+ chkNegativo.isSelected()+"',"
-                    + "'"+ FechaDesde.getDate()+"',"
+                    + "'"+ FechaDesde1.getDate()+"',"
                     + "'"+ FechaHasta.getDate()+"',"
                     + "'"+txtDiagnostico.getText()+"' )";
            
@@ -522,7 +593,9 @@ private boolean Grabar() throws SQLException{
                 return bResult;       
         }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         if(OrdenExiste()){  
+if(jCheckBox1.isSelected())
+{
+        if(OrdenExiste()){  
             Actualizar();
          }else{
               if(!txtNorden.getText().isEmpty()){
@@ -538,7 +611,10 @@ private boolean Grabar() throws SQLException{
             }
            }
          }
-       
+}
+else 
+     JOptionPane.showMessageDialog(null,"MARCAR -> 'VERIFICAR HISTORIAL PARA REGISTRAR O ACTUALIZAR'");
+  
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
@@ -558,16 +634,16 @@ private boolean Grabar() throws SQLException{
     }//GEN-LAST:event_txtimpActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        FechaNacimiento = new com.toedter.calendar.JDateChooser();
+          FechaNacimiento = new com.toedter.calendar.JDateChooser();
         String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre,d.fecha_nacimiento_pa, "
                 + "n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
             "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,c.fecha_examen,c.txtdias_desc, c.txtinstitucion,"
-                + " c.chkpositivo,c.chknegativo, c.fecha_desde, c.fecha_hasta, c.txtdiagnostico "
+                + " c.chkpositivo,c.chknegativo, c.fecha_desde, c.fecha_hasta, c.txtdiagnostico,e.fecha_examen "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                 + "INNER JOIN constancia_alta_marsa AS c ON (c.n_orden = n.n_orden) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +";";
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -584,10 +660,16 @@ private boolean Grabar() throws SQLException{
                           chkInvalido.setSelected(oConn.setResult.getBoolean("chkinvalido"));
                           chkPositivo.setSelected(oConn.setResult.getBoolean("chkpositivo"));
                           chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
-                          Fecha();
-                          FechaDesde.setDate(oConn.setResult.getDate("fecha_desde"));
+                          jTextField1.setText(oConn.setResult.getString("fecha_examen"));
+                           Fecha();
+                          FechaDesde1.setDate(oConn.setResult.getDate("fecha_desde"));
                           FechaHasta.setDate(oConn.setResult.getDate("fecha_hasta"));
-                          txtDiagnostico.setText(oConn.setResult.getString("txtdiagnostico"));
+                          txtDiagnostico.setText(oConn.setResult.getString("txtdiagnostico")); 
+                          sbCargarDatosEmpresa();
+                         // FechaDesde.setDate(oConn.setResult.getDate("fecha_desde"));
+                         // FechaHasta.setDate(oConn.setResult.getDate("fecha_hasta"));
+                       //   txtDiagnostico.setText(oConn.setResult.getString("txtdiagnostico"));
+                            //jTextField1.setText(oConn.setResult.getString("fecha_examen"));
                           calcularDias();
                           
                        }else{
@@ -601,8 +683,8 @@ private boolean Grabar() throws SQLException{
 void fechaDesde() throws ParseException{
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 //        oFunc.SubSistemaMensajeError(dateFormat.format(FechaDesde.getDate()));
-        if(FechaDesde.getDate()!=null){
-	Date fechaInicial=dateFormat.parse(dateFormat.format(FechaDesde.getDate()));
+        if(FechaDesde1.getDate()!=null){
+	Date fechaInicial=dateFormat.parse(dateFormat.format(FechaDesde1.getDate()));
 	Date fechaFinal=dateFormat.parse(dateFormat.format(FechaHasta.getDate()));
         int dias=(int)((fechaFinal.getTime()- fechaInicial.getTime())/86400000) +1;
         txtDiasDesc.setText(String.valueOf(dias));}
@@ -624,7 +706,7 @@ public void calcularDias(){
 
     private void txtInstitucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInstitucionActionPerformed
         // TODO add your handling code here:
-        FechaDesde.requestFocus();
+        FechaDesde1.requestFocus();
     }//GEN-LAST:event_txtInstitucionActionPerformed
 
     private void txtDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiagnosticoActionPerformed
@@ -665,7 +747,7 @@ public void calcularDias(){
                 +"txtinstitucion='"+txtInstitucion.getText()+"',"
                 +"chkpositivo='"+chkPositivo.isSelected()+"',"
                 +"chknegativo='"+chkNegativo.isSelected()+"',"
-                +"fecha_desde='"+FechaDesde.getDate()+"',"
+                +"fecha_desde='"+FechaDesde1.getDate()+"',"
                 +"fecha_hasta='"+FechaHasta.getDate()+"',"
                 + "txtdiagnostico='"+txtDiagnostico.getText()+"'" +
                 " WHERE n_orden='" + sCodigo + "'";
@@ -724,6 +806,49 @@ int seleccion = JOptionPane.showOptionDialog(
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
+   
+   final void sbCargarDatosEmpresa(){
+        DefaultTableModel model;
+    String [] titulos={"N ORDEN","FECHA","RESULTADOS"};
+    String [] registros = new String[3];
+    String sql="SELECT n.n_orden as orden, l.fecha_examen,  \n" +
+"concat('IGM: ',(CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"  WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
+"			'-IGG: ',(CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO'\n" +
+"  WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END)) AS RESULTADO\n" +
+"FROM datos_paciente AS d  \n" +
+"                   INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)  \n" +
+"                  INNER JOIN examen_inmunologico AS l ON (n.n_orden = l.n_orden)  \n" +
+"                  WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText()+")";
+      model = new DefaultTableModel(null,titulos);       
+    if (oConn.FnBoolQueryExecute(sql))
+        {
+             try  {
+                
+                while (oConn.setResult.next())
+                {
+                    registros[0]= oConn.setResult.getString("orden");
+                    registros[1]= oConn.setResult.getString("fecha_examen");
+                    registros[2]= oConn.setResult.getString("RESULTADO");
+                     model.addRow(registros);
+                }
+                 
+                  // Coloca el Modelo de Nueva Cuenta
+                  jTable1.setModel(model);
+                
+             
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+}
+   
     private void activar(boolean b){
     txtNombre.setEnabled(b);
     txtDNI.setEnabled(b);
@@ -731,14 +856,15 @@ int seleccion = JOptionPane.showOptionDialog(
    // atxtDiagnostico.setEnabled(!b);
 }
 private void limpiar(){
+    jCheckBox1.setSelected(false);
 txtNombre.setText(null);
 txtDNI.setText(null);
 txtDiasDesc.setText("14");
 btgSintoma.clearSelection();
-chkPositivo.setSelected(true);
+//chkPositivo.setSelected(true);
 txtInstitucion.setText("nuestra institución");
 FechaHoy.setDate(null);
-FechaDesde.setDate(null);
+FechaDesde1.setDate(null);
 FechaHasta.setDate(null);
 txtDiagnostico.setText("CLINICAMENTE SANO");
 txtNorden.setText(null);
@@ -755,7 +881,7 @@ FechaHasta.setDate(fechaDate);
 //        FechaDesde.setCalendar(hasta);
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser FechaDesde;
+    private com.toedter.calendar.JDateChooser FechaDesde1;
     private com.toedter.calendar.JDateChooser FechaHasta;
     private com.toedter.calendar.JDateChooser FechaHoy;
     private javax.swing.ButtonGroup btgSintoma;
@@ -770,10 +896,13 @@ FechaHasta.setDate(fechaDate);
     private javax.swing.JCheckBox chkInvalido;
     private javax.swing.JCheckBox chkNegativo;
     private javax.swing.JCheckBox chkPositivo;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -786,6 +915,9 @@ FechaHasta.setDate(fechaDate);
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDiagnostico;
     private javax.swing.JTextField txtDiasDesc;
