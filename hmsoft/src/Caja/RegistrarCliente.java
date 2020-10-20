@@ -48,6 +48,7 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import net.sf.jasperreports.engine.JasperPrintManager;
 //import org.apache.axis.AxisProperties;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
@@ -2780,10 +2781,9 @@ this.chkAltaTrabCal.setVisible(false);
             }
         });
     }//GEN-LAST:event_cboMineralExpActionPerformed
-public void agregarAltaEpidemiologica(){
- String sCodigo;
+public void agregarAltaEpidemiologica(String numero){
         String sConsulta;
-        sConsulta = "select spAgregarPE("+num+");";
+        sConsulta = "select spAgregarPE("+numero+");";
         if (oConn.FnBoolQueryExecute(sConsulta)) {
             try {
                 // Verifica resultados
@@ -2883,6 +2883,7 @@ public void agregarAltaEpidemiologica(){
                     num = oConn.setResult.getString("n_orden");
                     txtNorden1.setText(num);
                     oFunc.SubSistemaMensajeInformacion("Alta Correctamente\nSu numero de Orden es :** " + num + " **");
+                   agregarAltaEpidemiologica(num);
                     imprimir();
                     AltaDesabilitar();
                     AltaLimpiar();
@@ -2915,7 +2916,7 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {    System.out.println("el numero es "+Integer.valueOf(num));
-        print(Integer.valueOf(num));
+        printer(Integer.valueOf(num));
    //   printer(Integer.valueOf(txtNorden.getText().toString()));
        im = true;
    }
@@ -3256,10 +3257,11 @@ int seleccion = JOptionPane.showOptionDialog(
         
 //        sCodigo = txtNorden.getText();
         sCodigo = tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString();
-        strSqlStmt += " Where n_orden = '" + sCodigo + "'";
+        strSqlStmt += " Where n_orden = " + sCodigo + "";
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            agregarAltaEpidemiologica(txtNorden.getText());
             AltaDesabilitar();
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
@@ -3859,6 +3861,122 @@ private void CargarTipoExamenes(){
     private void txtBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarNombreActionPerformed
+  private void printer(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+         
+        try {
+            String c=cboExamenMedico.getSelectedItem().toString();
+            String empresa=txtEmpresa.getText().toString();
+            if(("MINERA BARRICK MISQUICHILCA SA".equals(empresa) && "RETIRO".equals(c))|| "LA ARENA S.A.".equals(empresa) && "RETIRO".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamenR.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }else if("ANUAL".equals(c) || "PRE-OCUPACIONAL".equals(c)||"RETIRO".equals(c)||"REUBICACION".equals(c)){
+                
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamen.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                   JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }
+            
+            if("TEST-ALTURA".equals(c)&& !chkAltaPsicosen.isSelected() && "LA ARENA S.A.".equals(empresa) ){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "TestAltura.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }else if("TEST-ALTURA".equals(c)&&!chkAltaPsicosen.isSelected()){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "TestAltura2.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                   JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }
+            
+            if("PSICOSENSOMETRIA".equals(c)&& !chkAltaTestAltura.isSelected()||"FIST-TEST".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Psicosensometria.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+               JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }
+            if(("TEST-ALTURA".equals(c) && chkAltaPsicosen.isSelected())||("PSICOSENSOMETRIA".equals(c) &&chkAltaTestAltura.isSelected())){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "TestAltura1.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                   JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }
+             if("ANEXO 16A".equals(c)||"ANEXO-C".equals(c)||"ANEXO-7D".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Admision7D.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                 JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }
+             if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
+             if("MANIPULADOR-ALIMENTOS".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ManipuladorAlimentos.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                 JasperPrintManager.printReport(myPrint,true);
+
+                //JasperViewer viewer = new JasperViewer(myPrint, false);
+                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
+                 //viewer.setAlwaysOnTop(true);
+                //viewer.setVisible(true);
+            }
+            
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     
     private void print(Integer cod) {
 
@@ -3872,9 +3990,11 @@ private void CargarTipoExamenes(){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamenR.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+              //  JasperPrintManager.printReport(myPrint,true);
+
                 JasperViewer viewer = new JasperViewer(myPrint, false);
                 viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
-                // viewer.setAlwaysOnTop(true);
+                 //viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
             }else if("ANUAL".equals(c) || "PRE-OCUPACIONAL".equals(c)||"RETIRO".equals(c)||"REUBICACION".equals(c)){
                 

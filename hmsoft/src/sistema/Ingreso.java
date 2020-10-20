@@ -392,8 +392,11 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                          if(ADMISION_CODIGO == oConn.setResult.getBoolean("admision") ){
                                 Ingreso.this.dispose();
                                 JOptionPane.showMessageDialog(null, "Bienvenido al Sistema "+clsGlobales.sNomOperador);
+                                System.out.println("salto el mensaje de bienvenida ");
                                 Admision c = new Admision();
+                                  System.out.println("instancia admision ");
                                 c.setVisible(true);
+                                  System.out.println("lo manda hacer visible ");
                                 c.setExtendedState(JFrame.MAXIMIZED_BOTH);                                
                                 oConn.setResult.close();
                          }else{oFunc.SubSistemaMensajeInformacion("No Tiene Autorización para Ingresar a Admisión");}
@@ -417,6 +420,7 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                                         ||"JCORDOVA".equals(user)||"KGUEVARA".equals(user)||"lobo".equals(user) ){
                                     Ocupacional1 s= new Ocupacional1();
                                     s.setVisible(true);
+                                    
                                 }else{
                                 Ocupacional s = new Ocupacional();
                                 s.setVisible(true);

@@ -5,13 +5,14 @@ import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import sistema.Ingreso;
 
 
 public class Admision extends javax.swing.JFrame {
-   Comprobantes t = new Comprobantes(); 
-   RegistrarCliente r = new RegistrarCliente();
+  Comprobantes t = new Comprobantes(); 
+ RegistrarCliente r = new RegistrarCliente();
    PacientesEspera p = new PacientesEspera();
    Ingreso elobjeto= new Ingreso();
    MenuEmpresas age;
@@ -25,7 +26,9 @@ public class Admision extends javax.swing.JFrame {
    public static String nombreSede;
    
    public Admision() {
-      initComponents();
+           // System.out.println("admision-entro a admision");
+       initComponents();
+       // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
       lblFecha.setText(Fecha());
      sede();
       lblUsuarioCaja.setText(clsGlobales.sNomOperador);
@@ -500,7 +503,8 @@ public void sede(){
    }//GEN-LAST:event_btncerrar_cajaActionPerformed
 
    private void btnrclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrclientesActionPerformed
-      if (estacerrado(r)){
+ //RegistrarCliente r = new RegistrarCliente();
+       if (estacerrado(r)){
          Admision.Desktop.add(r);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          r.setFrameIcon(ricon);
@@ -530,7 +534,8 @@ public void sede(){
     }//GEN-LAST:event_btnBoletaActionPerformed
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
-         if (estacerrado(fa)){
+       //  RegistrarCliente r = new RegistrarCliente();
+        if (estacerrado(fa)){
                   fa =new Factura();
          Admision.Desktop.add(fa);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -545,7 +550,8 @@ public void sede(){
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void EmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpresasActionPerformed
-              if (estacerrado(age)){
+        // RegistrarCliente r = new RegistrarCliente();   
+        if (estacerrado(age)){
                   age =new MenuEmpresas();
          Admision.Desktop.add(age);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -560,7 +566,8 @@ public void sede(){
     }//GEN-LAST:event_EmpresasActionPerformed
 
     private void ContratasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratasActionPerformed
-            if (estacerrado(cont)){
+       //  RegistrarCliente r = new RegistrarCliente();
+        if (estacerrado(cont)){
                   cont =new MenuContrata();
          Admision.Desktop.add(cont);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -575,7 +582,8 @@ public void sede(){
     }//GEN-LAST:event_ContratasActionPerformed
 
     private void ServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ServiciosActionPerformed
-           if (estacerrado(sg)){
+      //  RegistrarCliente r = new RegistrarCliente();
+        if (estacerrado(sg)){
                   sg =new ServiciosGenerales();
          Admision.Desktop.add(sg);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));

@@ -44,6 +44,7 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
 
     clsConnection oConn = new clsConnection();
  clsFunciones  oFunc = new clsFunciones();
+ String condicional;
     public ConstanciaAltaMarsa() {
         initComponents();
         activar(false);
@@ -275,10 +276,6 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                         .addComponent(chkInvalido))
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -286,6 +283,10 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addGap(329, 329, 329))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(149, 149, 149))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,6 +419,7 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                 "N ORDEN", "FECHA", "RESULTADO"
             }
         ));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -491,8 +493,58 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 public static com.toedter.calendar.JDateChooser FechaNacimiento;
 
+public void calcularTipoexamen(){
 
-    
+ String sQuery;
+
+        sQuery  = "Select tipoprueba from n_orden_ocupacional Where n_orden= ="+txtNorden.getText().toString();
+        oConn.FnBoolQueryExecute(sQuery);
+        try {
+            if (oConn.setResult.next())
+            {
+              condicional=oConn.setResult.getString("tipoprueba");
+//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+//             txtNorden.setText(null);
+            }
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+         
+        }
+}
+// FALTA REVISAR ESTE
+    public void altaSinAE(){
+    String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
+               + "d.fecha_nacimiento_pa,n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
+            "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,e.fecha_examen "
+                + "FROM datos_paciente AS d "
+                + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
+               + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
+               + "WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
+               + " limit 1;";
+         oConn.FnBoolQueryExecute(Sql);
+                try {
+                    if (oConn.setResult.next()) {
+                        txtNombre.setText(oConn.setResult.getString("nombre"));
+                        txtDNI.setText(oConn.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        chkIgmPositivo.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
+                          chkIgmNegativo.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
+                          chkIggPositivo.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
+                           Fecha();
+                          chkIggNegativo.setSelected(oConn.setResult.getBoolean("chkigg_noreactivo"));
+                          chkInvalido.setSelected(oConn.setResult.getBoolean("chkinvalido"));
+                          jTextField1.setText(oConn.setResult.getString("fecha_examen"));
+                        txtNorden.setEditable(false);
+                     //   FechaHoy.requestFocusInWindow();
+                        
+                        sbCargarDatosEmpresa();
+                         txtDiasDesc.requestFocus();
+                       }else{
+                        oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
+                    }
+            } catch (SQLException ex) {
+            oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
+    }
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         //activar(true);
@@ -502,8 +554,10 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNorden.getText().isEmpty()){
-        if(!OrdenExiste()){  
-               
+        if(!OrdenExiste()){ 
+            calcularTipoexamen();
+               if(condicional.equals("AE"))
+               {
        String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
                + "d.fecha_nacimiento_pa,n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
             "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,e.fecha_examen "
@@ -537,6 +591,14 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
        
         }
+        
+               else {
+               altaSinAE();
+               }  
+               
+        }
+        
+        
            } 
     }//GEN-LAST:event_txtNordenActionPerformed
 public boolean OrdenExiste()
@@ -820,7 +882,8 @@ int seleccion = JOptionPane.showOptionDialog(
 "                   INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)  \n" +
 "                  INNER JOIN examen_inmunologico AS l ON (n.n_orden = l.n_orden)  \n" +
 "                  WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText()+")";
-      model = new DefaultTableModel(null,titulos);       
+      model = new DefaultTableModel(null,titulos);      
+     
     if (oConn.FnBoolQueryExecute(sql))
         {
              try  {
@@ -835,7 +898,7 @@ int seleccion = JOptionPane.showOptionDialog(
                  
                   // Coloca el Modelo de Nueva Cuenta
                   jTable1.setModel(model);
-                
+                jTable1.getColumn("RESULTADOS").setPreferredWidth(200);
              
                  // Cierra Resultados
                  oConn.setResult.close();
@@ -848,7 +911,7 @@ int seleccion = JOptionPane.showOptionDialog(
             }
         }
 }
-   
+
     private void activar(boolean b){
     txtNombre.setEnabled(b);
     txtDNI.setEnabled(b);

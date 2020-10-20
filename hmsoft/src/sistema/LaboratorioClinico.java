@@ -3293,11 +3293,11 @@ else
                 }else if(cboMarca.getSelectedIndex()==5){
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                            + "Sensibilidad: 93.75% \n"
-                            + "Especificidad: 93.75%");
+                            + "Sensibilidad Relativa: 93.75% \n"
+                            + "Especificidad Relativa: 96.4%");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 96.4%\n"
-                            + "Especificidad: 96.4% \n");
+                            + "Sensibilidad Relativa: 93.75% \n"
+                            + "Especificidad Relativa: 96.4%");
                 }else if(cboMarca.getSelectedIndex()==6){
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
@@ -3392,12 +3392,12 @@ else
                             + "Especificidad: 97% \n");
                 }else if(cboMarca.getSelectedIndex()==5){
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
-                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                            + "Sensibilidad: 93.75% \n"
-                            + "Especificidad: 93.75%");
+                 txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad Relativa: 93.75% \n"
+                            + "Especificidad Relativa: 96.4%");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 96.4%\n"
-                            + "Especificidad: 96.4% \n");
+                            + "Sensibilidad Relativa: 93.75% \n"
+                            + "Especificidad Relativa: 96.4%");
                 }else if(cboMarca.getSelectedIndex()==6){
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"

@@ -112,9 +112,8 @@ public class Ocupacional1 extends javax.swing.JFrame {
     public Ocupacional1() {
             getRootPane().setWindowDecorationStyle(JRootPane.NONE);
             initComponents();
-            sbSubHabilitaOpciones();
             this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-           
+        
       lblUsuarioCaja.setText(clsGlobales.sNomOperador);
             KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
 //y enseguida registramos nuestro dispatcher
@@ -136,7 +135,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                 return false; 
         }
 });  
-     
    }
     private void sbSubHabilitaOpciones()
     {
@@ -167,6 +165,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         LaboratorioClinico.setVisible(fnBoolIsOptionEnabled("SIS_LCL_01"));
         FuncionRespiratoria.setVisible(fnBoolIsOptionEnabled("SIS_FRE_01"));
         btnAddUsuarios.setVisible(fnBoolIsOptionEnabled("SIS_USU_01"));
+        JOptionPane.showMessageDialog(null,"SE HABILITO EL SISTEMA CON EXITO ");
     }
     private boolean fnBoolIsOptionEnabled(String sOption)
     {
@@ -329,6 +328,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         MenuOcupacional = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCambiarUsuario = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         btnSalir = new javax.swing.JMenuItem();
         btnconfiguracionsistema = new javax.swing.JMenu();
         btnconfigurarservicios = new javax.swing.JMenuItem();
@@ -1574,6 +1574,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu1.add(btnCambiarUsuario);
 
+        jMenuItem4.setText("HABILITAR SISTEMA");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         btnSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
         btnSalir.setText("Salir");
@@ -2411,7 +2419,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          an.setFrameIcon(ticon);
-          an.setLocation(centradoXY(an));
+        //  an.setLocation(centradoXY(an));
            an.show();
          // an.setVisible(true);
        }
@@ -3658,6 +3666,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         contanciaSaludCovid obt = new contanciaSaludCovid();
         obt.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+                sbSubHabilitaOpciones();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -3780,6 +3792,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
