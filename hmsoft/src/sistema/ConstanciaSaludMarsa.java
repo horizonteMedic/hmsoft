@@ -487,7 +487,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                
        String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
                + "d.fecha_nacimiento_pa,n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
-            "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,n.chkcovid1,n.chkcovid2  "
+            "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,n.chkcovid1,n.chkcovid2,n.tipoprueba  "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
@@ -505,7 +505,12 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                           chkIggPositivo.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
                           chkIggNegativo.setSelected(oConn.setResult.getBoolean("chkigg_noreactivo"));
                           chkInvalido.setSelected(oConn.setResult.getBoolean("chkinvalido"));
-                          
+                          if(oConn.setResult.getString("tipoprueba").equals("P1"))
+                              txtMuestra.setText("1era MUESTRA");
+                           if(oConn.setResult.getString("tipoprueba").equals("P2"))
+                              txtMuestra.setText("2da MUESTRA");
+                            if(oConn.setResult.getString("tipoprueba").equals("Pc"))
+                              txtMuestra.setText("Prueba en hotel");
                           if(oConn.setResult.getBoolean("chkcovid1")){
                               txtMuestra.setText("1era MUESTRA");
                           }else if(oConn.setResult.getBoolean("chkcovid2")){

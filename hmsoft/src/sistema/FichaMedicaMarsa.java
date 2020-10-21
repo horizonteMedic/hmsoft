@@ -280,6 +280,9 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
         jtPruebas = new javax.swing.JTabbedPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbPruebasCovid = new javax.swing.JTable();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("Examenes Pre-Ocupacionales \"Ficha Médica\"");
@@ -1665,6 +1668,27 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
 
         jtPruebas.addTab("Registros anteriores de pruebas covid", jScrollPane5);
 
+        jCheckBox1.setText("ALTA MEDICA");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setText("AISLAMIENTO-HOTEL");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
+
+        jCheckBox3.setText("PRUEBA CONFIRMATORIA");
+        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1672,34 +1696,53 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jtFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel123)
-                            .addComponent(jLabel125)
-                            .addComponent(jtPruebas))
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel123)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel125)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBox3)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jCheckBox1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jCheckBox2)))))
+                                .addContainerGap())))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel123)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel125)
-                        .addGap(2, 2, 2)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jtPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addComponent(jtFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addComponent(jtFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel123)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel125)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckBox2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCheckBox3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jtPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -1796,6 +1839,42 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
     private void txtAntecedentesPersonalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntecedentesPersonalesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAntecedentesPersonalesActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+      if( jCheckBox1.isSelected())
+      { 
+          String mensaje=txtRecomendaciones.getText().toString();
+          mensaje.replaceFirst("1- AISLAMIENTO EN HOTEL POR 3 DIAS"," ");
+          txtRecomendaciones.setText("");
+          txtRecomendaciones.append(mensaje);
+          txtRecomendaciones.append("1- ALTA MEDICA \n");
+          jCheckBox2.setSelected(false);
+          jCheckBox3.setSelected(false);
+
+      }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+       if( jCheckBox2.isSelected())
+       {
+            String mensaje=txtRecomendaciones.getText().toString();
+           mensaje.replaceFirst("1- ALTA MEDICA"," ");
+           txtRecomendaciones.setText("");
+           txtRecomendaciones.append(mensaje);
+           txtRecomendaciones.append("1- AISLAMIENTO EN HOTEL POR 3 DIAS\n");
+             jCheckBox1.setSelected(false);
+              jCheckBox3.setSelected(false);
+       }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
+         if( jCheckBox3.isSelected())
+       {
+           txtRecomendaciones.append("1- SE RECOMIENDA PRUEBA RAPIDA CONFIRMATORIA EN 7 DIAS\n");
+             jCheckBox1.setSelected(false);
+             jCheckBox2.setSelected(false);
+       }
+    }//GEN-LAST:event_jCheckBox3ActionPerformed
   
     public boolean Orden() {
         boolean bResultado = false;
@@ -1956,23 +2035,28 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
 //                    txtDiagnostico.setText(oConn.setResult.getString("txtdiagnostico"));
                     txtRecomendaciones.setText(oConn.setResult.getString("txtrecomendaciones"));
                     txtAnamnesis.setText("PACIENTE REFIERE ESTAR ".concat(txtEncuestaCovid.getText()));
-                    // txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
-                       //     txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
+                     txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
+                            txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
+                            int variable=3;
                     if(!txtIMC.getText().isEmpty()){
                            float imc = Float.parseFloat(txtIMC.getText().toString());
                             txtIMC.setForeground(Color.black);
                             if (imc <= 18.5) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("- INDICE DE MASA CORPORAL: BAJO DE PESO." + '\n');
+                                txtDiagnostico.append(variable+"- INDICE DE MASA CORPORAL: BAJO DE PESO." + '\n');
+                                variable=variable+1;
                             } else if (imc >= 25 && imc < 30) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("-SOBREPESO:DIETA HIPOCALORICA Y EJERCICIOS." + '\n');
+                                txtDiagnostico.append(variable+"-SOBREPESO:DIETA HIPOCALORICA Y EJERCICIOS." + '\n');
+                                variable=variable+1;
                             } else if (imc >= 30 && imc < 35) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("-OBESIDAD I.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                txtDiagnostico.append(variable+"-OBESIDAD I.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                variable=variable+1;
                             } else if (imc >= 35 && imc < 40) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("-OBESIDAD II.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                txtDiagnostico.append(variable+"-OBESIDAD II.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                variable=variable+1;
                             } //else {
 //                                txtObservacionesFichaMedica.append("-OBESIDAD III.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
 //                            } 
@@ -2076,23 +2160,28 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
                             txtConclusionesRx.setText(oConn.setResult.getString("txtconclusionesradiograficas"));
                             txtHemoHema.setText(oConn.setResult.getString("txthemoglobina"));
                             txtAnamnesis.setText("PACIENTE REFIERE ESTAR ".concat(txtEncuestaCovid.getText()));
-                            //txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
-                            //txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
+                            txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
+                            txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
                             if(!txtIMC.getText().isEmpty()){
                            float imc = Float.parseFloat(txtIMC.getText().toString());
                             txtIMC.setForeground(Color.black);
+                            int variable=3;
                             if (imc <= 18.5) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("- INDICE DE MASA CORPORAL: BAJO DE PESO." + '\n');
+                                txtDiagnostico.append(variable+"- INDICE DE MASA CORPORAL: BAJO DE PESO." + '\n');
+                                variable=variable+1;
                             } else if (imc >= 25 && imc < 30) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("-SOBREPESO:DIETA HIPOCALORICA Y EJERCICIOS." + '\n');
+                                txtDiagnostico.append(variable+"-SOBREPESO:DIETA HIPOCALORICA Y EJERCICIOS." + '\n');
+                                variable=variable+1;
                             } else if (imc >= 30 && imc < 35) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("-OBESIDAD I.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                txtDiagnostico.append(variable+"-OBESIDAD I.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                variable=variable+1;
                             } else if (imc >= 35 && imc < 40) {
                                 txtIMC.setForeground(Color.red);
-                                txtDiagnostico.append("-OBESIDAD II.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                txtDiagnostico.append(variable+"-OBESIDAD II.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                variable=variable+1;
                             } //else {
 //                                txtObservacionesFichaMedica.append("-OBESIDAD III.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
 //                            } 
@@ -2289,7 +2378,9 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
         txtEncuestaCovid.setText(null);
         txtDiagnostico.setText(null);
         txtRecomendaciones.setText(null);
-        
+        jCheckBox1.setSelected(false);
+        jCheckBox3.setSelected(false);
+        jCheckBox2.setSelected(false);
 //txtInmunizaciones.setText("NO RECUERDA");
         txtPuestoPostula.setText(null);
         txtArea.setText(null);
@@ -2337,6 +2428,9 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnLimpiar1;
     private javax.swing.JButton jButton6;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;

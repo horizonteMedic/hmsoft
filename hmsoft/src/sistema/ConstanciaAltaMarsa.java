@@ -10,6 +10,7 @@ import Caja.BuscarCliente;
 import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -48,6 +49,10 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
     public ConstanciaAltaMarsa() {
         initComponents();
         activar(false);
+        chkPositivo.setBackground(Color.red);
+        chkNegativo.setBackground(Color.BLUE);
+        jComboBox1.setSelectedIndex(0);
+        this.txtInstitucion.setVisible(false);
     }
 
     /**
@@ -92,6 +97,7 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnImp = new javax.swing.JButton();
@@ -167,10 +173,22 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
             }
         });
 
+        chkPositivo.setBackground(new java.awt.Color(204, 0, 0));
         btgSintoma.add(chkPositivo);
+        chkPositivo.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        chkPositivo.setForeground(new java.awt.Color(204, 0, 0));
         chkPositivo.setText("Positivo");
+        chkPositivo.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        chkPositivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPositivoActionPerformed(evt);
+            }
+        });
 
+        chkNegativo.setBackground(new java.awt.Color(0, 0, 102));
         btgSintoma.add(chkNegativo);
+        chkNegativo.setFont(new java.awt.Font("Arial Black", 3, 14)); // NOI18N
+        chkNegativo.setForeground(new java.awt.Color(0, 0, 102));
         chkNegativo.setText("Negativo");
 
         jLabel9.setText("días,  luego de haber pasado perfil COVID-19 en ");
@@ -201,6 +219,8 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
         jTextField1.setEditable(false);
         jTextField1.setEnabled(false);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NUESTRA INSTITUCION", "INSTITUCION DE SALUD", " " }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -208,7 +228,8 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -226,9 +247,9 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(chkPositivo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkNegativo)
+                        .addComponent(chkNegativo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -246,7 +267,19 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(329, 329, 329))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(txtInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(149, 149, 149))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,17 +309,6 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                         .addComponent(chkInvalido))
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                .addGap(329, 329, 329))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(149, 149, 149))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,13 +324,13 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8)
                     .addComponent(txtDiasDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addGap(10, 10, 10)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkPositivo)
                     .addComponent(chkNegativo)
-                    .addComponent(txtInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
@@ -340,9 +362,14 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                         .addComponent(chkInvalido)))
                 .addGap(25, 25, 25)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtInstitucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
         );
 
         FechaDesde1.getDateEditor().addPropertyChangeListener(new java.beans.PropertyChangeListener(){
@@ -450,11 +477,11 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(7, 7, 7)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
+                        .addGap(70, 70, 70)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jCheckBox1)
@@ -497,7 +524,7 @@ public void calcularTipoexamen(){
 
  String sQuery;
 
-        sQuery  = "Select tipoprueba from n_orden_ocupacional Where n_orden= ="+txtNorden.getText().toString();
+        sQuery  = "Select tipoprueba from n_orden_ocupacional Where n_orden ="+txtNorden.getText().toString();
         oConn.FnBoolQueryExecute(sQuery);
         try {
             if (oConn.setResult.next())
@@ -556,6 +583,8 @@ public void calcularTipoexamen(){
        if(!txtNorden.getText().isEmpty()){
         if(!OrdenExiste()){ 
             calcularTipoexamen();
+            if(condicional.length()<1)
+                    condicional="no";
                if(condicional.equals("AE"))
                {
        String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
@@ -636,7 +665,7 @@ private boolean Grabar() throws SQLException{
             strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"',"
                     + "'"+ FechaHoy.getDate()+"',"
                     + "'"+ txtDiasDesc.getText()+"',"
-                    + "'"+ txtInstitucion.getText()+"',"
+                    + "'"+ jComboBox1.getSelectedItem().toString()+"',"
                     + "'"+ chkPositivo.isSelected()+"',"
                     + "'"+ chkNegativo.isSelected()+"',"
                     + "'"+ FechaDesde1.getDate()+"',"
@@ -655,8 +684,10 @@ private boolean Grabar() throws SQLException{
                 return bResult;       
         }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-if(jCheckBox1.isSelected())
+if(chkPositivo.isSelected() ||chkNegativo.isSelected())    
 {
+        if(jCheckBox1.isSelected())
+{   
         if(OrdenExiste()){  
             Actualizar();
          }else{
@@ -676,7 +707,9 @@ if(jCheckBox1.isSelected())
 }
 else 
      JOptionPane.showMessageDialog(null,"MARCAR -> 'VERIFICAR HISTORIAL PARA REGISTRAR O ACTUALIZAR'");
-  
+  }
+else 
+     JOptionPane.showMessageDialog(null,"DEBE DE MARCAR SI ES POSITIVO O NEGATIVO'");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
@@ -714,7 +747,8 @@ else
                         FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
                       //  txtSexo.setText(oConn.setResult.getString("sexo_pa").equals("M")?"MASCULINO" : "FEMENINO");   
                         txtDiasDesc.setText(oConn.setResult.getString("txtdias_desc"));
-                        txtInstitucion.setText(oConn.setResult.getString("txtinstitucion"));
+                        jComboBox1.setSelectedItem(oConn.setResult.getString("txtinstitucion"));
+                      //  txtInstitucion.setText(oConn.setResult.getString("txtinstitucion"));
                         chkIgmPositivo.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
                           chkIgmNegativo.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
                           chkIggPositivo.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
@@ -780,6 +814,10 @@ public void calcularDias(){
 //        fechaDesde();
         txtInstitucion.requestFocus();
     }//GEN-LAST:event_txtDiasDescActionPerformed
+
+    private void chkPositivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPositivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkPositivoActionPerformed
     private void print(Integer cod){
                 Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);             
@@ -806,7 +844,7 @@ public void calcularDias(){
         strSqlStmt="UPDATE constancia_alta_marsa\n" +
                     "   SET  fecha_examen='"+FechaHoy.getDate()+"',"
                 +"txtdias_desc='"+txtDiasDesc.getText()+"',"
-                +"txtinstitucion='"+txtInstitucion.getText()+"',"
+                +"txtinstitucion='"+jComboBox1.getSelectedItem().toString()+"',"
                 +"chkpositivo='"+chkPositivo.isSelected()+"',"
                 +"chknegativo='"+chkNegativo.isSelected()+"',"
                 +"fecha_desde='"+FechaDesde1.getDate()+"',"
@@ -925,7 +963,7 @@ txtDNI.setText(null);
 txtDiasDesc.setText("14");
 btgSintoma.clearSelection();
 //chkPositivo.setSelected(true);
-txtInstitucion.setText("nuestra institución");
+//txtInstitucion.setText("nuestra institución");
 FechaHoy.setDate(null);
 FechaDesde1.setDate(null);
 FechaHasta.setDate(null);
@@ -960,6 +998,7 @@ FechaHasta.setDate(fechaDate);
     private javax.swing.JCheckBox chkNegativo;
     private javax.swing.JCheckBox chkPositivo;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

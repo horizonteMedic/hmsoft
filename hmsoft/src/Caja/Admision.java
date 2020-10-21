@@ -11,17 +11,17 @@ import sistema.Ingreso;
 
 
 public class Admision extends javax.swing.JFrame {
-  Comprobantes t = new Comprobantes(); 
- RegistrarCliente r = new RegistrarCliente();
-   PacientesEspera p = new PacientesEspera();
-   Ingreso elobjeto= new Ingreso();
-   MenuEmpresas age;
-   MenuContrata cont;
-   ServiciosGenerales sg;
-   Factura fa;
-   Reporteador re = new Reporteador();
-   Valorizacion val = new Valorizacion();
-   ControlFactura contfac=new ControlFactura();
+// Comprobantes t = new Comprobantes(); 
+// RegistrarCliente r = new RegistrarCliente();
+// PacientesEspera p = new PacientesEspera();
+// Ingreso elobjeto= new Ingreso();
+ // MenuEmpresas age;
+   //MenuContrata cont;
+ //  ServiciosGenerales sg;
+//   Factura fa;
+//   Reporteador re = new Reporteador();
+//   Valorizacion val = new Valorizacion();
+//   ControlFactura contfac=new ControlFactura();
 
    public static String nombreSede;
    
@@ -55,6 +55,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 });  
    }
 public void sede(){
+    Ingreso elobjeto= new Ingreso();
     nombreSede=elobjeto.nombresede;
     // System.out.println("nombre sede:"+nombreSede);
 };
@@ -77,16 +78,17 @@ public void sede(){
         btnBoleta = new javax.swing.JButton();
         btnFactura = new javax.swing.JButton();
         btnrclientes = new javax.swing.JButton();
-        jSeparator7 = new javax.swing.JToolBar.Separator();
         btnReportes = new javax.swing.JButton();
+        jButton22 = new javax.swing.JButton();
+        jButton21 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jButton24 = new javax.swing.JButton();
+        btncerrar_caja = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jSeparator5 = new javax.swing.JToolBar.Separator();
-        jButton21 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        btncerrar_caja = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -219,9 +221,6 @@ public void sede(){
         });
         jToolBar2.add(btnrclientes);
 
-        jSeparator7.setBackground(new java.awt.Color(204, 204, 204));
-        jToolBar2.add(jSeparator7);
-
         btnReportes.setForeground(new java.awt.Color(102, 102, 102));
         btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/creporte.png"))); // NOI18N
         btnReportes.setMnemonic(KeyEvent.VK_F3);
@@ -239,11 +238,22 @@ public void sede(){
         });
         jToolBar2.add(btnReportes);
 
-        jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
-        jToolBar2.add(jSeparator2);
-
-        jSeparator5.setBackground(new java.awt.Color(204, 204, 204));
-        jToolBar2.add(jSeparator5);
+        jButton22.setForeground(new java.awt.Color(102, 102, 102));
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/creporte.png"))); // NOI18N
+        jButton22.setMnemonic(KeyEvent.VK_F6);
+        jButton22.setText("R. Facturas");
+        jButton22.setToolTipText("F6 (Recoger Análisis Clinicos)");
+        jButton22.setFocusable(false);
+        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton22.setMaximumSize(new java.awt.Dimension(80, 72));
+        jButton22.setMinimumSize(new java.awt.Dimension(65, 72));
+        jButton22.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(jButton22);
 
         jButton21.setForeground(new java.awt.Color(102, 102, 102));
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/creporte.png"))); // NOI18N
@@ -262,31 +272,6 @@ public void sede(){
         });
         jToolBar2.add(jButton21);
 
-        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
-        jToolBar2.add(jSeparator6);
-
-        jToolBar1.add(jToolBar2);
-
-        jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
-        jToolBar1.add(jSeparator4);
-
-        jButton22.setForeground(new java.awt.Color(102, 102, 102));
-        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/creporte.png"))); // NOI18N
-        jButton22.setMnemonic(KeyEvent.VK_F6);
-        jButton22.setText("R. Facturas");
-        jButton22.setToolTipText("F6 (Recoger Análisis Clinicos)");
-        jButton22.setFocusable(false);
-        jButton22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton22.setMaximumSize(new java.awt.Dimension(80, 72));
-        jButton22.setMinimumSize(new java.awt.Dimension(65, 72));
-        jButton22.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton22);
-
         jButton23.setForeground(new java.awt.Color(102, 102, 102));
         jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sede_1.jpg"))); // NOI18N
         jButton23.setMnemonic(KeyEvent.VK_F6);
@@ -302,7 +287,24 @@ public void sede(){
                 jButton23ActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton23);
+        jToolBar2.add(jButton23);
+
+        jButton24.setForeground(new java.awt.Color(102, 102, 102));
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excelImporte.png"))); // NOI18N
+        jButton24.setMnemonic(KeyEvent.VK_F6);
+        jButton24.setText("Importar Data");
+        jButton24.setToolTipText("F6 (Recoger Análisis Clinicos)");
+        jButton24.setFocusable(false);
+        jButton24.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton24.setMaximumSize(new java.awt.Dimension(80, 72));
+        jButton24.setMinimumSize(new java.awt.Dimension(65, 72));
+        jButton24.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(jButton24);
 
         btncerrar_caja.setForeground(new java.awt.Color(102, 102, 102));
         btncerrar_caja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar48x48.png"))); // NOI18N
@@ -319,7 +321,24 @@ public void sede(){
                 btncerrar_cajaActionPerformed(evt);
             }
         });
-        jToolBar1.add(btncerrar_caja);
+        jToolBar2.add(btncerrar_caja);
+
+        jSeparator7.setBackground(new java.awt.Color(204, 204, 204));
+        jToolBar2.add(jSeparator7);
+
+        jSeparator2.setBackground(new java.awt.Color(204, 204, 204));
+        jToolBar2.add(jSeparator2);
+
+        jSeparator5.setBackground(new java.awt.Color(204, 204, 204));
+        jToolBar2.add(jSeparator5);
+
+        jSeparator6.setBackground(new java.awt.Color(204, 204, 204));
+        jToolBar2.add(jSeparator6);
+
+        jToolBar1.add(jToolBar2);
+
+        jSeparator4.setBackground(new java.awt.Color(204, 204, 204));
+        jToolBar1.add(jSeparator4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -428,7 +447,7 @@ public void sede(){
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+            .addComponent(Desktop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -436,7 +455,8 @@ public void sede(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
    private void btnTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketActionPerformed
-      if(estacerrado(t)){             
+       Comprobantes t = new Comprobantes(); 
+       if(estacerrado(t)){             
           Admision.Desktop.add(t);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           t.setFrameIcon(ticon);
@@ -459,6 +479,7 @@ public void sede(){
    }//GEN-LAST:event_btnTicketActionPerformed
 
    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+      Reporteador re = new Reporteador();
        if(estacerrado(re)){             
           Admision.Desktop.add(re);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -479,7 +500,8 @@ public void sede(){
    }//GEN-LAST:event_btnReportesActionPerformed
 
    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-      if(estacerrado(val)){             
+       Valorizacion val = new Valorizacion();
+       if(estacerrado(val)){             
           Admision.Desktop.add(val);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           val.setFrameIcon(ticon);
@@ -503,7 +525,7 @@ public void sede(){
    }//GEN-LAST:event_btncerrar_cajaActionPerformed
 
    private void btnrclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrclientesActionPerformed
- //RegistrarCliente r = new RegistrarCliente();
+ RegistrarCliente r = new RegistrarCliente();
        if (estacerrado(r)){
          Admision.Desktop.add(r);
          ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -534,7 +556,8 @@ public void sede(){
     }//GEN-LAST:event_btnBoletaActionPerformed
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
-       //  RegistrarCliente r = new RegistrarCliente();
+        RegistrarCliente r = new RegistrarCliente();
+        Factura fa= new Factura();
         if (estacerrado(fa)){
                   fa =new Factura();
          Admision.Desktop.add(fa);
@@ -550,7 +573,8 @@ public void sede(){
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void EmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpresasActionPerformed
-        // RegistrarCliente r = new RegistrarCliente();   
+         RegistrarCliente r = new RegistrarCliente();   
+         MenuEmpresas age= new MenuEmpresas();
         if (estacerrado(age)){
                   age =new MenuEmpresas();
          Admision.Desktop.add(age);
@@ -566,7 +590,8 @@ public void sede(){
     }//GEN-LAST:event_EmpresasActionPerformed
 
     private void ContratasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratasActionPerformed
-       //  RegistrarCliente r = new RegistrarCliente();
+         RegistrarCliente r = new RegistrarCliente();
+         MenuContrata cont= new MenuContrata();
         if (estacerrado(cont)){
                   cont =new MenuContrata();
          Admision.Desktop.add(cont);
@@ -582,7 +607,8 @@ public void sede(){
     }//GEN-LAST:event_ContratasActionPerformed
 
     private void ServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ServiciosActionPerformed
-      //  RegistrarCliente r = new RegistrarCliente();
+        RegistrarCliente r = new RegistrarCliente();
+        ServiciosGenerales sg=new ServiciosGenerales();
         if (estacerrado(sg)){
                   sg =new ServiciosGenerales();
          Admision.Desktop.add(sg);
@@ -599,6 +625,7 @@ public void sede(){
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
+        ControlFactura contfac=new ControlFactura();
         if(estacerrado(contfac)){             
           Admision.Desktop.add(contfac);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -620,6 +647,11 @@ public void sede(){
       sede neo= new sede();
       neo.setVisible(true);
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        importarExcel neo= new importarExcel();
+      neo.setVisible(true);
+    }//GEN-LAST:event_jButton24ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -663,6 +695,7 @@ public void sede(){
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
