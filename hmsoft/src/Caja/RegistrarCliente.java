@@ -1046,7 +1046,7 @@ this.chkAltaTrabCal.setVisible(false);
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 140, Short.MAX_VALUE))
+                .addGap(0, 156, Short.MAX_VALUE))
         );
 
         jtRegistroGeneral.addTab("Registro Clientes en General", jPanel5);
@@ -2133,7 +2133,7 @@ this.chkAltaTrabCal.setVisible(false);
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(btnActualizarEx)))
                                         .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(jTabbedPane1)))
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)))
                     .addComponent(jSeparator3))
                 .addGap(2, 2, 2))
         );
@@ -2303,12 +2303,12 @@ this.chkAltaTrabCal.setVisible(false);
                     .addComponent(btnLimpiar1))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(409, Short.MAX_VALUE))
+                .addContainerGap(425, Short.MAX_VALUE))
         );
 
         jtRegistroGeneral.addTab("Examenes que no pasa paciente ", jPanel10);
 
-        getContentPane().add(jtRegistroGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 2, -1, -1));
+        getContentPane().add(jtRegistroGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 2, -1, 740));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -11,9 +11,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -48,7 +51,7 @@ public class importarExcel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Cargar los datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -59,13 +62,14 @@ public class importarExcel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(160, 160, 160))
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jButton1)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,7 +84,23 @@ public class importarExcel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+public String hacer (Date fec)
+{
+       
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+String fechaComoCadena = sdf.format(fec);
+return fechaComoCadena;
+    
+}
+public String devolverDni(String da){
+String regresar=da;
+regresar=regresar.replace(".","");
+//System.out.println("llega el dni:"+regresar);
+regresar=regresar.substring(0,8);
 
+//System.out.println("llega el dni:"+regresar);
+return regresar;
+}
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser fileChooser = new JFileChooser();
        String ruta="";
@@ -96,21 +116,33 @@ ruta=fichero.getAbsolutePath().toString();
         try {
             //Connection conn = con.getConexion();
             FileInputStream file = new FileInputStream(new File(ruta));
-          
+           
             //HSSFWorkbook wb = new HSSFWorkbook(new FileInputStream("data.xls"));
-           if(ruta.contains("xlsx"))
+          if(ruta.contains("xlsx"))
            {
                  XSSFWorkbook wb = new XSSFWorkbook(file);
                  XSSFSheet sheet = wb.getSheetAt(0);
                  int numFilas = sheet.getLastRowNum();
                  System.out.println("entro en xlsx");
-                        for (int a = 0; a <= numFilas; a++) {
+                        for (int a = 1; a <= numFilas; a++) {
                          Row fila = sheet.getRow(a);
-                         
- sql="SELECT spfuncionRegistroAutomaticoPaciente();";                  
+sql="SELECT spfuncionRegistroAutomaticoPaciente('"+      
+                       hacer(fila.getCell(1).getDateCellValue())+"','"+fila.getCell(2).getStringCellValue()+"',"+
+                      devolverDni(String.valueOf( fila.getCell(3).getNumericCellValue()))+",'"+fila.getCell(4).getStringCellValue()+"','"+
+                       fila.getCell(5).getStringCellValue()+"','"+fila.getCell(6).getStringCellValue()+"','"+
+                       fila.getCell(7).getStringCellValue()+"','"+ fila.getCell(8).getStringCellValue()+"','"+
+                       fila.getCell(9).getStringCellValue()+"','"+ fila.getCell(10).getStringCellValue()+"','"+
+                       fila.getCell(11).getStringCellValue()+"','"+ fila.getCell(12).getStringCellValue()+"','"+
+                       fila.getCell(13).getStringCellValue()+"','"+ fila.getCell(14).getStringCellValue()+"','"+
+                       fila.getCell(15).getStringCellValue()+"','"+ fila.getCell(16).getStringCellValue()+"','"+
+                       fila.getCell(17).getStringCellValue()+"','"+ fila.getCell(18).getStringCellValue()+"','"+
+                       fila.getCell(19).getStringCellValue()+"','"+ fila.getCell(20).getStringCellValue()+"');"
      
-    oConn.FnBoolQueryExecute(sql);
+        ;             System.out.println(sql);       
+                        oConn.FnBoolQueryExecute(sql);
                           //consulta
+                   JOptionPane.showMessageDialog(null, "Se envio los resgistros del excel");
+
                         }
             }
            else 
@@ -119,10 +151,22 @@ ruta=fichero.getAbsolutePath().toString();
                    HSSFSheet sheet = wb.getSheetAt(0);
                      int numFilas = sheet.getLastRowNum();
                          System.out.println("entro en xls");
-                        for (int a = 0; a <= numFilas; a++) {
+                        for (int a = 1; a <= numFilas; a++) {
                          Row fila = sheet.getRow(a);
-
-                          //consulta
+sql="SELECT spfuncionRegistroAutomaticoPaciente('"+                          
+                       fila.getCell(1).getStringCellValue()+"','"+fila.getCell(2).getStringCellValue()+"',"+
+                       fila.getCell(3).getNumericCellValue()+",'"+fila.getCell(4).getStringCellValue()+"','"+
+                       fila.getCell(5).getStringCellValue()+"','"+fila.getCell(6).getStringCellValue()+"','"+
+                       fila.getCell(7).getStringCellValue()+"','"+ fila.getCell(8).getStringCellValue()+"','"+
+                       fila.getCell(9).getStringCellValue()+"','"+ fila.getCell(10).getStringCellValue()+"','"+
+                       fila.getCell(11).getStringCellValue()+"','"+ fila.getCell(12).getStringCellValue()+"','"+
+                       fila.getCell(13).getStringCellValue()+"','"+ fila.getCell(14).getStringCellValue()+"','"+
+                       fila.getCell(15).getStringCellValue()+"','"+ fila.getCell(16).getStringCellValue()+"','"+
+                       fila.getCell(17).getStringCellValue()+"','"+ fila.getCell(18).getStringCellValue()+"','"+
+                       fila.getCell(19).getStringCellValue()+"','"+ fila.getCell(20).getStringCellValue()+"');";
+   System.out.println(sql);
+                     oConn.FnBoolQueryExecute(sql);
+                     JOptionPane.showMessageDialog(null, "Se envio los resgistros del excel");
                         } 
              }
    } catch (FileNotFoundException ex) {

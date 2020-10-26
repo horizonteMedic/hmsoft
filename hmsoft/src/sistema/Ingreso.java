@@ -37,6 +37,7 @@ public final class Ingreso extends javax.swing.JFrame {
     
    clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
+   public String seded="";
    public JComboBox cboEmpresa;
    public static String  nombresede;
    String emp;
@@ -48,7 +49,7 @@ public final class Ingreso extends javax.swing.JFrame {
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("cloud.properties");
+            in = new FileInputStream("configuracion.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,7 +62,7 @@ public final class Ingreso extends javax.swing.JFrame {
            String db = props.getProperty("dataBaseCatalog");
            String username = props.getProperty("dataBaseUser");
            String password = props.getProperty("dataBasePassword");
-
+           seded=props.getProperty("nameSede");
       if (! oConn.FnBoolConnectionOpen("org.postgresql.Driver", "jdbc:postgresql://"+url+ ":5432/"+ db,username,password))
         {
           JOptionPane.showMessageDialog(null,"No se logro la conexion al Host");
@@ -483,7 +484,8 @@ private void CargarSedes(){
         }
         
         // selecciona
-        cboSede.setSelectedIndex(1);
+        cboSede.setSelectedItem(seded);
+        //cboSede.setSelectedIndex(1);
 
 
 }
