@@ -39,6 +39,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public final class ResumenInformacion extends javax.swing.JInternalFrame {
  clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
+   int total=0, rojof=0;
 //public static Observados addObsv;
    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
    javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
@@ -51,8 +52,10 @@ String[]Triaje = new String[]{};
    public ResumenInformacion() {
       initComponents();
        sbCargarDatosOcupacional("");
+        
+     //  calularDespuesInicio();
        jtTriaje.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/reportes.png")));
-       
+      darResultadoConteo(); 
    }
 
    @SuppressWarnings("unchecked")
@@ -82,6 +85,9 @@ String[]Triaje = new String[]{};
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Resumen Informacion ");
@@ -239,6 +245,18 @@ String[]Triaje = new String[]{};
             }
         });
 
+        jLabel3.setText("TOTAL:");
+
+        txtTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTotal.setForeground(new java.awt.Color(0, 51, 255));
+
+        jButton3.setText("CALCULAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -254,47 +272,62 @@ String[]Triaje = new String[]{};
                             .addComponent(jButton1)
                             .addComponent(btnDetalle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCompletos, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtFaltantes, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)))
-                        .addGap(0, 241, Short.MAX_VALUE))))
+                                .addComponent(txtFaltantes))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(txtCompletos, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addGap(0, 94, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addComponent(btnDetalle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCompletos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtFaltantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtCompletos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtFaltantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(31, 31, 31))
+                                .addGap(5, 5, 5)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDetalle)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                                .addComponent(jButton1)))))
-                .addComponent(jtTriaje, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
+                                .addGap(14, 14, 14)
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)))
+                        .addGap(27, 27, 27)))
+                .addComponent(jtTriaje, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -327,6 +360,7 @@ String[]Triaje = new String[]{};
                Logger.getLogger(ResumenInformacion.class.getName()).log(Level.SEVERE, null, ex);
            }
            sbCargarDatosOcupacional1(fecha);
+           darResultadoConteo();
         }
        
         if (evt.getClickCount() == 2) 
@@ -385,7 +419,12 @@ String[]Triaje = new String[]{};
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         txtBuscarCod.setText(null);
         sbCargarDatosOcupacional("");
+        darResultadoConteo();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      darResultadoConteo();
+    }//GEN-LAST:event_jButton3ActionPerformed
     public void dato(){
         Observados o = new Observados();
         String s= txtBuscarCod.getText();
@@ -403,8 +442,10 @@ String[]Triaje = new String[]{};
     private javax.swing.JCheckBox chkPacientes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel9;
@@ -419,6 +460,7 @@ String[]Triaje = new String[]{};
     private javax.swing.JTextField txtCompletos;
     private javax.swing.JTextField txtFaltantes;
     private com.toedter.calendar.JDateChooser txtFecha;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
        
     private void abrirDialoj(){
@@ -428,6 +470,7 @@ String[]Triaje = new String[]{};
     
     }    
 void sbCargarDatosOcupacional(String valor){
+    
     String [] titulos={"N°Orden","Nombre","Fecha","H.Entrada","Empresa","Contrata","T.Examen","Cargo","F.Aptitud","Estado","F.Salida","H_Salida","T.Pago"};
     String [] registros = new String[13];
     String sql="";
@@ -633,9 +676,13 @@ void sbCargarDatosOcupacional(String valor){
                
                   // Coloca el Modelo de Nueva Cuenta
                   tbTriaje.setModel(model);
+             
+               
+
                   sbTablaResumen();
                  // Cierra Resultados
                  oConn.setResult.close();
+                 
             } 
             catch (SQLException ex) 
             {
@@ -644,8 +691,27 @@ void sbCargarDatosOcupacional(String valor){
                 Logger.getLogger(ResumenInformacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    
+      total=tbTriaje.getRowCount();
+        txtTotal.setText(String.valueOf(total));
+               //  System.out.println("total1:"+txtTotal.getText());
+               
+              
+
+ 
 }
+
+public void darResultadoConteo(){
+    int contador=0;
+for(int i=0;i<total;i++)
+{
+if(String.valueOf(tbTriaje.getValueAt(i, 8)).equals("FALTA"))
+    contador++;
+}
+        txtFaltantes.setText(String.valueOf(contador));
+        txtCompletos.setText(String.valueOf(total-contador));
+
+}
+
 public static final  DefaultTableCellRenderer DEFAULT_RENDERER = new DefaultTableCellRenderer();
 private DefaultTableCellRenderer colorCelda(){
     DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer(){
@@ -662,7 +728,13 @@ private DefaultTableCellRenderer colorCelda(){
              }else if(valid1){
                  setBackground(Color.orange );
              }else{
-                 setBackground(Color.red );
+              
+                 //rojof=rojof+1;
+                 setBackground(Color.RED );
+              //  System.out.println("pinto redd");
+               //  rojof=rojof+1;
+               //  System.out.println("el valor de redd es"+rojof);
+                 //rojof=rojof+1;
              }
              if(isSelected){
                 setBackground(Color.lightGray );
@@ -703,6 +775,7 @@ private DefaultTableCellRenderer colorCelda(){
 //    }
 //}
     private void sbTablaResumen() {
+    //    System.out.println("entro en resumen");
         tbTriaje.getColumnModel().getColumn(0).setMinWidth(50);
         tbTriaje.getColumnModel().getColumn(0).setMaxWidth(50);
 //tbTriaje.getColumnModel().getColumn(1).setMinWidth(130);//260
@@ -817,11 +890,13 @@ public int calcularEdad(Calendar fechaNac){
         }
     }
 void sbCargarDatosOcupacional1(Date valor){
+      rojof=0;
+  //  total=tbTriaje.getSelectedRowCount();
     String [] titulos={"N°Orden","Nombre","Fecha","H.Entrada","Empresa","Contrata","T.Examen","Cargo","F.Aptitud","Estado","F.Salida","H_Salida","T.Pago"};
     String [] registros = new String[13];
     String sql="";
     if(!txtBuscarCod.getText().isEmpty()){
-     
+     System.out.println("entro al hacerle click");
         sql ="select n_orden_ocupacional.n_orden, "
             + "datos_paciente.nombres_pa||''||datos_paciente.apellidos_pa AS nombres, "
             + " n_orden_ocupacional.fecha_apertura_po,n_orden_ocupacional.n_hora,n_orden_ocupacional.tipo_pago,"
@@ -973,6 +1048,8 @@ void sbCargarDatosOcupacional1(Date valor){
                     this.tbTriaje.setDefaultRenderer(Object.class, colorCelda());
                             
                      model.addRow(registros);
+                     
+
                 }
                
                   // Coloca el Modelo de Nueva Cuenta
@@ -989,9 +1066,13 @@ void sbCargarDatosOcupacional1(Date valor){
             }
         }
     }
-    txtCompletos.setText(String.valueOf(cont));
-    txtFaltantes.setText(String.valueOf(cont1));
+      total=tbTriaje.getRowCount();
+        txtTotal.setText(String.valueOf(total));
+             
+    //txtCompletos.setText(String.valueOf(cont));
+   // txtFaltantes.setText(String.valueOf(cont1));
     cont=0;
     cont1=0;
+   
 }
 }

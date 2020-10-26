@@ -235,7 +235,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         vSql += ",n.nom_examen AS EXAMEN ";
                          }
                         vSql+= ",n.txtobserv1 AS OBSERV1 ";
-                        vSql+= ",n.txtobserv1 AS OBSERV2 ";
+                        vSql+= ",n.txtobserv2 AS OBSERV2 ";
                          if(chk9.isSelected()== true){
                          vSql += ",n.n_fisttest as FISTTEST ";
                          }

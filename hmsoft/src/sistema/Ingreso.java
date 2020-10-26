@@ -48,7 +48,7 @@ public final class Ingreso extends javax.swing.JFrame {
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("configuracion.properties");
+            in = new FileInputStream("cloud.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }

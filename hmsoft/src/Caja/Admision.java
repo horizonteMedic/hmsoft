@@ -82,6 +82,7 @@ public void sede(){
         jButton22 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
+        jButton25 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         btncerrar_caja = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
@@ -288,6 +289,23 @@ public void sede(){
             }
         });
         jToolBar2.add(jButton23);
+
+        jButton25.setForeground(new java.awt.Color(102, 102, 102));
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hotels.png"))); // NOI18N
+        jButton25.setMnemonic(KeyEvent.VK_F6);
+        jButton25.setText("HOTEL");
+        jButton25.setToolTipText("F6 (Recoger Análisis Clinicos)");
+        jButton25.setFocusable(false);
+        jButton25.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton25.setMaximumSize(new java.awt.Dimension(80, 72));
+        jButton25.setMinimumSize(new java.awt.Dimension(65, 72));
+        jButton25.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(jButton25);
 
         jButton24.setForeground(new java.awt.Color(102, 102, 102));
         jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excelImporte.png"))); // NOI18N
@@ -537,7 +555,7 @@ public void sede(){
          r.moveToFront();
           //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
       }
-      
+   
    }//GEN-LAST:event_btnrclientesActionPerformed
 
     private void btnBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoletaActionPerformed
@@ -652,6 +670,11 @@ public void sede(){
         importarExcel neo= new importarExcel();
       neo.setVisible(true);
     }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        hoteles hot= new hoteles();
+      hot.setVisible(true);
+    }//GEN-LAST:event_jButton25ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -696,6 +719,7 @@ public void sede(){
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
