@@ -56,6 +56,7 @@ String[]Triaje = new String[]{};
      //  calularDespuesInicio();
        jtTriaje.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/reportes.png")));
       darResultadoConteo(); 
+      jButton3.setVisible(false);
    }
 
    @SuppressWarnings("unchecked")

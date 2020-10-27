@@ -2989,6 +2989,48 @@ int seleccion = JOptionPane.showOptionDialog(
         return bResultado;
 
     }
+    public boolean OrdenExiste1() {
+        boolean bResultado = false;
+
+        String sQuery;
+                //System.out.println("enro al orden existe 1");
+
+        sQuery = "Select n_orden from n_orden_ocupacional Where cod_pa=" + txtDniAlta.getText().toString()+"";
+ 
+        //System.out.println("paso al orden existe 1");
+        //Ejecuta el Query
+        oConn.FnBoolQueryExecute(sQuery);
+
+        // Capturo el Error
+        try {
+
+            // Verifico que haya habido resultados
+            if (oConn.setResult.next()) {
+                // Resultado
+                bResultado = true;
+                
+                oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+              // System.out.println("el valor de bresutltado antes "+bResultado);
+                //limpiar();
+            }
+
+            // Cierro los Resultados
+            oConn.setResult.close();
+                //        System.out.println("el valor de bresutltado"+bResultado);
+
+        } catch (SQLException ex) {
+
+        }
+
+        return bResultado;
+
+    }
+    
+    
+    
+    
+    
+    
     private void cboAreaPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboAreaPopupMenuWillBecomeInvisible
         // TODO add your handling code here:
     }//GEN-LAST:event_cboAreaPopupMenuWillBecomeInvisible
@@ -3076,6 +3118,9 @@ int seleccion = JOptionPane.showOptionDialog(
             oFunc.SubSistemaMensajeError("Ingrese DNI de Trabajador");
         } else {
             if (!OrdenExiste()) {
+          
+//                System.out.println("pasoe el orden existe");
+                
                 String sql;
 //                sql = "select nombres_pa, apellidos_pa from datos_paciente where cod_pa ='" + txtDniAlta.getText().toString() + "'";
 //                sql="select dp.nombres_pa, dp.apellidos_pa,count(l.fecha_lab) as pasado,l.chko ,l.chka ,l.chkb ,l.chkab, \n" +
@@ -3136,10 +3181,102 @@ int seleccion = JOptionPane.showOptionDialog(
                     oFunc.SubSistemaMensajeError(ex.toString());
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                         //   System.out.println("apunto de entrar al orden existe 1");
+
+                if(OrdenExiste1())
+                {
+                      // System.out.println("apunto de cargar datos");
+                cargarDatosPaciente();
+                
+                }
+                
+                
+                
             }
         }
     }//GEN-LAST:event_txtDniAltaActionPerformed
+public void cargarDatosPaciente(){
+       System.out.println("enro para cargar datos");
+            jComboBoxHotel.setSelectedIndex(0);
+            AltaDesabilitar();
+            Integer cod = Integer.valueOf(txtDniAlta.getText().toString());
+            //   System.out.println("el valor de cod es:"+cod);
+            String Sql = "SELECT d.nombres_pa,d.apellidos_pa ,n.n_orden, n.cod_pa, n.razon_empresa, n.razon_contrata, n.nom_ex, n.altura_po, "
+                    + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
+                    + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
+                    + "n.visual_compl,n.trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,"
+                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel "
+                    + "FROM n_orden_ocupacional AS n  "
+                    + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
+                    + "WHERE n.cod_pa = " + cod+" order by n_orden desc limit 1;";
+            String stip;
+            boolean pago=false;
+            boolean pago1=false;
+            boolean pago2=false;
+            oConn.FnBoolQueryExecute(Sql);
+            try {
+                if (oConn.setResult.next()) {
+                    txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
+                    txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
+                    txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
+                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
+                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
+                    txtMedico.setText(oConn.setResult.getString("n_medico"));
+                    txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
+                    cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
+                    cboExamenMedico.setSelectedItem(oConn.setResult.getString("nom_examen"));
+                    cboExplotacion.setSelectedItem(oConn.setResult.getString("nom_ex"));
+                    cboMineralExp.setSelectedItem(oConn.setResult.getString("mineral_po"));
+                    cboAltura.setSelectedItem(oConn.setResult.getString("altura_po"));
+                    txtPrecio.setText(oConn.setResult.getString("precio_po"));
+                    txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                    txtNorden.setText(oConn.setResult.getString("n_orden"));
+                    cboTipoExamen.setSelectedItem(oConn.setResult.getString("tipoprueba"));
+                    jComboBoxHotel.setSelectedItem(oConn.setResult.getString("nombrehotel"));
+                      if(cboTipoExamen.getSelectedItem().toString().equals("PC"))
+                        jComboBoxHotel.setEnabled(true);
+                             else
+                             jComboBoxHotel.setEnabled(false);
+                    stip=oConn.setResult.getString("tipo_pago");
+                     if("EFECTIVO".equals(stip)){
+                        pago=true;
+                     } 
+                     if("CREDITO".equals(stip)){
+                        pago1=true;
+                    }
+                      if("DEPOSITO".equals(stip)){
+                        pago2=true;
+                    }
+                    rbCredito.setSelected(pago1);
+                    rbEfectivo.setSelected(pago);
+                    rbDeposito.setSelected(pago2);
+                    chkAltaFist.setSelected(oConn.setResult.getBoolean("n_fisttest"));
+                    chkAltaPsicosen.setSelected(oConn.setResult.getBoolean("n_psicosen"));
+                    chkAltaTestAltura.setSelected(oConn.setResult.getBoolean("n_testaltura"));
+                    chkAltaVisualCom.setSelected(oConn.setResult.getBoolean("visual_compl"));
+                    chkAltaTrabCal.setSelected(oConn.setResult.getBoolean("trab_calientes"));
+                    chkAltaCovid1.setSelected(oConn.setResult.getBoolean("chkcovid1"));
+                    chkAltaCovid2.setSelected(oConn.setResult.getBoolean("chkcovid2"));
+                    txtGS.setText(oConn.setResult.getString("gruposan"));
+                    txtNumColor.setText(oConn.setResult.getString("color"));
+                    txtGrupoSan.setText(oConn.setResult.getString("grupofactorsan"));
+                    jLabel44.setText(oConn.setResult.getString("cod_clinica"));
+                    chkAltaManipAlimen.setSelected(oConn.setResult.getBoolean("manip_alimentos"));
+                    txtObserv1.setText(oConn.setResult.getString("txtobserv1"));
+                    txtObserv2.setText(oConn.setResult.getString("txtobserv2"));
+                    if(nomsede.equals("Trujillo")){
+                            jLabel44.setText(txtNorden.getText()+" - T");
+                    }else {
+                        jLabel44.setText(txtNorden.getText()+" - H");
+                    }
+                    txtDniAlta.setEditable(false);
+                    hBotones(true);
+                    oConn.setResult.close();
+                }
+            } catch (Exception e) {
+            }
 
+}
     private void txtDniAltaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniAltaKeyReleased
         if (evt.getKeyCode() == 112) // F1 = 112
         {
