@@ -72,7 +72,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     public static AddAlturaPo addAlturaPo;
     public static VerUltimoRegistro verUltimoRegistro;
     public static addAreaOcupacioal areaOcupacional;
-    String num;
+    String num,agregarConsulta="";
     
     String dni;
     DefaultTableModel model;
@@ -182,7 +182,7 @@ public void comunirApiReniecDesconocida(){
            InputStream in = new BufferedInputStream(conn.getInputStream());
            String result = IOUtils.toString(in, "UTF-8");
            JSONObject myResponse = new JSONObject(result);
-     System.out.println("el resultado:"+myResponse);
+  //   System.out.println("el resultado:"+myResponse);
            // JSONObject myResponse2 = myResponse.getJSONObject("data");
          // System.out.println("RESPUESTA es: "+myResponse2.toString());
       //   codeee=myResponse2.get("code").toString();
@@ -214,6 +214,7 @@ return retornar;
 }
 
 public void valorsede(){
+    jCheckBox11.setSelected(true);
    nomsede=objet.nombresede;
     jLabel48.setText(nomsede);
     String sQuery;        
@@ -241,7 +242,7 @@ public void valorsede(){
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-         
+        agregarConsulta="and n.cod_sede="+codigosede; 
       
     }
 
@@ -470,6 +471,7 @@ this.chkAltaTrabCal.setVisible(false);
         cboTipoExamen = new javax.swing.JComboBox();
         jLabel37 = new javax.swing.JLabel();
         jComboBoxHotel = new javax.swing.JComboBox<>();
+        jCheckBox11 = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -1841,7 +1843,7 @@ this.chkAltaTrabCal.setVisible(false);
         chkManipAliment.setText("MANIP.ALIMEN.");
 
         cboTipoExamen.setEditable(true);
-        cboTipoExamen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "seleccione por favor" }));
+        cboTipoExamen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "N/A" }));
         cboTipoExamen.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -1875,7 +1877,14 @@ this.chkAltaTrabCal.setVisible(false);
 
         jLabel37.setText("TIPO PRUEBA");
 
-        jComboBoxHotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin Hotel" }));
+        jComboBoxHotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A" }));
+
+        jCheckBox11.setText("Solo mi sede");
+        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox11ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1984,9 +1993,15 @@ this.chkAltaTrabCal.setVisible(false);
                                 .addComponent(rbNeg)))))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2038,14 +2053,18 @@ this.chkAltaTrabCal.setVisible(false);
                                         .addComponent(rbNeg, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGap(2, 2, 2)
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                            .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                                .addComponent(jCheckBox11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))))
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel41)
@@ -2646,8 +2665,8 @@ this.chkAltaTrabCal.setVisible(false);
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
                 }
-                 System.out.println(strSqlStmt);   
-                
+          //       System.out.println(strSqlStmt);   
+               
             }
 
         }
@@ -2857,8 +2876,8 @@ public void agregarAltaEpidemiologica(String numero){
         txtDniAlta.requestFocus();
         
    }
-    private void btnGuardarAperturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAperturarActionPerformed
-        if (ValidarAlta()) {
+  public void insertarRegistros(){
+         if (ValidarAlta()) {
             String stip=null;
             if(rbCredito.isSelected()){
                  stip="CREDITO";
@@ -2929,6 +2948,9 @@ public void agregarAltaEpidemiologica(String numero){
         } else {
             oFunc.SubSistemaMensajeError("Llene todos los Campos");
         }
+  }
+    private void btnGuardarAperturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAperturarActionPerformed
+ insertarRegistros();
     }//GEN-LAST:event_btnGuardarAperturarActionPerformed
    private boolean imprimir(){
     boolean im = false;
@@ -2944,7 +2966,7 @@ int seleccion = JOptionPane.showOptionDialog(
     if (seleccion != -1)
     {
    if((seleccion + 1)==1)
-   {    System.out.println("el numero es "+Integer.valueOf(num));
+   {  //  System.out.println("el numero es "+Integer.valueOf(num));
         printer(Integer.valueOf(num));
    //   printer(Integer.valueOf(txtNorden.getText().toString()));
        im = true;
@@ -3196,9 +3218,9 @@ int seleccion = JOptionPane.showOptionDialog(
         }
     }//GEN-LAST:event_txtDniAltaActionPerformed
 public void cargarDatosPaciente(){
-       System.out.println("enro para cargar datos");
+  //     System.out.println("enro para cargar datos");
             jComboBoxHotel.setSelectedIndex(0);
-            AltaDesabilitar();
+           // AltaDesabilitar();
             Integer cod = Integer.valueOf(txtDniAlta.getText().toString());
             //   System.out.println("el valor de cod es:"+cod);
             String Sql = "SELECT d.nombres_pa,d.apellidos_pa ,n.n_orden, n.cod_pa, n.razon_empresa, n.razon_contrata, n.nom_ex, n.altura_po, "
@@ -3208,7 +3230,9 @@ public void cargarDatosPaciente(){
                     + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
-                    + "WHERE n.cod_pa = " + cod+" order by n_orden desc limit 1;";
+                    + "WHERE n.cod_pa = " + cod  +agregarConsulta+" order by n_orden desc limit 1;";
+               //     System.out.println("la consulta es:"+Sql);
+
             String stip;
             boolean pago=false;
             boolean pago1=false;
@@ -3230,7 +3254,7 @@ public void cargarDatosPaciente(){
                     cboAltura.setSelectedItem(oConn.setResult.getString("altura_po"));
                     txtPrecio.setText(oConn.setResult.getString("precio_po"));
                     txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
-                    txtNorden.setText(oConn.setResult.getString("n_orden"));
+                   // txtNorden.setText(oConn.setResult.getString("n_orden"));
                     cboTipoExamen.setSelectedItem(oConn.setResult.getString("tipoprueba"));
                     jComboBoxHotel.setSelectedItem(oConn.setResult.getString("nombrehotel"));
                       if(cboTipoExamen.getSelectedItem().toString().equals("PC"))
@@ -3270,7 +3294,7 @@ public void cargarDatosPaciente(){
                         jLabel44.setText(txtNorden.getText()+" - H");
                     }
                     txtDniAlta.setEditable(false);
-                    hBotones(true);
+                   // hBotones(true);
                     oConn.setResult.close();
                 }
             } catch (Exception e) {
@@ -3289,10 +3313,19 @@ public void cargarDatosPaciente(){
     }//GEN-LAST:event_txtDniAltaKeyTyped
 
     private void tbOcupacionalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbOcupacionalMousePressed
+        
+        try {
         if (evt.getClickCount() == 2) {
+       //     System.out.println("va entrar en el cod de 2 click");
             Integer cod = Integer.valueOf(tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString());
-            print(cod);
+                        System.out.println("el cod es:"+cod);
 
+            print(cod);
+        //    System.out.println("paso en print");
+
+        }
+        }catch(Exception e){
+         JOptionPane.showMessageDialog(null, e);
         }
         if (evt.getClickCount() == 1 ) {
                     jComboBoxHotel.setSelectedIndex(0);
@@ -3305,7 +3338,9 @@ public void cargarDatosPaciente(){
                     + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
-                    + "WHERE n.n_orden = " + cod;
+                    + "WHERE n.n_orden = " + cod +agregarConsulta;
+             //      System.out.println("la consulta es:"+Sql);
+
             String stip;
             boolean pago=false;
             boolean pago1=false;
@@ -3534,7 +3569,9 @@ public void cargarDatosPaciente(){
                     + "n.color,n.gruposan,n.grupofactorsan,n.cod_clinica "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
-                    + "WHERE n.n_orden = " + cod;
+                    + "WHERE n.n_orden = " + cod  +agregarConsulta;
+             //      System.out.println("la consulta es:"+Sql);
+
             String stip;
             boolean pago=false;
             oConn.FnBoolQueryExecute(Sql);
@@ -4120,6 +4157,17 @@ private void CargarTipoExamenes(){
                              else
                              jComboBoxHotel.setEnabled(false);
     }//GEN-LAST:event_cboTipoExamenMouseEntered
+
+    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
+        if(jCheckBox11.isSelected())
+        {
+            agregarConsulta="";
+            agregarConsulta=" and n.cod_sede="+codigosede;
+        }
+        else
+        agregarConsulta="";
+
+    }//GEN-LAST:event_jCheckBox11ActionPerformed
   private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -4437,7 +4485,7 @@ private void CargarTipoExamenes(){
                 +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"  
                 +" left join constancia_salud_marsa as csm ON (csm.n_orden=n.n_orden)" 
                 +" left join constancia_tamizaje_covid19 as ctc ON (n.n_orden=ctc.n_orden)"
-                + "where n.n_orden=" + valor + "";
+                + "where n.n_orden=" + valor  +agregarConsulta;
         }else{
             Sql= "select d.nombres_pa||''||d.apellidos_pa AS nombres, n.fecha_apertura_po,"
                 + "n.n_orden,n.razon_empresa,n.razon_contrata,n.nom_examen,ca.n_orden as aptitud,"
@@ -4453,9 +4501,10 @@ private void CargarTipoExamenes(){
                 +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"  
                 +" left join constancia_salud_marsa as csm ON (csm.n_orden=n.n_orden)" 
                 +" left join constancia_tamizaje_covid19 as ctc ON (n.n_orden=ctc.n_orden)"
-                + "where CONCAT(nombres_pa,' ',apellidos_pa) LIKE '%" + valor + "%'"
+                + "where CONCAT(nombres_pa,' ',apellidos_pa) LIKE '%" + valor + "%' "  +agregarConsulta
                 + " order by n.n_orden desc limit 40";
         }
+    //    System.out.println("la consulta es:"+Sql);
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         if (oConn.FnBoolQueryExecute(Sql)) {
             try {
@@ -4599,6 +4648,7 @@ private void CargarTipoExamenes(){
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;

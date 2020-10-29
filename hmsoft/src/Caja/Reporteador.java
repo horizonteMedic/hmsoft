@@ -47,6 +47,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import sistema.Audiometria;
+import sistema.Ingreso;
 
 
 /**
@@ -57,10 +58,16 @@ public class Reporteador extends javax.swing.JInternalFrame {
         DefaultTableModel model;        
    clsConnection oConn = new clsConnection();
          clsFunciones  oFunc = new clsFunciones();
+         Ingreso objet= new Ingreso();
+          String nomsede,nombre;
+          String agregarConsulta="";
+          int marcador=1;
+   int codigosede;
     public Reporteador() {
         initComponents();
         personalizado(false);
         Columnas(true);   
+        valorsede();
         new ajTextField.autocompleterText(txtEmpresa, "razon_empresa", "empresas");
        new ajTextField.autocompleterText(txtContrata, "razon_contrata", "contratas");
     }
@@ -111,6 +118,40 @@ public class Reporteador extends javax.swing.JInternalFrame {
     chk15.setSelected(true);
     chk16.setSelected(true);
     
+    }
+    
+    public void valorsede(){
+   nomsede=objet.nombresede;
+   nombre=nomsede;
+   // jLabel48.setText(nomsede);
+   jCheckBox1.setSelected(true);
+    String sQuery;        
+        // Prepara el Query
+        sQuery ="select cod_sede from sede where nombre_sede= '"+nomsede+"';";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     codigosede=oConn.setResult.getInt("cod_sede");
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+         agregarConsulta="and n.cod_sede="+codigosede;
+      
     }
     private void cOrdenServicio(){
                
@@ -447,6 +488,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
         chkRepManipAlimen = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("Reporte para control Interno e Impresion detallada");
@@ -863,6 +905,13 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }
         });
 
+        jCheckBox1.setText("Solo mi sede");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -875,6 +924,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -943,7 +994,11 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jCheckBox1)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkRepTestAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1262,6 +1317,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
 "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
 "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
+                    "     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
+                        "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
 "     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.'  END AS NUMEXACOVID, \n" +
 "CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
 "     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM, \n" +
@@ -1306,8 +1363,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
         vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
      } 
     
-      vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
-        if (oConn.FnBoolQueryExecute(vSql)) {
+      vSql+="and n.nom_examen='COVID-19' "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
+      System.out.println("la consulta aplicada es:"+vSql);
+      if (oConn.FnBoolQueryExecute(vSql)) {
             try {
                 java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                 int CantidaColumnas = rsmt.getColumnCount();
@@ -1343,6 +1401,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }};
             String vSql="SELECT n.n_orden,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
                     "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
+                      "     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
+                        "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
                     "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
 "             WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.' END AS NUMPRUEBA,\n" +
 "       CASE WHEN n.n_orden is not null THEN 'DNI' ELSE '.' END AS TIPODOC,\n" +
@@ -1409,7 +1469,11 @@ public class Reporteador extends javax.swing.JInternalFrame {
         vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
      } 
     
-      vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
+      //vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";  
+  vSql+="and n.nom_examen='COVID-19' "+agregarConsulta+" order by n.n_orden asc";   
+        System.out.println("la consulta aplicada es:"+vSql);
+//      
+//oFunc.SubSistemaMensajeInformacion(vSql);      
         if (oConn.FnBoolQueryExecute(vSql)) {
             try {
                 java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
@@ -1436,6 +1500,20 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+       if(jCheckBox1.isSelected())
+       {   nomsede=nombre;
+           agregarConsulta="";
+           agregarConsulta="and n.cod_sede="+codigosede;
+       } 
+       else
+       {
+           nomsede="Todas las sedes";
+           agregarConsulta="";
+       }
+           
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -1501,14 +1579,25 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 ///////////////////////////////
         // oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getColumnCount()));
             //   oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getRowCount()));
+            
             for (int i = 0; i < table.getRowCount() ; i++) {
                 
                if (i == 0) {
                    HSSFRow fila = hoja.createRow(i);
                  for (int j = 0; j < table.getColumnCount() ; j++) {
+                     
                         HSSFCell celda = fila.createCell(j);
                         celda.setCellValue(new HSSFRichTextString(table.getColumnModel().getColumn(j).getHeaderValue().toString().toUpperCase()));
                        celda.setCellStyle(estiloCelda);
+                   if(marcador==1){
+                       HSSFCell celda12 = fila.createCell(12);
+                        celda12.setCellValue(new HSSFRichTextString("SEDE:".toUpperCase()));
+                       celda12.setCellStyle(estiloCelda2);
+                     HSSFCell celda13 = fila.createCell(13);
+                        celda13.setCellValue(new HSSFRichTextString(nomsede.toUpperCase()));
+                       celda13.setCellStyle(estiloCelda2);
+                       marcador=3;
+                   }
                    }
               } //else {
                     HSSFRow fila = hoja.createRow(i+1);
@@ -1533,7 +1622,7 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
             }
           oFunc.SubSistemaMensajeInformacion("REPORTE COMPLETO");
  }
-
+marcador=1;
 }
 
 
@@ -1582,6 +1671,7 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

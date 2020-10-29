@@ -540,6 +540,10 @@ public void calcularTipoexamen(){
 }
 // FALTA REVISAR ESTE
     public void altaSinAE(){
+        System.out.println("entro a sin AE");
+              Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String fecha1=dateFormat.format(date); 
     String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
                + "d.fecha_nacimiento_pa,n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
             "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,e.fecha_examen "
@@ -547,7 +551,9 @@ public void calcularTipoexamen(){
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                + "WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
-               + " limit 1;";
+                + " and e.fecha_examen<>'"+fecha1+"' order by n.n_orden desc limit 1;";
+            System.out.println("la consulta es:"+Sql);
+
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
