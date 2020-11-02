@@ -2169,39 +2169,37 @@ clsConnection oConn = new clsConnection();
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLimpiarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGrabarIn))
-                .addContainerGap(185, Short.MAX_VALUE))
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel65)
                     .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGrabarIn)
+                            .addComponent(btnLimpiarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel65)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addComponent(jLabel66)
+                                        .addGap(27, 27, 27))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                                        .addComponent(jLabel73)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(FechaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSaturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(67, 67, 67)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addComponent(jLabel66)
-                                .addGap(27, 27, 27))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                                .addComponent(jLabel73)
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FechaHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSaturacion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(67, 67, 67)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(chkAsintomatico)
-                        .addGap(32, 32, 32)
-                        .addComponent(chkSintomatico)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(chkAsintomatico)
+                                .addGap(32, 32, 32)
+                                .addComponent(chkSintomatico))
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(chkDificultadR)
@@ -2212,23 +2210,20 @@ clsConnection oConn = new clsConnection();
                                     .addComponent(chkMalestar))
                                 .addGap(2, 2, 2)
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkDiarrea)
+                                    .addComponent(chkExpctoracion)
+                                    .addComponent(chkDolor)
+                                    .addComponent(chkCefalea)
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addComponent(chkNauseas)
+                                        .addGap(145, 145, 145)
+                                        .addComponent(jLabel74))
                                     .addGroup(jPanel10Layout.createSequentialGroup()
                                         .addComponent(chkIrritaibilidad)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel10Layout.createSequentialGroup()
-                                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkDiarrea)
-                                            .addComponent(chkExpctoracion)
-                                            .addComponent(chkDolor)
-                                            .addComponent(chkCefalea)
-                                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                                .addComponent(chkNauseas)
-                                                .addGap(145, 145, 145)
-                                                .addComponent(jLabel74)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(chkPerdidaOlf1))
-                        .addGap(40, 40, 40))))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(chkPerdidaOlf1))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2240,9 +2235,9 @@ clsConnection oConn = new clsConnection();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                        .addGap(188, 188, 188)
                         .addComponent(btnGrabarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(56, 56, 56)
                         .addComponent(btnLimpiarIn, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -3316,14 +3311,21 @@ else
                           +   "IGG- SENSIBILIDAD: 96% \n"
                             + "     ESPECIFICIDAD: 100 %");
                 }
-               else if(cboMarca.getSelectedIndex()==8){
+                  if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                            + "IGM- SENSIBILIDAD: 95.60% \n"
+                            + "     ESPECIFICIDAD: 96.00 %");
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                          +  "IGG-  SENSIBILIDAD: 95.60% \n"
+                            +"      ESPECIFICIDAD: 96.00 %");
+                }  else if(cboMarca.getSelectedIndex()==8){
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                            + "IGM- SENSIBILIDAD: 97.5% \n"
-                            + "     ESPECIFICIDAD: 99.5 %");
+                            + "IGM- SENSIBILIDAD: 95.60% \n"
+                            + "     ESPECIFICIDAD: 96.00 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 97.5% \n"
-                            +"      ESPECIFICIDAD: 100 %");
+                          +  "IGG-  SENSIBILIDAD: 95.60% \n"
+                            +"      ESPECIFICIDAD: 96.00 %");
                 }
             }
         });
@@ -3417,15 +3419,23 @@ else
                             + "     ESPECIFICIDAD: 100 %");
                 }
               else if(cboMarca.getSelectedIndex()==8){
-//                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){           
-                        txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+//                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 97.5% \n"
                             + "     ESPECIFICIDAD: 99.5 %");
-                        txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                            + "IGG- SENSIBILIDAD: 97.5% \n"
-                            + "     ESPECIFICIDAD: 100 %");
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                          +  "IGG-  SENSIBILIDAD: 97.5% \n"
+                            +"      ESPECIFICIDAD: 100 %");
                 }
-
+                else if(cboMarca.getSelectedIndex()==10){
+//                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                            + "IGM- SENSIBILIDAD: 95.60% \n"
+                            + "     ESPECIFICIDAD: 96.00 %");
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                          +  "IGG-  SENSIBILIDAD: 95.60% \n"
+                            +"      ESPECIFICIDAD: 96.00 %");
+                }   
 
             }
         });

@@ -46,6 +46,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import sistema.Audiometria;
 import sistema.Ingreso;
 
@@ -67,9 +68,15 @@ public class Reporteador extends javax.swing.JInternalFrame {
         initComponents();
         personalizado(false);
         Columnas(true);   
+        cargarContratas();
+        cargarEmpresas();
         valorsede();
-        new ajTextField.autocompleterText(txtEmpresa, "razon_empresa", "empresas");
-       new ajTextField.autocompleterText(txtContrata, "razon_contrata", "contratas");
+         AutoCompleteDecorator.decorate(this.cboContratas);
+         AutoCompleteDecorator.decorate(this.cboEmpresas);
+         txtEmpresa.setVisible(false);
+         txtContrata.setVisible(false);
+       // new ajTextField.autocompleterText(txtEmpresa, "razon_empresa", "empresas");
+      // new ajTextField.autocompleterText(txtContrata, "razon_contrata", "contratas");
     }
     private void LimpiarPersonalizado(){
     txtContrata.setText(null);
@@ -81,6 +88,70 @@ public class Reporteador extends javax.swing.JInternalFrame {
     }
     
     }
+    private void cargarContratas(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="SELECT razon_contrata FROM contratas;";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+      cboContratas.setSelectedIndex(0);
+}
+  private void cargarEmpresas(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="SELECT razon_empresa FROM empresas";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     cboEmpresas.addItem(oConn.setResult.getString ("razon_empresa"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+       cboEmpresas.setSelectedIndex(0);
+}
+
+
     private void personalizado(boolean t){
     txtContrata.setEditable(t);
     txtEmpresa.setEditable(t);
@@ -180,7 +251,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                          vSql+= "n.trab_calientes as TRABENCALIENTE, ";
                          }
                          if(chk15.isSelected()== true){
-                         vSql+= "n.chkcovid1 as COVID1, ";
+                         vSql+= "n.tipoprueba as TipoExamenCovid, ";
                          }
                          if(chk16.isSelected()== true){
                          vSql+= "n.chkcovid2 as COVID2, ";
@@ -248,6 +319,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return false;
                     }};
+                                 String contrata,empresa;
                     String vSql="SELECT  n.n_orden AS FICHA ";
                          if(chk5.isSelected()== true){
                          vSql+= ",n.fecha_apertura_po AS FECHAEMO ";
@@ -260,8 +332,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                          }
                          vSql+=",d.fecha_nacimiento_pa AS FECHANACIMIENTO ";
                          vSql+=",obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) as EDAD";
-                         vSql+=",d.direccion_pa as DIRECCIÓN";
-                         vSql+=",d.cel_pa as CELULAR";
+                        vSql+=",d.direccion_pa as DIRECCIÓN";
+                        vSql+=",d.cel_pa as CELULAR";
                          if(chk4.isSelected()== true){
                          vSql+= ",n.cargo_de AS CARGO ";
                          }
@@ -293,11 +365,11 @@ public class Reporteador extends javax.swing.JInternalFrame {
                          vSql+= ",n.trab_calientes as TRABENCALIENTE ";
                          }
                          if(chk15.isSelected()== true){
-                         vSql+= ",n.chkcovid1 as COVID1 ";
+                         vSql+= ",n.tipoprueba as TIPO_PRUEBA_COVID";
                          }
-                         if(chk16.isSelected()== true){
-                         vSql+= ",n.chkcovid2 as COVID2 ";
-                         }
+                      //   if(chk16.isSelected()== true){
+                       //  vSql+= ",n.chkcovid2 as COVID2 ";
+                       //  }
                          if(chk17.isSelected()== true){
                          vSql+= ",n.manip_alimentos as MANIPULADORALIMENTOS ";
                          }
@@ -343,18 +415,24 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 +" left join observaciones as o ON (o.n_orden=n.n_orden)"
                 +" left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)"
                 +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"
-                 +" left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)" ;              
-                if(!txtContrata.getText().isEmpty()){
-                    vSql +="WHERE '"+txtContrata.getText().toString()+"' = n.razon_contrata ";
-                }
-                if(!txtContrata.getText().isEmpty() & !txtEmpresa.getText().isEmpty()){
+                 +" left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)" ;  
+                    
+                         
+                             
+                if(cboContratas.getSelectedIndex()>=1){
+                    vSql +="WHERE upper(n.razon_contrata) like upper('%"+cboContratas.getSelectedItem().toString()+"%') ";
+                   contrata=" ";
+                } 
+                else
+                    contrata=" where ";
+                if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
                     vSql +=" AND ";
                 }
-                if(txtContrata.getText().isEmpty() && !txtEmpresa.getText().isEmpty()){
+                if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
                     vSql +=" WHERE ";
                 }                
-                if(!txtEmpresa.getText().isEmpty()){
-                    vSql +="'"+txtEmpresa.getText().toString()+"' = n.razon_empresa";
+                if(cboEmpresas.getSelectedIndex()>=1){
+                    vSql += contrata +"upper(n.razon_empresa) like upper('%"+cboEmpresas.getSelectedItem().toString()+"%')";
                 }
                 if(chkRepTestAltura.isSelected()){
                     vSql +=" and n.n_testaltura = 'true'";
@@ -368,18 +446,18 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 if(chkRepTrabCal.isSelected()){
                     vSql +=" and n.trab_calientes = 'true'";
                 }
-                if(chkRepCovid1.isSelected()){
-                    vSql +=" and n.chkcovid1 = 'true'";
-                }
-                if(chkRepCovid2.isSelected()){
-                    vSql +=" and n.chkcovid2 = 'true'";
-                }
+              //  if(chkRepCovid1.isSelected()){
+               //     vSql +=" and n.chkcovid1 = 'true'";
+               // }
+              //  if(chkRepCovid2.isSelected()){
+               //     vSql +=" and n.chkcovid2 = 'true'";
+               // }
                 if(chkRepManipAlimen.isSelected()){
                     vSql +=" and n.manip_alimentos = 'true'";
                 }
                  if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
                  {
-                     if(txtEmpresa.getText().isEmpty() && txtContrata.getText().isEmpty() ){
+                     if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
                           vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
                      }else{
                          vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
@@ -390,8 +468,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                  {
                  vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
                  }
-                         
-                         
+                  System.out.println("consulta:"+vSql);         
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
              {
@@ -447,6 +524,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
         btnLimpiar = new javax.swing.JButton();
         chkContratista = new javax.swing.JCheckBox();
         chkEmpresa = new javax.swing.JCheckBox();
+        cboContratas = new javax.swing.JComboBox();
+        cboEmpresas = new javax.swing.JComboBox();
         pgExportar = new javax.swing.JProgressBar();
         jPanel2 = new javax.swing.JPanel();
         chkOservicio = new javax.swing.JCheckBox();
@@ -585,6 +664,72 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }
         });
 
+        cboContratas.setEditable(true);
+        cboContratas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cboContratas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboContratasPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        cboContratas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboContratasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cboContratasMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cboContratasMousePressed(evt);
+            }
+        });
+        cboContratas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboContratasActionPerformed(evt);
+            }
+        });
+        cboContratas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cboContratasKeyPressed(evt);
+            }
+        });
+
+        cboEmpresas.setEditable(true);
+        cboEmpresas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cboEmpresas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboEmpresasPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        cboEmpresas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboEmpresasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cboEmpresasMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cboEmpresasMousePressed(evt);
+            }
+        });
+        cboEmpresas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboEmpresasActionPerformed(evt);
+            }
+        });
+        cboEmpresas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cboEmpresasKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -601,10 +746,14 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtContrata)
+                    .addComponent(txtEmpresa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboContratas, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -630,16 +779,23 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(btnMostrar)
-                    .addComponent(chkContratista))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(Fhasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(btnLimpiar)
-                    .addComponent(chkEmpresa))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(chkContratista)
+                    .addComponent(cboContratas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(Fhasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnLimpiar)
+                            .addComponent(chkEmpresa))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cboEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo Busqueda"));
@@ -743,8 +899,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(chk13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chk15)
+                        .addGap(18, 18, 18)
+                        .addComponent(chk15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chk16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1175,8 +1331,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "        left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
 "        left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) \n" +
 "        left join informe_psicologico as i ON (i.n_orden=n.n_orden) \n" 
-        + "WHERE n.razon_empresa='"+txtEmpresa.getText().toString()+"' "
-              + "and n.razon_contrata='"+txtContrata.getText().toString()+"' ";
+        + "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' "
+              + "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"' ";
      if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
         vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
      }
@@ -1252,8 +1408,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "            left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
 "            left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
 "            left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) \n" 
-        + "WHERE n.razon_empresa='"+txtEmpresa.getText().toString()+"' "
-               + "and n.razon_contrata='"+txtContrata.getText().toString()+"'";
+        + "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' "
+               + "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"'";
      if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
         vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
      }
@@ -1317,8 +1473,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
 "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
 "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
-                    "     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
-                        "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
+"     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
+"     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
 "     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.'  END AS NUMEXACOVID, \n" +
 "CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
 "     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM, \n" +
@@ -1351,9 +1507,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
 "LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" +
 "left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) " 
-+ "WHERE n.razon_empresa='"+txtEmpresa.getText().toString()+"' ";
-    if(!txtContrata.getText().isEmpty()){
-     vSql += "and n.razon_contrata='"+txtContrata.getText().toString()+"' ";                  
++ "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' ";
+    if(cboContratas.getSelectedIndex()>=1){
+     vSql += "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"' ";                  
     }
 
      if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
@@ -1363,7 +1519,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
         vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
      } 
     
-      vSql+="and n.nom_examen='COVID-19' "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
+      vSql+="and (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19')  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
       System.out.println("la consulta aplicada es:"+vSql);
       if (oConn.FnBoolQueryExecute(vSql)) {
             try {
@@ -1457,9 +1613,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
 " LEFT JOIN constancia_salud_marsa as c on(n.n_orden=c.n_orden)\n" +
 " LEFT JOIN triaje as t ON(n.n_orden = t.n_orden)\n" +
 " LEFT JOIN fmedica_covid_marsa as f ON(n.n_orden = f.n_orden)\n" 
-+ "WHERE n.razon_empresa='"+txtEmpresa.getText().toString()+"' ";
-    if(!txtContrata.getText().isEmpty()){
-     vSql += "and n.razon_contrata='"+txtContrata.getText().toString()+"' ";                  
++ "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' ";
+    if(cboContratas.getSelectedIndex()>=1){
+     vSql += "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"' ";                  
     }
 
      if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
@@ -1470,7 +1626,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
      } 
     
       //vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";  
-  vSql+="and n.nom_examen='COVID-19' "+agregarConsulta+" order by n.n_orden asc";   
+  vSql+="(n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19') "+agregarConsulta+" order by n.n_orden asc";   
         System.out.println("la consulta aplicada es:"+vSql);
 //      
 //oFunc.SubSistemaMensajeInformacion(vSql);      
@@ -1514,6 +1670,54 @@ public class Reporteador extends javax.swing.JInternalFrame {
        }
            
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void cboContratasPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboContratasPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_cboContratasPopupMenuWillBecomeInvisible
+
+    private void cboContratasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMouseClicked
+      
+    }//GEN-LAST:event_cboContratasMouseClicked
+
+    private void cboContratasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMouseEntered
+    
+    }//GEN-LAST:event_cboContratasMouseEntered
+
+    private void cboContratasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMousePressed
+        
+    }//GEN-LAST:event_cboContratasMousePressed
+
+    private void cboContratasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboContratasActionPerformed
+     
+    }//GEN-LAST:event_cboContratasActionPerformed
+
+    private void cboContratasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboContratasKeyPressed
+
+    }//GEN-LAST:event_cboContratasKeyPressed
+
+    private void cboEmpresasPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboEmpresasPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_cboEmpresasPopupMenuWillBecomeInvisible
+
+    private void cboEmpresasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMouseClicked
+      
+    }//GEN-LAST:event_cboEmpresasMouseClicked
+
+    private void cboEmpresasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMouseEntered
+   
+    }//GEN-LAST:event_cboEmpresasMouseEntered
+
+    private void cboEmpresasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMousePressed
+     
+    }//GEN-LAST:event_cboEmpresasMousePressed
+
+    private void cboEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpresasActionPerformed
+   
+    }//GEN-LAST:event_cboEmpresasActionPerformed
+
+    private void cboEmpresasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboEmpresasKeyPressed
+
+    }//GEN-LAST:event_cboEmpresasKeyPressed
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -1639,6 +1843,8 @@ marcador=1;
     private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnRepDiario;
     private javax.swing.JButton btnRepSemanal;
+    private javax.swing.JComboBox cboContratas;
+    private javax.swing.JComboBox cboEmpresas;
     private javax.swing.JCheckBox chk1;
     private javax.swing.JCheckBox chk10;
     private javax.swing.JCheckBox chk11;

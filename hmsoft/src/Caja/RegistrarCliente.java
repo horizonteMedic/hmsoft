@@ -472,6 +472,7 @@ this.chkAltaTrabCal.setVisible(false);
         jLabel37 = new javax.swing.JLabel();
         jComboBoxHotel = new javax.swing.JComboBox<>();
         jCheckBox11 = new javax.swing.JCheckBox();
+        chkimport = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -1699,6 +1700,11 @@ this.chkAltaTrabCal.setVisible(false);
         });
 
         txtGS.setEditable(false);
+        txtGS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGSActionPerformed(evt);
+            }
+        });
 
         jLabel39.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel39.setText("G.Sang.");
@@ -1886,6 +1892,14 @@ this.chkAltaTrabCal.setVisible(false);
             }
         });
 
+        btGS.add(chkimport);
+        chkimport.setText("Importar");
+        chkimport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkimportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -1975,9 +1989,13 @@ this.chkAltaTrabCal.setVisible(false);
                             .addComponent(jLabel32))
                         .addGap(6, 6, 6)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
                             .addComponent(txtApellidosAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGS, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtGS, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel33))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkimport)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2040,7 +2058,8 @@ this.chkAltaTrabCal.setVisible(false);
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel31)
                                             .addComponent(txtDniAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtGS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtGS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chkimport, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(5, 5, 5)
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel33)
@@ -2747,8 +2766,12 @@ this.chkAltaTrabCal.setVisible(false);
 
     private void chkPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPrecioActionPerformed
         if (chkPrecio.isSelected()) {
+            txtPrecio.setEnabled(true);
             txtPrecio.setEditable(true);
+
+            
         } else {
+            txtPrecio.setEnabled(false);
             txtPrecio.setEditable(false);
         }
     }//GEN-LAST:event_chkPrecioActionPerformed
@@ -3208,7 +3231,7 @@ int seleccion = JOptionPane.showOptionDialog(
                 if(OrdenExiste1())
                 {
                       // System.out.println("apunto de cargar datos");
-                cargarDatosPaciente();
+               // cargarDatosPaciente();
                 
                 }
                 
@@ -3253,7 +3276,7 @@ public void cargarDatosPaciente(){
                     cboMineralExp.setSelectedItem(oConn.setResult.getString("mineral_po"));
                     cboAltura.setSelectedItem(oConn.setResult.getString("altura_po"));
                     txtPrecio.setText(oConn.setResult.getString("precio_po"));
-                    txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                  //  txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                    // txtNorden.setText(oConn.setResult.getString("n_orden"));
                     cboTipoExamen.setSelectedItem(oConn.setResult.getString("tipoprueba"));
                     jComboBoxHotel.setSelectedItem(oConn.setResult.getString("nombrehotel"));
@@ -4066,7 +4089,6 @@ private void CargarTipoExamenes(){
         cboTipoExamen.setSelectedIndex(1);
 }
 
-
     private void cboTipoExamenPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboTipoExamenPopupMenuWillBecomeInvisible
 
     }//GEN-LAST:event_cboTipoExamenPopupMenuWillBecomeInvisible
@@ -4168,6 +4190,17 @@ private void CargarTipoExamenes(){
         agregarConsulta="";
 
     }//GEN-LAST:event_jCheckBox11ActionPerformed
+
+    private void txtGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGSActionPerformed
+
+    private void chkimportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkimportActionPerformed
+       if( chkimport.isSelected())
+       {
+       cargarDatosPaciente();
+       }
+    }//GEN-LAST:event_chkimportActionPerformed
   private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -4643,6 +4676,7 @@ private void CargarTipoExamenes(){
     private javax.swing.JCheckBox chkPsicosen;
     private javax.swing.JCheckBox chkTrabCalientes;
     private javax.swing.JCheckBox chkVisualCompl;
+    private javax.swing.JCheckBox chkimport;
     private javax.swing.JCheckBox ckbSinDni;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

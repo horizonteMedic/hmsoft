@@ -539,6 +539,47 @@ public void calcularTipoexamen(){
         }
 }
 // FALTA REVISAR ESTE
+public void  altasinAEV2(){
+    System.out.println("entro a sin AE");
+              Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String fecha1=dateFormat.format(date); 
+    String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
+               + "d.fecha_nacimiento_pa,n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
+            "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,e.fecha_examen "
+                + "FROM datos_paciente AS d "
+                + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
+               + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
+               + "WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
+                + " order by n.n_orden desc limit 1;";
+            System.out.println("la consulta es:"+Sql);
+
+         oConn.FnBoolQueryExecute(Sql);
+                try {
+                    if (oConn.setResult.next()) {
+                        txtNombre.setText(oConn.setResult.getString("nombre"));
+                        txtDNI.setText(oConn.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        chkIgmPositivo.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
+                          chkIgmNegativo.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
+                          chkIggPositivo.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
+                           Fecha();
+                          chkIggNegativo.setSelected(oConn.setResult.getBoolean("chkigg_noreactivo"));
+                          chkInvalido.setSelected(oConn.setResult.getBoolean("chkinvalido"));
+                          jTextField1.setText(oConn.setResult.getString("fecha_examen"));
+                        txtNorden.setEditable(false);
+                     //   FechaHoy.requestFocusInWindow();
+                        
+                        sbCargarDatosEmpresa();
+                         txtDiasDesc.requestFocus();
+                       }else{
+altasinAEV2();                    }
+            } catch (SQLException ex) {
+            oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
+
+}
+
+
     public void altaSinAE(){
         System.out.println("entro a sin AE");
               Date date = new Date();
@@ -573,8 +614,7 @@ public void calcularTipoexamen(){
                         sbCargarDatosEmpresa();
                          txtDiasDesc.requestFocus();
                        }else{
-                        oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
-                    }
+altasinAEV2();                    }
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
     }
