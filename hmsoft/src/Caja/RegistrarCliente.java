@@ -3020,7 +3020,7 @@ int seleccion = JOptionPane.showOptionDialog(
             if (oConn.setResult.next()) {
                 // Resultado
                 bResultado = true;
-                oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+            //    oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
                 limpiar();
             }
 

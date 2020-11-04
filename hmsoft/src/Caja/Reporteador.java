@@ -61,6 +61,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
          clsFunciones  oFunc = new clsFunciones();
          Ingreso objet= new Ingreso();
           String nomsede,nombre;
+            String contrata,empresa;
           String agregarConsulta="";
           int marcador=1;
    int codigosede;
@@ -221,7 +222,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-         agregarConsulta="and n.cod_sede="+codigosede;
+         agregarConsulta=" and n.cod_sede="+codigosede;
       
     }
     private void cOrdenServicio(){
@@ -313,13 +314,22 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 }
             }
         }
+    
+    public boolean convertir(boolean pase){
+    boolean retornado=true;
+    if(pase=true)
+        retornado=false;
+    return retornado;
+    
+    
+    }
     private void cPersonalizada(){
     model = new DefaultTableModel(){        
                  @Override
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
                     return false;
                     }};
-                                 String contrata,empresa;
+                               
                     String vSql="SELECT  n.n_orden AS FICHA ";
                          if(chk5.isSelected()== true){
                          vSql+= ",n.fecha_apertura_po AS FECHAEMO ";
@@ -417,23 +427,29 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"
                  +" left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)" ;  
                     
-                         
-                             
-                if(cboContratas.getSelectedIndex()>=1){
-                    vSql +="WHERE upper(n.razon_contrata) like upper('%"+cboContratas.getSelectedItem().toString()+"%') ";
-                   contrata=" ";
-                } 
-                else
-                    contrata=" where ";
-                if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
-                    vSql +=" AND ";
-                }
-                if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
-                    vSql +=" WHERE ";
-                }                
-                if(cboEmpresas.getSelectedIndex()>=1){
-                    vSql += contrata +"upper(n.razon_empresa) like upper('%"+cboEmpresas.getSelectedItem().toString()+"%')";
-                }
+                         if(cboContratas.getSelectedItem().toString().length()>2)
+                             contrata=cboContratas.getSelectedItem().toString();
+                         else
+                             contrata="";
+                         if(cboEmpresas.getSelectedItem().toString().length()>2)
+                             empresa=cboEmpresas.getSelectedItem().toString();
+                         else
+                             empresa="";
+              //  if(cboContratas.getSelectedIndex()>=1){
+                    vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                //   contrata=" ";
+               // } 
+               // else
+                //    contrata=" where ";
+               // if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
+               //     vSql +=" AND ";
+               // }
+               // if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
+               //     vSql +=" WHERE ";
+               // }                
+               // if(cboEmpresas.getSelectedIndex()>=1){
+                    vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+               // }
                 if(chkRepTestAltura.isSelected()){
                     vSql +=" and n.n_testaltura = 'true'";
                 }
@@ -457,11 +473,14 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 }
                  if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
                  {
-                     if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
-                          vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                     }else{
+                     
+                   //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 ) 
+
+                   //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
+                   //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                   //  }else{
                          vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                     }
+                   //  }
                      
                  }
                  if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
@@ -1474,8 +1493,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
 "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
 "     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
+"     WHEN n.tipoprueba = 'PCON' THEN 'PCON' \n" +
 "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
-"     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.'  END AS NUMEXACOVID, \n" +
+"     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A'  END AS NUMEXACOVID, \n" +
 "CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
 "     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM, \n" +
 "CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
@@ -1506,11 +1526,17 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
 "LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
 "LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" +
-"left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) " 
-+ "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' ";
-    if(cboContratas.getSelectedIndex()>=1){
-     vSql += "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"' ";                  
-    }
+"left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) " ;
+  if(cboContratas.getSelectedItem().toString().length()>2)
+                             contrata=cboContratas.getSelectedItem().toString();
+                         else
+                             contrata="";
+                         if(cboEmpresas.getSelectedItem().toString().length()>2)
+                             empresa=cboEmpresas.getSelectedItem().toString();
+                         else
+                             empresa="";
+  vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+  vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
 
      if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
         vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
@@ -1557,10 +1583,11 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }};
             String vSql="SELECT n.n_orden,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
                     "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
-                      "     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
+                      "     WHEN n.tipoprueba = 'PA' THEN 'Prueba de anticuerpos' \n" +
                         "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
                     "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
-"             WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE '.' END AS NUMPRUEBA,\n" +
+                       "     WHEN n.tipoprueba = 'PCON' THEN 'PCON'\n" +
+"             WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A' END AS NUMPRUEBA,\n" +
 "       CASE WHEN n.n_orden is not null THEN 'DNI' ELSE '.' END AS TIPODOC,\n" +
 "             d.cod_pa,d.apellidos_pa,d.nombres_pa,d.direccion_pa, \n" +
 "        d.fecha_nacimiento_pa,d.cel_pa, n.razon_empresa,n.razon_contrata,n.cargo_de,\n" +
@@ -1612,12 +1639,17 @@ public class Reporteador extends javax.swing.JInternalFrame {
 " LEFT JOIN examen_inmunologico as i on(n.n_orden=i.n_orden)\n" +
 " LEFT JOIN constancia_salud_marsa as c on(n.n_orden=c.n_orden)\n" +
 " LEFT JOIN triaje as t ON(n.n_orden = t.n_orden)\n" +
-" LEFT JOIN fmedica_covid_marsa as f ON(n.n_orden = f.n_orden)\n" 
-+ "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' ";
-    if(cboContratas.getSelectedIndex()>=1){
-     vSql += "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"' ";                  
-    }
-
+" LEFT JOIN fmedica_covid_marsa as f ON(n.n_orden = f.n_orden)\n" ;
+  if(cboContratas.getSelectedItem().toString().length()>2)
+                             contrata=cboContratas.getSelectedItem().toString();
+                         else
+                             contrata="";
+                         if(cboEmpresas.getSelectedItem().toString().length()>2)
+                             empresa=cboEmpresas.getSelectedItem().toString();
+                         else
+                             empresa="";
+  vSql +=" WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+  vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
      if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
         vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
      }
@@ -1626,7 +1658,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
      } 
     
       //vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";  
-  vSql+="(n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19') "+agregarConsulta+" order by n.n_orden asc";   
+  vSql+="AND (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19') "+agregarConsulta+" order by n.n_orden asc";   
         System.out.println("la consulta aplicada es:"+vSql);
 //      
 //oFunc.SubSistemaMensajeInformacion(vSql);      
