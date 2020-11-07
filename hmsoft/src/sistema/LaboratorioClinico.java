@@ -585,7 +585,7 @@ clsConnection oConn = new clsConnection();
 
         jLabel16.setText("%");
 
-        jLabel17.setText("mm");
+        jLabel17.setText("mm/Hora");
 
         jLabel18.setText("mm³");
 
@@ -708,11 +708,11 @@ clsConnection oConn = new clsConnection();
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel16)
-                                        .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel18))
-                                    .addComponent(rbRHnegativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel50))))
+                                    .addComponent(jLabel50)
+                                    .addComponent(rbRHnegativo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2295,7 +2295,6 @@ clsConnection oConn = new clsConnection();
                         .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkTos, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chkDiarrea, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2989,7 +2988,7 @@ txtNorden.requestFocus();
        if(!txtNorden.getText().isEmpty()){
            String sql="SELECT dp.sexo_pa FROM datos_paciente as dp " 
                 +"inner join n_orden_ocupacional AS n ON(dp.cod_pa = n.cod_pa) "
-                + "where n.n_orden='"+txtNorden.getText().toString()+"'";
+                + "where n.n_orden="+txtNorden.getText().toString()+"";
         oConn.FnBoolQueryExecute(sql);
         String sexo;
     try {
@@ -2999,6 +2998,7 @@ txtNorden.requestFocus();
          float hemoglobina=Float.parseFloat(txtHemoglobina.getText().toString());
                if ("M".equals(sexo)) {
                    if(hemoglobina < 14 || hemoglobina > 20){
+                       System.out.println("entro a pintar de rojo:"+txtHemoglobina.getText().toString());
                         txtHemoglobina.setForeground(Color.red);
                     }
                    else{
@@ -3332,16 +3332,16 @@ txtNorden.requestFocus();
 
     private void rbRHpositivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRHpositivoActionPerformed
         txtGrupoFacLab.setText(txtGrupoFacLab.getText().toString()+"+");
-        if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
+      /*  if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
             oFunc.SubSistemaMensajeError("Grupo Sanguinio incongruente por favotr revisar");
-        }
+        }*/
     }//GEN-LAST:event_rbRHpositivoActionPerformed
 
     private void rbRHnegativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRHnegativoActionPerformed
         txtGrupoFacLab.setText(txtGrupoFacLab.getText().toString()+"-");
-        if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
+/*        if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
             oFunc.SubSistemaMensajeError("Grupo Sanguinio incongruente por favotr revisar");
-        }
+        }*/
     }//GEN-LAST:event_rbRHnegativoActionPerformed
 
     private void chkRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRetiroActionPerformed
@@ -4712,7 +4712,7 @@ public void Editar(){
                     "FROM n_orden_ocupacional as n \n" +
                     "INNER JOIN datos_paciente as dp ON (n.cod_pa = dp.cod_pa)\n" +
                     "INNER JOIN lab_clinico as lc ON (n.n_orden = lc.n_orden) \n" +
-                    "WHERE n.n_orden ='"+txtNorden.getText().toString()+"'" ;
+                    "WHERE n.n_orden ="+txtNorden.getText().toString()+"" ;
               
               oConn.FnBoolQueryExecute(Sql);
                 try {

@@ -1013,6 +1013,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtLejosCorregidaOIFocusLost
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+         sbCargarDatosOftalmologia("");
         if (OrdenExiste()) {
             
             Actualizar();
@@ -1352,14 +1353,15 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtVisionColores;
     // End of variables declaration//GEN-END:variables
     void sbCargarDatosOftalmologia(String valor) {
-        String[] titulos = {"N.Orden", "Nombre", "Fecha"};
-        String[] registros = new String[3];
+        String[] titulos = {"N.Orden", "Nombre", "FechaRegistro","Fecha_Actualizacion"};
+        String[] registros = new String[4];
         String sql = "";
         if (!txtBuscarCod.getText().isEmpty()) {
             sql = "select datos_paciente.nombres_pa||''||datos_paciente.apellidos_pa AS nombres, "
                     + "oftalmologia.cod_of,"
                     + "oftalmologia.n_orden,"
-                    + "oftalmologia.fecha_of "
+                    + "oftalmologia.fecha_of, "
+                    + "oftalmologia.f_actualizacion "
                     + "From datos_paciente "
                     + "inner join n_orden_ocupacional "
                     + "ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa) "
@@ -1371,7 +1373,8 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
             sql = "select datos_paciente.nombres_pa||''||datos_paciente.apellidos_pa AS nombres, "
                     + "oftalmologia.cod_of,"
                     + "oftalmologia.n_orden,"
-                    + "oftalmologia.fecha_of "
+                    + "oftalmologia.fecha_of,"
+                    + "oftalmologia.f_actualizacion "
                     + "From datos_paciente "
                     + "inner join n_orden_ocupacional "
                     + "ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa) "
@@ -1397,12 +1400,18 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                     registros[0] = oConn.setResult.getString("n_orden");
                     registros[1] = oConn.setResult.getString("nombres");
                     registros[2] = formato.format(oConn.setResult.getDate("fecha_of"));
+                    registros[3] = oConn.setResult.getString("f_actualizacion");
                     model.addRow(registros);
                 }
 
                 // Coloca el Modelo de Nueva Cuenta
                 tbOftalmica.setModel(model);
-                sbTablaOftalmica();
+                tbOftalmica.getColumnModel().getColumn(0).setMinWidth(50);
+                tbOftalmica.getColumnModel().getColumn(0).setMaxWidth(50);
+               // tbOftalmica.getColumnModel().getColumn(2).setMaxWidth(100);
+               // tbOftalmica.getColumnModel().getColumn(3).setMaxWidth(100);
+
+                // sbTablaOftalmica();
 
                 // Cierra Resultados
                 oConn.setResult.close();
@@ -1650,6 +1659,8 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         tbOftalmica.getColumnModel().getColumn(1).setMaxWidth(260);
         tbOftalmica.getColumnModel().getColumn(2).setMinWidth(130);
         tbOftalmica.getColumnModel().getColumn(2).setMaxWidth(130);
+        tbOftalmica.getColumnModel().getColumn(3).setMinWidth(130);
+        tbOftalmica.getColumnModel().getColumn(3).setMaxWidth(130);
 
         tbOftalmica.setFont(new java.awt.Font("Tahoma", 0, 11));
 
@@ -1663,6 +1674,8 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         tbOftalmica.getColumnModel().getColumn(0).setCellRenderer(cellAlinear);
         //tbTriaje.getColumnModel().getColumn(1).setCellRenderer(cellAlinear);
         tbOftalmica.getColumnModel().getColumn(2).setCellRenderer(cellAlinear);
+                tbOftalmica.getColumnModel().getColumn(3).setCellRenderer(cellAlinear);
+
         // Color de los Encabezados
         //jtTicket.getTableHeader().setBackground(Color.lightGray);
         //jtTicket.getTableHeader().setForeground(Color.blue);
