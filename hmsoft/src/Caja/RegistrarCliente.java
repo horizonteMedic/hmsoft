@@ -73,7 +73,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     public static VerUltimoRegistro verUltimoRegistro;
     public static addAreaOcupacioal areaOcupacional;
     String num,agregarConsulta="";
-    
+     
     String dni;
     DefaultTableModel model;
      // String[]empresas = new String[]{};
@@ -127,6 +127,14 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         ocultarOpcionesCovid();
         autorizarCertificado();
         CargarinfoHotel();
+             cargarContratas();
+        cargarEmpresas();
+       // valorsede();
+         AutoCompleteDecorator.decorate(this.cboContratas);
+         AutoCompleteDecorator.decorate(this.cboEmpresas);
+         txtEmpresa.setVisible(false);
+         txtContrata.setVisible(false);
+         
     }
 public void autorizarCertificado()
 {
@@ -156,6 +164,69 @@ HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 try { 
 URL url = new URL("https://api.reniec.cloud/dni/")
 ; } catch (MalformedURLException e) { }
+}
+   private void cargarContratas(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="SELECT UPPER(razon_contrata) AS razon_contrata  FROM contratas;";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+      cboContratas.setSelectedIndex(0);
+}
+  private void cargarEmpresas(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="SELECT UPPER(razon_empresa) AS razon_empresa FROM empresas";
+        
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     cboEmpresas.addItem(oConn.setResult.getString ("razon_empresa"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+       cboEmpresas.setSelectedIndex(0);
 }
 
 public void comunirApiReniecDesconocida(){
@@ -381,6 +452,8 @@ this.chkAltaTrabCal.setVisible(false);
         btnAddOcupacion1 = new javax.swing.JLabel();
         btnAddOcupacion2 = new javax.swing.JLabel();
         chkAltaManipAlimen = new javax.swing.JCheckBox();
+        cboEmpresas = new javax.swing.JComboBox();
+        cboContratas = new javax.swing.JComboBox();
         jpOcupacional = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -1055,6 +1128,8 @@ this.chkAltaTrabCal.setVisible(false);
         jtRegistroGeneral.addTab("Registro Clientes en General", jPanel5);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setMaximumSize(new java.awt.Dimension(377, 83));
+        jPanel2.setMinimumSize(new java.awt.Dimension(377, 83));
 
         jLabel15.setText("Empresa :");
 
@@ -1103,28 +1178,98 @@ this.chkAltaTrabCal.setVisible(false);
             }
         });
 
+        cboEmpresas.setEditable(true);
+        cboEmpresas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cboEmpresas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboEmpresasPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        cboEmpresas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboEmpresasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cboEmpresasMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cboEmpresasMousePressed(evt);
+            }
+        });
+        cboEmpresas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboEmpresasActionPerformed(evt);
+            }
+        });
+        cboEmpresas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cboEmpresasKeyPressed(evt);
+            }
+        });
+
+        cboContratas.setEditable(true);
+        cboContratas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cboContratas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboContratasPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        cboContratas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboContratasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cboContratasMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cboContratasMousePressed(evt);
+            }
+        });
+        cboContratas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboContratasActionPerformed(evt);
+            }
+        });
+        cboContratas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cboContratasKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                    .addComponent(txtEmpresa)
                     .addComponent(txtContrata))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAddOcupacion1)
-                    .addComponent(btnAddOcupacion2))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(259, Short.MAX_VALUE)
-                .addComponent(chkAltaManipAlimen)
+                    .addComponent(cboEmpresas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboContratas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddOcupacion1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAddOcupacion2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chkAltaManipAlimen)
+                .addGap(48, 48, 48))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1132,16 +1277,21 @@ this.chkAltaTrabCal.setVisible(false);
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(btnAddOcupacion1)
-                            .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(5, 5, 5)
+                            .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddOcupacion1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(btnAddOcupacion2)
                             .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16)))
-                    .addComponent(jLabel15))
+                    .addComponent(jLabel15)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cboEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(cboContratas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(chkAltaManipAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(chkAltaManipAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jpOcupacional.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área  Pre- Ocupacional"));
@@ -1321,7 +1471,7 @@ this.chkAltaTrabCal.setVisible(false);
                                         .addGap(20, 20, 20))
                                     .addGroup(jpOcupacionalLayout.createSequentialGroup()
                                         .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cboMineralExp, 0, 0, Short.MAX_VALUE)
+                                            .addComponent(cboMineralExp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(cboAltura, 0, 0, Short.MAX_VALUE)
                                             .addComponent(cboArea, 0, 0, Short.MAX_VALUE)
                                             .addComponent(txtCargoDesempenar))
@@ -1346,7 +1496,7 @@ this.chkAltaTrabCal.setVisible(false);
                     .addGroup(jpOcupacionalLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(jLabel47)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(txtObserv2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
@@ -1937,65 +2087,66 @@ this.chkAltaTrabCal.setVisible(false);
                                     .addComponent(chkCovid2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                        .addComponent(jLabel22)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chkAltaFist)
-                                        .addGap(8, 8, 8)
-                                        .addComponent(chkAltaPsicosen)))
-                                .addGap(0, 0, 0)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(chkAltaTestAltura)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(chkAltaVisualCom))
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                                .addComponent(jLabel22)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chkAltaFist)
+                                                .addGap(8, 8, 8)
+                                                .addComponent(chkAltaPsicosen)))
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                                .addComponent(chkAltaTestAltura)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(chkAltaVisualCom))
+                                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(chkAltaTrabCal, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(chkAltaCovid1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(chkAltaCovid2, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cboTipoExamen, 0, 0, Short.MAX_VALUE))))
                                     .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(334, 334, 334)
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkAltaTrabCal, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(chkAltaCovid1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(chkAltaCovid2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cboTipoExamen, 0, 0, Short.MAX_VALUE)))
+                                            .addComponent(chkO)
+                                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLabel37)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(chkA)
+                                                        .addComponent(chkB))
+                                                    .addGap(28, 28, 28)
+                                                    .addComponent(jComboBoxHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(338, 338, 338)
+                                        .addComponent(chkAB)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chkO)
-                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel37)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(chkA)
-                                                .addComponent(chkB))
-                                            .addGap(28, 28, 28)
-                                            .addComponent(jComboBoxHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkAB))))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel31)
-                                .addGap(10, 10, 10)
-                                .addComponent(txtDniAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNombresAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel32))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtApellidosAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtGS, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel33))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkimport)))
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jLabel31)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtDniAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNombresAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel32))
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtApellidosAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtGS, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel33))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkimport))))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2019,7 +2170,7 @@ this.chkAltaTrabCal.setVisible(false);
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCheckBox11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2106,7 +2257,7 @@ this.chkAltaTrabCal.setVisible(false);
                                             .addComponent(jComboBoxHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(chkAB, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -2918,8 +3069,8 @@ public void agregarAltaEpidemiologica(String numero){
                     + "trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel)";//
                
             Sql += " Values ('" + txtDniAlta.getText().toString() + "','"
-                    + txtEmpresa.getText().toString() + "','"
-                    + txtContrata.getText().toString() + "','"
+                    + cboEmpresas.getSelectedItem().toString()+ "','"
+                    + cboContratas.getSelectedItem().toString() + "','"
                     + cboExplotacion.getSelectedItem().toString() + "','"
                     + cboAltura.getSelectedItem().toString() + "','"
                     + cboMineralExp.getSelectedItem().toString() + "','"
@@ -3054,7 +3205,7 @@ int seleccion = JOptionPane.showOptionDialog(
                 // Resultado
                 bResultado = true;
                 
-                oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+              //  oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
               // System.out.println("el valor de bresutltado antes "+bResultado);
                 //limpiar();
             }
@@ -3132,16 +3283,17 @@ int seleccion = JOptionPane.showOptionDialog(
     }//GEN-LAST:event_btnCargoMouseClicked
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        if (txtDni.getText().length() == 8) {
+        if (txtDni.getText().length() <=10
+                ) {
             cargardatos();
             dni=txtDni.getText().toString();
-        } else {
+       } else {
             oFunc.SubSistemaMensajeError("Es correcto el DNI?");
         }
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
-        int limite = 8;
+        int limite = 10;
         {
             if (txtDni.getText().length() == limite) {
                 evt.consume();
@@ -3266,8 +3418,8 @@ public void cargarDatosPaciente(){
                     txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
                     txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
                     txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
+                    cboEmpresas.setSelectedItem(oConn.setResult.getString("razon_empresa"));
+                    cboContratas.setSelectedItem(oConn.setResult.getString("razon_contrata"));
                     txtMedico.setText(oConn.setResult.getString("n_medico"));
                     txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
@@ -3374,8 +3526,8 @@ public void cargarDatosPaciente(){
                     txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
                     txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
                     txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
+                     cboEmpresas.setSelectedItem(oConn.setResult.getString("razon_empresa"));
+                    cboContratas.setSelectedItem(oConn.setResult.getString("razon_contrata"));
                     txtMedico.setText(oConn.setResult.getString("n_medico"));
                     txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
@@ -3475,7 +3627,7 @@ public void cargarDatosPaciente(){
         String sCodigo;
         String strSqlStmt;
         strSqlStmt = "UPDATE n_orden_ocupacional "
-                + "SET razon_empresa='" + txtEmpresa.getText().toString() + "', razon_contrata='" + txtContrata.getText().toString() + "', nom_ex='" + cboExplotacion.getSelectedItem().toString() + "', "
+                + "SET razon_empresa='" + cboEmpresas.getSelectedItem().toString() + "', razon_contrata='" + cboContratas.getSelectedItem().toString() + "', nom_ex='" + cboExplotacion.getSelectedItem().toString() + "', "
                 + "altura_po='" + cboAltura.getSelectedItem().toString() + "', mineral_po='" + cboMineralExp.getSelectedItem().toString() +  "', fecha_apertura_po='" + txtFechaAlta.getDate().toString() 
                 +  "',precio_po='" + txtPrecio.getText().toString() + "', "
                 + "nom_examen='" + cboExamenMedico.getSelectedItem().toString() + "', cargo_de='" + txtCargoDesempenar.getText().toString() + "', area_o='" + cboArea.getSelectedItem().toString() + "', "
@@ -3603,8 +3755,8 @@ public void cargarDatosPaciente(){
                     txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
                     txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
                     txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
+                     cboEmpresas.setSelectedItem(oConn.setResult.getString("razon_empresa"));
+                    cboContratas.setSelectedItem(oConn.setResult.getString("razon_contrata"));
                     txtMedico.setText(oConn.setResult.getString("n_medico"));
                     txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
@@ -4201,6 +4353,54 @@ private void CargarTipoExamenes(){
        cargarDatosPaciente();
        }
     }//GEN-LAST:event_chkimportActionPerformed
+
+    private void cboEmpresasPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboEmpresasPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_cboEmpresasPopupMenuWillBecomeInvisible
+
+    private void cboEmpresasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMouseClicked
+
+    }//GEN-LAST:event_cboEmpresasMouseClicked
+
+    private void cboEmpresasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMouseEntered
+
+    }//GEN-LAST:event_cboEmpresasMouseEntered
+
+    private void cboEmpresasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMousePressed
+
+    }//GEN-LAST:event_cboEmpresasMousePressed
+
+    private void cboEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpresasActionPerformed
+
+    }//GEN-LAST:event_cboEmpresasActionPerformed
+
+    private void cboEmpresasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboEmpresasKeyPressed
+
+    }//GEN-LAST:event_cboEmpresasKeyPressed
+
+    private void cboContratasPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboContratasPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_cboContratasPopupMenuWillBecomeInvisible
+
+    private void cboContratasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMouseClicked
+
+    }//GEN-LAST:event_cboContratasMouseClicked
+
+    private void cboContratasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMouseEntered
+
+    }//GEN-LAST:event_cboContratasMouseEntered
+
+    private void cboContratasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMousePressed
+
+    }//GEN-LAST:event_cboContratasMousePressed
+
+    private void cboContratasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboContratasActionPerformed
+
+    }//GEN-LAST:event_cboContratasActionPerformed
+
+    private void cboContratasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboContratasKeyPressed
+
+    }//GEN-LAST:event_cboContratasKeyPressed
   private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -4208,7 +4408,7 @@ private void CargarTipoExamenes(){
          
         try {
             String c=cboExamenMedico.getSelectedItem().toString();
-            String empresa=txtEmpresa.getText().toString();
+            String empresa=cboEmpresas.getSelectedItem().toString();
             if(("MINERA BARRICK MISQUICHILCA SA".equals(empresa) && "RETIRO".equals(c))|| "LA ARENA S.A.".equals(empresa) && "RETIRO".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamenR.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4300,6 +4500,45 @@ private void CargarTipoExamenes(){
                  JasperPrintManager.printReport(myPrint,true);
                 
             }
+                    if("Factores de Riesgo".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta factores de riesgo");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
+                          if("SUCAMEC LICENCIA DE ARMAS".equals(c)||"SUCAMEC FOTOCHECK".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "sucamec.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta sucamec");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
+                              if("Asistencial".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Asistencial.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta Asistencial");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
              if("MANIPULADOR-ALIMENTOS".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ManipuladorAlimentos.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4325,7 +4564,7 @@ private void CargarTipoExamenes(){
          
         try {
             String c=cboExamenMedico.getSelectedItem().toString();
-            String empresa=txtEmpresa.getText().toString();
+            String empresa=cboEmpresas.getSelectedItem().toString();
             if(("MINERA BARRICK MISQUICHILCA SA".equals(empresa) && "RETIRO".equals(c))|| "LA ARENA S.A.".equals(empresa) && "RETIRO".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamenR.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4410,7 +4649,45 @@ private void CargarTipoExamenes(){
                 // viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
             }
-            
+                   if("Factores de Riesgo".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta factores de riesgo");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
+                          if("SUCAMEC LICENCIA DE ARMAS".equals(c)||"SUCAMEC FOTOCHECK".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "sucamec.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta sucamec");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
+                            if("Asistencial".equals(c)){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Asistencial.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta Asistencial");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
         } catch (JRException ex) {
             Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -4645,8 +4922,10 @@ private void CargarTipoExamenes(){
     private javax.swing.JComboBox cboAltura;
     private javax.swing.JComboBox cboArea;
     private javax.swing.JComboBox cboCaserio;
+    private javax.swing.JComboBox cboContratas;
     private javax.swing.JComboBox cboDepartamento;
     private javax.swing.JComboBox cboDistrito;
+    private javax.swing.JComboBox cboEmpresas;
     private javax.swing.JComboBox cboEstadoCivil;
     private javax.swing.JComboBox cboExamenMedico;
     private javax.swing.JComboBox cboExplotacion;
@@ -5355,10 +5634,10 @@ private void CargarTipoExamenes(){
         if (txtDniAlta.getText().isEmpty()) {
             bResultado = false;
         }
-        if (txtEmpresa.getText().trim().isEmpty()) {
+         if (cboEmpresas.getSelectedItem().toString().trim().isEmpty()) {
             bResultado = false;
         }
-        if (txtContrata.getText().trim().isEmpty()) {
+        if (cboContratas.getSelectedItem().toString().trim().isEmpty()) {
             bResultado = false;
         }
         if (cboExamenMedico.getSelectedIndex() <= -1) {

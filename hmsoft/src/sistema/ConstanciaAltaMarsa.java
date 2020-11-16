@@ -377,6 +377,11 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
                 calcularDias();
             }
         });
+        FechaHasta.getDateEditor().addPropertyChangeListener(new java.beans.PropertyChangeListener(){
+            public void propertyChange(java.beans.PropertyChangeEvent evt){
+                calcularDias();
+            }
+        });
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entrar.png"))); // NOI18N
         btnGuardar.setText("Guardar/Actualizar");
@@ -804,6 +809,7 @@ else
                           chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
                           jTextField1.setText(oConn.setResult.getString("fecha_examen"));
                            Fecha();
+                           FechaHoy.setDate(oConn.setResult.getDate("fecha_examen"));
                           FechaDesde1.setDate(oConn.setResult.getDate("fecha_desde"));
                           FechaHasta.setDate(oConn.setResult.getDate("fecha_hasta"));
                           txtDiagnostico.setText(oConn.setResult.getString("txtdiagnostico")); 
@@ -888,7 +894,7 @@ public void calcularDias(){
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
         strSqlStmt="UPDATE constancia_alta_marsa\n" +
-                    "   SET  fecha_examen='"+FechaHoy.getDate()+"',"
+                    "   SET  fecha_actua='"+FechaHoy.getDate()+"',"
                 +"txtdias_desc='"+txtDiasDesc.getText()+"',"
                 +"txtinstitucion='"+jComboBox1.getSelectedItem().toString()+"',"
                 +"chkpositivo='"+chkPositivo.isSelected()+"',"

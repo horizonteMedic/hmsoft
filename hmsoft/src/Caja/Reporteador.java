@@ -49,7 +49,7 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import sistema.Audiometria;
 import sistema.Ingreso;
-
+ 
 
 /**
  *
@@ -92,7 +92,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private void cargarContratas(){
       String sQuery;        
         // Prepara el Query
-        sQuery ="SELECT razon_contrata FROM contratas;";
+        sQuery ="SELECT UPPER(razon_contrata) AS razon_contrata FROM contratas;";
         
         if (oConn.FnBoolQueryExecute(sQuery))
         {
@@ -123,7 +123,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
   private void cargarEmpresas(){
       String sQuery;        
         // Prepara el Query
-        sQuery ="SELECT razon_empresa FROM empresas";
+        sQuery ="SELECT UPPER(razon_empresa) AS razon_empresa FROM empresas";
         
         if (oConn.FnBoolQueryExecute(sQuery))
         {
@@ -415,6 +415,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
                          vSql+= ",n.tipo_pago AS TIPOPAGO ";
                                  }
                          vSql+= ",n.precio_po::numeric AS PRECIO "
+                                 +", (case when n.cod_sede=1 then 'TRUJILLO' "
+                                 + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                                  + " WHEN n.cod_sede=3 then 'Huancayo' "
+                                 + " end ) as SEDE "
                 + "FROM n_orden_ocupacional AS n "
                 + "LEFT JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa) "
                 + "LEFT JOIN lab_clinico AS l ON (n.n_orden = l.n_orden) "  
@@ -1522,6 +1526,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "			(case when cs.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
 "			',',\n" +
 "			(case when c.txtobservaciones is not null THEN c.txtobservaciones END )) as observaciones\n" +
+                     ", (case when n.cod_sede=1 then 'TRUJILLO' "
+                                 + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                                  + " WHEN n.cod_sede=3 then 'Huancayo' "
+                                 + " end ) as SEDE "+
 "FROM datos_paciente as d \n" +
 "INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
 "LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
@@ -1633,7 +1641,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "			(case when c.chks12=true THEN 'EXPECTORACION,' END ),\n" +
 "			(case when c.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
 "			',',\n" +
-"			(case when f.txtdiagnostico is not null THEN f.txtdiagnostico END )) as Diagnostico\n" +       
+"			(case when f.txtdiagnostico is not null THEN f.txtdiagnostico END )) as Diagnostico\n" +  
+                     ", (case when n.cod_sede=1 then 'TRUJILLO' "
+                                 + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                                  + " WHEN n.cod_sede=3 then 'Huancayo' "
+                                 + "end ) as SEDE "+
+                    
 "  FROM datos_paciente AS d\n" +
 " INNER JOIN n_orden_ocupacional as n on(d.cod_pa=n.cod_pa)\n" +
 " LEFT JOIN examen_inmunologico as i on(n.n_orden=i.n_orden)\n" +

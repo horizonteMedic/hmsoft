@@ -5,14 +5,33 @@ import Clases.clsFunciones;
 import java.awt.KeyEventPostProcessor;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HtmlButton;
+import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import com.gargoylesoftware.htmlunit.html.HtmlHiddenInput;
+import com.gargoylesoftware.htmlunit.html.HtmlImage;
+import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlTable;
+import com.gargoylesoftware.htmlunit.html.HtmlTableCell;
+import com.gargoylesoftware.htmlunit.html.HtmlTableRow;
+import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+import net.sourceforge.tess4j.ITesseract;
+import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.TesseractException;
 /**
  *
  * @author Richard Garcia
@@ -23,12 +42,20 @@ public final class AgregarEmpresa extends javax.swing.JDialog {
       clsConnection oConn = new clsConnection();
       String[]veDatos = new String[]{};
      DefaultTableModel model;
+      WebClient webClient=new WebClient();
+    HtmlPage htmlPage=null;
+     BufferedImage buf=null;
+     String fullText;
+     String razonsocial,primerafila;
+     String direccion;
+     int controlador;
     public AgregarEmpresa(RegistrarCliente parent, boolean modal) {
         //super(parent, modal);
         AgregarEmpresa.registrar = parent;
         this.setModal(modal);
         initComponents();
         Limpiar();
+      //  iniciar();
        sbTablaEmpresa();
        sbCargarDatosEmpresa("");
           setLocationRelativeTo(this);
@@ -91,6 +118,11 @@ public final class AgregarEmpresa extends javax.swing.JDialog {
 
         jLabel6.setText("Email :");
 
+        txtRUC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRUCActionPerformed(evt);
+            }
+        });
         txtRUC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtRUCKeyTyped(evt);
@@ -405,6 +437,157 @@ if(k==10){
         }
     }//GEN-LAST:event_tbEmpresasMousePressed
 
+   
+    public void consultaSunat() throws TesseractException, IOException{
+                  System.out.println("entro consulta sunat ");
+       iniciar();
+        cargarPagina("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/frameCriterioBusqueda.jsp");
+        inicializarCaptcha();
+        rellenarCaptcha();
+        consultar();
+        mostrar();
+        calcular();
+
+}
+ public void calcular(){
+    String pasar;
+    pasar=primerafila.substring(13, primerafila.length()-1);
+    txtRazonSocial.setText(pasar.trim());
+    txtDireccion.setText(direccion.trim());
+    }
+ private void iniciar(){
+                      System.out.println("entro a iniciar ");
+
+    try{
+    webClient.getOptions().setJavaScriptEnabled(true);
+    webClient.getOptions().setCssEnabled(false);
+    webClient.getCookieManager().setCookiesEnabled(true);
+    webClient.setAjaxController(new NicelyResynchronizingAjaxController());
+    webClient.getOptions().setThrowExceptionOnScriptError(false);
+                      System.out.println("salio a iniciar ");
+
+    }catch(Exception ex){
+    System.out.println(ex.getMessage());
+    }
+    }
+     private void cargarPagina(String url){
+     
+    try{
+                          System.out.println("cargo pagina ");
+
+  htmlPage=webClient.getPage(url);
+    }catch(Exception ex){
+        System.out.println("algo salio mal al cargar pagina ");
+    System.out.println(ex.getMessage());
+    }
+    
+    }
+     
+          private void inicializarCaptcha(){
+
+    try{
+              System.out.println("inicializo captcha ");
+
+  HtmlImage image=htmlPage.<HtmlImage>getFirstByXPath("//img[@src='captcha?accion=image']");
+  ImageReader img=image.getImageReader();
+    buf=img.read(0);
+    // File outputfile=null;
+     //  ImageIO.write(buf, "png", outputfile);
+       
+   ImageIcon icom=new ImageIcon(buf);
+   //labelCaptha.setIcon(icom);
+    }catch(Exception ex){
+        System.out.println("algun problema en el capcha ");
+        System.out.println(ex.getMessage());
+    
+    }
+    
+    }
+      private void rellenarCaptcha() throws TesseractException, IOException
+     {          System.out.println("entro a rellenar captcha ");
+
+          ITesseract tesseract = new Tesseract();
+        String datapath = "C:\\src\\main\\resources\\tessdata_best";
+        tesseract.setDatapath(new File(datapath).getPath());
+        tesseract.setLanguage("spa");
+        File outputfile= new File("C:\\src\\horiz.png");
+        ImageIO.write(buf, "png", outputfile);
+
+          fullText = tesseract.doOCR(outputfile);
+            System.out.println( "el mensaje es" );
+       //     jTextCaptcha.setText(fullText);
+        System.out.println(fullText);
+     }
+     
+    private void consultar(){
+        try{
+                      System.out.println("entro a consultar ");
+
+       HtmlForm htmlform=htmlPage.getElementByName("mainForm");
+       HtmlTextInput input=htmlform.getInputByName("codigo");
+     //  String codigo=jTextCaptcha.getText().trim();
+       input.setText(fullText);
+       HtmlHiddenInput hidden1=(HtmlHiddenInput)htmlform.getInputByName("accion");
+       hidden1.setValueAttribute("consPorRuc");
+       
+           HtmlHiddenInput hidden2=(HtmlHiddenInput)htmlform.getInputByName("nroRuc");
+           String nruc=txtRUC.getText().trim();
+           hidden2.setValueAttribute(nruc);
+           HtmlButton boton= (HtmlButton) htmlPage.createElement("button");
+           boton.setAttribute("type","submit");
+           htmlform.appendChild(boton);
+           htmlPage=boton.click();
+           webClient.waitForBackgroundJavaScript(10000);
+           htmlPage=(HtmlPage) webClient.getCurrentWindow().getEnclosedPage();
+    }catch(Exception ex){
+   // System.out.println(ex.getMessage());
+    }
+        System.out.println("paso consultar");
+    }
+    
+     
+    public void mostrar(){
+     
+   System.out.println("entro a mostrar");
+    String numRuc,tipoCont,nombreCom,fechaInscripcion;
+          try{
+              HtmlTable htmltable=(HtmlTable)htmlPage.getByXPath("//table[@class='form-table']").get(2);
+              for(int i=0;i<14;i++)
+              {
+              HtmlTableRow tr=htmltable.getRow(i);
+              for(int j=1;j<2;j++)
+              {
+                  HtmlTableCell td=tr.getCell(j);  
+                 if(i==0)
+                 {
+                 //a1=td.asText().toString();
+                  primerafila=td.asText().toString();
+                  i=5;
+                 }
+                if(i==6)
+                 {
+                // a1=td.asText().toString();
+                  direccion=td.asText().toString();
+                  i=15;
+                 }
+          //  jTextResultado.append(td.asText());
+              }
+              
+              
+              
+            //    jTextResultado.append("\n");
+              }
+              
+              
+          //  mostrar.setText(a1);
+              
+   
+    }catch(Exception ex){
+   // System.out.println(ex.getMessage());
+    }
+    }
+    
+ 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
   dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
@@ -418,6 +601,17 @@ if(k==10){
         update();
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtRUCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRUCActionPerformed
+/*      try {
+          System.out.println("va entrar a consulta sunat ");
+            consultaSunat();
+        } catch (TesseractException ex) {
+            Logger.getLogger(AgregarEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AgregarEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+    }//GEN-LAST:event_txtRUCActionPerformed
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

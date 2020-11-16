@@ -396,7 +396,7 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
   
                    String sQuery;
 
-        sQuery  = "select  n_orden,e.chkigm_reactivo, e.chkigm_noreactivo, e.chkigm_reactivo, e.chkigg_noreactivo, e.chkinvalido \n" +
+        sQuery  = "select  n_orden,e.chkigm_reactivo, e.chkigm_noreactivo, e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido \n" +
 "from examen_inmunologico as e where n_orden="+txtNorden.getText();
         oConn.FnBoolQueryExecute(sQuery);
         try {
@@ -404,7 +404,7 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
             {
              invalido= oConn.setResult.getBoolean("chkinvalido");
              igmreactivo=oConn.setResult.getBoolean("chkigm_reactivo");
-            iggreactivo=oConn.setResult.getBoolean("chkigm_reactivo");
+            iggreactivo=oConn.setResult.getBoolean("chkigg_reactivo");
             }
             oConn.setResult.close();
            if(invalido)

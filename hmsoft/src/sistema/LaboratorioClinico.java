@@ -32,6 +32,8 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+//
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -59,6 +61,12 @@ clsConnection oConn = new clsConnection();
         timer.start();
          txtSintoma.setEnabled(false);
                              chkInvalido1.setSelected(false);
+                             txtColorEF.setVisible(false);
+                             txtAspectoEF.setVisible(false);
+                             aspectoorina();
+                             colororina();
+                                   AutoCompleteDecorator.decorate(this.jComboAsp);
+                                   AutoCompleteDecorator.decorate(this.jComboBoxColor);
 
     } 
     @SuppressWarnings("unchecked")
@@ -156,11 +164,17 @@ clsConnection oConn = new clsConnection();
         chkNAG = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
-        chkPositivo = new javax.swing.JCheckBox();
-        chkNegativo = new javax.swing.JCheckBox();
         jLabel40 = new javax.swing.JLabel();
         txtVIH = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        chkPositivo = new javax.swing.JCheckBox();
+        chkNegativo = new javax.swing.JCheckBox();
+        txtRPR = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jCheckVposi = new javax.swing.JCheckBox();
+        jCheckNe = new javax.swing.JCheckBox();
+        jCheckNA = new javax.swing.JCheckBox();
         jLabel41 = new javax.swing.JLabel();
         txtEmpresa = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
@@ -189,6 +203,8 @@ clsConnection oConn = new clsConnection();
         chkTransparente = new javax.swing.JCheckBox();
         chkLigTurbio = new javax.swing.JCheckBox();
         chkNoAplicaExamen = new javax.swing.JCheckBox();
+        jComboBoxColor = new javax.swing.JComboBox();
+        jComboAsp = new javax.swing.JComboBox();
         jPanel9 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
@@ -880,7 +896,7 @@ clsConnection oConn = new clsConnection();
                     .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtGlucosaBio, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                    .addComponent(txtGlucosaBio, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(txtCreatininaBio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -921,18 +937,6 @@ clsConnection oConn = new clsConnection();
 
         jLabel38.setText("RPR :");
 
-        btRpr.add(chkPositivo);
-        chkPositivo.setText("+");
-        chkPositivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkPositivoActionPerformed(evt);
-            }
-        });
-
-        btRpr.add(chkNegativo);
-        chkNegativo.setSelected(true);
-        chkNegativo.setText("-");
-
         jLabel40.setText("VIH :");
 
         txtVIH.setText("N/A");
@@ -944,6 +948,67 @@ clsConnection oConn = new clsConnection();
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        jCheckBox1.setSelected(true);
+        jCheckBox1.setText("N/A");
+        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox1MouseClicked(evt);
+            }
+        });
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        chkPositivo.setText("+");
+        chkPositivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPositivoActionPerformed(evt);
+            }
+        });
+
+        chkNegativo.setText("-");
+        chkNegativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkNegativoActionPerformed(evt);
+            }
+        });
+
+        txtRPR.setText("N/A");
+        txtRPR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRPRActionPerformed(evt);
+            }
+        });
+
+        jSeparator5.setBackground(new java.awt.Color(153, 0, 51));
+        jSeparator5.setForeground(new java.awt.Color(102, 0, 0));
+        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator5.setAlignmentX(2.0F);
+
+        jCheckVposi.setText("+");
+        jCheckVposi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckVposiActionPerformed(evt);
+            }
+        });
+
+        jCheckNe.setText("-");
+        jCheckNe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckNeActionPerformed(evt);
+            }
+        });
+
+        jCheckNA.setSelected(true);
+        jCheckNA.setText("N/A");
+        jCheckNA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckNAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -951,27 +1016,56 @@ clsConnection oConn = new clsConnection();
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkPositivo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkNegativo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel40)
-                .addGap(18, 18, 18)
-                .addComponent(txtVIH)
-                .addGap(214, 214, 214))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(chkPositivo)
+                        .addGap(47, 47, 47)
+                        .addComponent(chkNegativo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox1))
+                    .addComponent(txtRPR, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtVIH, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jCheckVposi)
+                        .addGap(42, 42, 42)
+                        .addComponent(jCheckNe)
+                        .addGap(41, 41, 41)
+                        .addComponent(jCheckNA)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel38)
-                .addComponent(chkPositivo)
-                .addComponent(chkNegativo)
-                .addComponent(jLabel40)
-                .addComponent(txtVIH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtVIH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40)
+                            .addComponent(txtRPR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel38)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkPositivo)
+                    .addComponent(chkNegativo)
+                    .addComponent(jCheckBox1)
+                    .addComponent(jCheckNe)
+                    .addComponent(jCheckVposi)
+                    .addComponent(jCheckNA))
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)
         );
 
         jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/microscopio.png"))); // NOI18N
@@ -1087,7 +1181,7 @@ clsConnection oConn = new clsConnection();
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1138,7 +1232,7 @@ clsConnection oConn = new clsConnection();
                         .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jLabel41)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("Hematología - Bioquímica SI-EO", jPanel1);
@@ -1213,6 +1307,72 @@ clsConnection oConn = new clsConnection();
             }
         });
 
+        jComboBoxColor.setEditable(true);
+        jComboBoxColor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "N/A" }));
+        jComboBoxColor.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBoxColorPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jComboBoxColor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxColorMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jComboBoxColorMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jComboBoxColorMousePressed(evt);
+            }
+        });
+        jComboBoxColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxColorActionPerformed(evt);
+            }
+        });
+        jComboBoxColor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxColorKeyPressed(evt);
+            }
+        });
+
+        jComboAsp.setEditable(true);
+        jComboAsp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "N/A" }));
+        jComboAsp.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboAspPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jComboAsp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboAspMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jComboAspMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jComboAspMousePressed(evt);
+            }
+        });
+        jComboAsp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboAspActionPerformed(evt);
+            }
+        });
+        jComboAsp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboAspKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -1222,14 +1382,23 @@ clsConnection oConn = new clsConnection();
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(chkIncoloro)
                     .addComponent(jLabel44)
-                    .addComponent(jLabel42))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(txtColorEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel42)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(chkMedicamentosa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDensidadEF)
+                    .addComponent(jComboBoxColor, 0, 1, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDensidadEF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtColorEF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkMedicamentosa))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(chkTransparente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkLigTurbio)
+                        .addGap(18, 18, 18)
+                        .addComponent(chkNoAplicaExamen))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -1238,14 +1407,10 @@ clsConnection oConn = new clsConnection();
                             .addComponent(jLabel45))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtAspectoEF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPhEF, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(chkTransparente)
+                            .addComponent(txtPhEF, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboAsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkLigTurbio)
-                        .addGap(18, 18, 18)
-                        .addComponent(chkNoAplicaExamen)))
+                        .addComponent(txtAspectoEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -1262,13 +1427,16 @@ clsConnection oConn = new clsConnection();
                     .addComponent(jLabel42)
                     .addComponent(jLabel45)
                     .addComponent(txtColorEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAspectoEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAspectoEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboAsp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel44)
                     .addComponent(jLabel46)
                     .addComponent(txtDensidadEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtPhEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Exámen Quimico"));
@@ -1759,7 +1927,7 @@ clsConnection oConn = new clsConnection();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4))
@@ -1820,12 +1988,12 @@ clsConnection oConn = new clsConnection();
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator3)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2717,7 +2885,74 @@ clsConnection oConn = new clsConnection();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void colororina(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select nombreColor from colorOrina";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     jComboBoxColor.addItem(oConn.setResult.getString ("nombreColor"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        jComboBoxColor.setSelectedItem(0);
+        //cboSede.setSelectedIndex(1);
 
+
+}
+private void aspectoorina(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select nombre from aspectoOrina";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     jComboAsp.addItem(oConn.setResult.getString ("nombre"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        jComboAsp.setSelectedItem(0);
+        //cboSede.setSelectedIndex(1);
+
+
+}
     public void agregarSimtocasPc(){
       if(OrdenExiste1()){  
             Actualizar();
@@ -2998,7 +3233,7 @@ txtNorden.requestFocus();
          float hemoglobina=Float.parseFloat(txtHemoglobina.getText().toString());
                if ("M".equals(sexo)) {
                    if(hemoglobina < 14 || hemoglobina > 20){
-                       System.out.println("entro a pintar de rojo:"+txtHemoglobina.getText().toString());
+                  //     System.out.println("entro a pintar de rojo:"+txtHemoglobina.getText().toString());
                         txtHemoglobina.setForeground(Color.red);
                     }
                    else{
@@ -3251,14 +3486,17 @@ txtNorden.requestFocus();
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
      if(!txtNorden.getText().isEmpty()){
-        Editar();
+        chkPositivo.setSelected(false);
+        chkNegativo.setSelected(false);
+        jCheckBox1.setSelected(false);
+        jCheckVposi.setSelected(false);
+        jCheckNe.setSelected(false);
+        jCheckNA.setSelected(false);
+
+         Editar();
          sbCargarDatosTipoSangre(txtDni.getText());
         }else {oFunc.SubSistemaMensajeError("No hay datos en anexo 7c o orden no existe");}
     }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void chkPositivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPositivoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkPositivoActionPerformed
 
     private void chkReactivoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkReactivoCActionPerformed
          if(chkReactivoC.isSelected()){
@@ -3426,8 +3664,8 @@ public void negarcheks(){
         txtSintoma.setEnabled(false);
 }
     private void btnGrabarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarInActionPerformed
-        System.out.println("el valor es: "+!pasar.equals("PC"));  
-        System.out.println("el valor de pc: "+pasar);  
+      //  System.out.println("el valor es: "+!pasar.equals("PC"));  
+        //System.out.println("el valor de pc: "+pasar);  
         if(pasar.isEmpty())
           {
            pasar="P20";
@@ -3513,7 +3751,8 @@ public void negarcheks(){
                           FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
                           pasar=(oConn.setResult.getString("tipoprueba"));
                           txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                       System.out.println(pasar);
+                     
+                          //System.out.println(pasar);
                          if(pasar.equals("PC")) habilitarPc();
                          else 
                              negarPc();
@@ -3551,7 +3790,7 @@ public void  habilitarPc(){
 }
 
     public  void soloPc(){
-       System.out.println(pasar);
+      // System.out.println(pasar);
       
     if(!jTextFieldSaturacion.getText().isEmpty()){
       
@@ -3560,7 +3799,7 @@ public void  habilitarPc(){
             valor=2;
             negarPc();
             jTextFieldSaturacion.setText("");
-            System.out.println(sql2);
+          //  System.out.println(sql2);
         oConn.FnBoolQueryExecute(sql2);
           agregarSimtocasPc();
         }
@@ -3967,7 +4206,8 @@ else
                           FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
                           pasar=(oConn.setResult.getString("tipoprueba"));
                           txtEdadIn1.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                       System.out.println(pasar);
+                   
+                          //System.out.println(pasar);
                          if(pasar.equals("PC")) habilitarPc();
                          else 
                              negarPc();
@@ -4045,7 +4285,7 @@ else
 
     private void btnImprimir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir1ActionPerformed
         if(!txtImprimirIn1.getText().isEmpty()){
-            System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
+      //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
             printIn1(Integer.valueOf(txtImprimirIn1.getText()));
         }
     }//GEN-LAST:event_btnImprimir1ActionPerformed
@@ -4073,7 +4313,7 @@ else
     private void btnGrabarIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn1ActionPerformed
         // LLENADO SIMPLE 
         valorigm=Float.parseFloat(jTextField3.getText());
-        System.out.println("valor del igm:"+valorigm);
+     //   System.out.println("valor del igm:"+valorigm);
         if(valorigm<1.00)
         {
         chkIgmNoReactivo1.setSelected(true);
@@ -4085,7 +4325,7 @@ else
         chkIgmReactivo1.setSelected(true);
         }
                  valorigg=Float.parseFloat(jTextField4.getText());
-             System.out.println("valor del igg:"+valorigg);
+           //  System.out.println("valor del igg:"+valorigg);
 
         if(valorigg<1.00)
         {
@@ -4132,7 +4372,7 @@ LimpiarIn();
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         valorigm=Float.parseFloat(jTextField3.getText());
-        System.out.println("valor del igm:"+valorigm);
+    //    System.out.println("valor del igm:"+valorigm);
         if(valorigm<1.00)
         {
         chkIgmNoReactivo1.setSelected(true);
@@ -4150,7 +4390,7 @@ LimpiarIn();
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
                 valorigg=Float.parseFloat(jTextField4.getText());
-             System.out.println("valor del igg:"+valorigg);
+        //     System.out.println("valor del igg:"+valorigg);
 
         if(valorigg<1.00)
         {
@@ -4167,6 +4407,113 @@ LimpiarIn();
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+       if(jCheckBox1.isSelected())
+       {
+         txtRPR.setText("N/A");
+       chkNegativo.setSelected(false);
+       chkPositivo.setSelected(false);
+       }
+               
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
+ if(jCheckBox1.isSelected())
+       {
+       //System.out.println("entro al click");
+       chkNegativo.setSelected(false);
+       //chkPositivo.setSelected(false);
+       chkPositivo.setSelected(false);
+       }
+    }//GEN-LAST:event_jCheckBox1MouseClicked
+
+    private void txtRPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRPRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRPRActionPerformed
+
+    private void chkPositivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPositivoActionPerformed
+        if(chkPositivo.isSelected())
+       {
+       txtRPR.setText("POSITIVO");
+       }
+    }//GEN-LAST:event_chkPositivoActionPerformed
+
+    private void chkNegativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNegativoActionPerformed
+          if(chkNegativo.isSelected())
+       {
+       txtRPR.setText("NEGATIVO");
+       }
+    }//GEN-LAST:event_chkNegativoActionPerformed
+
+    private void jCheckVposiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckVposiActionPerformed
+          if(jCheckVposi.isSelected())
+       {
+       txtVIH.setText("POSITIVO");
+       }
+    }//GEN-LAST:event_jCheckVposiActionPerformed
+
+    private void jCheckNeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckNeActionPerformed
+          if(jCheckNe.isSelected())
+       {
+       txtVIH.setText("NEGATIVO");
+       }
+    }//GEN-LAST:event_jCheckNeActionPerformed
+
+    private void jCheckNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckNAActionPerformed
+           if(jCheckNA.isSelected())
+       {
+       txtVIH.setText("N/A");
+       }
+    }//GEN-LAST:event_jCheckNAActionPerformed
+
+    private void jComboBoxColorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxColorPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_jComboBoxColorPopupMenuWillBecomeInvisible
+
+    private void jComboBoxColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxColorMouseClicked
+
+    }//GEN-LAST:event_jComboBoxColorMouseClicked
+
+    private void jComboBoxColorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxColorMouseEntered
+
+    }//GEN-LAST:event_jComboBoxColorMouseEntered
+
+    private void jComboBoxColorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxColorMousePressed
+
+    }//GEN-LAST:event_jComboBoxColorMousePressed
+
+    private void jComboBoxColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxColorActionPerformed
+
+    }//GEN-LAST:event_jComboBoxColorActionPerformed
+
+    private void jComboBoxColorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxColorKeyPressed
+
+    }//GEN-LAST:event_jComboBoxColorKeyPressed
+
+    private void jComboAspPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboAspPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_jComboAspPopupMenuWillBecomeInvisible
+
+    private void jComboAspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboAspMouseClicked
+
+    }//GEN-LAST:event_jComboAspMouseClicked
+
+    private void jComboAspMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboAspMouseEntered
+
+    }//GEN-LAST:event_jComboAspMouseEntered
+
+    private void jComboAspMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboAspMousePressed
+
+    }//GEN-LAST:event_jComboAspMousePressed
+
+    private void jComboAspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboAspActionPerformed
+
+    }//GEN-LAST:event_jComboAspActionPerformed
+
+    private void jComboAspKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboAspKeyPressed
+
+    }//GEN-LAST:event_jComboAspKeyPressed
     private void Limpiar(){
         FechaExamen.setDate(null);
         txtNrecibo.setEditable(false);
@@ -4438,6 +4785,12 @@ LimpiarIn();
     private javax.swing.JCheckBox chkTos;
     private javax.swing.JCheckBox chkTransparente;
     private javax.swing.ButtonGroup gCocaina;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckNA;
+    private javax.swing.JCheckBox jCheckNe;
+    private javax.swing.JCheckBox jCheckVposi;
+    private javax.swing.JComboBox jComboAsp;
+    private javax.swing.JComboBox jComboBoxColor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -4557,6 +4910,7 @@ LimpiarIn();
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTextArea jTextAreaIgg;
     private javax.swing.JTextArea jTextAreaIgm;
     private javax.swing.JTextField jTextField1;
@@ -4620,6 +4974,7 @@ LimpiarIn();
     private javax.swing.JTextField txtPlaquetas;
     private javax.swing.JTextField txtProteinasEQ;
     private javax.swing.JTextField txtPusSU;
+    private javax.swing.JTextField txtRPR;
     private javax.swing.JTextField txtResponsable;
     private javax.swing.JTextField txtSangreEQ;
     private javax.swing.JTextField txtSintoma;
@@ -4745,7 +5100,10 @@ public void Editar(){
                          chkPositivo.setSelected(oConn.setResult.getBoolean("chkpositivo"));
                          chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
                          txtVIH.setText(oConn.setResult.getString("txtvih"));
-                         txtColorEF.setText(oConn.setResult.getString("txtcoloref"));
+                          jComboBoxColor.setSelectedItem(oConn.setResult.getString("txtcoloref"));
+                        // txtColorEF.setText(oConn.setResult.getString("txtcoloref"));
+                         jComboAsp.setSelectedItem(oConn.setResult.getString("txtaspectoef"));
+    
                          txtAspectoEF.setText(oConn.setResult.getString("txtaspectoef"));
                          txtDensidadEF.setText(oConn.setResult.getString("txtdensidadef"));
                          txtPhEF.setText(oConn.setResult.getString("txtphef"));
@@ -4848,9 +5206,9 @@ public void Agregar(){
               strSqlStmt += ",chknegativo";
               Query += ",'"+chkNegativo.isSelected()+ "'";
               if (txtVIH.getText().trim().length()>= 1 ){strSqlStmt += ",txtvih";Query += ",'"+txtVIH.getText().toString()+ "'";}
-              if (txtColorEF.getText().trim().length()>= 1 ){strSqlStmt += ",txtcoloref";Query += ",'"+txtColorEF.getText().toString()+ "'";}
+              if (jComboBoxColor.getSelectedItem().toString().trim().length()>= 1 ){strSqlStmt += ",txtcoloref";Query += ",'"+jComboBoxColor.getSelectedItem().toString()+ "'";}
               if (txtDensidadEF.getText().trim().length()>= 1 ){strSqlStmt += ",txtdensidadef";Query += ",'"+txtDensidadEF.getText().toString()+ "'";}
-              if (txtAspectoEF.getText().trim().length()>= 1 ){strSqlStmt += ",txtaspectoef";Query += ",'"+txtAspectoEF.getText().toString()+ "'";}
+              if (jComboAsp.getSelectedItem().toString().trim().length()>= 1 ){strSqlStmt += ",txtaspectoef";Query += ",'"+jComboAsp.getSelectedItem().toString()+ "'";}
               if (txtPhEF.getText().trim().length()>= 1 ){strSqlStmt += ",txtphef";Query += ",'"+txtPhEF.getText().toString()+ "'";}
               if (txtNitritosEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtnitritoseq";Query += ",'"+txtNitritosEQ.getText().toString()+ "'";}
               if (txtProteinasEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtproteinaseq";Query += ",'"+txtProteinasEQ.getText().toString()+ "'";}
@@ -4916,8 +5274,8 @@ public void actualizar(){
         "',chkpositivo='"+chkPositivo.isSelected()+
         "',chknegativo='"+chkNegativo.isSelected()+
         "',txtvih='"+txtVIH.getText().toString()+
-        "',txtcoloref='"+txtColorEF.getText().toString()+
-        "',txtaspectoef='"+txtAspectoEF.getText().toString()+
+        "',txtcoloref='"+jComboBoxColor.getSelectedItem().toString()+
+        "',txtaspectoef='"+jComboAsp.getSelectedItem().toString()+
         "',txtdensidadef='"+txtDensidadEF.getText().toString()+
         "',txtphef='"+txtPhEF.getText().toString()+
         "',txtnitritoseq='"+txtNitritosEQ.getText().toString()+
@@ -4941,7 +5299,8 @@ public void actualizar(){
         "',txtobservacioneslb='"+txtObservacionesLB.getText().toString()+
         "',res_lab='"+txtResponsable.getText().toString()+
         "',txtplaquetas='"+txtPlaquetas.getText().toString()+
-        "'where n_orden='"+txtNorden.getText().toString()+"'"; 
+        "' where n_orden="+txtNorden.getText().toString(); 
+  //  System.out.println("SQL:"+sql);
     if (oConn.FnBoolQueryExecuteUpdate(sql)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
         } else {
@@ -4962,7 +5321,7 @@ if(chkRetiro.isSelected()){
     if(btGrupo.isSelected(null)){oFunc.SubSistemaMensajeError("Grupo");bResultado = false;}  
     if(btFactor.isSelected(null)){oFunc.SubSistemaMensajeError("Factor");bResultado = false;}
     if(btTipoEx.isSelected(null)){bResultado = false;}
-    if(btRpr.isSelected(null)){oFunc.SubSistemaMensajeError("RPR");bResultado = false;}
+    //if(btRpr.isSelected(null)){oFunc.SubSistemaMensajeError("RPR");bResultado = false;}
 }
 
 return bResultado;
