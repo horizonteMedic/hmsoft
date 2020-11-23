@@ -93,7 +93,7 @@ public void vExamenes(String Nro){
                 
     }
     public boolean vSql(JTextField txt,JLabel lbl ,String sTabla, String sOpcion, JButton sboton)
-    {
+    {   
         String sStmt="";
         boolean bResult=false;
         if(sTabla.equals("certificadoMedico")){
