@@ -416,6 +416,7 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                                 JOptionPane.showMessageDialog(null, "Bienvenido al Sistema "+ clsGlobales.sNomOperador);
                                 String user=oConn.setResult.getString("usuario_user");
                                 if("JAZABACHE".equals(user)||"HM".equals(user)||"AGARCIA".equals(user)
+                                        ||"MHERRERA".equals(user)
                                         ||"MPAZ".equals(user)||"MMARIÑOS".equals(user)||"JCARDENAS".equals(user)
                                         ||"HCERNA".equals(user)||"JCERQUIN".equals(user)||"JCORDOVAP".equals(user)
                                         ||"JCORDOVA".equals(user)||"KGUEVARA".equals(user)||"lobo".equals(user) ){

@@ -130,10 +130,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
              cargarContratas();
         cargarEmpresas();
        // valorsede();
-         AutoCompleteDecorator.decorate(this.cboContratas);
-         AutoCompleteDecorator.decorate(this.cboEmpresas);
-         txtEmpresa.setVisible(false);
-         txtContrata.setVisible(false);
+     //    AutoCompleteDecorator.decorate(this.cboContratas);
+      //   AutoCompleteDecorator.decorate(this.cboEmpresas);
+        // cboContratas.setVisible(false);
+        // cboEmpresas.setVisible(false);
+       //  txtEmpresa.setVisible(false);
+       //txtContrata.setVisible(false);
          
     }
 public void autorizarCertificado()
@@ -178,7 +180,7 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                  while (oConn.setResult.next())
                  {                     
                      // Obtiene los datos de la Consulta
-                     cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
+              //       cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
                      
                  }
                  
@@ -194,7 +196,7 @@ URL url = new URL("https://api.reniec.cloud/dni/")
         }
         
         // selecciona
-      cboContratas.setSelectedIndex(0);
+     // cboContratas.setSelectedIndex(0);
 }
   private void cargarEmpresas(){
       String sQuery;        
@@ -210,7 +212,8 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                  while (oConn.setResult.next())
                  {                     
                      // Obtiene los datos de la Consulta
-                     cboEmpresas.addItem(oConn.setResult.getString ("razon_empresa"));
+                 
+                     //cboEmpresas.addItem(oConn.setResult.getString ("razon_empresa"));
                      
                  }
                  
@@ -226,7 +229,8 @@ URL url = new URL("https://api.reniec.cloud/dni/")
         }
         
         // selecciona
-       cboEmpresas.setSelectedIndex(0);
+   
+        //cboEmpresas.setSelectedIndex(0);
 }
 
 public void comunirApiReniecDesconocida(){
@@ -452,8 +456,6 @@ this.chkAltaTrabCal.setVisible(false);
         btnAddOcupacion1 = new javax.swing.JLabel();
         btnAddOcupacion2 = new javax.swing.JLabel();
         chkAltaManipAlimen = new javax.swing.JCheckBox();
-        cboEmpresas = new javax.swing.JComboBox();
-        cboContratas = new javax.swing.JComboBox();
         jpOcupacional = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -833,7 +835,7 @@ this.chkAltaTrabCal.setVisible(false);
                                     .addComponent(txtApellidos))
                                 .addGap(28, 28, 28)
                                 .addComponent(ckbSinDni)
-                                .addGap(96, 96, 96)
+                                .addGap(108, 108, 108)
                                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -1178,72 +1180,6 @@ this.chkAltaTrabCal.setVisible(false);
             }
         });
 
-        cboEmpresas.setEditable(true);
-        cboEmpresas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
-        cboEmpresas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cboEmpresasPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
-        cboEmpresas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cboEmpresasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cboEmpresasMouseEntered(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cboEmpresasMousePressed(evt);
-            }
-        });
-        cboEmpresas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboEmpresasActionPerformed(evt);
-            }
-        });
-        cboEmpresas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cboEmpresasKeyPressed(evt);
-            }
-        });
-
-        cboContratas.setEditable(true);
-        cboContratas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
-        cboContratas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cboContratasPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-        });
-        cboContratas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cboContratasMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                cboContratasMouseEntered(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                cboContratasMousePressed(evt);
-            }
-        });
-        cboContratas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboContratasActionPerformed(evt);
-            }
-        });
-        cboContratas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cboContratasKeyPressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1254,14 +1190,10 @@ this.chkAltaTrabCal.setVisible(false);
                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmpresa)
                     .addComponent(txtContrata))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboEmpresas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboContratas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddOcupacion1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAddOcupacion2, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -1284,11 +1216,7 @@ this.chkAltaTrabCal.setVisible(false);
                             .addComponent(btnAddOcupacion2)
                             .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16)))
-                    .addComponent(jLabel15)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cboEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(cboContratas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(chkAltaManipAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2146,7 +2074,7 @@ this.chkAltaTrabCal.setVisible(false);
                                             .addComponent(jLabel33))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(chkimport))))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -3069,8 +2997,8 @@ public void agregarAltaEpidemiologica(String numero){
                     + "trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel)";//
                
             Sql += " Values ('" + txtDniAlta.getText().toString() + "','"
-                    + cboEmpresas.getSelectedItem().toString()+ "','"
-                    + cboContratas.getSelectedItem().toString() + "','"
+                    + txtEmpresa.getText().toString()+ "','"
+                    + txtContrata.getText().toString() + "','"
                     + cboExplotacion.getSelectedItem().toString() + "','"
                     + cboAltura.getSelectedItem().toString() + "','"
                     + cboMineralExp.getSelectedItem().toString() + "','"
@@ -3418,8 +3346,8 @@ public void cargarDatosPaciente(){
                     txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
                     txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
                     txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                    cboEmpresas.setSelectedItem(oConn.setResult.getString("razon_empresa"));
-                    cboContratas.setSelectedItem(oConn.setResult.getString("razon_contrata"));
+                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
+                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
                     txtMedico.setText(oConn.setResult.getString("n_medico"));
                     txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
@@ -3526,8 +3454,8 @@ public void cargarDatosPaciente(){
                     txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
                     txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
                     txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                     cboEmpresas.setSelectedItem(oConn.setResult.getString("razon_empresa"));
-                    cboContratas.setSelectedItem(oConn.setResult.getString("razon_contrata"));
+                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
+                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
                     txtMedico.setText(oConn.setResult.getString("n_medico"));
                     txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
@@ -3627,7 +3555,7 @@ public void cargarDatosPaciente(){
         String sCodigo;
         String strSqlStmt;
         strSqlStmt = "UPDATE n_orden_ocupacional "
-                + "SET razon_empresa='" + cboEmpresas.getSelectedItem().toString() + "', razon_contrata='" + cboContratas.getSelectedItem().toString() + "', nom_ex='" + cboExplotacion.getSelectedItem().toString() + "', "
+                + "SET razon_empresa='" + txtEmpresa.getText().toString() + "', razon_contrata='" + txtContrata.getText().toString() + "', nom_ex='" + cboExplotacion.getSelectedItem().toString() + "', "
                 + "altura_po='" + cboAltura.getSelectedItem().toString() + "', mineral_po='" + cboMineralExp.getSelectedItem().toString() +  "', fecha_apertura_po='" + txtFechaAlta.getDate().toString() 
                 +  "',precio_po='" + txtPrecio.getText().toString() + "', "
                 + "nom_examen='" + cboExamenMedico.getSelectedItem().toString() + "', cargo_de='" + txtCargoDesempenar.getText().toString() + "', area_o='" + cboArea.getSelectedItem().toString() + "', "
@@ -3755,8 +3683,8 @@ public void cargarDatosPaciente(){
                     txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
                     txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
                     txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                     cboEmpresas.setSelectedItem(oConn.setResult.getString("razon_empresa"));
-                    cboContratas.setSelectedItem(oConn.setResult.getString("razon_contrata"));
+                     txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
+                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
                     txtMedico.setText(oConn.setResult.getString("n_medico"));
                     txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
@@ -4353,54 +4281,6 @@ private void CargarTipoExamenes(){
        cargarDatosPaciente();
        }
     }//GEN-LAST:event_chkimportActionPerformed
-
-    private void cboEmpresasPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboEmpresasPopupMenuWillBecomeInvisible
-
-    }//GEN-LAST:event_cboEmpresasPopupMenuWillBecomeInvisible
-
-    private void cboEmpresasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMouseClicked
-
-    }//GEN-LAST:event_cboEmpresasMouseClicked
-
-    private void cboEmpresasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMouseEntered
-
-    }//GEN-LAST:event_cboEmpresasMouseEntered
-
-    private void cboEmpresasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboEmpresasMousePressed
-
-    }//GEN-LAST:event_cboEmpresasMousePressed
-
-    private void cboEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEmpresasActionPerformed
-
-    }//GEN-LAST:event_cboEmpresasActionPerformed
-
-    private void cboEmpresasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboEmpresasKeyPressed
-
-    }//GEN-LAST:event_cboEmpresasKeyPressed
-
-    private void cboContratasPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboContratasPopupMenuWillBecomeInvisible
-
-    }//GEN-LAST:event_cboContratasPopupMenuWillBecomeInvisible
-
-    private void cboContratasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMouseClicked
-
-    }//GEN-LAST:event_cboContratasMouseClicked
-
-    private void cboContratasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMouseEntered
-
-    }//GEN-LAST:event_cboContratasMouseEntered
-
-    private void cboContratasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboContratasMousePressed
-
-    }//GEN-LAST:event_cboContratasMousePressed
-
-    private void cboContratasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboContratasActionPerformed
-
-    }//GEN-LAST:event_cboContratasActionPerformed
-
-    private void cboContratasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboContratasKeyPressed
-
-    }//GEN-LAST:event_cboContratasKeyPressed
   private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -4408,7 +4288,7 @@ private void CargarTipoExamenes(){
          
         try {
             String c=cboExamenMedico.getSelectedItem().toString();
-            String empresa=cboEmpresas.getSelectedItem().toString();
+            String empresa=txtEmpresa.getText().toString().toString();
             if(("MINERA BARRICK MISQUICHILCA SA".equals(empresa) && "RETIRO".equals(c))|| "LA ARENA S.A.".equals(empresa) && "RETIRO".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamenR.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4564,7 +4444,7 @@ private void CargarTipoExamenes(){
          
         try {
             String c=cboExamenMedico.getSelectedItem().toString();
-            String empresa=cboEmpresas.getSelectedItem().toString();
+            String empresa=txtEmpresa.getText().toString();
             if(("MINERA BARRICK MISQUICHILCA SA".equals(empresa) && "RETIRO".equals(c))|| "LA ARENA S.A.".equals(empresa) && "RETIRO".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamenR.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4922,10 +4802,8 @@ private void CargarTipoExamenes(){
     private javax.swing.JComboBox cboAltura;
     private javax.swing.JComboBox cboArea;
     private javax.swing.JComboBox cboCaserio;
-    private javax.swing.JComboBox cboContratas;
     private javax.swing.JComboBox cboDepartamento;
     private javax.swing.JComboBox cboDistrito;
-    private javax.swing.JComboBox cboEmpresas;
     private javax.swing.JComboBox cboEstadoCivil;
     private javax.swing.JComboBox cboExamenMedico;
     private javax.swing.JComboBox cboExplotacion;
@@ -5226,7 +5104,7 @@ private void CargarTipoExamenes(){
         txtApellidos.setEnabled(false);
         //txtTelefonoTrabajo.setEnabled(false);
         txtTelefonoCasa.setEnabled(false);
-
+        btnEditar.setEnabled(true);
         txtLugarNacimiento.setEnabled(false);
         txtEmail.setEnabled(false);
         txtDireccion.setEnabled(false);
@@ -5634,10 +5512,10 @@ private void CargarTipoExamenes(){
         if (txtDniAlta.getText().isEmpty()) {
             bResultado = false;
         }
-         if (cboEmpresas.getSelectedItem().toString().trim().isEmpty()) {
+         if (txtEmpresa.getText().toString().trim().isEmpty()) {
             bResultado = false;
         }
-        if (cboContratas.getSelectedItem().toString().trim().isEmpty()) {
+        if (txtContrata.getText().toString().trim().isEmpty()) {
             bResultado = false;
         }
         if (cboExamenMedico.getSelectedIndex() <= -1) {

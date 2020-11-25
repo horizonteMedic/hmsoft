@@ -62,8 +62,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
          Ingreso objet= new Ingreso();
           String nomsede,nombre;
             String contrata,empresa;
-          String agregarConsulta="";
-          int marcador=1;
+          String agregarConsulta=" ",laconsulta=" ",tipofecha=" ";
+          int marcador=1,verificador=1;
    int codigosede;
     public Reporteador() {
         initComponents();
@@ -314,6 +314,61 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 }
             }
         }
+  
+    public void consultaAlta(){
+    model = new DefaultTableModel(){        
+                 @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                    }};
+                               
+                    String vSql=" select noo.n_orden, concat(dp.nombres_pa,' ',dp.apellidos_pa) as DatosPersonales,\n" +
+"        dp.cod_pa as dni,\n" +
+"		noo.razon_empresa,noo.razon_contrata,\n" +
+"		cam.fecha_examen as fechaAlta, noo.fecha_apertura_po as fechaIngreso,\n" +
+"			( case when cam.fecha_actua is null then 'sin actulizar'\n" +
+"		 else cast(cam.fecha_actua as text)\n" +
+"		 end )as fechaAltaActualizada\n" +
+" from datos_paciente as dp inner join n_orden_ocupacional as noo on dp.cod_pa=noo.cod_pa\n" +
+" inner join constancia_alta_marsa as cam on noo.n_orden=cam.n_orden "
+                            +laconsulta
+                            ;
+           
+                  System.out.println("consulta:"+vSql);         
+                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                if (oConn.FnBoolQueryExecute(vSql))
+             {
+             try  {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                         model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                    while (oConn.setResult.next())
+                    {
+                        Object [] Fila = new Object[CantidaColumnas];
+                       
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                           
+                            Fila[i] = oConn.setResult.getObject(i+1);
+                        }
+                        model.addRow(Fila);
+                    }
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+                      tbReporte.setModel(model);
+                     oConn.setResult.close();
+                } 
+                catch (SQLException ex) 
+                {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    
+    
+    }
+    
+    
     
     public boolean convertir(boolean pase){
     boolean retornado=true;
@@ -591,6 +646,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jPanel5 = new javax.swing.JPanel();
+        jButton5 = new javax.swing.JButton();
+        jCheckBoxIngres0 = new javax.swing.JCheckBox();
+        jCheckBoxAlta = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("Reporte para control Interno e Impresion detallada");
@@ -1091,6 +1150,59 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }
         });
 
+        jPanel5.setBackground(new java.awt.Color(153, 153, 0));
+        jPanel5.setForeground(new java.awt.Color(0, 153, 153));
+
+        jButton5.setText("C. ALTA");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxIngres0.setText("F. INGRESO");
+        jCheckBoxIngres0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxIngres0ActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxAlta.setText("F. ALTA");
+        jCheckBoxAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxAltaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jButton5)
+                        .addGap(0, 18, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBoxAlta)
+                            .addComponent(jCheckBoxIngres0))))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jButton5)
+                .addGap(12, 12, 12)
+                .addComponent(jCheckBoxIngres0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBoxAlta)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1108,7 +1220,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1139,7 +1250,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                         .addComponent(chkRepCovid2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(chkRepManipAlimen)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1195,9 +1311,15 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnExportarExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1763,6 +1885,51 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private void cboEmpresasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboEmpresasKeyPressed
 
     }//GEN-LAST:event_cboEmpresasKeyPressed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+          if(jCheckBoxIngres0.isSelected()==true)
+    {jCheckBoxAlta.setSelected(false);
+    laconsulta=" where  noo.fecha_apertura_po>= '"+Fdesde.getDate().toString()+"' and noo.fecha_apertura_po<='"
+            +Fhasta.getDate().toString()+"' order  by noo.fecha_apertura_po  ";
+    tipofecha=" agrupado por fecha de ingreso ";
+    }  
+          if(jCheckBoxAlta.isSelected()==true)
+        {jCheckBoxIngres0.setSelected(false);   
+        laconsulta=" where cam.fecha_examen>= '"+Fdesde.getDate().toString()+"' and cam.fecha_examen<='"
+            +Fhasta.getDate().toString()+"' order  by cam.fecha_examen ";
+            tipofecha=" agrupado por fecha de alta ";
+        }  
+        if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 
+                 || ((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2)  
+           {
+                 if(jCheckBoxIngres0.isSelected()==true || jCheckBoxAlta.isSelected()==true)
+                     consultaAlta();
+                else 
+                JOptionPane.showMessageDialog(null, "FALTA MARCAR PORQUE FECHA BUSCAR");
+           }
+           else 
+                JOptionPane.showMessageDialog(null, "DEBE DE INGRESAR LAS FECHA DESDE Y HASTA");
+           
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jCheckBoxIngres0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxIngres0ActionPerformed
+    if(jCheckBoxIngres0.isSelected()==true)
+    {jCheckBoxAlta.setSelected(false);
+    laconsulta=" where  noo.fecha_apertura_po>= '"+Fdesde.getDate().toString()+"' and noo.fecha_apertura_po<='"
+            +Fhasta.getDate().toString()+"' order  by noo.fecha_apertura_po  ";
+    tipofecha=" agrupado por fecha de ingreso ";
+    }
+
+    }//GEN-LAST:event_jCheckBoxIngres0ActionPerformed
+
+    private void jCheckBoxAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAltaActionPerformed
+        if(jCheckBoxAlta.isSelected()==true)
+        {jCheckBoxIngres0.setSelected(false);   
+        laconsulta=" where cam.fecha_examen>= '"+Fdesde.getDate().toString()+"' and cam.fecha_examen<='"
+            +Fhasta.getDate().toString()+"' order  by cam.fecha_examen ";
+            tipofecha=" agrupado por fecha de alta ";
+        }
+    }//GEN-LAST:event_jCheckBoxAltaActionPerformed
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -1847,6 +2014,16 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                        celda13.setCellStyle(estiloCelda2);
                        marcador=3;
                    }
+                    if(verificador==1){
+                       HSSFCell celda12 = fila.createCell(12);
+                        celda12.setCellValue(new HSSFRichTextString("agrupado por:".toUpperCase()));
+                       celda12.setCellStyle(estiloCelda2);
+                     HSSFCell celda13 = fila.createCell(13);
+                        celda13.setCellValue(new HSSFRichTextString(tipofecha.toUpperCase()));
+                       celda13.setCellStyle(estiloCelda2);
+                       verificador=3;
+                   }
+                   
                    }
               } //else {
                     HSSFRow fila = hoja.createRow(i+1);
@@ -1922,7 +2099,10 @@ marcador=1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBoxAlta;
+    private javax.swing.JCheckBox jCheckBoxIngres0;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1931,6 +2111,7 @@ marcador=1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblNservicio;
