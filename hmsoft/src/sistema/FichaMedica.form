@@ -153,7 +153,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jtFichaMedica" pref="617" max="32767" attributes="0"/>
+          <Component id="jtFichaMedica" pref="625" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -232,7 +232,7 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="txtAlturaLabor" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="txtMineralesExplotados" alignment="1" min="-2" pref="224" max="-2" attributes="0"/>
                                                   <Component id="txtExplotacionEn" alignment="1" min="-2" pref="224" max="-2" attributes="0"/>
@@ -282,7 +282,7 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtArea" pref="147" max="32767" attributes="0"/>
+                                  <Component id="txtArea" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace pref="14" max="-2" attributes="0"/>
@@ -606,7 +606,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="86" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2002,7 +2002,7 @@
                               <Component id="jLabel96" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2541,7 +2541,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtMalEstado" pref="83" max="32767" attributes="0"/>
+                                      <Component id="txtMalEstado" pref="69" max="32767" attributes="0"/>
                                       <Component id="txtFaltan" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2572,7 +2572,7 @@
                               <Component id="txtObservOdonto" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="jLabel198" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3964,7 +3964,7 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jLabel111" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtGanglios" pref="120" max="32767" attributes="0"/>
+                                      <Component id="txtGanglios" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -7303,6 +7303,319 @@
                 </Component>
               </SubComponents>
             </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel28">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Consentimiento Informado">
+                <Property name="tabTitle" type="java.lang.String" value="Consentimiento Informado"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel201" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtNombresIn4" min="-2" pref="315" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel218" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtDniIn4" min="-2" pref="85" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel199" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtNordenIn4" min="-2" pref="69" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnEditarIn4" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel219" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtLaboral" min="-2" pref="270" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel220" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel221" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel222" min="-2" pref="99" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtLaempresa" min="-2" pref="515" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel223" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
+                                  <Component id="jLabel224" alignment="0" min="-2" pref="892" max="-2" attributes="0"/>
+                                  <Component id="jLabel225" alignment="0" min="-2" pref="892" max="-2" attributes="0"/>
+                                  <Component id="jLabel226" alignment="0" min="-2" pref="892" max="-2" attributes="0"/>
+                                  <Component id="jLabel227" alignment="0" min="-2" pref="892" max="-2" attributes="0"/>
+                                  <Component id="jLabel228" alignment="0" min="-2" pref="535" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnGrabarIn4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnLimpiarIn4" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                      <Component id="txtImprimirIn4" min="-2" pref="82" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnImprimir4" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel200" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="FechaExIn4" min="-2" pref="170" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                      <Component id="jLabel230" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                      <Component id="jLabelhora" min="-2" pref="127" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabelhora" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <Component id="jLabel230" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel199" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNordenIn4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnEditarIn4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel201" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNombresIn4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel218" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDniIn4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel219" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtLaboral" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel220" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel221" min="-2" pref="16" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel222" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtLaempresa" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel223" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel224" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel225" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel226" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel227" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel228" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel200" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FechaExIn4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnLimpiarIn4" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="btnGrabarIn4" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                                  <Component id="txtImprimirIn4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnImprimir4" min="-2" pref="42" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel199">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N&#xba; Orden :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNordenIn4">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNordenIn4ActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNordenIn4KeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnEditarIn4">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/configuracion.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Editar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarIn4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="FechaExIn4">
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="FechaExIn4PropertyChange"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel200">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fecha :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel201">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yo:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNombresIn4">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombresIn4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel218">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="identificado con documento de identidad N&#xb0;:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDniIn4">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel219">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con ocupacion laboral de:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtLaboral">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLaboralActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel220">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="certifico que he sido informado/a acerca de la naturaleza y pr&#xf3;posito"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel221">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="certifico que he sido informado/a acerca de la naturaleza y pr&#xf3;posito del examen m&#xe9;dico ocupacional asi como pruebas complementarias determinada"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel222">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="por la empresa:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtLaempresa">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel223">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="De acuerdo a los peligros y riesgos identificados en mi puesto de trabajo."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel224">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="En ese sentido en forma consiente y voluntaria doy mi consentimiento, para que se me realice el examen m&#xe9;dico ocupacional de acuerdo a la Resolucion"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel225">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ministerial N&#xb0;  312-2011/MINSA . Y doy fe que la informaci&#xf3;n brindada a HORIZONTE MEDIC es veridica."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel226">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Asi mismo, autorizo a HORIZONTE MEDIC para que brinde mi hisotoria clinica y toda informaci&#xf3;n resultante de mi examen medico ocupacional al Medico "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel227">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ocupacional de mi empresa para que tenga acceso a mi  Historia Clinica de acuerdo a la N.T.N&#xb0; 022 MINSA/dgsp-V.02 y Ley N&#xb0; 26842, Ley"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel228">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="general de salud."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelhora">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel230">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hora:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnGrabarIn4">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/add.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Grabar/Actualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGrabarIn4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnLimpiarIn4">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/limpiar.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Limpiar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarIn4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtImprimirIn4">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtImprimirIn4ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnImprimir4">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/imagenes/impresora.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImprimir4ActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

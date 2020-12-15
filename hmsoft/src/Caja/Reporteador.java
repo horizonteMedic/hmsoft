@@ -222,8 +222,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-         agregarConsulta=" and n.cod_sede="+codigosede;
-      
+           agregarConsulta=" and n.cod_sede="+codigosede; 
+           System.out.println(":"+agregarConsulta);
+   //  agregarConsulta+=" "; 
     }
     private void cOrdenServicio(){
                
@@ -546,6 +547,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
                  {
                  vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
                  }
+                 
+                 
+                 vSql+=" " +agregarConsulta;
                   System.out.println("consulta:"+vSql);         
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))

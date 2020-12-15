@@ -6,21 +6,36 @@ package sistema;
 
 import Caja.AddCargos;
 import static Caja.RegistrarCliente.addExEn;
+import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.Timer;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -39,6 +54,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
 
     public FichaMedica() {
         initComponents();
+                timer.start();
         jtFichaMedica.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/id.png")));
         jtFichaMedica.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/invoice.png")));
         jtFichaMedica.setIconAt(2, new ImageIcon(ClassLoader.getSystemResource("imagenes/botiquin.png")));
@@ -46,6 +62,19 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
 
     }
 
+
+    Timer timer = new Timer(1000, new ActionListener() {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Date HorNew = new Date();
+            SimpleDateFormat fechaforma = new SimpleDateFormat("hh:mm:ss a");
+            String FfechaSystemA = fechaforma.format(HorNew);
+
+            GestorTime.setFfechaSystem(FfechaSystemA);
+            jLabelhora.setText(GestorTime.getFfechaSystem());
+        }
+    });
     private void vExamenes(String Nro) {
 
         vSql(txtTriaje, lblTriaje, "triaje", Nro);
@@ -68,7 +97,30 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
         vSql(txtOftalmologia, lblOftalmologia, "oftalmologia", Nro);
 
     }
+        private boolean GrabarIn4() throws SQLException{
+        boolean bResult = false;
+        String strSqlStmt = "insert into consentimientoInformado ";       
+            strSqlStmt+= "values("+ txtNordenIn4.getText()+",'"+FechaExIn4.getDate().toString()+"','"+jLabelhora.getText()+
+                    "')";
+            System.out.println(strSqlStmt);
+//        oFunc.SubSistemaMensajeError(strSqlStmt);
+             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+//                   oConn.setResult.next();
+                    oFunc.SubSistemaMensajeInformacion("Examen Registrada");
+                    
+                   bResult = true;
+               }
+                return bResult;       
+        }
+      
+   private boolean validarIn4(){
+        boolean bResultado=true;
 
+            if (((JTextField)FechaExIn4.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
+                {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
+
+           return bResultado;
+}  
     private boolean vSql(JTextField txt, JLabel lbl, String sTabla, String sOpcion) {
         String sStmt;
         boolean bResult = false;
@@ -703,6 +755,34 @@ boolean bResultado=true;
         txtDensidadEF = new javax.swing.JTextField();
         txtAspectoEF = new javax.swing.JTextField();
         txtPhEF = new javax.swing.JTextField();
+        jPanel28 = new javax.swing.JPanel();
+        jLabel199 = new javax.swing.JLabel();
+        txtNordenIn4 = new javax.swing.JTextField();
+        btnEditarIn4 = new javax.swing.JButton();
+        FechaExIn4 = new com.toedter.calendar.JDateChooser();
+        jLabel200 = new javax.swing.JLabel();
+        jLabel201 = new javax.swing.JLabel();
+        txtNombresIn4 = new javax.swing.JTextField();
+        jLabel218 = new javax.swing.JLabel();
+        txtDniIn4 = new javax.swing.JTextField();
+        jLabel219 = new javax.swing.JLabel();
+        txtLaboral = new javax.swing.JTextField();
+        jLabel220 = new javax.swing.JLabel();
+        jLabel221 = new javax.swing.JLabel();
+        jLabel222 = new javax.swing.JLabel();
+        txtLaempresa = new javax.swing.JTextField();
+        jLabel223 = new javax.swing.JLabel();
+        jLabel224 = new javax.swing.JLabel();
+        jLabel225 = new javax.swing.JLabel();
+        jLabel226 = new javax.swing.JLabel();
+        jLabel227 = new javax.swing.JLabel();
+        jLabel228 = new javax.swing.JLabel();
+        jLabelhora = new javax.swing.JLabel();
+        jLabel230 = new javax.swing.JLabel();
+        btnGrabarIn4 = new javax.swing.JButton();
+        btnLimpiarIn4 = new javax.swing.JButton();
+        txtImprimirIn4 = new javax.swing.JTextField();
+        btnImprimir4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtObservacionesFichaMedica = new javax.swing.JTextArea();
         jLabel123 = new javax.swing.JLabel();
@@ -1392,7 +1472,7 @@ boolean bResultado=true;
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtAlturaLabor, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(0, 3, Short.MAX_VALUE)
+                                        .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtMineralesExplotados, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtExplotacionEn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -1428,7 +1508,7 @@ boolean bResultado=true;
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel27)))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtArea, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                            .addComponent(txtArea))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel20))
@@ -1677,7 +1757,7 @@ boolean bResultado=true;
                             .addComponent(txtGFSPrevio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtGrupoFacLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel140))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jtFichaMedica.addTab("Datos Personales", jPanel2);
@@ -1878,7 +1958,7 @@ boolean bResultado=true;
                             .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMalEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(txtMalEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                             .addComponent(txtFaltan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1900,7 +1980,7 @@ boolean bResultado=true;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtObservOdonto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel198))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ojos"));
@@ -2739,7 +2819,7 @@ boolean bResultado=true;
                             .addComponent(jPanel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel96)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3583,7 +3663,7 @@ boolean bResultado=true;
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel111)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtGanglios, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
+                                .addComponent(txtGanglios, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4810,6 +4890,228 @@ boolean bResultado=true;
 
         jtFichaMedica.addTab("RESULTADOS", jPanel21);
 
+        jLabel199.setText("Nº Orden :");
+
+        txtNordenIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNordenIn4ActionPerformed(evt);
+            }
+        });
+        txtNordenIn4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNordenIn4KeyTyped(evt);
+            }
+        });
+
+        btnEditarIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
+        btnEditarIn4.setText("Editar");
+        btnEditarIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarIn4ActionPerformed(evt);
+            }
+        });
+
+        FechaExIn4.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                FechaExIn4PropertyChange(evt);
+            }
+        });
+
+        jLabel200.setText("Fecha :");
+
+        jLabel201.setText("Yo:");
+
+        txtNombresIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresIn4ActionPerformed(evt);
+            }
+        });
+
+        jLabel218.setText("identificado con documento de identidad N°:");
+
+        jLabel219.setText("Con ocupacion laboral de:");
+
+        txtLaboral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLaboralActionPerformed(evt);
+            }
+        });
+
+        jLabel220.setText("certifico que he sido informado/a acerca de la naturaleza y próposito");
+
+        jLabel221.setText("certifico que he sido informado/a acerca de la naturaleza y próposito del examen médico ocupacional asi como pruebas complementarias determinada");
+
+        jLabel222.setText("por la empresa:");
+
+        jLabel223.setText("De acuerdo a los peligros y riesgos identificados en mi puesto de trabajo.");
+
+        jLabel224.setText("En ese sentido en forma consiente y voluntaria doy mi consentimiento, para que se me realice el examen médico ocupacional de acuerdo a la Resolucion");
+
+        jLabel225.setText("ministerial N°  312-2011/MINSA . Y doy fe que la información brindada a HORIZONTE MEDIC es veridica.");
+
+        jLabel226.setText("Asi mismo, autorizo a HORIZONTE MEDIC para que brinde mi hisotoria clinica y toda información resultante de mi examen medico ocupacional al Medico ");
+
+        jLabel227.setText("Ocupacional de mi empresa para que tenga acceso a mi  Historia Clinica de acuerdo a la N.T.N° 022 MINSA/dgsp-V.02 y Ley N° 26842, Ley");
+
+        jLabel228.setText("general de salud.");
+
+        jLabel230.setText("Hora:");
+
+        btnGrabarIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnGrabarIn4.setText("Grabar/Actualizar");
+        btnGrabarIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrabarIn4ActionPerformed(evt);
+            }
+        });
+
+        btnLimpiarIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
+        btnLimpiarIn4.setText("Limpiar");
+        btnLimpiarIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarIn4ActionPerformed(evt);
+            }
+        });
+
+        txtImprimirIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtImprimirIn4ActionPerformed(evt);
+            }
+        });
+
+        btnImprimir4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora.png"))); // NOI18N
+        btnImprimir4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimir4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel28Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addComponent(jLabel201)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNombresIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel218)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDniIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addComponent(jLabel199)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNordenIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEditarIn4))
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addComponent(jLabel219)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel220))
+                            .addComponent(jLabel221)
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addComponent(jLabel222, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtLaempresa, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel223, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel224, javax.swing.GroupLayout.PREFERRED_SIZE, 892, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel225, javax.swing.GroupLayout.PREFERRED_SIZE, 892, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel226, javax.swing.GroupLayout.PREFERRED_SIZE, 892, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel227, javax.swing.GroupLayout.PREFERRED_SIZE, 892, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel228, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel28Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addComponent(btnGrabarIn4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpiarIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(txtImprimirIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnImprimir4)
+                                .addGap(145, 145, 145))
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addComponent(jLabel200)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FechaExIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel230)
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabelhora, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel28Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelhora, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel230)))
+                    .addGroup(jPanel28Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel199)
+                            .addComponent(txtNordenIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditarIn4))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel201)
+                            .addComponent(txtNombresIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel218)
+                            .addComponent(txtDniIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel219)
+                            .addComponent(txtLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel220))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel221, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel222)
+                            .addComponent(txtLaempresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel223)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel224)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel225)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel226)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel227)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel228)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel200)
+                            .addComponent(FechaExIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel28Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLimpiarIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGrabarIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtImprimirIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnImprimir4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))))
+        );
+
+        jtFichaMedica.addTab("Consentimiento Informado", jPanel28);
+
         txtObservacionesFichaMedica.setBackground(new java.awt.Color(189, 222, 255));
         txtObservacionesFichaMedica.setColumns(20);
         txtObservacionesFichaMedica.setLineWrap(true);
@@ -4988,7 +5290,7 @@ boolean bResultado=true;
                     .addComponent(jLabel135)
                     .addComponent(txtTrigliseridos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
-            .addComponent(jtFichaMedica, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+            .addComponent(jtFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 625, Short.MAX_VALUE)
         );
 
         pack();
@@ -5415,6 +5717,231 @@ boolean bResultado=true;
     private void txtSangreEQFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSangreEQFocusGained
         txtSangreEQ.selectAll();
     }//GEN-LAST:event_txtSangreEQFocusGained
+ public boolean OrdenExisteIn4()
+     {
+        boolean bResultado=false;
+        if(!txtNordenIn4.getText().isEmpty()){
+        String sQuery;
+        sQuery  = "Select n_orden from consentimientoInformado Where n_orden ="+txtNordenIn4.getText().toString();
+        oConn.FnBoolQueryExecute(sQuery);
+        try {
+            if (oConn.setResult.next())
+            {
+                bResultado = true;
+//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+//             txtNorden.setText(null);
+            }
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+        }
+        }       
+        return bResultado;
+     }
+    private void txtNordenIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenIn4ActionPerformed
+   
+        if(!txtNordenIn4.getText().isEmpty()){
+            if(!OrdenExisteIn4()){
+                String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
+                + "d.sexo_pa,n.tipoprueba,n.razon_empresa, n.cargo_de "
+                + "FROM datos_paciente AS d "
+                + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
+                + "WHERE n.n_orden ='"+txtNordenIn4.getText() +"'";
+                oConn.FnBoolQueryExecute(Sql);
+                try {
+                    if (oConn.setResult.next()) {
+                        txtNombresIn4.setText(oConn.setResult.getString("nombre"));
+                        txtDniIn4.setText(oConn.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        txtLaboral.setText(oConn.setResult.getString("cargo_de"));
+                        txtLaboral.setText(oConn.setResult.getString("cargo_de"));
+                        txtLaempresa.setText(oConn.setResult.getString("razon_empresa"));
+                        txtNordenIn4.setEditable(false);
+                        Fecha1();
+                        // FechaHoy.requestFocusInWindow();
+                     //   oPe.fecha(FechaExIn4);
+                        //   oPe.fecha(FechaHotel);
+
+                    }else{
+                        oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
+                    }
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
+            }else{
+                oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
+            }
+        }
+    }//GEN-LAST:event_txtNordenIn4ActionPerformed
+
+    private void txtNordenIn4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNordenIn4KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNordenIn4KeyTyped
+
+    private void btnEditarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIn4ActionPerformed
+        if(!txtNordenIn4.getText().isEmpty()){
+            String Sql=" SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa,n.razon_empresa,\n" +
+                                " n.cargo_de,ci.fecha\n" +
+"                            FROM datos_paciente AS d   \n" +
+"                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
+"                            left JOIN consentimientoInformado AS ci ON (ci.n_orden = n.n_orden) \n" +
+"                            WHERE n.n_orden ="+txtNordenIn4.getText();
+            oConn.FnBoolQueryExecute(Sql);
+            try {
+                if (oConn.setResult.next()) {
+                    txtNombresIn4.setText(oConn.setResult.getString("nombre"));
+                    txtDniIn4.setText(oConn.setResult.getString("cod_pa"));
+                 //   txtEdadIn4.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
+                    FechaExIn4.setDate(oConn.setResult.getDate("fecha"));
+                    txtLaboral.setText(oConn.setResult.getString("cargo_de"));
+                    txtLaempresa.setText(oConn.setResult.getString("razon_empresa"));
+                }else{
+                    oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
+                }
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
+        }
+    }//GEN-LAST:event_btnEditarIn4ActionPerformed
+void Fecha1(){
+Date fechaDate = new Date();
+//SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
+FechaExIn4.setDate(fechaDate);
+}
+    private void FechaExIn4PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaExIn4PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FechaExIn4PropertyChange
+
+    private void txtNombresIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresIn4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresIn4ActionPerformed
+
+    private void txtLaboralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLaboralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLaboralActionPerformed
+public void ActualizarIn4(){
+            String sCodigo=txtNordenIn4.getText();
+            String strSqlStmt;
+
+            strSqlStmt="UPDATE consentimientoInformado\n" +
+                    " SET fecha='"+FechaExIn4.getDate()+"',"
+                       + "      hora='"+jLabelhora.getText()+"' \n" 
+                 +  "  WHERE n_orden='"+sCodigo+"';";
+                 System.out.println(strSqlStmt);
+            //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
+            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+                oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+                imprimirIn4();
+                limpiar4();
+
+            } else {
+                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            }
+    } 
+   private boolean imprimirIn4(){
+        boolean im = false;
+        int seleccion = JOptionPane.showOptionDialog(
+            this, // Componente padre
+            "¿Desea Imprimir?", //Mensaje
+            "Seleccione una opción", // Título
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,    // null para icono por defecto.
+            new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
+            "Si");
+            if (seleccion != -1)
+            {
+           if((seleccion + 1)==1)
+           {
+              printerIn4(Integer.valueOf(txtNordenIn4.getText()));
+               im = true;
+           }
+           else
+           {
+              // PRESIONO NO
+             }
+            }
+            return im;
+
+        }
+   private void printerIn4(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"conInformadoOcupacional.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+    private void btnGrabarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn4ActionPerformed
+     
+        if(OrdenExisteIn4()){
+            ActualizarIn4();
+            limpiar4();
+
+        }
+        else{
+            if(!txtNordenIn4.getText().isEmpty()){
+                try {
+                    if(validarIn4()){
+                        if(GrabarIn4()){
+                            imprimirIn4();
+                            limpiar4();
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnGrabarIn4ActionPerformed
+
+    private void btnLimpiarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarIn4ActionPerformed
+        limpiar4();
+    }//GEN-LAST:event_btnLimpiarIn4ActionPerformed
+
+    private void txtImprimirIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirIn4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtImprimirIn4ActionPerformed
+
+    private void btnImprimir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir4ActionPerformed
+        if(!txtImprimirIn4.getText().isEmpty()){
+            //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
+            printIn4(Integer.valueOf(txtImprimirIn4.getText()));
+        }
+    }//GEN-LAST:event_btnImprimir4ActionPerformed
+    
+         private void printIn4(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"conInformadoOcupacional.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("CONSENTIMIENTO INFORMADO");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }     
+    public void limpiar4(){
+      txtNordenIn4.setText("");
+        txtNombresIn4.setText("");
+                    txtDniIn4.setText("");
+      FechaExIn4.setDate(null);
+                    txtLaboral.setText("");
+                    txtLaempresa.setText("");
+    txtNordenIn4.setEditable(true);
+    }
+    
     private void Busca() {
         if (!txtEOrden.getText().isEmpty()) {
            String sql="Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'"; if (OrdenExiste()) {
@@ -7144,6 +7671,7 @@ boolean bResultado=true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser FechaExIn4;
     private com.toedter.calendar.JDateChooser FechaFicha;
     private com.toedter.calendar.JDateChooser FechaNacimiento;
     private com.toedter.calendar.JDateChooser FechaRx;
@@ -7161,7 +7689,11 @@ boolean bResultado=true;
     private javax.swing.JButton btnAnexo7C1;
     private javax.swing.JButton btnAnexo7C2;
     private javax.swing.JButton btnEditarFM;
+    private javax.swing.JButton btnEditarIn4;
+    private javax.swing.JButton btnGrabarIn4;
+    private javax.swing.JButton btnImprimir4;
     private javax.swing.JButton btnLimpiar1;
+    private javax.swing.JButton btnLimpiarIn4;
     private javax.swing.JToggleButton btnObsv;
     private javax.swing.JButton btnVLimpiar;
     private javax.swing.JRadioButton chkAExcesivo;
@@ -7313,8 +7845,11 @@ boolean bResultado=true;
     private javax.swing.JLabel jLabel196;
     private javax.swing.JLabel jLabel197;
     private javax.swing.JLabel jLabel198;
+    private javax.swing.JLabel jLabel199;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel200;
+    private javax.swing.JLabel jLabel201;
     private javax.swing.JLabel jLabel202;
     private javax.swing.JLabel jLabel203;
     private javax.swing.JLabel jLabel204;
@@ -7332,8 +7867,20 @@ boolean bResultado=true;
     private javax.swing.JLabel jLabel215;
     private javax.swing.JLabel jLabel216;
     private javax.swing.JLabel jLabel217;
+    private javax.swing.JLabel jLabel218;
+    private javax.swing.JLabel jLabel219;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel220;
+    private javax.swing.JLabel jLabel221;
+    private javax.swing.JLabel jLabel222;
+    private javax.swing.JLabel jLabel223;
+    private javax.swing.JLabel jLabel224;
+    private javax.swing.JLabel jLabel225;
+    private javax.swing.JLabel jLabel226;
+    private javax.swing.JLabel jLabel227;
+    private javax.swing.JLabel jLabel228;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel230;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -7417,6 +7964,7 @@ boolean bResultado=true;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
+    private javax.swing.JLabel jLabelhora;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -7437,6 +7985,7 @@ boolean bResultado=true;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
@@ -7570,6 +8119,7 @@ boolean bResultado=true;
     private javax.swing.JTextField txtDetencionSAS;
     private javax.swing.JTextField txtDiastolica;
     private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtDniIn4;
     private javax.swing.JTextField txtDomicilio;
     private javax.swing.JTextField txtENombre;
     private javax.swing.JTextField txtEOrden;
@@ -7607,8 +8157,11 @@ boolean bResultado=true;
     private javax.swing.JTextField txtHistoriaOcupacional;
     private javax.swing.JTextField txtIMC;
     private javax.swing.JTextField txtImagenRxExPolvo;
+    private javax.swing.JTextField txtImprimirIn4;
     private javax.swing.JTextField txtLDLColesterol;
     private javax.swing.JTextField txtLabClinico;
+    private javax.swing.JTextField txtLaboral;
+    private javax.swing.JTextField txtLaempresa;
     private javax.swing.JTextField txtLejosCorregidaOD;
     private javax.swing.JTextField txtLejosCorregidaOI;
     private javax.swing.JTextField txtLejosSinCorregirOD;
@@ -7628,8 +8181,10 @@ boolean bResultado=true;
     private javax.swing.JTextField txtNitritosEQ;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtNombresIn4;
     private javax.swing.JTextField txtNorden;
     private javax.swing.JTextField txtNorden1;
+    private javax.swing.JTextField txtNordenIn4;
     private javax.swing.JTextField txtOD;
     private javax.swing.JTextField txtOD1000;
     private javax.swing.JTextField txtOD2000;

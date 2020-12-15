@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 import sistema.Ingreso;
 
 
@@ -83,7 +84,7 @@ public void sede(){
         jButton21 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
-        jButton26 = new javax.swing.JButton();
+        jButton27 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         btncerrar_caja = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
@@ -308,22 +309,22 @@ public void sede(){
         });
         jToolBar2.add(jButton25);
 
-        jButton26.setForeground(new java.awt.Color(102, 102, 102));
-        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/protocolos+.png"))); // NOI18N
-        jButton26.setMnemonic(KeyEvent.VK_F6);
-        jButton26.setText("PROTOCOLOS");
-        jButton26.setToolTipText("F6 (Recoger Análisis Clinicos)");
-        jButton26.setFocusable(false);
-        jButton26.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton26.setMaximumSize(new java.awt.Dimension(80, 72));
-        jButton26.setMinimumSize(new java.awt.Dimension(65, 72));
-        jButton26.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton26.addActionListener(new java.awt.event.ActionListener() {
+        jButton27.setForeground(new java.awt.Color(102, 102, 102));
+        jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/protocolos+.png"))); // NOI18N
+        jButton27.setMnemonic(KeyEvent.VK_F6);
+        jButton27.setText("Protocolos");
+        jButton27.setToolTipText("F6 (Recoger Análisis Clinicos)");
+        jButton27.setFocusable(false);
+        jButton27.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton27.setMaximumSize(new java.awt.Dimension(80, 72));
+        jButton27.setMinimumSize(new java.awt.Dimension(65, 72));
+        jButton27.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton26ActionPerformed(evt);
+                jButton27ActionPerformed(evt);
             }
         });
-        jToolBar2.add(jButton26);
+        jToolBar2.add(jButton27);
 
         jButton24.setForeground(new java.awt.Color(102, 102, 102));
         jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excelImporte.png"))); // NOI18N
@@ -694,9 +695,18 @@ public void sede(){
       hot.setVisible(true);
     }//GEN-LAST:event_jButton25ActionPerformed
 
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-  prtocolos pro= new prtocolos();
-      pro.setVisible(true);    }//GEN-LAST:event_jButton26ActionPerformed
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
+        if(entradaUsuario.equals("76574022"))
+        {
+        prtocolos pro= new prtocolos();
+        pro.setVisible(true);
+        }
+        else 
+          JOptionPane.showMessageDialog(null, "LA CALVE NO COINCIDE");
+
+        }//GEN-LAST:event_jButton27ActionPerformed
+
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -742,7 +752,7 @@ public void sede(){
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
+    private javax.swing.JButton jButton27;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

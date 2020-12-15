@@ -43,6 +43,7 @@ public final class LaboratorioClinico extends javax.swing.JInternalFrame {
 clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
     String[]responsable = new String[]{};
+    String cualitativo="";
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     public static AddMarcaCovid addMarca;
    float valorigm,valorigg;
@@ -51,6 +52,7 @@ clsConnection oConn = new clsConnection();
    int valor=1;
     public LaboratorioClinico() {
         initComponents();
+       // jPanel14.setVisible(false);
         jtLaboratorio.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/biology0.png")));
         jtLaboratorio.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/biology1.png")));
         Limpiar();
@@ -60,11 +62,12 @@ clsConnection oConn = new clsConnection();
         cboMarca.setSelectedIndex(-1);
         timer.start();
          txtSintoma.setEnabled(false);
-                             chkInvalido1.setSelected(false);
+                            // chkInvalido1.setSelected(false);
                              txtColorEF.setVisible(false);
                              txtAspectoEF.setVisible(false);
                              aspectoorina();
                              colororina();
+                            // jTextAreaIgg2.setVisible(false);
                                    AutoCompleteDecorator.decorate(this.jComboAsp);
                                    AutoCompleteDecorator.decorate(this.jComboBoxColor);
 
@@ -317,45 +320,6 @@ clsConnection oConn = new clsConnection();
         chkDiarrea = new javax.swing.JCheckBox();
         lblHora = new javax.swing.JLabel();
         jLabel74 = new javax.swing.JLabel();
-        jPanel14 = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel79 = new javax.swing.JLabel();
-        txtNordenIn1 = new javax.swing.JTextField();
-        btnEditarIn1 = new javax.swing.JButton();
-        FechaExIn1 = new com.toedter.calendar.JDateChooser();
-        jLabel80 = new javax.swing.JLabel();
-        jLabel81 = new javax.swing.JLabel();
-        txtNombresIn1 = new javax.swing.JTextField();
-        jLabel82 = new javax.swing.JLabel();
-        txtDniIn1 = new javax.swing.JTextField();
-        jLabel83 = new javax.swing.JLabel();
-        txtEdadIn1 = new javax.swing.JTextField();
-        txtImprimirIn1 = new javax.swing.JTextField();
-        btnImprimir1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel91 = new javax.swing.JLabel();
-        jLabel92 = new javax.swing.JLabel();
-        chkIgmReactivo1 = new javax.swing.JCheckBox();
-        chkIgmNoReactivo1 = new javax.swing.JCheckBox();
-        chkIggNoReactivo1 = new javax.swing.JCheckBox();
-        chkIggReactivo1 = new javax.swing.JCheckBox();
-        chkInvalido1 = new javax.swing.JCheckBox();
-        jLabel84 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTextAreaIgm = new javax.swing.JTextArea();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        jTextAreaIgg = new javax.swing.JTextArea();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel93 = new javax.swing.JLabel();
-        jLabel94 = new javax.swing.JLabel();
-        jLabel95 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        btnGrabarIn1 = new javax.swing.JButton();
-        btnLimpiarIn1 = new javax.swing.JButton();
-        jLabel85 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Laboratorio Clinico");
@@ -1176,13 +1140,10 @@ clsConnection oConn = new clsConnection();
                                             .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtGFSPrevio)
                                             .addComponent(txtGrupoFacLab))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -1232,7 +1193,7 @@ clsConnection oConn = new clsConnection();
                         .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jLabel41)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("Hematología - Bioquímica SI-EO", jPanel1);
@@ -1927,7 +1888,7 @@ clsConnection oConn = new clsConnection();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4))
@@ -1988,7 +1949,7 @@ clsConnection oConn = new clsConnection();
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -2428,7 +2389,7 @@ clsConnection oConn = new clsConnection();
                                         .addGap(18, 18, 18)
                                         .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(chkPerdidaOlf1))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2493,379 +2454,6 @@ clsConnection oConn = new clsConnection();
         );
 
         jtLaboratorio.addTab("Examen Inmunologico", jPanel10);
-
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
-
-        jLabel79.setText("Nº Orden :");
-
-        txtNordenIn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNordenIn1ActionPerformed(evt);
-            }
-        });
-        txtNordenIn1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNordenIn1KeyTyped(evt);
-            }
-        });
-
-        btnEditarIn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
-        btnEditarIn1.setText("Editar");
-        btnEditarIn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarIn1ActionPerformed(evt);
-            }
-        });
-
-        FechaExIn1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                FechaExIn1PropertyChange(evt);
-            }
-        });
-
-        jLabel80.setText("Fecha :");
-
-        jLabel81.setText("Nombres y Apellidos :");
-
-        jLabel82.setText("DNI :");
-
-        jLabel83.setText("Edad :");
-
-        txtImprimirIn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtImprimirIn1ActionPerformed(evt);
-            }
-        });
-
-        btnImprimir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora.png"))); // NOI18N
-        btnImprimir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimir1ActionPerformed(evt);
-            }
-        });
-
-        jTextField1.setBackground(new java.awt.Color(255, 204, 153));
-        jTextField1.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 51));
-        jTextField1.setText("Imprimir");
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(jLabel81)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombresIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel15Layout.createSequentialGroup()
-                            .addComponent(jLabel79)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtNordenIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnEditarIn1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel80)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(FechaExIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel15Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel82)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtDniIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel83)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtEdadIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                        .addComponent(txtImprimirIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImprimir1)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))))
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel79)
-                        .addComponent(txtNordenIn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEditarIn1)
-                        .addComponent(jLabel80))
-                    .addComponent(FechaExIn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel81)
-                            .addComponent(txtNombresIn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel82)
-                            .addComponent(txtDniIn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel83)
-                            .addComponent(txtEdadIn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtImprimirIn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnImprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "COVID - 19 Prueba Rápida"));
-
-        jLabel91.setText("IgM :");
-
-        jLabel92.setText("IgG :");
-
-        bgIgm.add(chkIgmReactivo1);
-        chkIgmReactivo1.setText("REACTIVO");
-        chkIgmReactivo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkIgmReactivo1ActionPerformed(evt);
-            }
-        });
-
-        bgIgm.add(chkIgmNoReactivo1);
-        chkIgmNoReactivo1.setSelected(true);
-        chkIgmNoReactivo1.setText("NO REACTIVO");
-        chkIgmNoReactivo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkIgmNoReactivo1ActionPerformed(evt);
-            }
-        });
-
-        bgIgg.add(chkIggNoReactivo1);
-        chkIggNoReactivo1.setSelected(true);
-        chkIggNoReactivo1.setText("NO REACTIVO");
-        chkIggNoReactivo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkIggNoReactivo1ActionPerformed(evt);
-            }
-        });
-
-        bgIgg.add(chkIggReactivo1);
-        chkIggReactivo1.setText("REACTIVO");
-        chkIggReactivo1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkIggReactivo1ActionPerformed(evt);
-            }
-        });
-
-        bgInvalido.add(chkInvalido1);
-        chkInvalido1.setText("INVALIDO");
-        chkInvalido1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkInvalido1ActionPerformed(evt);
-            }
-        });
-
-        jLabel84.setText("MARCA: ");
-
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextField2.setText("MAGLUMI");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jTextAreaIgm.setColumns(20);
-        jTextAreaIgm.setRows(5);
-        jTextAreaIgm.setText("Metodo: Inmunocromatografía\n    IGM-   SENSIBILIDAD: 95.60%\n                ESPECIFICIDAD: 96.00%");
-        jScrollPane7.setViewportView(jTextAreaIgm);
-
-        jTextAreaIgg.setColumns(20);
-        jTextAreaIgg.setRows(5);
-        jTextAreaIgg.setText("Metodo: Inmunocromatografía\n    IGM-   SENSIBILIDAD: 95.60%\n                ESPECIFICIDAD: 96.00%");
-        jScrollPane8.setViewportView(jTextAreaIgg);
-
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        jLabel93.setText("VALOR IGM:");
-
-        jLabel94.setText("VALOR IGG:");
-
-        jLabel95.setText("Doctor:");
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(chkInvalido1)
-                            .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel91)
-                                    .addComponent(jLabel92))
-                                .addGap(30, 30, 30)
-                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(chkIggReactivo1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                                    .addComponent(chkIgmReactivo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(chkIgmNoReactivo1))
-                            .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(chkIggNoReactivo1))))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel93, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel84)
-                            .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel84)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkIgmReactivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkIgmNoReactivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkIggReactivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkIggNoReactivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel92))
-                        .addGap(18, 18, 18)
-                        .addComponent(chkInvalido1)
-                        .addContainerGap())))
-        );
-
-        btnGrabarIn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
-        btnGrabarIn1.setText("Grabar/Actualizar");
-        btnGrabarIn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGrabarIn1ActionPerformed(evt);
-            }
-        });
-
-        btnLimpiarIn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
-        btnLimpiarIn1.setText("Limpiar");
-        btnLimpiarIn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarIn1ActionPerformed(evt);
-            }
-        });
-
-        jLabel85.setBackground(new java.awt.Color(153, 255, 153));
-        jLabel85.setFont(new java.awt.Font("Engravers MT", 3, 18)); // NOI18N
-        jLabel85.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel85.setText("SANTO DOMINGUITO");
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGrabarIn1)
-                            .addComponent(btnLimpiarIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jLabel85)))
-                .addGap(125, 125, 125))
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel85)))
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnGrabarIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnLimpiarIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
-        );
-
-        jtLaboratorio.addTab("EXAMEN CUANTITATIVO", jPanel14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -4188,226 +3776,7 @@ else
     private void chkPerdidaOlf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerdidaOlf1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkPerdidaOlf1ActionPerformed
-
-    private void txtNordenIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenIn1ActionPerformed
-        FechaNacimiento = new com.toedter.calendar.JDateChooser();
-        if(!txtNordenIn1.getText().isEmpty()){
-            if(!OrdenExisteIn1()){     
-              String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
-                 + "d.sexo_pa,n.tipoprueba "
-                 + "FROM datos_paciente AS d "
-                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-                 + "WHERE n.n_orden ='"+txtNordenIn1.getText() +"'";
-               oConn.FnBoolQueryExecute(Sql);
-                  try {
-                      if (oConn.setResult.next()) {
-                          txtNombresIn1.setText(oConn.setResult.getString("nombre"));
-                          txtDniIn1.setText(oConn.setResult.getString("cod_pa"));
-                          FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                          pasar=(oConn.setResult.getString("tipoprueba"));
-                          txtEdadIn1.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                   
-                          //System.out.println(pasar);
-                         if(pasar.equals("PC")) habilitarPc();
-                         else 
-                             negarPc();
-                            //soloPc(pasar);
-                          txtNordenIn1.setEditable(false);
-                       // FechaHoy.requestFocusInWindow();
-                          oPe.fecha(FechaExIn1);
-                        //   oPe.fecha(FechaHotel);
-                          
-                         }else{
-                          oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");       
-                      }
-              } catch (SQLException ex) {
-              oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
-            }else{
-                oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
-            }
-        } 
-    }//GEN-LAST:event_txtNordenIn1ActionPerformed
-
-    private void txtNordenIn1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNordenIn1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNordenIn1KeyTyped
-
-    private void btnEditarIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIn1ActionPerformed
-                                                   
-        FechaNacimiento = new com.toedter.calendar.JDateChooser();
-        if(!txtNordenIn1.getText().isEmpty()){
-            String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
-            + " ct.fecha_examen,ct.chkigm_reactivo, ct.chkigm_noreactivo, \n" +
-            "                   ct.chkigg_reactivo, ct.chkigg_noreactivo, ct.chkinvalido, "
-                    + "ct.cbomarca, ct.txtvrigm,ct.txtvrigg,n.tipoprueba,ct.valorigm,ct.valorigg,ct.medico " +
-            "               FROM datos_paciente AS d \n" +
-            "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
-            "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.n_orden ='"+txtNordenIn1.getText() +"'";
-            oConn.FnBoolQueryExecute(Sql);
-            try {
-                if (oConn.setResult.next()) {
-                    txtNombresIn1.setText(oConn.setResult.getString("nombre"));
-                    txtDniIn1.setText(oConn.setResult.getString("cod_pa"));
-                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                    txtEdadIn1.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                    FechaExIn1.setDate(oConn.setResult.getDate("fecha_examen"));
-                    chkIgmReactivo1.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
-                    chkIgmNoReactivo1.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
-                    chkIggReactivo1.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
-                    chkIggNoReactivo1.setSelected(oConn.setResult.getBoolean("chkigg_noreactivo"));
-                    jTextField5.setText(oConn.setResult.getString("medico"));
-                    jTextField3.setText(oConn.setResult.getString("valorigm"));
-                    jTextField4.setText(oConn.setResult.getString("valorigg"));
-
-                  // chkInvalido1.setSelected(oConn.setResult.getBoolean("chkinvalido"));
-                  // chkInvalido1.setEnabled(true);
-                  //  jTextField2.setText(oConn.setResult.getString("cbomarca"));
-                   // jTextAreaIgm.setText(oConn.setResult.getString("txtvrigm"));
-                   // jTextAreaIgg.setText(oConn.setResult.getString("txtvrigg"));
-                    
-                   // chkInvalido1.setSelected(false);
-                }else{
-                    oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
-                }
-            } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
-        }
-    }//GEN-LAST:event_btnEditarIn1ActionPerformed
-
-    private void FechaExIn1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaExIn1PropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FechaExIn1PropertyChange
-
-    private void txtImprimirIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirIn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtImprimirIn1ActionPerformed
-
-    private void btnImprimir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir1ActionPerformed
-        if(!txtImprimirIn1.getText().isEmpty()){
-      //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
-            printIn1(Integer.valueOf(txtImprimirIn1.getText()));
-        }
-    }//GEN-LAST:event_btnImprimir1ActionPerformed
-
-    private void chkIgmReactivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIgmReactivo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkIgmReactivo1ActionPerformed
-
-    private void chkIgmNoReactivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIgmNoReactivo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkIgmNoReactivo1ActionPerformed
-
-    private void chkIggNoReactivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIggNoReactivo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkIggNoReactivo1ActionPerformed
-
-    private void chkIggReactivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIggReactivo1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkIggReactivo1ActionPerformed
     
-    private void chkInvalido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkInvalido1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkInvalido1ActionPerformed
-
-    private void btnGrabarIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn1ActionPerformed
-        // LLENADO SIMPLE 
-        valorigm=Float.parseFloat(jTextField3.getText());
-     //   System.out.println("valor del igm:"+valorigm);
-        if(valorigm<1.00)
-        {
-        chkIgmNoReactivo1.setSelected(true);
-        chkIgmReactivo1.setSelected(false);
-        }
-        else
-        {
-        chkIgmNoReactivo1.setSelected(false);
-        chkIgmReactivo1.setSelected(true);
-        }
-                 valorigg=Float.parseFloat(jTextField4.getText());
-           //  System.out.println("valor del igg:"+valorigg);
-
-        if(valorigg<1.00)
-        {
-        chkIggNoReactivo1.setSelected(true);
-        chkIggReactivo1.setSelected(false);
-        }
-        else
-        {
-        chkIggNoReactivo1.setSelected(false);
-        chkIggReactivo1.setSelected(true);
-        }
-        
-        // LAS ACCIONES DEL BOTON
-        if(OrdenExisteIn1()){   
-                    ActualizarIn1();
-                    LimpiarIn();
-           
-               } 
-               else{
-                    if(!txtNordenIn1.getText().isEmpty()){
-                        try {
-                            if(validarIn()){
-                                if(GrabarIn1()){
-                                    imprimirIn1();
-                                    LimpiarIn();
-                                }
-                            }
-                        } catch (SQLException ex) {
-                            Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
-                          }
-                     }
-               }
-       
-    }//GEN-LAST:event_btnGrabarIn1ActionPerformed
-
-    private void btnLimpiarIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarIn1ActionPerformed
-LimpiarIn();
-
-    }//GEN-LAST:event_btnLimpiarIn1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        valorigm=Float.parseFloat(jTextField3.getText());
-    //    System.out.println("valor del igm:"+valorigm);
-        if(valorigm<1.00)
-        {
-        chkIgmNoReactivo1.setSelected(true);
-        chkIgmReactivo1.setSelected(false);
-        }
-        else
-        {
-        chkIgmNoReactivo1.setSelected(false);
-        chkIgmReactivo1.setSelected(true);
-        }
-       
-        
-            
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-                valorigg=Float.parseFloat(jTextField4.getText());
-        //     System.out.println("valor del igg:"+valorigg);
-
-        if(valorigg<1.00)
-        {
-        chkIggNoReactivo1.setSelected(true);
-        chkIggReactivo1.setSelected(false);
-        }
-        else
-        {
-        chkIggNoReactivo1.setSelected(false);
-        chkIggReactivo1.setSelected(true);
-        }
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
        if(jCheckBox1.isSelected())
        {
@@ -4514,6 +3883,7 @@ LimpiarIn();
     private void jComboAspKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboAspKeyPressed
 
     }//GEN-LAST:event_jComboAspKeyPressed
+   
     private void Limpiar(){
         FechaExamen.setDate(null);
         txtNrecibo.setEditable(false);
@@ -4572,6 +3942,7 @@ LimpiarIn();
         txtGFSPrevio.setText(null);
         txtGrupoFacLab.setText(null);
         txtNorden.requestFocus();
+        
     }
     void btgroup(){
      btGrupo.clearSelection();
@@ -4706,7 +4077,6 @@ LimpiarIn();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExIn;
-    private com.toedter.calendar.JDateChooser FechaExIn1;
     private com.toedter.calendar.JDateChooser FechaExamen;
     private com.toedter.calendar.JDateChooser FechaHotel;
     private javax.swing.ButtonGroup bMarihuana;
@@ -4720,16 +4090,12 @@ LimpiarIn();
     private javax.swing.ButtonGroup btTipoEx;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEditarIn;
-    private javax.swing.JButton btnEditarIn1;
     private javax.swing.JButton btnGrabar;
     private javax.swing.JButton btnGrabarIn;
-    private javax.swing.JButton btnGrabarIn1;
     private javax.swing.JButton btnImprimir;
-    private javax.swing.JButton btnImprimir1;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnLimpiar1;
     private javax.swing.JButton btnLimpiarIn;
-    private javax.swing.JButton btnLimpiarIn1;
     private javax.swing.JLabel btnMarca;
     private javax.swing.JButton btnObservaciones;
     private javax.swing.JButton btnPrint;
@@ -4749,16 +4115,11 @@ LimpiarIn();
     private javax.swing.JCheckBox chkFichaMedica;
     private javax.swing.JCheckBox chkFiebre;
     private javax.swing.JCheckBox chkIggNoReactivo;
-    private javax.swing.JCheckBox chkIggNoReactivo1;
     private javax.swing.JCheckBox chkIggReactivo;
-    private javax.swing.JCheckBox chkIggReactivo1;
     private javax.swing.JCheckBox chkIgmNoReactivo;
-    private javax.swing.JCheckBox chkIgmNoReactivo1;
     private javax.swing.JCheckBox chkIgmReactivo;
-    private javax.swing.JCheckBox chkIgmReactivo1;
     private javax.swing.JCheckBox chkIncoloro;
     private javax.swing.JCheckBox chkInvalido;
-    private javax.swing.JCheckBox chkInvalido1;
     private javax.swing.JCheckBox chkIrritaibilidad;
     private javax.swing.JCheckBox chkLigTurbio;
     private javax.swing.JCheckBox chkMalestar;
@@ -4867,31 +4228,16 @@ LimpiarIn();
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
-    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel80;
-    private javax.swing.JLabel jLabel81;
-    private javax.swing.JLabel jLabel82;
-    private javax.swing.JLabel jLabel83;
-    private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel91;
-    private javax.swing.JLabel jLabel92;
-    private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
-    private javax.swing.JLabel jLabel95;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -4904,20 +4250,11 @@ LimpiarIn();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextArea jTextAreaIgg;
-    private javax.swing.JTextArea jTextAreaIgm;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextFieldSaturacion;
     private javax.swing.JTabbedPane jtLaboratorio;
     private javax.swing.JTabbedPane jtTriaje;
@@ -4939,9 +4276,7 @@ LimpiarIn();
     private javax.swing.JTextField txtDensidadEF;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtDniIn;
-    private javax.swing.JTextField txtDniIn1;
     private javax.swing.JTextField txtEdadIn;
-    private javax.swing.JTextField txtEdadIn1;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextField txtEosinofiosEmatologia;
     private javax.swing.JTextField txtGFSPrevio;
@@ -4954,7 +4289,6 @@ LimpiarIn();
     private javax.swing.JTextField txtHemoglobina;
     private javax.swing.JTextField txtImp;
     private javax.swing.JTextField txtImprimirIn;
-    private javax.swing.JTextField txtImprimirIn1;
     private javax.swing.JTextField txtLeucocitosEQ;
     private javax.swing.JTextField txtLeucocitosEmatologia;
     private javax.swing.JTextField txtLeucocitosSU;
@@ -4963,10 +4297,8 @@ LimpiarIn();
     private javax.swing.JTextField txtNitritosEQ;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNombresIn;
-    private javax.swing.JTextField txtNombresIn1;
     private javax.swing.JTextField txtNorden;
     private javax.swing.JTextField txtNordenIn;
-    private javax.swing.JTextField txtNordenIn1;
     private javax.swing.JTextField txtNrecibo;
     private javax.swing.JTextArea txtObservacionesLB;
     private javax.swing.JTextField txtOtrosSu;
@@ -5540,39 +4872,11 @@ int seleccion = JOptionPane.showOptionDialog(
         } catch (SQLException ex) {
         }
         }       
+      
         return bResultado;
      }  
     
-     public boolean OrdenExisteIn1()
-     {
-        boolean bResultado=false;
-        if(!txtNordenIn1.getText().isEmpty()){
-        String sQuery;
-        sQuery  = "Select n_orden from examen_inmunologico Where n_orden ="+txtNordenIn1.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
-        try {
-            if (oConn.setResult.next())
-            {
-                bResultado = true;
-//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
-//             txtNorden.setText(null);
-            }
-            oConn.setResult.close();
-        } catch (SQLException ex) {
-        }
-        }       
-        return bResultado;
-     }  
-     
-     
-         private boolean validarIn1(){
-        boolean bResultado=true;
-
-            if (((JTextField)FechaExIn1.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-                {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
-
-           return bResultado;
-}
+   
     private boolean validarIn(){
         boolean bResultado=true;
 
@@ -5581,6 +4885,7 @@ int seleccion = JOptionPane.showOptionDialog(
 
            return bResultado;
 }
+
      private boolean GrabarIn() throws SQLException{
         boolean bResult = false;
         String strSqlStmt ="INSERT INTO examen_inmunologico(\n" +
@@ -5604,31 +4909,7 @@ int seleccion = JOptionPane.showOptionDialog(
                 return bResult;       
         }
      
-      private boolean GrabarIn1() throws SQLException{
-        boolean bResult = false;
-        String strSqlStmt ="INSERT INTO examen_inmunologico(\n" +
-"            n_orden, dni_pa, fecha_examen,chkigm_reactivo, chkigm_noreactivo, \n" +
-"            chkigg_reactivo, chkigg_noreactivo, chkinvalido,cbomarca,txtvrigm,txtvrigg,valorigm,valorigg,medico)";       
-            strSqlStmt+= "values('"+ txtNordenIn1.getText()+"','"+txtDniIn1.getText().toString()+"','"+FechaExIn1.getDate()+
-                    "','"+chkIgmReactivo1.isSelected()+  "','"+chkIgmNoReactivo1.isSelected()+
-                    "','"+chkIggReactivo1.isSelected()+  
-                    "','"+chkIggNoReactivo1.isSelected()+ 
-                    "','"+chkInvalido1.isSelected()+ 
-                    "','"+jTextField2.getText()+ 
-                    "','"+jTextAreaIgm.getText()+ 
-                    "','"+jTextAreaIgg.getText()+"',"+
-                    valorigm+","+valorigg+",'"+jTextField5.getText()+"'"
-                    + ")";
-//        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-//                   oConn.setResult.next();
-                    oFunc.SubSistemaMensajeInformacion("Examen Registrada");
-                    
-                   bResult = true;
-               }
-                return bResult;       
-        }
-     
+  
     public void ActualizarIn(){
             String sCodigo=txtNordenIn.getText();
             String strSqlStmt;
@@ -5655,60 +4936,22 @@ int seleccion = JOptionPane.showOptionDialog(
             }
     }    
     
-     public void ActualizarIn1(){
-            String sCodigo=txtNordenIn1.getText();
-            String strSqlStmt;
-
-            strSqlStmt="UPDATE examen_inmunologico\n" +
-                    " SET fecha_examen='"+FechaExIn1.getDate()+"',"
-                    + "      chkigm_reactivo='"+chkIgmReactivo1.isSelected()+"', \n" 
-                    + "      chkigm_noreactivo='"+chkIgmNoReactivo1.isSelected()+"',"
-                    + "      chkigg_reactivo='"+chkIggReactivo1.isSelected()+"',"
-                    + "      chkigg_noreactivo='"+chkIggNoReactivo1.isSelected()+"', \n" 
-                    + "      chkinvalido='"+chkInvalido1.isSelected()+"', \n" 
-                    + "      cbomarca='"+jTextField2.getText()+"', \n" 
-                    + "      txtvrigm='"+jTextAreaIgm.getText()+"', \n" 
-                    + "      txtvrigg='"+jTextAreaIgg.getText()+"',"+
-                    "        valorigm="+valorigm+","+
-                    "        valorigg="+valorigg+","+
-                    "        medico='"+jTextField5.getText()+
-                    "' WHERE n_orden='"+sCodigo+"';";
-            //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
-                oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                imprimirIn1();
-                Limpiar();
-
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-            }
-    }    
+  
     private void LimpiarIn(){
         txtNordenIn.setText(null);
-        txtNordenIn1.setText(null);
         txtNombresIn.setText(null);
-        txtNombresIn1.setText(null);
+    
         txtDniIn.setText(null);
-        txtDniIn1.setText(null);
         txtEdadIn.setText(null);
         FechaExIn.setDate(null);
-            txtEdadIn1.setText(null);
-        FechaExIn1.setDate(null);
+        
         bgIgm.clearSelection();
         bgIgg.clearSelection();
         bgInvalido.clearSelection();
         cboMarca.setSelectedItem(null);
         txtVRIgg.setText(null);
         txtVRIgm.setText(null);
-        chkIgmReactivo1.setSelected(false);
-        chkIgmNoReactivo1.setSelected(false);
-        chkIggReactivo1.setSelected(false);
-                chkIggNoReactivo1.setSelected(false);
-                chkInvalido1.setSelected(false);
-                jTextField5.setText("");
-                jTextField3.setText("");
-                jTextField4.setText("");
-                
+       
         txtNordenIn.setEditable(true);
         txtNordenIn.requestFocus();
 
@@ -5739,32 +4982,7 @@ int seleccion = JOptionPane.showOptionDialog(
             return im;
 
         }
-     private boolean imprimirIn1(){
-        boolean im = false;
-        int seleccion = JOptionPane.showOptionDialog(
-            this, // Componente padre
-            "¿Desea Imprimir?", //Mensaje
-            "Seleccione una opción", // Título
-            JOptionPane.YES_NO_CANCEL_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,    // null para icono por defecto.
-            new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
-            "Si");
-            if (seleccion != -1)
-            {
-           if((seleccion + 1)==1)
-           {
-              printerIn1(Integer.valueOf(txtNordenIn1.getText()));
-               im = true;
-           }
-           else
-           {
-              // PRESIONO NO
-             }
-            }
-            return im;
-
-        }
+ 
     private void printIn(Integer cod){
 
                 Map parameters = new HashMap(); 
@@ -5801,6 +5019,107 @@ int seleccion = JOptionPane.showOptionDialog(
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }
+               private void printIn2(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantianti.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("EXAMEN INMUNOLOGICO23");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }
+         private void printIn3(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantiantigeno.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("EXAMEN INMUNOLOGICO23");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }         
+                  private void printIn4(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("EXAMEN INMUNOLOGICO23");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }      
+         private void printerIn2(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantianti.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+         
+          private void printerIn3(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantiantigeno.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+           private void printerIn4(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+          
  private void printerIn1(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
@@ -5845,7 +5164,10 @@ int seleccion = JOptionPane.showOptionDialog(
 
                 while (oConn.setResult.next()) {
                     cboMarca.addItem(oConn.setResult.getString("marca_c"));
-
+                    //    cboMarca1.addItem(oConn.setResult.getString("marca_c"));
+                      //  cboMarca2.addItem(oConn.setResult.getString("marca_c"));
+                       // cboMarca3.addItem(oConn.setResult.getString("marca_c"));
+                      //  cboMarca4.addItem(oConn.setResult.getString("marca_c"));
                 }
 
                 // Cierra Resultados

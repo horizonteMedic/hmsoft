@@ -19,6 +19,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
+import static sistema.Ocupacional1.Desktop;
 
 
 //import org.jvnet.substance.SubstanceLookAndFeel;
@@ -31,6 +32,7 @@ public class Ocupacional extends javax.swing.JFrame {
  clsFunciones  oFunc = new clsFunciones();
     clsConnection oConn = new clsConnection();
     FichaTriaje ft;
+    LaboratorioClinicoCovid lab;
     HistoriaClinicaPs hcl;
     AntecedentesPatologicos ap;
     BuscarUsuarios pe;
@@ -254,6 +256,8 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu5 = new javax.swing.JMenu();
         btnPsicologicaPoderosa = new javax.swing.JMenuItem();
         btnFichaPsicologica_Anexo03 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         Observados.setText("Observados");
         Observados.addActionListener(new java.awt.event.ActionListener() {
@@ -834,7 +838,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
+            .addComponent(barraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1424, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1074,6 +1078,18 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu5.add(btnFichaPsicologica_Anexo03);
 
         MenuOcupacional.add(jMenu5);
+
+        jMenu2.setText("LABORATORIO COVID");
+
+        jMenuItem3.setText("LABORATORIO COVID");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        MenuOcupacional.add(jMenu2);
 
         setJMenuBar(MenuOcupacional);
 
@@ -2037,6 +2053,26 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
             sue.setVisible(true);
     }//GEN-LAST:event_btnAddUsuariosEmpresasActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+   if(estacerrado(frm_agro)){  
+          lab =new LaboratorioClinicoCovid();
+          Desktop.add(lab);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         lab.setFrameIcon(ticon);
+      lab.setLocation(centradoXY(lab));
+
+          lab.show();
+          //fn.setVisible(true);
+       }
+             else{
+         lab.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+
+
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -2148,11 +2184,13 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

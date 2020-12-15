@@ -317,12 +317,13 @@ public void valorsede(){
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        agregarConsulta="and n.cod_sede="+codigosede; 
-      
+        agregarConsulta=" and n.cod_sede="+codigosede; 
+     agregarConsulta+=" "; 
     }
 
     private void hBotones(boolean btn) {
         BtnActualizarEx.setVisible(btn);
+       // BtnEditarEx.setEnabled(btn);
         BtnEditarEx.setVisible(btn);
         btnGuardarAperturar.setVisible(!btn);
 
@@ -2978,6 +2979,7 @@ public void agregarAltaEpidemiologica(String numero){
         txtDniAlta.requestFocus();
         
    }
+
   public void insertarRegistros(){
          if (ValidarAlta()) {
             String stip=null;
@@ -3033,7 +3035,7 @@ public void agregarAltaEpidemiologica(String numero){
                     num = oConn.setResult.getString("n_orden");
                     txtNorden1.setText(num);
                     oFunc.SubSistemaMensajeInformacion("Alta Correctamente\nSu numero de Orden es :** " + num + " **");
-                   agregarAltaEpidemiologica(num);
+                    agregarAltaEpidemiologica(num);
                     imprimir();
                     AltaDesabilitar();
                     AltaLimpiar();
@@ -3431,6 +3433,7 @@ public void cargarDatosPaciente(){
          JOptionPane.showMessageDialog(null, e);
         }
         if (evt.getClickCount() == 1 ) {
+            
                     jComboBoxHotel.setSelectedIndex(0);
             AltaDesabilitar();
             Integer cod = Integer.valueOf(tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString());
@@ -3496,6 +3499,7 @@ public void cargarDatosPaciente(){
                     txtNumColor.setText(oConn.setResult.getString("color"));
                     txtGrupoSan.setText(oConn.setResult.getString("grupofactorsan"));
                     jLabel44.setText(oConn.setResult.getString("cod_clinica"));
+                    System.out.println("codigo clinico es:"+jLabel44.getText());
                     chkAltaManipAlimen.setSelected(oConn.setResult.getBoolean("manip_alimentos"));
                     txtObserv1.setText(oConn.setResult.getString("txtobserv1"));
                     txtObserv2.setText(oConn.setResult.getString("txtobserv2"));
@@ -4511,7 +4515,10 @@ private void CargarTipoExamenes(){
                 // viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
             }
-             if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)){
+             if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)
+                 ||    "PRUEBA CUALITATIVA ANTIGENO".equals(c)|| "PRUEBA CUANTITATIVA ANTICUERPOS".equals(c)||
+                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c)
+                     ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);

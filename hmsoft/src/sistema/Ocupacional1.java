@@ -70,6 +70,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
     FuncionRespiratoriaABS fn;
     ExamenRadiograficoSanguineo er;
     FichaAgroindustriales frm_agro;
+    LaboratorioClinicoCovid lab;
     Eliminar Exc;
     B_Certificacion_conduccion b_cercon;
     B_OIT b_oit;
@@ -93,6 +94,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
        Constancia_Tamizaje_COVID19 ctv;
        FichaMedicaMarsa fmm;
        ConstanciaSaludMarsa csm;
+       constanciaTamizajeAntigeno cta;
        ConstanciaAltaMarsa cam;
        Ficha_Resultados_Pruebas_Rapidas_CovidF100 frpr;
        ConsentimientoInformadoCovid cic;
@@ -380,6 +382,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         mConstanciaAltaMarsa = new javax.swing.JMenuItem();
         mConsentimientoInformadoCovid = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         Reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
         Reporte.setText("Reporte");
@@ -2032,6 +2037,31 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
         MenuOcupacional.add(mExamenMarsa);
 
+        jMenu2.setText("Tamizaje Ant");
+
+        jMenuItem6.setText("Constancia tamizaje");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
+
+        jMenuItem5.setText("LABORATORIO COVID");
+        jMenuItem5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem5MouseClicked(evt);
+            }
+        });
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        MenuOcupacional.add(jMenu2);
+
         setJMenuBar(MenuOcupacional);
 
         pack();
@@ -3676,6 +3706,39 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
                 sbSubHabilitaOpciones();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+
+           if(estacerrado(frm_agro)){  
+          lab =new LaboratorioClinicoCovid();
+          Desktop.add(lab);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         lab.setFrameIcon(ticon);
+      lab.setLocation(centradoXY(lab));
+
+          lab.show();
+          //fn.setVisible(true);
+       }
+             else{
+         lab.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+        
+      //  LaboratorioClinico obt= new LaboratorioClinico();
+     //obt.setVisible(true);
+          
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem5MouseClicked
+      
+          
+    }//GEN-LAST:event_jMenuItem5MouseClicked
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    constanciaTamizajeAntigeno obj = new constanciaTamizajeAntigeno();
+    obj.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -3793,12 +3856,15 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
