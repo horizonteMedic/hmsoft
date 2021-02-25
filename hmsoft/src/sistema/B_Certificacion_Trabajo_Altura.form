@@ -665,7 +665,7 @@
                           <Component id="Chk1si" alignment="2" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="Chk1no" alignment="2" min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jLabel19" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="Chk7si" alignment="2" pref="43" max="32767" attributes="0"/>
+                          <Component id="Chk7si" alignment="2" max="32767" attributes="0"/>
                           <Component id="Chk7no" alignment="2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -674,7 +674,7 @@
                           <Component id="Chk2si" alignment="2" min="-2" pref="55" max="-2" attributes="0"/>
                           <Component id="Chk2no" alignment="2" min="-2" pref="56" max="-2" attributes="0"/>
                           <Component id="jLabel21" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="Chk8si" alignment="2" pref="69" max="32767" attributes="0"/>
+                          <Component id="Chk8si" alignment="2" max="32767" attributes="0"/>
                           <Component id="Chk8no" alignment="2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -683,7 +683,7 @@
                           <Component id="Chk3si" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Component id="Chk3no" alignment="2" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel20" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="Chk9si" alignment="2" pref="68" max="32767" attributes="0"/>
+                          <Component id="Chk9si" alignment="2" max="32767" attributes="0"/>
                           <Component id="Chk9no" alignment="2" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>

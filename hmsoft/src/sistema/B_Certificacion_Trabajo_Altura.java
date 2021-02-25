@@ -1856,6 +1856,17 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
               oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
           }
         }
+       String dato=txtimc1.getText().toString();
+       float valor=Float.parseFloat(dato);
+       if(valor>=30)
+       {
+                      System.out.println("paso...");
+       chkNoApto.setSelected(true);
+       chkAptoRestriccion.setSelected(false);
+       chkObservado.setSelected(false);
+       chksi.setSelected(false);
+       }
+        
     }//GEN-LAST:event_txtNordenActionPerformed
       void fechaHasta(){
         Calendar hasta = Calendar.getInstance();
@@ -2053,6 +2064,16 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
             }
           
         }
+         String dato=txtimc1.getText().toString();
+       float valor=Float.parseFloat(dato);
+       if(valor>=30)
+       {
+           System.out.println("paso...");
+       chkNoApto.setSelected(true);
+       chkAptoRestriccion.setSelected(false);
+       chkObservado.setSelected(false);
+       chksi.setSelected(false);
+       }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void chkOR5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOR5ActionPerformed

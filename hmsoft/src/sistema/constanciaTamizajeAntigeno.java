@@ -39,7 +39,7 @@ public class constanciaTamizajeAntigeno extends javax.swing.JFrame {
 
     }
      
-public static com.toedter.calendar.JDateChooser FechaNacimiento;
+
 Date fechan;
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,6 +76,7 @@ Date fechan;
         btnLimpiarIn4 = new javax.swing.JButton();
         jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -133,6 +134,12 @@ Date fechan;
 
         jLabel124.setText("de :");
 
+        txtEdadIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadIn5ActionPerformed(evt);
+            }
+        });
+
         jLabel125.setText("identificado con DNI;");
 
         jLabel126.setText("años de edad,");
@@ -179,6 +186,8 @@ Date fechan;
             }
         });
 
+        jCheckBox1.setText("ANTICUERPOS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,7 +215,9 @@ Date fechan;
                         .addComponent(btnImprimir5))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox1)
+                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +298,9 @@ Date fechan;
                             .addComponent(jLabel123))
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCheckBox2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBox2)
+                            .addComponent(jCheckBox1))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -339,7 +352,7 @@ FechaExIn5.setDate(fechaDate);
      }
 
     private void txtNordenIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenIn5ActionPerformed
-       
+       FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn5.getText().isEmpty()){
             if(!OrdenExisteIn4()){
                 String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
@@ -352,9 +365,10 @@ FechaExIn5.setDate(fechaDate);
                     if (oConn.setResult.next()) {
                         txtNombresIn5.setText(oConn.setResult.getString("nombre"));
                         txtDniIn5.setText(oConn.setResult.getString("cod_pa"));
-                    //   fechan.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                       // FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                      // txtEdadIn5.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
+                   //    fechan.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                       FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                       System.out.println("la fecha:"+String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
+                       txtEdadIn5.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
                        // txtLaboral.setText(oConn.setResult.getString("cargo_de"));
                       //  txtLaboral.setText(oConn.setResult.getString("cargo_de"));
@@ -417,10 +431,19 @@ FechaExIn5.setDate(fechaDate);
     }//GEN-LAST:event_txtImprimirIn5ActionPerformed
 
     private void btnImprimir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir5ActionPerformed
+       if(jCheckBox1.isSelected())
+       {
         if(!txtImprimirIn5.getText().isEmpty()){
             //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
-            printIn4(Integer.valueOf(txtImprimirIn5.getText()));
+            printIn6(Integer.valueOf(txtImprimirIn5.getText()));
         }
+       }
+        else
+       {if(!txtImprimirIn5.getText().isEmpty()){
+            //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
+            printIn4(Integer.valueOf(txtImprimirIn5.getText()));
+          }
+       }
     }//GEN-LAST:event_btnImprimir5ActionPerformed
 
     private void btnGrabarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn4ActionPerformed
@@ -435,7 +458,14 @@ FechaExIn5.setDate(fechaDate);
                 try {
                     if(validarIn4()){
                         if(GrabarIn4()){
-                            imprimirIn4();
+                            if(jCheckBox1.isSelected())
+       {System.out.println("entro a grabar ");
+       
+            printIn5(Integer.valueOf(txtNordenIn5.getText().toString()));
+        
+       }
+        else
+        imprimirIn4();
                             limpiar4();
                         }
                     }
@@ -463,7 +493,49 @@ FechaExIn5.setDate(fechaDate);
                     Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
                 }
  } 
-    public void ActualizarIn4(){
+       private void printIn6(Integer cod){
+                System.out.println("imprmir 5");
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                System.out.println("imprmir 5");
+                  try 
+                {  
+                  
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"contanciatamizajeAnticuerpos.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+              JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("CONSENTIMIENTO INFORMADO");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ } 
+     
+     
+     
+     private void printIn5(Integer cod){
+                System.out.println("imprmir 5");
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                System.out.println("imprmir 5");
+                  try 
+                {  
+                  
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"contanciatamizajeAnticuerpos.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                  JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ } 
+     
+     
+     
+     public void ActualizarIn4(){
             String sCodigo=txtNordenIn5.getText();
             String strSqlStmt;
 
@@ -477,6 +549,13 @@ FechaExIn5.setDate(fechaDate);
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+               if(jCheckBox1.isSelected())
+       {
+        
+            printIn5(Integer.valueOf(txtNordenIn5.getText().toString()));
+        
+       }
+        else
                 imprimirIn4();
                 limpiar4();
 
@@ -569,6 +648,10 @@ FechaExIn5.setDate(fechaDate);
         else
         jCheckBox2.setSelected(true);
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void txtEdadIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadIn5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadIn5ActionPerformed
   public void limpiar4(){
       txtNordenIn5.setText("");
         txtNombresIn5.setText("");
@@ -616,23 +699,16 @@ FechaExIn5.setDate(fechaDate);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser FechaExIn4;
     private com.toedter.calendar.JDateChooser FechaExIn5;
-    private javax.swing.JButton btnEditarIn4;
     private javax.swing.JButton btnEditarIn5;
     private javax.swing.JButton btnGrabarIn4;
-    private javax.swing.JButton btnImprimir4;
     private javax.swing.JButton btnImprimir5;
     private javax.swing.JButton btnLimpiarIn4;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel118;
-    private javax.swing.JLabel jLabel119;
-    private javax.swing.JLabel jLabel120;
-    private javax.swing.JLabel jLabel121;
-    private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
@@ -643,19 +719,12 @@ FechaExIn5.setDate(fechaDate);
     private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel131;
     private javax.swing.JLabel jLabel132;
-    private javax.swing.JPanel jPanel25;
-    private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField txtDniIn4;
     private javax.swing.JTextField txtDniIn5;
-    private javax.swing.JTextField txtEdadIn4;
     private javax.swing.JTextField txtEdadIn5;
-    private javax.swing.JTextField txtImprimirIn4;
     private javax.swing.JTextField txtImprimirIn5;
     private javax.swing.JTextField txtLaempresa;
-    private javax.swing.JTextField txtNombresIn4;
     private javax.swing.JTextField txtNombresIn5;
-    private javax.swing.JTextField txtNordenIn4;
     private javax.swing.JTextField txtNordenIn5;
     // End of variables declaration//GEN-END:variables
 }

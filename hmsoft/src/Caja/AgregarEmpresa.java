@@ -6,32 +6,33 @@ import java.awt.KeyEventPostProcessor;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.swing.ImageIcon;
+
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlButton;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlHiddenInput;
-import com.gargoylesoftware.htmlunit.html.HtmlImage;
+
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlTable;
 import com.gargoylesoftware.htmlunit.html.HtmlTableCell;
 import com.gargoylesoftware.htmlunit.html.HtmlTableRow;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
-import net.sourceforge.tess4j.ITesseract;
-import net.sourceforge.tess4j.Tesseract;
-import net.sourceforge.tess4j.TesseractException;
+import java.io.FileOutputStream;
+import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.IndexedColors;
 /**
  *
  * @author Richard Garcia
@@ -42,8 +43,7 @@ public final class AgregarEmpresa extends javax.swing.JDialog {
       clsConnection oConn = new clsConnection();
       String[]veDatos = new String[]{};
      DefaultTableModel model;
-      WebClient webClient=new WebClient();
-    HtmlPage htmlPage=null;
+   
      BufferedImage buf=null;
      String fullText;
      String razonsocial,primerafila;
@@ -99,6 +99,7 @@ public final class AgregarEmpresa extends javax.swing.JDialog {
         tbEmpresas = new javax.swing.JTable();
         btnLimpiar = new javax.swing.JButton();
         btnCerrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agrege su Empresa y ESC para Cerrar");
@@ -205,14 +206,28 @@ public final class AgregarEmpresa extends javax.swing.JDialog {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excel.png"))); // NOI18N
+        jButton1.setText("Exportar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtBuscarRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -227,26 +242,27 @@ public final class AgregarEmpresa extends javax.swing.JDialog {
                             .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBuscarRazonSocial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,30 +289,27 @@ public final class AgregarEmpresa extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCerrar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnActualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLimpiar)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnCerrar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimpiar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtBuscarRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(196, 196, 196)
                 .addComponent(jLabel7)
-                .addGap(167, 167, 167))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarRazonSocial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -437,157 +450,114 @@ if(k==10){
         }
     }//GEN-LAST:event_tbEmpresasMousePressed
 
-   
-    public void consultaSunat() throws TesseractException, IOException{
-                  System.out.println("entro consulta sunat ");
-       iniciar();
-        cargarPagina("https://e-consultaruc.sunat.gob.pe/cl-ti-itmrconsruc/frameCriterioBusqueda.jsp");
-        inicializarCaptcha();
-        rellenarCaptcha();
-        consultar();
-        mostrar();
-        calcular();
-
-}
  public void calcular(){
     String pasar;
     pasar=primerafila.substring(13, primerafila.length()-1);
     txtRazonSocial.setText(pasar.trim());
     txtDireccion.setText(direccion.trim());
     }
- private void iniciar(){
-                      System.out.println("entro a iniciar ");
+  
+     public void generar(JTable table) {
+        HSSFWorkbook libro = new HSSFWorkbook();
+        HSSFSheet hoja = libro.createSheet("Reporte");
+           //  HSSFRow trow = hoja.createRow((short) 0);
+         // createTituloCell(libro, trow, 0, CellStyle.ALIGN_CENTER,CellStyle.VERTICAL_CENTER, "Titulo del Excel");
 
-    try{
-    webClient.getOptions().setJavaScriptEnabled(true);
-    webClient.getOptions().setCssEnabled(false);
-    webClient.getCookieManager().setCookiesEnabled(true);
-    webClient.setAjaxController(new NicelyResynchronizingAjaxController());
-    webClient.getOptions().setThrowExceptionOnScriptError(false);
-                      System.out.println("salio a iniciar ");
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de exel", "xls");
+        chooser.setFileFilter(filter);
+        chooser.setDialogTitle("Guardar archivo");
+        chooser.setMultiSelectionEnabled(false);
+        chooser.setAcceptAllFileFilterUsed(false);
+        //////////
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            String file = chooser.getSelectedFile().toString().concat(".xls");
+            ///////////////////////
+            HSSFFont fuente = libro.createFont();
+            HSSFFont fuente2 = libro.createFont();
+fuente.setFontHeightInPoints((short)8);         
+fuente.setFontName(HSSFFont.FONT_ARIAL);
+fuente.setColor(IndexedColors.WHITE.getIndex());
+fuente.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+///////////
+fuente2.setFontHeightInPoints((short)7);         
+fuente2.setFontName(HSSFFont.FONT_ARIAL);
+fuente2.setColor(IndexedColors.BLACK.getIndex());
 
-    }catch(Exception ex){
-    System.out.println(ex.getMessage());
-    }
-    }
-     private void cargarPagina(String url){
-     
-    try{
-                          System.out.println("cargo pagina ");
+///////////////////
+HSSFCellStyle estiloCelda = libro.createCellStyle();
+HSSFCellStyle estiloCelda2 = libro.createCellStyle();
 
-  htmlPage=webClient.getPage(url);
-    }catch(Exception ex){
-        System.out.println("algo salio mal al cargar pagina ");
-    System.out.println(ex.getMessage());
-    }
-    
-    }
-     
-          private void inicializarCaptcha(){
+estiloCelda.setWrapText(true);
+estiloCelda.setAlignment(HSSFCellStyle. ALIGN_CENTER);
+estiloCelda.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+estiloCelda.setFont(fuente);
+/////////////////////
+estiloCelda2.setWrapText(true);
+estiloCelda2.setAlignment(HSSFCellStyle. ALIGN_LEFT);
+estiloCelda2.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+estiloCelda2.setFont(fuente2);
+//////////////////
+// También, podemos establecer bordes...
+estiloCelda.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setBottomBorderColor((short)8);
+estiloCelda.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setLeftBorderColor((short)8);
+estiloCelda.setBorderRight(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setRightBorderColor((short)8);
+estiloCelda.setBorderTop(HSSFCellStyle.BORDER_THIN);
+estiloCelda.setTopBorderColor((short)8);
+//////////
+estiloCelda2.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setBottomBorderColor((short)8);
+estiloCelda2.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setLeftBorderColor((short)8);
+estiloCelda2.setBorderRight(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setRightBorderColor((short)8);
+estiloCelda2.setBorderTop(HSSFCellStyle.BORDER_THIN);
+estiloCelda2.setTopBorderColor((short)8);
+///////////////////////
+estiloCelda.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
+estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+///////////////////////////////
+        // oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getColumnCount()));
+            //   oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getRowCount()));
+            for (int i = 0; i < table.getRowCount() ; i++) {
+                
+               if (i == 0) {
+                   HSSFRow fila = hoja.createRow(i);
+                 for (int j = 0; j < table.getColumnCount() ; j++) {
+                        HSSFCell celda = fila.createCell(j);
+                        celda.setCellValue(new HSSFRichTextString(table.getColumnModel().getColumn(j).getHeaderValue().toString().toUpperCase()));
+                       celda.setCellStyle(estiloCelda);
+                   }
+              } //else {
+                    HSSFRow fila = hoja.createRow(i+1);
+                    for (int j = 0; j < table.getColumnCount() ; j++) {
+                        HSSFCell celda = fila.createCell(j);
+                         
+                        if (table.getValueAt(i, j) != null) {
+                           
+                            celda.setCellValue(new HSSFRichTextString(table.getValueAt(i, j).toString()));
+                            hoja.autoSizeColumn(j);
+                            celda.setCellStyle(estiloCelda2); 
+                   // }
+                 }      
+                
+               }
+                try {
+                    try (FileOutputStream elFichero = new FileOutputStream(file)) {
+                        libro.write(elFichero);
+                    }
+                } catch (IOException e) {
+                }
+            }
+          oFunc.SubSistemaMensajeInformacion("REPORTE COMPLETO");
+ }
 
-    try{
-              System.out.println("inicializo captcha ");
+}
 
-  HtmlImage image=htmlPage.<HtmlImage>getFirstByXPath("//img[@src='captcha?accion=image']");
-  ImageReader img=image.getImageReader();
-    buf=img.read(0);
-    // File outputfile=null;
-     //  ImageIO.write(buf, "png", outputfile);
-       
-   ImageIcon icom=new ImageIcon(buf);
-   //labelCaptha.setIcon(icom);
-    }catch(Exception ex){
-        System.out.println("algun problema en el capcha ");
-        System.out.println(ex.getMessage());
-    
-    }
-    
-    }
-      private void rellenarCaptcha() throws TesseractException, IOException
-     {          System.out.println("entro a rellenar captcha ");
 
-          ITesseract tesseract = new Tesseract();
-        String datapath = "C:\\src\\main\\resources\\tessdata_best";
-        tesseract.setDatapath(new File(datapath).getPath());
-        tesseract.setLanguage("spa");
-        File outputfile= new File("C:\\src\\horiz.png");
-        ImageIO.write(buf, "png", outputfile);
-
-          fullText = tesseract.doOCR(outputfile);
-            System.out.println( "el mensaje es" );
-       //     jTextCaptcha.setText(fullText);
-        System.out.println(fullText);
-     }
-     
-    private void consultar(){
-        try{
-                      System.out.println("entro a consultar ");
-
-       HtmlForm htmlform=htmlPage.getElementByName("mainForm");
-       HtmlTextInput input=htmlform.getInputByName("codigo");
-     //  String codigo=jTextCaptcha.getText().trim();
-       input.setText(fullText);
-       HtmlHiddenInput hidden1=(HtmlHiddenInput)htmlform.getInputByName("accion");
-       hidden1.setValueAttribute("consPorRuc");
-       
-           HtmlHiddenInput hidden2=(HtmlHiddenInput)htmlform.getInputByName("nroRuc");
-           String nruc=txtRUC.getText().trim();
-           hidden2.setValueAttribute(nruc);
-           HtmlButton boton= (HtmlButton) htmlPage.createElement("button");
-           boton.setAttribute("type","submit");
-           htmlform.appendChild(boton);
-           htmlPage=boton.click();
-           webClient.waitForBackgroundJavaScript(10000);
-           htmlPage=(HtmlPage) webClient.getCurrentWindow().getEnclosedPage();
-    }catch(Exception ex){
-   // System.out.println(ex.getMessage());
-    }
-        System.out.println("paso consultar");
-    }
-    
-     
-    public void mostrar(){
-     
-   System.out.println("entro a mostrar");
-    String numRuc,tipoCont,nombreCom,fechaInscripcion;
-          try{
-              HtmlTable htmltable=(HtmlTable)htmlPage.getByXPath("//table[@class='form-table']").get(2);
-              for(int i=0;i<14;i++)
-              {
-              HtmlTableRow tr=htmltable.getRow(i);
-              for(int j=1;j<2;j++)
-              {
-                  HtmlTableCell td=tr.getCell(j);  
-                 if(i==0)
-                 {
-                 //a1=td.asText().toString();
-                  primerafila=td.asText().toString();
-                  i=5;
-                 }
-                if(i==6)
-                 {
-                // a1=td.asText().toString();
-                  direccion=td.asText().toString();
-                  i=15;
-                 }
-          //  jTextResultado.append(td.asText());
-              }
-              
-              
-              
-            //    jTextResultado.append("\n");
-              }
-              
-              
-          //  mostrar.setText(a1);
-              
-   
-    }catch(Exception ex){
-   // System.out.println(ex.getMessage());
-    }
-    }
-    
- 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
   dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
@@ -612,6 +582,10 @@ if(k==10){
             Logger.getLogger(AgregarEmpresa.class.getName()).log(Level.SEVERE, null, ex);
         }*/
     }//GEN-LAST:event_txtRUCActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        generar(tbEmpresas);
+    }//GEN-LAST:event_jButton1ActionPerformed
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -660,6 +634,7 @@ if(k==10){
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -734,7 +709,7 @@ String strSqlStmt;
 void sbCargarDatosEmpresa(String valor){
     String [] titulos={"RUC","Raz. Social","Dirección"};
     String [] registros = new String[3];
-    String sql="select ruc_empresa, razon_empresa, direccion_empresa from empresas where CONCAT(ruc_empresa,' ',razon_empresa) LIKE '%"+valor+"%'";
+    String sql="select ruc_empresa, razon_empresa, direccion_empresa from empresas where CONCAT(ruc_empresa,' ',razon_empresa) LIKE '%"+valor+"%' ORDER BY razon_empresa";
       model = new DefaultTableModel(null,titulos);       
     if (oConn.FnBoolQueryExecute(sql))
         {

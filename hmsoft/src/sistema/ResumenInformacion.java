@@ -504,7 +504,7 @@ void sbCargarDatosOcupacional(String valor){
                    " WHEN i.chkigm_noreactivo = 'TRUE' THEN 'IGM:-' END as estadoigm,"+
             "CASE  WHEN i.chkigg_reactivo = 'TRUE' THEN 'IGG:+'\n" +
                    " WHEN i.chkigg_noreactivo = 'TRUE' THEN 'IGG:-' END as estadoigg,"
-                + "csm.n_orden as covid,ctc.n_orden as tamizaje,"
+                + "csm.n_orden as covid,ct.n_orden as tamizaje,"
             + " o.examenes \n" 
             + "From datos_paciente "
             + "inner join n_orden_ocupacional ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa)"

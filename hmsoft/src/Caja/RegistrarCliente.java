@@ -61,10 +61,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     clsFunciones oFunc = new clsFunciones();
     clsConnection oConn = new clsConnection();
        Ingreso objet= new Ingreso();
-   String nomsede;
-   int codigosede;
+   String nomsede,rucempresa,nombreempresa,ruccontrata,nombrecontrata;
+   int codigosede,pkprotocolo,codigo_norden,operacion;
     public static AddOcupacion addOcupacion;
     public static AgregarEmpresa addEmpresa;
+     public static AgregarProtocolo addProtocolo;
     public static AgregarContrata addContrata;
     public static AddCargos addExEn;
     public static AddArea addExmedico;
@@ -129,6 +130,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         CargarinfoHotel();
              cargarContratas();
         cargarEmpresas();
+        cargarProtocolos();
+                 AutoCompleteDecorator.decorate(this.jComboBoxProtocolos);
+
        // valorsede();
      //    AutoCompleteDecorator.decorate(this.cboContratas);
       //   AutoCompleteDecorator.decorate(this.cboEmpresas);
@@ -198,6 +202,38 @@ URL url = new URL("https://api.reniec.cloud/dni/")
         // selecciona
      // cboContratas.setSelectedIndex(0);
 }
+      private void calcularProtocolos(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select idprotocolo from protocolo where nombreprotocolo='"+jComboBoxProtocolos.getSelectedItem()+"'";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     pkprotocolo=oConn.setResult.getInt ("idprotocolo");
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
+
+
+}
   private void cargarEmpresas(){
       String sQuery;        
         // Prepara el Query
@@ -232,7 +268,16 @@ URL url = new URL("https://api.reniec.cloud/dni/")
    
         //cboEmpresas.setSelectedIndex(0);
 }
-
+    public void spFuncionHistorialClienteProtocolo(){
+         
+      String sql="select spFuncionHistorialClienteProtocolo("+num+","+pkprotocolo+","
+             +operacion+")";
+    oConn.FnBoolQueryExecute(sql);
+       
+        System.out.println(sql);
+        operacion=0;
+    }    
+     
 public void comunirApiReniecDesconocida(){
 
        String query_url = "https://api.reniec.cloud/dni/"+txtDni.getText();
@@ -549,6 +594,8 @@ this.chkAltaTrabCal.setVisible(false);
         jComboBoxHotel = new javax.swing.JComboBox<>();
         jCheckBox11 = new javax.swing.JCheckBox();
         chkimport = new javax.swing.JCheckBox();
+        jComboBoxProtocolos = new javax.swing.JComboBox<>();
+        btnAddOcupacion3 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -1135,13 +1182,26 @@ this.chkAltaTrabCal.setVisible(false);
         jPanel2.setMinimumSize(new java.awt.Dimension(377, 83));
 
         jLabel15.setText("Empresa :");
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
 
+        txtEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEmpresaMouseClicked(evt);
+            }
+        });
         txtEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmpresaActionPerformed(evt);
             }
         });
         txtEmpresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmpresaKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtEmpresaKeyReleased(evt);
             }
@@ -1159,6 +1219,11 @@ this.chkAltaTrabCal.setVisible(false);
         });
 
         jLabel16.setText("Contrata :");
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
 
         btnAddOcupacion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnAddOcupacion1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1979,6 +2044,17 @@ this.chkAltaTrabCal.setVisible(false);
             }
         });
 
+        jComboBoxProtocolos.setBackground(new java.awt.Color(255, 102, 102));
+        jComboBoxProtocolos.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBoxProtocolos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Protocolo" }));
+
+        btnAddOcupacion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnAddOcupacion3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddOcupacion3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -1988,73 +2064,81 @@ this.chkAltaTrabCal.setVisible(false);
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpOcupacional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(txtNumColor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnActivar, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                        .addComponent(btnActualizarEx)
+                                        .addGap(1, 1, 1)))))
+                        .addGap(5, 5, 5)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkVisualCompl)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(BtnActualizarEx, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chkPsicosen, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(BtnEditarEx, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnLimpiarApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnGuardarAperturar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(chkFistTest)
+                            .addComponent(chkTrabCalientes)
+                            .addComponent(chkManipAliment)
+                            .addComponent(chkCovid1)
+                            .addComponent(chkCovid2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkAltaFist)
+                                .addGap(8, 8, 8)
+                                .addComponent(chkAltaPsicosen)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(chkAltaTestAltura)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkAltaVisualCom))
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jpOcupacional, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(txtNumColor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnActivar, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                                .addComponent(btnActualizarEx)
-                                                .addGap(1, 1, 1)))))
-                                .addGap(5, 5, 5)
+                                    .addComponent(chkAltaTrabCal, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(chkAltaCovid1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(chkAltaCovid2, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chkVisualCompl)
-                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(BtnActualizarEx, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(chkPsicosen, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(BtnEditarEx, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnLimpiarApertura, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnGuardarAperturar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(chkFistTest)
-                                    .addComponent(chkTrabCalientes)
-                                    .addComponent(chkManipAliment)
-                                    .addComponent(chkCovid1)
-                                    .addComponent(chkCovid2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cboTipoExamen, 0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jLabel37)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(334, 334, 334)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(chkA)
+                                .addComponent(chkB))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(chkO)
+                                .addGap(27, 27, 27)))
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                                .addComponent(jLabel22)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chkAltaFist)
-                                                .addGap(8, 8, 8)
-                                                .addComponent(chkAltaPsicosen)))
-                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                                .addComponent(chkAltaTestAltura)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(chkAltaVisualCom))
-                                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(chkAltaTrabCal, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(chkAltaCovid1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(chkAltaCovid2, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cboTipoExamen, 0, 0, Short.MAX_VALUE))))
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addGap(334, 334, 334)
-                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkO)
-                                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(jLabel37)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(chkA)
-                                                        .addComponent(chkB))
-                                                    .addGap(28, 28, 28)
-                                                    .addComponent(jComboBoxHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addGap(338, 338, 338)
-                                        .addComponent(chkAB)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jComboBoxHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jComboBoxProtocolos, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddOcupacion3)
+                                .addGap(18, 18, 18))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(338, 338, 338)
+                        .addComponent(chkAB))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -2089,6 +2173,7 @@ this.chkAltaTrabCal.setVisible(false);
                                 .addComponent(rbPos)
                                 .addGap(7, 7, 7)
                                 .addComponent(rbNeg)))))
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2099,7 +2184,7 @@ this.chkAltaTrabCal.setVisible(false);
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCheckBox11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2115,9 +2200,9 @@ this.chkAltaTrabCal.setVisible(false);
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(60, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2177,9 +2262,16 @@ this.chkAltaTrabCal.setVisible(false);
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(chkO, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chkA, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                                .addComponent(chkO, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chkA, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jComboBoxProtocolos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(btnAddOcupacion3))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(chkB, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2195,13 +2287,13 @@ this.chkAltaTrabCal.setVisible(false);
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                                .addComponent(chkAltaCovid1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                    .addComponent(chkAltaCovid1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel37))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                                                 .addComponent(chkAltaCovid2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel6Layout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
-                                                .addComponent(jLabel37)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(cboTipoExamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(chkAltaTrabCal, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -2805,14 +2897,16 @@ this.chkAltaTrabCal.setVisible(false);
     }//GEN-LAST:event_btnAddOcupacion2MouseClicked
 
     private void txtEmpresaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpresaKeyReleased
-
+    txtEmpresa.setText (txtEmpresa.getText().toUpperCase());
     }//GEN-LAST:event_txtEmpresaKeyReleased
 
     private void txtContrataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrataKeyReleased
+    txtContrata.setText (txtContrata.getText().toUpperCase());
 
     }//GEN-LAST:event_txtContrataKeyReleased
 
     private void txtEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpresaActionPerformed
+
         txtContrata.requestFocus();
     }//GEN-LAST:event_txtEmpresaActionPerformed
 
@@ -2981,7 +3075,8 @@ public void agregarAltaEpidemiologica(String numero){
    }
 
   public void insertarRegistros(){
-         if (ValidarAlta()) {
+      operacion=1;  
+      if (ValidarAlta()) {
             String stip=null;
             if(rbCredito.isSelected()){
                  stip="CREDITO";
@@ -2996,7 +3091,7 @@ public void agregarAltaEpidemiologica(String numero){
             String Sql = "INSERT INTO n_orden_ocupacional(cod_pa, razon_empresa, razon_contrata,"
                     + " nom_ex, altura_po,mineral_po, fecha_apertura_po,nom_examen,precio_po,cargo_de,n_medico,n_hora,area_o,"
                     + "tipo_pago,n_fisttest,n_psicosen,n_testaltura,color,gruposan,grupofactorsan,cod_clinica,visual_compl,"
-                    + "trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel)";//
+                    + "trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel,protocolo)";//
                
             Sql += " Values ('" + txtDniAlta.getText().toString() + "','"
                     + txtEmpresa.getText().toString()+ "','"
@@ -3026,7 +3121,8 @@ public void agregarAltaEpidemiologica(String numero){
                     + chkAltaManipAlimen.isSelected() + "','"
                     + txtObserv1.getText()+ "','"
                     + txtObserv2.getText() + "'"+",'"+ cboTipoExamen.getSelectedItem().toString()+"',"+
-                    codigosede+",'"+jComboBoxHotel.getSelectedItem().toString()+"') RETURNING n_orden;";
+                    codigosede+",'"+jComboBoxHotel.getSelectedItem().toString()+"','"+jComboBoxProtocolos.getSelectedItem().toString()
+                    + "') RETURNING n_orden;";
                    //oFunc.SubSistemaMensajeError(Sql);
                    
             if (oConn.FnBoolQueryExecute(Sql)) {
@@ -3036,6 +3132,13 @@ public void agregarAltaEpidemiologica(String numero){
                     txtNorden1.setText(num);
                     oFunc.SubSistemaMensajeInformacion("Alta Correctamente\nSu numero de Orden es :** " + num + " **");
                     agregarAltaEpidemiologica(num);
+                    if(jComboBoxProtocolos.getSelectedItem().toString().contains("N/A"))
+                    {
+                    operacion=0;
+                    }
+                    else
+                    {calcularProtocolos();
+                    spFuncionHistorialClienteProtocolo();}
                     imprimir();
                     AltaDesabilitar();
                     AltaLimpiar();
@@ -3441,7 +3544,7 @@ public void cargarDatosPaciente(){
                     + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                     + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                     + "n.visual_compl,n.trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,"
-                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel "
+                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                     + "WHERE n.n_orden = " + cod +agregarConsulta;
@@ -3471,6 +3574,8 @@ public void cargarDatosPaciente(){
                     txtNorden.setText(oConn.setResult.getString("n_orden"));
                     cboTipoExamen.setSelectedItem(oConn.setResult.getString("tipoprueba"));
                     jComboBoxHotel.setSelectedItem(oConn.setResult.getString("nombrehotel"));
+                    jComboBoxProtocolos.setSelectedItem(oConn.setResult.getString("protocolo"));
+
                       if(cboTipoExamen.getSelectedItem().toString().equals("PC"))
                         jComboBoxHotel.setEnabled(true);
                              else
@@ -3545,7 +3650,8 @@ public void cargarDatosPaciente(){
     }//GEN-LAST:event_BtnEditarExActionPerformed
 
     private void BtnActualizarExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnActualizarExActionPerformed
-         String stip=null;
+operacion=2;
+        String stip=null;
             if(rbCredito.isSelected()){
                  stip="CREDITO";
              }
@@ -3577,11 +3683,20 @@ public void cargarDatosPaciente(){
                 + "txtobserv1='"+ txtObserv1.getText() +"',"
                 + "txtobserv2='"+ txtObserv2.getText() +"',"
                 + "tipoPrueba='"+ cboTipoExamen.getSelectedItem().toString()+"',"
-                + "nombrehotel='"+ jComboBoxHotel.getSelectedItem().toString()+"'";
+                + "nombrehotel='"+ jComboBoxHotel.getSelectedItem().toString()+"', "
+                + "protocolo='"+jComboBoxProtocolos.getSelectedItem().toString()+"'";
    
 //        sCodigo = txtNorden.getText();
         sCodigo = tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString();
         strSqlStmt += " Where n_orden = " + sCodigo + "";
+        num=txtNorden.getText();
+          if(jComboBoxProtocolos.getSelectedItem().toString().contains("N/A"))
+                    {
+                    operacion=0;
+                    }
+                    else
+                    {calcularProtocolos();
+                    spFuncionHistorialClienteProtocolo();}
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
@@ -4256,7 +4371,40 @@ private void CargarTipoExamenes(){
                              else
                              jComboBoxHotel.setEnabled(false);
     }//GEN-LAST:event_cboTipoExamenMousePressed
+ private void cargarProtocolos(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select nombreprotocolo from protocolo";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     jComboBoxProtocolos.addItem(oConn.setResult.getString ("nombreprotocolo"));
+                     
+                 }
+                 
+                 // Cierra Resultados
+               //  oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+       // cboProtocolo.setSelectedItem(seded);
+        jComboBoxProtocolos.setSelectedIndex(0);
 
+
+}
     private void cboTipoExamenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboTipoExamenMouseEntered
       if(cboTipoExamen.getSelectedItem().toString().equals("PC"))
                         jComboBoxHotel.setEnabled(true);
@@ -4285,6 +4433,49 @@ private void CargarTipoExamenes(){
        cargarDatosPaciente();
        }
     }//GEN-LAST:event_chkimportActionPerformed
+
+    private void txtEmpresaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpresaKeyPressed
+
+    }//GEN-LAST:event_txtEmpresaKeyPressed
+
+    private void txtEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmpresaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmpresaMouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+            String entradaUsuario = JOptionPane.showInputDialog("Introduzca Ruc de la empresa:");
+          System.out.println(entradaUsuario);
+            rucempresa=entradaUsuario;
+            CargarEmpreaRuc();
+            if(nombreempresa.length()>1)
+            { 
+                JOptionPane.showMessageDialog(null,nombreempresa);
+                txtEmpresa.setText(nombreempresa);
+            
+            }
+            else 
+                                JOptionPane.showMessageDialog(null,"NO HAY EMPRESA");
+
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+            String entradaUsuario = JOptionPane.showInputDialog("Introduzca Ruc de la Contrata:");
+                ruccontrata=entradaUsuario;
+            CargarContrataRuc();
+            if(nombrecontrata.length()>1)
+            { 
+                JOptionPane.showMessageDialog(null,nombrecontrata);
+                txtContrata.setText(nombrecontrata);
+            
+            }
+            else 
+                                JOptionPane.showMessageDialog(null,"NO HAY CONTRATA");
+
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void btnAddOcupacion3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddOcupacion3MouseClicked
+        MostrarAgregarProtocolo();        
+    }//GEN-LAST:event_btnAddOcupacion3MouseClicked
   private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -4371,7 +4562,10 @@ private void CargarTipoExamenes(){
                  //viewer.setAlwaysOnTop(true);
                 //viewer.setVisible(true);
             }
-             if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)){
+             if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)
+                 ||  c.contains("CUALITATIVA ANTI") || c.contains("CUANTITATIVA ANTI")||
+                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c)
+                     ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -4384,7 +4578,7 @@ private void CargarTipoExamenes(){
                  JasperPrintManager.printReport(myPrint,true);
                 
             }
-                    if("Factores de Riesgo".equals(c)){
+                    if("FACTORES DE RIESGO".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -4410,7 +4604,7 @@ private void CargarTipoExamenes(){
                  JasperPrintManager.printReport(myPrint,true);
                 
             }
-                              if("Asistencial".equals(c)){
+                              if("ASISTENCIAL".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Asistencial.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -4516,7 +4710,7 @@ private void CargarTipoExamenes(){
                 viewer.setVisible(true);
             }
              if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)
-                 ||    "PRUEBA CUALITATIVA ANTIGENO".equals(c)|| "PRUEBA CUANTITATIVA ANTICUERPOS".equals(c)||
+                 ||  c.contains("CUALITATIVA ANTI") || c.contains("CUANTITATIVA ANTI")||
                      "PRUEBA CUANTITATIVA ANTIGENOS".equals(c)
                      ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
@@ -4535,8 +4729,8 @@ private void CargarTipoExamenes(){
                 viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
                 // viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
-            }
-                   if("Factores de Riesgo".equals(c)){
+            }          
+                   if(c.contains("FACTORES DE RIESGO")){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -4562,7 +4756,7 @@ private void CargarTipoExamenes(){
                  JasperPrintManager.printReport(myPrint,true);
                 
             }
-                            if("Asistencial".equals(c)){
+                            if(c.contains("ASISTENCIAL")){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Asistencial.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -4605,13 +4799,20 @@ private void CargarTipoExamenes(){
         txtEmpresa.setText(sDatos);
 
     }
+    public void addprotocolo(String sDatos) {
+        jComboBoxProtocolos.setSelectedItem(sDatos);
 
+    }
     public void MostrarAgregarEmpresa() {
         addEmpresa = new AgregarEmpresa(this, true);
         addEmpresa.setVisible(true);
 
     }
+  public void MostrarAgregarProtocolo() {
+        addProtocolo = new AgregarProtocolo(this, true);
+        addProtocolo.setVisible(true);
 
+    }
     public void MostrarAgregarContrata() {
         addContrata = new AgregarContrata(this, true);
         addContrata.setVisible(true);
@@ -4794,6 +4995,7 @@ private void CargarTipoExamenes(){
     private javax.swing.JLabel btnAddOcupacion;
     private javax.swing.JLabel btnAddOcupacion1;
     private javax.swing.JLabel btnAddOcupacion2;
+    private javax.swing.JLabel btnAddOcupacion3;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel btnAreaOcupacional;
     private javax.swing.JLabel btnCargo;
@@ -4856,6 +5058,7 @@ private void CargarTipoExamenes(){
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBoxHotel;
+    private javax.swing.JComboBox<String> jComboBoxProtocolos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -5313,6 +5516,45 @@ private void CargarTipoExamenes(){
             }
         }
     }
+    private void CargarEmpreaRuc() {
+        String Consulta;
+
+        Consulta = "select razon_empresa from empresas where ruc_empresa= '"+rucempresa+"'";
+        if (oConn.FnBoolQueryExecute(Consulta)) {
+            try {
+                while (oConn.setResult.next()) {
+
+                  nombreempresa= oConn.setResult.getString("razon_empresa");
+                }
+
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+  private void CargarContrataRuc() {
+        String Consulta;
+
+        Consulta = "select razon_contrata from contratas where ruc_contrata= '"+ruccontrata+"'";
+        System.out.println(Consulta);
+        if (oConn.FnBoolQueryExecute(Consulta)) {
+            try {
+                while (oConn.setResult.next()) {
+
+                  nombrecontrata= oConn.setResult.getString("razon_contrata");
+                }
+
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
     private void CargarAlturaPo() {
         String Consulta;
@@ -5391,10 +5633,10 @@ private void CargarTipoExamenes(){
         txtNorden.setEnabled(false);
         txtMedico.setEnabled(false);
         txtFechaAlta.setEnabled(false);
-        chkAltaFist.setEnabled(false);
-        chkAltaPsicosen.setEnabled(false);
-        chkAltaTestAltura.setEnabled(false);
-        chkAltaVisualCom.setEnabled(false);
+    //   chkAltaFist.setEnabled(false);
+      //  chkAltaPsicosen.setEnabled(false);
+      //  chkAltaTestAltura.setEnabled(false);
+     //   chkAltaVisualCom.setEnabled(false);
         chkAltaTrabCal.setEnabled(false);
         chkAltaCovid1.setEnabled(false);
         chkAltaCovid2.setEnabled(false);

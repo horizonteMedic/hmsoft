@@ -543,6 +543,7 @@ public class FuncionRespiratoriaABS extends javax.swing.JInternalFrame {
         txtFEV1.setText("N/A");
         txtFEV1FVC.setText("N/A");
         txtFEF2575.setText("N/A");
+        txtInterpretacion.setText("NO SE REALIZO ESPIROMETRIA");
     }//GEN-LAST:event_chkNAActionPerformed
 
     private void txtFEV1TeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFEV1TeoActionPerformed

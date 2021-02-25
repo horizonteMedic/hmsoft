@@ -2154,7 +2154,7 @@ private void reporte(Integer cod){
                      //+txtConclusion.getText().toString()+"','"
                      +txtRecomenDaciones.getText().toString()+"','"
                      +txtEdad.getText().toString()+"')";
-                  oFunc.SubSistemaMensajeInformacion(Sql);
+                //  oFunc.SubSistemaMensajeInformacion(Sql);
                       if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                         sbCargarDatosElectro("");  
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");

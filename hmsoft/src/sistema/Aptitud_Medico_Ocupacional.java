@@ -996,9 +996,9 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 "                l.txtglucosabio, l.txtcreatininabio  \n" +
 "                FROM datos_paciente AS d \n" +
 "                INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
-"               INNER JOIN anexo7c AS a ON (a.n_orden = n.n_orden) \n" +
+"               left JOIN anexo7c AS a ON (a.n_orden = n.n_orden) \n" +
 "	       left JOIN lab_clinico AS l ON (l.n_orden = n.n_orden)  "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +" limit 1";
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -1404,20 +1404,27 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         String sQuery;
 
         sQuery  = "Select n_orden from certificado_aptitud_medico_ocupacional Where n_orden ="+txtNorden.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        System.out.println(sQuery);
+          oConn.FnBoolQueryExecute(sQuery);
         try {
             if (oConn.setResult.next())
             {
                 bResultado = true;
+                String pas="";
+                pas=oConn.setResult.getString("n_orden");
+                if(pas.length()>1)
+                     bResultado = true;
+                else
+                     bResultado = false;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
-//              txtNorden.setText(null);
+//             txtNorden.setText(null);
             }
             oConn.setResult.close();
-            
         } catch (SQLException ex) {
-         
         }
-        }       
+        }   
+                System.out.println(bResultado);
+
         return bResultado;
         }  
   public void levantarObservacion(){
@@ -1435,7 +1442,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         boolean bResult = false;
          String strSqlStmt ="INSERT INTO certificado_aptitud_medico_ocupacional(n_orden,cod_pa, fecha, nom_medico, atxtrestricciones, chkapto, "
                + "chkapto_restriccion,chkno_apto,horasalida,fecha_hasta,txtrecomendaciones,txtconclusiones )";       
-            strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"','"+txtDni.getText().toString()+"','"+Fecha.getDate()+
+            strSqlStmt+= "values ("+ txtNorden.getText().toString()+",'"+txtDni.getText().toString()+"','"+Fecha.getDate()+
                     "','"+txtCertifica.getText().toString()+"','"+atxtRestricciones.getText().toString()+  "','"+chkApto.isSelected()+
                     "','"+chkRestriccion.isSelected()+  "','"+chkNoApto.isSelected()+ "','"+lblHora.getText().toString()+"'"
                     + ",'"+FechaHasta.getDate()+"','"+atxtRecomendaciones.getText()+"','"+atxtConclusiones.getText()+"')";      

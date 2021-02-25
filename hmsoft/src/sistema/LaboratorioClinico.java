@@ -3465,6 +3465,8 @@ else
     }//GEN-LAST:event_cboMarcaPopupMenuWillBecomeInvisible
 
     private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed
+      
+        
         cboMarca.getEditor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

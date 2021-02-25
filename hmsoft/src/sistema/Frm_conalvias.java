@@ -199,26 +199,28 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(F_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(F_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(rbEmpresa)
-                    .addComponent(rbContrata)
-                    .addComponent(btnBuscar)
-                    .addComponent(chkAnexo2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnLimpiar))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnObrainsa)
-                    .addComponent(btnPoderosa)))
+                    .addComponent(btnPoderosa))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(F_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(F_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addComponent(rbEmpresa)
+                        .addComponent(rbContrata)
+                        .addComponent(chkAnexo2))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tbReporte.setModel(new javax.swing.table.DefaultTableModel(
@@ -481,7 +483,7 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
  + "CASE WHEN lc.rbrhpositivo ='TRUE' THEN '+' "
  + " WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS \"Grupo y factor \" ,\n" +  
 "CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS \"Glucosa \",\n" +     
-"CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE '***' END AS \"Resultado Glucosa\",\n" +               
+"CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE '***' END AS \"Resultado Glucosa\",\n" +              
 "CASE WHEN lc.txtobservacioneslb IS NULL THEN '...' ELSE lc.txtobservacioneslb END AS \"Examen de Orina \", \n" +  
 "CASE WHEN od.txtpiezasmalestado IS NULL THEN 0 ELSE od.txtpiezasmalestado END AS \"Piezas en Mal estado \" ,\n" +
 "CASE WHEN od.txtausentes IS NULL THEN 0 ELSE od.txtausentes END AS \"Piezas Faltantes \", \n" +             
@@ -508,7 +510,7 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
 + "WHERE "+"'"+txtEmpresa.getText().toString()+"' = n.razon_empresa ";//OR "+txtEmpresa.getText().toString()+"' = n.razon_contrata ";
             
             
-            
+            System.out.println(vSql);
                          
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
@@ -678,7 +680,7 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
  + "CASE WHEN lc.rbrhpositivo ='TRUE' THEN '+' "
  + " WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS \"Grupo y factor \" ,\n" +  
 "CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS \"Glucosa \",\n" +     
-"CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE '***' END AS \"Resultado Glucosa\",\n" +               
+"CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE '***' END AS \"Resultado Glucosa\",\n" +                            
 "CASE WHEN lc.txtobservacioneslb IS NULL THEN '...' ELSE lc.txtobservacioneslb END AS \"Examen de Orina \", \n" +  
 "CASE WHEN od.txtpiezasmalestado IS NULL THEN 0 ELSE od.txtpiezasmalestado END AS \"Piezas en Mal estado \" ,\n" +
 "CASE WHEN od.txtausentes IS NULL THEN 0 ELSE od.txtausentes END AS \"Piezas Faltantes \", \n" +             
@@ -712,7 +714,7 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
                  {
                  vSql +=" AND n.fecha_apertura_po <= '"+F_final.getDate().toString()+"'";
                  }         
-
+System.out.println("contrata: "+vSql);
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
              {

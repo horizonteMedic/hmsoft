@@ -62,16 +62,16 @@ public class Reporteador extends javax.swing.JInternalFrame {
          Ingreso objet= new Ingreso();
           String nomsede,nombre;
             String contrata,empresa;
-          String agregarConsulta=" ",laconsulta=" ",tipofecha=" ";
+          String agregarConsulta=" ",laconsulta=" ",tipofecha=" ",agregarConsulta1="";
           int marcador=1,verificador=1;
    int codigosede;
     public Reporteador() {
         initComponents();
+        valorsede();
         personalizado(false);
         Columnas(true);   
         cargarContratas();
         cargarEmpresas();
-        valorsede();
          AutoCompleteDecorator.decorate(this.cboContratas);
          AutoCompleteDecorator.decorate(this.cboEmpresas);
          txtEmpresa.setVisible(false);
@@ -193,8 +193,13 @@ public class Reporteador extends javax.swing.JInternalFrame {
     }
     
     public void valorsede(){
-   nomsede=objet.nombresede;
+                     
+
+        nomsede=objet.nombresede;
+          System.out.println("pintar label::"+nomsede);
+                               jLabel1.setText(nomsede);
    nombre=nomsede;
+   chk17.setSelected(true);
    // jLabel48.setText(nomsede);
    jCheckBox1.setSelected(true);
     String sQuery;        
@@ -210,6 +215,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                  {                     
                      // Obtiene los datos de la Consulta
                      codigosede=oConn.setResult.getInt("cod_sede");
+                     jLabel1.setText(nomsede);
                  }
                  
                  // Cierra Resultados
@@ -223,6 +229,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }
         }
            agregarConsulta=" and n.cod_sede="+codigosede; 
+           agregarConsulta1=" and n_orden_ocupacional.cod_sede="+codigosede; 
            System.out.println(":"+agregarConsulta);
    //  agregarConsulta+=" "; 
     }
@@ -450,7 +457,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                             "  CASE WHEN l.rbrhpositivo ='TRUE' THEN '+' \n" +
                             "      WHEN l.rbrhnegativo = 'TRUE' THEN '-' END AS GRUPOFACTOR ";                 
                         vSql+=",  CASE  WHEN o.n_orden is not null THEN 'Observado'\n" +
-                    "                   WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+                    "                   WHEN ca.chkapto = 'TRUE' THEN 'Apto"
+                                + "'\n" +
                     "                   WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
                     "                   WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
                     "                   WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
@@ -464,6 +472,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     "                   WHEN a.no_apto = 'TRUE' THEN 'No Apto'\n" +
                     "                   WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
                     "                   WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
+                                       "WHEN bc.chk_no = 'TRUE' THEN 'No Apto'\n" +
+
                     "		        WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
                     "                   WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as condicion ";
                         
@@ -485,9 +495,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 +" left join observaciones as o ON (o.n_orden=n.n_orden)"
                 +" left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)"
                 +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"
-                 +" left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)" ;  
-                    
-                         if(cboContratas.getSelectedItem().toString().length()>2)
+                +" left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) ";  
+                          if(cboContratas.getSelectedItem().toString().length()>2)
                              contrata=cboContratas.getSelectedItem().toString();
                          else
                              contrata="";
@@ -496,7 +505,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                          else
                              empresa="";
               //  if(cboContratas.getSelectedIndex()>=1){
-                    vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                    vSql +="WHERE UPPER(n.razon_contrata) like UPPER('%"+contrata+"%') ";
                 //   contrata=" ";
                // } 
                // else
@@ -508,7 +517,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                //     vSql +=" WHERE ";
                // }                
                // if(cboEmpresas.getSelectedIndex()>=1){
-                    vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                    vSql += " AND UPPER(n.razon_empresa) like UPPER('%"+empresa+"%')";
                // }
                 if(chkRepTestAltura.isSelected()){
                     vSql +=" and n.n_testaltura = 'true'";
@@ -550,6 +559,336 @@ public class Reporteador extends javax.swing.JInternalFrame {
                  
                  
                  vSql+=" " +agregarConsulta;
+                  System.out.println("consulta:"+vSql);         
+                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                if (oConn.FnBoolQueryExecute(vSql))
+             {
+             try  {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                         model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                    while (oConn.setResult.next())
+                    {
+                        Object [] Fila = new Object[CantidaColumnas];
+                       
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                           
+                            Fila[i] = oConn.setResult.getObject(i+1);
+                        }
+                        model.addRow(Fila);
+                    }
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+                      tbReporte.setModel(model);
+                     oConn.setResult.close();
+                } 
+                catch (SQLException ex) 
+                {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    
+    
+    }
+   
+    private void cPersonalizadaadecco(){
+    model = new DefaultTableModel(){        
+                 @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                    }};
+                               
+                    String vSql="SELECT n_orden_ocupacional.n_orden AS CODIGO,\n" +
+"      'HORIZONTE MEDIC' AS PROVEEDOR,\n" +
+"	  n_orden_ocupacional.cod_pa AS DNI,\n" +
+"	  n_orden_ocupacional.fecha_apertura_po  as FECHA,\n" +
+"       datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS APELLIDOS_NOMBRES,\n" +
+"	   datos_paciente.cel_pa AS CELULAR,\n" +
+"       obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
+"	   (CASE WHEN n_orden_ocupacional.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
+"	   WHEN n_orden_ocupacional.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
+"	   END\n" +
+"	   ) AS DESTINO,\n" +
+"       \n" +
+"                        n_orden_ocupacional.razon_contrata AS EMPRESA1,\n" +
+"						n_orden_ocupacional.cargo_de AS PUESTO_CARGO,\n" +
+"						n_orden_ocupacional.nom_examen AS TIPO_EXAMEN,\n" +
+"						(CASE WHEN a16.apto_si='TRUE' THEN 'APTO'\n" +
+"						 WHEN a16.apto_no='TRUE' THEN 'NO APTO'\n" +
+"						  WHEN a16.apto_re='TRUE' THEN 'APTO CON RESTRICCION'\n" +
+"						 ELSE 'N/A'\n" +
+"						end) AS APTITUD,\n" +
+"						(case  when a16.n_orden is null then 'N/A'\n" +
+"						ELSE a16.txtrestricciones END\n" +
+"						)AS DETALLE_RESTRICCION,\n" +
+"                        (CASE \n" +
+"                        WHEN a16.txtobservacionesfm is null THEN 'N/A'\n" +
+"                        ELSE a16.txtobservacionesfm\n" +
+"                        END) AS DETALLE_OBSERVACIONES,\n" +
+"						(CASE WHEN  n_orden_ocupacional.nom_examen='COVID-19' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
+"						ELSE 'N/A' END\n" +
+"						) PRUEBA_RAPIDA,\n" +
+"						(CASE WHEN  n_orden_ocupacional.nom_examen='PRUEBA CUALITATIVA ANTIGENOS' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
+"						WHEN  n_orden_ocupacional.nom_examen='PRUEBA CUANTITATIVA ANTIGENOS' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
+"						\n" +
+"						 ELSE 'N/A' END\n" +
+"						) PRUEBA_ANTIGENOS,\n" +
+"						(CASE WHEN  pm.n_orden IS NULL THEN 'N/A'\n" +
+"						\n" +
+"						 ELSE pm.resultado END\n" +
+"						) PRUEBA_MOLECULARES,n_orden_ocupacional.fecha_apertura_po  as FECHA_VENCIMIENTO\n" +
+"						\n" +
+"                        FROM n_orden_ocupacional\n" +
+"                        LEFT JOIN datos_paciente ON n_orden_ocupacional.cod_pa = datos_paciente.cod_pa \n" +
+"                        LEFT JOIN sede ON n_orden_ocupacional.cod_sede = sede.cod_sede\n" +
+"                        LEFT JOIN constancia_salud_marsa ON n_orden_ocupacional.n_orden = constancia_salud_marsa.n_orden\n" +
+"                        LEFT JOIN constancia_salud_marsa1 ON n_orden_ocupacional.n_orden = constancia_salud_marsa1.n_orden\n" +
+"				\n" +
+"						LEFT JOIN triaje ON n_orden_ocupacional.n_orden = triaje.n_orden\n" +
+"                        LEFT JOIN examen_inmunologico ON n_orden_ocupacional.n_orden = examen_inmunologico.n_orden\n" +
+"                    LEFT JOIN anexo_agroindustrial as a16 on n_orden_ocupacional.n_orden=a16.n_orden\n" +
+"					LEFT JOIN prueba_moleculares AS pm on n_orden_ocupacional.n_orden=pm.n_orden "+
+"					WHERE\n" +
+"					n_orden_ocupacional.razon_empresa like '%ADECCO%' \n" ;  
+                          if(cboContratas.getSelectedItem().toString().length()>2)
+                             contrata=cboContratas.getSelectedItem().toString();
+                         else
+                             contrata="";
+                         if(cboEmpresas.getSelectedItem().toString().length()>2)
+                             empresa=cboEmpresas.getSelectedItem().toString();
+                         else
+                             empresa="";
+              //  if(cboContratas.getSelectedIndex()>=1){
+                    vSql +="AND UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
+             
+                    vSql += " AND UPPER(n_orden_ocupacional.razon_empresa) like UPPER('%"+empresa+"%')";
+        
+              
+                 if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
+                 {
+                     
+                   //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 ) 
+
+                   //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
+                   //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                   //  }else{
+                         vSql +=" AND n_orden_ocupacional.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                   //  }
+                     
+                 }
+                 if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
+                 {
+                 vSql +=" AND n_orden_ocupacional.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                 }
+                 
+                 
+                 vSql+=" " +agregarConsulta1;
+                  System.out.println("consulta:"+vSql);         
+                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                if (oConn.FnBoolQueryExecute(vSql))
+             {
+             try  {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                         model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                    while (oConn.setResult.next())
+                    {
+                        Object [] Fila = new Object[CantidaColumnas];
+                       
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                           
+                            Fila[i] = oConn.setResult.getObject(i+1);
+                        }
+                        model.addRow(Fila);
+                    }
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+                      tbReporte.setModel(model);
+                     oConn.setResult.close();
+                } 
+                catch (SQLException ex) 
+                {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    
+    
+    }
+   
+    
+    private void cAntigenos(){
+    model = new DefaultTableModel(){        
+                 @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                    }};
+                               
+                    String vSql="SELECT n_orden_ocupacional.n_orden AS EXAM_COD_ATENCION,\n" +
+" LPAD(n_orden_ocupacional.cod_pa::text, 8, '0')AS DNI,\n" +
+" datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS PACIENTE,\n" +
+" datos_paciente.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+" obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
+" datos_paciente.direccion_pa as DIRECCIÓN,datos_paciente.cel_pa as CELULAR,n_orden_ocupacional.cargo_de AS CARGO,\n" +
+" n_orden_ocupacional.razon_contrata AS EMPRESA,\n" +
+"n_orden_ocupacional.razon_contrata AS CONTRATA,\n" +
+"n_orden_ocupacional.fecha_apertura_po AS FECHA_REGISTRO,\n" +
+"						( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then constancia_salud_marsa.fecha_examen\n" +
+"								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
+"						 		when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
+"						 end ) AS FECHA_EXAMEN,\n" +
+"						 n_orden_ocupacional.nom_examen AS  NOMBRE_EXAMEN,\n" +
+"						                         n_orden_ocupacional.tipoprueba AS NUMERO_PRUEBA,\n" +
+"                        ( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then 'RA'\n" +
+"								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then 'AG'\n" +
+"			when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then 'AG'\n" +
+"\n" +
+"						 end ) AS TIPOPRUEBA,\n" +
+"                    	reactivoono(n_orden_ocupacional.n_orden) as RESULTADO_PRUEBA_COVID\n" +
+",\n" +
+"                        (CASE\n" +
+"    WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+"        WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+"						 END) AS SINTOMATOLOGIA,        \n" +
+"                        triaje.sat_02 AS SPO2,\n" +
+"                        examen_inmunologico.cbomarca AS MARCATEST,\n" +
+"                        (CASE \n" +
+"                        WHEN examen_inmunologico.txtobservaciones is null THEN 'N/A'\n" +
+"                        ELSE examen_inmunologico.txtobservaciones\n" +
+"                        END) AS DIAG_OBSERVACIONES,\n" +
+"						n_orden_ocupacional.txtobserv1 AS OBSERV1 ,n_orden_ocupacional.txtobserv2 AS OBSERV2,\n" +
+"						n_orden_ocupacional.tipo_pago AS TIPOPAGO ,n_orden_ocupacional.precio_po::numeric AS PRECIO, \n" +
+"						sede.nombre_sede AS ESTABLECIMIENTO\n" +
+"                        FROM n_orden_ocupacional\n" +
+"                        LEFT JOIN datos_paciente ON n_orden_ocupacional.cod_pa = datos_paciente.cod_pa \n" +
+"                        LEFT JOIN sede ON n_orden_ocupacional.cod_sede = sede.cod_sede\n" +
+"                        LEFT JOIN constancia_salud_marsa ON n_orden_ocupacional.n_orden = constancia_salud_marsa.n_orden\n" +
+"                        LEFT JOIN constancia_salud_marsa1 ON n_orden_ocupacional.n_orden = constancia_salud_marsa1.n_orden\n" +
+"					    LEFT JOIN fmedica_covid_marsa ON n_orden_ocupacional.n_orden = fmedica_covid_marsa.n_orden\n" +
+"                        LEFT JOIN fmedica_covid_marsa1 ON n_orden_ocupacional.n_orden = fmedica_covid_marsa1.n_orden\n" +
+"\n" +
+"						LEFT JOIN triaje ON n_orden_ocupacional.n_orden = triaje.n_orden\n" +
+"                        LEFT JOIN examen_inmunologico ON n_orden_ocupacional.n_orden = examen_inmunologico.n_orden\n ";  
+                          if(cboContratas.getSelectedItem().toString().length()>2)
+                             contrata=cboContratas.getSelectedItem().toString();
+                         else
+                             contrata="";
+                         if(cboEmpresas.getSelectedItem().toString().length()>2)
+                             empresa=cboEmpresas.getSelectedItem().toString();
+                         else
+                             empresa="";
+                    vSql +="  WHERE UPPER(n_orden_ocupacional.nom_examen) like '%ANTIGENOS%'  AND  ";
+                    vSql +="  UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
+             
+                    vSql += " AND UPPER(n_orden_ocupacional.razon_empresa) like UPPER('%"+empresa+"%')";
+        
+           
+               
+                     vSql+=" AND\n" +
+"        ((constancia_salud_marsa.fecha_examen BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+"	or (constancia_salud_marsa1.fecha_examen BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+"						 )";
+                  
+                      
+                     
+           
+                 vSql+=" " +agregarConsulta1;
+                  System.out.println("consulta:"+vSql);         
+                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                if (oConn.FnBoolQueryExecute(vSql))
+             {
+             try  {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                         model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                    while (oConn.setResult.next())
+                    {
+                        Object [] Fila = new Object[CantidaColumnas];
+                       
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                           
+                            Fila[i] = oConn.setResult.getObject(i+1);
+                        }
+                        model.addRow(Fila);
+                    }
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+                      tbReporte.setModel(model);
+                     oConn.setResult.close();
+                } 
+                catch (SQLException ex) 
+                {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+    
+    
+    }
+    
+    private void cPersonalizada1(){
+    model = new DefaultTableModel(){        
+                 @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                    }};
+                               
+                    String vSql="select \n" +
+"n.fecha_apertura_po as fecha, dp.cod_pa, CONCAT(dp.apellidos_pa,' ',dp.nombres_pa) as ApellidosNombres,\n" +
+"dp.ocupacion_pa as Puesto, splistadoNombres(n.n_orden) as TipoEvaluacion,n.protocolo,n.n_orden NroContrato,\n" +
+"n.razon_contrata as Cliente,\n" +
+"( CASE WHEN n.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
+"		WHEN n.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
+"        ELSE n.razon_empresa END\n" +
+") TIPO\n" +
+", spsumaSERVICIOS(n.n_orden) as Importe\n" +
+"from historialclienteprotocolo as hcp inner join n_orden_ocupacional as n on hcp.n_orden=n.n_orden\n" +
+"left join \n" +
+"datos_paciente as dp on n.cod_pa=dp.cod_pa "; 
+                          if(cboContratas.getSelectedItem().toString().length()>2)
+                             contrata=cboContratas.getSelectedItem().toString();
+                         else
+                             contrata="";
+                         if(cboEmpresas.getSelectedItem().toString().length()>2)
+                             empresa=cboEmpresas.getSelectedItem().toString();
+                         else
+                             empresa="";
+             
+                    vSql +=" WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+             
+                    vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+             
+            
+                 if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
+                 {
+                     
+                   //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 ) 
+
+                   //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
+                   //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                   //  }else{
+                         vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                   //  }
+                     
+                 }
+                 if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
+                 {
+                 vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                 }
+                 
+                 
+                 vSql+=" " +agregarConsulta;
+                 
+                 vSql+="   group by fecha,dp.cod_pa,ApellidosNombres,Puesto,TipoEvaluacion,n.protocolo,NroContrato,\n" +
+" Cliente,razon_empresa,Importe,TIPO";
                   System.out.println("consulta:"+vSql);         
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
@@ -654,6 +993,11 @@ public class Reporteador extends javax.swing.JInternalFrame {
         jButton5 = new javax.swing.JButton();
         jCheckBoxIngres0 = new javax.swing.JCheckBox();
         jCheckBoxAlta = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btnMostrar1 = new javax.swing.JButton();
+        jCheckBoxAntigeno = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("Reporte para control Interno e Impresion detallada");
@@ -1207,6 +1551,27 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel1.setBackground(new java.awt.Color(102, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Engravers MT", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 0, 0));
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel6.setText("SEDE:");
+
+        btnMostrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
+        btnMostrar1.setText("PROTOCOLO");
+        btnMostrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrar1ActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxAntigeno.setText("ANTIGENOS");
+
+        jCheckBox2.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
+        jCheckBox2.setForeground(new java.awt.Color(102, 0, 0));
+        jCheckBox2.setText("ADECCO");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1216,15 +1581,25 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox1)
+                                .addGap(10, 10, 10)
+                                .addComponent(chkRepTestAltura)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkRepPsicosen)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chkRepVisualCompl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkRepTrabCal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkRepCovid1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkRepCovid2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkRepManipAlimen))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(2, 2, 2)
@@ -1233,28 +1608,34 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                         .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(123, 123, 123)
+                                        .addGap(18, 18, 18)
                                         .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(49, 49, 49)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCheckBox2))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(225, 225, 225)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(btnMostrar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jCheckBoxAntigeno)
+                                                    .addComponent(jCheckBox1))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton1)
-                                            .addComponent(jButton4)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(chkRepTestAltura)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chkRepPsicosen)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(chkRepVisualCompl)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chkRepTrabCal)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chkRepCovid1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chkRepCovid2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(chkRepManipAlimen)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(jButton4))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1286,18 +1667,22 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblNservicio))
-                                    .addComponent(txtRuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jCheckBox1)))
+                                .addComponent(jCheckBoxAntigeno)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnMostrar1)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkRepTestAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1310,9 +1695,14 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1410,7 +1800,15 @@ public class Reporteador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExportarExelActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+       if(jCheckBox2.isSelected())
+        cPersonalizadaadecco();
+        else{
+        if(jCheckBoxAntigeno.isSelected())
+        cAntigenos();
+    else
         cPersonalizada();
+                
+                }
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void chkContratistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkContratistaActionPerformed
@@ -1618,7 +2016,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
               public boolean isCellEditable(int rowIndex, int columnIndex) {
                    return false;
             }};
-            String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata, \n" +
+            String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata,n.nom_examen,  \n" +
 "CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
 "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
 "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
@@ -1655,12 +2053,13 @@ public class Reporteador extends javax.swing.JInternalFrame {
                      ", (case when n.cod_sede=1 then 'TRUJILLO' "
                                  + " WHEN n.cod_sede=2 then 'Huamachuco' "
                                   + " WHEN n.cod_sede=3 then 'Huancayo' "
-                                 + " end ) as SEDE "+
+                                 + " end ) as SEDE , n.nom_examen "+
+                 
 "FROM datos_paciente as d \n" +
 "INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
 "LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
 "LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" +
-"left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) " ;
+"left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) ";
   if(cboContratas.getSelectedItem().toString().length()>2)
                              contrata=cboContratas.getSelectedItem().toString();
                          else
@@ -1679,7 +2078,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
         vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
      } 
     
-      vSql+="and (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19')  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
+      vSql+="and (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19' "
+              + " or UPPER(n.nom_examen) LIKE '%ANTIGENO%'  or UPPER(n.nom_examen) LIKE '%ANTICUERPO%') "+
+              agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
       System.out.println("la consulta aplicada es:"+vSql);
       if (oConn.FnBoolQueryExecute(vSql)) {
             try {
@@ -1715,7 +2116,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
               public boolean isCellEditable(int rowIndex, int columnIndex) {
                    return false;
             }};
-            String vSql="SELECT n.n_orden,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
+            String vSql="SELECT n.n_orden,n.nom_examen,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
                     "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
                       "     WHEN n.tipoprueba = 'PA' THEN 'Prueba de anticuerpos' \n" +
                         "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
@@ -1772,13 +2173,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                  + " WHEN n.cod_sede=2 then 'Huamachuco' "
                                   + " WHEN n.cod_sede=3 then 'Huancayo' "
                                  + "end ) as SEDE "+
-                    
 "  FROM datos_paciente AS d\n" +
 " INNER JOIN n_orden_ocupacional as n on(d.cod_pa=n.cod_pa)\n" +
 " LEFT JOIN examen_inmunologico as i on(n.n_orden=i.n_orden)\n" +
 " LEFT JOIN constancia_salud_marsa as c on(n.n_orden=c.n_orden)\n" +
 " LEFT JOIN triaje as t ON(n.n_orden = t.n_orden)\n" +
-" LEFT JOIN fmedica_covid_marsa as f ON(n.n_orden = f.n_orden)\n" ;
+" LEFT JOIN fmedica_covid_marsa as f ON(n.n_orden = f.n_orden)\n  ";
   if(cboContratas.getSelectedItem().toString().length()>2)
                              contrata=cboContratas.getSelectedItem().toString();
                          else
@@ -1797,7 +2197,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
      } 
     
       //vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";  
-  vSql+="AND (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19') "+agregarConsulta+" order by n.n_orden asc";   
+  vSql+="AND (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19' "
+       + " or UPPER(n.nom_examen) LIKE '%ANTIGENO%'  or UPPER(n.nom_examen) LIKE '%ANTICUERPO%') "+
+    agregarConsulta+" order by n.n_orden asc";   
         System.out.println("la consulta aplicada es:"+vSql);
 //      
 //oFunc.SubSistemaMensajeInformacion(vSql);      
@@ -1833,11 +2235,15 @@ public class Reporteador extends javax.swing.JInternalFrame {
        {   nomsede=nombre;
            agregarConsulta="";
            agregarConsulta="and n.cod_sede="+codigosede;
+            agregarConsulta1="";
+                      agregarConsulta1="and n_orden_ocupacional.cod_sede="+codigosede;
+
        } 
        else
        {
            nomsede="Todas las sedes";
            agregarConsulta="";
+           agregarConsulta1="";
        }
            
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -1934,6 +2340,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
             tipofecha=" agrupado por fecha de alta ";
         }
     }//GEN-LAST:event_jCheckBoxAltaActionPerformed
+
+    private void btnMostrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrar1ActionPerformed
+       cPersonalizada1();
+    }//GEN-LAST:event_btnMostrar1ActionPerformed
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -2067,6 +2477,7 @@ marcador=1;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnMostrar;
+    private javax.swing.JButton btnMostrar1;
     private javax.swing.JButton btnRepDiario;
     private javax.swing.JButton btnRepSemanal;
     private javax.swing.JComboBox cboContratas;
@@ -2105,12 +2516,16 @@ marcador=1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBoxAlta;
+    private javax.swing.JCheckBox jCheckBoxAntigeno;
     private javax.swing.JCheckBox jCheckBoxIngres0;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

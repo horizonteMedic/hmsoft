@@ -2419,6 +2419,12 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
     private void actualizar(){
         if(!txtNorden.getText().isEmpty()){
             if(validar()){
+                   String eldni="0";
+                    if(txtDniEvaluador.getText().toString().length()>1)
+                        eldni=txtDniEvaluador.getText().toString();
+                    else
+                        eldni="0";
+                  //  System.out.println("el dni es:"+eldni);
                 String strSqlStmt;
                 strSqlStmt="UPDATE ficha_pruebas_rapidas_covidf100\n" +
                 "   SET fecha_registro='"+FechaExamen.getDate()+"'"
@@ -2533,28 +2539,37 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                         + ", chkcontinuidad4='"+chkContinuidad4.isSelected()+"'"
                         + ", chkcontinuidad5='"+chkContinuidad5.isSelected()+"'"
                         + ", txtobservaciones='"+atxtObservaciones.getText()+"'" 
-                        + ", dni_user='"+txtDniEvaluador.getText()+"'" 
+                        + ", dni_user="+eldni+"" 
                         + ", txtnombres_medico='"+txtNombresEval.getText()+"'"
-                +" WHERE n_orden='"+txtNorden.getText()+ "'";
+                +" WHERE n_orden="+txtNorden.getText();
+                     //  System.out.println(strSqlStmt);
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
                     limpiar();   
                 }else{
-                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada! ");
                        }
             }
         }
     }
+    
     private void agregar(){
         if(!txtNorden.getText().isEmpty()){
             if(!oPe.nOrden(txtNorden, "ficha_pruebas_rapidas_covidf100")){
                 if(validar()){
+                    String eldni="0";
+                    if(txtDniEvaluador.getText().toString().length()>1)
+                        eldni=txtDniEvaluador.getText().toString();
+                    else
+                        eldni="0";
+                                   //     System.out.println("el dni es:"+eldni);
+
                     String strSqlStmt;
                     String query;
                     strSqlStmt="INSERT INTO ficha_pruebas_rapidas_covidf100(\n" ;
-                    query="Values('";
-                    strSqlStmt += "n_orden";query += txtNorden.getText()+ "'";
+                    query="Values(";
+                    strSqlStmt += "n_orden";query += txtNorden.getText()+ "";
                     strSqlStmt += ",fecha_registro";query += ",'"+FechaExamen.getDate()+ "'";
                     strSqlStmt += ",rbexposicion_si";query += ",'"+rbExposicion_si.isSelected()+ "'";
                     strSqlStmt += ",rbexposicion_no";query += ",'"+rbExposicion_no.isSelected()+ "'";
@@ -2667,14 +2682,15 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                     strSqlStmt += ",chkcontinuidad4";query += ",'"+chkContinuidad4.isSelected()+ "'";
                     strSqlStmt += ",chkcontinuidad5";query += ",'"+chkContinuidad5.isSelected()+ "'";
                     strSqlStmt += ",txtobservaciones";query += ",'"+atxtObservaciones.getText()+ "'";
-                    strSqlStmt += ",dni_user";query += ",'"+txtDniEvaluador.getText()+ "'";
+                    strSqlStmt += ",dni_user";query += ","+eldni+ "";
+                         //               System.out.println(strSqlStmt.concat(") ") + query.concat(")"));
                     strSqlStmt += ",txtnombres_medico";query += ",'"+txtNombresEval.getText()+ "'";
-                    
+                 //   System.out.println(strSqlStmt.concat(") ") + query.concat(")"));
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + query.concat(")"))){
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
                         limpiar(); 
-                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
+                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada!!");} 
                 }
              }
         }else { oFunc.SubSistemaMensajeError("Llene los Campos correctamente");

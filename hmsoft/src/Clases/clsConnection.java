@@ -50,7 +50,18 @@ public class clsConnection {
             return false;
         }       
     }
-    
+      public ResultSet ejecutarSQLSelect(String sql)
+    {
+       ResultSet resultado;
+       try {
+          PreparedStatement sentencia = oConnection.prepareStatement(sql);
+          resultado = sentencia.executeQuery();
+          return resultado;
+       } catch (SQLException ex) {
+          System.err.println("Error "+ex);
+          return null;
+       }
+    }
   public  void SubConnectionClose()
     {
         // Captura Exception

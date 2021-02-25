@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="66e44639-3300-40ea-a8ce-c2c441a92cf5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="109"/>
+	<subDataset name="dataset1" uuid="54289818-63df-41ed-8fc6-7b14c9bec6bd"/>
+	<parameter name="Norden" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa,n.razon_empresa,
+ n.cargo_de,ci.fecha,(case when n.cod_sede=1 then CONCAT(n.n_orden,'-T') 
+ else CONCAT(n.n_orden,'-H') END ) as numero,
+(case when n.cod_sede=1 then 'Guillermo Prescott N°127 Urb. Sto.Dominguito- Trujillo -Telef: 044 666120 -EMAIL: admision.trujillo@horizontemedic.com' 
+when n.cod_sede=2 then 'Ubicanos en:Jr.Leoncio Prado N°786-Huamachuco-Telef:044 348070-969603777-EMAIL:admision@horizontemedic.com'
+when n.cod_sede=3 then 'Ubícanos en:Av.Huancavelica N°2225–El Tambo/Telf:064-659554/Cel: 969603777/email:citashuancayo@horizontemedic.com'
+end) as ubicacion,
+obtener_edad(d.fecha_nacimiento_pa,ci.fecha)as edad,n.nom_examen,e.chkigm_reactivo,
+to_char(e.valorigm,'99.9999') as igm,ci.sintomatico,
+(CASE WHEN 
+  e.valorigm>=0.04
+THEN 'POSITIVO' ELSE 'NEGATIVO' END) resultado,n.razon_contrata,
+(case when n.cod_sede=1 then 'TRUJILLO' 
+when n.cod_sede=2 then 'HUAMACHUCO'
+when n.cod_sede=3 then 'HUANCAYO'
+end) as codSede
+
+                             FROM datos_paciente AS d   
+                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) 
+                            left JOIN constanciaTamizajeCovid AS ci ON (ci.n_orden = n.n_orden) 
+left JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden)
+                            WHERE n.n_orden =$P{Norden}]]>
+	</queryString>
+	<field name="cod_pa" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="fecha_nacimiento_pa" class="java.sql.Date"/>
+	<field name="razon_empresa" class="java.lang.String"/>
+	<field name="cargo_de" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="edad" class="java.lang.Integer"/>
+	<field name="nom_examen" class="java.lang.String"/>
+	<field name="chkigm_reactivo" class="java.lang.Boolean"/>
+	<field name="igm" class="java.lang.String"/>
+	<field name="sintomatico" class="java.lang.Boolean"/>
+	<field name="resultado" class="java.lang.String"/>
+	<field name="razon_contrata" class="java.lang.String"/>
+	<field name="codsede" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="117" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="305" height="106" uuid="293f323a-1bfb-49d9-ad58-705bf88831fb"/>
+				<imageExpression><![CDATA["C:\\hmsoft\\horiz.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="430" y="53" width="112" height="20" uuid="e3440037-6294-4a95-ac09-a1cc0b4f56d5"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="121" y="11" width="348" height="20" uuid="3dd0d587-b0c6-4bd4-b011-227cc96d85f3"/>
+				<textElement>
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[CONSTANCIA MÉDICA DE TAMIZAJE PARA COVID-19]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="427" splitType="Stretch">
+			<textField>
+				<reportElement x="205" y="18" width="198" height="20" uuid="ea4f83d1-85ae-4981-b2a2-7a415878d457"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="18" width="182" height="20" uuid="3587240d-27eb-4bae-8804-f7a29fe19bf7"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Conste por la presente que Don(ña):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="18" width="27" height="20" uuid="aaa21796-2198-45ae-b703-36742f35cb56"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="424" y="18" width="21" height="20" uuid="bd8c5d42-326d-48a5-94ee-c8af1558667c"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="445" y="18" width="83" height="20" uuid="2b0ff6ae-0f04-4896-99d4-636e4ae5acf1"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[años de edad,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="52" width="112" height="20" uuid="316645ea-0104-4e5f-b046-8a6aedb04851"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[ identificado con DNI:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="129" y="52" width="54" height="20" uuid="a205e131-1ca0-48fd-9850-ff0ea3127d3b"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_pa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="180" y="52" width="138" height="20" uuid="b5e21bc1-21b7-4024-87e2-e6c52b541f10"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[colaborador de la empresa ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="314" y="53" width="251" height="20" uuid="f1c0299c-2090-4ad5-9f86-9106276b1f46"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razon_contrata}.equals("N/A")?  $F{razon_empresa}:$F{razon_contrata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="83" width="503" height="20" uuid="232e5bd5-6015-4752-833c-4c807cd952b8"/>
+				<textElement>
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sintomatico}.equals(true)? 
+"TIENE SINTOMATOLOGIA RELACIONADO CON COVID-19":"NO TIENE SINTOMATOLOGIA NI SIGNOS RELACIONADO CON COVID 19"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="116" width="502" height="20" uuid="91a62326-b206-40fd-8380-12189a62925e"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[al momento de la evaluación, Así mismo se deja constancia que en la misma fecha de evaluación ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="150" width="502" height="20" uuid="ec7d8cea-6ac5-47a2-8cb7-74a8cfaa3dc3"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[médica se le realizó la prueba de Antigenos Virales SARS-COV2, para la detección del corona virus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="187" width="502" height="20" uuid="7e31acbe-44fd-499f-9bc9-feb9a3371df0"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[causante de la enfermedad COVID-19, cuyo resultado es:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="239" y="221" width="206" height="20" uuid="22f0c351-2250-4f86-8b82-efb84dfa2656"/>
+				<textElement>
+					<font fontName="Arial Black" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_examen}.equals("PRUEBA CUALITATIVA ANTIGENOS")? 
+$F{chkigm_reactivo}.equals(true)? "POSITIVO":"NEGATIVO":
+$F{resultado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="273" width="502" height="20" uuid="67f2012e-9239-4e9d-b0bd-f2b4ee16bf05"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Se suscribe constancia médica para fines pertinentes.]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="356" y="406" width="175" height="20" uuid="be557854-2991-4af9-bc31-1621ba8aec2c"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="260" y="407" width="94" height="20" uuid="be5c5ec8-01ab-40bf-bcc4-d398f876529b"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codsede}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="346" y="407" width="16" height="20" uuid="dc925906-239d-4aa4-a9b3-462bbdb4aab3"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="23" width="555" height="20" uuid="0a3256d7-c71e-4d6c-8f86-a0eedfb3fff8"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ubicacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

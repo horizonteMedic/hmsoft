@@ -37,7 +37,9 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
         txtCMP.setText(clsGlobales.sCMPOperador);
         direccion();
         txtmedicacionActual.setEditable(false);
-        
+           txtDireccion.setEditable(true);
+                txtDireccion.setEnabled(true);
+
         txtNorden.requestFocus();
     }
     private void cuadros(boolean b){
@@ -287,7 +289,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
 
         txtEdad.setEditable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, null), "Funciones Vitales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), java.awt.Color.blue)); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, null), "Funciones Vitales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), java.awt.Color.blue)); // NOI18N
 
         jLabel2.setText("F.C :");
 
@@ -459,6 +461,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
 
         txtDireccion.setEditable(false);
         txtDireccion.setBackground(new java.awt.Color(233, 230, 230));
+        txtDireccion.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1133,7 +1136,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel75)
                                     .addComponent(jLabel74))
                                 .addGap(48, 48, 48)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)))
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtVisionBinocular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel48))

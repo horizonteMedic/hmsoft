@@ -37,6 +37,7 @@ public class ConstanciaSaludMarsa extends javax.swing.JInternalFrame {
 
     clsConnection oConn = new clsConnection();
  clsFunciones  oFunc = new clsFunciones();
+ String sintomas="";
     public ConstanciaSaludMarsa() {
         initComponents();
         activar(false);
@@ -175,21 +176,71 @@ public class ConstanciaSaludMarsa extends javax.swing.JInternalFrame {
 
         chkTos.setText("Tos");
         chkTos.setEnabled(false);
+        chkTos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkTosMouseClicked(evt);
+            }
+        });
+        chkTos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTosActionPerformed(evt);
+            }
+        });
 
         chkDolorG.setText("Dolor de garganta");
         chkDolorG.setEnabled(false);
+        chkDolorG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkDolorGMouseClicked(evt);
+            }
+        });
+        chkDolorG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDolorGActionPerformed(evt);
+            }
+        });
 
         chkCongestionN.setText("Congestión Nasal");
         chkCongestionN.setEnabled(false);
+        chkCongestionN.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkCongestionNMouseClicked(evt);
+            }
+        });
+        chkCongestionN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkCongestionNActionPerformed(evt);
+            }
+        });
 
         chkDificultadR.setText("Dificultad respiratoria");
         chkDificultadR.setEnabled(false);
+        chkDificultadR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                chkDificultadRMouseClicked(evt);
+            }
+        });
+        chkDificultadR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDificultadRActionPerformed(evt);
+            }
+        });
 
         chkFiebre.setText("Fiebre/ Escalofrio");
         chkFiebre.setEnabled(false);
+        chkFiebre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkFiebreActionPerformed(evt);
+            }
+        });
 
         chkMalestar.setText("Malestar general");
         chkMalestar.setEnabled(false);
+        chkMalestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMalestarActionPerformed(evt);
+            }
+        });
 
         chkPerdidaOlf1.setText("Perdida olfato o gusto");
         chkPerdidaOlf1.setEnabled(false);
@@ -201,21 +252,51 @@ public class ConstanciaSaludMarsa extends javax.swing.JInternalFrame {
 
         chkExpctoracion.setText("Expectoración");
         chkExpctoracion.setEnabled(false);
+        chkExpctoracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkExpctoracionActionPerformed(evt);
+            }
+        });
 
         chkDolor.setText("Dolor");
         chkDolor.setEnabled(false);
+        chkDolor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDolorActionPerformed(evt);
+            }
+        });
 
         chkIrritaibilidad.setText("Irritabilidad / confusión");
         chkIrritaibilidad.setEnabled(false);
+        chkIrritaibilidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkIrritaibilidadActionPerformed(evt);
+            }
+        });
 
         chkCefalea.setText("Cefalea");
         chkCefalea.setEnabled(false);
+        chkCefalea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkCefaleaActionPerformed(evt);
+            }
+        });
 
         chkNauseas.setText("Nauseas / vómitos");
         chkNauseas.setEnabled(false);
+        chkNauseas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkNauseasActionPerformed(evt);
+            }
+        });
 
         chkDiarrea.setText("Diarrea");
         chkDiarrea.setEnabled(false);
+        chkDiarrea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDiarreaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -325,6 +406,19 @@ public class ConstanciaSaludMarsa extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(chkIgmPositivo)
+                            .addComponent(chkIgmNegativo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(chkIggPositivo)
+                            .addComponent(chkIggNegativo))
+                        .addGap(10, 10, 10)
+                        .addComponent(chkInvalido)
+                        .addGap(36, 36, 36))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkTos, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chkDiarrea, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -347,21 +441,9 @@ public class ConstanciaSaludMarsa extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkMalestar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chkExpctoracion, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkPerdidaOlf1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(chkIgmPositivo)
-                            .addComponent(chkIgmNegativo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel16)
-                            .addComponent(chkIggPositivo)
-                            .addComponent(chkIggNegativo))
-                        .addGap(10, 10, 10)
-                        .addComponent(chkInvalido)))
-                .addGap(15, 15, 15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chkPerdidaOlf1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(FechaHoy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -568,7 +650,17 @@ public boolean OrdenExiste()
     }//GEN-LAST:event_btnLimpiarActionPerformed
 private boolean Grabar() throws SQLException{
         boolean bResult = false;
-              
+                 sintomas=txtSintoma.getText().toString();
+         int tamaño=sintomas.length();
+         if(tamaño>=1)
+             tamaño=tamaño;
+         else
+         {
+         sintomas=",";
+         tamaño=1;
+         }
+            sintomas=sintomas.substring(0,tamaño-1);
+            txtSintoma.setText(sintomas);
        String strSqlStmt ="INSERT INTO constancia_salud_marsa(\n" +
 "            n_orden, fecha_examen, hora_examen, txtmuestra, chk_asintomatico, \n" +
 "            chk_sintomatico, txtresultados, chks1, chks2, chks3, chks4, chks5, \n" +
@@ -716,7 +808,12 @@ private boolean Grabar() throws SQLException{
     }//GEN-LAST:event_chkIgmNegativoActionPerformed
 
     private void chkPerdidaOlf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerdidaOlf1ActionPerformed
-        // TODO add your handling code here:
+           if(chkPerdidaOlf1.isSelected())       
+        sintomas+="perdida del olfato,"; 
+         else
+          sintomas=   sintomas.replaceAll("perdida del olfato,", "");
+                             txtSintoma.setText(sintomas);
+
     }//GEN-LAST:event_chkPerdidaOlf1ActionPerformed
 
     private void chkSintomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSintomaticoActionPerformed
@@ -756,6 +853,133 @@ private boolean Grabar() throws SQLException{
     private void txtMuestraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMuestraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMuestraActionPerformed
+
+    private void chkTosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTosActionPerformed
+          if(chkTos.isSelected())       
+        sintomas+="tos,";
+           else
+          { 
+             sintomas= sintomas.replaceAll("tos,", "");
+             
+          }
+          txtSintoma.setText(sintomas);
+    }//GEN-LAST:event_chkTosActionPerformed
+
+    private void chkDolorGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDolorGActionPerformed
+         if(chkDolorG.isSelected())       
+        sintomas+="dolor de garganta,";
+          else
+            sintomas= sintomas.replaceAll("dolor de garganta,", "");
+                   txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkDolorGActionPerformed
+
+    private void chkCongestionNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCongestionNActionPerformed
+         if(chkCongestionN.isSelected())       
+        sintomas+="congestion nasal,";
+         else
+           sintomas=  sintomas.replaceAll("congestion nasal,", "");
+                   txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkCongestionNActionPerformed
+
+    private void chkDificultadRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDificultadRActionPerformed
+        if(chkDificultadR.isSelected())       
+        sintomas+="dificultad para respirar,";
+        else
+           sintomas=  sintomas.replaceAll("dificultad para respirar,", "");
+                  txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkDificultadRActionPerformed
+
+    private void chkFiebreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFiebreActionPerformed
+         if(chkFiebre.isSelected())       
+        sintomas+="fiebre/escalofrios,"; 
+            else
+           sintomas=  sintomas.replaceAll("fiebre/escalofrios,", "");
+                           txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkFiebreActionPerformed
+
+    private void chkMalestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMalestarActionPerformed
+         if(chkMalestar.isSelected())       
+        sintomas+="malestar general,"; 
+         else
+             sintomas=sintomas.replaceAll("malestar general,", "");
+                           txtSintoma.setText(sintomas);
+
+         
+    }//GEN-LAST:event_chkMalestarActionPerformed
+
+    private void chkDiarreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDiarreaActionPerformed
+        if(chkDiarrea.isSelected())       
+        sintomas+="diarrera,"; 
+         else
+           sintomas=  sintomas.replaceAll("diarrera,", "");
+                          txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkDiarreaActionPerformed
+
+    private void chkNauseasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNauseasActionPerformed
+         if(chkNauseas.isSelected())       
+        sintomas+="nauseas y vomitos,"; 
+         else
+         sintomas=   sintomas.replaceAll("nauseas y vomitos,", "");
+                           txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkNauseasActionPerformed
+
+    private void chkCefaleaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCefaleaActionPerformed
+ if(chkCefalea.isSelected())       
+        sintomas+="cefalea,"; 
+         else
+          sintomas=   sintomas.replaceAll("cefalea,", "");
+                   txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkCefaleaActionPerformed
+
+    private void chkIrritaibilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIrritaibilidadActionPerformed
+        if(chkIrritaibilidad.isSelected())       
+        sintomas+="irritabilidad/confusion,"; 
+         else
+          sintomas=   sintomas.replaceAll("irritabilidad/confusion,", ""); 
+                          txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkIrritaibilidadActionPerformed
+
+    private void chkDolorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDolorActionPerformed
+       if(chkDolor.isSelected())       
+        sintomas+="dolor,"; 
+         else
+          sintomas=   sintomas.replaceAll("dolor,", ""); 
+                         txtSintoma.setText(sintomas);
+
+    }//GEN-LAST:event_chkDolorActionPerformed
+
+    private void chkExpctoracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkExpctoracionActionPerformed
+  if(chkExpctoracion.isSelected())       
+        sintomas+="expextoracion,"; 
+         else
+         sintomas=sintomas.replaceAll("expextoracion,", ""); 
+                  txtSintoma.setText(sintomas);
+    }//GEN-LAST:event_chkExpctoracionActionPerformed
+
+    private void chkTosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkTosMouseClicked
+    
+
+    }//GEN-LAST:event_chkTosMouseClicked
+
+    private void chkDolorGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkDolorGMouseClicked
+     
+    }//GEN-LAST:event_chkDolorGMouseClicked
+
+    private void chkCongestionNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkCongestionNMouseClicked
+  
+    }//GEN-LAST:event_chkCongestionNMouseClicked
+
+    private void chkDificultadRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkDificultadRMouseClicked
+   
+    }//GEN-LAST:event_chkDificultadRMouseClicked
     private void print(Integer cod){
                 Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);             
@@ -779,6 +1003,17 @@ private boolean Grabar() throws SQLException{
     private void Actualizar(){
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
+        sintomas=txtSintoma.getText().toString();
+         int tamaño=sintomas.length();
+         if(tamaño>=1)
+             tamaño=tamaño;
+         else
+         {
+         sintomas=",";
+         tamaño=1;
+         }
+            sintomas=sintomas.substring(0,tamaño-1);
+            txtSintoma.setText(sintomas);
         strSqlStmt="UPDATE constancia_salud_marsa\n" +
                     "   SET  fecha_examen='"+FechaHoy.getDate()+"',"
                 +"hora_examen='"+lblHora.getText()+"',"

@@ -1216,7 +1216,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                         .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Tabla, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1305,7 +1305,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(2, 2, 2)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -1561,7 +1561,7 @@ public void direccion(){
     private void ReImp() {
         if (!txtIMP.getText().isEmpty()) {
             if (OrdenImp()) {
-                imprimir();
+                imprimir1();
             } else {
                 oFunc.SubSistemaMensajeError("Numero de Orden no Existe");
                 txtIMP.setText(null);
@@ -1575,7 +1575,7 @@ public void direccion(){
         boolean bResultado = false;
         if (!txtIMP.getText().isEmpty()) {
             String sQuery;
-            sQuery = "Select n_orden from anexoc Where n_orden =" + txtIMP.getText().toString();
+            sQuery = "Select n_orden from antece_enfermedades_altura Where n_orden =" + txtIMP.getText().toString();
             //Ejecuta el Query
             oConn.FnBoolQueryExecute(sQuery);
             // Capturo el Error
@@ -1782,6 +1782,29 @@ int seleccion = JOptionPane.showOptionDialog(
    if((seleccion + 1)==1)
    {
       printer(Integer.parseInt(txtNorden.getText()));
+   }
+   else
+   {
+      // PRESIONO NO
+     }
+    }
+
+}
+private void imprimir1(){
+int seleccion = JOptionPane.showOptionDialog(
+    this, // Componente padre
+    "¿Desea Imprimir Historia Ocupacional ?", //Mensaje
+    "Seleccione una opción", // Título
+    JOptionPane.YES_NO_CANCEL_OPTION,
+    JOptionPane.QUESTION_MESSAGE,
+    null,    // null para icono por defecto.
+    new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
+    "Si");
+    if (seleccion != -1)
+    {
+   if((seleccion + 1)==1)
+   {
+      printer(Integer.parseInt(txtIMP.getText()));
    }
    else
    {

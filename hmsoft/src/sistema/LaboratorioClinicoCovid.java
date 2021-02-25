@@ -44,6 +44,8 @@ clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
     String[]responsable = new String[]{};
     String cualitativo="";
+          Ingreso ads = new Ingreso();
+String sed="";
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     public static AddMarcaCovid1 addMarca;
    float valorigm,valorigg;
@@ -55,7 +57,7 @@ clsConnection oConn = new clsConnection();
         bloqueo1();
         bloqueo2();
         bloqueo3();
-
+sed=ads.nombresede;
       //  jPanel1.setVisible(false);
       //  jPanel6.setVisible(false);
         jtLaboratorio.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/biology0.png")));
@@ -281,6 +283,7 @@ clsConnection oConn = new clsConnection();
         btnLimpiarIn4 = new javax.swing.JButton();
         jLabel118 = new javax.swing.JLabel();
         jLabel123 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("Laboratorio Clinico");
@@ -715,7 +718,7 @@ clsConnection oConn = new clsConnection();
                                         .addGap(18, 18, 18)
                                         .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(chkPerdidaOlf1))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1175,7 +1178,7 @@ clsConnection oConn = new clsConnection();
                         .addComponent(btnGrabarIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56)
                         .addComponent(btnLimpiarIn1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("EXAMEN CUANTITATIVO", jPanel14);
@@ -1310,12 +1313,12 @@ clsConnection oConn = new clsConnection();
 
         jTextAreaIgm1.setColumns(20);
         jTextAreaIgm1.setRows(5);
-        jTextAreaIgm1.setText("Tecnica: Inmunocromatografía\n                SENSIBILIDAD: 90.00%\n                ESPECIFICIDAD: 95.00%");
+        jTextAreaIgm1.setText("Tecnica:Inmunofluorescencia\n                SENSIBILIDAD: 90.00%\n                ESPECIFICIDAD: 95.00%");
         jScrollPane9.setViewportView(jTextAreaIgm1);
 
         jTextAreaIgg1.setColumns(20);
         jTextAreaIgg1.setRows(5);
-        jTextAreaIgg1.setText("Metodo: Inmunocromatografía\n                SENSIBILIDAD: 90.00%\n                ESPECIFICIDAD: 95.00%");
+        jTextAreaIgg1.setText("Tecnica: Inmunofluorescencia\n                SENSIBILIDAD: 90.00%\n                ESPECIFICIDAD: 95.00%");
         jScrollPane10.setViewportView(jTextAreaIgg1);
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -1525,7 +1528,7 @@ clsConnection oConn = new clsConnection();
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("P. Cuan Anticuerpos", jPanel18);
@@ -1670,12 +1673,12 @@ clsConnection oConn = new clsConnection();
 
         jTextAreaIgm2.setColumns(20);
         jTextAreaIgm2.setRows(5);
-        jTextAreaIgm2.setText("Tecnica: Inmunocromatografía\n                SENSIBILIDAD: 95.00%\n                ESPECIFICIDAD: 95.00%");
+        jTextAreaIgm2.setText("Tecnica: Inmunofluorescencia\n                SENSIBILIDAD: 95.00%\n                ESPECIFICIDAD: 95.00%");
         jScrollPane11.setViewportView(jTextAreaIgm2);
 
         jTextAreaIgg2.setColumns(20);
         jTextAreaIgg2.setRows(5);
-        jTextAreaIgg2.setText("Metodo: Inmunocromatografía\n                SENSIBILIDAD: 95.00%\n                ESPECIFICIDAD: 95.00%");
+        jTextAreaIgg2.setText("Tecnica: Inmunofluorescencia\n                SENSIBILIDAD: 95.00%\n                ESPECIFICIDAD: 95.00%");
         jScrollPane12.setViewportView(jTextAreaIgg2);
 
         jTextField13.addActionListener(new java.awt.event.ActionListener() {
@@ -1717,6 +1720,7 @@ clsConnection oConn = new clsConnection();
         });
 
         btnMarca3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnMarca3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMarca3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMarca3MouseClicked(evt);
@@ -1845,7 +1849,7 @@ clsConnection oConn = new clsConnection();
                         .addGap(43, 43, 43)
                         .addComponent(btnLimpiarIn3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("P. Cuan Antigenos", jPanel19);
@@ -1935,7 +1939,7 @@ clsConnection oConn = new clsConnection();
                             .addComponent(jLabel122)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(txtEdadIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
                         .addComponent(txtImprimirIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2114,6 +2118,8 @@ clsConnection oConn = new clsConnection();
         jLabel123.setForeground(new java.awt.Color(102, 0, 0));
         jLabel123.setText("ANTIGENOS");
 
+        jCheckBox1.setText("OTRAS EMPRESAS");
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
@@ -2124,14 +2130,19 @@ clsConnection oConn = new clsConnection();
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel118)
-                                .addGap(16, 16, 16))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel123)
-                                .addGap(81, 81, 81))))
+                                .addGap(81, 81, 81))
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel20Layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jLabel118))
+                                    .addGroup(jPanel20Layout.createSequentialGroup()
+                                        .addGap(88, 88, 88)
+                                        .addComponent(jCheckBox1)))
+                                .addGap(16, 16, 16))))
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83)
@@ -2143,16 +2154,19 @@ clsConnection oConn = new clsConnection();
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jLabel118)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel123)))
-                .addGap(28, 28, 28)
+                        .addComponent(jLabel123)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox1)
+                        .addGap(12, 12, 12)))
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
@@ -2160,7 +2174,7 @@ clsConnection oConn = new clsConnection();
                         .addGap(43, 43, 43)
                         .addComponent(btnLimpiarIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("P. Cual Antig", jPanel20);
@@ -2378,8 +2392,17 @@ negarcheks();
                 try {
                     if(validarIn4()){
                         if(GrabarIn4()){
-                            imprimirIn4();
+                            if(sed.contains("Huancayo"))
+                 printerIn12(Integer.valueOf(txtNordenIn4.getText().toString())); 
+                                else
+                            {
+                            if(jCheckBox1.isSelected())    
+                            imprimirIn5();
+                            else
+                            {     imprimirIn4(); 
                             limpiar4();
+                            }
+                            }
                         }
                     }
                 } catch (SQLException ex) {
@@ -2390,11 +2413,61 @@ negarcheks();
     }//GEN-LAST:event_btnGrabarIn4ActionPerformed
 
     private void btnMarca4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarca4MouseClicked
-
+ MostrarAddMarca();
     }//GEN-LAST:event_btnMarca4MouseClicked
 
     private void cboMarca4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarca4ActionPerformed
-        // TODO add your handling code here:
+        if(cboMarca4.getSelectedItem().toString().contains("SARS-COV-2 ANTIGEN RAPID TEST KIT"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.3% \n"
+                            + "Especificidad : 97.3 %");
+        
+        }
+              if(cboMarca4.getSelectedItem().toString().contains("LABNOVATION"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.3% \n"
+                            + "Especificidad : 97.3 %");
+        
+        }
+         if(cboMarca4.getSelectedItem().toString().contains("SD BIOSENSOR"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.52% \n"
+                            + "Especificidad : 99.68%");
+        }       
+            if(cboMarca4.getSelectedItem().toString().contains("SARS-COV-2 ANTIGEN RAPID TEST KIT"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.330% \n"
+                            + "Especificidad : 99.569%");
+        }       
+            if(cboMarca4.getSelectedItem().toString().contains("STANDARD G COVID-19 AG TEST"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.52% \n"
+                            + "Especificidad : 99.68%");
+        }          
+          if(cboMarca4.getSelectedItem().toString().contains("STANDARD Q"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.52% \n"
+                            + "Especificidad : 99.68%");
+        } 
+         if(cboMarca4.getSelectedItem().toString().contains("ONSITE COVID-19 AG RAPID TEST"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 92.3% \n"
+                            + "Especificidad : 100%");
+        }   
+         if(cboMarca4.getSelectedItem().toString().contains("VIVA DIAG SARS-COV-2 AG RAPID TEST"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 95.04% \n"
+                            + "Especificidad : 100%");
+        }    
+          
     }//GEN-LAST:event_cboMarca4ActionPerformed
 
     private void cboMarca4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboMarca4MouseClicked
@@ -2425,8 +2498,17 @@ negarcheks();
 
     private void btnImprimir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir4ActionPerformed
         if(!txtImprimirIn4.getText().isEmpty()){
-            //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
-            printIn4(Integer.valueOf(txtImprimirIn4.getText()));
+                     if(sed.contains("Huancayo"))
+                 printIn12(Integer.valueOf(txtImprimirIn4.getText().toString())); 
+            else
+                     {
+            if(jCheckBox1.isSelected())
+                            printIn5(Integer.valueOf(txtImprimirIn4.getText()));
+                            else
+                            {   
+                            printIn4(Integer.valueOf(txtImprimirIn4.getText()));
+                            limpiar4();
+                            }}
         }
     }//GEN-LAST:event_btnImprimir4ActionPerformed
 
@@ -2548,7 +2630,22 @@ negarcheks();
     }//GEN-LAST:event_btnMarca3MouseClicked
 
     private void cboMarca3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarca3ActionPerformed
-        // TODO add your handling code here:
+               if(cboMarca3.getSelectedItem().toString().contains("LABNOVATION"))
+        {
+        jTextAreaIgm2.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.3% \n"
+                            + "Especificidad : 97.3 %");
+        
+        }
+               
+                        if(cboMarca3.getSelectedItem().toString().contains("SD BIOSENSOR"))
+        {
+        jTextAreaIgm2.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.52% \n"
+                            + "Especificidad : 99.68%");
+        }
+                        
+                        
     }//GEN-LAST:event_cboMarca3ActionPerformed
 
     private void cboMarca3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboMarca3MouseClicked
@@ -2690,7 +2787,13 @@ limpiar2();
     }//GEN-LAST:event_btnMarca2MouseClicked
 
     private void cboMarca2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarca2ActionPerformed
-        // TODO add your handling code here:
+                if(cboMarca2.getSelectedItem().toString().contains("LABNOVATION"))
+        {
+        jTextAreaIgm1.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.3% \n"
+                            + "Especificidad : 97.3 %");
+        
+        }
     }//GEN-LAST:event_cboMarca2ActionPerformed
 
     private void cboMarca2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboMarca2MouseClicked
@@ -2863,7 +2966,7 @@ limpiar2();
     }//GEN-LAST:event_btnMarca1MouseClicked
 
     private void cboMarca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarca1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cboMarca1ActionPerformed
 
     private void cboMarca1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboMarca1MouseClicked
@@ -3540,7 +3643,8 @@ public void negarcheks(){
         chkExpctoracion.setEnabled(false);
         chkPerdidaOlf1.setEnabled(false);
         txtSintoma.setEnabled(false);
-}    public static com.toedter.calendar.JDateChooser FechaNacimiento;public void  negarPc(){
+}    public static com.toedter.calendar.JDateChooser FechaNacimiento;
+public void  negarPc(){
     jTextFieldSaturacion.setEnabled(false);
     FechaHotel.setEnabled(false);
     chkAsintomatico.setEnabled(false);
@@ -3712,6 +3816,7 @@ else
     private javax.swing.JCheckBox chkSintomatico;
     private javax.swing.JCheckBox chkTos;
     private javax.swing.ButtonGroup gCocaina;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel100;
@@ -4045,7 +4150,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
 //             txtNorden.setText(null);
             }
             else 
-           oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
+          // oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
 
             oConn.setResult.close();
         } catch (SQLException ex) {
@@ -4085,7 +4190,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         if(!txtNordenIn4.getText().isEmpty()){
         String sQuery;
         sQuery  = "Select e.n_orden from examen_inmunologico as e inner join n_orden_ocupacional as n on e.n_orden=n.n_orden  "
-                + "Where n.nom_exame like '%PRUEBA CUALITATIVA ANTIGENOS%' and  n.n_orden ="+txtNordenIn4.getText().toString();
+                + "Where n.nom_examen like '%PRUEBA CUALITATIVA ANTIGENOS%' and  n.n_orden ="+txtNordenIn4.getText().toString();
         oConn.FnBoolQueryExecute(sQuery);
         try {
             if (oConn.setResult.next())
@@ -4378,8 +4483,19 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                imprimirIn4();
-                limpiar4();
+                 
+                         if(sed.contains("Huancayo"))
+                 printerIn12(Integer.valueOf(txtNordenIn4.getText().toString())); 
+                         else
+                         {
+                if(jCheckBox1.isSelected())
+                            imprimirIn5();
+                            else
+                            {     
+                            imprimirIn4(); 
+                            limpiar4();
+                            }
+                         }
 
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
@@ -4547,7 +4663,32 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             return im;
 
         }
-     
+        private boolean imprimirIn5(){
+        boolean im = false;
+        int seleccion = JOptionPane.showOptionDialog(
+            this, // Componente padre
+            "¿Desea Imprimir?", //Mensaje
+            "Seleccione una opción", // Título
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,    // null para icono por defecto.
+            new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
+            "Si");
+            if (seleccion != -1)
+            {
+           if((seleccion + 1)==1)
+           {
+              printerIn5(Integer.valueOf(txtNordenIn4.getText()));
+               im = true;
+           }
+           else
+           {
+              // PRESIONO NO
+             }
+            }
+            return im;
+
+        }
     private void printIn(Integer cod){
 
                 Map parameters = new HashMap(); 
@@ -4638,6 +4779,42 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }      
+                        private void printIn5(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigenono.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("Prueba Cualitativa de antigenos");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }  
+                           private void printIn12(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno3213.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("Prueba Cualitativa de antigenos");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }  
          private void printerIn2(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
@@ -4683,8 +4860,37 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    } catch (JRException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
-   }
-          
+   } 
+                     private void printerIn12(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno3213.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   } 
+        private void printerIn5(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigenono.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }    
  private void printerIn1(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      

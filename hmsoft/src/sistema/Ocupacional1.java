@@ -5,6 +5,7 @@
 package sistema;
 
 
+import static Caja.Admision.nombreSede;
 import Caja.Reporteador;
 import Caja.Valorizacion;
 import Clases.clsConnection;
@@ -33,6 +34,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
  clsFunciones  oFunc = new clsFunciones();
     clsConnection oConn = new clsConnection();
     FichaTriaje ft;
+    Ingreso ads = new Ingreso();
     HistoriaClinicaPs hcl;
     AntecedentesPatologicos ap;
     BuscarUsuarios pe;
@@ -93,11 +95,16 @@ public class Ocupacional1 extends javax.swing.JFrame {
        Valorizacion val;
        Constancia_Tamizaje_COVID19 ctv;
        FichaMedicaMarsa fmm;
+       FichaMedicaMarsa1 fmm1;
        ConstanciaSaludMarsa csm;
+       ConstanciaSaludMarsa1 csm1;
        constanciaTamizajeAntigeno cta;
        ConstanciaAltaMarsa cam;
+       ConstanciaAltaMarsa1 cam1;
        Ficha_Resultados_Pruebas_Rapidas_CovidF100 frpr;
+        Ficha_Resultados_Pruebas_Rapidas_CovidF1001 frpr1;
        ConsentimientoInformadoCovid cic;
+       ConsentimientoInformadoCovid1 cic1;
        Constancia_Tamizaje_COVID19_marza ctvm;
        Registro_Pruebas_Rapidas_F100 rpr;
        ConstanciaCovid19 cc19;
@@ -111,9 +118,12 @@ public class Ocupacional1 extends javax.swing.JFrame {
        EvaluacionMusculoEsqueletica eme;
       javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
         javax.swing.ImageIcon oNo = null;
+        String ipa="",seded="";
+        public static String lasede="";
     public Ocupacional1() {
             getRootPane().setWindowDecorationStyle(JRootPane.NONE);
             initComponents();
+            sede();
             this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
       lblUsuarioCaja.setText(clsGlobales.sNomOperador);
@@ -138,6 +148,25 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         }
 });  
    }
+    public void sede(){
+    Ingreso elobjeto= new Ingreso();
+    seded=elobjeto.nombresede;
+    lasede=elobjeto.nombresede;
+    ipa=elobjeto.ipd;
+    String mensaje="";
+    if(ipa.contains("192.168.1.3"))
+        mensaje="SERVIDOR HUAMACHUCO";
+     if(ipa.contains("190.117.99.73")|| ipa.contains("192.168.0.201"))
+        mensaje="SERVIDOR SANTO DOMINGUITO";
+      if(ipa.contains("148.251.179.84"))
+      {mensaje="SERVIDOR PUBLICO-";
+      
+      mensaje+=seded;
+      }
+          jLabel2.setText(mensaje);
+
+    // System.out.println("nombre sede:"+nombreSede);
+};
     private void sbSubHabilitaOpciones()
     {
         // Habilita Deshablita opciones
@@ -246,24 +275,24 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         barraPrincipal = new javax.swing.JToolBar();
         jToolBar2 = new javax.swing.JToolBar();
         btnTriaje = new javax.swing.JButton();
-        btnOftalmologia = new javax.swing.JButton();
+        btnRtorax = new javax.swing.JButton();
+        btnOdontologia = new javax.swing.JButton();
+        btnOit = new javax.swing.JButton();
+        btnApatologicos = new javax.swing.JButton();
         btnHistoriaOcupacional = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
+        btnMusculoEsqueletica = new javax.swing.JButton();
+        btnCuestionarioNordico = new javax.swing.JButton();
+        btnOftalmologia = new javax.swing.JButton();
         btnFichaMedica = new javax.swing.JButton();
+        btnAnexo16 = new javax.swing.JButton();
         btnFichaAptitud = new javax.swing.JButton();
         btnFichaRetiro = new javax.swing.JButton();
-        btnApatologicos = new javax.swing.JButton();
-        btnOdontologia = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnElectrocardigrama = new javax.swing.JButton();
         btnAnexo7D = new javax.swing.JButton();
         btnPelisa = new javax.swing.JButton();
-        btnCuestionarioNordico = new javax.swing.JButton();
-        btnOit = new javax.swing.JButton();
-        btnRtorax = new javax.swing.JButton();
         btnResumenAptitud = new javax.swing.JButton();
         btnResumen = new javax.swing.JButton();
-        btnMusculoEsqueletica = new javax.swing.JButton();
-        btnAnexo16 = new javax.swing.JButton();
         btnAnexo17 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -272,6 +301,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jLabel5 = new javax.swing.JLabel();
         lblUsuarioCaja = new javax.swing.JLabel();
         jbarra = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         Desktop = new javax.swing.JDesktopPane();
         jPanel4 = new javax.swing.JPanel();
@@ -336,6 +366,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         btnconfigurarservicios = new javax.swing.JMenuItem();
         btnAddUsuarios = new javax.swing.JMenuItem();
         btnConfiguracion = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         btnEliminarEx = new javax.swing.JMenuItem();
         mFAgroindustrial = new javax.swing.JMenu();
         mFichaAnexo2 = new javax.swing.JMenuItem();
@@ -375,14 +406,21 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         mHojaReferencia = new javax.swing.JMenuItem();
         mIndicacionesMedicas = new javax.swing.JMenuItem();
         mConstanciaAltaEpidemiologica = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
         mExamenMarsa = new javax.swing.JMenu();
         mConstanciaSaludMarsa = new javax.swing.JMenuItem();
-        mFichaMedicaMarsa = new javax.swing.JMenuItem();
+        mFichaMedicaMarsa1 = new javax.swing.JMenuItem();
         mFichaResultadoPrueba = new javax.swing.JMenuItem();
         mConstanciaAltaMarsa = new javax.swing.JMenuItem();
         mConsentimientoInformadoCovid = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        mConstanciaSaludMarsa1 = new javax.swing.JMenuItem();
+        mFichaMedicaMarsa = new javax.swing.JMenuItem();
+        mFichaResultadoPrueba1 = new javax.swing.JMenuItem();
+        mConstanciaAltaMarsa1 = new javax.swing.JMenuItem();
+        mConsentimientoInformadoCovid1 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
 
@@ -707,23 +745,76 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jToolBar2.add(btnTriaje);
 
-        btnOftalmologia.setForeground(new java.awt.Color(102, 102, 102));
-        btnOftalmologia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/oftalmologia.jpg"))); // NOI18N
-        btnOftalmologia.setMnemonic('o');
-        btnOftalmologia.setText("Oftalmología");
-        btnOftalmologia.setToolTipText("F4 (Oftalmología)");
-        btnOftalmologia.setFocusable(false);
-        btnOftalmologia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnOftalmologia.setMaximumSize(new java.awt.Dimension(70, 72));
-        btnOftalmologia.setMinimumSize(new java.awt.Dimension(70, 72));
-        btnOftalmologia.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnOftalmologia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOftalmologia.addActionListener(new java.awt.event.ActionListener() {
+        btnRtorax.setForeground(new java.awt.Color(102, 102, 102));
+        btnRtorax.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/radiografia.jpg"))); // NOI18N
+        btnRtorax.setMnemonic('x');
+        btnRtorax.setText("R. Torax");
+        btnRtorax.setToolTipText("F5");
+        btnRtorax.setFocusable(false);
+        btnRtorax.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRtorax.setMaximumSize(new java.awt.Dimension(65, 72));
+        btnRtorax.setMinimumSize(new java.awt.Dimension(65, 72));
+        btnRtorax.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnRtorax.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRtorax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOftalmologiaActionPerformed(evt);
+                btnRtoraxActionPerformed(evt);
             }
         });
-        jToolBar2.add(btnOftalmologia);
+        jToolBar2.add(btnRtorax);
+
+        btnOdontologia.setForeground(new java.awt.Color(102, 102, 102));
+        btnOdontologia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/dental.jpg"))); // NOI18N
+        btnOdontologia.setText("Odontología");
+        btnOdontologia.setToolTipText("F6");
+        btnOdontologia.setFocusable(false);
+        btnOdontologia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOdontologia.setMaximumSize(new java.awt.Dimension(72, 72));
+        btnOdontologia.setMinimumSize(new java.awt.Dimension(72, 72));
+        btnOdontologia.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnOdontologia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOdontologia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOdontologiaActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnOdontologia);
+
+        btnOit.setForeground(new java.awt.Color(102, 102, 102));
+        btnOit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/Rayosx.jpg"))); // NOI18N
+        btnOit.setMnemonic('b');
+        btnOit.setText("OIT-200");
+        btnOit.setToolTipText("F5");
+        btnOit.setFocusable(false);
+        btnOit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOit.setMaximumSize(new java.awt.Dimension(80, 72));
+        btnOit.setMinimumSize(new java.awt.Dimension(80, 72));
+        btnOit.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnOit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOitActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnOit);
+
+        btnApatologicos.setForeground(new java.awt.Color(102, 102, 102));
+        btnApatologicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/patologia.jpg"))); // NOI18N
+        btnApatologicos.setMnemonic('p');
+        btnApatologicos.setText("A. Patológicos");
+        btnApatologicos.setToolTipText("F6");
+        btnApatologicos.setFocusable(false);
+        btnApatologicos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnApatologicos.setMaximumSize(new java.awt.Dimension(80, 72));
+        btnApatologicos.setMinimumSize(new java.awt.Dimension(80, 72));
+        btnApatologicos.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnApatologicos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnApatologicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApatologicosActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnApatologicos);
 
         btnHistoriaOcupacional.setForeground(new java.awt.Color(255, 0, 0));
         btnHistoriaOcupacional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/comprobante.png"))); // NOI18N
@@ -742,13 +833,64 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jToolBar2.add(btnHistoriaOcupacional);
 
-        jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
-        jToolBar2.add(jSeparator1);
+        btnMusculoEsqueletica.setForeground(new java.awt.Color(102, 102, 102));
+        btnMusculoEsqueletica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/enfermeria.jpg"))); // NOI18N
+        btnMusculoEsqueletica.setMnemonic('e');
+        btnMusculoEsqueletica.setText("E.MuscEsq");
+        btnMusculoEsqueletica.setToolTipText("F3");
+        btnMusculoEsqueletica.setFocusable(false);
+        btnMusculoEsqueletica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMusculoEsqueletica.setMaximumSize(new java.awt.Dimension(65, 72));
+        btnMusculoEsqueletica.setMinimumSize(new java.awt.Dimension(65, 72));
+        btnMusculoEsqueletica.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnMusculoEsqueletica.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMusculoEsqueletica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMusculoEsqueleticaActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnMusculoEsqueletica);
+
+        btnCuestionarioNordico.setForeground(new java.awt.Color(102, 102, 102));
+        btnCuestionarioNordico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/laborato.jpg"))); // NOI18N
+        btnCuestionarioNordico.setMnemonic('c');
+        btnCuestionarioNordico.setText("C.Nordico");
+        btnCuestionarioNordico.setToolTipText("F4");
+        btnCuestionarioNordico.setFocusable(false);
+        btnCuestionarioNordico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCuestionarioNordico.setMaximumSize(new java.awt.Dimension(65, 72));
+        btnCuestionarioNordico.setMinimumSize(new java.awt.Dimension(65, 72));
+        btnCuestionarioNordico.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnCuestionarioNordico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCuestionarioNordico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuestionarioNordicoActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnCuestionarioNordico);
+
+        btnOftalmologia.setForeground(new java.awt.Color(102, 102, 102));
+        btnOftalmologia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/oftalmologia.jpg"))); // NOI18N
+        btnOftalmologia.setMnemonic('o');
+        btnOftalmologia.setText("Oftalmología");
+        btnOftalmologia.setToolTipText("F4 (Oftalmología)");
+        btnOftalmologia.setFocusable(false);
+        btnOftalmologia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOftalmologia.setMaximumSize(new java.awt.Dimension(70, 72));
+        btnOftalmologia.setMinimumSize(new java.awt.Dimension(70, 72));
+        btnOftalmologia.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnOftalmologia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOftalmologia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOftalmologiaActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnOftalmologia);
 
         btnFichaMedica.setForeground(new java.awt.Color(255, 0, 0));
         btnFichaMedica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/comprobante.png"))); // NOI18N
         btnFichaMedica.setMnemonic('m');
-        btnFichaMedica.setText("F. Médica");
+        btnFichaMedica.setText("ANEXO 16");
         btnFichaMedica.setToolTipText("F7 (Ficha Médica)");
         btnFichaMedica.setFocusable(false);
         btnFichaMedica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -762,6 +904,24 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         jToolBar2.add(btnFichaMedica);
+
+        btnAnexo16.setForeground(new java.awt.Color(102, 102, 102));
+        btnAnexo16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
+        btnAnexo16.setMnemonic('e');
+        btnAnexo16.setText("Anexo16-A");
+        btnAnexo16.setToolTipText("F3");
+        btnAnexo16.setFocusable(false);
+        btnAnexo16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAnexo16.setMaximumSize(new java.awt.Dimension(65, 72));
+        btnAnexo16.setMinimumSize(new java.awt.Dimension(65, 72));
+        btnAnexo16.setPreferredSize(new java.awt.Dimension(0, 50));
+        btnAnexo16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAnexo16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnexo16ActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnAnexo16);
 
         btnFichaAptitud.setForeground(new java.awt.Color(102, 102, 102));
         btnFichaAptitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/comprobante.png"))); // NOI18N
@@ -799,40 +959,8 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jToolBar2.add(btnFichaRetiro);
 
-        btnApatologicos.setForeground(new java.awt.Color(102, 102, 102));
-        btnApatologicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/patologia.jpg"))); // NOI18N
-        btnApatologicos.setMnemonic('p');
-        btnApatologicos.setText("A. Patológicos");
-        btnApatologicos.setToolTipText("F6");
-        btnApatologicos.setFocusable(false);
-        btnApatologicos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnApatologicos.setMaximumSize(new java.awt.Dimension(80, 72));
-        btnApatologicos.setMinimumSize(new java.awt.Dimension(80, 72));
-        btnApatologicos.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnApatologicos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnApatologicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApatologicosActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnApatologicos);
-
-        btnOdontologia.setForeground(new java.awt.Color(102, 102, 102));
-        btnOdontologia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/dental.jpg"))); // NOI18N
-        btnOdontologia.setText("Odontología");
-        btnOdontologia.setToolTipText("F6");
-        btnOdontologia.setFocusable(false);
-        btnOdontologia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnOdontologia.setMaximumSize(new java.awt.Dimension(72, 72));
-        btnOdontologia.setMinimumSize(new java.awt.Dimension(72, 72));
-        btnOdontologia.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnOdontologia.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOdontologia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOdontologiaActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnOdontologia);
+        jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
+        jToolBar2.add(jSeparator1);
 
         btnElectrocardigrama.setForeground(new java.awt.Color(102, 102, 102));
         btnElectrocardigrama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/electro.jpg"))); // NOI18N
@@ -887,60 +1015,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jToolBar2.add(btnPelisa);
 
-        btnCuestionarioNordico.setForeground(new java.awt.Color(102, 102, 102));
-        btnCuestionarioNordico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/laborato.jpg"))); // NOI18N
-        btnCuestionarioNordico.setMnemonic('c');
-        btnCuestionarioNordico.setText("C.Nordico");
-        btnCuestionarioNordico.setToolTipText("F4");
-        btnCuestionarioNordico.setFocusable(false);
-        btnCuestionarioNordico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCuestionarioNordico.setMaximumSize(new java.awt.Dimension(65, 72));
-        btnCuestionarioNordico.setMinimumSize(new java.awt.Dimension(65, 72));
-        btnCuestionarioNordico.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnCuestionarioNordico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCuestionarioNordico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCuestionarioNordicoActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnCuestionarioNordico);
-
-        btnOit.setForeground(new java.awt.Color(102, 102, 102));
-        btnOit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/Rayosx.jpg"))); // NOI18N
-        btnOit.setMnemonic('b');
-        btnOit.setText("OIT-200");
-        btnOit.setToolTipText("F5");
-        btnOit.setFocusable(false);
-        btnOit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnOit.setMaximumSize(new java.awt.Dimension(80, 72));
-        btnOit.setMinimumSize(new java.awt.Dimension(80, 72));
-        btnOit.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnOit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOitActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnOit);
-
-        btnRtorax.setForeground(new java.awt.Color(102, 102, 102));
-        btnRtorax.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/radiografia.jpg"))); // NOI18N
-        btnRtorax.setMnemonic('x');
-        btnRtorax.setText("R. Torax");
-        btnRtorax.setToolTipText("F5");
-        btnRtorax.setFocusable(false);
-        btnRtorax.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRtorax.setMaximumSize(new java.awt.Dimension(65, 72));
-        btnRtorax.setMinimumSize(new java.awt.Dimension(65, 72));
-        btnRtorax.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnRtorax.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnRtorax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRtoraxActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnRtorax);
-
         barraPrincipal.add(jToolBar2);
 
         btnResumenAptitud.setForeground(new java.awt.Color(102, 102, 102));
@@ -978,42 +1052,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         barraPrincipal.add(btnResumen);
-
-        btnMusculoEsqueletica.setForeground(new java.awt.Color(102, 102, 102));
-        btnMusculoEsqueletica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imgmenu/enfermeria.jpg"))); // NOI18N
-        btnMusculoEsqueletica.setMnemonic('e');
-        btnMusculoEsqueletica.setText("E.MuscEsq");
-        btnMusculoEsqueletica.setToolTipText("F3");
-        btnMusculoEsqueletica.setFocusable(false);
-        btnMusculoEsqueletica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMusculoEsqueletica.setMaximumSize(new java.awt.Dimension(65, 72));
-        btnMusculoEsqueletica.setMinimumSize(new java.awt.Dimension(65, 72));
-        btnMusculoEsqueletica.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnMusculoEsqueletica.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMusculoEsqueletica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMusculoEsqueleticaActionPerformed(evt);
-            }
-        });
-        barraPrincipal.add(btnMusculoEsqueletica);
-
-        btnAnexo16.setForeground(new java.awt.Color(102, 102, 102));
-        btnAnexo16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
-        btnAnexo16.setMnemonic('e');
-        btnAnexo16.setText("Anexo-16");
-        btnAnexo16.setToolTipText("F3");
-        btnAnexo16.setFocusable(false);
-        btnAnexo16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAnexo16.setMaximumSize(new java.awt.Dimension(65, 72));
-        btnAnexo16.setMinimumSize(new java.awt.Dimension(65, 72));
-        btnAnexo16.setPreferredSize(new java.awt.Dimension(0, 50));
-        btnAnexo16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAnexo16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnexo16ActionPerformed(evt);
-            }
-        });
-        barraPrincipal.add(btnAnexo16);
 
         btnAnexo17.setForeground(new java.awt.Color(102, 102, 102));
         btnAnexo17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
@@ -1079,6 +1117,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Arial Black", 2, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1094,7 +1135,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                 .addComponent(jLabel4)
                 .addGap(35, 35, 35)
                 .addComponent(jbarra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 372, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(20, 20, 20))
         );
@@ -1110,6 +1153,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                     .addComponent(jbarra)
                     .addComponent(lblUsuarioCaja))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
@@ -1637,6 +1684,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         btnconfiguracionsistema.add(btnConfiguracion);
 
+        jMenuItem7.setText("IMPRIMIR FORMATOS");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        btnconfiguracionsistema.add(jMenuItem7);
+
         btnEliminarEx.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         btnEliminarEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
         btnEliminarEx.setText("Eliminar Examenes completos");
@@ -1841,10 +1896,8 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         mEliminarRegistros.add(mEliminar);
 
-        MenuOcupacional.add(mEliminarRegistros);
-
         mValorizacionn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
-        mValorizacionn.setText("Valorizacion");
+        mValorizacionn.setText("Valorización");
 
         mValorizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/monedas.png"))); // NOI18N
         mValorizacion.setText("Valorizacion");
@@ -1856,7 +1909,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         mValorizacionn.add(mValorizacion);
 
-        MenuOcupacional.add(mValorizacionn);
+        mEliminarRegistros.add(mValorizacionn);
+
+        MenuOcupacional.add(mEliminarRegistros);
 
         mCovid19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         mCovid19.setText("COVID-19");
@@ -1971,6 +2026,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         mCovid19.add(mConstanciaAltaEpidemiologica);
 
+        jMenuItem9.setText("LLENAR PRUEBAS MOLECULARES");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        mCovid19.add(jMenuItem9);
+
         MenuOcupacional.add(mCovid19);
 
         mExamenMarsa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
@@ -1986,15 +2049,15 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         mExamenMarsa.add(mConstanciaSaludMarsa);
 
-        mFichaMedicaMarsa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
-        mFichaMedicaMarsa.setText("2. Ficha Médica");
-        mFichaMedicaMarsa.setActionCommand("Cert. Conducción de Vehiculos");
-        mFichaMedicaMarsa.addActionListener(new java.awt.event.ActionListener() {
+        mFichaMedicaMarsa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mFichaMedicaMarsa1.setText("2. Ficha Médica");
+        mFichaMedicaMarsa1.setActionCommand("Cert. Conducción de Vehiculos");
+        mFichaMedicaMarsa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mFichaMedicaMarsaActionPerformed(evt);
+                mFichaMedicaMarsa1ActionPerformed(evt);
             }
         });
-        mExamenMarsa.add(mFichaMedicaMarsa);
+        mExamenMarsa.add(mFichaMedicaMarsa1);
 
         mFichaResultadoPrueba.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
         mFichaResultadoPrueba.setText("3. Ficha Resutados Prueba");
@@ -2038,6 +2101,65 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         MenuOcupacional.add(mExamenMarsa);
 
         jMenu2.setText("Tamizaje Ant");
+
+        mConstanciaSaludMarsa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mConstanciaSaludMarsa1.setText("1. Constancia Salud Antigenos");
+        mConstanciaSaludMarsa1.setActionCommand("Cert. Conducción de Vehiculos");
+        mConstanciaSaludMarsa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mConstanciaSaludMarsa1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mConstanciaSaludMarsa1);
+
+        mFichaMedicaMarsa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mFichaMedicaMarsa.setText("2. Ficha Médica Antigenos");
+        mFichaMedicaMarsa.setActionCommand("Cert. Conducción de Vehiculos");
+        mFichaMedicaMarsa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mFichaMedicaMarsaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mFichaMedicaMarsa);
+
+        mFichaResultadoPrueba1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mFichaResultadoPrueba1.setText("3. Ficha Resutados Prueba antigeno");
+        mFichaResultadoPrueba1.setActionCommand("Cert. Conducción de Vehiculos");
+        mFichaResultadoPrueba1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mFichaResultadoPrueba1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mFichaResultadoPrueba1);
+
+        mConstanciaAltaMarsa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mConstanciaAltaMarsa1.setText("4. Constancia Alta");
+        mConstanciaAltaMarsa1.setActionCommand("Cert. Conducción de Vehiculos");
+        mConstanciaAltaMarsa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mConstanciaAltaMarsa1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mConstanciaAltaMarsa1);
+
+        mConsentimientoInformadoCovid1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mConsentimientoInformadoCovid1.setText("5. Consentimiento Informado Covid");
+        mConsentimientoInformadoCovid1.setActionCommand("Cert. Conducción de Vehiculos");
+        mConsentimientoInformadoCovid1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mConsentimientoInformadoCovid1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mConsentimientoInformadoCovid1);
+
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        jMenuItem8.setText("6. DESCANSO Medico Antigeno");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem8);
 
         jMenuItem6.setText("Constancia tamizaje");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -3178,7 +3300,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     }//GEN-LAST:event_btnMusculoEsqueleticaActionPerformed
 
     private void mEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEliminarActionPerformed
-       if(estacerrado(Exc)){  
+     if(estacerrado(Exc)){  
           Exc =new Eliminar();
           Desktop.add(Exc);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -3605,18 +3727,18 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
     private void mFichaMedicaMarsaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaMedicaMarsaActionPerformed
         // TODO add your handling code here:
-        if(estacerrado(fmm)){  
-          fmm =new FichaMedicaMarsa();
-          Desktop.add(fmm);          
+        if(estacerrado(fmm1)){  
+          fmm1 =new FichaMedicaMarsa1();
+          Desktop.add(fmm1);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
-         fmm.setFrameIcon(ticon);
-      fmm.setLocation(centradoXY(fmm));
+         fmm1.setFrameIcon(ticon);
+      fmm1.setLocation(centradoXY(fmm1));
 
-          fmm.show();
+          fmm1.show();
           //fn.setVisible(true);
        }
              else{
-         fmm.moveToFront();
+         fmm1.moveToFront();
          
           //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
@@ -3739,6 +3861,110 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     constanciaTamizajeAntigeno obj = new constanciaTamizajeAntigeno();
     obj.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        imprimirformatos obt=new imprimirformatos();
+        obt.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void mConstanciaSaludMarsa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConstanciaSaludMarsa1ActionPerformed
+          if(estacerrado(csm1)){  
+          csm1 =new ConstanciaSaludMarsa1();
+          Desktop.add(csm1);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         csm1.setFrameIcon(ticon);
+      csm1.setLocation(centradoXY(csm1));
+
+          csm1.show();
+          //fn.setVisible(true);
+       }
+             else{
+         csm1.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mConstanciaSaludMarsa1ActionPerformed
+
+    private void mFichaMedicaMarsa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaMedicaMarsa1ActionPerformed
+         if(estacerrado(fmm)){  
+          fmm =new FichaMedicaMarsa();
+          Desktop.add(fmm);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         fmm.setFrameIcon(ticon);
+      fmm.setLocation(centradoXY(fmm));
+
+          fmm.show();
+          //fn.setVisible(true);
+       }
+             else{
+         fmm.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mFichaMedicaMarsa1ActionPerformed
+
+    private void mFichaResultadoPrueba1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaResultadoPrueba1ActionPerformed
+    if(estacerrado(frpr1)){  
+          frpr1 =new Ficha_Resultados_Pruebas_Rapidas_CovidF1001();
+          Desktop.add(frpr1);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         frpr1.setFrameIcon(ticon);
+      frpr1.setLocation(centradoXY(frpr1));
+
+          frpr1.show();
+          //fn.setVisible(true);
+       }
+             else{
+         frpr1.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }    }//GEN-LAST:event_mFichaResultadoPrueba1ActionPerformed
+
+    private void mConstanciaAltaMarsa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConstanciaAltaMarsa1ActionPerformed
+           if(estacerrado(cam1)){  
+          cam1 =new ConstanciaAltaMarsa1();
+          Desktop.add(cam1);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         cam1.setFrameIcon(ticon);
+      cam1.setLocation(centradoXY(cam1));
+
+          cam1.show();
+          //fn.setVisible(true);
+       }
+             else{
+         cam1.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mConstanciaAltaMarsa1ActionPerformed
+
+    private void mConsentimientoInformadoCovid1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConsentimientoInformadoCovid1ActionPerformed
+         if(estacerrado(cic1)){  
+          cic1 =new ConsentimientoInformadoCovid1();
+          Desktop.add(cic1);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         cic1.setFrameIcon(ticon);
+      cic1.setLocation(centradoXY(cic1));
+
+          cic1.show();
+          //fn.setVisible(true);
+       }
+             else{
+         cic1.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mConsentimientoInformadoCovid1ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+ contanciaSaludCovid1 obt = new contanciaSaludCovid1();
+        obt.setVisible(true);    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        pruebamolecular objeto= new pruebamolecular();
+        objeto.setVisible(true);
+
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -3852,6 +4078,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem btnconfigurarservicios;
     private javax.swing.JMenuItem frmConalvias;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -3865,6 +4092,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -3935,11 +4165,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mCertificacionTrabajoAltura;
     private javax.swing.JMenuItem mCertificacionTrabajoAltura1;
     private javax.swing.JMenuItem mConsentimientoInformadoCovid;
+    private javax.swing.JMenuItem mConsentimientoInformadoCovid1;
     private javax.swing.JMenuItem mConstanciaAltaEpidemiologica;
     private javax.swing.JMenuItem mConstanciaAltaMarsa;
+    private javax.swing.JMenuItem mConstanciaAltaMarsa1;
     private javax.swing.JMenuItem mConstanciaEncofrados;
     private javax.swing.JMenuItem mConstanciaMedicaCovid19;
     private javax.swing.JMenuItem mConstanciaSaludMarsa;
+    private javax.swing.JMenuItem mConstanciaSaludMarsa1;
     private javax.swing.JMenuItem mConstanciaTamizaje;
     private javax.swing.JMenuItem mConstanciaTamizajeMarza;
     private javax.swing.JMenu mCovid19;
@@ -3956,7 +4189,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mFichaAptitudResumen;
     private javax.swing.JMenuItem mFichaMedica1;
     private javax.swing.JMenuItem mFichaMedicaMarsa;
+    private javax.swing.JMenuItem mFichaMedicaMarsa1;
     private javax.swing.JMenuItem mFichaResultadoPrueba;
+    private javax.swing.JMenuItem mFichaResultadoPrueba1;
     private javax.swing.JMenuItem mFichaRetiro;
     private javax.swing.JMenuItem mFichaRetiro1;
     private javax.swing.JMenuItem mFichasintomatologica;

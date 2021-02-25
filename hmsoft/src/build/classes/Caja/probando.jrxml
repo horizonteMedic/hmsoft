@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="349d920c-03a2-4964-be4e-e9e445aa617e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="64"/>
+	<queryString>
+		<![CDATA[select count(n_orden) as cantidad, tipoprueba,(select count(n_orden) as cantidad
+from n_orden_ocupacional where tipoprueba is not null and (nom_examen='COVID-19' or
+  nom_examen='COVID-19 CUANTITATIVA')) as total
+from n_orden_ocupacional where tipoprueba is not null and (nom_examen='COVID-19' or nom_examen='COVID-19 CUANTITATIVA')
+group by tipoprueba]]>
+	</queryString>
+	<field name="cantidad" class="java.lang.Long"/>
+	<field name="tipoprueba" class="java.lang.String"/>
+	<field name="total" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="12" width="235" height="73" uuid="10385771-750a-4de7-857e-b7363f8bc09f"/>
+				<imageExpression><![CDATA["C:\\hmsoft\\horiz.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="351" y="50" width="56" height="21" uuid="4941d0fc-5e33-4460-ac1f-cddc58190259"/>
+				<textElement>
+					<font fontName="Baskerville Old Face" size="12"/>
+				</textElement>
+				<text><![CDATA[FECHA:]]></text>
+			</staticText>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z">
+				<reportElement x="407" y="47" width="148" height="20" uuid="e3922fba-a60f-49d4-bef7-444f170f2ddc"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="209" y="11" width="174" height="20" uuid="f88b7ad3-2436-4d4f-bf5a-a17259bb33ad"/>
+				<textElement>
+					<font fontName="Bahnschrift" size="13"/>
+				</textElement>
+				<text><![CDATA[ANÁLISIS ESTADÍSTICOS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="163" y="22" width="244" height="20" uuid="55f37e63-d917-4631-9715-131fef66263e"/>
+				<textElement>
+					<font fontName="Bahnschrift" size="13"/>
+				</textElement>
+				<text><![CDATA[REPORTE DEL TOTAL DE PRUEBAS COVID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="479" splitType="Stretch">
+			<bar3DChart>
+				<chart>
+					<reportElement x="25" y="76" width="494" height="211" isPrintWhenDetailOverflows="true" uuid="e8cbcc45-b049-44be-a321-102ee2f4381c"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{tipoprueba}.equals($F{tipoprueba})? $F{tipoprueba}+" ->"+ $F{cantidad}:"no tiene"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{tipoprueba}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{cantidad}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot isShowLabels="true">
+					<plot/>
+					<itemLabel>
+						<font size="18" isItalic="true"/>
+					</itemLabel>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+			<rectangle>
+				<reportElement x="25" y="334" width="46" height="20" uuid="e16e2743-66c1-487f-aec8-8674a0dd3080"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="25" y="354" width="46" height="20" uuid="3127876b-f565-4ee2-8bef-c0f895f983d7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="25" y="374" width="46" height="20" uuid="f594280d-939d-404f-9a9f-67e9c7dc6a77"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="25" y="394" width="46" height="20" uuid="f7f9f37c-1037-4b70-8140-b8182e4dba8b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="25" y="414" width="46" height="20" uuid="1b24ce14-8bce-4f32-a0e8-c10a921d3e9e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="25" y="434" width="46" height="20" uuid="27118bac-7f98-4008-bde7-c5b9b1430760"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="40" y="337" width="18" height="20" uuid="2f3057dc-795b-48b5-8716-68193e3276bb"/>
+				<text><![CDATA[P1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="357" width="18" height="20" uuid="32192061-5fc2-4fd6-9659-760c8b35c02e"/>
+				<text><![CDATA[P2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="377" width="18" height="20" uuid="f1be056b-b147-42cd-8605-df2d8f15ee0a"/>
+				<text><![CDATA[P3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="396" width="18" height="20" uuid="e9eddf2f-3b16-4d94-8e54-52e903a2cc97"/>
+				<text><![CDATA[PC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="416" width="18" height="20" uuid="611edc72-7c6e-4882-989a-b75d6d7f0018"/>
+				<text><![CDATA[AE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="436" width="18" height="20" uuid="498f7205-f713-4542-80bd-1fba10b4a09f"/>
+				<text><![CDATA[PA]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="71" y="334" width="123" height="20" uuid="2a8f389d-0359-465a-9e54-89e87a37298e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="71" y="354" width="123" height="20" uuid="d1dd991f-b18d-46e6-b6b4-9d04a0fc4bc3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="71" y="374" width="123" height="20" uuid="b45cf4c6-c94f-4a04-8b92-7a8e19cb9fae"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="71" y="394" width="123" height="20" uuid="b79a03b8-544c-4ad6-beb8-f522613f818c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="71" y="415" width="123" height="20" uuid="20611fbf-8bd2-4687-8cfe-7dfb3aa958f8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="71" y="434" width="123" height="20" uuid="2cfdbfd9-75d7-496d-a7de-540fc85e8b83"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="84" y="337" width="79" height="20" uuid="5299dcea-9263-4c79-ad31-a5df35f25c3c"/>
+				<text><![CDATA[Primera prueba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="357" width="92" height="20" uuid="7ec54e02-53c5-4da7-947f-841c63fc39cf"/>
+				<text><![CDATA[Segunda Prueba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="377" width="79" height="20" uuid="909894a4-1ba9-4fd2-bae2-91bc8e476a3b"/>
+				<text><![CDATA[Tercera prueba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="397" width="79" height="20" uuid="db5b8c00-1f70-415e-be29-1a6e9181a5e8"/>
+				<text><![CDATA[Prueba en hotel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="417" width="110" height="20" uuid="23b0d0f4-f75b-4a91-84e7-b26ca6562eb4"/>
+				<text><![CDATA[Alta Epidemiologica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="436" width="110" height="20" uuid="5b072963-adcd-4321-b5c2-c5de061b2cd8"/>
+				<text><![CDATA[Prueba Anticuerpo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="34" width="169" height="20" uuid="32f742d1-c5e6-45a7-916a-c416ecc4a79e"/>
+				<textElement>
+					<font fontName="Bahnschrift" size="13"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE PRUEBAS COVID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="209" y="34" width="149" height="20" uuid="93e5a58a-1e0a-4805-8c9c-e3894f2da233"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="33" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="16" width="544" height="20" uuid="aeb21870-06be-47b8-b626-26ea306ee78b"/>
+				<textElement>
+					<font fontName="Serif"/>
+				</textElement>
+				<text><![CDATA[Ubicanos en: Jr. Leoncio Prado N°786 - Huamachuco - Telef: 044 348070 - 969603777 -EMAIL: admision@horizontemedic.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="0" width="544" height="20" uuid="745bfa1c-ae72-441d-b0da-d1ddae8595e6"/>
+				<textElement>
+					<font fontName="Serif"/>
+				</textElement>
+				<text><![CDATA[Guillermo Prescott N°127 Urb. Sto. Dominguito - Trujillo -Telef: 044 666120 -EMAIL: admision.trujillo@horizontemedic.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

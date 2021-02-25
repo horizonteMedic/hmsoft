@@ -40,9 +40,11 @@ public final class Ingreso extends javax.swing.JFrame {
    public String seded="";
    public JComboBox cboEmpresa;
    public static String  nombresede;
+      public static String  ipd;
+
    String emp;
        public Ingreso()  {
-           
+            
        initComponents(); 
            
          Properties props = new Properties();
@@ -63,10 +65,12 @@ public final class Ingreso extends javax.swing.JFrame {
            String username = props.getProperty("dataBaseUser");
            String password = props.getProperty("dataBasePassword");
            seded=props.getProperty("nameSede");
+           ipd= props.getProperty("dataBaseServer");
       if (! oConn.FnBoolConnectionOpen("org.postgresql.Driver", "jdbc:postgresql://"+url+ ":5432/"+ db,username,password))
         {
           JOptionPane.showMessageDialog(null,"No se logro la conexion al Host");
           System.exit(0);
+          
         }
         else
         {
@@ -415,8 +419,8 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                                 Ingreso.this.dispose();
                                 JOptionPane.showMessageDialog(null, "Bienvenido al Sistema "+ clsGlobales.sNomOperador);
                                 String user=oConn.setResult.getString("usuario_user");
-                                if("JAZABACHE".equals(user)||"HM".equals(user)||"AGARCIA".equals(user)
-                                        ||"MHERRERA".equals(user) ||"JPOMA".equals(user)
+                                if("JAZABACHE".equals(user)||"HM".equals(user)||"AGARCIA".equals(user) ||"KREYES".equals(user)
+                                        ||"MHERRERA".equals(user) ||"JPOMA".equals(user)||"VERAG".equals(user)
                                         ||"MPAZ".equals(user)||"MMARIÑOS".equals(user)||"JCARDENAS".equals(user)
                                         ||"HCERNA".equals(user)||"JCERQUIN".equals(user)||"JCORDOVAP".equals(user)
                                         ||"JCORDOVA".equals(user)||"KGUEVARA".equals(user)||"lobo".equals(user) ){
