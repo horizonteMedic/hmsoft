@@ -2424,6 +2424,20 @@ negarcheks();
                             + "Especificidad : 97.3 %");
         
         }
+        if(cboMarca4.getSelectedItem().toString().contains("SARS-COV-2 ANTIGEN RAPID TEST KIT"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.3% \n"
+                            + "Especificidad : 97.3 %");
+        
+        }
+        if(cboMarca4.getSelectedItem().toString().contains("LEPU MEDICAL"))
+        {
+        jTextAreaIgm3.setText("Metodo de Detección de ácidos nucleicos\n"
+                            + "Sensibilidad  : 92.00% \n"
+                            + "Especificidad : 99.26%");
+        
+        }
               if(cboMarca4.getSelectedItem().toString().contains("LABNOVATION"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
@@ -2461,7 +2475,7 @@ negarcheks();
                             + "Sensibilidad  : 92.3% \n"
                             + "Especificidad : 100%");
         }   
-         if(cboMarca4.getSelectedItem().toString().contains("VIVA DIAG SARS-COV-2 AG RAPID TEST"))
+         if(cboMarca4.getSelectedItem().toString().contains("VIVADIAG SARS-COV-2 AG RAPID TEST"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad  : 95.04% \n"
