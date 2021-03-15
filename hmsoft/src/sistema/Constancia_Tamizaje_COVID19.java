@@ -568,6 +568,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                          }else{
                           oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                       }
+                      oConn.setResult.close();
               } catch (SQLException ex) {
               oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
             }
@@ -653,6 +654,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
            } 
@@ -861,6 +863,7 @@ private void Limpiar(){
             } else {
                 oFunc.SubSistemaMensajeInformacion("No hay datos en triaje");
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }

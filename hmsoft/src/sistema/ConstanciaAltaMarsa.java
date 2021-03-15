@@ -23,7 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -577,8 +579,11 @@ public void  altasinAEV2(){
                         
                         sbCargarDatosEmpresa();
                          txtDiasDesc.requestFocus();
-                       }else{
-altasinAEV2();                    }
+                       }
+                        else{
+                                altasinAEV2();                   
+                    }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
 
@@ -618,8 +623,12 @@ altasinAEV2();                    }
                         
                         sbCargarDatosEmpresa();
                          txtDiasDesc.requestFocus();
-                       }else{
-altasinAEV2();                    }
+                       }
+                        else{
+                                altasinAEV2();                   
+                    }
+                    oConn.setResult.close();
+                    
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
     }
@@ -667,6 +676,8 @@ altasinAEV2();                    }
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
+                    
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
        
@@ -823,6 +834,7 @@ else
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());
             }

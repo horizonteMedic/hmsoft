@@ -51,7 +51,7 @@ public final class Ingreso extends javax.swing.JFrame {
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("configuracion.properties");
+            in = new FileInputStream("pierola.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -513,7 +513,7 @@ private void CargarSedes(){
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+               oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {

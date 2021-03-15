@@ -2551,6 +2551,7 @@ negarcheks();
                 }else{
                     oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -2591,6 +2592,7 @@ negarcheks();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -2708,6 +2710,7 @@ negarcheks();
                 }else{
                     oFunc.SubSistemaMensajeError("VErificar si existe registro, si la prueba es:  PRUEBA CUANTITATIVA ANTIGENOS");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -2748,6 +2751,7 @@ negarcheks();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -2859,6 +2863,7 @@ limpiar2();
                 }else{
                     oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -2899,6 +2904,7 @@ limpiar2();
                     }else{
                     oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -3086,6 +3092,7 @@ limpiar2();
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -3126,6 +3133,7 @@ limpiar2();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -3227,7 +3235,8 @@ limpiar2();
                     FechaHotel.setDate(oConn.setResult.getDate("fecha_examen"));
                     if(pasar.equals("PC")) habilitarPc();
                     else negarPc();
-
+                    
+                    oConn.setResult.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
@@ -3271,6 +3280,7 @@ limpiar2();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -3675,7 +3685,7 @@ public void  habilitarPc(){
         oConn.FnBoolQueryExecute(sql2);
           agregarSimtocasPc();
         }
-else
+        else
             JOptionPane.showMessageDialog(null, "LLENAR CO2 ","Sistema MEDSOFT",JOptionPane.ERROR_MESSAGE);
         
         
