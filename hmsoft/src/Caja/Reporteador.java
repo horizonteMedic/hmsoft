@@ -689,8 +689,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                   System.out.println("consulta:"+vSql);         
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
-             {
-             try  {
+                    {
+                    try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
