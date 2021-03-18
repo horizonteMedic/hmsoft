@@ -1183,7 +1183,12 @@ boolean bResultado=true;
      String sql = "DELETE FROM valorizacion_contenido"
                + " WHERE v_carta_aviso ='" +num+ "' RETURNING v_carta_aviso";
         if (oConn.FnBoolQueryExecute(sql)) {
-//            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+         try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo eliminar");
         }
@@ -1325,6 +1330,7 @@ boolean bResultado=true;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }
@@ -1359,6 +1365,7 @@ boolean bResultado=true;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo ");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }
@@ -2442,7 +2449,14 @@ public void sbServicioAgrega(){
                 }
 
         if (oConn.FnBoolQueryExecuteUpdate(insert.concat(" )") +values.concat(" )"))){
+            
             bResult = true;
+            try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
         }
         // Retorna el Valor
         return bResult;
@@ -2494,10 +2508,14 @@ public void sbServicioAgrega(){
                     if ( oConn.FnBoolQueryExecuteUpdate(strSqlStmt))
                     {
                         bResult = true;
+                        try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+                            oConn.sqlStmt.close();
+                            } catch (SQLException ex) {
+                             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                        // break;
                     }
-                    
-        
         }
         
         return bResult;
