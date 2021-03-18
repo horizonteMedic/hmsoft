@@ -721,7 +721,7 @@ int operacion=0;
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -755,7 +755,7 @@ int operacion=0;
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                   oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -787,7 +787,7 @@ int operacion=0;
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -821,7 +821,7 @@ int operacion=0;
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -853,7 +853,7 @@ int operacion=0;
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {

@@ -1469,8 +1469,8 @@ boolean bResultado=true;
                          
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
-             {
-             try  {
+                {
+                try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
@@ -2562,17 +2562,16 @@ public void sbServicioAgrega(){
         if (oConn.FnBoolQueryExecute(insert +values)){
             bResult = true;
             try {
-             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
              oConn.setResult.close();
          } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
-        }
+        }   
         // Retorna el Valor
         return bResult;
 //        
-        
     }
+    
      private boolean ActualizaContenido(){
         // Para los resultados
         boolean bResult = false;
@@ -2603,6 +2602,7 @@ public void sbServicioAgrega(){
                         // Ejecuta la Sentencia
                         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                             bResult = true;
+                            
                             try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
                                      oConn.setResult.close();
@@ -2633,6 +2633,7 @@ public void sbServicioAgrega(){
                     if (oConn.setResult.next()) {
                        nume=Integer.parseInt(oConn.setResult.getString("fila"));
                        bResult= true;
+                       oConn.setResult.close();
                    }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }

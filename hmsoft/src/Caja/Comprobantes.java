@@ -910,6 +910,11 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
              
         if (oConn.FnBoolQueryExecuteUpdate(insert + values)){
             bResult = true;
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         // Retorna el Valor
         return bResult;
@@ -967,7 +972,12 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                     if ( oConn.FnBoolQueryExecuteUpdate(strSqlStmt))
                     {
                         bResult = true;
-                       // break;
+                        try {
+                            // break;
+                            oConn.setResult.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
           
         
@@ -1212,10 +1222,15 @@ boolean bResultado=true;
             Limpiar();
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
-            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-        }
+                try {
+                    oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
    private void ReporteFechas(Date date1, Date date2){
 
@@ -1300,7 +1315,17 @@ System.out.println(strSqlStmt.concat(") ") + Query.concat(")"));
                     //Limpiar();
                     imprimir();
                     CargarId();
-                    
+                    try {
+             
+                            oConn.setResult.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                 try {
+                     oConn.sqlStmt.close();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+                 }
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 

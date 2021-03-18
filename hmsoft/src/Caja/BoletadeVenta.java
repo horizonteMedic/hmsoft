@@ -703,6 +703,11 @@ cboReferido.requestFocusInWindow();
            Genera();
         if (oConn.FnBoolQueryExecuteUpdate(insert.concat(" ) ") +values.concat(" ) "))){
             bResult = true;
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         // Retorna el Valor
         return bResult;
