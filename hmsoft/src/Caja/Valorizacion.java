@@ -1530,6 +1530,12 @@ boolean bResultado=true;
 
         if (oConn.FnBoolQueryExecute(insert +values)){
             bResult = true;
+            try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
         }
         
         // Retorna el Valor
@@ -1797,8 +1803,6 @@ final void AutoJuridico(){
        txtRazonSocial.requestFocus();
        txtRazonSocial.setText(null);
        cliente = getRowsToVector("SELECT razon_empresa FROM empresas UNION SELECT razon_contrata FROM contratas");
-       
-       
 }
 
     
@@ -2453,7 +2457,7 @@ public void sbServicioAgrega(){
             bResult = true;
             try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-                oConn.sqlStmt.close();
+                oConn.setResult.close();
             } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -2510,7 +2514,7 @@ public void sbServicioAgrega(){
                         bResult = true;
                         try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-                            oConn.sqlStmt.close();
+                            oConn.setResult.close();
                             } catch (SQLException ex) {
                              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -2557,6 +2561,12 @@ public void sbServicioAgrega(){
 
         if (oConn.FnBoolQueryExecute(insert +values)){
             bResult = true;
+            try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
         }
         // Retorna el Valor
         return bResult;
@@ -2593,10 +2603,14 @@ public void sbServicioAgrega(){
                         // Ejecuta la Sentencia
                         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                             bResult = true;
+                            try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+                                     oConn.setResult.close();
+                                } catch (SQLException ex) {
+                                Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             // break;
                         }
-                    
-        
         }
 //        oFunc.SubSistemaMensajeInformacion(String.valueOf(iFila));
          filas();
@@ -2622,6 +2636,7 @@ public void sbServicioAgrega(){
                    }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }

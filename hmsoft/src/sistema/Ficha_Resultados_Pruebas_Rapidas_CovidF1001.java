@@ -2555,7 +2555,12 @@ String sed="";
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
-                    limpiar();   
+                    limpiar();
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada! ");
                        }
@@ -2698,7 +2703,12 @@ String sed="";
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + query.concat(")"))){
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
-                        limpiar(); 
+                        limpiar();
+                        try {
+                            oConn.setResult.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                    }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada!!");} 
                 }
              }

@@ -1771,7 +1771,12 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
 
          imprimir();
           oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-       limpiar(); 
+       limpiar();
+       try {
+            oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
     }
     }
@@ -1850,14 +1855,18 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                Query += ",rbcp_fallecido='"+rbDestFallecido.isSelected()+ "'"
             + " where n_orden='"+txtNorden.getText().toString()+ "'";
 //             oFunc.SubSistemaMensajeError(strSqlStmt+Query);
-              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query)){
-                  oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
-                  imprimir();
-               limpiar();   
-                   
+                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query)){
+                    oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
+                    imprimir();
+                    limpiar();   
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                    }  
                 }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-                       }
+                }
         }
         
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");

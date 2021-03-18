@@ -370,7 +370,11 @@ jComboBox1.addItem("NO REACTIVO");
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-           
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                     Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
+                }
               //  Limpiar();
 
             } else {
@@ -397,6 +401,11 @@ jComboBox1.addItem("NO REACTIVO");
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                     Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
                 return bResult;       
         } 

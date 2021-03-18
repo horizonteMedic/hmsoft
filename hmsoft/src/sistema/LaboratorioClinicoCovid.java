@@ -2282,7 +2282,13 @@ sed=ads.nombresede;
 //                   oConn.setResult.next();
             
                    bResult = true;
-                       oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+                 oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+                 try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                }
               
               
@@ -2320,6 +2326,11 @@ sed=ads.nombresede;
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
           //  imprimir();
             limpiar();
+            try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -4287,6 +4298,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   
+                   try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
                 return bResult;       
         }
@@ -4312,6 +4329,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   
+                   try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
                 return bResult;       
         }
@@ -4334,6 +4357,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   
+                   try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
                 return bResult;       
         }
@@ -4355,6 +4384,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   
+                   try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
                 return bResult;       
         }
@@ -4376,6 +4411,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   
+                   try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
                 return bResult;       
         }
@@ -4400,7 +4441,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn();
               //  Limpiar();
-
+              try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
@@ -4429,7 +4474,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn1();
                 //Limpiar();
-
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
@@ -4454,7 +4503,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn2();
                 limpiar2();
-
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
@@ -4479,7 +4532,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn3();
                 limpiar3();
-
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
@@ -4513,7 +4570,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                             limpiar4();
                             }
                          }
-
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }         
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }

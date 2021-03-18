@@ -682,14 +682,16 @@ private boolean Grabar() throws SQLException{
                     + "'"+chkExpctoracion.isSelected()+ "',"
                     + "'"+chkPerdidaOlf1.isSelected()+"' )";
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-                
 //                   oConn.setResult.next();
-            
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
-               }
-              
-              
+                       try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+                        oConn.setResult.close();
+                        } catch (SQLException ex) {
+                             Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+               }  
                 return bResult;       
         }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -1061,6 +1063,12 @@ private boolean Grabar() throws SQLException{
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             limpiar();
+            try {
+             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

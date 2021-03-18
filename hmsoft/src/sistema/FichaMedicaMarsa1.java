@@ -2278,6 +2278,11 @@ String sed="";
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                     imprimir();
                     limpiar();
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
                 }
@@ -2365,7 +2370,11 @@ String sed="";
                 if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
-
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 

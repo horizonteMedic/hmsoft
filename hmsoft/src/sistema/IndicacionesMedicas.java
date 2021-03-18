@@ -1391,7 +1391,12 @@ public class IndicacionesMedicas extends javax.swing.JInternalFrame {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
-                    limpiar();   
+                    limpiar();
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(IndicacionesMedicas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                        }
@@ -1445,6 +1450,11 @@ public class IndicacionesMedicas extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
                         limpiar(); 
+                        try {
+                            oConn.setResult.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(IndicacionesMedicas.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                    }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
                 }
              }

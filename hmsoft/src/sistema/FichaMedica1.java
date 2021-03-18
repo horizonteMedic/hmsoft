@@ -5308,6 +5308,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -5622,7 +5623,8 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                        cargarAnalisisB();
                        if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
                             oFunc.SubSistemaMensajeError("Grupo Sanguinio incongruente por favotr revisar");
-                        }   
+                        }
+                       oConn.setResult.close();
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
@@ -6028,6 +6030,11 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                     txtEOrden.setText(txtNorden.getText().toString());
                     Busca();
                     limpiar();
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
                 }
@@ -6059,7 +6066,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                          }
                        
                      }
-
+                    oConn.setResult.close();
                  } else {
                      oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
                  }
@@ -6279,7 +6286,11 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                 if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
-
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
+                    }    
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -6972,6 +6983,7 @@ public static int calcularEdad(String fecha) {
                      if(ct>200 || trigli>150 || ldl>129 || (hdl<40 || hdl>60) || vldl>30){
                          txtObservacionesFichaMedica.append("DIETA HIPOCALORICA Y EJERCICIOS. \n ");
                      }
+                     oConn.setResult.close();
                  } else {
                      oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
                  }

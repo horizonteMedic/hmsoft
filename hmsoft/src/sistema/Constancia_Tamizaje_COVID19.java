@@ -718,6 +718,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     oFunc.SubSistemaMensajeInformacion("Constancia Registrada");
                     
                    bResult = true;
+                   try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                         Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                }
                 return bResult;       
         }
@@ -736,6 +741,11 @@ public void Actualizar(){
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             Limpiar();
+            try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                         Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
+                    }
             
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");

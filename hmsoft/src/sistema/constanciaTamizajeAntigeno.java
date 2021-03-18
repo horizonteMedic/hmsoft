@@ -551,17 +551,20 @@ FechaExIn5.setDate(fechaDate);
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-               if(jCheckBox1.isSelected())
-       {
-        
-            printIn5(Integer.valueOf(txtNordenIn5.getText().toString()));
-        
-       }
-        else
-                imprimirIn4();
-                limpiar4();
-
-            } else {
+                if(jCheckBox1.isSelected()){
+                    printIn5(Integer.valueOf(txtNordenIn5.getText().toString()));
+                }
+                else{
+                    imprimirIn4();
+                    limpiar4();
+                }
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } 
+            else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
     }
@@ -619,6 +622,11 @@ FechaExIn5.setDate(fechaDate);
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
                 return bResult;       
         }

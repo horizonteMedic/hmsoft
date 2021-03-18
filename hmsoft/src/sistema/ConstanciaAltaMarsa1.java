@@ -44,10 +44,10 @@ import net.sf.jasperreports.view.JasperViewer;
 public class ConstanciaAltaMarsa1 extends javax.swing.JInternalFrame {
 
     clsConnection oConn = new clsConnection();
- clsFunciones  oFunc = new clsFunciones();
- String condicional;
-      Ingreso ads = new Ingreso();
-String sed="";
+    clsFunciones  oFunc = new clsFunciones();
+    String condicional;
+    Ingreso ads = new Ingreso();
+    String sed="";
     public ConstanciaAltaMarsa1() {
         initComponents();
         activar(false);

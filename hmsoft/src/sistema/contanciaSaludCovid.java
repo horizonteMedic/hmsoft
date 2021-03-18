@@ -657,6 +657,7 @@ int seleccion = JOptionPane.showOptionDialog(
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
 

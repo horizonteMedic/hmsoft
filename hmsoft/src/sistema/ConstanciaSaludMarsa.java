@@ -692,9 +692,13 @@ private boolean Grabar() throws SQLException{
             
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConstanciaSaludMarsa.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                }
-              
-              
+                      
                 return bResult;       
         }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -1043,6 +1047,11 @@ private boolean Grabar() throws SQLException{
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             limpiar();
+            try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ConstanciaSaludMarsa.class.getName()).log(Level.SEVERE, null, ex);
+                    }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

@@ -674,6 +674,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
        
@@ -901,6 +902,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios / FUE LLENADO EN APTITUD AGROINDUSTRIAL");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
        
@@ -963,6 +965,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
 //                   bResult = true;
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Aptitud_Medico_Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                }
         }
 public void Actualizar(){
@@ -979,6 +986,11 @@ public void Actualizar(){
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Aptitud_Medico_Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

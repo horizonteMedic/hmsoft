@@ -1501,7 +1501,12 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + query.concat(")"))){
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
-                        limpiar(); 
+                        limpiar();
+                        try {
+                            oConn.setResult.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                    }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
                 }
              }
@@ -1580,7 +1585,12 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
-                    limpiar();   
+                    limpiar();
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                         Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                        }
