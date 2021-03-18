@@ -2431,6 +2431,13 @@ negarcheks();
                             + "Especificidad : 97.3 %");
         
         }
+              if(cboMarca4.getSelectedItem().toString().contains("LEPU MEDICAL"))
+        {
+        jTextAreaIgm3.setText("Metodo de Detección de ácidos nucleicos\n"
+                            + "Sensibilidad  : 92.00% \n"
+                            + "Especificidad : 99.26%");
+        
+        }
          if(cboMarca4.getSelectedItem().toString().contains("SD BIOSENSOR"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
