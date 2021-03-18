@@ -301,12 +301,13 @@ public class ConstanciaRetiro extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                         .addComponent(btnImp)
-                        .addComponent(txtimp)))
+                        .addComponent(txtimp))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGuardar)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -345,6 +346,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
        
@@ -391,6 +393,7 @@ private boolean Grabar() throws SQLException{
             
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+                       oConn.setResult.close();
                }
               
               
@@ -447,6 +450,7 @@ private boolean Grabar() throws SQLException{
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());
             }
@@ -505,6 +509,11 @@ private boolean Grabar() throws SQLException{
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             limpiar();
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ConstanciaRetiro.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

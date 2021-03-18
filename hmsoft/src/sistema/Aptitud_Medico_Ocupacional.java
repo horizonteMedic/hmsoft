@@ -1061,6 +1061,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1328,6 +1329,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
        
@@ -1458,6 +1460,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
                     
                    bResult = true;
+                   oConn.setResult.close();
                }
               
               
@@ -1637,6 +1640,7 @@ private void Limpiar(){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1671,6 +1675,11 @@ private void Limpiar(){
             }
             imprimir();
             Limpiar();
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

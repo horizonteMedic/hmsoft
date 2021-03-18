@@ -1815,6 +1815,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1863,6 +1864,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2056,6 +2058,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2214,6 +2217,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Despues de terminar este Formato, El Paciente debe pasar por triaje");
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -2247,6 +2251,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta con algunos datos tomados en Audiometria ");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -2266,6 +2271,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta registros en ficha sas");
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -2918,6 +2924,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta con algunos datos tomados en Rayos x");
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -3017,7 +3024,11 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                   oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                   imprimir();
                limpiar();   
-                   
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(B_Certificacion_conduccion.class.getName()).log(Level.SEVERE, null, ex);
+                    }   
                 }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                        }

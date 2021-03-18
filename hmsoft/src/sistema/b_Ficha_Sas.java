@@ -2634,6 +2634,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Tríaje:" + ex.getMessage().toString());
         }  
@@ -3163,6 +3164,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Tríaje:" + ex.getMessage().toString());
         }  
@@ -3637,6 +3639,11 @@ void Agregar(){
                     imp();
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     limpiar();
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(b_Ficha_Sas.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -3738,6 +3745,11 @@ String values="UPDATE ficha_sas "
              txtNorden.requestFocus();
         if (oConn.FnBoolQueryExecuteUpdate(values)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(b_Ficha_Sas.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

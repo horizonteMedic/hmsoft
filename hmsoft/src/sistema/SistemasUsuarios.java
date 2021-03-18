@@ -168,7 +168,11 @@ public class SistemasUsuarios extends javax.swing.JFrame {
            else
                oConn.SubRollBack();
             
-          
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else
             // realiza el rollback
@@ -190,6 +194,11 @@ public class SistemasUsuarios extends javax.swing.JFrame {
         {    
            // Mensaje
            oFunc.SubSistemaMensajeInformacion("Se ha realizado Delete con Éxito");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
        
     }
@@ -319,6 +328,11 @@ private void subDeleteRoleProcesos()
         
         // Ejecuta el Query para Borrar
         oConn.FnBoolQueryExecuteUpdate(sQuery);
+      try {
+          oConn.sqlStmt.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+      }
         
         
     }
