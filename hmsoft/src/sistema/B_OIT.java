@@ -2144,6 +2144,7 @@ FechaLectura.setDate(fechaDate);
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                         Fecha();
                         radiotorax();
+                        oConn.setResult.close();
                        }else{
                         txtNorden.setText(null);
                         
@@ -2426,11 +2427,14 @@ boolean bResultado=true;
                         chk_29.setSelected(oConn.setResult.getBoolean("chk_29"));
                         
 //                        radiotorax();
+                       
                        }else{
                         txtNorden.setText(null);
                         
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
+                    
+                     oConn.setResult.close();
             } catch (SQLException ex) {
                 
             oFunc.SubSistemaMensajeInformacion("Error Consulta:" + ex.getMessage().toString());
@@ -2784,6 +2788,7 @@ int seleccion = JOptionPane.showOptionDialog(
                     }
                     
                     txt_s_comentarios.setText(txt_s_comentarios.getText()+obsrt);
+                    oConn.setResult.close();
                     
                 }
             } catch (SQLException ex) {

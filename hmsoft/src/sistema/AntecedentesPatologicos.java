@@ -2709,6 +2709,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
         
@@ -2735,6 +2736,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Despues de terminar este Formato, El Paciente debe pasar por triaje");
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -2842,7 +2844,12 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
        String sql = "DELETE FROM antecedentes_patologicos_quirurgicos"
                + " WHERE cod_ap ='" +num+ "' RETURNING cod_ap";
         if (oConn.FnBoolQueryExecute(sql)) {
-            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+           try {
+               oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+               oConn.setResult.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+           }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo eliminar");
         }
@@ -3117,6 +3124,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }
@@ -3158,6 +3166,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -3218,6 +3227,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                             oFunc.SubSistemaMensajeError("No se encuentra registro de enfermedades ocualres");
                         }
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Oftlamologia" + ex.getMessage().toString());
         
@@ -3406,6 +3416,7 @@ private boolean GrabarAPInfo() throws SQLException{
                  num = Integer.valueOf(oConn.setResult.getString("cod_ap"));
                   
                    bResult = true;
+                   oConn.setResult.close();
                }
                               
                 else{
@@ -3518,6 +3529,7 @@ private boolean ActualizarAPInfo()throws SQLException{
 //             oFunc.SubSistemaMensajeError(strSqlStmt+Query);
                if (oConn.FnBoolQueryExecute(strSqlStmt + Query)){
                  bResult = true;
+                 oConn.setResult.close();
                }
                               
                 else{
@@ -3578,6 +3590,12 @@ private boolean GrabarAPDetalle() {
                     // Ejecuta la Sentencia
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
+                try {
+                  oConn.sqlStmt.close();
+      
+                } catch (SQLException ex) {
+                    Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+                }
                         
                     }
                   }

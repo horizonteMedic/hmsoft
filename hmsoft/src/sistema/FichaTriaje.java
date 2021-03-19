@@ -1216,7 +1216,11 @@ if(k==10){
              txtNumero.setEnabled(true);
              txtNumero.requestFocus();
              sbCargarDatosOcupacional("");
-                  
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
@@ -1253,15 +1257,20 @@ if(k==10){
               
                
                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
-             oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-             LimpiarFichaTriaje();
-             txtNumero.setEnabled(true);
-             txtNumero.requestFocus();
-             sbCargarDatosOcupacional("");
-        }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-               }
-        }
+                oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
+                LimpiarFichaTriaje();
+                txtNumero.setEnabled(true);
+                txtNumero.requestFocus();
+                sbCargarDatosOcupacional("");
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }else{
+                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                       }
+                }
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");txtNumero.requestFocus();}
         }
@@ -1792,6 +1801,11 @@ boolean bResultado=true;
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+               try {
+                   oConn.setResult.close();
+               } catch (SQLException ex) {
+                   Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+               }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -1945,6 +1959,7 @@ private void CargarEmpresas(){
                  {                    
                      cboEmpresa.addItem(oConn.setResult.getString ("razon_empresa"));   
                  }
+              oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -1966,6 +1981,7 @@ private void CargarContratas(){
                  {             
                      cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));   
                  }
+              oConn.setResult.close();
             } 
             catch (SQLException ex){
                 oFunc.SubSistemaMensajeInformacion(ex.toString());
@@ -1986,6 +2002,7 @@ private void CargarServicios(){
                  {             
                      cboTipoServicio.addItem(oConn.setResult.getString ("nom_examen"));   
                  }
+              oConn.setResult.close();
             } 
             catch (SQLException ex){
                 oFunc.SubSistemaMensajeInformacion(ex.toString());

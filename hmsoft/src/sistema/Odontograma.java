@@ -1727,6 +1727,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                         txtNorden.setEditable(false);
                         FechaOdontograma.requestFocusInWindow();
+                        oConn.setResult.close();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
@@ -2100,6 +2101,11 @@ int seleccion = JOptionPane.showOptionDialog(
                 txtNorden.setEditable(true);
                 txtNorden.requestFocus();
                 CargarDatos("");
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
               }else {oFunc.SubSistemaMensajeError("No se pudo Agregar Registro Intente Nuevamente");
              }
           
@@ -2232,6 +2238,11 @@ int seleccion = JOptionPane.showOptionDialog(
                 txtNorden.setEditable(true);
                 txtNorden.requestFocus();
                 CargarDatos("");
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+            }
               }else {oFunc.SubSistemaMensajeError("No se pudo Agregar Registro Intente Nuevamente");
              }
     }
@@ -2403,6 +2414,7 @@ int seleccion = JOptionPane.showOptionDialog(
                         txtNormal.setText(oConn.setResult.getString("txtnormales"));
                         txtCorona.setText(oConn.setResult.getString("txtcoronas"));
                         txtObservaciones.setText(oConn.setResult.getString("txtobservaciones"));
+                        oConn.setResult.close();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }

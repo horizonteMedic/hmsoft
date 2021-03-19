@@ -1004,6 +1004,7 @@ clsConnection oConn = new clsConnection();
                         txtConclusionesRadiograficas.setText(oConn.setResult.getString("txtconclusionesradiograficas"));
                         txtObservacionesrt.setText(oConn.setResult.getString("txtobservacionesrt"));
                         txtCamposPulm.setText(oConn.setResult.getString("txtcampospulm"));
+                        oConn.setResult.close();
                       }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
@@ -1068,8 +1069,18 @@ clsConnection oConn = new clsConnection();
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     void AddNorden(){
@@ -1114,6 +1125,11 @@ clsConnection oConn = new clsConnection();
                         FechaNacimiento.setDate(null);
                         CargarDatos("");
                         Limpiar();
+                        try {
+                            oConn.setResult.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
                     }else {oFunc.SubSistemaMensajeError("No se pudo Agregar Registro Intente Nuevamente");
                     }
@@ -1146,7 +1162,7 @@ boolean bResultado=true;
                         oPe.fecha(FechaExamen);
                         defecto();
                         txtNumero.setEditable(false);
-                        
+                        oConn.setResult.close();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
