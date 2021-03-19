@@ -1547,7 +1547,7 @@ private void Limpiar(){
 //             txtNorden.setText(null);
                 }
                 // Cierro los Resultados
-                oConn.sqlStmt.close();
+                oConn.setResult.close();
             } catch (SQLException ex) {
             }
         }
