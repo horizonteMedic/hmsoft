@@ -704,7 +704,7 @@ cboReferido.requestFocusInWindow();
         if (oConn.FnBoolQueryExecuteUpdate(insert.concat(" ) ") +values.concat(" ) "))){
             bResult = true;
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -893,9 +893,9 @@ public void sumar(){
                          txtCodServicio.setText(oConn.setResult.getString("cod_servicio"));           
                          txtPrecioT.setText(oConn.setResult.getString("precio"));  
                          txtUnidad.setText(oConn.setResult.getString("unidad")); 
-                         oConn.setResult.close();
+                         
                  }
-                 
+                 oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -1069,9 +1069,9 @@ final void AutoNatural(){
               CargarServicios();
                 Fecha();
                 txtNroTicket.requestFocus();
-                oConn.setResult.close();
-
             } 
+            oConn.setResult.close();
+
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
         }
@@ -1087,9 +1087,9 @@ final void AutoNatural(){
               CargarServicios();
                 Fecha();
                 txtNroTicket.requestFocus();
-                oConn.setResult.close();
 
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
         }
@@ -1104,9 +1104,8 @@ final void AutoNatural(){
               CargarServicios();
                 Fecha();
                 txtNroTicket.requestFocus();
-                oConn.setResult.close();
-
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
         }
