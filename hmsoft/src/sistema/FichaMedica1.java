@@ -37,7 +37,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
     javax.swing.ImageIcon oNo = null;
     boolean ordenVer=true;
 
-    public FichaMedica1() {
+        public FichaMedica1() {
         initComponents();
         jtFichaMedica.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/id.png")));
         jtFichaMedica.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/invoice.png")));
@@ -6031,7 +6031,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                     Busca();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -6287,7 +6287,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
                     }    

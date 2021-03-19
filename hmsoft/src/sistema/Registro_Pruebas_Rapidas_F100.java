@@ -1545,7 +1545,7 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Registro_Pruebas_Rapidas_F100.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1645,7 +1645,7 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                         imprimir();
                         limpiar();
                         try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Registro_Pruebas_Rapidas_F100.class.getName()).log(Level.SEVERE, null, ex);
                         }

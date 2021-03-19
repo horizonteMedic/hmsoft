@@ -1746,6 +1746,11 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu3.add(jMenuItem1);
 
         jMenuItem2.setText("Reporte por meses");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         MenuOcupacional.add(jMenu3);
@@ -3965,6 +3970,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         objeto.setVisible(true);
 
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));

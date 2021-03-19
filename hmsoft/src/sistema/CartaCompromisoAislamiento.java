@@ -329,7 +329,7 @@ private boolean Grabar() throws SQLException{
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                        try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(CartaCompromisoAislamiento.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -434,7 +434,7 @@ private boolean Grabar() throws SQLException{
             imprimir();
             limpiar();
             try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                  } catch (SQLException ex) {
                      Logger.getLogger(CartaCompromisoAislamiento.class.getName()).log(Level.SEVERE, null, ex);
             }

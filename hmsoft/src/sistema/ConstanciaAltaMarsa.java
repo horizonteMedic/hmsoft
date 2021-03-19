@@ -741,7 +741,7 @@ private boolean Grabar() throws SQLException{
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                        try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -927,7 +927,7 @@ public void calcularDias(){
             imprimir();
             limpiar();
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
             }

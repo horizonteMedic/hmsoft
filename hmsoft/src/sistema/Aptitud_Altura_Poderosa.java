@@ -1378,7 +1378,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     
                    bResult = true;
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Aptitud_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1574,7 +1574,7 @@ private void Limpiar(){
             imprimir();
             Limpiar();
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Aptitud_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
             }

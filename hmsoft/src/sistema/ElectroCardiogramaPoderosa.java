@@ -1358,6 +1358,7 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("ElectroCardiograma:" + ex.getMessage().toString());
         } }
@@ -1828,6 +1829,7 @@ dispose();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("ElectroCardiograma:" + ex.getMessage().toString());
         } }
@@ -2265,6 +2267,11 @@ private void reporte(Integer cod){
                 txtNorden.requestFocus();
                 //sbCargarDatosInformePsicologico("");
                 limpiar();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ElectroCardiogramaPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
             }else{oFunc.SubSistemaMensajeError("Ingrese Información Faltante");}
@@ -2289,6 +2296,11 @@ public void Actualizar(){
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ElectroCardiogramaPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

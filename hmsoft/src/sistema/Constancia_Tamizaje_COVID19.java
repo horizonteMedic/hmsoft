@@ -719,7 +719,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     
                    bResult = true;
                    try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                          Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -742,7 +742,7 @@ public void Actualizar(){
             imprimir();
             Limpiar();
             try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                          Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
                     }

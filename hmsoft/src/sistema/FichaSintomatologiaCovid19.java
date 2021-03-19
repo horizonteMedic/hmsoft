@@ -1503,7 +1503,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                         imprimir();
                         limpiar();
                         try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -1587,7 +1587,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                          Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
                     }

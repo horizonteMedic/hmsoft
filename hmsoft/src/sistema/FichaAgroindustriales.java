@@ -93,6 +93,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 txt.setText("POR PASAR");
                 txt.setForeground(new java.awt.Color(204, 0, 0));
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             Logger.getLogger(Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -4413,6 +4414,12 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         + " WHERE cod_anexo ='" +num+ "' RETURNING cod_anexo";
         if (oConn.FnBoolQueryExecute(sql)) {
             oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+            try {
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo eliminar");
         }
@@ -5053,6 +5060,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -5418,6 +5426,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -5799,7 +5808,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 if (oConn.FnBoolQueryExecute(sql)) {
                     bResult = true;
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                    
+                    oConn.sqlStmt.close();
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
                 }
@@ -5835,6 +5844,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                  } else {
                      oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
                  }
+               oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -6058,10 +6068,12 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 }
                 //oFunc.SubSistemaMensajeInformacion(insert.concat(")") + values.concat(")"));
                 if (oConn.FnBoolQueryExecute(insert.concat(")") + values.concat(") RETURNING cod_anexo"))) {
-                    oConn.setResult.next();
+//                    oConn.setResult.next();
                     num = Integer.valueOf(oConn.setResult.getString("cod_anexo"));
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
+                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -6724,6 +6736,7 @@ public static int calcularEdad(String fecha) {
                  } else {
                      oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
                  }
+               oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -6807,10 +6820,8 @@ public boolean OrdenExiste1()
                         }
                  }
        
-                else{oFunc.SubSistemaMensajeError("Falto Llenar algo");
-                          
-                 //}
-                   
+                else{oFunc.SubSistemaMensajeError("Falto Llenar algo");                         
+                 //}                   
     } 
         
 }
@@ -6884,7 +6895,11 @@ txtDiasDesanso.setText(null);
                     // Ejecuta la Sentencia
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
-                        
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
+                }
                     }
                   }
          return bResult;

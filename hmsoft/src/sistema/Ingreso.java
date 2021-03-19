@@ -487,7 +487,7 @@ private void CargarSedes(){
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                 oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {

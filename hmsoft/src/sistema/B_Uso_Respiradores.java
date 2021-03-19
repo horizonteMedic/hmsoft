@@ -3880,6 +3880,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -4242,6 +4243,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -4449,6 +4451,11 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                 
              oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
            Limpiar();
+           try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
@@ -4594,6 +4601,11 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imp();
             Limpiar();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -4633,11 +4645,12 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
-        
     }
+      
    public void imp(){
 if (imprimir1(Integer.valueOf(txtNorden.getText()))){
     if(imprimir2(Integer.valueOf(txtNorden.getText()))){

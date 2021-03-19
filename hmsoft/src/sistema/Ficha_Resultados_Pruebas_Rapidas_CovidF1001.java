@@ -2557,7 +2557,7 @@ String sed="";
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -2705,7 +2705,7 @@ String sed="";
                         imprimir();
                         limpiar();
                         try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
                         }

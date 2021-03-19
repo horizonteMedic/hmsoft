@@ -371,7 +371,7 @@ jComboBox1.addItem("NO REACTIVO");
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                      Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -402,7 +402,7 @@ jComboBox1.addItem("NO REACTIVO");
                     
                    bResult = true;
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                      Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
                 }

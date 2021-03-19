@@ -1346,6 +1346,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
                 }
@@ -1538,6 +1539,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
             }
@@ -1553,7 +1555,7 @@ public void direccion(){
                        txtDireccion.setText(oConn.setResult.getString("direccion_clinica"));
                        }
                         
-                    
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo c:" + ex.getMessage().toString());
         }
@@ -1904,7 +1906,12 @@ private void print(Integer cod){
        if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
            imprimir();
-               bResultado = true;      
+               bResultado = true;  
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+     }
                 }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
     }
@@ -1943,6 +1950,11 @@ return bResultado;
             
              txtNorden.setEnabled(true);
              txtNorden.requestFocus();
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+         }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

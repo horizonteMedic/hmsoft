@@ -1393,7 +1393,7 @@ public class IndicacionesMedicas extends javax.swing.JInternalFrame {
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(IndicacionesMedicas.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1451,7 +1451,7 @@ public class IndicacionesMedicas extends javax.swing.JInternalFrame {
                         imprimir();
                         limpiar(); 
                         try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(IndicacionesMedicas.class.getName()).log(Level.SEVERE, null, ex);
                         }

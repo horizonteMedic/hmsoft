@@ -2284,7 +2284,7 @@ sed=ads.nombresede;
                    bResult = true;
                  oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                  try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2327,7 +2327,7 @@ sed=ads.nombresede;
           //  imprimir();
             limpiar();
             try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2435,6 +2435,20 @@ negarcheks();
                             + "Especificidad : 97.3 %");
         
         }
+        if(cboMarca4.getSelectedItem().toString().contains("SARS-COV-2 ANTIGEN RAPID TEST KIT"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.3% \n"
+                            + "Especificidad : 97.3 %");
+        
+        }
+        if(cboMarca4.getSelectedItem().toString().contains("LEPU MEDICAL"))
+        {
+        jTextAreaIgm3.setText("Metodo de Detección de ácidos nucleicos\n"
+                            + "Sensibilidad  : 92.00% \n"
+                            + "Especificidad : 99.26%");
+        
+        }
               if(cboMarca4.getSelectedItem().toString().contains("LABNOVATION"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
@@ -2479,7 +2493,7 @@ negarcheks();
                             + "Sensibilidad  : 92.3% \n"
                             + "Especificidad : 100%");
         }   
-         if(cboMarca4.getSelectedItem().toString().contains("VIVA DIAG SARS-COV-2 AG RAPID TEST"))
+         if(cboMarca4.getSelectedItem().toString().contains("VIVADIAG SARS-COV-2 AG RAPID TEST"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad  : 95.04% \n"
@@ -3234,7 +3248,7 @@ limpiar2();
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
             "               WHERE n.n_orden ='"+txtNordenIn.getText() +"'";
             oConn.FnBoolQueryExecute(Sql);
-            try {
+            try {   
                 if (oConn.setResult.next()) {
                     txtNombresIn.setText(oConn.setResult.getString("nombre"));
                     txtDniIn.setText(oConn.setResult.getString("cod_pa"));
@@ -3700,7 +3714,7 @@ public void  habilitarPc(){
             negarPc();
             jTextFieldSaturacion.setText("");
           //  System.out.println(sql2);
-        oConn.FnBoolQueryExecute(sql2);
+            oConn.FnBoolQueryExecute(sql2);
           agregarSimtocasPc();
         }
         else
@@ -3998,6 +4012,7 @@ public void  habilitarPc(){
             {
                 veDats[i]=lista.get(i).toString();
             }
+            oConn.setResult.close();
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -4229,7 +4244,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
 //             txtNorden.setText(null);
             }
             else
-       oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
+            oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
 
             oConn.setResult.close();
         } catch (SQLException ex) {
@@ -4300,7 +4315,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    bResult = true;
                    
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4331,7 +4346,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    bResult = true;
                    
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4359,7 +4374,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    bResult = true;
                    
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4386,7 +4401,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    bResult = true;
                    
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4413,7 +4428,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    bResult = true;
                    
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4442,7 +4457,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 imprimirIn();
               //  Limpiar();
               try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4475,7 +4490,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 imprimirIn1();
                 //Limpiar();
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4504,7 +4519,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 imprimirIn2();
                 limpiar2();
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4533,7 +4548,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 imprimirIn3();
                 limpiar3();
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4571,7 +4586,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                             }
                          }
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }         

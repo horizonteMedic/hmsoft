@@ -101,7 +101,11 @@ public class clsConnection {
             setResult= sqlStmt.executeQuery (strQuery);            
             
             // Retorna que pudo ejecutar
+
+//            sqlStmt.close();
+
            //         sqlStmt.close();
+
 
             return true;
 
