@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -315,6 +316,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                oConn.setResult.close();               
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
        
@@ -363,8 +365,6 @@ private boolean Grabar() throws SQLException{
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                }
-              
-              
                 return bResult;       
         }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -428,6 +428,7 @@ private boolean Grabar() throws SQLException{
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());
             }

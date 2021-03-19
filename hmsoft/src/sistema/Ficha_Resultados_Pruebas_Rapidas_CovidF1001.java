@@ -1939,6 +1939,7 @@ String sed="";
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro en Laboratorio");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2134,6 +2135,7 @@ String sed="";
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro algun examen");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2333,6 +2335,7 @@ String sed="";
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro como usuario");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }

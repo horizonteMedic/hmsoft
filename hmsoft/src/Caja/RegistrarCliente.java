@@ -79,7 +79,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     DefaultTableModel model;
      // String[]empresas = new String[]{};
     // String[]contratas = new String[]{};
-    public RegistrarCliente() {
+    public RegistrarCliente()  {
         super();
         initComponents();
        
@@ -128,7 +128,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         ocultarOpcionesCovid();
         autorizarCertificado();
         CargarinfoHotel();
-             cargarContratas();
+     // cargarContratas();
         cargarEmpresas();
         cargarProtocolos();
                  AutoCompleteDecorator.decorate(this.jComboBoxProtocolos);
@@ -171,7 +171,7 @@ try {
 URL url = new URL("https://api.reniec.cloud/dni/")
 ; } catch (MalformedURLException e) { }
 }
-   private void cargarContratas(){
+   private void cargarContratas() {
       String sQuery;        
         // Prepara el Query
         sQuery ="SELECT UPPER(razon_contrata) AS razon_contrata  FROM contratas;";
@@ -189,7 +189,7 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -197,6 +197,7 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                 oFunc.SubSistemaMensajeInformacion(ex.toString());
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
         }
         
         // selecciona
@@ -220,7 +221,7 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -254,7 +255,7 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -268,12 +269,11 @@ URL url = new URL("https://api.reniec.cloud/dni/")
    
         //cboEmpresas.setSelectedIndex(0);
 }
-    public void spFuncionHistorialClienteProtocolo(){
+    public void spFuncionHistorialClienteProtocolo() {
          
       String sql="select spFuncionHistorialClienteProtocolo("+num+","+pkprotocolo+","
              +operacion+")";
     oConn.FnBoolQueryExecute(sql);
-       
         System.out.println(sql);
         operacion=0;
     }    
@@ -353,7 +353,7 @@ public void valorsede(){
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -409,6 +409,7 @@ public void valorsede(){
         addAlturaPo.setVisible(true);
 
     }
+    
 public void ocultarOpcionesCovid(){
 this.chkAltaCovid1.setVisible(false);
 this.chkAltaCovid2.setVisible(false);
@@ -2960,12 +2961,13 @@ this.chkAltaTrabCal.setVisible(false);
                 if (oConn.setResult.next()) {
                     txtPrecio.setText(oConn.setResult.getString("precio_examen"));
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
 
                 oFunc.SubSistemaMensajeError(ex.toString());
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
         }
     }//GEN-LAST:event_cboExamenMedicoPopupMenuWillBecomeInvisible
 
@@ -3145,6 +3147,7 @@ public void agregarAltaEpidemiologica(String numero){
                     txtDniAlta.setEditable(true);
                     txtDniAlta.requestFocus();
                     sbCargarOcupacional("");
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -3695,8 +3698,10 @@ operacion=2;
                     operacion=0;
                     }
                     else
-                    {calcularProtocolos();
-                    spFuncionHistorialClienteProtocolo();}
+                    {
+                        calcularProtocolos();
+                        spFuncionHistorialClienteProtocolo();
+                    }
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
@@ -3731,7 +3736,7 @@ operacion=2;
                     num = oConn.setResult.getString("n_orden");
 
                     oFunc.SubSistemaMensajeInformacion("Su numero de Orden es :** " + num + " **");
-
+                    oConn.setResult.close();
                     //sbCargarOcupacional("");
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -4240,7 +4245,7 @@ public boolean OrdenExiste(String tabla,String orden)
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -4274,7 +4279,7 @@ private void CargarTipoExamenes(){
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -4389,7 +4394,7 @@ private void CargarTipoExamenes(){
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -5290,6 +5295,7 @@ private void CargarTipoExamenes(){
                 while (oConn.setResult.next()) {
                     txtDni.setText(oConn.setResult.getString("aleatorio"));
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
 
                 JOptionPane.showMessageDialog(null, ex);

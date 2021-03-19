@@ -1270,6 +1270,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
                     } catch (SQLException ex) {
                         oFunc.SubSistemaMensajeInformacion("Evaluacion Psicologica:" + ex.getMessage().toString());
                     }
@@ -1383,6 +1384,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Evaluacion Psicologica:" + ex.getMessage().toString());
             }

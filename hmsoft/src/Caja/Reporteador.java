@@ -107,7 +107,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                 oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -138,7 +138,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -219,7 +219,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                    oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -483,6 +483,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                          vSql+= ",n.precio_po::numeric AS PRECIO "
                                  +", (case when n.cod_sede=1 then 'TRUJILLO' "
                                  + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                                 + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
                                   + " WHEN n.cod_sede=3 then 'Huancayo' "
                                  + " end ) as SEDE "
                 + "FROM n_orden_ocupacional AS n "
@@ -2052,6 +2053,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "			(case when c.txtobservaciones is not null THEN c.txtobservaciones END )) as observaciones\n" +
                      ", (case when n.cod_sede=1 then 'TRUJILLO' "
                                  + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                                 + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
                                   + " WHEN n.cod_sede=3 then 'Huancayo' "
                                  + " end ) as SEDE , n.nom_examen "+
                  
@@ -2171,6 +2173,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "			(case when f.txtdiagnostico is not null THEN f.txtdiagnostico END )) as Diagnostico\n" +  
                      ", (case when n.cod_sede=1 then 'TRUJILLO' "
                                  + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                                  + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
                                   + " WHEN n.cod_sede=3 then 'Huancayo' "
                                  + "end ) as SEDE "+
 "  FROM datos_paciente AS d\n" +

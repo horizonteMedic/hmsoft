@@ -978,6 +978,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1095,6 +1096,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro en laboratorio");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1178,6 +1180,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro como usuario");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }

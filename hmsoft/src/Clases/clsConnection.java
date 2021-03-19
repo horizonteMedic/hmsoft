@@ -101,6 +101,7 @@ public class clsConnection {
             setResult= sqlStmt.executeQuery (strQuery);            
             
             // Retorna que pudo ejecutar
+//            sqlStmt.close();
             return true;
             
         } 
@@ -138,6 +139,7 @@ public class clsConnection {
             intResult =sqlStmt.executeUpdate(strQuery);            
             
             // Retorna que pudo ejecutar
+//            sqlStmt.close();
             return true;
             
         } 

@@ -370,13 +370,15 @@ jTextField2.setVisible(false);
              sin=oConn.setResult.getBoolean("chk_sintomatico");
             
             }
-            oConn.setResult.close();
+           
            if(asin)
                jTextresultado.setText("Asintomatico");
            if(sin)
                 jTextresultado.setText("Sintomatico");
-                    oConn.setResult.close();
-        } catch (SQLException ex) {
+                    
+           oConn.setResult.close();
+        } catch (SQLException ex) 
+        {
         }
     }
     
@@ -665,6 +667,7 @@ int seleccion = JOptionPane.showOptionDialog(
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
 

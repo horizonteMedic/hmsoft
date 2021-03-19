@@ -581,8 +581,11 @@ public void  altasinAEV2(){
                         sbCargarDatosEmpresa();
                          txtDiasDesc.requestFocus();
                        }else{
-altasinAEV2();                    }
-            } catch (SQLException ex) {
+                                altasinAEV2();                    
+                    }
+                  oConn.setResult.close();
+            }
+                catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
 
 }
@@ -622,8 +625,11 @@ altasinAEV2();                    }
                         sbCargarDatosEmpresa();
                          txtDiasDesc.requestFocus();
                        }else{
-altasinAEV2();                    }
-            } catch (SQLException ex) {
+                                altasinAEV2();                    
+                            }
+                    oConn.setResult.close();
+            } 
+                catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
     }
 
@@ -670,6 +676,7 @@ altasinAEV2();                    }
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
        
@@ -829,6 +836,7 @@ else
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());
             }
