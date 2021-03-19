@@ -393,7 +393,7 @@ private boolean Grabar() throws SQLException{
             
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
-                       oConn.setResult.close();
+                       oConn.sqlStmt.close();
                }
               
               

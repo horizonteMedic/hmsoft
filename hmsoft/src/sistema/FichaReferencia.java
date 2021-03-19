@@ -1773,7 +1773,7 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
           oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
        limpiar();
        try {
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1860,7 +1860,7 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                     imprimir();
                     limpiar();   
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
                     }  

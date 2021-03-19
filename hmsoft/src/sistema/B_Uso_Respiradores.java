@@ -4602,7 +4602,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
             imp();
             Limpiar();
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
             }

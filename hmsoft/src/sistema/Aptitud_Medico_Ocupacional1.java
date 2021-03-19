@@ -949,6 +949,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se levanto la Observacion con Éxito");
+           try {
+               oConn.sqlStmt.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(Aptitud_Medico_Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+           }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -966,7 +971,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
 //                   bResult = true;
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Aptitud_Medico_Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -987,7 +992,7 @@ public void Actualizar(){
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Aptitud_Medico_Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
                     }

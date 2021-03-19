@@ -4416,6 +4416,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
             oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
             try {
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -5807,7 +5808,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 if (oConn.FnBoolQueryExecute(sql)) {
                     bResult = true;
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
                 }
@@ -6072,6 +6073,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -6894,7 +6896,7 @@ txtDiasDesanso.setText(null);
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
                 }

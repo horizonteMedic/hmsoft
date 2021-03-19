@@ -3640,7 +3640,7 @@ void Agregar(){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(b_Ficha_Sas.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -3746,7 +3746,7 @@ String values="UPDATE ficha_sas "
         if (oConn.FnBoolQueryExecuteUpdate(values)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(b_Ficha_Sas.class.getName()).log(Level.SEVERE, null, ex);
             }

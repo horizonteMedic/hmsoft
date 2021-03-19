@@ -2248,7 +2248,7 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedicaMarsa.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -2340,7 +2340,7 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedicaMarsa.class.getName()).log(Level.SEVERE, null, ex);
                     }

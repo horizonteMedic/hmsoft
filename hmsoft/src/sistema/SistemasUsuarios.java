@@ -108,7 +108,11 @@ public class SistemasUsuarios extends javax.swing.JFrame {
            else
                oConn.SubRollBack();
             
-           
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else
             // realiza el rollback
@@ -169,7 +173,7 @@ public class SistemasUsuarios extends javax.swing.JFrame {
                oConn.SubRollBack();
             
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -447,7 +451,11 @@ private boolean fnBoolInsertaRoleProcesos()
                 
                 if (! oConn.FnBoolQueryExecuteUpdate(sQuery))
                     bResult = false;
-                
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
         }
@@ -1102,6 +1110,7 @@ private boolean fnBoolInsertaRoleProcesos()
                     
                     FnBoolExisteUsuario();
                        }
+                       oConn.setResult.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                 }

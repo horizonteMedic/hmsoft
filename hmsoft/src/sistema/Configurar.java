@@ -6,6 +6,9 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -367,6 +370,11 @@ public class Configurar extends javax.swing.JInternalFrame {
     String oSql="INSERT INTO "+tabla.toString()+"(desde, hasta,"+into.toString()+" ) VALUES ('"+desde.getText().toString()+"','"+hasta.getText().toString()+"','"+serie.getText().toString()+"')";
     if (oConn.FnBoolQueryExecuteUpdate(oSql)){
          oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Configurar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }else{
         oFunc.SubSistemaMensajeError("Error registrando la Entrada");
     }
@@ -476,6 +484,7 @@ public class Configurar extends javax.swing.JInternalFrame {
                        
                 }
              tabla.setModel(modelo);
+             oConn.setResult.close();
         } catch (Exception e) {
         }
     

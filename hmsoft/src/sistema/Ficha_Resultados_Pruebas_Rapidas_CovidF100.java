@@ -2551,7 +2551,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF100.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -2699,7 +2699,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                         imprimir();
                         limpiar();
                         try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF100.class.getName()).log(Level.SEVERE, null, ex);
                         }

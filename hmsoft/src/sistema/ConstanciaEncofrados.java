@@ -338,7 +338,7 @@ private boolean Grabar() throws SQLException{
         boolean bResult = false;
               
        String strSqlStmt ="INSERT INTO constancia_encofrados(\n" +
-"            n_orden, fecha_examen, chkapto, chknoapto)";       
+                          "n_orden, fecha_examen, chkapto, chknoapto)";       
             strSqlStmt+= "values ('"+ txtNorden.getText().toString()+""
                     + "','"+FechaHoy.getDate()
                     + "','"+chkApto.isSelected()
@@ -350,7 +350,7 @@ private boolean Grabar() throws SQLException{
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                        try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                           Logger.getLogger(ConstanciaEncofrados.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -456,7 +456,7 @@ private boolean Grabar() throws SQLException{
             imprimir();
             limpiar();
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ConstanciaEncofrados.class.getName()).log(Level.SEVERE, null, ex);
             }

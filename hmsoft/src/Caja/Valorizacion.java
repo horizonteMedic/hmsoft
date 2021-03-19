@@ -1185,6 +1185,7 @@ boolean bResultado=true;
         if (oConn.FnBoolQueryExecute(sql)) {
          try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+             oConn.setResult.close();
              oConn.sqlStmt.close();
          } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
@@ -1533,6 +1534,7 @@ boolean bResultado=true;
             try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
              oConn.setResult.close();
+             oConn.sqlStmt.close();
          } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -2457,7 +2459,7 @@ public void sbServicioAgrega(){
             bResult = true;
             try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -2514,7 +2516,7 @@ public void sbServicioAgrega(){
                         bResult = true;
                         try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                             } catch (SQLException ex) {
                              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -2563,6 +2565,7 @@ public void sbServicioAgrega(){
             bResult = true;
             try {
              oConn.setResult.close();
+             oConn.sqlStmt.close();
          } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -2605,7 +2608,7 @@ public void sbServicioAgrega(){
                             
                             try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-                                     oConn.setResult.close();
+                                     oConn.sqlStmt.close();
                                 } catch (SQLException ex) {
                                 Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
                                 }

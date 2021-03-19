@@ -1258,7 +1258,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1331,7 +1331,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                         imprimir();
                         limpiar();
                         try {
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
                         }

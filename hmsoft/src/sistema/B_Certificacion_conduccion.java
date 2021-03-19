@@ -2893,6 +2893,11 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
              imprimir();
               oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
            limpiar(); 
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(B_Certificacion_conduccion.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
         }
         }
@@ -3025,7 +3030,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                   imprimir();
                limpiar();   
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(B_Certificacion_conduccion.class.getName()).log(Level.SEVERE, null, ex);
                     }   

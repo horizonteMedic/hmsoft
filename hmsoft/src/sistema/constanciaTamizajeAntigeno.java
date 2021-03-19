@@ -559,7 +559,7 @@ FechaExIn5.setDate(fechaDate);
                     limpiar4();
                 }
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -623,7 +623,7 @@ FechaExIn5.setDate(fechaDate);
                     
                    bResult = true;
                    try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
                 }
