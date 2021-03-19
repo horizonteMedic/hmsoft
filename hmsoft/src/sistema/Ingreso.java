@@ -226,6 +226,11 @@ public final class Ingreso extends javax.swing.JFrame {
         chkSistema.setSelected(true);
         chkSistema.setText("Sistema");
         chkSistema.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        chkSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSistemaActionPerformed(evt);
+            }
+        });
         getContentPane().add(chkSistema, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 57, -1, -1));
 
         btIngreso.add(chkAdmision);
@@ -338,6 +343,10 @@ enter(evt);
     private void cboSedeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboSedeKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboSedeKeyPressed
+
+    private void chkSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSistemaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkSistemaActionPerformed
     public static void main(String args[]) {
              new Ingreso().setVisible(true);
     }

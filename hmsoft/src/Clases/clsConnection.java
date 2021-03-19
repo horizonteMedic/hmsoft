@@ -101,9 +101,14 @@ public class clsConnection {
             setResult= sqlStmt.executeQuery (strQuery);            
             
             // Retorna que pudo ejecutar
+<<<<<<< HEAD
 //            sqlStmt.close();
+=======
+           //         sqlStmt.close();
+
+>>>>>>> 0613911df592bcbbe5581ad5a99363783a1dc525
             return true;
-            
+
         } 
         catch (Exception e) 
         {
@@ -113,6 +118,7 @@ public class clsConnection {
             // Retorna false
             return false;
         }
+
     }
 
     

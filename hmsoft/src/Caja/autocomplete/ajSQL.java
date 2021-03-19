@@ -38,6 +38,7 @@ public class ajSQL {
                 xTmp=oConn.setResult.getString(1);
                 break;
             }
+        oConn.setResult.close();
         } catch (Exception e)
         {
             JOptionPane.showMessageDialog(null, "No fue posible procesar el sql, por favor verifique su estructura", "Error de integridad", 0);
