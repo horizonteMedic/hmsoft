@@ -3690,10 +3690,11 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
                         chkPC9.setSelected(oConn.setResult.getBoolean("chkpc9"));
                         
                         FechaExamen.setDate(oConn.setResult.getDate("fecha_cuestionario"));
-                        oConn.setResult.close();
+                        
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Audiometria:" + ex.getMessage().toString());
          
@@ -3809,6 +3810,7 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Cuestionario Nordico:" + ex.getMessage().toString());
             }
@@ -3866,6 +3868,11 @@ void Guardar(){
                 oFunc.SubSistemaMensajeInformacion("Agregado correctamente");
                 limpiar();
                 txtNorden.requestFocus();
+                try {
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+                }
                     
                }
         }  
@@ -3930,6 +3937,11 @@ private void Actualizar(){
             imp();  
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             limpiar();
+        try {
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

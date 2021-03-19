@@ -1727,10 +1727,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                         txtNorden.setEditable(false);
                         FechaOdontograma.requestFocusInWindow();
-                        oConn.setResult.close();
+                        
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
        }
@@ -2102,7 +2103,7 @@ int seleccion = JOptionPane.showOptionDialog(
                 txtNorden.requestFocus();
                 CargarDatos("");
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2239,7 +2240,7 @@ int seleccion = JOptionPane.showOptionDialog(
                 txtNorden.requestFocus();
                 CargarDatos("");
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2418,6 +2419,7 @@ int seleccion = JOptionPane.showOptionDialog(
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
     
