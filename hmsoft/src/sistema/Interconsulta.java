@@ -938,6 +938,7 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
                 }
@@ -1029,6 +1030,7 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Interconsulta:" + ex.getMessage().toString());
         }
@@ -1105,6 +1107,7 @@ public void direccion(){
                     if (oConn.setResult.next()) {
                        txtDireccion.setText(oConn.setResult.getString("direccion_clinica"));
                        }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha interconsulta:" + ex.getMessage().toString());
         }
@@ -1282,7 +1285,12 @@ public void direccion(){
 //               oFunc.SubSistemaMensajeInformacion(Sql);
        if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-               bResultado = true;      
+               bResultado = true;  
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
+     }
                 }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
     }
@@ -1311,6 +1319,11 @@ return bResultado;
             
              txtNorden.setEnabled(true);
              txtNorden.requestFocus();
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
+         }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Actualizar La Entrada");
         }

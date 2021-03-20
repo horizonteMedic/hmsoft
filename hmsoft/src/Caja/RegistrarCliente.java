@@ -2724,8 +2724,7 @@ this.chkAltaTrabCal.setVisible(false);
                 btnLimpiar.setEnabled(false);
 
                 btnGrabar.setEnabled(true);
-                oConn.setResult.close();
-
+                
             } else {
                 habilitar();
                 //txtDni.setText("");
@@ -2734,8 +2733,8 @@ this.chkAltaTrabCal.setVisible(false);
                 comunirApiReniecDesconocida();
                 btnLimpiar.setEnabled(true);
                 deshabilitarbotones();
-                oConn.setResult.close();
             }
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Cod Paciente:" + ex.getMessage().toString());     
         }
@@ -3506,8 +3505,9 @@ public void cargarDatosPaciente(){
                     }
                     txtDniAlta.setEditable(false);
                    // hBotones(true);
-                    oConn.setResult.close();
+                   
                 }
+                 oConn.setResult.close();
             } catch (Exception e) {
             }
 
@@ -3618,8 +3618,8 @@ public void cargarDatosPaciente(){
                     }
                     txtDniAlta.setEditable(false);
                     hBotones(true);
-                    oConn.setResult.close();
-                }
+                    
+                }oConn.setResult.close();
             } catch (Exception e) {
             }
         }
@@ -3847,8 +3847,9 @@ operacion=2;
                     }
                     txtDniAlta.setEditable(false);
                     hBotones(true);
-                    oConn.setResult.close();
-                }
+                    
+                } 
+                oConn.setResult.close();
             } catch (Exception e) {
             }
         }
@@ -3938,7 +3939,7 @@ operacion=2;
             try {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
@@ -3963,7 +3964,7 @@ operacion=2;
             try {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
@@ -3987,7 +3988,7 @@ operacion=2;
             try {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
@@ -4011,7 +4012,7 @@ operacion=2;
             try {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
@@ -4039,7 +4040,7 @@ operacion=2;
                       oFunc.SubSistemaMensajeInformacion("Eliminado Correctamente");
                       bResultado = true;
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -4066,7 +4067,7 @@ operacion=2;
         try {
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                 oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             }else{
                 oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
             }
@@ -4115,7 +4116,7 @@ public boolean OrdenExiste(String tabla,String orden)
              try {
                  if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                      oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                     oConn.setResult.close();
+                     oConn.sqlStmt.close();
                  }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                  }
@@ -4143,7 +4144,7 @@ public boolean OrdenExiste(String tabla,String orden)
             try {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
@@ -4167,7 +4168,7 @@ public boolean OrdenExiste(String tabla,String orden)
             try {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
@@ -4195,7 +4196,7 @@ public boolean OrdenExiste(String tabla,String orden)
             try {
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
@@ -4869,7 +4870,7 @@ private void CargarTipoExamenes(){
             ckbSinDni.setSelected(false);
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -911,7 +911,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
         if (oConn.FnBoolQueryExecuteUpdate(insert + values)){
             bResult = true;
             try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -974,7 +974,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                         bResult = true;
                         try {
                             // break;
-                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -1224,7 +1224,7 @@ boolean bResultado=true;
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 try {
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1315,12 +1315,6 @@ System.out.println(strSqlStmt.concat(") ") + Query.concat(")"));
                     //Limpiar();
                     imprimir();
                     CargarId();
-                    try {
-             
-                            oConn.setResult.close();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
-                        }
                  try {
                      oConn.sqlStmt.close();
                  } catch (SQLException ex) {
@@ -1499,9 +1493,8 @@ private void bNombre(JTextField cod){
                 txtNombre.setEditable(false);
                 cboTipoVenta.setSelectedIndex(0);
                 cboServicios.setSelectedIndex(-1);
-               oConn.setResult.close();
-
-            } 
+              } 
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ticket: " + ex.getMessage().toString());
         }
@@ -1756,17 +1749,15 @@ public void sumar(){
                  {       
                          txtCodServicio.setText(oConn.setResult.getString("cod_servicio"));           
                          txtPrecioT.setText(oConn.setResult.getString("precio"));  
-                         txtUnidad.setText(oConn.setResult.getString("unidad")); 
-                         oConn.setResult.close();
+                         txtUnidad.setText(oConn.setResult.getString("unidad"));     
                  }
-                 
-            } 
-            catch (SQLException ex) 
-            {
-                //JOptionPane.showMessageDialorootPane,ex);
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                 oConn.setResult.close();
+                } catch (SQLException ex) 
+                {
+                    //JOptionPane.showMessageDialorootPane,ex);
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+                }
            
            }
  } 

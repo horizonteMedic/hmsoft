@@ -3591,6 +3591,7 @@ private boolean GrabarAPDetalle() {
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
                 try {
+                    
                   oConn.sqlStmt.close();
       
                 } catch (SQLException ex) {

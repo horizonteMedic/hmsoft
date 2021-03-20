@@ -1502,6 +1502,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
         }}else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1706,6 +1707,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo 16A:" + ex.getMessage().toString());
         }
@@ -1767,7 +1769,7 @@ String di="select direccion_clinica from datos_clinica";
                        txtDireccion.setText(oConn.setResult.getString("direccion_clinica"));
                        }
                         
-                    
+                    oConn.setResult.next();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
         }
@@ -2087,6 +2089,7 @@ private void print(Integer cod){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2125,7 +2128,11 @@ private void print(Integer cod){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                bResultado = true;        
             
-             
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
+     }
                
                 }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
@@ -2449,7 +2456,11 @@ if(buttonGroup17.isSelected(null)){oFunc.SubSistemaMensajeError("Falta Seleccion
              
              txtNorden.setEnabled(true);
              txtNorden.requestFocus();
-             
+             try {
+                 oConn.sqlStmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
+             }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

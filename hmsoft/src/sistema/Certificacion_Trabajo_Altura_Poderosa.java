@@ -2906,7 +2906,7 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
                limpiar();   
              oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
              try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Certificacion_Trabajo_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -4222,7 +4222,7 @@ int seleccion = JOptionPane.showOptionDialog(
                   imprimir();
                limpiar();   
                try {
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Certificacion_Trabajo_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
             }    

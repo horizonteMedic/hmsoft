@@ -1507,6 +1507,7 @@ public final class EmpresasLugaresGeograficos extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
         
@@ -2130,6 +2131,7 @@ void limpiar2(){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
         
@@ -2231,6 +2233,7 @@ if(k==10){
                    num = oConn.setResult.getString("cod_ho");
                         
                    bResult = true;
+                   oConn.setResult.close();
                   
                }
                               
@@ -2250,6 +2253,11 @@ if(k==10){
              strSqlStmt="INSERT INTO historia_oc_detalle(cod_ho) VALUES('"+num+"')";
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                   bResult = true; 
+                 try {
+                     oConn.sqlStmt.close();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+                 }
                 }
          }
          else{    
@@ -2294,6 +2302,11 @@ if(k==10){
                     // Ejecuta la Sentencia
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
+                        try {
+                            oConn.sqlStmt.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
              }
          }
@@ -2880,6 +2893,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    oConn.setResult.next();
                    num = oConn.setResult.getString("cod_ho");  
                    bResult = true;
+                   oConn.setResult.close();
                }          
                 else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}

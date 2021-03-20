@@ -2279,7 +2279,7 @@ String sed="";
                     imprimir();
                     limpiar();
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -2371,7 +2371,7 @@ String sed="";
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
                     try {
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
                     }

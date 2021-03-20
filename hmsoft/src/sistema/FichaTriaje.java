@@ -1217,7 +1217,7 @@ if(k==10){
              txtNumero.requestFocus();
              sbCargarDatosOcupacional("");
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1263,7 +1263,7 @@ if(k==10){
                 txtNumero.requestFocus();
                 sbCargarDatosOcupacional("");
                 try {
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1609,8 +1609,9 @@ boolean bResultado=true;
                     txtDiastolicaTriaje.setText(oConn.setResult.getString("diastolica"));
                     txtFRespiratoriaTriaje.setText(oConn.setResult.getString("f_respiratoria"));
                     txtDiagnostico.setText(oConn.setResult.getString("conclusion"));
-                    oConn.setResult.close();
+                    
                 }
+                oConn.setResult.close();
             } catch (Exception e) {
             }
             
@@ -1802,7 +1803,7 @@ boolean bResultado=true;
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                try {
-                   oConn.setResult.close();
+                   oConn.sqlStmt.close();
                } catch (SQLException ex) {
                    Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
                }

@@ -739,6 +739,7 @@ private boolean Grabar() throws SQLException{
             
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+                       oConn.sqlStmt.close();
                }
               
               
@@ -943,6 +944,11 @@ public void calcularDias(){
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             limpiar();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ConstanciaAltaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

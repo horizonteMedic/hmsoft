@@ -4304,6 +4304,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -4345,6 +4346,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
                 }
@@ -4703,13 +4705,18 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
               {strSqlStmt += ",txtrecomendaciones";Query += ",'"+txtRecomendaciones.getText().toString()+ "'";}
                                          
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
-                  imp();
-               limpiar();   
-             oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");      
-        }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-               }
-        }
+                    imp();
+                    limpiar();   
+                    oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito"); 
+                    try {
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else{
+                    oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                       }
+                }
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
@@ -5425,7 +5432,12 @@ private void printer2(Integer cod){
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query)){
                  oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                   imp();
-               limpiar();   
+                limpiar();   
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
+                }
                    
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");

@@ -863,6 +863,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Oftalmologia:" + ex.getMessage().toString());
                 }
@@ -1115,6 +1116,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 } else {
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Oftalmologia:" + ex.getMessage().toString());
             }
@@ -1269,6 +1271,11 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             oPe.print(Integer.parseInt(sCodigo), "Oftalmologia.jasper", "Ficha Oftalmologíca");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -1569,6 +1576,11 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
 
                 }
             }
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }else{
             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
         }
@@ -1647,6 +1659,11 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
+                }
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
        

@@ -687,7 +687,7 @@ private boolean Grabar() throws SQLException{
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                        try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-                        oConn.setResult.close();
+                        oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                              Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -1065,7 +1065,7 @@ private boolean Grabar() throws SQLException{
             limpiar();
             try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
             }

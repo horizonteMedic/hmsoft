@@ -390,11 +390,10 @@ jTextField2.setVisible(false);
 "from examen_inmunologico as e where n_orden="+txtNorden.getText();
         oConn.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
-            {
-             invalido= oConn.setResult.getBoolean("chkinvalido");
-             igmreactivo=oConn.setResult.getBoolean("chkigm_reactivo");
-            iggreactivo=oConn.setResult.getBoolean("chkigg_reactivo");
+            if (oConn.setResult.next()){
+                invalido= oConn.setResult.getBoolean("chkinvalido");
+                igmreactivo=oConn.setResult.getBoolean("chkigm_reactivo");
+                iggreactivo=oConn.setResult.getBoolean("chkigg_reactivo");
             }
             oConn.setResult.close();
            if(invalido)

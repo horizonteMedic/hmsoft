@@ -110,6 +110,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   oConn.sqlStmt.close();
                }
                 return bResult;       
         }
@@ -5766,6 +5767,7 @@ boolean bResultado=true;
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -5832,7 +5834,11 @@ public void ActualizarIn4(){
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn4();
                 limpiar4();
-
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
@@ -6380,6 +6386,7 @@ public void ActualizarIn4(){
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -6775,6 +6782,7 @@ public void ActualizarIn4(){
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -6822,6 +6830,7 @@ public void ActualizarIn4(){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -7356,6 +7365,11 @@ public void ActualizarIn4(){
                     txtEOrden.setText(txtNorden.getText().toString());
                     Busca();
                     limpiar();
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
                 }
@@ -7393,6 +7407,7 @@ public void ActualizarIn4(){
                  } else {
                      oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
                  }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -7404,6 +7419,7 @@ public void ActualizarIn4(){
             if (oConn.setResult.next()) {
                 FechaFicha.setDate(oConn.setResult.getDate("fecha"));
             }
+            oConn.setResult.close();
         } catch (Exception e) {
         }
     }
@@ -7594,7 +7610,11 @@ public void ActualizarIn4(){
                 if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
-
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -8376,6 +8396,7 @@ public static int calcularEdad(String fecha) {
                  } else {
                      oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
                  }
+                 oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -8460,7 +8481,11 @@ private void Insertar(){
                  if (oConn.FnBoolQueryExecuteUpdate(insert + values)){
              oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
              Limpiar();
-         
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+                }
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
              
@@ -8579,6 +8604,7 @@ public boolean OrdenExiste1()
                         }else{
                             oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                         }
+                        oConn.setResult.close();
                     } catch (SQLException ex) {
                         oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                     }
@@ -8680,6 +8706,7 @@ public boolean OrdenExiste1()
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios)");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
             }
@@ -8705,6 +8732,11 @@ public boolean OrdenExiste1()
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+          try {
+              oConn.sqlStmt.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+          }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

@@ -2144,12 +2144,13 @@ FechaLectura.setDate(fechaDate);
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                         Fecha();
                         radiotorax();
-                        oConn.setResult.close();
+                        
                        }else{
                         txtNorden.setText(null);
                         
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
                 
             oFunc.SubSistemaMensajeInformacion("Error Consulta:" + ex.getMessage().toString());
@@ -2521,6 +2522,7 @@ boolean bResultado=true;
 
 //            oConn.setResult.next();
             bResult = true;
+            oConn.sqlStmt.close();
         }
 
         return bResult;
@@ -2864,6 +2866,11 @@ int seleccion = JOptionPane.showOptionDialog(
             Limpiar();
             
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

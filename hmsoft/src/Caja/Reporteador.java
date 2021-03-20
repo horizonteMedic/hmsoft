@@ -563,8 +563,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                   System.out.println("consulta:"+vSql);         
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
-             {
-             try  {
+                {
+                try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
@@ -696,25 +696,25 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         for (int i = 1; i <= CantidaColumnas; i++) {
                          model.addColumn(rsmt.getColumnLabel(i));
                         }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                       
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                           
-                            Fila[i] = oConn.setResult.getObject(i+1);
+                        while (oConn.setResult.next())
+                        {
+                            Object [] Fila = new Object[CantidaColumnas];
+
+                            for (int i = 0; i < CantidaColumnas; i++) {
+
+                                Fila[i] = oConn.setResult.getObject(i+1);
+                            }
+                            model.addRow(Fila);
                         }
-                        model.addRow(Fila);
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                          tbReporte.setModel(model);
+                         oConn.setResult.close();
+                    } 
+                    catch (SQLException ex) 
+                    {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    tbReporte = autoResizeColWidth(tbReporte, model);
-                      tbReporte.setModel(model);
-                     oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
     
     
@@ -793,8 +793,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
            
                
                      vSql+=" AND\n" +
-"        ((constancia_salud_marsa.fecha_examen BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
-"	or (constancia_salud_marsa1.fecha_examen BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+"        ((n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+"	or (n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
 "						 )";
                   
                       
@@ -804,8 +804,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                   System.out.println("consulta:"+vSql);         
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
-             {
-             try  {
+                {
+                try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
@@ -894,31 +894,31 @@ public class Reporteador extends javax.swing.JInternalFrame {
                    //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
              {
-             try  {
-                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                        int CantidaColumnas = rsmt.getColumnCount();
-                        for (int i = 1; i <= CantidaColumnas; i++) {
-                         model.addColumn(rsmt.getColumnLabel(i));
-                        }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                       
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                           
-                            Fila[i] = oConn.setResult.getObject(i+1);
-                        }
-                        model.addRow(Fila);
-                    }
-                    tbReporte = autoResizeColWidth(tbReporte, model);
-                      tbReporte.setModel(model);
-                     oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                try  {
+                           java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                           int CantidaColumnas = rsmt.getColumnCount();
+                           for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                           }
+                       while (oConn.setResult.next())
+                       {
+                           Object [] Fila = new Object[CantidaColumnas];
+
+                           for (int i = 0; i < CantidaColumnas; i++) {
+
+                               Fila[i] = oConn.setResult.getObject(i+1);
+                           }
+                           model.addRow(Fila);
+                       }
+                       tbReporte = autoResizeColWidth(tbReporte, model);
+                         tbReporte.setModel(model);
+                        oConn.setResult.close();
+                   } 
+                   catch (SQLException ex) 
+                   {
+                       oFunc.SubSistemaMensajeError(ex.toString());
+                       Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                   }
             }
     
     
