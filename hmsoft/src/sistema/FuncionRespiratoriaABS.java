@@ -6,6 +6,8 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -416,6 +418,7 @@ public class FuncionRespiratoriaABS extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Función Respiratoria:" + ex.getMessage().toString());
         }
@@ -531,6 +534,7 @@ public class FuncionRespiratoriaABS extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Función Respiratoria:" + ex.getMessage().toString());
             }
@@ -609,6 +613,11 @@ String values="VALUES ('"+txtNorden.getText()+"'";
          if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))){
                     Limpiar();                
                    oFunc.SubSistemaMensajeInformacion("Ingresado Correctamente");
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FuncionRespiratoriaABS.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                                  
          }       
        }
@@ -630,6 +639,11 @@ private void Actualizar(){
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FuncionRespiratoriaABS.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }

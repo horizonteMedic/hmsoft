@@ -527,6 +527,7 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
             }
@@ -692,6 +693,7 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
         }
@@ -714,7 +716,11 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         Limpiar();
                         CargarDatos("");
-
+                        try {
+                            oConn.sqlStmt.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(AnalisisBioquimico.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }else{
                         oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -751,6 +757,7 @@ if(txtResponsable.getText().isEmpty()){bResultado = false;}
             {
                 veDats[i]=lista.get(i).toString();
             }
+            oConn.setResult.close();
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -853,6 +860,11 @@ private void Actualizar(){
              Limpiar();
              txtNorden.setEnabled(true);
              txtNorden.requestFocus();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AnalisisBioquimico.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -957,32 +969,32 @@ public void CargarDatos(String valor){
             + "WHERE CONCAT(nombres_pa,' ',apellidos_pa) LIKE '%"+valor+"%'";
    }
                 if (oConn.FnBoolQueryExecute(Sql))
-        {
-             try  {
-                
-                while (oConn.setResult.next())
                 {
-                                     
-                    registros[0]= oConn.setResult.getString("n_orden");
-                    registros[1]= oConn.setResult.getString("nombres");
-                    registros[2]= formato.format(oConn.setResult.getDate("fecha_ab"));
-                     model.addRow(registros);
+                 try  {
+
+                    while (oConn.setResult.next())
+                    {
+
+                        registros[0]= oConn.setResult.getString("n_orden");
+                        registros[1]= oConn.setResult.getString("nombres");
+                        registros[2]= formato.format(oConn.setResult.getDate("fecha_ab"));
+                         model.addRow(registros);
+                    }
+
+                      // Coloca el Modelo de Nueva Cuenta
+                      tbExamen.setModel(model);
+                   sbExamen();
+
+                     // Cierra Resultados
+                     oConn.setResult.close();
+                } 
+                catch (SQLException ex) 
+                {
+                    //JOptionPane.showMessageDialorootPane,ex);
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                  // Coloca el Modelo de Nueva Cuenta
-                  tbExamen.setModel(model);
-               sbExamen();
-             
-                 // Cierra Resultados
-                 oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
-                //JOptionPane.showMessageDialorootPane,ex);
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
            
 }
 void sbExamen(){

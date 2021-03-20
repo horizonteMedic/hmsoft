@@ -3766,6 +3766,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Oftalmologia:" + ex.getMessage().toString());
         }
@@ -3798,6 +3799,11 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                 txtNorden.requestFocus();
                 sbCargarDatosInformePsicologico("");
                 limpiar();
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(InformePsicologico.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else{ 
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
              }else{oFunc.SubSistemaMensajeError("Ingrese Información Faltante");}
@@ -3912,6 +3918,11 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir(Integer.valueOf(txtNorden.getText()));
             limpiar();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InformePsicologico.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -3955,6 +3966,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Oftalmologia:" + ex.getMessage().toString());
         }
@@ -4096,6 +4108,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.setResult.close();
                     } catch (SQLException ex) {
                         oFunc.SubSistemaMensajeInformacion("Evaluacion Psicologica:" + ex.getMessage().toString());
                     }
@@ -4293,6 +4306,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Evaluacion Psicologica:" + ex.getMessage().toString());
             }
@@ -4398,17 +4412,22 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
               + "'"+rbExcelente.isSelected()+"','"+rbAptoconObservacion.isSelected()+"');";
                      //oFunc.SubSistemaMensajeInformacion(Sql);
                       if (oConn.FnBoolQueryExecuteUpdate(Sql)){
-                //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                         
-               
-                sbCargarDatosInformePsicologico("");
-                imprimirEP(); 
-                limpiarEP();
-                 txtNordenEP.setEnabled(true);
-                txtNordenEP.requestFocus();
-                }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
-             }else{oFunc.SubSistemaMensajeError("Ingrese Información Faltante");}
+                        //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
+
+
+                            sbCargarDatosInformePsicologico("");
+                            imprimirEP(); 
+                            limpiarEP();
+                             txtNordenEP.setEnabled(true);
+                            txtNordenEP.requestFocus();
+                            try {
+                                oConn.sqlStmt.close();
+                            } catch (SQLException ex) {
+                                Logger.getLogger(InformePsicologico.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }else{
+                        oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
+                     }else{oFunc.SubSistemaMensajeError("Ingrese Información Faltante");}
       }
       }
     }//GEN-LAST:event_btnAgregarEPActionPerformed
@@ -4490,6 +4509,11 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirEP();
                  limpiarEP();
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(InformePsicologico.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
@@ -4616,6 +4640,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                 }else{
                     oFunc.SubSistemaMensajeError("VErificar si existe registro, si la prueba es:  PRUEBA CUANTITATIVA ANTIGENOS");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -4653,6 +4678,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("psicologia:" + ex.getMessage().toString());}
             }else{
@@ -4859,7 +4885,11 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn();
-
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(InformePsicologico.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
@@ -4920,6 +4950,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   oConn.sqlStmt.close();
                }
                 return bResult;       
         }
@@ -5988,6 +6019,11 @@ void sbCargarDatosInformePsicologico(String valor){
                 //JOptionPane.showMessageDialorootPane,ex);
                 oFunc.SubSistemaMensajeError(ex.toString());
                 Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(InformePsicologico.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 }

@@ -363,6 +363,11 @@ public void grabar(){
                   oFunc.SubSistemaMensajeInformacion("Agregado correctamente");
                   txtCriterio.setText(null);
                   sbCargarDatos("", cboCriterios);
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CriteriosPsicologia.class.getName()).log(Level.SEVERE, null, ex);
+                }
                }
     }
               
@@ -378,9 +383,14 @@ String Update="UPDATE criterios_informe_psicologico SET criterio='"+txtCriterio.
           btnAgregar.setEnabled(true);
           btnActualizar.setEnabled(false);
           txtCriterio.requestFocus();
-    }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CriteriosPsicologia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
       }
-}
+    }
 }
 private boolean validar(){
 boolean bResultado=true;

@@ -634,8 +634,9 @@ public class HCL extends javax.swing.JInternalFrame {
                 txtDireccion.setText(oConn.setResult.getString("direccion_pa"));
                 txtEC.setText(oConn.setResult.getString("estado_civil_pa"));
                 txtEdad.setText(String.valueOf(oFunc.calcularEdad(FNacimiento.getCalendar())) );
-                oConn.setResult.close();
+                
                txtNombre.setEditable(false);
+               oConn.setResult.close();
             } 
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ticket: " + ex.getMessage().toString());
@@ -738,6 +739,7 @@ public class HCL extends javax.swing.JInternalFrame {
                 oFunc.SubSistemaMensajeError("No se pudo Registrar Intente de nuevo");
             
             }
+            oConn.sqlStmt.close();
         } catch (Exception e) {
         }
     
