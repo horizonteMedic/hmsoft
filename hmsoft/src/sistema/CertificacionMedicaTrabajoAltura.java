@@ -2005,6 +2005,7 @@ public class CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(No lleno Correctamente Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Certificación Médica:" + ex.getMessage().toString());
         }
@@ -2709,6 +2710,7 @@ public class CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(No lleno Correctamente Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Certificación Médica:" + ex.getMessage().toString());
             }
@@ -2765,6 +2767,11 @@ public class CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFrame
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             Limpiar();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CertificacionMedicaTrabajoAltura.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -2804,6 +2811,7 @@ public class CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                    oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2891,7 +2899,11 @@ public class CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFrame
                             jtCertificacionMTA.setSelectedIndex(0);
                             txtNorden.requestFocus();
                              
-
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(CertificacionMedicaTrabajoAltura.class.getName()).log(Level.SEVERE, null, ex);
+                }
                             }else{
                         oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
                     }
