@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
         <file>
             <url>src/Clases/clsFunciones.java</url>
@@ -23,6 +24,13 @@
             <file>file:/C:/Users/Horizonte%20Medic/Documents/NetBeansProjects/hhmosftward/hmsoft/src/sistema/Ingreso.java</file>
             <file>file:/C:/Users/Horizonte%20Medic/Documents/NetBeansProjects/hhmosftward/hmsoft/src/sistema/Ocupacional1.java</file>
             <file>file:/C:/Users/Horizonte%20Medic/Documents/NetBeansProjects/hhmosftward/hmsoft/src/sistema/PerimetroToraxico.java</file>
+=======
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/proyecto/hmsoft/hmsoft/src/sistema/PerimetroToraxico.java</file>
+            <file>file:/C:/Users/USER/Documents/NetBeansProjects/proyecto/hmsoft/hmsoft/src/sistema/LaboratorioClinicoCovid.java</file>
+>>>>>>> 7e58c89a6c1ff1e94bb9f485302347d07d79ba80
         </group>
     </open-files>
 </project-private>

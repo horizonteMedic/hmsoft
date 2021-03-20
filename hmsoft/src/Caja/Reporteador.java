@@ -793,8 +793,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
            
                
                      vSql+=" AND\n" +
-"        ((constancia_salud_marsa.fecha_examen BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
-"	or (constancia_salud_marsa1.fecha_examen BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+"        ((n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+"	or (n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
 "						 )";
                   
                       
