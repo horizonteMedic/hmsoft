@@ -2491,7 +2491,7 @@ private void colororina(){
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                 oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -2525,7 +2525,7 @@ private void aspectoorina(){
                  }
                  
                  // Cierra Resultados
-               //  oConn.setResult.close();
+                oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -2593,6 +2593,7 @@ private void aspectoorina(){
             
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+                       oConn.sqlStmt.close();
                }
               
               
@@ -2630,6 +2631,11 @@ private void aspectoorina(){
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
           //  imprimir();
             limpiar();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -3353,6 +3359,7 @@ public void negarcheks(){
                          }else{
                           oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");       
                       }
+                    oConn.setResult.close();
               } catch (SQLException ex) {
               oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -3389,12 +3396,17 @@ public void  habilitarPc(){
             jTextFieldSaturacion.setText("");
           //  System.out.println(sql2);
         oConn.FnBoolQueryExecute(sql2);
+        
           agregarSimtocasPc();
         }
 else
             JOptionPane.showMessageDialog(null, "LLENAR CO2 ","Sistema MEDSOFT",JOptionPane.ERROR_MESSAGE);
         
-        
+        try {
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     private void txtNordenInKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNordenInKeyTyped
         oFunc.NoLetras(evt);
@@ -3435,6 +3447,7 @@ else
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
+                oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -4342,6 +4355,8 @@ else
             {
                 veDats[i]=lista.get(i).toString();
             }
+            
+            oConn.setResult.close();
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -4571,6 +4586,7 @@ public void Agregar(){
              Limpiar();
              btgroup();
                    jtLaboratorio.setSelectedIndex(0);
+                   oConn.sqlStmt.close();
               }else{
                    oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
              
@@ -4637,6 +4653,11 @@ public void actualizar(){
   //  System.out.println("SQL:"+sql);
     if (oConn.FnBoolQueryExecuteUpdate(sql)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+        }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -4907,6 +4928,7 @@ int seleccion = JOptionPane.showOptionDialog(
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
+                   oConn.sqlStmt.close();
                }
                 return bResult;       
         }
@@ -4932,7 +4954,11 @@ int seleccion = JOptionPane.showOptionDialog(
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn();
                 Limpiar();
-
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }

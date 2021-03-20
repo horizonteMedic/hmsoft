@@ -973,6 +973,11 @@ private void Actualizar(){
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(PerimetroToraxico.class.getName()).log(Level.SEVERE, null, ex);
+         }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -1087,7 +1092,12 @@ public boolean OrdenExiste()
                 oFunc.SubSistemaMensajeInformacion("Registro Agregado Correctamente");                 
                 sbCargarDatos("",tbPerimetro);
                 sbCargarDatos("",tbReportes);
-        limpiar();                         
+        limpiar();
+      try {
+          oConn.sqlStmt.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(PerimetroToraxico.class.getName()).log(Level.SEVERE, null, ex);
+      }
         }else {
         oFunc.SubSistemaMensajeError("No se pudo agregar correctamente, Intente nuevamente");
         }

@@ -2449,6 +2449,14 @@ negarcheks();
                             + "Especificidad : 99.26%");
         
         }
+          if(cboMarca4.getSelectedItem().toString().contains("ARTRON"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 91.27% \n"
+                            + "Especificidad : 100%");
+        
+        }
+        
               if(cboMarca4.getSelectedItem().toString().contains("LABNOVATION"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
