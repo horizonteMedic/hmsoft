@@ -2577,6 +2577,7 @@ public class DetecciondeSAS extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
+                oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Tríaje:" + ex.getMessage().toString());
         }  
@@ -3276,6 +3277,11 @@ String values="VALUES('"+txtNorden.getText().toString()+"','"+FechaSAS.getDate()
              imp();
              oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
             limpiar();
+    try {
+        oConn.sqlStmt.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(DetecciondeSAS.class.getName()).log(Level.SEVERE, null, ex);
+    }
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
              
