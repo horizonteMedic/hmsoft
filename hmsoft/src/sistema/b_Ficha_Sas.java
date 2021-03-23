@@ -392,7 +392,25 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
         });
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("FICHA DE DETECCIÓN DE S.A.S.");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosed(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "1.- FILIACIÓN"));
 
@@ -2634,7 +2652,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
-                oConn.setResult.close();
+               oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Tríaje:" + ex.getMessage().toString());
         }  
@@ -2666,7 +2684,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -3164,7 +3182,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Tríaje:" + ex.getMessage().toString());
         }  
@@ -3231,6 +3249,10 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
             chk1_APTO_SIE.setSelected(true);
         }
     }//GEN-LAST:event_chkGradoIVActionPerformed
+
+    private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
+       cerrarVentana(); // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosed
 void Fecha(){
 Date fechaDate = new Date();
 //SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
@@ -3648,6 +3670,11 @@ void Agregar(){
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
                 }
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(b_Ficha_Sas.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
         }
@@ -3753,6 +3780,11 @@ String values="UPDATE ficha_sas "
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(b_Ficha_Sas.class.getName()).log(Level.SEVERE, null, ex);
+            }
 }
 private void ReImp(){
 if(!txtNordenImp.getText().isEmpty()){
@@ -3795,7 +3827,7 @@ public boolean OrdenImp()
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -3875,6 +3907,21 @@ int seleccion = JOptionPane.showOptionDialog(
 
 }
   
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(b_Ficha_Sas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
+
 private void printer1(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      

@@ -318,7 +318,25 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CERTIFICACION DE SUFICIENCIA MEDICA PARA TRABAJOS EN ALTURA ");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Filiación"));
 
@@ -355,14 +373,14 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Nº Orden :");
 
-        txtNorden.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNordenActionPerformed(evt);
-            }
-        });
         txtNorden.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNordenFocusGained(evt);
+            }
+        });
+        txtNorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNordenActionPerformed(evt);
             }
         });
 
@@ -698,7 +716,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                     .addComponent(Chk1si, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Chk1no, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Chk7si, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(Chk7si, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Chk7no, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -706,7 +724,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                     .addComponent(Chk2si, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Chk2no, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Chk8si, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                    .addComponent(Chk8si, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Chk8no, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -714,7 +732,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                     .addComponent(Chk3si)
                     .addComponent(Chk3no)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Chk9si, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
+                    .addComponent(Chk9si, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Chk9no, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -1849,7 +1867,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2060,7 +2078,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2092,6 +2110,10 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
         FechaHasta.setCalendar(hasta);
         }
     }//GEN-LAST:event_FechaDesdePropertyChange
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+    cerrarVentana();    // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     private void muestraVisual(){
         String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
 "          CASE  WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od  ELSE ol.v_cerca_c_od  END as ODCC, \n" +
@@ -2127,7 +2149,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2245,6 +2267,11 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(B_Certificacion_Trabajo_Altura.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
        private boolean validar(){
         boolean bResultado=true;
@@ -2379,7 +2406,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Despues de terminar este Formato, El Paciente debe pasar por triaje");
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -3197,7 +3224,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta con algunos datos tomados en Rayos x");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -3232,7 +3259,7 @@ public class B_Certificacion_Trabajo_Altura extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta con algunos datos tomados en Audiometria ");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -3386,6 +3413,22 @@ int seleccion = JOptionPane.showOptionDialog(
         buttonGroup29.clearSelection();
         buttonGroup30.clearSelection();
    }
+        
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(B_Certificacion_Trabajo_Altura.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
+        
    public void Actualizar(){
        if(!txtNorden.getText().isEmpty()){
                 if(validar()){
@@ -3491,6 +3534,11 @@ int seleccion = JOptionPane.showOptionDialog(
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(B_Certificacion_Trabajo_Altura.class.getName()).log(Level.SEVERE, null, ex);
+                    }
         }
         
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");

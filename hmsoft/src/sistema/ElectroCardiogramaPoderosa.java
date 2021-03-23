@@ -197,7 +197,25 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
         txtAntecedentesCardiologicos = new javax.swing.JTextArea();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Electrocardiograma Poderosa");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         txtNombres.setEditable(false);
         txtNombres.setBackground(new java.awt.Color(246, 202, 56));
@@ -919,7 +937,7 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(btnLimpiarGrafico)
@@ -1184,9 +1202,8 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                                         .addComponent(jLabel11)
                                         .addGap(10, 10, 10)
                                         .addComponent(txtQRS, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
-                                        .addComponent(txtContratista))
+                                    .addComponent(txtEmpresa, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtContratista, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
@@ -1358,7 +1375,7 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("ElectroCardiograma:" + ex.getMessage().toString());
         } }
@@ -1829,7 +1846,7 @@ dispose();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("ElectroCardiograma:" + ex.getMessage().toString());
         } }
@@ -1842,6 +1859,10 @@ dispose();
     private void txtSaorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaorsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSaorsActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();// TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -1867,7 +1888,7 @@ dispose();
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -2165,6 +2186,11 @@ void sbCargarDatosElectro(String valor){
                 Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+              try {
+                  oConn.sqlStmt.close();
+              } catch (SQLException ex) {
+                  Logger.getLogger(ElectroCardiogramaPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+              }
 }
 private void sbTablaElectro()
     {
@@ -2237,6 +2263,22 @@ private void reporte(Integer cod){
         
  
  }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+              try {
+                  oConn.sqlStmt.close();
+              } catch (SQLException ex) {
+                  Logger.getLogger(ElectroCardiogramaPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+              }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
+
  public void Agregar(){
      if(!txtNorden.getText().isEmpty()){
           if(!OrdenExiste()){
@@ -2275,7 +2317,12 @@ private void reporte(Integer cod){
                 }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
             }else{oFunc.SubSistemaMensajeError("Ingrese Información Faltante");}
-        }
+              try {
+                  oConn.sqlStmt.close();
+              } catch (SQLException ex) {
+                  Logger.getLogger(ElectroCardiogramaPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+              }
+          }
        }else{oFunc.SubSistemaMensajeError("Ingrese N°Orden");}
  }
 public void Actualizar(){
@@ -2304,5 +2351,10 @@ public void Actualizar(){
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+              try {
+                  oConn.sqlStmt.close();
+              } catch (SQLException ex) {
+                  Logger.getLogger(ElectroCardiogramaPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+              }
 }
 }

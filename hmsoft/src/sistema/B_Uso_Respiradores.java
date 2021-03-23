@@ -592,7 +592,25 @@ public class B_Uso_Respiradores extends javax.swing.JInternalFrame {
         jLabel165 = new javax.swing.JLabel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Uso de Respiradores");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder()));
 
@@ -1853,7 +1871,7 @@ public class B_Uso_Respiradores extends javax.swing.JInternalFrame {
                     .addComponent(chk_18_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel43)
                     .addComponent(txtOtros1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("E. Personal del Empleado I ", jPanel3);
@@ -3880,7 +3898,8 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -4243,7 +4262,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -4262,6 +4281,10 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
             FechaExpira.setCalendar(hasta);
     }
     }//GEN-LAST:event_FechaPropertyChange
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();// TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     private void Limpiar(){
         txtNorden.setText(null);
         txtAreaTrabajo.setText(null);
@@ -4460,6 +4483,12 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
         }
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
@@ -4609,6 +4638,12 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
       private void muestraVisual(){
         String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
@@ -4645,11 +4680,27 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
     }
+      
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+  
       
    public void imp(){
 if (imprimir1(Integer.valueOf(txtNorden.getText()))){
@@ -4817,7 +4868,8 @@ txtImprimir.setText(null);
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
+
             
         } catch (SQLException ex) {
          

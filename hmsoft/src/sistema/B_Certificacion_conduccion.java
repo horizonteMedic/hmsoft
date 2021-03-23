@@ -308,7 +308,25 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CERTIFICACION DE SUFICIENCIA MEDICA PARA CONDUCCION DE VEHICULOS ");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Filiación"));
 
@@ -340,14 +358,14 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Nº Orden :");
 
-        txtNorden.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNordenActionPerformed(evt);
-            }
-        });
         txtNorden.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNordenFocusGained(evt);
+            }
+        });
+        txtNorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNordenActionPerformed(evt);
             }
         });
 
@@ -1430,12 +1448,11 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel29)
                                     .addComponent(txtMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(311, 311, 311)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel12)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkOR4)
                             .addComponent(chkOR1)
@@ -1815,7 +1832,9 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1864,7 +1883,9 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2058,7 +2079,9 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2080,6 +2103,10 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
         FechaHasta.setCalendar(hasta);
         }
     }//GEN-LAST:event_FechaDesdePropertyChange
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();// TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     private boolean imprimir() {
         boolean im = false;
         int seleccion = JOptionPane.showOptionDialog(
@@ -2217,7 +2244,9 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Despues de terminar este Formato, El Paciente debe pasar por triaje");
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
+
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -2251,7 +2280,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta con algunos datos tomados en Audiometria ");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -2271,7 +2300,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta registros en ficha sas");
             }
-            oConn.setResult.close();
+           oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -2903,7 +2932,28 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(B_Certificacion_conduccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(B_Certificacion_conduccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
+    
     private boolean validar(){
         boolean bResultado=true;
         if (((JTextField)FechaExamen.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
@@ -2929,7 +2979,7 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta con algunos datos tomados en Rayos x");
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -3041,6 +3091,11 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
         
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(B_Certificacion_conduccion.class.getName()).log(Level.SEVERE, null, ex);
+        }
  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox Chk10no;

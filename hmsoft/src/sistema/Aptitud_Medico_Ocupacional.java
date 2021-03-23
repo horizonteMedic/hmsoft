@@ -160,7 +160,25 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
         atxtRecomendaciones = new javax.swing.JTextArea();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -320,7 +338,7 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1061,7 +1079,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1329,7 +1347,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
        
@@ -1399,6 +1417,10 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         // TODO add your handling code here:
     }//GEN-LAST:event_chkRestriccionActionPerformed
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+       cerrarVentana(); // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
+
   public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -1421,7 +1443,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
         }
         }   
@@ -1443,6 +1465,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
         }
   }
   private boolean Grabar() throws SQLException{
@@ -1468,7 +1495,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                    oConn.sqlStmt.close();
                }
               
-              
+              oConn.sqlStmt.close();
                 return bResult;       
         }
     
@@ -1645,7 +1672,7 @@ private void Limpiar(){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1688,7 +1715,28 @@ private void Limpiar(){
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
+    
     public boolean OrdenObservado(){
         boolean bResultado=false;
         if (!txtNorden.getText().isEmpty()) {
@@ -1706,7 +1754,7 @@ private void Limpiar(){
 //             txtNorden.setText(null);
                 }
                 // Cierro los Resultados
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             }
         }
