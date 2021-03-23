@@ -200,6 +200,7 @@ public class ControlFactura extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(jTable2);
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CONTROL DE FACTURAS ");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -208,6 +209,7 @@ public class ControlFactura extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -958,13 +960,20 @@ boolean bResultado=true;
         txtAdelanto.requestFocus();
     }//GEN-LAST:event_txtTiempoCActionPerformed
  private void Quit(){
-     String sql = "DELETE FROM valorizacion_contenido"
-               + " WHERE v_carta_aviso ='" +num+ "' RETURNING v_carta_aviso";
-        if (oConn.FnBoolQueryExecute(sql)) {
+         try {
+             String sql = "DELETE FROM valorizacion_contenido"
+                     + " WHERE v_carta_aviso ='" +num+ "' RETURNING v_carta_aviso";
+             if (oConn.FnBoolQueryExecute(sql)) {
 //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo eliminar");
-        }
+             } else {
+                 oFunc.SubSistemaMensajeError("No se pudo eliminar");
+             }
+             oConn.sqlStmt.close();
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(ControlFactura.class.getName()).log(Level.SEVERE, null, ex);
+         }
+
  }
     private void txtRazonSocialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazonSocialKeyReleased
         if(!(evt.getKeyCode()>=65 && evt.getKeyCode()<=90 || evt.getKeyCode()>=96 && evt.getKeyCode()<=105 || evt.getKeyCode() == KeyEvent.VK_ENTER )) {
@@ -1064,7 +1073,9 @@ boolean bResultado=true;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
+
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Reporte Facturas:" + ex.getMessage().toString());
             }
@@ -1104,81 +1115,88 @@ boolean bResultado=true;
     }//GEN-LAST:event_btnMostrarActionPerformed
     
     private void cPersonalizada(){
-    modelo = new DefaultTableModel(){        
+         try {        
+             modelo = new DefaultTableModel(){
                  @Override
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                if (columnIndex == 9) {
-
-                    return true;
-                }
-                if (columnIndex == 10 ) {
-//                    sumar();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        };
-                String vSql="SELECT  r_empresa AS NOMBREEMRESA,r_ruc AS RUC, r_numval AS N°VALORIZACION, "
-                        + "r_ordservicio AS ORDENSERVICIO, r_periodo AS PERIODOVALORIZACION, "
-                        + "r_fecha_val AS FECHAVALORIZACION, r_fecha_acep AS FECHAACEPTACIONVALORIZACION, "
-                        + "r_descripcion AS DESCRIPCIONSERVICIO, r_numfactura AS N°FACTURA,"
-                        + " r_fechaemisfac AS FECHAEMISIONFACTURA, r_valorventa::numeric AS VALORVENTA," +
-                    "       r_igv::numeric AS IGV, r_total::numeric AS TOTAL, r_detraccion::numeric AS DETRACCION,"
-                        + " r_tipopago AS CONTADOCREDITO, r_tiempcredito AS TIEMPOCREDITO, r_adelanto::numeric AS ADELANTO, " +
-                    "       r_estadofact AS ESTADOFACTURA, r_fechacancelacion AS FECHACANCELACION, "
-                        + "r_responsable AS RESPONSABLEEMISIONFACTURA, r_observacion AS OBSERVACIONES" +
-                    "  FROM reporte_facturas" ;              
-                if(!txtEmpRazonSocial.getText().isEmpty()){
-                vSql +="WHERE '"+txtEmpRazonSocial.getText().toString()+"' = v_razon_cliente ";
-                }
-                if(!txtEmpresaRuc.getText().isEmpty()){
-                vSql +="WHERE '"+txtEmpresaRuc.getText().toString()+"' = v_ruc_cliente ";
-                }
-                 if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                     if(txtEmpresaRuc.getText().isEmpty() && txtEmpRazonSocial.getText().isEmpty() ){
-                          vSql +=" WHERE v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
-                     }else{
-                         vSql +=" AND v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
+                 public boolean isCellEditable(int rowIndex, int columnIndex) {
+                     if (columnIndex == 9) {
+                         
+                         return true;
                      }
-                     
+                     if (columnIndex == 10 ) {
+//                    sumar();
+return true;
+                     } else {
+                         return false;
+                     }
                  }
-                 if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                 vSql +=" AND v_fecha_emision <= '"+Fhasta.getDate().toString()+"'";
-                 }
-                         
-                         
-                   //oFunc.SubSistemaMensajeInformacion(vSql);      
-                if (oConn.FnBoolQueryExecute(vSql))
+             };
+             String vSql="SELECT  r_empresa AS NOMBREEMRESA,r_ruc AS RUC, r_numval AS N°VALORIZACION, "
+                     + "r_ordservicio AS ORDENSERVICIO, r_periodo AS PERIODOVALORIZACION, "
+                     + "r_fecha_val AS FECHAVALORIZACION, r_fecha_acep AS FECHAACEPTACIONVALORIZACION, "
+                     + "r_descripcion AS DESCRIPCIONSERVICIO, r_numfactura AS N°FACTURA,"
+                     + " r_fechaemisfac AS FECHAEMISIONFACTURA, r_valorventa::numeric AS VALORVENTA," +
+                     "       r_igv::numeric AS IGV, r_total::numeric AS TOTAL, r_detraccion::numeric AS DETRACCION,"
+                     + " r_tipopago AS CONTADOCREDITO, r_tiempcredito AS TIEMPOCREDITO, r_adelanto::numeric AS ADELANTO, " +
+                     "       r_estadofact AS ESTADOFACTURA, r_fechacancelacion AS FECHACANCELACION, "
+                     + "r_responsable AS RESPONSABLEEMISIONFACTURA, r_observacion AS OBSERVACIONES" +
+                     "  FROM reporte_facturas" ;
+             if(!txtEmpRazonSocial.getText().isEmpty()){
+                 vSql +="WHERE '"+txtEmpRazonSocial.getText().toString()+"' = v_razon_cliente ";
+             }
+             if(!txtEmpresaRuc.getText().isEmpty()){
+                 vSql +="WHERE '"+txtEmpresaRuc.getText().toString()+"' = v_ruc_cliente ";
+             }
+             if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
              {
-             try  {
-                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                        int CantidaColumnas = rsmt.getColumnCount();
-                        for (int i = 1; i <= CantidaColumnas; i++) {
+                 if(txtEmpresaRuc.getText().isEmpty() && txtEmpRazonSocial.getText().isEmpty() ){
+                     vSql +=" WHERE v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
+                 }else{
+                     vSql +=" AND v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
+                 }
+                 
+             }
+             if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+             {
+                 vSql +=" AND v_fecha_emision <= '"+Fhasta.getDate().toString()+"'";
+             }
+             
+             
+             //oFunc.SubSistemaMensajeInformacion(vSql);
+             if (oConn.FnBoolQueryExecute(vSql))
+             {
+                 try  {
+                     java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                     int CantidaColumnas = rsmt.getColumnCount();
+                     for (int i = 1; i <= CantidaColumnas; i++) {
                          modelo.addColumn(rsmt.getColumnLabel(i));
-                        }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                       
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                           Fila[i] = oConn.setResult.getObject(i+1);
-                            
-                        }
-                        modelo.addRow(Fila);
-                    }
-                    tbReporte = autoResizeColWidth(tbReporte, modelo);
-                      tbReporte.setModel(modelo);
+                     }
+                     while (oConn.setResult.next())
+                     {
+                         Object [] Fila = new Object[CantidaColumnas];
+                         
+                         for (int i = 0; i < CantidaColumnas; i++) {
+                             Fila[i] = oConn.setResult.getObject(i+1);
+                             
+                         }
+                         modelo.addRow(Fila);
+                     }
+                     tbReporte = autoResizeColWidth(tbReporte, modelo);
+                     tbReporte.setModel(modelo);
                      oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(ControlFactura.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+                 }
+                 catch (SQLException ex)
+                 {
+                     oFunc.SubSistemaMensajeError(ex.toString());
+                     Logger.getLogger(ControlFactura.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+             }
+             oConn.sqlStmt.close();
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(ControlFactura.class.getName()).log(Level.SEVERE, null, ex);
+         }
+
     }
    
     public JTable autoResizeColWidth(JTable table, DefaultTableModel model) {
@@ -1422,6 +1440,10 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
         // TODO add your handling code here:
         txtTotal.setText(null);
     }//GEN-LAST:event_txtTotalMouseClicked
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+       cerrarVentana(); // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
        private void LimpiarPersonalizado(){
     txtEmpRazonSocial.setText(null);
     txtEmpresaRuc.setText(null);
@@ -1430,6 +1452,20 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     
     }
   
+       public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(ControlFactura.class.getName()).log(Level.SEVERE, null, ex);
+         }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+       
 final void AutoJuridico(){
      lblIngrese.setText("Raz. Social :");
        txtRazonSocial.requestFocus();
@@ -1451,6 +1487,9 @@ final void AutoJuridico(){
                 txtNval.requestFocus();
                 oConn.setResult.close();
             } 
+            oConn.sqlStmt.close();
+            oConn.setResult.close();
+
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
         }
@@ -1564,7 +1603,9 @@ public final String[]getRowsToVector(String sql)
             {
                 veDats[i]=lista.get(i).toString();
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
+
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -1676,9 +1717,18 @@ private void Limpiar(){
         if (oConn.FnBoolQueryExecuteUpdate(insert.concat(" )") +values.concat(" )"))){
             bResult = true;
         }
+        
         // Retorna el Valor
-        return bResult;
-//        
+        
+         try {
+             oConn.sqlStmt.close();
+             oConn.setResult.close();
+
+         } catch (SQLException ex) {
+             Logger.getLogger(ControlFactura.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        return bResult; 
         
     }
        
@@ -1699,6 +1749,14 @@ private void Limpiar(){
             bResult = true;
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
         }
+         try {
+             oConn.sqlStmt.close();
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(ControlFactura.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+
         // Retorna el Valor
         return bResult;
     }

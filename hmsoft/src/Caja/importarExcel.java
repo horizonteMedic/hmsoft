@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -49,7 +50,12 @@ public class importarExcel extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jButton1.setText("Cargar los datos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +107,21 @@ regresar=regresar.substring(0,8);
 //System.out.println("llega el dni:"+regresar);
 return regresar;
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+      try {
+          oConn.sqlStmt.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(importarExcel.class.getName()).log(Level.SEVERE, null, ex);
+      }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser fileChooser = new JFileChooser();
        String ruta="";
@@ -140,6 +161,13 @@ sql="SELECT spfuncionRegistroAutomaticoPaciente('"+
      
         ;             System.out.println(sql);       
                         oConn.FnBoolQueryExecute(sql);
+                     try {
+                         oConn.sqlStmt.close();oConn.setResult.close();
+                     } catch (SQLException ex) {
+                         Logger.getLogger(importarExcel.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+        
+
                           //consulta
                    JOptionPane.showMessageDialog(null, "Se envio los resgistros del excel");
 
@@ -166,7 +194,15 @@ sql="SELECT spfuncionRegistroAutomaticoPaciente('"+
                        fila.getCell(19).getStringCellValue()+"','"+ fila.getCell(20).getStringCellValue()+"');";
    System.out.println(sql);
                      oConn.FnBoolQueryExecute(sql);
+                     
                      JOptionPane.showMessageDialog(null, "Se envio los resgistros del excel");
+                     try {
+                         oConn.sqlStmt.close();oConn.setResult.close();
+                     } catch (SQLException ex) {
+                         Logger.getLogger(importarExcel.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+        
+
                         } 
              }
    } catch (FileNotFoundException ex) {
@@ -176,6 +212,10 @@ sql="SELECT spfuncionRegistroAutomaticoPaciente('"+
           }
 }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrarVentana();// TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

@@ -223,6 +223,7 @@ public class Valorizacion extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(jTable2);
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Valorización");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -231,6 +232,7 @@ public class Valorizacion extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -998,7 +1000,7 @@ public class Valorizacion extends javax.swing.JInternalFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(7, 7, 7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnExportarExel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1180,19 +1182,26 @@ boolean bResultado=true;
         sbTablaFactura();
     }//GEN-LAST:event_btnClearActionPerformed
  private void Quit(){
-     String sql = "DELETE FROM valorizacion_contenido"
-               + " WHERE v_carta_aviso ='" +num+ "' RETURNING v_carta_aviso";
-        if (oConn.FnBoolQueryExecute(sql)) {
          try {
-             //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-             oConn.setResult.close();
+             String sql = "DELETE FROM valorizacion_contenido"
+                     + " WHERE v_carta_aviso ='" +num+ "' RETURNING v_carta_aviso";
+             if (oConn.FnBoolQueryExecute(sql)) {
+                 try {
+                     //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
+                     oConn.setResult.close();
+                     oConn.sqlStmt.close();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+             } else {
+                 oFunc.SubSistemaMensajeError("No se pudo eliminar");
+             }
              oConn.sqlStmt.close();
+             oConn.setResult.close();
          } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo eliminar");
-        }
+
  }
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if (bAgruparProductos)
@@ -1331,7 +1340,9 @@ boolean bResultado=true;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
+
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }
@@ -1366,7 +1377,9 @@ boolean bResultado=true;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo ");
                     }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
+
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }
@@ -1425,91 +1438,98 @@ boolean bResultado=true;
     }//GEN-LAST:event_btnMostrarActionPerformed
     
     private void cPersonalizada(){
-    modelo = new DefaultTableModel(){        
+         try {        
+             modelo = new DefaultTableModel(){
                  @Override
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                if (columnIndex == 9) {
-
-                    return true;
-                }
-                if (columnIndex == 10 ) {
-//                    sumar();
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        };
-    
-                    String vSql="SELECT v_carta_aviso as CARTAAVISO, v_razon_cliente AS RAZONSOCIAL, "
-                            + "v_ruc_cliente AS RUC, v_fecha_emision AS FECHAEMISION, \n" +
-                        "       v_nfactura AS NFACTURA, v_cotizador AS USUARIO,"
-                            + "v_valor_venta::numeric AS VALORVENTA, v_igv::numeric AS IGV, v_total::numeric AS TOTAL, \n" +
-                        "      v_condicion AS ESTADO,v_fecha_cancelacion AS FECHACANCELACION\n" +
-                        "  FROM valorizacion " ;              
-                if(!txtEmpRazonSocial.getText().isEmpty()){
-                vSql +="WHERE '"+txtEmpRazonSocial.getText().toString()+"' = v_razon_cliente ";
-                }
-                if(!txtEmpresaRuc.getText().isEmpty()){
-                vSql +="WHERE '"+txtEmpresaRuc.getText().toString()+"' = v_ruc_cliente ";
-                }
-                 if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                     if(txtEmpresaRuc.getText().isEmpty() && txtEmpRazonSocial.getText().isEmpty() ){
-                          vSql +=" WHERE v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
-                     }else{
-                         vSql +=" AND v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
+                 public boolean isCellEditable(int rowIndex, int columnIndex) {
+                     if (columnIndex == 9) {
+                         
+                         return true;
                      }
-                     
+                     if (columnIndex == 10 ) {
+//                    sumar();
+return true;
+                     } else {
+                         return false;
+                     }
                  }
-                 if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
+             };
+             
+             String vSql="SELECT v_carta_aviso as CARTAAVISO, v_razon_cliente AS RAZONSOCIAL, "
+                     + "v_ruc_cliente AS RUC, v_fecha_emision AS FECHAEMISION, \n" +
+                     "       v_nfactura AS NFACTURA, v_cotizador AS USUARIO,"
+                     + "v_valor_venta::numeric AS VALORVENTA, v_igv::numeric AS IGV, v_total::numeric AS TOTAL, \n" +
+                     "      v_condicion AS ESTADO,v_fecha_cancelacion AS FECHACANCELACION\n" +
+                     "  FROM valorizacion " ;
+             if(!txtEmpRazonSocial.getText().isEmpty()){
+                 vSql +="WHERE '"+txtEmpRazonSocial.getText().toString()+"' = v_razon_cliente ";
+             }
+             if(!txtEmpresaRuc.getText().isEmpty()){
+                 vSql +="WHERE '"+txtEmpresaRuc.getText().toString()+"' = v_ruc_cliente ";
+             }
+             if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+             {
+                 if(txtEmpresaRuc.getText().isEmpty() && txtEmpRazonSocial.getText().isEmpty() ){
+                     vSql +=" WHERE v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
+                 }else{
+                     vSql +=" AND v_fecha_emision >= '"+Fdesde.getDate().toString()+"'";
+                 }
+                 
+             }
+             if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+             {
                  vSql +=" AND v_fecha_emision <= '"+Fhasta.getDate().toString()+"'";
-                 }
-                         
-                         
-                   //oFunc.SubSistemaMensajeInformacion(vSql);      
-                if (oConn.FnBoolQueryExecute(vSql))
-                {
-                try  {
-                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                        int CantidaColumnas = rsmt.getColumnCount();
-                        for (int i = 1; i <= CantidaColumnas; i++) {
+             }
+             
+             
+             //oFunc.SubSistemaMensajeInformacion(vSql);
+             if (oConn.FnBoolQueryExecute(vSql))
+             {
+                 try  {
+                     java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                     int CantidaColumnas = rsmt.getColumnCount();
+                     for (int i = 1; i <= CantidaColumnas; i++) {
                          modelo.addColumn(rsmt.getColumnLabel(i));
-                        }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                       
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                           Fila[i] = oConn.setResult.getObject(i+1);
-                            if(i==3){
-                               Fila[i]=formato.format(oConn.setResult.getDate("FECHAEMISION"));
-                           }
-                               
-                           if(i==10){
-                                if(oConn.setResult.getDate("FECHACANCELACION")!= null){
-                                    Fila[i]= formato.format(oConn.setResult.getDate("FECHACANCELACION"));
-                                }else{
-                                    Fila[i]= " ";
-                                }
-                           }
-                           
-                          
-                            
-                        }
-                        modelo.addRow(Fila);
-                    }
-                    tbReporte = autoResizeColWidth(tbReporte, modelo);
-                      tbReporte.setModel(modelo);
+                     }
+                     while (oConn.setResult.next())
+                     {
+                         Object [] Fila = new Object[CantidaColumnas];
+                         
+                         for (int i = 0; i < CantidaColumnas; i++) {
+                             Fila[i] = oConn.setResult.getObject(i+1);
+                             if(i==3){
+                                 Fila[i]=formato.format(oConn.setResult.getDate("FECHAEMISION"));
+                             }
+                             
+                             if(i==10){
+                                 if(oConn.setResult.getDate("FECHACANCELACION")!= null){
+                                     Fila[i]= formato.format(oConn.setResult.getDate("FECHACANCELACION"));
+                                 }else{
+                                     Fila[i]= " ";
+                                 }
+                             }
+                             
+                             
+                             
+                         }
+                         modelo.addRow(Fila);
+                     }
+                     tbReporte = autoResizeColWidth(tbReporte, modelo);
+                     tbReporte.setModel(modelo);
                      oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+                 }
+                 catch (SQLException ex)
+                 {
+                     oFunc.SubSistemaMensajeError(ex.toString());
+                     Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+             }
+             oConn.sqlStmt.close();
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
+
     }
     private boolean ActualizarReporte(){
 //        // Para los resultados
@@ -1539,6 +1559,13 @@ boolean bResultado=true;
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
         }
+         try {
+             oConn.setResult.close();
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
+             
         
         // Retorna el Valor
         return bResult;
@@ -1756,6 +1783,10 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     private void cboCondicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCondicion1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cboCondicion1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+       cerrarVentana(); // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
        private void LimpiarPersonalizado(){
     txtEmpRazonSocial.setText(null);
     txtEmpresaRuc.setText(null);
@@ -1764,41 +1795,47 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     
     }
   private void EditarContenidoValorizacion(){
-//    String [] titulos={"N°Orden","Hospital","Operacion","Dias","complicaciones","Fecha"};
-    String [] registros = new String[6];
-      String sql = "SELECT vc.v_carta_aviso, v_item, v_descripcion, v_unidad, v_cantidad, v_precio_unit, \n" +
-            "       v_precio_total\n" +
-            "  FROM valorizacion as v\n" +
-            "INNER JOIN valorizacion_contenido AS vc on(vc.v_carta_aviso=v.v_carta_aviso)\n" +
-            "where vc.v_carta_aviso='" + txtCartaAviso.getText().toString() + "'";
-
-    if (oConn.FnBoolQueryExecute(sql))
-        {
-             try  {
-                
-                while (oConn.setResult.next())
-                {        
-                    registros[0]= oConn.setResult.getString("v_item");
-                    registros[1]= oConn.setResult.getString("v_descripcion");
-                    registros[2]= oConn.setResult.getString("v_unidad");
-                    registros[3]= oConn.setResult.getString("v_cantidad");
-                    registros[4]=oConn.setResult.getString("v_precio_unit");
-                    registros[5]=oConn.setResult.getString("v_precio_total");
-                    
-                     modelo.addRow(registros);
-                }
-                  // Coloca el Modelo de Nueva Cuenta
-                  tbValorizacion.setModel(modelo);
-                 // Cierra Resultados
-                 oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
-                //JOptionPane.showMessageDialorootPane,ex);
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+         try {
+             //    String [] titulos={"N°Orden","Hospital","Operacion","Dias","complicaciones","Fecha"};
+             String [] registros = new String[6];
+             String sql = "SELECT vc.v_carta_aviso, v_item, v_descripcion, v_unidad, v_cantidad, v_precio_unit, \n" +
+                     "       v_precio_total\n" +
+                     "  FROM valorizacion as v\n" +
+                     "INNER JOIN valorizacion_contenido AS vc on(vc.v_carta_aviso=v.v_carta_aviso)\n" +
+                     "where vc.v_carta_aviso='" + txtCartaAviso.getText().toString() + "'";
+             
+             if (oConn.FnBoolQueryExecute(sql))
+             {
+                 try  {
+                     
+                     while (oConn.setResult.next())
+                     {
+                         registros[0]= oConn.setResult.getString("v_item");
+                         registros[1]= oConn.setResult.getString("v_descripcion");
+                         registros[2]= oConn.setResult.getString("v_unidad");
+                         registros[3]= oConn.setResult.getString("v_cantidad");
+                         registros[4]=oConn.setResult.getString("v_precio_unit");
+                         registros[5]=oConn.setResult.getString("v_precio_total");
+                         
+                         modelo.addRow(registros);
+                     }
+                     // Coloca el Modelo de Nueva Cuenta
+                     tbValorizacion.setModel(modelo);
+                     // Cierra Resultados
+                     oConn.setResult.close();
+                 }
+                 catch (SQLException ex)
+                 {
+                     //JOptionPane.showMessageDialorootPane,ex);
+                     oFunc.SubSistemaMensajeError(ex.toString());
+                     Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+             }
+             oConn.setResult.close();
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
   }  
 final void AutoJuridico(){
      lblIngrese.setText("Raz. Social :");
@@ -1823,6 +1860,8 @@ final void AutoJuridico(){
                 oConn.setResult.close();
 
             } 
+            oConn.setResult.close();
+             oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
         }
@@ -1955,6 +1994,7 @@ public final String[]getRowsToVector(String sql)
                 veDats[i]=lista.get(i).toString();
             }
             oConn.setResult.close();
+             oConn.sqlStmt.close();
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -2464,6 +2504,13 @@ public void sbServicioAgrega(){
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
         }
+         try {
+             oConn.setResult.close();
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
+             
         // Retorna el Valor
         return bResult;
 //        
@@ -2522,6 +2569,13 @@ public void sbServicioAgrega(){
                             }
                        // break;
                     }
+            try {
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    
         }
         
         return bResult;
@@ -2569,7 +2623,14 @@ public void sbServicioAgrega(){
          } catch (SQLException ex) {
              Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
          }
-        }   
+        }
+         try {
+             oConn.setResult.close();
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
         // Retorna el Valor
         return bResult;
 //        
@@ -2614,6 +2675,13 @@ public void sbServicioAgrega(){
                                 }
                             // break;
                         }
+                        try {
+                            oConn.setResult.close();
+                            oConn.sqlStmt.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        
         }
 //        oFunc.SubSistemaMensajeInformacion(String.valueOf(iFila));
          filas();
@@ -2627,6 +2695,21 @@ public void sbServicioAgrega(){
          return bResult;
     
     }
+     
+     public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Valorizacion.class.getName()).log(Level.SEVERE, null, ex);
+         }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+     
   private boolean filas(){
       boolean bResult = false;
       String strSqlStmt; 
@@ -2641,6 +2724,7 @@ public void sbServicioAgrega(){
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }

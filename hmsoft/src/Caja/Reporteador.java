@@ -90,66 +90,78 @@ public class Reporteador extends javax.swing.JInternalFrame {
     
     }
     private void cargarContratas(){
-      String sQuery;        
-        // Prepara el Query
-        sQuery ="SELECT UPPER(razon_contrata) AS razon_contrata FROM contratas;";
-        
-        if (oConn.FnBoolQueryExecute(sQuery))
-        {
-            try 
-            {
-                // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
-                     
-                 }
-                 
-                 // Cierra Resultados
-                 oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
-                //JOptionPane.showMessageDialorootPane,ex);
-                oFunc.SubSistemaMensajeInformacion(ex.toString());
-                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                String sQuery;
+                // Prepara el Query
+                sQuery ="SELECT UPPER(razon_contrata) AS razon_contrata FROM contratas;";
+                
+                if (oConn.FnBoolQueryExecute(sQuery))
+                {
+                    try
+                    {
+                        // Verifica resultados
+                        while (oConn.setResult.next())
+                        {
+                            // Obtiene los datos de la Consulta
+                            cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
+                            
+                        }
+                        
+                        // Cierra Resultados
+                        oConn.setResult.close();
+                    }
+                    catch (SQLException ex)
+                    {
+                        //JOptionPane.showMessageDialorootPane,ex);
+                        oFunc.SubSistemaMensajeInformacion(ex.toString());
+                        Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                // selecciona
+                cboContratas.setSelectedIndex(0);
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
-        // selecciona
-      cboContratas.setSelectedIndex(0);
 }
   private void cargarEmpresas(){
-      String sQuery;        
-        // Prepara el Query
-        sQuery ="SELECT UPPER(razon_empresa) AS razon_empresa FROM empresas";
-        
-        if (oConn.FnBoolQueryExecute(sQuery))
-        {
-            try 
-            {
-                // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     cboEmpresas.addItem(oConn.setResult.getString ("razon_empresa"));
-                     
-                 }
-                 
-                 // Cierra Resultados
-                    oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
-                //JOptionPane.showMessageDialorootPane,ex);
-                oFunc.SubSistemaMensajeInformacion(ex.toString());
-                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                String sQuery;
+                // Prepara el Query
+                sQuery ="SELECT UPPER(razon_empresa) AS razon_empresa FROM empresas";
+                
+                if (oConn.FnBoolQueryExecute(sQuery))
+                {
+                    try
+                    {
+                        // Verifica resultados
+                        while (oConn.setResult.next())
+                        {
+                            // Obtiene los datos de la Consulta
+                            cboEmpresas.addItem(oConn.setResult.getString ("razon_empresa"));
+                            
+                        }
+                        
+                        // Cierra Resultados
+                        oConn.setResult.close();
+                    }
+                    catch (SQLException ex)
+                    {
+                        //JOptionPane.showMessageDialorootPane,ex);
+                        oFunc.SubSistemaMensajeInformacion(ex.toString());
+                        Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                // selecciona
+                cboEmpresas.setSelectedIndex(0);
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
-        // selecciona
-       cboEmpresas.setSelectedIndex(0);
 }
 
 
@@ -195,182 +207,200 @@ public class Reporteador extends javax.swing.JInternalFrame {
     public void valorsede(){
                      
 
-        nomsede=objet.nombresede;
-          System.out.println("pintar label::"+nomsede);
-                               jLabel1.setText(nomsede);
-   nombre=nomsede;
-   chk17.setSelected(true);
-   // jLabel48.setText(nomsede);
-   jCheckBox1.setSelected(true);
-    String sQuery;        
-        // Prepara el Query
-        sQuery ="select cod_sede from sede where nombre_sede= '"+nomsede+"';";
-        
-        if (oConn.FnBoolQueryExecute(sQuery))
-        {
-            try 
-            {
-                // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     codigosede=oConn.setResult.getInt("cod_sede");
-                     jLabel1.setText(nomsede);
-                 }
-                 
-                 // Cierra Resultados
-                    oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
-                //JOptionPane.showMessageDialorootPane,ex);
-                oFunc.SubSistemaMensajeInformacion(ex.toString());
-                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                nomsede=objet.nombresede;
+                System.out.println("pintar label::"+nomsede);
+                jLabel1.setText(nomsede);
+                nombre=nomsede;
+                chk17.setSelected(true);
+                // jLabel48.setText(nomsede);
+                jCheckBox1.setSelected(true);
+                String sQuery;
+                // Prepara el Query
+                sQuery ="select cod_sede from sede where nombre_sede= '"+nomsede+"';";
+                
+                if (oConn.FnBoolQueryExecute(sQuery))
+                {
+                    try
+                    {
+                        // Verifica resultados
+                        while (oConn.setResult.next())
+                        {
+                            // Obtiene los datos de la Consulta
+                            codigosede=oConn.setResult.getInt("cod_sede");
+                            jLabel1.setText(nomsede);
+                        }
+                        
+                        // Cierra Resultados
+                        oConn.setResult.close();
+                    }
+                    catch (SQLException ex)
+                    {
+                        //JOptionPane.showMessageDialorootPane,ex);
+                        oFunc.SubSistemaMensajeInformacion(ex.toString());
+                        Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                agregarConsulta=" and n.cod_sede="+codigosede;
+                agregarConsulta1=" and n_orden_ocupacional.cod_sede="+codigosede;
+                System.out.println(":"+agregarConsulta);
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+                //  agregarConsulta+=" "; 
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-           agregarConsulta=" and n.cod_sede="+codigosede; 
-           agregarConsulta1=" and n_orden_ocupacional.cod_sede="+codigosede; 
-           System.out.println(":"+agregarConsulta);
-   //  agregarConsulta+=" "; 
     }
     private void cOrdenServicio(){
                
-                 model = new DefaultTableModel(){        
-                 @Override
+            try {
+                model = new DefaultTableModel(){
+                    @Override
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
+                        return false;
                     }};
-                 String vSql="SELECT n.n_orden AS FICHA, ";
-                         if(chk1.isSelected()== true){
-                        vSql += "n.nom_examen AS EXAMEN,";
-                         }
-                         if(chk9.isSelected()== true){
-                         vSql += "n.n_fisttest as FISTTEST,";
-                         }
-                         if(chk10.isSelected()== true){
-                          vSql += "n.n_psicosen as PSICOSENSO, ";
-                         }
-                         if(chk11.isSelected()== true){
-                         vSql+= "n.n_testaltura as TESTALTURA, ";
-                         }
-                         if(chk13.isSelected()== true){
-                         vSql+= "n.visual_compl as VISUALCOMPL, ";
-                         }
-                         if(chk14.isSelected()== true){
-                         vSql+= "n.trab_calientes as TRABENCALIENTE, ";
-                         }
-                         if(chk15.isSelected()== true){
-                         vSql+= "n.tipoprueba as TipoExamenCovid, ";
-                         }
-                         if(chk16.isSelected()== true){
-                         vSql+= "n.chkcovid2 as COVID2, ";
-                         }
-                         if(chk17.isSelected()== true){
-                         vSql+= "n.manip_alimentos as MANIPULADORALIMENTOS, ";
-                         }
-                         if(chk2.isSelected()== true){
-                         vSql += "d.cod_pa AS DNI,";
-                         }
-                         if(chk3.isSelected()== true){
-                          vSql += "d.nombres_pa||' '||d.apellidos_pa AS NOMBRES, ";
-                         }
-                         if(chk4.isSelected()== true){
-                         vSql+= "n.cargo_de AS CARGO, ";
-                         }
-                         if(chk5.isSelected()== true){
-                         vSql+= "n.fecha_apertura_po AS FECHA, ";
-                          }
-                    
-                         if(chk7.isSelected()== true){
-                         vSql+= "n.razon_contrata AS CONTRATA, ";
-                                 }
-                         if(chk8.isSelected()== true){
-                         vSql+= "n.razon_empresa AS EMPRESA, ";
-                                 }
-                         if(chk6.isSelected()== true){
-                         vSql+= "n.tipo_pago AS TIPOPAGO, ";
-                                 }
-                         vSql+= "n.precio_po::numeric AS PRECIO "
-                             
-                + "FROM n_orden_ocupacional AS n "
-                + "LEFT JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa) "
-                + "LEFT JOIN lab_clinico AS l ON (n.n_orden = l.n_orden)"                
-                + "WHERE n.o_servicio ="+txtOrdenServicio.getText().toString();
-                  if (oConn.FnBoolQueryExecute(vSql))
-             {
-             try  {
+                String vSql="SELECT n.n_orden AS FICHA, ";
+                if(chk1.isSelected()== true){
+                    vSql += "n.nom_examen AS EXAMEN,";
+                }
+                if(chk9.isSelected()== true){
+                    vSql += "n.n_fisttest as FISTTEST,";
+                }
+                if(chk10.isSelected()== true){
+                    vSql += "n.n_psicosen as PSICOSENSO, ";
+                }
+                if(chk11.isSelected()== true){
+                    vSql+= "n.n_testaltura as TESTALTURA, ";
+                }
+                if(chk13.isSelected()== true){
+                    vSql+= "n.visual_compl as VISUALCOMPL, ";
+                }
+                if(chk14.isSelected()== true){
+                    vSql+= "n.trab_calientes as TRABENCALIENTE, ";
+                }
+                if(chk15.isSelected()== true){
+                    vSql+= "n.tipoprueba as TipoExamenCovid, ";
+                }
+                if(chk16.isSelected()== true){
+                    vSql+= "n.chkcovid2 as COVID2, ";
+                }
+                if(chk17.isSelected()== true){
+                    vSql+= "n.manip_alimentos as MANIPULADORALIMENTOS, ";
+                }
+                if(chk2.isSelected()== true){
+                    vSql += "d.cod_pa AS DNI,";
+                }
+                if(chk3.isSelected()== true){
+                    vSql += "d.nombres_pa||' '||d.apellidos_pa AS NOMBRES, ";
+                }
+                if(chk4.isSelected()== true){
+                    vSql+= "n.cargo_de AS CARGO, ";
+                }
+                if(chk5.isSelected()== true){
+                    vSql+= "n.fecha_apertura_po AS FECHA, ";
+                }
+                
+                if(chk7.isSelected()== true){
+                    vSql+= "n.razon_contrata AS CONTRATA, ";
+                }
+                if(chk8.isSelected()== true){
+                    vSql+= "n.razon_empresa AS EMPRESA, ";
+                }
+                if(chk6.isSelected()== true){
+                    vSql+= "n.tipo_pago AS TIPOPAGO, ";
+                }
+                vSql+= "n.precio_po::numeric AS PRECIO "
+                        
+                        + "FROM n_orden_ocupacional AS n "
+                        + "LEFT JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa) "
+                        + "LEFT JOIN lab_clinico AS l ON (n.n_orden = l.n_orden)"
+                        + "WHERE n.o_servicio ="+txtOrdenServicio.getText().toString();
+                if (oConn.FnBoolQueryExecute(vSql))
+                {
+                    try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
-                         model.addColumn(rsmt.getColumnLabel(i));
+                            model.addColumn(rsmt.getColumnLabel(i));
                         }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                            Fila[i] = oConn.setResult.getObject(i+1);
+                        while (oConn.setResult.next())
+                        {
+                            Object [] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i+1);
+                            }
+                            model.addRow(Fila);
                         }
-                        model.addRow(Fila);
+                        tbReporte.setModel(model);
+                        oConn.setResult.close();
                     }
-                      tbReporte.setModel(model);
-                     oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    catch (SQLException ex)
+                    {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
   
     public void consultaAlta(){
-    model = new DefaultTableModel(){        
-                 @Override
+            try {
+                model = new DefaultTableModel(){
+                    @Override
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
+                        return false;
                     }};
-                               
-                    String vSql=" select noo.n_orden, concat(dp.nombres_pa,' ',dp.apellidos_pa) as DatosPersonales,\n" +
-"        dp.cod_pa as dni,\n" +
-"		noo.razon_empresa,noo.razon_contrata,\n" +
-"		cam.fecha_examen as fechaAlta, noo.fecha_apertura_po as fechaIngreso,\n" +
-"			( case when cam.fecha_actua is null then 'sin actulizar'\n" +
-"		 else cast(cam.fecha_actua as text)\n" +
-"		 end )as fechaAltaActualizada\n" +
-" from datos_paciente as dp inner join n_orden_ocupacional as noo on dp.cod_pa=noo.cod_pa\n" +
-" inner join constancia_alta_marsa as cam on noo.n_orden=cam.n_orden "
-                            +laconsulta
-                            ;
-           
-                  System.out.println("consulta:"+vSql);         
-                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                
+                String vSql=" select noo.n_orden, concat(dp.nombres_pa,' ',dp.apellidos_pa) as DatosPersonales,\n" +
+                        "        dp.cod_pa as dni,\n" +
+                        "		noo.razon_empresa,noo.razon_contrata,\n" +
+                        "		cam.fecha_examen as fechaAlta, noo.fecha_apertura_po as fechaIngreso,\n" +
+                        "			( case when cam.fecha_actua is null then 'sin actulizar'\n" +
+                        "		 else cast(cam.fecha_actua as text)\n" +
+                        "		 end )as fechaAltaActualizada\n" +
+                        " from datos_paciente as dp inner join n_orden_ocupacional as noo on dp.cod_pa=noo.cod_pa\n" +
+                        " inner join constancia_alta_marsa as cam on noo.n_orden=cam.n_orden "
+                        +laconsulta
+                        ;
+                
+                System.out.println("consulta:"+vSql);
+                //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
-             {
-             try  {
+                {
+                    try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
-                         model.addColumn(rsmt.getColumnLabel(i));
+                            model.addColumn(rsmt.getColumnLabel(i));
                         }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                       
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                           
-                            Fila[i] = oConn.setResult.getObject(i+1);
+                        while (oConn.setResult.next())
+                        {
+                            Object [] Fila = new Object[CantidaColumnas];
+                            
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                
+                                Fila[i] = oConn.setResult.getObject(i+1);
+                            }
+                            model.addRow(Fila);
                         }
-                        model.addRow(Fila);
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        tbReporte.setModel(model);
+                        oConn.setResult.close();
                     }
-                    tbReporte = autoResizeColWidth(tbReporte, model);
-                      tbReporte.setModel(model);
-                     oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    catch (SQLException ex)
+                    {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
     
     
@@ -387,139 +417,140 @@ public class Reporteador extends javax.swing.JInternalFrame {
     
     }
     private void cPersonalizada(){
-    model = new DefaultTableModel(){        
-                 @Override
+            try {
+                model = new DefaultTableModel(){
+                    @Override
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
+                        return false;
                     }};
-                               
-                    String vSql="SELECT  n.n_orden AS FICHA ";
-                         if(chk5.isSelected()== true){
-                         vSql+= ",n.fecha_apertura_po AS FECHAEMO ";
-                          }
-                         if(chk3.isSelected()== true){
-                          vSql += ",d.nombres_pa||' '||d.apellidos_pa AS NOMBRES ";
-                         }
-                         if(chk2.isSelected()== true){
-                         vSql += ",d.cod_pa AS DNI ";
-                         }
-                         vSql+=",d.fecha_nacimiento_pa AS FECHANACIMIENTO ";
-                         vSql+=",obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) as EDAD";
-                        vSql+=",d.direccion_pa as DIRECCIÓN";
-                        vSql+=",d.cel_pa as CELULAR";
-                         if(chk4.isSelected()== true){
-                         vSql+= ",n.cargo_de AS CARGO ";
-                         }
+                
+                String vSql="SELECT  n.n_orden AS FICHA ";
+                if(chk5.isSelected()== true){
+                    vSql+= ",n.fecha_apertura_po AS FECHAEMO ";
+                }
+                if(chk3.isSelected()== true){
+                    vSql += ",d.nombres_pa||' '||d.apellidos_pa AS NOMBRES ";
+                }
+                if(chk2.isSelected()== true){
+                    vSql += ",d.cod_pa AS DNI ";
+                }
+                vSql+=",d.fecha_nacimiento_pa AS FECHANACIMIENTO ";
+                vSql+=",obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) as EDAD";
+                vSql+=",d.direccion_pa as DIRECCIÓN";
+                vSql+=",d.cel_pa as CELULAR";
+                if(chk4.isSelected()== true){
+                    vSql+= ",n.cargo_de AS CARGO ";
+                }
+                
+                if(chk7.isSelected()== true){
+                    vSql+= ",n.razon_contrata AS CONTRATA ";
+                }
+                if(chk8.isSelected()== true){
+                    vSql+= ",n.razon_empresa AS EMPRESA ";
+                }
+                if(chk1.isSelected()== true){
+                    vSql += ",n.nom_examen AS EXAMEN ";
+                }
+                vSql+= ",n.txtobserv1 AS OBSERV1 ";
+                vSql+= ",n.txtobserv2 AS OBSERV2 ";
+                if(chk9.isSelected()== true){
+                    vSql += ",n.n_fisttest as FISTTEST ";
+                }
+                if(chk10.isSelected()== true){
+                    vSql += ",n.n_psicosen as PSICOSENSO ";
+                }
+                if(chk11.isSelected()== true){
+                    vSql+= ",n.n_testaltura as TESTALTURA ";
+                }
+                if(chk13.isSelected()== true){
+                    vSql+= ",n.visual_compl as VISUALCOMPL ";
+                }
+                if(chk14.isSelected()== true){
+                    vSql+= ",n.trab_calientes as TRABENCALIENTE ";
+                }
+                if(chk15.isSelected()== true){
+                    vSql+= ",n.tipoprueba as TIPO_PRUEBA_COVID";
+                }
+                //   if(chk16.isSelected()== true){
+                //  vSql+= ",n.chkcovid2 as COVID2 ";
+                //  }
+                if(chk17.isSelected()== true){
+                    vSql+= ",n.manip_alimentos as MANIPULADORALIMENTOS ";
+                }
+                if(chk12.isSelected()== true){
+                    vSql += ",CASE WHEN ie.n_orden is not null  AND n.nom_examen ='ANEXO-7D' "
+                            + "THEN 'true' ELSE 'false' END AS EKG ";
+                }
+                vSql+=",CASE WHEN l.chko = 'TRUE' THEN 'O'"
+                        + "       WHEN l.chka = 'TRUE' THEN 'A'\n" +
+                        "         WHEN l.chkb = 'TRUE' THEN 'B'\n" +
+                        "         WHEN l.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
+                        "  CASE WHEN l.rbrhpositivo ='TRUE' THEN '+' \n" +
+                        "      WHEN l.rbrhnegativo = 'TRUE' THEN '-' END AS GRUPOFACTOR ";
+                vSql+=",  CASE  WHEN o.n_orden is not null THEN 'Observado'\n" +
+                        "                   WHEN ca.chkapto = 'TRUE' THEN 'Apto"
+                        + "'\n" +
+                        "                   WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  \n" +
+                        "                   WHEN ac.no_apto = 'TRUE' THEN 'No Apto' \n" +
+                        "                   WHEN a.no_apto = 'TRUE' THEN 'No Apto'\n" +
+                        "                   WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
+                        "                   WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
+                        "WHEN bc.chk_no = 'TRUE' THEN 'No Apto'\n" +
                         
-                         if(chk7.isSelected()== true){
-                         vSql+= ",n.razon_contrata AS CONTRATA ";
-                                 }
-                         if(chk8.isSelected()== true){
-                         vSql+= ",n.razon_empresa AS EMPRESA ";
-                                 }
-                          if(chk1.isSelected()== true){
-                        vSql += ",n.nom_examen AS EXAMEN ";
-                         }
-                        vSql+= ",n.txtobserv1 AS OBSERV1 ";
-                        vSql+= ",n.txtobserv2 AS OBSERV2 ";
-                         if(chk9.isSelected()== true){
-                         vSql += ",n.n_fisttest as FISTTEST ";
-                         }
-                         if(chk10.isSelected()== true){
-                          vSql += ",n.n_psicosen as PSICOSENSO ";
-                         }
-                         if(chk11.isSelected()== true){
-                         vSql+= ",n.n_testaltura as TESTALTURA ";
-                         }
-                         if(chk13.isSelected()== true){
-                         vSql+= ",n.visual_compl as VISUALCOMPL ";
-                         }
-                         if(chk14.isSelected()== true){
-                         vSql+= ",n.trab_calientes as TRABENCALIENTE ";
-                         }
-                         if(chk15.isSelected()== true){
-                         vSql+= ",n.tipoprueba as TIPO_PRUEBA_COVID";
-                         }
-                      //   if(chk16.isSelected()== true){
-                       //  vSql+= ",n.chkcovid2 as COVID2 ";
-                       //  }
-                         if(chk17.isSelected()== true){
-                         vSql+= ",n.manip_alimentos as MANIPULADORALIMENTOS ";
-                         }
-                         if(chk12.isSelected()== true){
-                         vSql += ",CASE WHEN ie.n_orden is not null  AND n.nom_examen ='ANEXO-7D' "
-                                 + "THEN 'true' ELSE 'false' END AS EKG ";
-                         }
-                         vSql+=",CASE WHEN l.chko = 'TRUE' THEN 'O'"
-                            + "       WHEN l.chka = 'TRUE' THEN 'A'\n" +
-                            "         WHEN l.chkb = 'TRUE' THEN 'B'\n" +
-                            "         WHEN l.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
-                            "  CASE WHEN l.rbrhpositivo ='TRUE' THEN '+' \n" +
-                            "      WHEN l.rbrhnegativo = 'TRUE' THEN '-' END AS GRUPOFACTOR ";                 
-                        vSql+=",  CASE  WHEN o.n_orden is not null THEN 'Observado'\n" +
-                    "                   WHEN ca.chkapto = 'TRUE' THEN 'Apto"
-                                + "'\n" +
-                    "                   WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
-                    "                   WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
-                    "                   WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
-                    "                   WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
-                    "                   WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-                    "                   WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
-                    "                   WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-                    "                   WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
-                    "                   WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  \n" +
-                    "                   WHEN ac.no_apto = 'TRUE' THEN 'No Apto' \n" +
-                    "                   WHEN a.no_apto = 'TRUE' THEN 'No Apto'\n" +
-                    "                   WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
-                    "                   WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
-                                       "WHEN bc.chk_no = 'TRUE' THEN 'No Apto'\n" +
-
-                    "		        WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
-                    "                   WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as condicion ";
-                        
-                         if(chk6.isSelected()== true){
-                         vSql+= ",n.tipo_pago AS TIPOPAGO ";
-                                 }
-                         vSql+= ",n.precio_po::numeric AS PRECIO "
-                                 +", (case when n.cod_sede=1 then 'TRUJILLO' "
-                                 + " WHEN n.cod_sede=2 then 'Huamachuco' "
-                                 + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
-                                  + " WHEN n.cod_sede=3 then 'Huancayo' "
-                                 + " end ) as SEDE "
-                + "FROM n_orden_ocupacional AS n "
-                + "LEFT JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa) "
-                + "LEFT JOIN lab_clinico AS l ON (n.n_orden = l.n_orden) "  
-                + "LEFT JOIN informe_electrocardiograma AS ie ON (n.n_orden = ie.n_orden)  "  
-                +" LEFT JOIN certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)"      
-                +" left join anexo7d as a ON (a.n_orden=n.n_orden)"
-                +" left join anexoc as ac ON (ac.n_orden=n.n_orden)"
-                +" left join observaciones as o ON (o.n_orden=n.n_orden)"
-                +" left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)"
-                +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"
-                +" left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) ";  
-                          if(cboContratas.getSelectedItem().toString().length()>2)
-                             contrata=cboContratas.getSelectedItem().toString();
-                         else
-                             contrata="";
-                         if(cboEmpresas.getSelectedItem().toString().length()>2)
-                             empresa=cboEmpresas.getSelectedItem().toString();
-                         else
-                             empresa="";
-              //  if(cboContratas.getSelectedIndex()>=1){
-                    vSql +="WHERE UPPER(n.razon_contrata) like UPPER('%"+contrata+"%') ";
+                        "		        WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                        "                   WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as condicion ";
+                
+                if(chk6.isSelected()== true){
+                    vSql+= ",n.tipo_pago AS TIPOPAGO ";
+                }
+                vSql+= ",n.precio_po::numeric AS PRECIO "
+                        +", (case when n.cod_sede=1 then 'TRUJILLO' "
+                        + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                        + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
+                        + " WHEN n.cod_sede=3 then 'Huancayo' "
+                        + " end ) as SEDE "
+                        + "FROM n_orden_ocupacional AS n "
+                        + "LEFT JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa) "
+                        + "LEFT JOIN lab_clinico AS l ON (n.n_orden = l.n_orden) "
+                        + "LEFT JOIN informe_electrocardiograma AS ie ON (n.n_orden = ie.n_orden)  "
+                        +" LEFT JOIN certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)"
+                        +" left join anexo7d as a ON (a.n_orden=n.n_orden)"
+                        +" left join anexoc as ac ON (ac.n_orden=n.n_orden)"
+                        +" left join observaciones as o ON (o.n_orden=n.n_orden)"
+                        +" left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)"
+                        +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"
+                        +" left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) ";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                //  if(cboContratas.getSelectedIndex()>=1){
+                vSql +="WHERE UPPER(n.razon_contrata) like UPPER('%"+contrata+"%') ";
                 //   contrata=" ";
-               // } 
-               // else
+                // }
+                // else
                 //    contrata=" where ";
-               // if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
-               //     vSql +=" AND ";
-               // }
-               // if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
-               //     vSql +=" WHERE ";
-               // }                
-               // if(cboEmpresas.getSelectedIndex()>=1){
-                    vSql += " AND UPPER(n.razon_empresa) like UPPER('%"+empresa+"%')";
-               // }
+                // if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
+                //     vSql +=" AND ";
+                // }
+                // if(cboContratas.getSelectedIndex()>=1 && cboEmpresas.getSelectedIndex()>=1){
+                //     vSql +=" WHERE ";
+                // }
+                // if(cboEmpresas.getSelectedIndex()>=1){
+                vSql += " AND UPPER(n.razon_empresa) like UPPER('%"+empresa+"%')";
+                // }
                 if(chkRepTestAltura.isSelected()){
                     vSql +=" and n.n_testaltura = 'true'";
                 }
@@ -532,169 +563,175 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 if(chkRepTrabCal.isSelected()){
                     vSql +=" and n.trab_calientes = 'true'";
                 }
-              //  if(chkRepCovid1.isSelected()){
-               //     vSql +=" and n.chkcovid1 = 'true'";
-               // }
-              //  if(chkRepCovid2.isSelected()){
-               //     vSql +=" and n.chkcovid2 = 'true'";
-               // }
+                //  if(chkRepCovid1.isSelected()){
+                //     vSql +=" and n.chkcovid1 = 'true'";
+                // }
+                //  if(chkRepCovid2.isSelected()){
+                //     vSql +=" and n.chkcovid2 = 'true'";
+                // }
                 if(chkRepManipAlimen.isSelected()){
                     vSql +=" and n.manip_alimentos = 'true'";
                 }
-                 if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                     
-                   //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 ) 
-
-                   //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
-                   //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                   //  }else{
-                         vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                   //  }
-                     
-                 }
-                 if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                 vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-                 }
-                 
-                 
-                 vSql+=" " +agregarConsulta;
-                  System.out.println("consulta:"+vSql);         
-                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+                {
+                    
+                    //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 )
+                    
+                    //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
+                    //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                    //  }else{
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                    //  }
+                    
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+                {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                
+                vSql+=" " +agregarConsulta;
+                System.out.println("consulta:"+vSql);
+                //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
                 {
-                try  {
+                    try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
-                         model.addColumn(rsmt.getColumnLabel(i));
+                            model.addColumn(rsmt.getColumnLabel(i));
                         }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                       
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                           
-                            Fila[i] = oConn.setResult.getObject(i+1);
+                        while (oConn.setResult.next())
+                        {
+                            Object [] Fila = new Object[CantidaColumnas];
+                            
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                
+                                Fila[i] = oConn.setResult.getObject(i+1);
+                            }
+                            model.addRow(Fila);
                         }
-                        model.addRow(Fila);
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        tbReporte.setModel(model);
+                        oConn.setResult.close();
                     }
-                    tbReporte = autoResizeColWidth(tbReporte, model);
-                      tbReporte.setModel(model);
-                     oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    catch (SQLException ex)
+                    {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
     
     
     }
    
     private void cPersonalizadaadecco(){
-    model = new DefaultTableModel(){        
-                 @Override
+            try {
+                model = new DefaultTableModel(){
+                    @Override
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
+                        return false;
                     }};
-                               
-                    String vSql="SELECT n_orden_ocupacional.n_orden AS CODIGO,\n" +
-"      'HORIZONTE MEDIC' AS PROVEEDOR,\n" +
-"	  n_orden_ocupacional.cod_pa AS DNI,\n" +
-"	  n_orden_ocupacional.fecha_apertura_po  as FECHA,\n" +
-"       datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS APELLIDOS_NOMBRES,\n" +
-"	   datos_paciente.cel_pa AS CELULAR,\n" +
-"       obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
-"	   (CASE WHEN n_orden_ocupacional.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
-"	   WHEN n_orden_ocupacional.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
-"	   END\n" +
-"	   ) AS DESTINO,\n" +
-"       \n" +
-"                        n_orden_ocupacional.razon_contrata AS EMPRESA1,\n" +
-"						n_orden_ocupacional.cargo_de AS PUESTO_CARGO,\n" +
-"						n_orden_ocupacional.nom_examen AS TIPO_EXAMEN,\n" +
-"						(CASE WHEN a16.apto_si='TRUE' THEN 'APTO'\n" +
-"						 WHEN a16.apto_no='TRUE' THEN 'NO APTO'\n" +
-"						  WHEN a16.apto_re='TRUE' THEN 'APTO CON RESTRICCION'\n" +
-"						 ELSE 'N/A'\n" +
-"						end) AS APTITUD,\n" +
-"						(case  when a16.n_orden is null then 'N/A'\n" +
-"						ELSE a16.txtrestricciones END\n" +
-"						)AS DETALLE_RESTRICCION,\n" +
-"                        (CASE \n" +
-"                        WHEN a16.txtobservacionesfm is null THEN 'N/A'\n" +
-"                        ELSE a16.txtobservacionesfm\n" +
-"                        END) AS DETALLE_OBSERVACIONES,\n" +
-"						(CASE WHEN  n_orden_ocupacional.nom_examen='COVID-19' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
-"						ELSE 'N/A' END\n" +
-"						) PRUEBA_RAPIDA,\n" +
-"						(CASE WHEN  n_orden_ocupacional.nom_examen='PRUEBA CUALITATIVA ANTIGENOS' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
-"						WHEN  n_orden_ocupacional.nom_examen='PRUEBA CUANTITATIVA ANTIGENOS' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
-"						\n" +
-"						 ELSE 'N/A' END\n" +
-"						) PRUEBA_ANTIGENOS,\n" +
-"						(CASE WHEN  pm.n_orden IS NULL THEN 'N/A'\n" +
-"						\n" +
-"						 ELSE pm.resultado END\n" +
-"						) PRUEBA_MOLECULARES,n_orden_ocupacional.fecha_apertura_po  as FECHA_VENCIMIENTO\n" +
-"						\n" +
-"                        FROM n_orden_ocupacional\n" +
-"                        LEFT JOIN datos_paciente ON n_orden_ocupacional.cod_pa = datos_paciente.cod_pa \n" +
-"                        LEFT JOIN sede ON n_orden_ocupacional.cod_sede = sede.cod_sede\n" +
-"                        LEFT JOIN constancia_salud_marsa ON n_orden_ocupacional.n_orden = constancia_salud_marsa.n_orden\n" +
-"                        LEFT JOIN constancia_salud_marsa1 ON n_orden_ocupacional.n_orden = constancia_salud_marsa1.n_orden\n" +
-"				\n" +
-"						LEFT JOIN triaje ON n_orden_ocupacional.n_orden = triaje.n_orden\n" +
-"                        LEFT JOIN examen_inmunologico ON n_orden_ocupacional.n_orden = examen_inmunologico.n_orden\n" +
-"                    LEFT JOIN anexo_agroindustrial as a16 on n_orden_ocupacional.n_orden=a16.n_orden\n" +
-"					LEFT JOIN prueba_moleculares AS pm on n_orden_ocupacional.n_orden=pm.n_orden "+
-"					WHERE\n" +
-"					n_orden_ocupacional.razon_empresa like '%ADECCO%' \n" ;  
-                          if(cboContratas.getSelectedItem().toString().length()>2)
-                             contrata=cboContratas.getSelectedItem().toString();
-                         else
-                             contrata="";
-                         if(cboEmpresas.getSelectedItem().toString().length()>2)
-                             empresa=cboEmpresas.getSelectedItem().toString();
-                         else
-                             empresa="";
-              //  if(cboContratas.getSelectedIndex()>=1){
-                    vSql +="AND UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
-             
-                    vSql += " AND UPPER(n_orden_ocupacional.razon_empresa) like UPPER('%"+empresa+"%')";
-        
-              
-                 if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                     
-                   //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 ) 
-
-                   //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
-                   //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                   //  }else{
-                         vSql +=" AND n_orden_ocupacional.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                   //  }
-                     
-                 }
-                 if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                 vSql +=" AND n_orden_ocupacional.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-                 }
-                 
-                 
-                 vSql+=" " +agregarConsulta1;
-                  System.out.println("consulta:"+vSql);         
-                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                
+                String vSql="SELECT n_orden_ocupacional.n_orden AS CODIGO,\n" +
+                        "      'HORIZONTE MEDIC' AS PROVEEDOR,\n" +
+                        "	  n_orden_ocupacional.cod_pa AS DNI,\n" +
+                        "	  n_orden_ocupacional.fecha_apertura_po  as FECHA,\n" +
+                        "       datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS APELLIDOS_NOMBRES,\n" +
+                        "	   datos_paciente.cel_pa AS CELULAR,\n" +
+                        "       obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
+                        "	   (CASE WHEN n_orden_ocupacional.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
+                        "	   WHEN n_orden_ocupacional.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
+                        "	   END\n" +
+                        "	   ) AS DESTINO,\n" +
+                        "       \n" +
+                        "                        n_orden_ocupacional.razon_contrata AS EMPRESA1,\n" +
+                        "						n_orden_ocupacional.cargo_de AS PUESTO_CARGO,\n" +
+                        "						n_orden_ocupacional.nom_examen AS TIPO_EXAMEN,\n" +
+                        "						(CASE WHEN a16.apto_si='TRUE' THEN 'APTO'\n" +
+                        "						 WHEN a16.apto_no='TRUE' THEN 'NO APTO'\n" +
+                        "						  WHEN a16.apto_re='TRUE' THEN 'APTO CON RESTRICCION'\n" +
+                        "						 ELSE 'N/A'\n" +
+                        "						end) AS APTITUD,\n" +
+                        "						(case  when a16.n_orden is null then 'N/A'\n" +
+                        "						ELSE a16.txtrestricciones END\n" +
+                        "						)AS DETALLE_RESTRICCION,\n" +
+                        "                        (CASE \n" +
+                        "                        WHEN a16.txtobservacionesfm is null THEN 'N/A'\n" +
+                        "                        ELSE a16.txtobservacionesfm\n" +
+                        "                        END) AS DETALLE_OBSERVACIONES,\n" +
+                        "						(CASE WHEN  n_orden_ocupacional.nom_examen='COVID-19' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
+                        "						ELSE 'N/A' END\n" +
+                        "						) PRUEBA_RAPIDA,\n" +
+                        "						(CASE WHEN  n_orden_ocupacional.nom_examen='PRUEBA CUALITATIVA ANTIGENOS' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
+                        "						WHEN  n_orden_ocupacional.nom_examen='PRUEBA CUANTITATIVA ANTIGENOS' THEN 	reactivoono(n_orden_ocupacional.n_orden)\n" +
+                        "						\n" +
+                        "						 ELSE 'N/A' END\n" +
+                        "						) PRUEBA_ANTIGENOS,\n" +
+                        "						(CASE WHEN  pm.n_orden IS NULL THEN 'N/A'\n" +
+                        "						\n" +
+                        "						 ELSE pm.resultado END\n" +
+                        "						) PRUEBA_MOLECULARES,n_orden_ocupacional.fecha_apertura_po  as FECHA_VENCIMIENTO\n" +
+                        "						\n" +
+                        "                        FROM n_orden_ocupacional\n" +
+                        "                        LEFT JOIN datos_paciente ON n_orden_ocupacional.cod_pa = datos_paciente.cod_pa \n" +
+                        "                        LEFT JOIN sede ON n_orden_ocupacional.cod_sede = sede.cod_sede\n" +
+                        "                        LEFT JOIN constancia_salud_marsa ON n_orden_ocupacional.n_orden = constancia_salud_marsa.n_orden\n" +
+                        "                        LEFT JOIN constancia_salud_marsa1 ON n_orden_ocupacional.n_orden = constancia_salud_marsa1.n_orden\n" +
+                        "				\n" +
+                        "						LEFT JOIN triaje ON n_orden_ocupacional.n_orden = triaje.n_orden\n" +
+                        "                        LEFT JOIN examen_inmunologico ON n_orden_ocupacional.n_orden = examen_inmunologico.n_orden\n" +
+                        "                    LEFT JOIN anexo_agroindustrial as a16 on n_orden_ocupacional.n_orden=a16.n_orden\n" +
+                        "					LEFT JOIN prueba_moleculares AS pm on n_orden_ocupacional.n_orden=pm.n_orden "+
+                        "					WHERE\n" +
+                        "					n_orden_ocupacional.razon_empresa like '%ADECCO%' \n" ;
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                //  if(cboContratas.getSelectedIndex()>=1){
+                vSql +="AND UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
+                
+                vSql += " AND UPPER(n_orden_ocupacional.razon_empresa) like UPPER('%"+empresa+"%')";
+                
+                
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+                {
+                    
+                    //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 )
+                    
+                    //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
+                    //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                    //  }else{
+                    vSql +=" AND n_orden_ocupacional.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                    //  }
+                    
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+                {
+                    vSql +=" AND n_orden_ocupacional.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                
+                vSql+=" " +agregarConsulta1;
+                System.out.println("consulta:"+vSql);
+                //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
-                    {
+                {
                     try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
-                         model.addColumn(rsmt.getColumnLabel(i));
+                            model.addColumn(rsmt.getColumnLabel(i));
                         }
                         while (oConn.setResult.next())
                         {
@@ -707,14 +744,19 @@ public class Reporteador extends javax.swing.JInternalFrame {
                             model.addRow(Fila);
                         }
                         tbReporte = autoResizeColWidth(tbReporte, model);
-                          tbReporte.setModel(model);
-                         oConn.setResult.close();
-                    } 
+                        tbReporte.setModel(model);
+                        oConn.setResult.close();
+                    }
                     catch (SQLException ex) 
                     {
                         oFunc.SubSistemaMensajeError(ex.toString());
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
     
     
@@ -722,203 +764,215 @@ public class Reporteador extends javax.swing.JInternalFrame {
    
     
     private void cAntigenos(){
-    model = new DefaultTableModel(){        
-                 @Override
+            try {
+                model = new DefaultTableModel(){
+                    @Override
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
+                        return false;
                     }};
-                               
-                    String vSql="SELECT n_orden_ocupacional.n_orden AS EXAM_COD_ATENCION,\n" +
-" LPAD(n_orden_ocupacional.cod_pa::text, 8, '0')AS DNI,\n" +
-" datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS PACIENTE,\n" +
-" datos_paciente.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
-" obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
-" datos_paciente.direccion_pa as DIRECCIÓN,datos_paciente.cel_pa as CELULAR,n_orden_ocupacional.cargo_de AS CARGO,\n" +
-" n_orden_ocupacional.razon_contrata AS EMPRESA,\n" +
-"n_orden_ocupacional.razon_contrata AS CONTRATA,\n" +
-"n_orden_ocupacional.fecha_apertura_po AS FECHA_REGISTRO,\n" +
-"						( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then constancia_salud_marsa.fecha_examen\n" +
-"								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
-"						 		when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
-"						 end ) AS FECHA_EXAMEN,\n" +
-"						 n_orden_ocupacional.nom_examen AS  NOMBRE_EXAMEN,\n" +
-"						                         n_orden_ocupacional.tipoprueba AS NUMERO_PRUEBA,\n" +
-"                        ( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then 'RA'\n" +
-"								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then 'AG'\n" +
-"			when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then 'AG'\n" +
-"\n" +
-"						 end ) AS TIPOPRUEBA,\n" +
-"                    	reactivoono(n_orden_ocupacional.n_orden) as RESULTADO_PRUEBA_COVID\n" +
-",\n" +
-"                        (CASE\n" +
-"    WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
-"        WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
-"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
-"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
-"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
-"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
-"						 END) AS SINTOMATOLOGIA,        \n" +
-"                        triaje.sat_02 AS SPO2,\n" +
-"                        examen_inmunologico.cbomarca AS MARCATEST,\n" +
-"                        (CASE \n" +
-"                        WHEN examen_inmunologico.txtobservaciones is null THEN 'N/A'\n" +
-"                        ELSE examen_inmunologico.txtobservaciones\n" +
-"                        END) AS DIAG_OBSERVACIONES,\n" +
-"						n_orden_ocupacional.txtobserv1 AS OBSERV1 ,n_orden_ocupacional.txtobserv2 AS OBSERV2,\n" +
-"						n_orden_ocupacional.tipo_pago AS TIPOPAGO ,n_orden_ocupacional.precio_po::numeric AS PRECIO, \n" +
-"						sede.nombre_sede AS ESTABLECIMIENTO\n" +
-"                        FROM n_orden_ocupacional\n" +
-"                        LEFT JOIN datos_paciente ON n_orden_ocupacional.cod_pa = datos_paciente.cod_pa \n" +
-"                        LEFT JOIN sede ON n_orden_ocupacional.cod_sede = sede.cod_sede\n" +
-"                        LEFT JOIN constancia_salud_marsa ON n_orden_ocupacional.n_orden = constancia_salud_marsa.n_orden\n" +
-"                        LEFT JOIN constancia_salud_marsa1 ON n_orden_ocupacional.n_orden = constancia_salud_marsa1.n_orden\n" +
-"					    LEFT JOIN fmedica_covid_marsa ON n_orden_ocupacional.n_orden = fmedica_covid_marsa.n_orden\n" +
-"                        LEFT JOIN fmedica_covid_marsa1 ON n_orden_ocupacional.n_orden = fmedica_covid_marsa1.n_orden\n" +
-"\n" +
-"						LEFT JOIN triaje ON n_orden_ocupacional.n_orden = triaje.n_orden\n" +
-"                        LEFT JOIN examen_inmunologico ON n_orden_ocupacional.n_orden = examen_inmunologico.n_orden\n ";  
-                          if(cboContratas.getSelectedItem().toString().length()>2)
-                             contrata=cboContratas.getSelectedItem().toString();
-                         else
-                             contrata="";
-                         if(cboEmpresas.getSelectedItem().toString().length()>2)
-                             empresa=cboEmpresas.getSelectedItem().toString();
-                         else
-                             empresa="";
-                    vSql +="  WHERE UPPER(n_orden_ocupacional.nom_examen) like '%ANTIGENOS%'  AND  ";
-                    vSql +="  UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
-             
-                    vSql += " AND UPPER(n_orden_ocupacional.razon_empresa) like UPPER('%"+empresa+"%')";
-        
-           
-               
-                     vSql+=" AND\n" +
-"        ((n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
-"	or (n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
-"						 )";
-                  
-                      
-                     
-           
-                 vSql+=" " +agregarConsulta1;
-                  System.out.println("consulta:"+vSql);         
-                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                
+                String vSql="SELECT n_orden_ocupacional.n_orden AS EXAM_COD_ATENCION,\n" +
+                        " LPAD(n_orden_ocupacional.cod_pa::text, 8, '0')AS DNI,\n" +
+                        " datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS PACIENTE,\n" +
+                        " datos_paciente.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+                        " obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
+                        " datos_paciente.direccion_pa as DIRECCIÓN,datos_paciente.cel_pa as CELULAR,n_orden_ocupacional.cargo_de AS CARGO,\n" +
+                        " n_orden_ocupacional.razon_contrata AS EMPRESA,\n" +
+                        "n_orden_ocupacional.razon_contrata AS CONTRATA,\n" +
+                        "n_orden_ocupacional.fecha_apertura_po AS FECHA_REGISTRO,\n" +
+                        "						( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then constancia_salud_marsa.fecha_examen\n" +
+                        "								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
+                        "						 		when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
+                        "						 end ) AS FECHA_EXAMEN,\n" +
+                        "						 n_orden_ocupacional.nom_examen AS  NOMBRE_EXAMEN,\n" +
+                        "						                         n_orden_ocupacional.tipoprueba AS NUMERO_PRUEBA,\n" +
+                        "                        ( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then 'RA'\n" +
+                        "								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then 'AG'\n" +
+                        "			when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then 'AG'\n" +
+                        "\n" +
+                        "						 end ) AS TIPOPRUEBA,\n" +
+                        "                    	reactivoono(n_orden_ocupacional.n_orden) as RESULTADO_PRUEBA_COVID\n" +
+                        ",\n" +
+                        "                        (CASE\n" +
+                        "    WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+                        "        WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+                        "						 END) AS SINTOMATOLOGIA,        \n" +
+                        "                        triaje.sat_02 AS SPO2,\n" +
+                        "                        examen_inmunologico.cbomarca AS MARCATEST,\n" +
+                        "                        (CASE \n" +
+                        "                        WHEN examen_inmunologico.txtobservaciones is null THEN 'N/A'\n" +
+                        "                        ELSE examen_inmunologico.txtobservaciones\n" +
+                        "                        END) AS DIAG_OBSERVACIONES,\n" +
+                        "						n_orden_ocupacional.txtobserv1 AS OBSERV1 ,n_orden_ocupacional.txtobserv2 AS OBSERV2,\n" +
+                        "						n_orden_ocupacional.tipo_pago AS TIPOPAGO ,n_orden_ocupacional.precio_po::numeric AS PRECIO, \n" +
+                        "						sede.nombre_sede AS ESTABLECIMIENTO\n" +
+                        "                        FROM n_orden_ocupacional\n" +
+                        "                        LEFT JOIN datos_paciente ON n_orden_ocupacional.cod_pa = datos_paciente.cod_pa \n" +
+                        "                        LEFT JOIN sede ON n_orden_ocupacional.cod_sede = sede.cod_sede\n" +
+                        "                        LEFT JOIN constancia_salud_marsa ON n_orden_ocupacional.n_orden = constancia_salud_marsa.n_orden\n" +
+                        "                        LEFT JOIN constancia_salud_marsa1 ON n_orden_ocupacional.n_orden = constancia_salud_marsa1.n_orden\n" +
+                        "					    LEFT JOIN fmedica_covid_marsa ON n_orden_ocupacional.n_orden = fmedica_covid_marsa.n_orden\n" +
+                        "                        LEFT JOIN fmedica_covid_marsa1 ON n_orden_ocupacional.n_orden = fmedica_covid_marsa1.n_orden\n" +
+                        "\n" +
+                        "						LEFT JOIN triaje ON n_orden_ocupacional.n_orden = triaje.n_orden\n" +
+                        "                        LEFT JOIN examen_inmunologico ON n_orden_ocupacional.n_orden = examen_inmunologico.n_orden\n ";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                vSql +="  WHERE UPPER(n_orden_ocupacional.nom_examen) like '%ANTIGENOS%'  AND  ";
+                vSql +="  UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
+                
+                vSql += " AND UPPER(n_orden_ocupacional.razon_empresa) like UPPER('%"+empresa+"%')";
+                
+                
+                
+                vSql+=" AND\n" +
+                        "        ((n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+                        "	or (n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
+                        "						 )";
+                
+                
+                
+                
+                vSql+=" " +agregarConsulta1;
+                System.out.println("consulta:"+vSql);
+                //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
                 {
-                try  {
+                    try  {
                         java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
                         int CantidaColumnas = rsmt.getColumnCount();
                         for (int i = 1; i <= CantidaColumnas; i++) {
-                         model.addColumn(rsmt.getColumnLabel(i));
+                            model.addColumn(rsmt.getColumnLabel(i));
                         }
-                    while (oConn.setResult.next())
-                    {
-                        Object [] Fila = new Object[CantidaColumnas];
-                       
-                        for (int i = 0; i < CantidaColumnas; i++) {
-                           
-                            Fila[i] = oConn.setResult.getObject(i+1);
+                        while (oConn.setResult.next())
+                        {
+                            Object [] Fila = new Object[CantidaColumnas];
+                            
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                
+                                Fila[i] = oConn.setResult.getObject(i+1);
+                            }
+                            model.addRow(Fila);
                         }
-                        model.addRow(Fila);
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        tbReporte.setModel(model);
+                        oConn.setResult.close();
                     }
-                    tbReporte = autoResizeColWidth(tbReporte, model);
-                      tbReporte.setModel(model);
-                     oConn.setResult.close();
-                } 
-                catch (SQLException ex) 
-                {
-                    oFunc.SubSistemaMensajeError(ex.toString());
-                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    catch (SQLException ex)
+                    {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
     
     
     }
     
     private void cPersonalizada1(){
-    model = new DefaultTableModel(){        
-                 @Override
+            try {
+                model = new DefaultTableModel(){
+                    @Override
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return false;
+                        return false;
                     }};
-                               
-                    String vSql="select \n" +
-"n.fecha_apertura_po as fecha, dp.cod_pa, CONCAT(dp.apellidos_pa,' ',dp.nombres_pa) as ApellidosNombres,\n" +
-"dp.ocupacion_pa as Puesto, splistadoNombres(n.n_orden) as TipoEvaluacion,n.protocolo,n.n_orden NroContrato,\n" +
-"n.razon_contrata as Cliente,\n" +
-"( CASE WHEN n.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
-"		WHEN n.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
-"        ELSE n.razon_empresa END\n" +
-") TIPO\n" +
-", spsumaSERVICIOS(n.n_orden) as Importe\n" +
-"from historialclienteprotocolo as hcp inner join n_orden_ocupacional as n on hcp.n_orden=n.n_orden\n" +
-"left join \n" +
-"datos_paciente as dp on n.cod_pa=dp.cod_pa "; 
-                          if(cboContratas.getSelectedItem().toString().length()>2)
-                             contrata=cboContratas.getSelectedItem().toString();
-                         else
-                             contrata="";
-                         if(cboEmpresas.getSelectedItem().toString().length()>2)
-                             empresa=cboEmpresas.getSelectedItem().toString();
-                         else
-                             empresa="";
-             
-                    vSql +=" WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
-             
-                    vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
-             
-            
-                 if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                     
-                   //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 ) 
-
-                   //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
-                   //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                   //  }else{
-                         vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                   //  }
-                     
-                 }
-                 if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) 
-                 {
-                 vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-                 }
-                 
-                 
-                 vSql+=" " +agregarConsulta;
-                 
-                 vSql+="   group by fecha,dp.cod_pa,ApellidosNombres,Puesto,TipoEvaluacion,n.protocolo,NroContrato,\n" +
-" Cliente,razon_empresa,Importe,TIPO";
-                  System.out.println("consulta:"+vSql);         
-                   //oFunc.SubSistemaMensajeInformacion(vSql);      
+                
+                String vSql="select \n" +
+                        "n.fecha_apertura_po as fecha, dp.cod_pa, CONCAT(dp.apellidos_pa,' ',dp.nombres_pa) as ApellidosNombres,\n" +
+                        "dp.ocupacion_pa as Puesto, splistadoNombres(n.n_orden) as TipoEvaluacion,n.protocolo,n.n_orden NroContrato,\n" +
+                        "n.razon_contrata as Cliente,\n" +
+                        "( CASE WHEN n.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
+                        "		WHEN n.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
+                        "        ELSE n.razon_empresa END\n" +
+                        ") TIPO\n" +
+                        ", spsumaSERVICIOS(n.n_orden) as Importe\n" +
+                        "from historialclienteprotocolo as hcp inner join n_orden_ocupacional as n on hcp.n_orden=n.n_orden\n" +
+                        "left join \n" +
+                        "datos_paciente as dp on n.cod_pa=dp.cod_pa ";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                
+                vSql +=" WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                
+                vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                
+                
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+                {
+                    
+                    //  if (((JTextField)cboEmpresas.getText().trim().length()> 2 )
+                    
+                    //  if(cboEmpresas.getItemCount()==0 && cboContratas.getItemCount()==0 ){
+                    //       vSql +=" WHERE n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                    //  }else{
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                    //  }
+                    
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 )
+                {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                
+                vSql+=" " +agregarConsulta;
+                
+                vSql+="   group by fecha,dp.cod_pa,ApellidosNombres,Puesto,TipoEvaluacion,n.protocolo,NroContrato,\n" +
+                        " Cliente,razon_empresa,Importe,TIPO";
+                System.out.println("consulta:"+vSql);
+                //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
-             {
-                try  {
-                           java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                           int CantidaColumnas = rsmt.getColumnCount();
-                           for (int i = 1; i <= CantidaColumnas; i++) {
+                {
+                    try  {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
                             model.addColumn(rsmt.getColumnLabel(i));
-                           }
-                       while (oConn.setResult.next())
-                       {
-                           Object [] Fila = new Object[CantidaColumnas];
-
-                           for (int i = 0; i < CantidaColumnas; i++) {
-
-                               Fila[i] = oConn.setResult.getObject(i+1);
-                           }
-                           model.addRow(Fila);
-                       }
-                       tbReporte = autoResizeColWidth(tbReporte, model);
-                         tbReporte.setModel(model);
+                        }
+                        while (oConn.setResult.next())
+                        {
+                            Object [] Fila = new Object[CantidaColumnas];
+                            
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                
+                                Fila[i] = oConn.setResult.getObject(i+1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        tbReporte.setModel(model);
                         oConn.setResult.close();
-                   } 
-                   catch (SQLException ex) 
-                   {
-                       oFunc.SubSistemaMensajeError(ex.toString());
-                       Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
-                   }
+                    }
+                    catch (SQLException ex)
+                    {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
     
     
@@ -1001,6 +1055,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Reporte para control Interno e Impresion detallada");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -1009,6 +1064,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -1838,159 +1894,171 @@ public class Reporteador extends javax.swing.JInternalFrame {
 
     private void btnRepDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepDiarioActionPerformed
        
-       model = new DefaultTableModel(){        
-              @Override
-              public boolean isCellEditable(int rowIndex, int columnIndex) {
-                   return false;
-            }};
-            String vSql="select n.n_orden, CASE  WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END CLINICA,\n" +
-"       n.fecha_apertura_po as FECHA,d.cod_pa as DNI,obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) as EDAD,\n" +
-"       d.apellidos_pa||', '||nombres_pa AS NOMBRES,n.cargo_de as ocupacion,\n" +
-"       n.razon_empresa AS EMPRESA,n.razon_contrata AS contrata,CASE  WHEN n.razon_empresa is not null THEN 'SAUSACOCHA' END SEDE,\n" +
-"       n.nom_examen as TIPO,\n" +
-"       CASE  WHEN o.n_orden is not null THEN 'Observado'\n" +
-"                   WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"                   WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"                   WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"                   WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  \n" +
-"                   WHEN ac.no_apto = 'TRUE' THEN 'No Apto' \n" +
-"                   WHEN a.no_apto = 'TRUE' THEN 'No Apto'\n" +
-"                   WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
-"                   WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
-"		    WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
-"                   WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as RESULTADO,\n" +
-"        CASE WHEN i.aprobo_inf = 'TRUE' THEN 'APTO'\n" +
-"             WHEN i.desaprobo_inf = 'TRUE' THEN 'NO APTO' END AS PSICOLOGICO,\n" +
-"                   m.txtobservacionesfm as DIAGNOSTICO\n" +
-"        From datos_paciente as d\n" +
-"        inner join n_orden_ocupacional  as n ON (d.cod_pa = n.cod_pa)\n" +
-"        left join anexo7c as m ON (m.n_orden=n.n_orden)\n" +
-"        left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
-"        left join anexo7d as a ON (a.n_orden=n.n_orden)\n" +
-"        left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
-"        left join observaciones as o ON (o.n_orden=n.n_orden)\n" +
-"        left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
-"        left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
-"        left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) \n" +
-"        left join informe_psicologico as i ON (i.n_orden=n.n_orden) \n" 
-        + "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' "
-              + "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"' ";
-     if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-     }
-     if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-     } 
-      vSql+="order by n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
-        if (oConn.FnBoolQueryExecute(vSql)) {
             try {
-                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                int CantidaColumnas = rsmt.getColumnCount();
-                for (int i = 1; i <= CantidaColumnas; i++) {
-                    model.addColumn(rsmt.getColumnLabel(i));
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="select n.n_orden, CASE  WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END CLINICA,\n" +
+                        "       n.fecha_apertura_po as FECHA,d.cod_pa as DNI,obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) as EDAD,\n" +
+                        "       d.apellidos_pa||', '||nombres_pa AS NOMBRES,n.cargo_de as ocupacion,\n" +
+                        "       n.razon_empresa AS EMPRESA,n.razon_contrata AS contrata,CASE  WHEN n.razon_empresa is not null THEN 'SAUSACOCHA' END SEDE,\n" +
+                        "       n.nom_examen as TIPO,\n" +
+                        "       CASE  WHEN o.n_orden is not null THEN 'Observado'\n" +
+                        "                   WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  \n" +
+                        "                   WHEN ac.no_apto = 'TRUE' THEN 'No Apto' \n" +
+                        "                   WHEN a.no_apto = 'TRUE' THEN 'No Apto'\n" +
+                        "                   WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
+                        "                   WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
+                        "		    WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                        "                   WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as RESULTADO,\n" +
+                        "        CASE WHEN i.aprobo_inf = 'TRUE' THEN 'APTO'\n" +
+                        "             WHEN i.desaprobo_inf = 'TRUE' THEN 'NO APTO' END AS PSICOLOGICO,\n" +
+                        "                   m.txtobservacionesfm as DIAGNOSTICO\n" +
+                        "        From datos_paciente as d\n" +
+                        "        inner join n_orden_ocupacional  as n ON (d.cod_pa = n.cod_pa)\n" +
+                        "        left join anexo7c as m ON (m.n_orden=n.n_orden)\n" +
+                        "        left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+                        "        left join anexo7d as a ON (a.n_orden=n.n_orden)\n" +
+                        "        left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
+                        "        left join observaciones as o ON (o.n_orden=n.n_orden)\n" +
+                        "        left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
+                        "        left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
+                        "        left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) \n" +
+                        "        left join informe_psicologico as i ON (i.n_orden=n.n_orden) \n"
+                        + "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' "
+                        + "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"' ";
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
                 }
-                while (oConn.setResult.next()) {
-                    Object[] Fila = new Object[CantidaColumnas];
-                    for (int i = 0; i < CantidaColumnas; i++) {
-                        Fila[i] = oConn.setResult.getObject(i + 1);
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                vSql+="order by n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    model.addRow(Fila);
                 }
-
-                tbReporte = autoResizeColWidth(tbReporte, model);
-
-                tbReporte.setModel(model);
-
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
 
     }//GEN-LAST:event_btnRepDiarioActionPerformed
 
     private void btnRepSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepSemanalActionPerformed
-         model = new DefaultTableModel(){        
-              @Override
-              public boolean isCellEditable(int rowIndex, int columnIndex) {
-                   return false;
-            }};
-            String vSql="select n.n_orden,CASE  WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END ESTABLECIMIENTO,\n" +
-"     CASE  WHEN n.razon_empresa is not null THEN 'SAUSACOCHA' END UNIDAD,\n" +
-"     n.razon_empresa AS EMPRESA,n.razon_contrata AS contrata,d.cod_pa as DNI,"
-+ "obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) as EDAD,d.apellidos_pa||', '||nombres_pa AS NOMBRES,\n" +
-"       n.cargo_de as ocupacion,n.fecha_apertura_po as \"FECHA DE EVALUACION\",n.nom_examen as TIPO,\n" +
-"             CASE  WHEN o.n_orden is not null THEN 'Observado'\n" +
-"                   WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"                   WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"                   WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"                   WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
-"                   WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  \n" +
-"                   WHEN ac.no_apto = 'TRUE' THEN 'No Apto' \n" +
-"                   WHEN a.no_apto = 'TRUE' THEN 'No Apto'\n" +
-"                   WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
-"                   WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
-"		   WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
-"                   WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as \"RESULTADO DE EVALUACION\",\n" +
-"	CASE  WHEN n.n_orden is not null THEN '' END CIE,\n" +
-"                   m.txtobservacionesfm as DIAGNOSTICO,ca.atxtrestricciones as OBSERVACION\n" +
-"            From datos_paciente as d\n" +
-"            inner join n_orden_ocupacional  as n ON (d.cod_pa = n.cod_pa)\n" +
-"            left join anexo7c as m ON (m.n_orden=n.n_orden)\n" +
-"            left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
-"            left join anexo7d as a ON (a.n_orden=n.n_orden)\n" +
-"            left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
-"            left join observaciones as o ON (o.n_orden=n.n_orden)\n" +
-"            left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
-"            left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
-"            left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) \n" 
-        + "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' "
-               + "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"'";
-     if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-     }
-     if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-     } 
-     vSql+="order by n_orden asc";
-                           //oFunc.SubSistemaMensajeInformacion(vSql);      
-        if (oConn.FnBoolQueryExecute(vSql)) {
             try {
-                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                int CantidaColumnas = rsmt.getColumnCount();
-                for (int i = 1; i <= CantidaColumnas; i++) {
-                    model.addColumn(rsmt.getColumnLabel(i));
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="select n.n_orden,CASE  WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END ESTABLECIMIENTO,\n" +
+                        "     CASE  WHEN n.razon_empresa is not null THEN 'SAUSACOCHA' END UNIDAD,\n" +
+                        "     n.razon_empresa AS EMPRESA,n.razon_contrata AS contrata,d.cod_pa as DNI,"
+                        + "obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) as EDAD,d.apellidos_pa||', '||nombres_pa AS NOMBRES,\n" +
+                        "       n.cargo_de as ocupacion,n.fecha_apertura_po as \"FECHA DE EVALUACION\",n.nom_examen as TIPO,\n" +
+                        "             CASE  WHEN o.n_orden is not null THEN 'Observado'\n" +
+                        "                   WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        "                   WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
+                        "                   WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  \n" +
+                        "                   WHEN ac.no_apto = 'TRUE' THEN 'No Apto' \n" +
+                        "                   WHEN a.no_apto = 'TRUE' THEN 'No Apto'\n" +
+                        "                   WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
+                        "                   WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
+                        "		   WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                        "                   WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as \"RESULTADO DE EVALUACION\",\n" +
+                        "	CASE  WHEN n.n_orden is not null THEN '' END CIE,\n" +
+                        "                   m.txtobservacionesfm as DIAGNOSTICO,ca.atxtrestricciones as OBSERVACION\n" +
+                        "            From datos_paciente as d\n" +
+                        "            inner join n_orden_ocupacional  as n ON (d.cod_pa = n.cod_pa)\n" +
+                        "            left join anexo7c as m ON (m.n_orden=n.n_orden)\n" +
+                        "            left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+                        "            left join anexo7d as a ON (a.n_orden=n.n_orden)\n" +
+                        "            left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
+                        "            left join observaciones as o ON (o.n_orden=n.n_orden)\n" +
+                        "            left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
+                        "            left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
+                        "            left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) \n"
+                        + "WHERE n.razon_empresa='"+cboEmpresas.getSelectedItem().toString()+"' "
+                        + "and n.razon_contrata='"+cboContratas.getSelectedItem().toString()+"'";
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
                 }
-                while (oConn.setResult.next()) {
-                    Object[] Fila = new Object[CantidaColumnas];
-                    for (int i = 0; i < CantidaColumnas; i++) {
-                        Fila[i] = oConn.setResult.getObject(i + 1);
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                vSql+="order by n_orden asc";
+                //oFunc.SubSistemaMensajeInformacion(vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    model.addRow(Fila);
                 }
-
-                tbReporte = autoResizeColWidth(tbReporte, model);
-
-                tbReporte.setModel(model);
-
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
 
     }//GEN-LAST:event_btnRepSemanalActionPerformed
 
@@ -2011,226 +2079,238 @@ public class Reporteador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkRepManipAlimenActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        model = new DefaultTableModel(){        
-              @Override
-              public boolean isCellEditable(int rowIndex, int columnIndex) {
-                   return false;
-            }};
-            String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata,n.nom_examen,  \n" +
-"CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
-"     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
-"     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
-"     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
-"     WHEN n.tipoprueba = 'PCON' THEN 'PCON' \n" +
-"     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
-"     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A'  END AS NUMEXACOVID, \n" +
-"CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
-"     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM, \n" +
-"CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
-"     WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGG,\n" +
-"	 \n" +
-"	 concat('IGM: ',(CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
-"     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
-"			'-IGG: ',(CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
-"     WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END),\n" +
-"		 (case when cs.chk_asintomatico=true then' ASINTOMATICO' end),\n" +
-"		(case when cs.chk_sintomatico=true THEN '- SINTOMATICO, Con sintomas como: ' END ),\n" +
-"			(case when cs.chks1=true THEN 'TOS,' END ),\n" +
-"			(case when cs.chks2=true THEN 'DOLOR DE GARGANTA,' END ),\n" +
-"			(case when cs.chks3=true THEN 'CONGESTION NASAL,' END ),\n" +
-"			(case when cs.chks4=true THEN 'DIFICULTAD RESPIRATORIA,' END ),\n" +
-"			(case when cs.chks5=true THEN 'FIEBRE/ESCALOFRIO,' END ),\n" +
-"			(case when cs.chks6=true THEN 'MALESTAR GENERAL,' END ),\n" +
-"			(case when cs.chks7=true THEN 'DIARREA,' END ),\n" +
-"			(case when cs.chks8=true THEN 'NAUSEAS / VOMITOS,' END ),\n" +
-"			(case when cs.chks9=true THEN 'CEFALEA,' END ),\n" +
-"			(case when cs.chks10=true THEN 'IRRITABILIDAD/CONFUSION,' END ),\n" +
-"			(case when cs.chks11=true THEN 'DOLOR,' END ),\n" +
-"			(case when cs.chks12=true THEN 'EXPECTORACION,' END ),\n" +
-"			(case when cs.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
-"			',',\n" +
-"			(case when c.txtobservaciones is not null THEN c.txtobservaciones END )) as observaciones\n" +
-                     ", (case when n.cod_sede=1 then 'TRUJILLO' "
-                                 + " WHEN n.cod_sede=2 then 'Huamachuco' "
-                                 + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
-                                  + " WHEN n.cod_sede=3 then 'Huancayo' "
-                                 + " end ) as SEDE , n.nom_examen "+
-                 
-"FROM datos_paciente as d \n" +
-"INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
-"LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
-"LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" +
-"left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) ";
-  if(cboContratas.getSelectedItem().toString().length()>2)
-                             contrata=cboContratas.getSelectedItem().toString();
-                         else
-                             contrata="";
-                         if(cboEmpresas.getSelectedItem().toString().length()>2)
-                             empresa=cboEmpresas.getSelectedItem().toString();
-                         else
-                             empresa="";
-  vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
-  vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
-
-     if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-     }
-     if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-     } 
-    
-      vSql+="and (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19' "
-              + " or UPPER(n.nom_examen) LIKE '%ANTIGENO%'  or UPPER(n.nom_examen) LIKE '%ANTICUERPO%') "+
-              agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);      
-      System.out.println("la consulta aplicada es:"+vSql);
-      if (oConn.FnBoolQueryExecute(vSql)) {
             try {
-                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                int CantidaColumnas = rsmt.getColumnCount();
-                for (int i = 1; i <= CantidaColumnas; i++) {
-                    model.addColumn(rsmt.getColumnLabel(i));
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata,n.nom_examen,  \n" +
+                        "CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
+                        "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
+                        "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
+                        "     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
+                        "     WHEN n.tipoprueba = 'PCON' THEN 'PCON' \n" +
+                        "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
+                        "     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A'  END AS NUMEXACOVID, \n" +
+                        "CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+                        "     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGM, \n" +
+                        "CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+                        "     WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO'  END AS IGG,\n" +
+                        "	 \n" +
+                        "	 concat('IGM: ',(CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+                        "     WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
+                        "			'-IGG: ',(CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+                        "     WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END),\n" +
+                        "		 (case when cs.chk_asintomatico=true then' ASINTOMATICO' end),\n" +
+                        "		(case when cs.chk_sintomatico=true THEN '- SINTOMATICO, Con sintomas como: ' END ),\n" +
+                        "			(case when cs.chks1=true THEN 'TOS,' END ),\n" +
+                        "			(case when cs.chks2=true THEN 'DOLOR DE GARGANTA,' END ),\n" +
+                        "			(case when cs.chks3=true THEN 'CONGESTION NASAL,' END ),\n" +
+                        "			(case when cs.chks4=true THEN 'DIFICULTAD RESPIRATORIA,' END ),\n" +
+                        "			(case when cs.chks5=true THEN 'FIEBRE/ESCALOFRIO,' END ),\n" +
+                        "			(case when cs.chks6=true THEN 'MALESTAR GENERAL,' END ),\n" +
+                        "			(case when cs.chks7=true THEN 'DIARREA,' END ),\n" +
+                        "			(case when cs.chks8=true THEN 'NAUSEAS / VOMITOS,' END ),\n" +
+                        "			(case when cs.chks9=true THEN 'CEFALEA,' END ),\n" +
+                        "			(case when cs.chks10=true THEN 'IRRITABILIDAD/CONFUSION,' END ),\n" +
+                        "			(case when cs.chks11=true THEN 'DOLOR,' END ),\n" +
+                        "			(case when cs.chks12=true THEN 'EXPECTORACION,' END ),\n" +
+                        "			(case when cs.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
+                        "			',',\n" +
+                        "			(case when c.txtobservaciones is not null THEN c.txtobservaciones END )) as observaciones\n" +
+                        ", (case when n.cod_sede=1 then 'TRUJILLO' "
+                        + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                        + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
+                        + " WHEN n.cod_sede=3 then 'Huancayo' "
+                        + " end ) as SEDE , n.nom_examen "+
+                        
+                        "FROM datos_paciente as d \n" +
+                        "INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
+                        "LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
+                        "LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" +
+                        "left join constancia_salud_marsa as cs on (n.n_orden=cs.n_orden) ";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
                 }
-                while (oConn.setResult.next()) {
-                    Object[] Fila = new Object[CantidaColumnas];
-                    for (int i = 0; i < CantidaColumnas; i++) {
-                        Fila[i] = oConn.setResult.getObject(i + 1);
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                vSql+="and (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19' "
+                        + " or UPPER(n.nom_examen) LIKE '%ANTIGENO%'  or UPPER(n.nom_examen) LIKE '%ANTICUERPO%') "+
+                        agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                System.out.println("la consulta aplicada es:"+vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    model.addRow(Fila);
                 }
-
-                tbReporte = autoResizeColWidth(tbReporte, model);
-
-                tbReporte.setModel(model);
-
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        model = new DefaultTableModel(){        
-              @Override
-              public boolean isCellEditable(int rowIndex, int columnIndex) {
-                   return false;
-            }};
-            String vSql="SELECT n.n_orden,n.nom_examen,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
-                    "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
-                      "     WHEN n.tipoprueba = 'PA' THEN 'Prueba de anticuerpos' \n" +
-                        "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
-                    "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
-                       "     WHEN n.tipoprueba = 'PCON' THEN 'PCON'\n" +
-"             WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A' END AS NUMPRUEBA,\n" +
-"       CASE WHEN n.n_orden is not null THEN 'DNI' ELSE '.' END AS TIPODOC,\n" +
-"             d.cod_pa,d.apellidos_pa,d.nombres_pa,d.direccion_pa, \n" +
-"        d.fecha_nacimiento_pa,d.cel_pa, n.razon_empresa,n.razon_contrata,n.cargo_de,\n" +
-"        CASE WHEN n.n_orden is not null THEN 'POLICLINICO HORIZONTE MEDIC' ELSE '.' END AS UBICACION,\n" +
-"        n.fecha_apertura_po AS FECHAPRUEBA, \n" +
-"        CASE WHEN n.n_orden is not null THEN 'PRUEBA RAPIDA' ELSE '.' END AS TIPOPRUEBA,\n" +
-"        CASE WHEN i.chkigm_reactivo ='TRUE' THEN '+' \n" +
-"             WHEN i.chkigg_reactivo ='TRUE' THEN '+' \n" +
-"             WHEN i.chkigm_noreactivo ='TRUE' THEN '-' \n" +
-"             WHEN i.chkigg_noreactivo ='TRUE' THEN '-' ELSE '.' END AS RESULTADO,\n" +
-"        CASE WHEN f.apto_si ='TRUE' THEN 'APTO'  \n" +
-"              WHEN f.apto_no ='TRUE' THEN 'NO APTO' END AS DESCRIPCIONRESULTADO1,\n" +
-"        CASE WHEN i.chkigm_reactivo ='TRUE' AND i.chkigg_reactivo ='TRUE' THEN 'IGM/IGG'  \n" +
-"              WHEN i.chkigm_reactivo ='TRUE' THEN 'IGM' \n" +
-"             WHEN i.chkigg_reactivo ='TRUE' THEN 'IGG'  END AS DESCRIPCIONRESULTADO2,\n" +
-"        CASE WHEN c.chk_asintomatico ='TRUE' THEN 'ASINTOMÁTICO' \n" +
-"             WHEN c.chk_sintomatico ='TRUE' THEN 'SINTOMATICO' ELSE '.' END AS SINTOMATOLOGIA,\n" +
-"       t.sat_02 as saturación,\n" +
-"       CASE WHEN n.n_orden is not null THEN 'CELLEX Q RAPID TEST' ELSE '.' END AS MARCATEST,\n" +
-"       CASE WHEN n.n_orden is not null THEN 'INMUNOCROMATOGRAFIA' ELSE '.' END AS TIPOREACTIVO,\n" +
-"        CASE WHEN i.chkigm_reactivo ='TRUE' THEN 'POSITIVO' \n" +
-"             WHEN i.chkigm_noreactivo ='TRUE' THEN 'NEGATIVO' ELSE '.' END AS IGM,\n" +
-"        CASE WHEN i.chkigg_reactivo ='TRUE' THEN 'POSITIVO' \n" +
-"         WHEN i.chkigg_noreactivo ='TRUE' THEN 'NEGATIVO' ELSE '.' END AS IGG,\n" +
-         
-                    "	 concat('IGM: ',(CASE WHEN i.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
-"     WHEN i.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
-"			'-IGG: ',(CASE WHEN i.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
-"     WHEN i.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END),\n" +
-"		 (case when c.chk_asintomatico=true then' ASINTOMATICO' end),\n" +
-"		(case when c.chk_sintomatico=true THEN '- SINTOMATICO, Con sintomas como: ' END ),\n" +
-"			(case when c.chks1=true THEN 'TOS,' END ),\n" +
-"			(case when c.chks2=true THEN 'DOLOR DE GARGANTA,' END ),\n" +
-"			(case when c.chks3=true THEN 'CONGESTION NASAL,' END ),\n" +
-"			(case when c.chks4=true THEN 'DIFICULTAD RESPIRATORIA,' END ),\n" +
-"			(case when c.chks5=true THEN 'FIEBRE/ESCALOFRIO,' END ),\n" +
-"			(case when c.chks6=true THEN 'MALESTAR GENERAL,' END ),\n" +
-"			(case when c.chks7=true THEN 'DIARREA,' END ),\n" +
-"			(case when c.chks8=true THEN 'NAUSEAS / VOMITOS,' END ),\n" +
-"			(case when c.chks9=true THEN 'CEFALEA,' END ),\n" +
-"			(case when c.chks10=true THEN 'IRRITABILIDAD/CONFUSION,' END ),\n" +
-"			(case when c.chks11=true THEN 'DOLOR,' END ),\n" +
-"			(case when c.chks12=true THEN 'EXPECTORACION,' END ),\n" +
-"			(case when c.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
-"			',',\n" +
-"			(case when f.txtdiagnostico is not null THEN f.txtdiagnostico END )) as Diagnostico\n" +  
-                     ", (case when n.cod_sede=1 then 'TRUJILLO' "
-                                 + " WHEN n.cod_sede=2 then 'Huamachuco' "
-                                  + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
-                                  + " WHEN n.cod_sede=3 then 'Huancayo' "
-                                 + "end ) as SEDE "+
-"  FROM datos_paciente AS d\n" +
-" INNER JOIN n_orden_ocupacional as n on(d.cod_pa=n.cod_pa)\n" +
-" LEFT JOIN examen_inmunologico as i on(n.n_orden=i.n_orden)\n" +
-" LEFT JOIN constancia_salud_marsa as c on(n.n_orden=c.n_orden)\n" +
-" LEFT JOIN triaje as t ON(n.n_orden = t.n_orden)\n" +
-" LEFT JOIN fmedica_covid_marsa as f ON(n.n_orden = f.n_orden)\n  ";
-  if(cboContratas.getSelectedItem().toString().length()>2)
-                             contrata=cboContratas.getSelectedItem().toString();
-                         else
-                             contrata="";
-                         if(cboEmpresas.getSelectedItem().toString().length()>2)
-                             empresa=cboEmpresas.getSelectedItem().toString();
-                         else
-                             empresa="";
-  vSql +=" WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
-  vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
-     if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-     }
-     if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-        vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-     } 
-    
-      //vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";  
-  vSql+="AND (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19' "
-       + " or UPPER(n.nom_examen) LIKE '%ANTIGENO%'  or UPPER(n.nom_examen) LIKE '%ANTICUERPO%') "+
-    agregarConsulta+" order by n.n_orden asc";   
-        System.out.println("la consulta aplicada es:"+vSql);
-//      
-//oFunc.SubSistemaMensajeInformacion(vSql);      
-        if (oConn.FnBoolQueryExecute(vSql)) {
             try {
-                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                int CantidaColumnas = rsmt.getColumnCount();
-                for (int i = 1; i <= CantidaColumnas; i++) {
-                    model.addColumn(rsmt.getColumnLabel(i));
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden,n.nom_examen,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
+                        "     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
+                        "     WHEN n.tipoprueba = 'PA' THEN 'Prueba de anticuerpos' \n" +
+                        "     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
+                        "     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
+                        "     WHEN n.tipoprueba = 'PCON' THEN 'PCON'\n" +
+                        "             WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A' END AS NUMPRUEBA,\n" +
+                        "       CASE WHEN n.n_orden is not null THEN 'DNI' ELSE '.' END AS TIPODOC,\n" +
+                        "             d.cod_pa,d.apellidos_pa,d.nombres_pa,d.direccion_pa, \n" +
+                        "        d.fecha_nacimiento_pa,d.cel_pa, n.razon_empresa,n.razon_contrata,n.cargo_de,\n" +
+                        "        CASE WHEN n.n_orden is not null THEN 'POLICLINICO HORIZONTE MEDIC' ELSE '.' END AS UBICACION,\n" +
+                        "        n.fecha_apertura_po AS FECHAPRUEBA, \n" +
+                        "        CASE WHEN n.n_orden is not null THEN 'PRUEBA RAPIDA' ELSE '.' END AS TIPOPRUEBA,\n" +
+                        "        CASE WHEN i.chkigm_reactivo ='TRUE' THEN '+' \n" +
+                        "             WHEN i.chkigg_reactivo ='TRUE' THEN '+' \n" +
+                        "             WHEN i.chkigm_noreactivo ='TRUE' THEN '-' \n" +
+                        "             WHEN i.chkigg_noreactivo ='TRUE' THEN '-' ELSE '.' END AS RESULTADO,\n" +
+                        "        CASE WHEN f.apto_si ='TRUE' THEN 'APTO'  \n" +
+                        "              WHEN f.apto_no ='TRUE' THEN 'NO APTO' END AS DESCRIPCIONRESULTADO1,\n" +
+                        "        CASE WHEN i.chkigm_reactivo ='TRUE' AND i.chkigg_reactivo ='TRUE' THEN 'IGM/IGG'  \n" +
+                        "              WHEN i.chkigm_reactivo ='TRUE' THEN 'IGM' \n" +
+                        "             WHEN i.chkigg_reactivo ='TRUE' THEN 'IGG'  END AS DESCRIPCIONRESULTADO2,\n" +
+                        "        CASE WHEN c.chk_asintomatico ='TRUE' THEN 'ASINTOMÁTICO' \n" +
+                        "             WHEN c.chk_sintomatico ='TRUE' THEN 'SINTOMATICO' ELSE '.' END AS SINTOMATOLOGIA,\n" +
+                        "       t.sat_02 as saturación,\n" +
+                        "       CASE WHEN n.n_orden is not null THEN 'CELLEX Q RAPID TEST' ELSE '.' END AS MARCATEST,\n" +
+                        "       CASE WHEN n.n_orden is not null THEN 'INMUNOCROMATOGRAFIA' ELSE '.' END AS TIPOREACTIVO,\n" +
+                        "        CASE WHEN i.chkigm_reactivo ='TRUE' THEN 'POSITIVO' \n" +
+                        "             WHEN i.chkigm_noreactivo ='TRUE' THEN 'NEGATIVO' ELSE '.' END AS IGM,\n" +
+                        "        CASE WHEN i.chkigg_reactivo ='TRUE' THEN 'POSITIVO' \n" +
+                        "         WHEN i.chkigg_noreactivo ='TRUE' THEN 'NEGATIVO' ELSE '.' END AS IGG,\n" +
+                        
+                        "	 concat('IGM: ',(CASE WHEN i.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+                        "     WHEN i.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
+                        "			'-IGG: ',(CASE WHEN i.chkigg_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+                        "     WHEN i.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END),\n" +
+                        "		 (case when c.chk_asintomatico=true then' ASINTOMATICO' end),\n" +
+                        "		(case when c.chk_sintomatico=true THEN '- SINTOMATICO, Con sintomas como: ' END ),\n" +
+                        "			(case when c.chks1=true THEN 'TOS,' END ),\n" +
+                        "			(case when c.chks2=true THEN 'DOLOR DE GARGANTA,' END ),\n" +
+                        "			(case when c.chks3=true THEN 'CONGESTION NASAL,' END ),\n" +
+                        "			(case when c.chks4=true THEN 'DIFICULTAD RESPIRATORIA,' END ),\n" +
+                        "			(case when c.chks5=true THEN 'FIEBRE/ESCALOFRIO,' END ),\n" +
+                        "			(case when c.chks6=true THEN 'MALESTAR GENERAL,' END ),\n" +
+                        "			(case when c.chks7=true THEN 'DIARREA,' END ),\n" +
+                        "			(case when c.chks8=true THEN 'NAUSEAS / VOMITOS,' END ),\n" +
+                        "			(case when c.chks9=true THEN 'CEFALEA,' END ),\n" +
+                        "			(case when c.chks10=true THEN 'IRRITABILIDAD/CONFUSION,' END ),\n" +
+                        "			(case when c.chks11=true THEN 'DOLOR,' END ),\n" +
+                        "			(case when c.chks12=true THEN 'EXPECTORACION,' END ),\n" +
+                        "			(case when c.chks13=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
+                        "			',',\n" +
+                        "			(case when f.txtdiagnostico is not null THEN f.txtdiagnostico END )) as Diagnostico\n" +
+                        ", (case when n.cod_sede=1 then 'TRUJILLO' "
+                        + " WHEN n.cod_sede=2 then 'Huamachuco' "
+                        + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
+                        + " WHEN n.cod_sede=3 then 'Huancayo' "
+                        + "end ) as SEDE "+
+                        "  FROM datos_paciente AS d\n" +
+                        " INNER JOIN n_orden_ocupacional as n on(d.cod_pa=n.cod_pa)\n" +
+                        " LEFT JOIN examen_inmunologico as i on(n.n_orden=i.n_orden)\n" +
+                        " LEFT JOIN constancia_salud_marsa as c on(n.n_orden=c.n_orden)\n" +
+                        " LEFT JOIN triaje as t ON(n.n_orden = t.n_orden)\n" +
+                        " LEFT JOIN fmedica_covid_marsa as f ON(n.n_orden = f.n_orden)\n  ";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                vSql +=" WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
                 }
-                while (oConn.setResult.next()) {
-                    Object[] Fila = new Object[CantidaColumnas];
-                    for (int i = 0; i < CantidaColumnas; i++) {
-                        Fila[i] = oConn.setResult.getObject(i + 1);
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                //vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";
+                vSql+="AND (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19' "
+                        + " or UPPER(n.nom_examen) LIKE '%ANTIGENO%'  or UPPER(n.nom_examen) LIKE '%ANTICUERPO%') "+
+                        agregarConsulta+" order by n.n_orden asc";
+                System.out.println("la consulta aplicada es:"+vSql);
+            //
+            //oFunc.SubSistemaMensajeInformacion(vSql);
+            if (oConn.FnBoolQueryExecute(vSql)) {
+                try {
+                    java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                    int CantidaColumnas = rsmt.getColumnCount();
+                    for (int i = 1; i <= CantidaColumnas; i++) {
+                        model.addColumn(rsmt.getColumnLabel(i));
                     }
-                    model.addRow(Fila);
+                    while (oConn.setResult.next()) {
+                        Object[] Fila = new Object[CantidaColumnas];
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                            Fila[i] = oConn.setResult.getObject(i + 1);
+                        }
+                        model.addRow(Fila);
+                    }
+
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+
+                    tbReporte.setModel(model);
+
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-                tbReporte = autoResizeColWidth(tbReporte, model);
-
-                tbReporte.setModel(model);
-
-                oConn.setResult.close();
-            } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+            oConn.setResult.close();
+            oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -2347,6 +2427,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private void btnMostrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrar1ActionPerformed
        cPersonalizada1();
     }//GEN-LAST:event_btnMostrar1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -2545,6 +2629,21 @@ marcador=1;
     private javax.swing.JTextField txtRuc;
     // End of variables declaration//GEN-END:variables
 
+  public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }  
+    
+    
    public JTable autoResizeColWidth(JTable table, DefaultTableModel model) {
     table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     table.setModel(model);
@@ -2612,77 +2711,83 @@ marcador=1;
  
  }
    void Condicion(){
-        String dato;
-        String sql="";
-        sql ="select n.nom_examen,n.cargo_de,"
-            + "ca.n_orden as aptitud,ca.fecha,ca.horasalida,a.n_orden as anexo7d,o.n_orden as observados,ac.n_orden as anexoc,"
-            + "bc.n_orden as conduccion,ba.n_orden as altura,  "
-            + "CASE  WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
-                    " WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
-                    " WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  END as estado, \n" 
-            + "CASE  WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
-                    " WHEN ac.no_apto = 'TRUE' THEN 'No Apto' END as estadoac, \n" 
-            + "CASE  WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
-                    " WHEN a.no_apto = 'TRUE' THEN 'No Apto' END as estadoad,"
-            + "CASE  WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
-                  " WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
-                    " WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-                    " WHEN bc.chk_no = 'TRUE' THEN 'No Apto' END as estadobc,"
-            + "CASE  WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
-                  " WHEN ba.chk_observado = 'TRUE' THEN 'Observado'\n" +
-                    " WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-                    " WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto' END as estadoba,"
-                + " o.examenes \n" 
-            + "From datos_paciente "
-            + "inner join n_orden_ocupacional as n ON (datos_paciente.cod_pa = n.cod_pa)"
-            +" left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)"
-            +" left join anexo7d as a ON (a.n_orden=n.n_orden)"
-            +" left join anexoc as ac ON (ac.n_orden=n.n_orden)"
-            +" left join observaciones as o ON (o.n_orden=n.n_orden)"
-            +" left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)"
-            +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"     
+            try {
+                String dato;
+                String sql="";
+                sql ="select n.nom_examen,n.cargo_de,"
+                        + "ca.n_orden as aptitud,ca.fecha,ca.horasalida,a.n_orden as anexo7d,o.n_orden as observados,ac.n_orden as anexoc,"
+                        + "bc.n_orden as conduccion,ba.n_orden as altura,  "
+                        + "CASE  WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+                        " WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        " WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  END as estado, \n"
+                        + "CASE  WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
+                        " WHEN ac.no_apto = 'TRUE' THEN 'No Apto' END as estadoac, \n"
+                        + "CASE  WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
+                        " WHEN a.no_apto = 'TRUE' THEN 'No Apto' END as estadoad,"
+                        + "CASE  WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        " WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                        " WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        " WHEN bc.chk_no = 'TRUE' THEN 'No Apto' END as estadobc,"
+                        + "CASE  WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+                        " WHEN ba.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                        " WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                        " WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto' END as estadoba,"
+                        + " o.examenes \n"
+                        + "From datos_paciente "
+                        + "inner join n_orden_ocupacional as n ON (datos_paciente.cod_pa = n.cod_pa)"
+                        +" left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)"
+                        +" left join anexo7d as a ON (a.n_orden=n.n_orden)"
+                        +" left join anexoc as ac ON (ac.n_orden=n.n_orden)"
+                        +" left join observaciones as o ON (o.n_orden=n.n_orden)"
+                        +" left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)"     
+                        +" left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)"
 //            + "where n.n_orden='"+valor+"'"
-            + "ORDER BY n.n_orden desc ";    
-    
-       
-    if (oConn.FnBoolQueryExecute(sql))
-        {
-             try  {
+                        + "ORDER BY n.n_orden desc ";
                 
-                while (oConn.setResult.next())
-                {        
-                    
-                    String exa=oConn.setResult.getString("nom_examen");
-                    String s=oConn.setResult.getString("aptitud");
-                    String a=oConn.setResult.getString("anexo7d");
-                    String o=oConn.setResult.getString("observados");
-                    String ac=oConn.setResult.getString("anexoc");
-                    String bc=oConn.setResult.getString("conduccion");
-                    String ba=oConn.setResult.getString("altura");
-                    
-                    if( o!= null){
-                            dato= "Observado";
-                    }else if(s != null ){
-                        dato= oConn.setResult.getString("estado");
-                    }else if( a != null && "ANEXO-7D".equals(exa)){
-                           dato= oConn.setResult.getString("estadoad");
-                    }else  if( ac!= null && "ANEXO-C".equals(exa)){
-                            dato= oConn.setResult.getString("estadoac");
-                    }else if( bc!= null && "PSICOSENSOMETRIA".equals(exa)){
-                            dato= oConn.setResult.getString("estadobc");
-                    }else if( ba!= null && "TEST-ALTURA".equals(exa)){
-                            dato= oConn.setResult.getString("estadoba");
+                
+                if (oConn.FnBoolQueryExecute(sql))
+                {
+                    try  {
+                        
+                        while (oConn.setResult.next())
+                        {
+                            
+                            String exa=oConn.setResult.getString("nom_examen");
+                            String s=oConn.setResult.getString("aptitud");
+                            String a=oConn.setResult.getString("anexo7d");
+                            String o=oConn.setResult.getString("observados");
+                            String ac=oConn.setResult.getString("anexoc");
+                            String bc=oConn.setResult.getString("conduccion");
+                            String ba=oConn.setResult.getString("altura");
+                            
+                            if( o!= null){
+                                dato= "Observado";
+                            }else if(s != null ){
+                                dato= oConn.setResult.getString("estado");
+                            }else if( a != null && "ANEXO-7D".equals(exa)){
+                                dato= oConn.setResult.getString("estadoad");
+                            }else  if( ac!= null && "ANEXO-C".equals(exa)){
+                                dato= oConn.setResult.getString("estadoac");
+                            }else if( bc!= null && "PSICOSENSOMETRIA".equals(exa)){
+                                dato= oConn.setResult.getString("estadobc");
+                            }else if( ba!= null && "TEST-ALTURA".equals(exa)){
+                                dato= oConn.setResult.getString("estadoba");
+                            }
+                            
+                        }
+                        
+                        oConn.setResult.close();
                     }
-                    
+                    catch (SQLException ex)                    
+                    {
+                        //JOptionPane.showMessageDialorootPane,ex);
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                    }
                 }
-                
-                 oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
-                //JOptionPane.showMessageDialorootPane,ex);
-                oFunc.SubSistemaMensajeError(ex.toString());
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-}
+    }
 }

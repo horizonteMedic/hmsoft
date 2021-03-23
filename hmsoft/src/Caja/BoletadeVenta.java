@@ -129,6 +129,7 @@ public class BoletadeVenta extends javax.swing.JInternalFrame {
         tbBol.add(btnEliminar);
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Corporación peruana de centros médicos \"BOLETA DE VENTA\"");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -137,6 +138,7 @@ public class BoletadeVenta extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -709,6 +711,14 @@ cboReferido.requestFocusInWindow();
                 Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+         try {
+             oConn.sqlStmt.close();
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+
         // Retorna el Valor
         return bResult;
         
@@ -758,8 +768,21 @@ cboReferido.requestFocusInWindow();
                     if ( oConn.FnBoolQueryExecuteUpdate(strSqlStmt))
                     {
                         bResult = true;
-                       // break;
+                        try {
+                            // break;
+                            oConn.sqlStmt.close();
+                        } catch (SQLException ex) {
+                            Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
+                    try {
+                        oConn.sqlStmt.close();
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+
                     
         
         
@@ -869,6 +892,10 @@ public void sumar(){
     private void chkAsistencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAsistencialActionPerformed
         AutoAsistencial();
     }//GEN-LAST:event_chkAsistencialActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
  private void LimpiarServicios(){
  txtCodServicio.setText(null);
  txtPrecioT.setText(null);
@@ -896,6 +923,7 @@ public void sumar(){
                          
                  }
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {
@@ -1071,6 +1099,7 @@ final void AutoNatural(){
                 txtNroTicket.requestFocus();
             } 
             oConn.setResult.close();
+            oConn.sqlStmt.close();
 
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
@@ -1090,6 +1119,7 @@ final void AutoNatural(){
 
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
         }
@@ -1106,6 +1136,7 @@ final void AutoNatural(){
                 txtNroTicket.requestFocus();
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Boleta de venta:" + ex.getMessage().toString());
         }
@@ -1131,6 +1162,7 @@ FechaBoleta.setDate(fechaDate);
                  }
               
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {
@@ -1139,6 +1171,14 @@ FechaBoleta.setDate(fechaDate);
                 Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+         try {
+             oConn.sqlStmt.close();
+             oConn.setResult.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+
     cboServicios.setSelectedIndex(-1);
 
 } 
@@ -1216,6 +1256,7 @@ public final String[]getRowsToVector(String sql)
                 veDats[i]=lista.get(i).toString();
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -1386,6 +1427,22 @@ private boolean ServicioExiste()
         } 
     return bResult; 
     }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(BoletadeVenta.class.getName()).log(Level.SEVERE, null, ex);
+         }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
+
 public void sbServicioAgrega()
     {
 
@@ -1432,7 +1489,7 @@ public void sbServicioAgrega()
 
                 // Cierro los Resultados
                 oConn.setResult.close();
-
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeError("Boleta de venta:"+ex.getMessage().toString());
             }

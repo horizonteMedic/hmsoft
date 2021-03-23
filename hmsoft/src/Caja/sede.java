@@ -92,8 +92,13 @@ popuptable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
@@ -272,6 +277,12 @@ popuptable();
                 Logger.getLogger(sede.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+          try {
+              oConn.setResult.close();
+              oConn.sqlStmt.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(sede.class.getName()).log(Level.SEVERE, null, ex);
+          }
 
 }
      public boolean OrdenExisteIn()
@@ -289,6 +300,7 @@ popuptable();
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
+              oConn.sqlStmt.close();
         } catch (SQLException ex) {
         }
         }       
@@ -299,14 +311,20 @@ popuptable();
     public void funcionosede(){
             
  
-    String [] registros = new String[5];
-     String sql="";
-     sql="select spFuncionSedeOperaciones ("+id+",'"+jTextFieldNombre.getText()+"','"+jTextFielddireccion.getText()+"','"
-          +jTextAreacomentario.getText()+"','"+estadoSede+"',"+operacion+");";                    
-     
-    oConn.FnBoolQueryExecute(sql);
- 
-        System.out.println(sql);
+          try {
+              String [] registros = new String[5];
+              String sql="";
+              sql="select spFuncionSedeOperaciones ("+id+",'"+jTextFieldNombre.getText()+"','"+jTextFielddireccion.getText()+"','"
+                      +jTextAreacomentario.getText()+"','"+estadoSede+"',"+operacion+");";
+              
+              oConn.FnBoolQueryExecute(sql);
+              oConn.setResult.close();
+              oConn.sqlStmt.close();
+              
+              System.out.println(sql);
+          } catch (SQLException ex) {
+              Logger.getLogger(sede.class.getName()).log(Level.SEVERE, null, ex);
+          }
     
     }
     
@@ -350,6 +368,20 @@ popuptable();
      mostrar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+          try {
+              oConn.sqlStmt.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(sede.class.getName()).log(Level.SEVERE, null, ex);
+          }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 mostrar();        
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -377,6 +409,10 @@ mostrar();
         jCheckBoxHabilitado.setSelected(false);
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

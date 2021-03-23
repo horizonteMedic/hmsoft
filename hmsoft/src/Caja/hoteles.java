@@ -92,8 +92,13 @@ popuptable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
@@ -239,42 +244,48 @@ popuptable();
 
     public void mostrar(){
            
- String [] titulos={"Codigo","Nombre de la sede","Dirección","Comentarios","Estado"};
-    String [] registros = new String[5];
-    String sql="select idHotel, nombreHotel, direccion,comentarios, "
-            + "(CASE WHEN estado='1' THEN 'HABILITADO' ELSE 'DESHABILITADO' END) AS estadito from InfoHoteles order by idHotel;";
-      model = new DefaultTableModel(null,titulos);  
-                       System.out.println("paso el model");
-
-    if (oConn.FnBoolQueryExecute(sql))
-        {
-             try  {
-                
-                while (oConn.setResult.next())
-                {
-                    registros[0]= oConn.setResult.getString("idHotel");
-                    registros[1]= oConn.setResult.getString("nombreHotel");
-                    registros[2]= oConn.setResult.getString("direccion");
-                    registros[3]= oConn.setResult.getString("comentarios");
-                    registros[4]= oConn.setResult.getString("estadito");
-                     model.addRow(registros);
-                }
-                 System.out.println("registro 0"+registros[0]);
-                 
-                 
-                  tabla.setModel(model);
-                
-                 oConn.setResult.close();           
-              //   System.out.println("la cantida de filas en hotel es"+tabla.getRowCount());
-
-            } 
-            catch (SQLException ex) 
-            {
-                JOptionPane.showMessageDialog(null, ex);
-                oFunc.SubSistemaMensajeError(ex.toString());
-                Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+          try {
+              String [] titulos={"Codigo","Nombre de la sede","Dirección","Comentarios","Estado"};
+              String [] registros = new String[5];
+              String sql="select idHotel, nombreHotel, direccion,comentarios, "
+                      + "(CASE WHEN estado='1' THEN 'HABILITADO' ELSE 'DESHABILITADO' END) AS estadito from InfoHoteles order by idHotel;";
+              model = new DefaultTableModel(null,titulos);
+              System.out.println("paso el model");
+              
+              if (oConn.FnBoolQueryExecute(sql))
+              {
+                  try  {
+                      
+                      while (oConn.setResult.next())
+                      {
+                          registros[0]= oConn.setResult.getString("idHotel");
+                          registros[1]= oConn.setResult.getString("nombreHotel");
+                          registros[2]= oConn.setResult.getString("direccion");
+                          registros[3]= oConn.setResult.getString("comentarios");
+                          registros[4]= oConn.setResult.getString("estadito");
+                          model.addRow(registros);
+                      }
+                      System.out.println("registro 0"+registros[0]);
+                      
+                      
+                      tabla.setModel(model);
+                      
+                      oConn.setResult.close();
+                      //   System.out.println("la cantida de filas en hotel es"+tabla.getRowCount());
+                      
+                  }
+                  catch (SQLException ex)
+                  {
+                      JOptionPane.showMessageDialog(null, ex);
+                      oFunc.SubSistemaMensajeError(ex.toString());
+                      Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+              }
+              oConn.sqlStmt.close();
+              oConn.setResult.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
+          }
 
 }
      public boolean OrdenExisteIn()
@@ -291,7 +302,9 @@ popuptable();
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
+
         } catch (SQLException ex) {
         }
         }       
@@ -302,14 +315,21 @@ popuptable();
     public void funcionosede(){
             
  
-    String [] registros = new String[5];
-     String sql="";
-     sql="select spFuncionHotelOperaciones("+id+",'"+jTextFieldNombre.getText()+"','"+jTextFielddireccion.getText()+"','"
-          +jTextAreacomentario.getText()+"','"+estadoSede+"',"+operacion+");";                    
-     
-    oConn.FnBoolQueryExecute(sql);
- 
-        System.out.println(sql);
+          try {
+              String [] registros = new String[5];
+              String sql="";
+              sql="select spFuncionHotelOperaciones("+id+",'"+jTextFieldNombre.getText()+"','"+jTextFielddireccion.getText()+"','"
+                      +jTextAreacomentario.getText()+"','"+estadoSede+"',"+operacion+");";
+              
+              oConn.FnBoolQueryExecute(sql);
+              
+              System.out.println(sql);
+              oConn.sqlStmt.close();
+              oConn.setResult.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
+          }
+
     
     }
     
@@ -382,6 +402,22 @@ mostrar();
         jCheckBoxHabilitado.setSelected(false);
         
     }//GEN-LAST:event_jButton3ActionPerformed
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+          try {
+              oConn.sqlStmt.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
+          }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrarVentana();// TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

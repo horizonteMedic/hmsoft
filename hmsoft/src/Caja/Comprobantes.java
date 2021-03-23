@@ -206,6 +206,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Seleccione Tipo Comprobante");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -214,6 +215,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -916,6 +918,13 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                 Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        try {
+            oConn.setResult.close();
+            oConn.sqlStmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         // Retorna el Valor
         return bResult;
         
@@ -984,6 +993,21 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
         }
         return bResult;
     }
+       
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+       
 private boolean validar(){
 boolean bResultado=true;
     if (txtNombre.getText().isEmpty()) {
@@ -1211,17 +1235,18 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtdescuentoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String sCodigo=txtCodPaciente.getText();
-        String strSqlStmt;
-        strSqlStmt="UPDATE datos_paciente_asistencial\n" +
-            "   SET nombres_pa='"+txtNombre.getText()+"', sexo_pa='"+cboSexo.getSelectedItem().toString()+"',"
-                + " estado_civil_pa='"+cboEstadoCivil.getSelectedItem().toString()+"', direccion_pa='"+txtDireccion.getText()+"', \n" 
-                + " cel_pa='"+txtTelefono.getText()+"',apellidos_pa='"+txtApellidos.getText()+"', edad= '"+txtEdad.getText()+"',\n" 
-                + " fecha_nac='"+FechaNac.getDate()+"'\n"+
-                " WHERE cod_pa='" + sCodigo + "'";
+        try {
+            String sCodigo=txtCodPaciente.getText();
+            String strSqlStmt;
+            strSqlStmt="UPDATE datos_paciente_asistencial\n" +
+                    "   SET nombres_pa='"+txtNombre.getText()+"', sexo_pa='"+cboSexo.getSelectedItem().toString()+"',"
+                    + " estado_civil_pa='"+cboEstadoCivil.getSelectedItem().toString()+"', direccion_pa='"+txtDireccion.getText()+"', \n"
+                    + " cel_pa='"+txtTelefono.getText()+"',apellidos_pa='"+txtApellidos.getText()+"', edad= '"+txtEdad.getText()+"',\n"
+                    + " fecha_nac='"+FechaNac.getDate()+"'\n"+
+                    " WHERE cod_pa='" + sCodigo + "'";
             Limpiar();
-        //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
+            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 try {
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                     oConn.sqlStmt.close();
@@ -1231,7 +1256,17 @@ boolean bResultado=true;
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
+            oConn.sqlStmt.close();
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
    private void ReporteFechas(Date date1, Date date2){
 
                 Map parameters = new HashMap(); 
@@ -1324,6 +1359,13 @@ System.out.println(strSqlStmt.concat(") ") + Query.concat(")"));
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
                 }
+           try {
+               oConn.sqlStmt.close();
+               oConn.setResult.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+           }
+                
             
 
         }
@@ -1405,9 +1447,10 @@ private void bID1(JTextField cod){
 //                    txtNombre.setEditable(false);
                     cboTipoVenta.setSelectedIndex(0);
                     cboServicios.setSelectedIndex(-1);
-                    oConn.setResult.close();
+                    
 
-                }
+                }oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ticket: " + ex.getMessage().toString());
             }
@@ -1444,6 +1487,7 @@ private void bID1(JTextField cod){
             }
             // Cierro los Resultados
             oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -1473,9 +1517,11 @@ private void bID(JTextField cod){
                 txtNombre.setEditable(false);
                 cboTipoVenta.setSelectedIndex(0);
                 cboServicios.setSelectedIndex(-1);
-               oConn.setResult.close();
+               
 
             } 
+            oConn.sqlStmt.close();
+            oConn.setResult.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ticket: " + ex.getMessage().toString());
         }
@@ -1495,6 +1541,7 @@ private void bNombre(JTextField cod){
                 cboServicios.setSelectedIndex(-1);
               } 
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ticket: " + ex.getMessage().toString());
         }
@@ -1619,7 +1666,7 @@ public void sbServicioAgrega()
 
                 // Cierro los Resultados
                 oConn.setResult.close();
-
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeError("Boleta de venta:"+ex.getMessage().toString());
             }
@@ -1752,6 +1799,7 @@ public void sumar(){
                          txtUnidad.setText(oConn.setResult.getString("unidad"));     
                  }
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
                 } catch (SQLException ex) 
                 {
                     //JOptionPane.showMessageDialorootPane,ex);
@@ -1774,6 +1822,7 @@ public void sumar(){
 
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialorootPane,ex);
             oFunc.SubSistemaMensajeError(ex.toString());
@@ -1793,6 +1842,7 @@ public void sumar(){
 
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialorootPane,ex);
             oFunc.SubSistemaMensajeError(ex.toString());
@@ -1812,6 +1862,7 @@ public void sumar(){
                    cboServicios.addItem(oConn.setResult.getString ("descripcion"));                     
                  }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {

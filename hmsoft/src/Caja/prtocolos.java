@@ -274,7 +274,12 @@ int operacion=0;
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Ebrima", 3, 18)); // NOI18N
         jLabel1.setText("SERVICIOS");
@@ -376,12 +381,12 @@ int operacion=0;
                                 .addComponent(jTextFieldpb)
                                 .addComponent(jTextFieldNombre))
                             .addComponent(jTextFieldObserv, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addComponent(jButton2)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(110, Short.MAX_VALUE))))
+                        .addContainerGap(113, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,12 +534,12 @@ int operacion=0;
                     .addComponent(jTextFieldPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(jButton6)
-                .addContainerGap(324, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(246, 246, 246)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(43, Short.MAX_VALUE)))
+                    .addContainerGap(48, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Protocolos", jPanel3);
@@ -681,7 +686,7 @@ int operacion=0;
                     .addComponent(jButton8)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -694,17 +699,18 @@ int operacion=0;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 782, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
    private void cargarProtocolos(){
-      String sQuery;        
+    try {        
+        String sQuery;
         // Prepara el Query
         sQuery ="select nombreprotocolo from protocolo";
         
@@ -713,16 +719,16 @@ int operacion=0;
             try 
             {
                 // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     cboProtocolo.addItem(oConn.setResult.getString ("nombreprotocolo"));
-                     
-                 }
-                 
-                 // Cierra Resultados
+                while (oConn.setResult.next())
+                {
+                    // Obtiene los datos de la Consulta
+                    cboProtocolo.addItem(oConn.setResult.getString ("nombreprotocolo"));
+                    
+                }
+                
+                // Cierra Resultados
                 oConn.setResult.close();
-            } 
+            }
             catch (SQLException ex) 
             {
                 //JOptionPane.showMessageDialorootPane,ex);
@@ -732,13 +738,20 @@ int operacion=0;
         }
         
         // selecciona
-       // cboProtocolo.setSelectedItem(seded);
+        // cboProtocolo.setSelectedItem(seded);
         cboProtocolo.setSelectedIndex(0);
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
 
 
 }
    private void calcularProtocolos(){
-      String sQuery;        
+    try {        
+        String sQuery;
         // Prepara el Query
         sQuery ="select idprotocolo from protocolo where nombreprotocolo='"+cboProtocolo.getSelectedItem()+"'";
         
@@ -747,16 +760,16 @@ int operacion=0;
             try 
             {
                 // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     pkprotocolo=oConn.setResult.getInt ("idprotocolo");
-                     
-                 }
-                 
-                 // Cierra Resultados
-                   oConn.setResult.close();
-            } 
+                while (oConn.setResult.next())
+                {
+                    // Obtiene los datos de la Consulta
+                    pkprotocolo=oConn.setResult.getInt ("idprotocolo");
+                    
+                }
+                
+                // Cierra Resultados
+                oConn.setResult.close();
+            }
             catch (SQLException ex) 
             {
                 //JOptionPane.showMessageDialorootPane,ex);
@@ -764,13 +777,20 @@ int operacion=0;
                 Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
         
         
 
 
 }
  private void cargarServicios(){
-      String sQuery;        
+    try {        
+        String sQuery;
         // Prepara el Query
         sQuery ="select nombreservicio from servicios";
         
@@ -779,16 +799,16 @@ int operacion=0;
             try 
             {
                 // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     cboServicio.addItem(oConn.setResult.getString ("nombreservicio"));
-                     
-                 }
-                 
-                 // Cierra Resultados
+                while (oConn.setResult.next())
+                {
+                    // Obtiene los datos de la Consulta
+                    cboServicio.addItem(oConn.setResult.getString ("nombreservicio"));
+                    
+                }
+                
+                // Cierra Resultados
                 oConn.setResult.close();
-            } 
+            }
             catch (SQLException ex) 
             {
                 //JOptionPane.showMessageDialorootPane,ex);
@@ -798,13 +818,20 @@ int operacion=0;
         }
         
         // selecciona
-       // cboProtocolo.setSelectedItem(seded);
+        // cboProtocolo.setSelectedItem(seded);
         cboServicio.setSelectedIndex(0);
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
 
 
 }
      private void calcularServicio(){
-      String sQuery;        
+    try {        
+        String sQuery;
         // Prepara el Query
         sQuery ="select idservicio from servicios where nombreservicio='"+cboServicio.getSelectedItem()+"'";
         
@@ -813,16 +840,16 @@ int operacion=0;
             try 
             {
                 // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     pkservicio=oConn.setResult.getInt("idservicio");
-                     
-                 }
-                 
-                 // Cierra Resultados
+                while (oConn.setResult.next())
+                {
+                    // Obtiene los datos de la Consulta
+                    pkservicio=oConn.setResult.getInt("idservicio");
+                    
+                }
+                
+                // Cierra Resultados
                 oConn.setResult.close();
-            } 
+            }
             catch (SQLException ex) 
             {
                 //JOptionPane.showMessageDialorootPane,ex);
@@ -830,13 +857,20 @@ int operacion=0;
                 Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
         
     
 
 
 }
        private void calcularServicio1(String servicio){
-      String sQuery;        
+    try {        
+        String sQuery;
         // Prepara el Query
         sQuery ="select idservicio from servicios where nombreservicio='"+servicio+"'";
         
@@ -845,16 +879,16 @@ int operacion=0;
             try 
             {
                 // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     pkservicio=oConn.setResult.getInt("idservicio");
-                     
-                 }
-                 
-                 // Cierra Resultados
+                while (oConn.setResult.next())
+                {
+                    // Obtiene los datos de la Consulta
+                    pkservicio=oConn.setResult.getInt("idservicio");
+                    
+                }
+                
+                // Cierra Resultados
                 oConn.setResult.close();
-            } 
+            }
             catch (SQLException ex) 
             {
                 //JOptionPane.showMessageDialorootPane,ex);
@@ -862,6 +896,12 @@ int operacion=0;
                 Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
         
     
 
@@ -1004,6 +1044,10 @@ int operacion=0;
 generar(tabla2);
 
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrarVentana();// TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
  public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -1106,55 +1150,77 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 
         public void funcionoservicio(){
             
-      String sql="select spFuncionServicios("+idservicio+",'"+nombreServicio+"',"+precioBase+","+precioReal+","
-             +operacion+",'"+observaciones+"')";
-    oConn.FnBoolQueryExecute(sql);
-       
+    try {
+        String sql="select spFuncionServicios("+idservicio+",'"+nombreServicio+"',"+precioBase+","+precioReal+","
+                +operacion+",'"+observaciones+"')";
+        oConn.FnBoolQueryExecute(sql);
+        
         System.out.println(sql);
         operacion=0;
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
     }
      public void funcionprotocolo(){
-            if(preciototal.length()>=1)
+    try {
+        if(preciototal.length()>=1)
             preciototal=preciototal;
-            else 
-                preciototal="0";
-      String sql="select spFuncionProtocolos("+idprotocolo+",'"+nombreProtocolo+"',"
-             +operacion+","+preciototal+")";
-    oConn.FnBoolQueryExecute(sql);
-       
+        else
+            preciototal="0";
+        String sql="select spFuncionProtocolos("+idprotocolo+",'"+nombreProtocolo+"',"
+                +operacion+","+preciototal+")";
+        oConn.FnBoolQueryExecute(sql);
+        
         System.out.println(sql);
         operacion=0;
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
     }    
      
      public void funcionprotocoloservicio(){
      
-      String sql="select spFuncionProtocoloServicio("+idprotocoloservicio+","+pkprotocolo+","
-             +pkservicio+","+operacion+","+laEdad+")";
-    oConn.FnBoolQueryExecute(sql);
+    try {
+        String sql="select spFuncionProtocoloServicio("+idprotocoloservicio+","+pkprotocolo+","
+                +pkservicio+","+operacion+","+laEdad+")";
+        oConn.FnBoolQueryExecute(sql);
         System.out.println(sql);
         operacion=0;
         jTextField1.setText("0");
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
     }    
             
         
     public void mostrar(){
            
- String [] titulos={"Cod","Nombre del servico","Precio base","Precio Real","Observaciones"};
-    String [] registros = new String[5];
-    String sql="select idservicio,nombreservicio,preciobase,precioreal,observaciones from servicios";
-    
-    model = new DefaultTableModel(null,titulos) 
+    try {
+        String [] titulos={"Cod","Nombre del servico","Precio base","Precio Real","Observaciones"};
+        String [] registros = new String[5];
+        String sql="select idservicio,nombreservicio,preciobase,precioreal,observaciones from servicios";
+         
+        model = new DefaultTableModel(null,titulos)
         {@Override
-     public boolean isCellEditable (int fila, int columna) {
-         if (columna== 0)
-             return false;
-         return true;
-     }
- };  
-    
-    if (oConn.FnBoolQueryExecute(sql))
+        public boolean isCellEditable (int fila, int columna) {
+            if (columna== 0)
+                return false;
+            return true;
+        }
+        };
+        
+        if (oConn.FnBoolQueryExecute(sql))
         {
-             try  {
+            try  {
                 
                 while (oConn.setResult.next())
                 {
@@ -1163,20 +1229,20 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                     registros[2]= oConn.setResult.getString("preciobase");
                     registros[3]= oConn.setResult.getString("precioreal");
                     registros[4]= oConn.setResult.getString("observaciones");
-
-                     model.addRow(registros);
+                    
+                    model.addRow(registros);
                 }
-                 System.out.println("registro 0"+registros[0]);
+                System.out.println("registro 0"+registros[0]);
                 
-                  tabla.setModel(model);
-                             //tabla.getColumn("Codigo").setPreferredWidth(10);
-       
-                 ajustarTamañoTabla();
-
-                 oConn.setResult.close();           
-              //   System.out.println("la cantida de filas en hotel es"+tabla.getRowCount());
-
-            } 
+                tabla.setModel(model);
+                //tabla.getColumn("Codigo").setPreferredWidth(10);
+                
+                ajustarTamañoTabla();
+                
+                oConn.setResult.close();
+                //   System.out.println("la cantida de filas en hotel es"+tabla.getRowCount());
+                
+            }
             catch (SQLException ex) 
             {
                 JOptionPane.showMessageDialog(null, ex);
@@ -1184,6 +1250,12 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                 Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
 
 }
     
@@ -1205,41 +1277,42 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     }
     public void mostrar2(){
            
- String [] titulos={"Codigo","Nombre del protocolo","Precio Total Protocolo"};
-    String [] registros = new String[3];
-    String sql="select idprotocolo,nombreprotocolo,preciototal from protocolo";
-    
-    model = new DefaultTableModel(null,titulos)
-                 {@Override
-     public boolean isCellEditable (int fila, int columna) {
-         if (columna== 0)
-             return false;
-         return true;
-     }
- };  
-    
-            
-    if (oConn.FnBoolQueryExecute(sql))
+    try {
+        String [] titulos={"Codigo","Nombre del protocolo","Precio Total Protocolo"};
+        String [] registros = new String[3];
+        String sql="select idprotocolo,nombreprotocolo,preciototal from protocolo";
+        
+        model = new DefaultTableModel(null,titulos)
+        {@Override
+        public boolean isCellEditable (int fila, int columna) {
+            if (columna== 0)
+                return false;
+            return true;
+        }
+        };
+        
+        
+        if (oConn.FnBoolQueryExecute(sql))
         {
-             try  {
+            try  {
                 
                 while (oConn.setResult.next())
                 {
                     registros[0]= oConn.setResult.getString("idprotocolo");
                     registros[1]= oConn.setResult.getString("nombreprotocolo");
                     registros[2]= oConn.setResult.getString("preciototal");
-
-                     model.addRow(registros);
+                    
+                    model.addRow(registros);
                 }
-               //  System.out.println("registro 0"+registros[0]);
-                 
-                 
-                  tabla1.setModel(model);
+                //  System.out.println("registro 0"+registros[0]);
+                
+                
+                tabla1.setModel(model);
                 ajustarTamañoTabla2();
-                 oConn.setResult.close();           
-              //   System.out.println("la cantida de filas en hotel es"+tabla.getRowCount());
-
-            } 
+                oConn.setResult.close();
+                //   System.out.println("la cantida de filas en hotel es"+tabla.getRowCount());
+                
+            }
             catch (SQLException ex) 
             {
                 JOptionPane.showMessageDialog(null, ex);
@@ -1247,6 +1320,12 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                 Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+
 
 }
     
@@ -1301,9 +1380,32 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                 Logger.getLogger(hoteles.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    try {
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+
 
 }
    
+      
+      public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+    try {
+        oConn.sqlStmt.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(prtocolos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+      
          public boolean OrdenExisteIn()
     {
         boolean bResultado=false;
@@ -1318,7 +1420,9 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
+
         } catch (SQLException ex) {
         }
         }       
@@ -1339,7 +1443,9 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
+        oConn.setResult.close();
+
         } catch (SQLException ex) {
         }
         }       
@@ -1361,7 +1467,9 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
+        oConn.setResult.close();
+
         } catch (SQLException ex) {
         }
         }       
