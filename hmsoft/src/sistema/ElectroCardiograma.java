@@ -60,6 +60,19 @@ public final class ElectroCardiograma extends javax.swing.JInternalFrame {
             super.paintComponent(grafico);
         }
     }
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+              try {
+                  oConn.sqlStmt.close();
+              } catch (SQLException ex) {
+                  Logger.getLogger(ElectroCardiograma.class.getName()).log(Level.SEVERE, null, ex);
+              }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
     public ElectroCardiograma() {
         initComponents();
            
@@ -188,7 +201,25 @@ public final class ElectroCardiograma extends javax.swing.JInternalFrame {
         btnEditar = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Electrocardiograma");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         txtNombres.setEditable(false);
         txtNombres.setBackground(new java.awt.Color(246, 202, 56));
@@ -912,7 +943,7 @@ public final class ElectroCardiograma extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(btnLimpiarGrafico)
@@ -1286,6 +1317,7 @@ public final class ElectroCardiograma extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("ElectroCardiograma:" + ex.getMessage().toString());
@@ -1752,11 +1784,16 @@ dispose();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("ElectroCardiograma:" + ex.getMessage().toString());
         } }
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+       cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -1782,6 +1819,7 @@ dispose();
             }
             
             // Cierro los Resultados
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {
@@ -2058,6 +2096,7 @@ void sbCargarDatosElectro(String valor){
             sbTablaElectro();
              
                  // Cierra Resultados
+                 oConn.sqlStmt.close();
                  oConn.setResult.close();
             } 
             catch (SQLException ex) 

@@ -78,7 +78,12 @@ Date fechan;
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox1 = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel118.setBackground(new java.awt.Color(153, 255, 153));
         jLabel118.setFont(new java.awt.Font("Engravers MT", 3, 18)); // NOI18N
@@ -329,7 +334,19 @@ Date fechaDate = new Date();
 //SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
 FechaExIn5.setDate(fechaDate);
 }
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+       try {
+           oConn.sqlStmt.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
+       }
+  
+    this.dispose();
+      //  System.exit(0);
 
+    }
  public boolean OrdenExisteIn4()
      {
         boolean bResultado=false;
@@ -344,6 +361,7 @@ FechaExIn5.setDate(fechaDate);
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
         } catch (SQLException ex) {
         }
@@ -382,6 +400,7 @@ FechaExIn5.setDate(fechaDate);
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
@@ -418,6 +437,7 @@ FechaExIn5.setDate(fechaDate);
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
@@ -558,15 +578,17 @@ FechaExIn5.setDate(fechaDate);
                     imprimirIn4();
                     limpiar4();
                 }
-                try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
-                }
+             
             } 
             else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
+               try {
+                    oConn.sqlStmt.close();
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }
        private boolean imprimirIn4(){
         boolean im = false;
@@ -622,12 +644,13 @@ FechaExIn5.setDate(fechaDate);
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
-                   try {
+                 
+               }
+               try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
                 return bResult;       
         }
       
@@ -662,6 +685,10 @@ FechaExIn5.setDate(fechaDate);
     private void txtEdadIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadIn5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEdadIn5ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
   public void limpiar4(){
       txtNordenIn5.setText("");
         txtNombresIn5.setText("");

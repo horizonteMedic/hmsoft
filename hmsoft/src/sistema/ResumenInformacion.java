@@ -91,7 +91,25 @@ String[]Triaje = new String[]{};
         jButton3 = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Resumen Informacion ");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar"));
 
@@ -345,6 +363,20 @@ String[]Triaje = new String[]{};
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
    
+    public void cerrarVentana(){
+     try {
+         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+         System.out.println("cerro esta ventana");
+         oConn.sqlStmt.close();
+         
+         this.dispose();
+         //  System.exit(0);
+     } catch (SQLException ex) {
+         Logger.getLogger(ResumenInformacion.class.getName()).log(Level.SEVERE, null, ex);
+     }
+
+    }
+    
     private void tbTriajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTriajeMouseClicked
         if (evt.getClickCount() == 1) 
         {  
@@ -426,6 +458,10 @@ String[]Triaje = new String[]{};
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
       darResultadoConteo();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     public void dato(){
         Observados o = new Observados();
         String s= txtBuscarCod.getText();
@@ -681,8 +717,7 @@ void sbCargarDatosOcupacional(String valor){
                
 
                   sbTablaResumen();
-                 // Cierra Resultados
-                 oConn.setResult.close();
+                 
                  
             } 
             catch (SQLException ex) 
@@ -692,6 +727,14 @@ void sbCargarDatosOcupacional(String valor){
                 Logger.getLogger(ResumenInformacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    // Cierra Resultados
+                 
+     try {
+         oConn.sqlStmt.close();
+         oConn.setResult.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(ResumenInformacion.class.getName()).log(Level.SEVERE, null, ex);
+     }
       total=tbTriaje.getRowCount();
         txtTotal.setText(String.valueOf(total));
                //  System.out.println("total1:"+txtTotal.getText());
@@ -1057,7 +1100,8 @@ void sbCargarDatosOcupacional1(Date valor){
                   tbTriaje.setModel(model);
                   sbTablaResumen();
                  // Cierra Resultados
-                 oConn.setResult.close();
+                   oConn.sqlStmt.close();
+                     oConn.setResult.close();
             } 
             catch (SQLException ex) 
             {
@@ -1066,6 +1110,7 @@ void sbCargarDatosOcupacional1(Date valor){
                 Logger.getLogger(ResumenInformacion.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+     
     }
       total=tbTriaje.getRowCount();
         txtTotal.setText(String.valueOf(total));

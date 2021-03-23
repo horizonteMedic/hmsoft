@@ -68,7 +68,19 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
         no26.setSelected(b);
         
     }
+public void cerrarVentana(){
+     try {
+         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+         System.out.println("cerro esta ventana");
+         oConn.sqlStmt.close();
+         
+         this.dispose();
+         //  System.exit(0);
+     } catch (SQLException ex) {
+         Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+     }
 
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -264,7 +276,25 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Antecedentes de Enfermeades en Altura");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         txtNorden.setBackground(new java.awt.Color(233, 230, 230));
         txtNorden.addActionListener(new java.awt.event.ActionListener() {
@@ -1216,7 +1246,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                         .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Tabla, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1305,7 +1335,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(2, 2, 2)))
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1346,6 +1376,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
@@ -1539,6 +1570,7 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                 }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
@@ -1547,6 +1579,10 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
         }else{ oFunc.SubSistemaMensajeError("Ingrese N°");}
     }//GEN-LAST:event_brnEditarActionPerformed
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+       cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
+
 public void direccion(){
     String di="SELECT direccion_clinica FROM datos_clinica;";
          oConn.FnBoolQueryExecute(di);
@@ -1554,7 +1590,7 @@ public void direccion(){
                     if (oConn.setResult.next()) {
                        txtDireccion.setText(oConn.setResult.getString("direccion_clinica"));
                        }
-                        
+                    oConn.sqlStmt.close();    
                     oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo c:" + ex.getMessage().toString());
@@ -1588,6 +1624,7 @@ public void direccion(){
                     bResultado = true;
                 }
                 // Cierro los Resultados
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
             }
@@ -2034,6 +2071,7 @@ return bResultado;
             }
             
             // Cierro los Resultados
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {

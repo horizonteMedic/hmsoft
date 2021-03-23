@@ -140,7 +140,25 @@ public class Aptitud_Medico_Ocupacional2 extends javax.swing.JInternalFrame {
         txtCreatininaBio = new javax.swing.JTextField();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -768,6 +786,19 @@ public class Aptitud_Medico_Ocupacional2 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public static com.toedter.calendar.JDateChooser FechaNacimiento;
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
           FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNorden.getText().isEmpty()){
@@ -995,6 +1026,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                oConn.sqlStmt.close();    
                 oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
@@ -1274,6 +1306,10 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         }
     }//GEN-LAST:event_FechaPropertyChange
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
+
   public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -1289,6 +1325,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //              txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {
@@ -1324,12 +1361,13 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
                     
                    bResult = true;
-                   try {
+                
+               }
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
                     }
-               }
                  return bResult;       
         }
     
@@ -1493,6 +1531,7 @@ private void Limpiar(){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
@@ -1521,14 +1560,14 @@ private void Limpiar(){
 //            }
             imprimir();
             Limpiar();
-            try {
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+         try {
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-        }
     }
     public boolean OrdenObservado(){
         boolean bResultado=false;
@@ -1547,6 +1586,7 @@ private void Limpiar(){
 //             txtNorden.setText(null);
                 }
                 // Cierro los Resultados
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
             }
