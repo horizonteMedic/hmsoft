@@ -68,7 +68,25 @@ public class CartaCompromisoAislamiento extends javax.swing.JInternalFrame {
         txtimp = new javax.swing.JTextField();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CARTA DE COMPROMISO DE AISLAMIENTO VOLUNTARIO EN SU DOMICILIO");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Constancia Médica"));
 
@@ -282,6 +300,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
        
@@ -304,7 +323,7 @@ public boolean OrdenExiste()
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -328,13 +347,14 @@ private boolean Grabar() throws SQLException{
             
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
-                       try {
+                       
+               }
+              
+              try {
                         oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(CartaCompromisoAislamiento.class.getName()).log(Level.SEVERE, null, ex);
                         }
-               }
-              
               
                 return bResult;       
         }
@@ -384,7 +404,7 @@ private boolean Grabar() throws SQLException{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
                     oConn.setResult.close();
-                   
+                   oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());
             }
@@ -399,6 +419,11 @@ private boolean Grabar() throws SQLException{
     private void txtimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimpActionPerformed
 
     }//GEN-LAST:event_txtimpActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private void print(Integer cod){
                 Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);             
@@ -433,15 +458,16 @@ private boolean Grabar() throws SQLException{
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             limpiar();
-            try {
-                        oConn.sqlStmt.close();
-                 } catch (SQLException ex) {
-                     Logger.getLogger(CartaCompromisoAislamiento.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
         
+        try {
+                        oConn.sqlStmt.close();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(CartaCompromisoAislamiento.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     private boolean imprimir(){
     boolean im = false;
@@ -513,6 +539,21 @@ Date fechaDate = new Date();
 FechaHoy.setDate(fechaDate);
 FechaCarta.setDate(fechaDate);
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CartaCompromisoAislamiento.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaCarta;
     private com.toedter.calendar.JDateChooser FechaHoy;

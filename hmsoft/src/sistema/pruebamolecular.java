@@ -56,7 +56,12 @@ clsConnection oConn = new clsConnection();
         btnGrabarIn = new javax.swing.JButton();
         btnLimpiarIn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -245,6 +250,7 @@ jComboBox1.addItem("NO REACTIVO");
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -268,6 +274,7 @@ jComboBox1.addItem("NO REACTIVO");
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
         }
         }       
@@ -309,6 +316,7 @@ jComboBox1.addItem("NO REACTIVO");
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -328,6 +336,7 @@ jComboBox1.addItem("NO REACTIVO");
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
         }
         }       
@@ -359,6 +368,11 @@ jComboBox1.addItem("NO REACTIVO");
         LimpiarIn();
         
     }//GEN-LAST:event_btnLimpiarInActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
       public void ActualizarIn(){
             String sCodigo=txtNordenIn.getText();
             String strSqlStmt;
@@ -370,16 +384,18 @@ jComboBox1.addItem("NO REACTIVO");
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                     Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
               //  Limpiar();
 
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
+            
+            try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                     Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
+                }
     }  
     
     private boolean validarIn(){
@@ -401,12 +417,15 @@ jComboBox1.addItem("NO REACTIVO");
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
-                   try {
+                   
+               }
+             
+                try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                      Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
+                
                 return bResult;       
         } 
     public void LimpiarIn(){
@@ -453,6 +472,20 @@ jComboBox1.setSelectedItem("");
         });
     }
 
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+    try {
+        oConn.sqlStmt.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(pruebamolecular.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExIn;
     private javax.swing.JButton btnEditar;
