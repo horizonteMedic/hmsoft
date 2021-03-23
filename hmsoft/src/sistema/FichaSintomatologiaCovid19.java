@@ -199,7 +199,25 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         txtFactorR7 = new javax.swing.JTextField();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle(" Ficha Sintomatología Covid 19");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jPanel13.setForeground(new java.awt.Color(102, 102, 0));
 
@@ -408,7 +426,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         jTabbedPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jPanel22.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "En los últomos catorce (14) días ha tenido alguno de los sintomas siguientes:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "En los últomos catorce (14) días ha tenido alguno de los sintomas siguientes:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbSntoma1_si.setBackground(new java.awt.Color(153, 204, 255));
         bgS1.add(rbSntoma1_si);
@@ -712,7 +730,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         );
 
         jPanel23.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "<html>En los últimos catorce (14) días (detallar, de ser afirmativa la respuesta):</html>", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "<html>En los últimos catorce (14) días (detallar, de ser afirmativa la respuesta):</html>", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbAfirma1_si.setBackground(new java.awt.Color(153, 204, 255));
         bgAF1.add(rbAfirma1_si);
@@ -909,7 +927,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         jTabbedPane3.addTab("Sintomas", jPanel21);
 
         jPanel24.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tiene los siguientes factores de riesgo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tiene los siguientes factores de riesgo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbFactorR1_si.setBackground(new java.awt.Color(153, 204, 255));
         bgF1.add(rbFactorR1_si);
@@ -1271,6 +1289,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         oFunc.SubSistemaMensajeInformacion("Evaluacion Psicologica:" + ex.getMessage().toString());
                     }
@@ -1385,6 +1404,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Evaluacion Psicologica:" + ex.getMessage().toString());
             }
@@ -1432,6 +1452,11 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
     private void rbFactorR4_siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFactorR4_siActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbFactorR4_siActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
      private void Agregar(){
          if(!txtNordenEP.getText().isEmpty()){
             if(!oPe.nOrden(txtNordenEP, "ficha_sintomatologica_covid19")){
@@ -1502,12 +1527,13 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
                         limpiar();
-                        try {
+                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
+                    
+                    try {
                             oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
                 }
              }
         }else { oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
@@ -1586,14 +1612,15 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
                     limpiar();
-                    try {
+                }else{
+                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                       }
+                
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                          Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else{
-                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-                       }
             }
         }
     }
@@ -1651,6 +1678,21 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
             Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    } 
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExamen;
     private com.toedter.calendar.JDateChooser FechaNacimientoEP;

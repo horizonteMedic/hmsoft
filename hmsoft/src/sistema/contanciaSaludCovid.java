@@ -95,7 +95,12 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("N° Ficha :");
@@ -383,6 +388,7 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
             
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
            if(asin)
                jTextresultado.setText("Asintomatico");
            if(sin)
@@ -406,7 +412,10 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
              igmreactivo=oConn.setResult.getBoolean("chkigm_reactivo");
             iggreactivo=oConn.setResult.getBoolean("chkigg_reactivo");
             }
+            
             oConn.setResult.close();
+            oConn.sqlStmt.close();
+            
            if(invalido)
            {  jTextField1.setText("INVALIDO");
               jTextField2.setText("INVALIDO");
@@ -440,7 +449,7 @@ medicouser=objt.doctor;
 
             }
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -499,6 +508,11 @@ private void Actualizar(){
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
         
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(contanciaSaludCovid.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     private boolean imprimir(){
     boolean im = false;
@@ -554,7 +568,8 @@ int seleccion = JOptionPane.showOptionDialog(
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                }
-              
+                
+             oConn.sqlStmt.close();
               
                 return bResult;       
         }
@@ -599,7 +614,7 @@ int seleccion = JOptionPane.showOptionDialog(
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -622,7 +637,7 @@ int seleccion = JOptionPane.showOptionDialog(
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -658,6 +673,7 @@ int seleccion = JOptionPane.showOptionDialog(
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
 
@@ -751,6 +767,11 @@ jDateChooser2.setDate(null);
 
     }//GEN-LAST:event_jDateChooser2KeyPressed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
@@ -786,6 +807,20 @@ jDateChooser2.setDate(null);
         });
     }
 
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(contanciaSaludCovid.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnImp;

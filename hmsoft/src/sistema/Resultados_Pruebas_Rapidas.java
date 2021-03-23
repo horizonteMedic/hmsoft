@@ -151,7 +151,25 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
         txtDniEvaluador = new javax.swing.JTextField();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("RESULTADOS DE PRUEBAS RÁPIDAS");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jLabel1.setText("N° orden :");
 
@@ -251,7 +269,6 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel38)
                         .addGap(4, 4, 4)
                         .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -425,7 +442,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPersonal))))
+                                .addComponent(txtPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -979,6 +996,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1097,6 +1115,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registro en laboratorio");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1181,12 +1200,18 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registro como usuario");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
           
         }
     }//GEN-LAST:event_txtNombresEvalActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private boolean validar(){
         boolean bResultado=true;
         if (((JTextField)FechaExamen.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
@@ -1257,14 +1282,15 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
                     limpiar();
-                    try {
+                }else{
+                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                       }
+                
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else{
-                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-                       }
             }
         }
     }
@@ -1330,12 +1356,13 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
                         limpiar();
-                        try {
+                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
+                    
+                    try {
                             oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
                 }
              }
         }else { oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
@@ -1460,6 +1487,21 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
             Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    } 
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExamen;
     private com.toedter.calendar.JDateChooser FechaPrueba;

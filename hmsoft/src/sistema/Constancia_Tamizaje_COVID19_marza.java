@@ -119,7 +119,25 @@ public class Constancia_Tamizaje_COVID19_marza extends javax.swing.JInternalFram
         jLabel14.setText("jLabel14");
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CONSTANCIA DE TAMIZAJE - COVID 19 MARSA");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -592,6 +610,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                           oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                       }
                       oConn.setResult.close();
+                      oConn.sqlStmt.close();
               } catch (SQLException ex) {
               oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
             }
@@ -678,6 +697,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
            } 
@@ -714,6 +734,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         atxtObservaciones.append("AISLAMIENTO EN CASA POR 7 DIAS.\n" );
     }//GEN-LAST:event_chkObserv2ActionPerformed
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
+
   public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -729,6 +754,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
         }
         }       
@@ -749,12 +775,15 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     oFunc.SubSistemaMensajeInformacion("Constancia Registrada");
                     
                    bResult = true;
-                   try {
+                   
+               }
+             
+             try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                             Logger.getLogger(Constancia_Tamizaje_COVID19_marza.class.getName()).log(Level.SEVERE, null, ex);
                     }
-               }
+             
                 return bResult;       
         }
 public void Actualizar(){
@@ -772,14 +801,16 @@ public void Actualizar(){
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             Limpiar();
-            try {
+            
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        
+        try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                             Logger.getLogger(Constancia_Tamizaje_COVID19_marza.class.getName()).log(Level.SEVERE, null, ex);
                     }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-        }
 }    
 void Fecha(){
 Date fechaDate = new Date();
@@ -904,10 +935,27 @@ private void Limpiar(){
                 oFunc.SubSistemaMensajeInformacion("No hay datos en triaje");
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
     }
+   
+   public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Constancia_Tamizaje_COVID19_marza.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+   
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Fecha;
     private javax.swing.JTextArea atxtObservaciones;
