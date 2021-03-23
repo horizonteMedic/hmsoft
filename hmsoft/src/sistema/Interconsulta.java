@@ -182,7 +182,25 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("FICHA DE INTERCONSULTA");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         txtNorden.setBackground(new java.awt.Color(233, 230, 230));
         txtNorden.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +223,7 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
 
         txtEdad.setEditable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, null), "Funciones Vitales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), java.awt.Color.blue)); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, null), "Funciones Vitales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), java.awt.Color.blue)); // NOI18N
 
         jLabel2.setText("F.C :");
 
@@ -938,6 +956,7 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
@@ -950,6 +969,19 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
     
     }//GEN-LAST:event_txtNordenActionPerformed
 
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
+     }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
     private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
         ReImp();
     }//GEN-LAST:event_jLabel44MouseClicked
@@ -1030,6 +1062,7 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Interconsulta:" + ex.getMessage().toString());
@@ -1100,6 +1133,10 @@ public final class Interconsulta extends javax.swing.JInternalFrame {
         txtEspecialidad.setText("NUTRICIÓN");
     }//GEN-LAST:event_jCheckBox9ActionPerformed
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
+
 public void direccion(){
     String di="select direccion_clinica from datos_clinica";
          oConn.FnBoolQueryExecute(di);
@@ -1107,6 +1144,7 @@ public void direccion(){
                     if (oConn.setResult.next()) {
                        txtDireccion.setText(oConn.setResult.getString("direccion_clinica"));
                        }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha interconsulta:" + ex.getMessage().toString());
@@ -1141,6 +1179,7 @@ public void direccion(){
                     bResultado = true;
                 }
                 // Cierro los Resultados
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
             }
@@ -1286,13 +1325,14 @@ public void direccion(){
        if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                bResultado = true;  
-     try {
+    
+                }else{
+             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
+        try {
          oConn.sqlStmt.close();
      } catch (SQLException ex) {
          Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
      }
-                }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
     }
 // }else{
 //             oFunc.SubSistemaMensajeError("codigo registrado");}
@@ -1319,14 +1359,15 @@ return bResultado;
             
              txtNorden.setEnabled(true);
              txtNorden.requestFocus();
+        
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Actualizar La Entrada");
+        }
          try {
              oConn.sqlStmt.close();
          } catch (SQLException ex) {
              Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
          }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Actualizar La Entrada");
-        }
  }
     public void limpiar(){
     txtNorden.setText(null);
@@ -1389,6 +1430,7 @@ return bResultado;
             }
             
             // Cierro los Resultados
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {

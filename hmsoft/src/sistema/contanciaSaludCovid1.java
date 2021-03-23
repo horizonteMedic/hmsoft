@@ -375,7 +375,7 @@ jTextField2.setVisible(false);
                jTextresultado.setText("Asintomatico");
            if(sin)
                 jTextresultado.setText("Sintomatico");
-                    
+            oConn.sqlStmt.close();        
            oConn.setResult.close();
         } catch (SQLException ex) 
         {
@@ -395,6 +395,7 @@ jTextField2.setVisible(false);
                 igmreactivo=oConn.setResult.getBoolean("chkigm_reactivo");
                 iggreactivo=oConn.setResult.getBoolean("chkigg_reactivo");
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
            if(invalido)
            {  jTextField1.setText("INVALIDO");
@@ -428,6 +429,7 @@ sed=ads.nombresede;
              cmppp=oConn.setResult.getString("cmp_user");
 
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {
@@ -481,12 +483,19 @@ private void Actualizar(){
             System.out.println("la fechad e actualziacion es :"+strSqlStmt);
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
-            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-            imprimir();
-            limpiar();
+         
+                oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+                imprimir();
+                limpiar();          
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(contanciaSaludCovid1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         
     }
     private boolean imprimir(){
@@ -545,7 +554,7 @@ int seleccion = JOptionPane.showOptionDialog(
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
                }
-              
+              oConn.sqlStmt.close();
               
                 return bResult;       
         }
@@ -607,6 +616,7 @@ int seleccion = JOptionPane.showOptionDialog(
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {
@@ -630,6 +640,7 @@ int seleccion = JOptionPane.showOptionDialog(
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {
@@ -666,6 +677,7 @@ int seleccion = JOptionPane.showOptionDialog(
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}

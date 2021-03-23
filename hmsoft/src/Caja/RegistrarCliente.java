@@ -517,6 +517,7 @@ this.chkAltaTrabCal.setVisible(false);
         btnNuevo = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel34 = new javax.swing.JLabel();
@@ -1113,11 +1114,11 @@ this.chkAltaTrabCal.setVisible(false);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 192, Short.MAX_VALUE)
+            .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 145, Short.MAX_VALUE)
+            .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
         );
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/camara.png"))); // NOI18N
@@ -3392,8 +3393,7 @@ int seleccion = JOptionPane.showOptionDialog(
     }//GEN-LAST:event_btnCargoMouseClicked
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        if (txtDni.getText().length() <=10
-                ) {
+        if (txtDni.getText().length() <=10) {
             cargardatos();
             dni=txtDni.getText().toString();
        } else {
@@ -5284,6 +5284,7 @@ private void CargarTipoExamenes(){
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

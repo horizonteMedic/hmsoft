@@ -286,6 +286,7 @@ sed=ads.nombresede;
         jCheckBox1 = new javax.swing.JCheckBox();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Laboratorio Clinico");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -294,6 +295,7 @@ sed=ads.nombresede;
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -2195,7 +2197,19 @@ sed=ads.nombresede;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+    try {
+        oConn.sqlStmt.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    this.dispose();
+      //  System.exit(0);
 
+    }
     public void agregarSimtocasPc(){
       if(OrdenExiste1()){  
             Actualizar();
@@ -2283,14 +2297,14 @@ sed=ads.nombresede;
             
                    bResult = true;
                  oFunc.SubSistemaMensajeInformacion("Orden Registrada");
-                 try {
+            
+                
+               }
+                   try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-               }
-              
               
                 return bResult;       
         }
@@ -2326,14 +2340,16 @@ sed=ads.nombresede;
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
           //  imprimir();
             limpiar();
-            try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
-                }
+          
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+        
+         try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                } 
         
     }
     private void limpiar(){
@@ -2372,6 +2388,7 @@ negarcheks();
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
             
         } catch (SQLException ex) {
@@ -2591,6 +2608,7 @@ negarcheks();
                 }else{
                     oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
                 }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
@@ -2632,6 +2650,7 @@ negarcheks();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
@@ -2750,6 +2769,7 @@ negarcheks();
                 }else{
                     oFunc.SubSistemaMensajeError("VErificar si existe registro, si la prueba es:  PRUEBA CUANTITATIVA ANTIGENOS");
                 }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
@@ -2791,6 +2811,7 @@ negarcheks();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
@@ -2903,6 +2924,7 @@ limpiar2();
                 }else{
                     oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
                 }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
@@ -2944,6 +2966,7 @@ limpiar2();
                     }else{
                     oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
@@ -3132,6 +3155,7 @@ limpiar2();
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
@@ -3173,6 +3197,7 @@ limpiar2();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
@@ -3276,10 +3301,11 @@ limpiar2();
                     if(pasar.equals("PC")) habilitarPc();
                     else negarPc();
                     
-                    oConn.setResult.close();
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
+                     oConn.sqlStmt.close();
+                    oConn.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -3320,6 +3346,7 @@ limpiar2();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
+                    oConn.sqlStmt.close();
                     oConn.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
@@ -3678,6 +3705,10 @@ limpiar2();
         // TODO add your handling code here:
         bgInvalido.clearSelection();
     }//GEN-LAST:event_chkIgmReactivoActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
 public void negarcheks(){
  chkTos.setEnabled(false);
         chkDolorG.setEnabled(false);
@@ -3716,14 +3747,19 @@ public void  habilitarPc(){
       
     if(!jTextFieldSaturacion.getText().isEmpty()){
       
+        try {
             String sql2="SELECT spFuncionLLenadoPc("+txtNordenIn.getText()+",'"+FechaHotel.getDate()+"','"
                     +jTextFieldSaturacion.getText() +"');";
             valor=2;
             negarPc();
             jTextFieldSaturacion.setText("");
-          //  System.out.println(sql2);
+            //  System.out.println(sql2);
             oConn.FnBoolQueryExecute(sql2);
-          agregarSimtocasPc();
+            agregarSimtocasPc();
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
         else
             JOptionPane.showMessageDialog(null, "LLENAR CO2 ","Sistema MEDSOFT",JOptionPane.ERROR_MESSAGE);
@@ -4020,6 +4056,7 @@ public void  habilitarPc(){
             {
                 veDats[i]=lista.get(i).toString();
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
         } catch (SQLException ex)
         {
@@ -4157,6 +4194,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
         } catch (SQLException ex) {
         }
@@ -4178,6 +4216,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
+            oConn.sqlStmt.close();
             oConn.setResult.close();
         } catch (SQLException ex) {
         }
@@ -4202,7 +4241,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             }
             else 
           // oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
-
+            oConn.sqlStmt.close();
             oConn.setResult.close();
         } catch (SQLException ex) {
         }
@@ -4228,7 +4267,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             }
             else 
             oFunc.SubSistemaMensajeError("VErificar si existe registro, si la prueba es:  PRUEBA CUANTITATIVA ANTIGENOS");
-
+            oConn.sqlStmt.close();
             oConn.setResult.close();
         } catch (SQLException ex) {
         }
@@ -4253,7 +4292,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             }
             else
             oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
-
+            oConn.sqlStmt.close();
             oConn.setResult.close();
         } catch (SQLException ex) {
         }
@@ -4322,12 +4361,13 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     
                    bResult = true;
                    
-                   try {
+               
+               }
+                 try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
                 return bResult;       
         }
      
@@ -4353,12 +4393,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     
                    bResult = true;
                    
-                   try {
+               }
+               try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
                 return bResult;       
         }
       
@@ -4381,12 +4421,13 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     
                    bResult = true;
                    
-                   try {
+                
+               }
+                try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
                 return bResult;       
         }
       private boolean GrabarIn3() throws SQLException{
@@ -4407,13 +4448,14 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
                    bResult = true;
-                   
+               
+               }
+                 
                    try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
                 return bResult;       
         }
       
@@ -4435,12 +4477,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     
                    bResult = true;
                    
-                   try {
+               }
+               try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               }
                 return bResult;       
         }
       
@@ -4464,14 +4506,15 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn();
               //  Limpiar();
-              try {
+             
+            } else {
+                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            }
+             try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-            }
     }    
     
      public void ActualizarIn1(){
@@ -4497,15 +4540,21 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn1();
                 //Limpiar();
-                try {
+                
+            } else {
+                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            }
+             try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-            }
-    }   
+     
+     
+     }
+
+
+   
          public void ActualizarIn2(){
             String sCodigo=txtNordenIn2.getText();
             String strSqlStmt;
@@ -4526,14 +4575,15 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn2();
                 limpiar2();
-                try {
+               
+            } else {
+                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            }
+             try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-            }
     }  
          
              public void ActualizarIn3(){
@@ -4555,14 +4605,15 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn3();
                 limpiar3();
-                try {
+               
+            } else {
+                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            }
+             try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-            }
     }
       public void ActualizarIn4(){
             String sCodigo=txtNordenIn4.getText();
@@ -4593,14 +4644,15 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                             limpiar4();
                             }
                          }
-                try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
-                }         
+                        
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
+            try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                } 
     }     
     private void LimpiarIn(){
         txtNordenIn.setText(null);
@@ -5043,6 +5095,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 }
 
                 // Cierra Resultados
+                oConn.sqlStmt.close();
                 oConn.setResult.close();
             } catch (SQLException ex) {
                 //JOptionPane.showMessageDialorootPane,ex);
