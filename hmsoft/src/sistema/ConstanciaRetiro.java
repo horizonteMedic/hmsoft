@@ -377,12 +377,12 @@ public void cerrarVentana(){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-<<<<<<< HEAD
+
                 oConn.sqlStmt.close();
-=======
+
                     oConn.sqlStmt.close();
                 oConn.setResult.close();
->>>>>>> lobo
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
        
@@ -405,11 +405,9 @@ public boolean OrdenExiste()
 //             txtNorden.setText(null);
             }
             oConn.sqlStmt.close();
-<<<<<<< HEAD
-=======
+
             oConn.setResult.close();
->>>>>>> lobo
-            
+
         } catch (SQLException ex) {
          
         }
@@ -491,12 +489,12 @@ private boolean Grabar() throws SQLException{
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
-<<<<<<< HEAD
+
                 oConn.sqlStmt.close();
-=======
+
                     oConn.sqlStmt.close();
                 oConn.setResult.close();
->>>>>>> lobo
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());
             }
@@ -513,11 +511,9 @@ private boolean Grabar() throws SQLException{
     }//GEN-LAST:event_txtimpActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-<<<<<<< HEAD
+
         cerrarVentana();  // TODO add your handling code here:
-=======
-        cerrarVentana();
->>>>>>> lobo
+
     }//GEN-LAST:event_formInternalFrameClosing
     private void print(Integer cod){
                 Map parameters = new HashMap(); 
@@ -604,20 +600,7 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
-    
-   public void cerrarVentana(){
-        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
-        System.out.println("cerro esta ventana");
-        try {
-            oConn.sqlStmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(ConstanciaRetiro.class.getName()).log(Level.SEVERE, null, ex);
-        }
-  
-    this.dispose();
-      //  System.exit(0);
 
-    }
  
     
    private void printer(Integer cod){
