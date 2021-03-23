@@ -183,7 +183,25 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
         jLabel44 = new javax.swing.JLabel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("REGISTRO DE PRUEBAS RÁPIDAS F100");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jLabel1.setText("N° orden :");
 
@@ -283,7 +301,6 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel38)
                         .addGap(4, 4, 4)
                         .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -690,7 +707,7 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                         .addGap(2, 2, 2)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, Short.MAX_VALUE)))
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(1, 1, 1))
         );
 
@@ -1230,6 +1247,7 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registro en Laboratorio");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1379,6 +1397,7 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1450,6 +1469,11 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
         chkArticulaciones.setEnabled(false);
         atxtOtrosSintomas.setEnabled(false);
     }//GEN-LAST:event_rbSintomasNoActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private boolean validar(){
         boolean bResultado=true;
         if (((JTextField)FechaExamen.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
@@ -1544,14 +1568,16 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
                     limpiar();
-                    try {
+                    
+                }else{
+                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                       }
+                
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Registro_Pruebas_Rapidas_F100.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else{
-                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-                       }
             }
         }
     }
@@ -1644,12 +1670,14 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
                         limpiar();
-                        try {
+                        
+                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
+                    
+                   try {
                             oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Registro_Pruebas_Rapidas_F100.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");} 
+                        } 
                 }
              }
         }else { oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
@@ -1792,6 +1820,21 @@ public class Registro_Pruebas_Rapidas_F100 extends javax.swing.JInternalFrame {
             Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro_Pruebas_Rapidas_F100.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    } 
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExamen;
     private com.toedter.calendar.JDateChooser FechaSintoma;

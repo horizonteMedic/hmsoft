@@ -190,7 +190,25 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("HOJA DE REFERENCIA");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Filiación"));
 
@@ -1311,6 +1329,7 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                             oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                            }
                         oConn.setResult.close();
+                        oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
                     }
@@ -1448,6 +1467,7 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                 }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1566,6 +1586,11 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
     private void txtImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtImpActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private boolean imprimir() {
         boolean im = false;
         int seleccion = JOptionPane.showOptionDialog(
@@ -1771,14 +1796,17 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
 
          imprimir();
           oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-       limpiar();
-       try {
+        limpiar();
+       
+        }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
+          
+          try {
             oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
-    }
+          
+        }
     }
     }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
     txtNorden.requestFocus();}
@@ -1859,19 +1887,37 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
                     limpiar();   
-                    try {
+                    
+                }else{
+                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                }
+                
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
                     }  
-                }else{
-                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-                }
+                
         }
         
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
  }
+ 
+ public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaAtencion;
     private com.toedter.calendar.JDateChooser FechaExamen;

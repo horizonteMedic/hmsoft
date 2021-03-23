@@ -288,17 +288,11 @@ String sed="";
         jCheckBox3 = new javax.swing.JCheckBox();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Examenes Pre-Ocupacionales \"Ficha Médica\"");
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(1268, 647));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameActivated(evt);
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
@@ -306,6 +300,14 @@ String sed="";
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
         });
 
@@ -1739,7 +1741,7 @@ String sed="";
                     .addComponent(jLabel125)
                     .addComponent(jCheckBox1)
                     .addComponent(jCheckBox2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jCheckBox3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1881,6 +1883,11 @@ String sed="";
              jCheckBox2.setSelected(false);
        }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
   
     public boolean Orden() {
         boolean bResultado = false;
@@ -1904,7 +1911,7 @@ String sed="";
 
             // Cierro los Resultados
             oConn.setResult.close();
-
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
 
         }
@@ -2073,6 +2080,7 @@ String sed="";
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -2235,6 +2243,7 @@ String sed="";
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -2278,22 +2287,29 @@ String sed="";
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                     imprimir();
                     limpiar();
-                    try {
+                    
+                } else {
+                    oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+                }
+                
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } else {
-                    oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-                }
+                
             }else {
                 oFunc.SubSistemaMensajeInformacion("NUMERO ORDEN NO EXISTE");
                 txtNorden.setText(null);
                 txtNorden.requestFocus();
             }
-        }else {
+        }
+        
+        else {
             oFunc.SubSistemaMensajeInformacion("INGRESE EL NUMERO ORDEN");
         }
+        
+        
         
     }
 
@@ -2370,11 +2386,7 @@ String sed="";
                 if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
-                    try {
-                        oConn.sqlStmt.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -2389,6 +2401,12 @@ String sed="";
             txtNorden.requestFocus();
             jtFichaMedica.setSelectedIndex(0);
         }
+        
+        try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
         return r;
     }
 
@@ -2454,6 +2472,20 @@ String sed="";
          Limpiar();
     }
 
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaFicha;
     private com.toedter.calendar.JDateChooser FechaNacimiento;
@@ -2832,6 +2864,7 @@ public static int calcularEdad(String fecha) {
 
                 // Cierra Resultados
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 //JOptionPane.showMessageDialorootPane,ex);
                 oFunc.SubSistemaMensajeError(ex.toString());

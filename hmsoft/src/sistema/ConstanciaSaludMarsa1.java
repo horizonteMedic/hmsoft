@@ -105,8 +105,26 @@ chkInvalido.setVisible(false);
         btnEditar = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(true);
         setTitle("CONSTANCIA SALUD");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Constancia Médica"));
         jPanel1.setDoubleBuffered(false);
@@ -612,6 +630,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());}
        
@@ -634,7 +653,7 @@ public boolean OrdenExiste()
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -685,13 +704,14 @@ private boolean Grabar() throws SQLException{
 //                   oConn.setResult.next();
                    bResult = true;
                        oFunc.SubSistemaMensajeInformacion("Orden Registrada");
-                       try {
+                       
+               } 
+                try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
                         oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                              Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-               }  
+                            }   
                 return bResult;       
         }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -796,6 +816,7 @@ private boolean Grabar() throws SQLException{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Constancia:" + ex.getMessage().toString());
             }
@@ -982,6 +1003,11 @@ private boolean Grabar() throws SQLException{
     private void chkDificultadRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkDificultadRMouseClicked
    
     }//GEN-LAST:event_chkDificultadRMouseClicked
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private void print(Integer cod){
                 Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);             
@@ -1063,16 +1089,17 @@ private boolean Grabar() throws SQLException{
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             limpiar();
-            try {
+            
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        
+        try {
              //            oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-        }
-        
     }
     
     
@@ -1187,6 +1214,21 @@ Date fechaDate = new Date();
 //SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
 FechaHoy.setDate(fechaDate);
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaHoy;
     private javax.swing.ButtonGroup btgSintoma;

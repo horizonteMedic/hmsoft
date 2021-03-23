@@ -250,7 +250,25 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
         jLabel21 = new javax.swing.JLabel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("REGISTRO DE PRUEBAS RÁPIDAS F100");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+        });
 
         jLabel1.setText("N° orden :");
 
@@ -1934,6 +1952,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                         oFunc.SubSistemaMensajeError("No se encuentra Registro en Laboratorio");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2129,7 +2148,8 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro algun examen");
                     }
-                oConn.setResult.close();    
+                oConn.setResult.close(); 
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2330,6 +2350,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                         oFunc.SubSistemaMensajeError("No se encuentra Registro como usuario");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2411,6 +2432,11 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
         chkContinuidad4.setEnabled(false);
         chkContinuidad5.setEnabled(false);
     }//GEN-LAST:event_rbPCR_NAActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private boolean validar(){
         boolean bResultado=true;
         if (((JTextField)FechaExamen.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
@@ -2550,14 +2576,16 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
                     limpiar();
-                    try {
+                    
+                }else{
+                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada! ");
+                       }
+                
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF100.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }else{
-                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada! ");
-                       }
             }
         }
     }
@@ -2698,12 +2726,14 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
                         limpiar();
-                        try {
+                        
+                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada!!");} 
+                    
+                    try {
                             oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF100.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                   }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada!!");} 
                 }
              }
         }else { oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
@@ -2879,6 +2909,21 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF100 extends javax.swing.JInt
             Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF100.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    } 
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExamen;
     private com.toedter.calendar.JDateChooser FechaRetornoP;

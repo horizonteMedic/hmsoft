@@ -218,7 +218,8 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         
             // Cierra la Consulta
-            oConn.setResult.close();    
+            oConn.setResult.close();   
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
         }        
@@ -4365,6 +4366,7 @@ public boolean OrdenExiste(String orden)
                 bResultado = true;
             }// Cierro los Resultados
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
         }
         return bResultado; 
