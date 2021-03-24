@@ -120,7 +120,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 
                 // selecciona
                 cboContratas.setSelectedIndex(0);
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -157,7 +156,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 
                 // selecciona
                 cboEmpresas.setSelectedIndex(0);
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -244,7 +242,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 agregarConsulta=" and n.cod_sede="+codigosede;
                 agregarConsulta1=" and n_orden_ocupacional.cod_sede="+codigosede;
                 System.out.println(":"+agregarConsulta);
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
                 //  agregarConsulta+=" "; 
             } catch (SQLException ex) {
@@ -340,7 +337,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -397,7 +393,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -621,7 +616,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -753,7 +747,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -874,7 +867,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -969,7 +961,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -1970,7 +1961,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -2054,7 +2044,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -2178,7 +2167,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -2306,7 +2294,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
             oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
@@ -2784,7 +2771,6 @@ marcador=1;
                         oFunc.SubSistemaMensajeError(ex.toString());
                     }
                 }
-                oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);

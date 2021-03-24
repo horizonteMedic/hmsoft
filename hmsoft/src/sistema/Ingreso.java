@@ -120,6 +120,11 @@ public final class Ingreso extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(549, 263));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -347,8 +352,27 @@ enter(evt);
     private void chkSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSistemaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkSistemaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
     public static void main(String args[]) {
              new Ingreso().setVisible(true);
+    }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btIngreso;
@@ -449,6 +473,7 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                   { JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrectos");
                
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                     }
                      }catch (SQLException | HeadlessException e){
                  JOptionPane.showMessageDialog(null, e);
@@ -488,6 +513,7 @@ private void CargarSedes(){
                  
                  // Cierra Resultados
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {
@@ -523,6 +549,7 @@ private void CargarSedes(){
                  
                  // Cierra Resultados
                oConn.setResult.close();
+               oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {

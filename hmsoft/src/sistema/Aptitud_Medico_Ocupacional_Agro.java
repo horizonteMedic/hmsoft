@@ -119,7 +119,25 @@ public class Aptitud_Medico_Ocupacional_Agro extends javax.swing.JInternalFrame 
         atxtRecomendaciones = new javax.swing.JTextArea();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL ANEXO 2");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -634,6 +652,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
        
@@ -856,6 +875,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
        
@@ -873,6 +893,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         }
     }//GEN-LAST:event_FechaPropertyChange
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
+
   public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -888,7 +913,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //             txtNorden.setText(null);
             }
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close(); 
         } catch (SQLException ex) {
          
         }
@@ -902,15 +927,17 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se levanto la Observacion con Éxito");
-           try {
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        
+        try {
                oConn.sqlStmt.close();
            } catch (SQLException ex) {
                Logger.getLogger(Aptitud_Medico_Ocupacional_Agro.class.getName()).log(Level.SEVERE, null, ex);
            }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-        }
   }
+  
   private boolean Grabar() throws SQLException{
         boolean bResult = false;
         String strSqlStmt ="INSERT INTO aptitud_medico_ocupacional_agro(n_orden,cod_pa, fecha, nom_medico, "
@@ -923,17 +950,14 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                 
 //                   oConn.setResult.next();
-            
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
-                    
                    bResult = true;
-                   
-                   oConn.sqlStmt.close();
                }
               
-              
+              oConn.sqlStmt.close();
                 return bResult;       
         }
+  
 public void Actualizar(){
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
@@ -952,14 +976,15 @@ public void Actualizar(){
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-            try {
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        
+        try {
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Aptitud_Medico_Ocupacional_Agro.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-        }
 }    
 void Fecha(){
 Date fechaDate = new Date();
@@ -1080,6 +1105,21 @@ private void Limpiar(){
             lblHora.setText(GestorTime.getFfechaSystem());
         }
     });
+   
+   public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Medico_Ocupacional_Agro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Fecha;
     private com.toedter.calendar.JDateChooser FechaHasta;

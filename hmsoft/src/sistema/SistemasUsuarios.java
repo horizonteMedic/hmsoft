@@ -198,6 +198,7 @@ public class SistemasUsuarios extends javax.swing.JFrame {
         {    
            // Mensaje
            oFunc.SubSistemaMensajeInformacion("Se ha realizado Delete con Éxito");
+           
             try {
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
@@ -332,6 +333,7 @@ private void subDeleteRoleProcesos()
         
         // Ejecuta el Query para Borrar
         oConn.FnBoolQueryExecuteUpdate(sQuery);
+        
       try {
           oConn.sqlStmt.close();
       } catch (SQLException ex) {
@@ -358,14 +360,13 @@ private boolean fnBoolExisteRole()
             // Verifico que haya habido resultados
             if (oConn.setResult.next())
             {
-        
-                // Cierro los Resultados
-                oConn.setResult.close();
-                
                 // Resultado
                 bResult = true;
 
             }
+            // Cierro los Resultados
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeError("fnBoolExisteRole:"+ex.getMessage().toString());
         }
@@ -404,15 +405,16 @@ private boolean FnBoolExisteUsuario()
         chkSistema.setSelected(oConn.setResult.getBoolean("sistema"));
         txtRol.setText(oConn.setResult.getString ("rol_user"));
         cboSexo.setSelectedItem(oConn.setResult.getString("sexo"));
-    
-
-                // Cierro los Resultados
-                oConn.setResult.close();
                 
                 // Resultado
                 bResult = true;
 
             }
+            
+            // Cierro los Resultados
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+                
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeError("FnBoolExisteUsuario:"+ex.getMessage().toString());
         }
@@ -451,6 +453,7 @@ private boolean fnBoolInsertaRoleProcesos()
                 
                 if (! oConn.FnBoolQueryExecuteUpdate(sQuery))
                     bResult = false;
+                
                 try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
@@ -546,8 +549,13 @@ private boolean fnBoolInsertaRoleProcesos()
         });
         jScrollPane1.setViewportView(jList1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Sistema de Usuarios");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Crear usuarios"));
 
@@ -964,7 +972,6 @@ private boolean fnBoolInsertaRoleProcesos()
         // Coloca el Foco en el Objeto
         txtNombres.requestFocus();
         
-        
     }
     else
         
@@ -1110,7 +1117,9 @@ private boolean fnBoolInsertaRoleProcesos()
                     
                     FnBoolExisteUsuario();
                        }
+                       
                        oConn.setResult.close();
+                       oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1130,6 +1139,11 @@ private boolean fnBoolInsertaRoleProcesos()
         }
         }
     }//GEN-LAST:event_cboRolesPopupMenuWillBecomeInvisible
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
 
     private void SubProcesosCarga()
     {
@@ -1154,6 +1168,7 @@ private boolean fnBoolInsertaRoleProcesos()
                  }
                  lstProcesos.setModel(itemLista);
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {
@@ -1196,6 +1211,7 @@ private boolean fnBoolInsertaRoleProcesos()
                  
                  // Cierra Resultados
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {
@@ -1239,6 +1255,7 @@ private boolean fnBoolInsertaRoleProcesos()
                  
                  // Cierra Resultados
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {
@@ -1340,7 +1357,7 @@ private boolean fnBoolInsertaRoleProcesos()
                 
             // Cierro los Resultados
             oConn.setResult.close();                                
-
+            oConn.sqlStmt.close();
         } 
         catch (SQLException ex) 
         {
@@ -1439,6 +1456,21 @@ private boolean fnBoolInsertaRoleProcesos()
             }
         });
     }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+      try {
+          oConn.sqlStmt.close();
+      } catch (SQLException ex) {
+          Logger.getLogger(SistemasUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+      }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDel;

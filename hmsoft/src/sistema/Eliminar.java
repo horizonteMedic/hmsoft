@@ -119,6 +119,7 @@ public void vExamenes(String Nro){
                 txt.setForeground(new java.awt.Color(204, 0, 0));
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -267,6 +268,7 @@ public void vExamenes(String Nro){
                         oConn.setResult.close();
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (Exception e) {
                 }
                 vExamenes(orden);
@@ -302,7 +304,7 @@ public boolean OrdenExiste(String orden)
             
             // Cierro los Resultados
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -556,7 +558,25 @@ public boolean OrdenExiste(String orden)
         });
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Eliminar Registros de Pacientes");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setText("Nro Orden :");
 
@@ -1098,7 +1118,7 @@ public boolean OrdenExiste(String orden)
                     .addComponent(txtFAptitudAnexo02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFAptitudAnexo02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFAptitudAnexo02))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("COVID MARZA"));
@@ -2325,6 +2345,21 @@ private void verifica2(){
        }
 
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+          try {
+              oConn.sqlStmt.close();
+          } catch (SQLException ex) {
+              Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+          }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         Limpiar2();
     }//GEN-LAST:event_btnLimpiarActionPerformed
@@ -2558,6 +2593,11 @@ private void verifica2(){
     private void btnResultPPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultPPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnResultPPActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcctitudMedOcupa;
