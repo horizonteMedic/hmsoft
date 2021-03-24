@@ -786,19 +786,7 @@ public class Aptitud_Medico_Ocupacional2 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public static com.toedter.calendar.JDateChooser FechaNacimiento;
-public void cerrarVentana(){
-        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
-        System.out.println("cerro esta ventana");
-        try {
-            oConn.sqlStmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-  
-    this.dispose();
-      //  System.exit(0);
 
-    }
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
           FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNorden.getText().isEmpty()){
@@ -1025,9 +1013,9 @@ public void cerrarVentana(){
                         muestraVisual();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
-                    }
-                oConn.sqlStmt.close();    
+                    }   
                 oConn.setResult.close();
+                oConn.sqlStmt.close(); 
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1269,6 +1257,7 @@ public void cerrarVentana(){
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1325,9 +1314,8 @@ public void cerrarVentana(){
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //              txtNorden.setText(null);
             }
-            oConn.sqlStmt.close();
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -1363,6 +1351,7 @@ public void cerrarVentana(){
                    bResult = true;
                 
                }
+             
                 try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
@@ -1563,6 +1552,7 @@ private void Limpiar(){
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+        
          try {
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
@@ -1586,13 +1576,28 @@ private void Limpiar(){
 //             txtNorden.setText(null);
                 }
                 // Cierro los Resultados
-                oConn.sqlStmt.close();
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             }
         }
         return bResultado;
     }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Fecha;
     private com.toedter.calendar.JDateChooser FechaHasta;

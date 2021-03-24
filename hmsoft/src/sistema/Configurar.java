@@ -83,7 +83,25 @@ public class Configurar extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Configuraciones Globales");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jtConfigurar.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
@@ -366,18 +384,25 @@ public class Configurar extends javax.swing.JInternalFrame {
         sbBoleta();
         cTabla("s_n_boleta", boleta, tbBoletas);
     }//GEN-LAST:event_btnAgregarBActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private void uComprobantes(String tabla,String into, JTextField desde, JTextField hasta , JTextField serie){
     String oSql="INSERT INTO "+tabla.toString()+"(desde, hasta,"+into.toString()+" ) VALUES ('"+desde.getText().toString()+"','"+hasta.getText().toString()+"','"+serie.getText().toString()+"')";
     if (oConn.FnBoolQueryExecuteUpdate(oSql)){
          oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-        try {
+    }else{
+        oFunc.SubSistemaMensajeError("Error registrando la Entrada");
+    }
+    
+    try {
             oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Configurar.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }else{
-        oFunc.SubSistemaMensajeError("Error registrando la Entrada");
-    }
+    
     }
     private void sbTicket()
     {
@@ -485,10 +510,26 @@ public class Configurar extends javax.swing.JInternalFrame {
                 }
              tabla.setModel(modelo);
              oConn.setResult.close();
+             oConn.sqlStmt.close();
         } catch (Exception e) {
         }
     
     }    
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Configurar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarB;
     private javax.swing.JButton btnAgregarF;

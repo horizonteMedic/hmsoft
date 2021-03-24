@@ -4293,6 +4293,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                 lbl.setForeground(Color.red);
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -4341,6 +4342,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                         oConn.setResult.close();
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (Exception e) {
                 }
                 vExamenes(orden);

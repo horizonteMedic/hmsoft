@@ -86,14 +86,13 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 lbl.setIcon(oIconoSi);
                 txt.setText("PASADO");
                 txt.setForeground(new java.awt.Color(51, 153, 0));
-                oConn.setResult.close();
             } else {
                 lbl.setIcon(oIconoNo);
-                oConn.setResult.close();
                 txt.setText("POR PASAR");
                 txt.setForeground(new java.awt.Color(204, 0, 0));
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -599,6 +598,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         jLabel135 = new javax.swing.JLabel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Examenes Pre-Ocupacionales \"Anexo 2\"");
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(1268, 647));
@@ -609,6 +609,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -4414,15 +4415,16 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         + " WHERE cod_anexo ='" +num+ "' RETURNING cod_anexo";
         if (oConn.FnBoolQueryExecute(sql)) {
             oFunc.SubSistemaMensajeInformacion("Se ha se elimino la Entrada con Éxito");
-            try {
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo eliminar");
+        }
+        
+        try {
                 oConn.setResult.close();
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo eliminar");
-        }
     }//GEN-LAST:event_btnQuiMouseClicked
 
     private void chkAPOtrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkAPOtrosMouseClicked
@@ -4643,6 +4645,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
          Integer Norden = Integer.valueOf(txtEOrden.getText());
         oPu.print(Norden, "Aptitud_Agroindustrial.jasper", "Aptitud Medica");
     }//GEN-LAST:event_btnAptitudMedicaActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private void Busca() {
         if (!txtEOrden.getText().isEmpty()) {
            String sql="Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'"; if (OrdenExiste()) {
@@ -4659,6 +4666,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                         oConn.setResult.close();
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (Exception e) {
                 }
                 vExamenes(txtEOrden.getText().toString());
@@ -4696,7 +4704,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
 
             // Cierro los Resultados
             oConn.setResult.close();
-
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
 
         }
@@ -4727,6 +4735,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
 
             // Cierro los Resultados
             oConn.setResult.close();
+            oConn.sqlStmt.close();
 
         } catch (SQLException ex) {
 
@@ -5061,6 +5070,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -5427,6 +5437,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -5808,10 +5819,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 if (oConn.FnBoolQueryExecute(sql)) {
                     bResult = true;
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                    oConn.sqlStmt.close();
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
                 }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
             }else {
                 oFunc.SubSistemaMensajeInformacion("NUMERO ORDEN NO EXISTE");
                 txtNorden.setText(null);
@@ -5845,6 +5857,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                      oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
                  }
                oConn.setResult.close();
+               oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -6072,12 +6085,13 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                     num = Integer.valueOf(oConn.setResult.getString("cod_anexo"));
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
-                    oConn.setResult.close();
-                    oConn.sqlStmt.close();
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
                 }
+                
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } else {
                 txtNorden.setText(null);
                 txtNorden.requestFocus();
@@ -6220,6 +6234,20 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
          Limpiar();
     }
 
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Año;
     private com.toedter.calendar.JDateChooser Fecha;
@@ -6737,6 +6765,7 @@ public static int calcularEdad(String fecha) {
                      oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
                  }
                oConn.setResult.close();
+               oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -6790,7 +6819,7 @@ public boolean OrdenExiste1()
             
             // Cierro los Resultados
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -6895,14 +6924,16 @@ txtDiasDesanso.setText(null);
                     // Ejecuta la Sentencia
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
-                try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
-                }
                     }
-                  }
-         return bResult;
+                    
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        }
+                    
+       return bResult;
     }
  private void DetalleEnfermedades(){
 //    String [] titulos={"N°Orden","Hospital","Operacion","Dias","complicaciones","Fecha"};
@@ -6928,6 +6959,7 @@ txtDiasDesanso.setText(null);
                   tbQuirurgicos.setModel(model);
                  // Cierra Resultados
                  oConn.setResult.close();
+                 oConn.sqlStmt.close();
             } 
             catch (SQLException ex) 
             {

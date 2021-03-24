@@ -81,13 +81,13 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                 lbl.setIcon(oIconoSi);
                 txt.setText("PASADO");
                 txt.setForeground(new java.awt.Color(51, 153, 0));
-                oConn.setResult.close();
             } else {
                 lbl.setIcon(oIconoNo);
-                oConn.setResult.close();
                 txt.setText("POR PASAR");
                 txt.setForeground(new java.awt.Color(204, 0, 0));
             }
+            oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -660,6 +660,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
         jLabel135 = new javax.swing.JLabel();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Examenes Pre-Ocupacionales \"Ficha Médica\"");
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(1268, 647));
@@ -670,6 +671,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -4912,6 +4914,11 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private void Busca() {
         if (!txtEOrden.getText().isEmpty()) {
            String sql="Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'"; if (OrdenExiste()) {
@@ -4928,6 +4935,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                         oConn.setResult.close();
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (Exception e) {
                 }
                 vExamenes(txtEOrden.getText().toString());
@@ -4961,7 +4969,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
 
             // Cierro los Resultados
             oConn.setResult.close();
-
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
 
         }
@@ -4992,7 +5000,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
 
             // Cierro los Resultados
             oConn.setResult.close();
-
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
 
         }
@@ -5309,6 +5317,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -5624,10 +5633,13 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                        if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
                             oFunc.SubSistemaMensajeError("Grupo Sanguinio incongruente por favotr revisar");
                         }
-                       oConn.setResult.close();
+                       
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
+                    
+                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -6030,14 +6042,16 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                     txtEOrden.setText(txtNorden.getText().toString());
                     Busca();
                     limpiar();
-                    try {
+                } else {
+                    oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+                }
+                
+                try {
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } else {
-                    oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-                }
+                
             }else {
                 oFunc.SubSistemaMensajeInformacion("NUMERO ORDEN NO EXISTE");
                 txtNorden.setText(null);
@@ -6066,10 +6080,11 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                          }
                        
                      }
-                    oConn.setResult.close();
                  } else {
                      oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
                  }
+                  oConn.setResult.close();
+                  oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -6286,15 +6301,16 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                 if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
-                    try {
-                        oConn.sqlStmt.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
-                    }    
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
                 }
+                
+                try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
             } else {
                 txtNorden.setText(null);
                 txtNorden.requestFocus();
@@ -6404,6 +6420,20 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
          Limpiar();
     }
 
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaMedica1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaFicha;
     private com.toedter.calendar.JDateChooser FechaNacimiento;
@@ -6983,10 +7013,11 @@ public static int calcularEdad(String fecha) {
                      if(ct>200 || trigli>150 || ldl>129 || (hdl<40 || hdl>60) || vldl>30){
                          txtObservacionesFichaMedica.append("DIETA HIPOCALORICA Y EJERCICIOS. \n ");
                      }
-                     oConn.setResult.close();
                  } else {
                      oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
                  }
+                     oConn.setResult.close();
+                     oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  

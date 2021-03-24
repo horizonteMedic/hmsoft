@@ -150,7 +150,25 @@ public class Aptitud_Altura_Poderosa extends javax.swing.JInternalFrame {
         chk5 = new javax.swing.JCheckBox();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -782,32 +800,27 @@ public class Aptitud_Altura_Poderosa extends javax.swing.JInternalFrame {
                                         .addComponent(txtImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnImprimir)))
+                                .addGap(4, 4, 4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chk5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(chk14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chk5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                            .addComponent(chk14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(chk2)
+                                            .addComponent(chk1)
+                                            .addComponent(chk11, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chk9)
+                                            .addComponent(chk6)
+                                            .addComponent(chk12, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(chk2)
-                                                    .addComponent(chk1)
-                                                    .addComponent(chk11, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(chk9)
-                                                    .addComponent(chk6)
-                                                    .addComponent(chk12, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(chk3)
-                                                        .addGap(5, 5, 5)
-                                                        .addComponent(chkNinguno))
-                                                    .addComponent(chk7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(chk8, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(chk10, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(chk4))
-                                                .addGap(0, 0, Short.MAX_VALUE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(chk13, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(chk3)
+                                                .addGap(5, 5, 5)
+                                                .addComponent(chkNinguno))
+                                            .addComponent(chk7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chk8, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chk10, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chk4)
+                                            .addComponent(chk13, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(3, 3, 3))
                     .addGroup(layout.createSequentialGroup()
@@ -998,6 +1011,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1249,6 +1263,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
        
@@ -1322,6 +1337,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         // TODO add your handling code here:
     }//GEN-LAST:event_chkNoAptoActionPerformed
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
+
   public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -1338,7 +1358,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //              txtNorden.setText(null);
             }
             oConn.setResult.close();
-            
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -1371,20 +1391,17 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //                    "','"+chkRestriccion.isSelected()+  "','"+chkNoApto.isSelected()+ "','"+lblHora.getText().toString()+"','"+FechaHasta.getDate()+"')"
 //          oFunc.SubSistemaMensajeError(strSqlStmt);
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-                
 //                   oConn.setResult.next();
-            
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
-                    
                    bResult = true;
-                   try {
+               }
+              
+                try {
                     oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Aptitud_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
                     }
-               }
-              
-              
+                
                 return bResult;       
         }
     
@@ -1540,6 +1557,7 @@ private void Limpiar(){
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1573,14 +1591,29 @@ private void Limpiar(){
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             imprimir();
             Limpiar();
-            try {
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        
+        try {
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Aptitud_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+    }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
         }
+  
+    this.dispose();
+      //  System.exit(0);
+
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

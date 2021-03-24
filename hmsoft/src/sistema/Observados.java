@@ -553,6 +553,8 @@ public class Observados extends javax.swing.JDialog  {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
+                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Función Respiratoria:" + ex.getMessage().toString());
         }
@@ -651,6 +653,12 @@ public class Observados extends javax.swing.JDialog  {
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+        
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(Observados.class.getName()).log(Level.SEVERE, null, ex);
+         }
     }//GEN-LAST:event_btnLevObserActionPerformed
 
     private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
@@ -719,6 +727,12 @@ public class Observados extends javax.swing.JDialog  {
                 oFunc.SubSistemaMensajeError(ex.toString());
                 Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
             }
+                
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Observados.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnMostrarActionPerformed
 
@@ -750,9 +764,9 @@ public class Observados extends javax.swing.JDialog  {
                     lblHora.setText(oConn.setResult.getString("hora_obser"));
                     txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
                     txtExamen.setText(oConn.setResult.getString("examenes"));
-                    oConn.setResult.close();
-                    
                 }
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (Exception e) {
             }
             
@@ -922,12 +936,16 @@ String values="VALUES ('"+txtNorden.getText()+"'";
        values += ",'"+txtExamen.getText().toString()+"'";
         }
          if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))){
-                   
              Limpiar(); 
              sbCargarDatosObservados("");
-             oFunc.SubSistemaMensajeInformacion("Ingresado Correctamente");
-                                 
-         }       
+             oFunc.SubSistemaMensajeInformacion("Ingresado Correctamente");                   
+         }
+         
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Observados.class.getName()).log(Level.SEVERE, null, ex);
+            }
        }
     }
 

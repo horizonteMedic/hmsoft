@@ -390,7 +390,25 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CERTIFICACION DE SUFICIENCIA MEDICA PARA TRABAJOS EN ALTURA ");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Filiación"));
 
@@ -2421,6 +2439,7 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2665,6 +2684,7 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2724,6 +2744,11 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
     private void txtNarizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNarizActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNarizActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formInternalFrameClosing
     private void muestraVisual(){
         String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
 "          CASE  WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od  ELSE ol.v_cerca_c_od  END as ODCC, \n" +
@@ -2760,6 +2785,7 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2902,18 +2928,19 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
               strSqlStmt += ",txtotrosexamlab";Query += ",'"+ txtOtroExamLab.getText() + "'";
                strSqlStmt += ",txtaltura";Query += ",'"+ txtAlturaTrabajo.getText() + "'";
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
-                  imprimir();
-               limpiar();   
-             oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-             try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Certificacion_Trabajo_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                    imprimir();
+                    limpiar();   
+                    oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
+             }else{
+                    oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
-        }
+              
+              try {
+                oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Certificacion_Trabajo_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
@@ -3048,6 +3075,7 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
                 oFunc.SubSistemaMensajeInformacion("Despues de terminar este Formato, El Paciente debe pasar por triaje");
             }
             oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -3852,6 +3880,7 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
                         oFunc.SubSistemaMensajeInformacion("Paciente mo cuenta con algunos datos tomados en Rayos x");
                     }
                 oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }  
@@ -4220,20 +4249,37 @@ int seleccion = JOptionPane.showOptionDialog(
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query)){
                  oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                   imprimir();
-               limpiar();   
-               try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Certificacion_Trabajo_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
-            }    
-        }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-               }
-        }
+                    limpiar();   
+                
+                }else{
+                    oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                }
+              
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Certificacion_Trabajo_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
+                }   
+            }
         
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
         txtNorden.requestFocus();}
    }     
+   
+   public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Certificacion_Trabajo_Altura_Poderosa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExamen;
     private com.toedter.calendar.JDateChooser FechaHasta;

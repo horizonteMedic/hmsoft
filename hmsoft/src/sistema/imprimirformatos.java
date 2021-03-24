@@ -83,7 +83,12 @@ public class imprimirformatos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnLimpiar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -417,6 +422,7 @@ public class imprimirformatos extends javax.swing.JFrame {
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                     oConn.setResult.close();
+                    oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -484,6 +490,11 @@ public class imprimirformatos extends javax.swing.JFrame {
        txtDniIn.setText("");
        txtEdadIn.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        cerrarVentana();
+    }//GEN-LAST:event_formWindowClosing
    public void iniciar(){
    jCheckBox1.setSelected(true);
    jCheckBox2.setSelected(true);
@@ -708,6 +719,20 @@ jCheckBox16.setSelected(true);
         });
     }
 
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(imprimirformatos.class.getName()).log(Level.SEVERE, null, ex);
+     }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExIn;
     private javax.swing.JButton btnImprimir;
