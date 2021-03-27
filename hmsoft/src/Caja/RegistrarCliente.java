@@ -6,8 +6,12 @@ import Clases.clsFunciones;
 import autocomplete.ajTextField;
 import autocomplete.ajTextFieldConsulta;
 import autocomplete.ajTextFieldInteger;
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -37,6 +41,7 @@ import sistema.Ingreso;
 import static sistema.Ingreso.nombresede;
 import sistema.Odontograma;
 import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -44,13 +49,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.security.cert.X509Certificate;
+import java.text.ParseException;
+import javax.imageio.ImageIO;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.swing.Icon;
 import net.sf.jasperreports.engine.JasperPrintManager;
 //import org.apache.axis.AxisProperties;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -61,6 +70,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     clsFunciones oFunc = new clsFunciones();
     clsConnection oConn = new clsConnection();
        Ingreso objet= new Ingreso();
+       String urlfotoreniec="";
    String nomsede,rucempresa,nombreempresa,ruccontrata,nombrecontrata;
    int codigosede,pkprotocolo,codigo_norden,operacion;
     public static AddOcupacion addOcupacion;
@@ -126,7 +136,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         hBotones(false);
         CargarTipoExamenes();
         ocultarOpcionesCovid();
-        autorizarCertificado();
+        //autorizarCertificado();
         CargarinfoHotel();
      // cargarContratas();
         cargarEmpresas();
@@ -299,7 +309,77 @@ URL url = new URL("https://api.reniec.cloud/dni/")
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
+     public void funcion3(){
+        try {
+            String url = "https://servicios.innovated.xyz/reniec/api/reniec?dni="+txtDni.getText().toString();
+            String name = "java2novice";
+            String password = "Simple4u!";
+            String authString = name + ":" + password;
+            
+            
+            Client restClient = Client.create();
+            WebResource webResource = restClient.resource(url);
+            ClientResponse resp = webResource.accept("application/json")
+                    .header("Authorization", "MVG0102TOM20")
+                    .get(ClientResponse.class);
+            if(resp.getStatus() != 200){
+                System.err.println("Unable to connect to the server");
+            }
+            String output = resp.getEntity(String.class);
+            
+            // String result = IOUtils.toString(in, "UTF-8");
+            JSONObject myResponse = new JSONObject(output);
+            //   System.out.println("el resultado:"+myResponse);
+            JSONObject myResponse2 = myResponse.getJSONObject("result");
      
+            // System.out.println("RESPUESTA es: "+myResponse2.toString());
+            //   codeee=myResponse2.get("code").toString();
+            // System.out.println("apellidos paterno: "+myResponse.get("apellido_paterno").toString().replace("&Uuml;","Ü") );
+            // System.out.println("apellidos materno: "+myResponse.get("apellido_materno").toString().replace("&Uuml;","Ü") );
+            // System.out.println("nombres: "+myResponse.get("nombres").toString().replace("&Uuml;","Ü") );
+            txtNombre.setText(myResponse2.get("preNombres").toString());
+            txtApellidos.setText(myResponse2.get("apePaterno").toString()+" "+myResponse2.get("apeMaterno").toString() );
+            FechaNacimiento.setDate(ParseFecha(myResponse2.get("feNacimiento").toString()));
+            cboSexo.setSelectedItem(myResponse2.get("sexo").toString());
+            txtLugarNacimiento.setText(myResponse2.get("departamento").toString()+"-"+myResponse2.get("provincia").toString());
+            cboNivelEstudio.setSelectedItem(myResponse2.get("gradoInstruccion").toString());
+            cboEstadoCivil.setSelectedItem(myResponse2.get("estadoCivil").toString());
+            txtDireccion.setText(myResponse2.get("desDireccion").toString());
+            cboDepartamento.setSelectedItem(myResponse2.get("depaDireccion").toString());
+            cboProvincia.setSelectedItem(myResponse2.get("provDireccion").toString());
+            cboDistrito.setSelectedItem(myResponse2.get("distDireccion").toString());    
+       JSONObject myResponse3 = myResponse2.getJSONObject("imagenes");
+            urlfotoreniec=myResponse3.get("foto").toString();
+//System.out.println("response: "+output);
+  Image image = null;
+URL url1 = new URL(urlfotoreniec);
+            try {
+                image = ImageIO.read(url1);
+                Icon icon = new ImageIcon(image);
+                            jLabel49.setIcon(icon);
+            } catch (IOException ex) {
+                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } catch (JSONException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public  Date ParseFecha(String fecha)
+    {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fechaDate = null;
+        try {
+            fechaDate = formato.parse(fecha);
+        } 
+        catch (Exception ex) 
+        {
+            System.out.println(ex);
+        }
+        return fechaDate;
+    }
 public void comunirApiReniecDesconocida(){
 
        String query_url = "https://api.reniec.cloud/dni/"+txtDni.getText();
@@ -1124,6 +1204,11 @@ this.chkAltaTrabCal.setVisible(false);
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/camara.png"))); // NOI18N
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/camactualizar.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel34.setText("Fecha Registro:");
 
@@ -1140,29 +1225,31 @@ this.chkAltaTrabCal.setVisible(false);
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnGrabar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(518, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel34)
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGrabar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(94, 94, 94)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1171,15 +1258,15 @@ this.chkAltaTrabCal.setVisible(false);
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
+                                        .addGap(125, 125, 125)
                                         .addComponent(jLabel34)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1188,7 +1275,7 @@ this.chkAltaTrabCal.setVisible(false);
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(117, 117, 117)
                                         .addComponent(txtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnAgregar)
@@ -2762,7 +2849,8 @@ this.chkAltaTrabCal.setVisible(false);
                     //txtDni.setText("");
                     txtNombre.requestFocus();
                     btnAgregar.setEnabled(true);
-                    comunirApiReniecDesconocida();
+                    funcion3();
+                   // comunirApiReniecDesconocida();
                     btnLimpiar.setEnabled(true);
                     deshabilitarbotones();
                 }
@@ -3585,7 +3673,7 @@ public void cargarDatosPaciente(){
                  oConn.sqlStmt.close();
             } catch (Exception e) {
             }
-
+            fecha1();
 }
     private void txtDniAltaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniAltaKeyReleased
         if (evt.getKeyCode() == 112) // F1 = 112
@@ -4642,6 +4730,10 @@ private void CargarTipoExamenes(){
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();        // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
   private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -5357,6 +5449,22 @@ private void CargarTipoExamenes(){
         txtFecha.setText(formato.format(dateHoy));
         // txtHora.setText(FormatoHora.format(dateHora));
         txtFechaAlta.setDate(dateHoy);
+        
+
+    }
+       public void fecha1() {
+        Date dateHoy = new Date();
+//Date dateHora = new Date();    
+        // Variable para dar formato
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat FormatoHora = new SimpleDateFormat("hh:mm:ss a");
+        // Inicializa Folio y Fecha
+    //    lblFecha.setText(formato.format(dateHoy));
+        // lblHora.setText(FormatoHora.format(dateHora));
+    //    txtFecha.setText(formato.format(dateHoy));
+        // txtHora.setText(FormatoHora.format(dateHora));
+        txtFechaAlta.setDate(dateHoy);
+        
 
     }
     Timer timer = new Timer(1000, new ActionListener() {

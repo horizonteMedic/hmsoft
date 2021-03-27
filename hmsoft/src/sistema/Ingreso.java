@@ -426,6 +426,7 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                       clsGlobales.sDniOperador = oConn.setResult.getString("dni_user");
                       clsGlobales.sCMPOperador = oConn.setResult.getString("cmp_user");
                       clsGlobales.sRol = oConn.setResult.getString("rol_user");
+                      
                      if(chkAdmision.isSelected() == true){
                          if(ADMISION_CODIGO == oConn.setResult.getBoolean("admision") ){
                                 Ingreso.this.dispose();
@@ -472,9 +473,11 @@ if (cboUsuarios.getSelectedIndex() > 0 ) {
                   }else
                   { JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrectos");
                
-                    oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                  
                     }
+                System.out.println("llego al setment close");
+                  oConn.setResult.close();
+                   oConn.sqlStmt.close();
                      }catch (SQLException | HeadlessException e){
                  JOptionPane.showMessageDialog(null, e);
                  oConn.SubConnectionClose();
@@ -512,8 +515,7 @@ private void CargarSedes(){
                  }
                  
                  // Cierra Resultados
-                 oConn.setResult.close();
-                 oConn.sqlStmt.close();
+              
             } 
             catch (SQLException ex) 
             {
@@ -522,7 +524,12 @@ private void CargarSedes(){
                 Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        try {
+            oConn.sqlStmt.close();
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
         // selecciona
         cboSede.setSelectedItem(seded);
         //cboSede.setSelectedIndex(1);
@@ -548,8 +555,7 @@ private void CargarSedes(){
                  }
                  
                  // Cierra Resultados
-               oConn.setResult.close();
-               oConn.sqlStmt.close();
+               
             } 
             catch (SQLException ex) 
             {
@@ -558,7 +564,13 @@ private void CargarSedes(){
                 Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        try {
+            oConn.setResult.close();
+            oConn.sqlStmt.close(); 
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+        }
         // selecciona
         cboUsuarios.setSelectedIndex(0);
 

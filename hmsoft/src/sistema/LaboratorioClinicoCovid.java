@@ -3708,6 +3708,7 @@ limpiar2();
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();
+                         oConn.SubConnectionClose();
     }//GEN-LAST:event_formInternalFrameClosing
 public void negarcheks(){
  chkTos.setEnabled(false);
@@ -5095,14 +5096,20 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 }
 
                 // Cierra Resultados
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+               
             } catch (SQLException ex) {
                 //JOptionPane.showMessageDialorootPane,ex);
                 oFunc.SubSistemaMensajeError(ex.toString());
 
             }
+            
         }
+    try {
+        oConn.sqlStmt.close();
+        oConn.setResult.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }
 
 }

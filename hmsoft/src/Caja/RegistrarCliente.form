@@ -69,34 +69,36 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" pref="537" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel34" max="32767" attributes="0"/>
-                                  <Component id="txtFecha" max="32767" attributes="0"/>
-                                  <Component id="txtHora" max="32767" attributes="0"/>
+                                  <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFecha" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Component id="txtHora" min="-2" pref="88" max="-2" attributes="0"/>
                                   <Component id="jLabel40" min="-2" pref="76" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btnLimpiar" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnAgregar" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnNuevo" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnEditar" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnGrabar" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnCerrar" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="btnLimpiar" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="btnAgregar" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="btnNuevo" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="btnEditar" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="btnGrabar" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="btnCerrar" alignment="1" min="-2" pref="97" max="-2" attributes="0"/>
                                   <Component id="txtHistorial" min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="jButton2" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" min="-2" pref="28" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="1" min="-2" pref="28" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="518" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="254" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -107,16 +109,16 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jButton1" min="-2" pref="23" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" pref="23" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jButton2" min="-2" pref="23" max="-2" attributes="0"/>
+                                          <Component id="jButton1" min="-2" pref="23" max="-2" attributes="0"/>
+                                      </Group>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
                                               <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="txtFecha" min="-2" pref="15" max="-2" attributes="0"/>
@@ -126,7 +128,7 @@
                                               <Component id="txtHora" min="-2" pref="15" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                                               <Component id="txtHistorial" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btnAgregar" min="-2" max="-2" attributes="0"/>
@@ -850,6 +852,9 @@
                   <Image iconType="3" name="/imagenes/camactualizar.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel34">
               <Properties>

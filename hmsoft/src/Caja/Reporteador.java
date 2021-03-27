@@ -2417,6 +2417,13 @@ public class Reporteador extends javax.swing.JInternalFrame {
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();        // TODO add your handling code here:
+            try {
+                oConn.oConnection.close();
+                 System.out.println("cierra reportedorrrrrrrrrrrrrrrr");
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_formInternalFrameClosing
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
