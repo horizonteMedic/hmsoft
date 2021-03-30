@@ -31,7 +31,7 @@ import static sistema.contanciaSaludCovid.FechaNacimiento;
  */
 public class constanciaTamizajeAntigeno extends javax.swing.JFrame {
 
-   clsConnection oConn = new clsConnection();
+   clsConnection oConn1 = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
     public constanciaTamizajeAntigeno() {
         initComponents();
@@ -338,7 +338,7 @@ public void cerrarVentana(){
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
        try {
-           oConn.sqlStmt.close();
+           oConn1.sqlStmt.close();
        } catch (SQLException ex) {
            Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
        }
@@ -347,22 +347,57 @@ public void cerrarVentana(){
       //  System.exit(0);
 
     }
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNordenIn5.getText().toString().trim();
+        String cboSede="1";
+        if (oConn1.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn1.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     //sed=(oConn1.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn1.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+
  public boolean OrdenExisteIn4()
      {
         boolean bResultado=false;
         if(!txtNordenIn5.getText().isEmpty()){
         String sQuery;
         sQuery  = "Select n_orden from constanciaTamizajeCovid Where n_orden ="+txtNordenIn5.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
         } catch (SQLException ex) {
         }
         }       
@@ -378,19 +413,19 @@ public void cerrarVentana(){
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "WHERE n.n_orden ='"+txtNordenIn5.getText() +"'";
-                oConn.FnBoolQueryExecute(Sql);
+                oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombresIn5.setText(oConn.setResult.getString("nombre"));
-                        txtDniIn5.setText(oConn.setResult.getString("cod_pa"));
+                    if (oConn1.setResult.next()) {
+                        txtNombresIn5.setText(oConn1.setResult.getString("nombre"));
+                        txtDniIn5.setText(oConn1.setResult.getString("cod_pa"));
                    //    fechan.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                       FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                       FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                        System.out.println("la fecha:"+String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
                        txtEdadIn5.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
                        // txtLaboral.setText(oConn.setResult.getString("cargo_de"));
                       //  txtLaboral.setText(oConn.setResult.getString("cargo_de"));
-                        txtLaempresa.setText(oConn.setResult.getString("razon_empresa"));
+                        txtLaempresa.setText(oConn1.setResult.getString("razon_empresa"));
                         txtNordenIn5.setEditable(false);
                         Fecha1();
                         // FechaHoy.requestFocusInWindow();
@@ -400,8 +435,8 @@ public void cerrarVentana(){
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -423,22 +458,22 @@ public void cerrarVentana(){
 "                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
 "                            left JOIN constanciaTamizajeCovid AS ci ON (ci.n_orden = n.n_orden) \n" +
 "                            WHERE n.n_orden ="+txtNordenIn5.getText();
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtNombresIn5.setText(oConn.setResult.getString("nombre"));
-                    txtDniIn5.setText(oConn.setResult.getString("cod_pa"));
-                    jCheckBox2.setSelected(oConn.setResult.getBoolean("sintomatico"));
-                     jCheckBox3.setSelected(oConn.setResult.getBoolean("asintomatico"));
+                if (oConn1.setResult.next()) {
+                    txtNombresIn5.setText(oConn1.setResult.getString("nombre"));
+                    txtDniIn5.setText(oConn1.setResult.getString("cod_pa"));
+                    jCheckBox2.setSelected(oConn1.setResult.getBoolean("sintomatico"));
+                     jCheckBox3.setSelected(oConn1.setResult.getBoolean("asintomatico"));
 
                  //   txtEdadIn4.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                    FechaExIn5.setDate(oConn.setResult.getDate("fecha"));
-                    txtLaempresa.setText(oConn.setResult.getString("razon_empresa"));
+                    FechaExIn5.setDate(oConn1.setResult.getDate("fecha"));
+                    txtLaempresa.setText(oConn1.setResult.getString("razon_empresa"));
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+                oConn1.sqlStmt.close();
+                oConn1.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -569,7 +604,7 @@ public void cerrarVentana(){
                  +  "  WHERE n_orden='"+sCodigo+"';";
                  System.out.println(strSqlStmt);
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 if(jCheckBox1.isSelected()){
                     printIn5(Integer.valueOf(txtNordenIn5.getText().toString()));
@@ -584,8 +619,8 @@ public void cerrarVentana(){
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
                try {
-                    oConn.sqlStmt.close();
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -639,7 +674,7 @@ public void cerrarVentana(){
                     "','"+jCheckBox2.isSelected()+"','"+jCheckBox3.isSelected()+"')";
             System.out.println(strSqlStmt);
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
@@ -647,7 +682,7 @@ public void cerrarVentana(){
                  
                }
                try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(constanciaTamizajeAntigeno.class.getName()).log(Level.SEVERE, null, ex);
                 }

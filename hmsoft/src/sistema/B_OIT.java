@@ -308,7 +308,25 @@ FechaLectura.setDate(fechaDate);
         btnImp = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("OIT");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos del Sistema"));
 
@@ -2150,7 +2168,7 @@ FechaLectura.setDate(fechaDate);
                         
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 
             oFunc.SubSistemaMensajeInformacion("Error Consulta:" + ex.getMessage().toString());
@@ -2435,7 +2453,7 @@ boolean bResultado=true;
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
                     
-                     oConn.setResult.close();
+                     oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 
             oFunc.SubSistemaMensajeInformacion("Error Consulta:" + ex.getMessage().toString());
@@ -2446,6 +2464,10 @@ boolean bResultado=true;
     private void chkSinDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSinDatosActionPerformed
        vaciarDatos();
     }//GEN-LAST:event_chkSinDatosActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+       cerrarVentana(); // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
  public boolean OrdenExiste()
     {
         boolean bResultado = false;
@@ -2459,7 +2481,7 @@ boolean bResultado=true;
 //                    oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //                    txtNorden.setText(null);
                 }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
 
             } catch (SQLException ex) {
 
@@ -2524,6 +2546,7 @@ boolean bResultado=true;
             bResult = true;
             oConn.sqlStmt.close();
         }
+        oConn.sqlStmt.close();
 
         return bResult;
     }
@@ -2793,11 +2816,27 @@ int seleccion = JOptionPane.showOptionDialog(
                     oConn.setResult.close();
                     
                 }
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 
             oFunc.SubSistemaMensajeInformacion("Error Consulta:" + ex.getMessage().toString());
             }
     }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+           try {
+               oConn.sqlStmt.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
+           }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
     public void Actualizar(){
         String sCodigo=txtNorden.getText();
         String strSqlStmt = "UPDATE oit \n" +
@@ -2866,15 +2905,18 @@ int seleccion = JOptionPane.showOptionDialog(
             Limpiar();
             
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-            try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+            
         }
+           try {
+               oConn.sqlStmt.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaLectura;
     private com.toedter.calendar.JDateChooser FechaRadiografia;

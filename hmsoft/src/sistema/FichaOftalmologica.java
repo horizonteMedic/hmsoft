@@ -122,6 +122,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         btnLevantarObservacion = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Ficha Oftalmologíca");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -130,6 +131,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -543,7 +545,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEnfermedadesOculares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkPterigionDerecho, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkPterigionIzquierdo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -660,7 +662,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnHistorial)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
@@ -1116,7 +1118,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 } else {
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Oftalmologia:" + ex.getMessage().toString());
             }
@@ -1184,6 +1186,10 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
        }
       
     }//GEN-LAST:event_btnLevantarObservacionActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
 
     public void Deshabilitar(boolean ficha) {
         txtDni.setEnabled(false);
@@ -1271,13 +1277,14 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             oPe.print(Integer.parseInt(sCodigo), "Oftalmologia.jasper", "Ficha Oftalmologíca");
-            try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
         }
   }
     private boolean validar() {
@@ -1428,6 +1435,11 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public boolean OrdenExiste() {
@@ -1453,7 +1465,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
             }
 
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
 
         } catch (SQLException ex) {
 
@@ -1485,7 +1497,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
             }
 
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
 
         } catch (SQLException ex) {
 
@@ -1668,6 +1680,21 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
             }
        
     }
+     
+   public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+  
     private void sbTablaOftalmica() {
 
         tbOftalmica.getColumnModel().getColumn(0).setMinWidth(65);

@@ -147,7 +147,25 @@ String[]Triaje = new String[]{};
         txtEditar = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Ingreso datos Triaje");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos"));
 
@@ -1078,6 +1096,7 @@ String[]Triaje = new String[]{};
                                 oFunc.SubSistemaMensajeError("No se encuentraa Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                                 oConn.setResult.close();
                             }
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             oFunc.SubSistemaMensajeInformacion("Tríaje:" + ex.getMessage().toString());
                         }
@@ -1131,6 +1150,7 @@ Date dateHoy = new Date();
                                 oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n ");
                                 oConn.setResult.close();
                             }
+                            oConn.sqlStmt.close();
                         } catch (SQLException ex) {
                             oFunc.SubSistemaMensajeInformacion("Tríaje asistencial:" + ex.getMessage().toString());
                         }
@@ -1143,19 +1163,19 @@ Date dateHoy = new Date();
     private void txtNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyTyped
           
         int k=(int)evt.getKeyChar();
-if (k >= 97 && k <= 122 || k>=65 && k<=90){
-evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-JOptionPane.showMessageDialog(null,"No puede ingresar letras!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
-}
-if(k==241 || k==209){
-evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-JOptionPane.showMessageDialog(null,"No puede ingresar letras!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
-}
-if(k==32){
-evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-JOptionPane.showMessageDialog(null,"No puede ingresar Espacios!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
-}
-if(k==10){
+        if (k >= 97 && k <= 122 || k>=65 && k<=90){
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar letras!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+            }
+        if(k==241 || k==209){
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar letras!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+            }
+        if(k==32){
+            evt.setKeyChar((char)KeyEvent.VK_CLEAR);
+            JOptionPane.showMessageDialog(null,"No puede ingresar Espacios!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
+            }
+        if(k==10){
     
 //txtnombreApellido.transferFocus();
 }
@@ -1224,6 +1244,11 @@ if(k==10){
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
+                         try {
+                             oConn.sqlStmt.close();
+                         } catch (SQLException ex) {
+                             Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+                         }
         }
         }else{ oFunc.SubSistemaMensajeError("Número de Orden Utilizado");}
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");txtNumero.requestFocus();}
@@ -1270,6 +1295,11 @@ if(k==10){
                 }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                        }
+                         try {
+                             oConn.sqlStmt.close();
+                         } catch (SQLException ex) {
+                             Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+                         }
                 }
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");txtNumero.requestFocus();}
@@ -1427,7 +1457,7 @@ boolean bResultado=true;
                         }
                     }
                 }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeError("No existe registros del cliente");
             }
@@ -1482,7 +1512,7 @@ boolean bResultado=true;
                         }
                     }
                 }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeError("No existe registros del cliente");
             }
@@ -1611,7 +1641,7 @@ boolean bResultado=true;
                     txtDiagnostico.setText(oConn.setResult.getString("conclusion"));
                     
                 }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (Exception e) {
             }
             
@@ -1636,6 +1666,10 @@ boolean bResultado=true;
     private void chkAsistencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAsistencialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkAsistencialActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
    
@@ -1768,7 +1802,7 @@ boolean bResultado=true;
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -1810,6 +1844,11 @@ boolean bResultado=true;
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+     }
         sbCargarDatosOcupacional("");
        }
    private void LimpiarFichaTriaje(){
@@ -1943,7 +1982,7 @@ boolean bResultado=true;
                     }
                }
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeError("No existe registros del cliente");
        }
@@ -1971,6 +2010,11 @@ private void CargarEmpresas(){
         cboEmpresa.setSelectedIndex(-1);
         cboEmpresa.setBackground(Color.LIGHT_GRAY);
         AutoCompleteDecorator.decorate(this.cboEmpresa);
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
 }
 private void CargarContratas(){
       String sQuery;        
@@ -1992,6 +2036,11 @@ private void CargarContratas(){
         cboContratas.setSelectedIndex(-1);
         cboContratas.setBackground(Color.lightGray);
         AutoCompleteDecorator.decorate(this.cboContratas);
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
 }
 private void CargarServicios(){
       String sQuery;        
@@ -2013,6 +2062,11 @@ private void CargarServicios(){
         cboTipoServicio.setSelectedIndex(-1);
         cboTipoServicio.setBackground(Color.lightGray);
         AutoCompleteDecorator.decorate(this.cboTipoServicio);
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
 }
 
 void sbCargarDatosOcupacional(String valor){
@@ -2158,6 +2212,11 @@ void sbCargarDatosOcupacional(String valor){
                 Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+     }
 }
 public class MyCellRenderer extends DefaultTableCellRenderer {
     @Override
@@ -2209,6 +2268,21 @@ public class MyCellRenderer extends DefaultTableCellRenderer {
         //jtTicket.removeColumn(jtTicket.getColumnModel().getColumn(4));
 
     }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
 public int calcularEdad(Calendar fechaNac){
     Calendar today = Calendar.getInstance();
     int diay = today.get(Calendar.YEAR);

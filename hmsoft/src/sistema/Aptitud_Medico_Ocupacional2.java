@@ -790,6 +790,7 @@ public void cerrarVentana(){
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
         try {
+            oConn.oConnection.close();
             oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);

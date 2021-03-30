@@ -40,11 +40,11 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  * @author Richard
  */
 public final class LaboratorioClinicoCovid extends javax.swing.JInternalFrame {
-clsConnection oConn = new clsConnection();
+clsConnection oConn1 = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
     String[]responsable = new String[]{};
     String cualitativo="";
-          Ingreso ads = new Ingreso();
+          //Ingreso ads = new Ingreso();
 String sed="";
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     public static AddMarcaCovid1 addMarca;
@@ -52,12 +52,13 @@ String sed="";
     DefaultTableModel model;
    String pasar="df",doctor;
    int valor=1;
+   
     public LaboratorioClinicoCovid() {
         initComponents();
         bloqueo1();
         bloqueo2();
         bloqueo3();
-sed=ads.nombresede;
+//sed=ads.nombresede;
       //  jPanel1.setVisible(false);
       //  jPanel6.setVisible(false);
         jtLaboratorio.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/biology0.png")));
@@ -75,6 +76,8 @@ sed=ads.nombresede;
                            
 
     } 
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -2201,7 +2204,17 @@ sed=ads.nombresede;
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
     try {
-        oConn.sqlStmt.close();
+        if (oConn1.setResult != null) 
+         
+            oConn1.setResult.close();
+         
+            if ( oConn1.sqlStmt != null) 
+             
+                oConn1.sqlStmt .close();
+             
+            /*if (oConn1.oConnection != null) 
+             
+                oConn1.oConnection.close();*/
     } catch (SQLException ex) {
         Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -2291,7 +2304,7 @@ sed=ads.nombresede;
                     + "'"+chkDolor.isSelected()+ "',"
                     + "'"+chkExpctoracion.isSelected()+ "',"
                     + "'"+chkPerdidaOlf1.isSelected()+"' )";
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
                 
 //                   oConn.setResult.next();
             
@@ -2301,7 +2314,7 @@ sed=ads.nombresede;
                 
                }
                    try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2336,7 +2349,7 @@ sed=ads.nombresede;
                 " WHERE n_orden='" + sCodigo + "'";
             
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+        if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
           //  imprimir();
             limpiar();
@@ -2346,7 +2359,7 @@ sed=ads.nombresede;
         }
         
          try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 } 
@@ -2380,16 +2393,16 @@ negarcheks();
         String sQuery;
 
         sQuery  = "Select n_orden from constancia_salud_marsa Where n_orden ="+txtNordenIn.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
             
         } catch (SQLException ex) {
          
@@ -2588,28 +2601,28 @@ negarcheks();
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
             "               WHERE n.nom_examen like '%PRUEBA CUALITATIVA ANTIGENOS%' and  n.n_orden ='"+txtNordenIn4.getText() +"'";
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtNombresIn4.setText(oConn.setResult.getString("nombre"));
-                    txtDniIn4.setText(oConn.setResult.getString("cod_pa"));
-                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                if (oConn1.setResult.next()) {
+                    txtNombresIn4.setText(oConn1.setResult.getString("nombre"));
+                    txtDniIn4.setText(oConn1.setResult.getString("cod_pa"));
+                    FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                     txtEdadIn4.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                    FechaExIn4.setDate(oConn.setResult.getDate("fecha_examen"));
-                    cboMarca4.setSelectedItem(oConn.setResult.getString("cbomarca"));
+                    FechaExIn4.setDate(oConn1.setResult.getDate("fecha_examen"));
+                    cboMarca4.setSelectedItem(oConn1.setResult.getString("cbomarca"));
                                     desbloqueo3();
 
-                    jTextField18.setText(oConn.setResult.getString("medico"));
-                    jCheckBox2.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
-                    jCheckBox3.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
+                    jTextField18.setText(oConn1.setResult.getString("medico"));
+                    jCheckBox2.setSelected(oConn1.setResult.getBoolean("chkigm_reactivo"));
+                    jCheckBox3.setSelected(oConn1.setResult.getBoolean("chkigg_reactivo"));
 
                     //  jTextField9.setText(oConn.setResult.getString("valorigg"));
 
                 }else{
                     oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
                 }
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+                oConn1.sqlStmt.close();
+                oConn1.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -2621,6 +2634,7 @@ negarcheks();
 
     private void txtNordenIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenIn4ActionPerformed
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
+        CargarSedes();
         if(!txtNordenIn4.getText().isEmpty()){
             if(!OrdenExisteIn4()){
                 String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
@@ -2628,13 +2642,13 @@ negarcheks();
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "WHERE n.n_orden ='"+txtNordenIn4.getText() +"'";
-                oConn.FnBoolQueryExecute(Sql);
+                oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombresIn4.setText(oConn.setResult.getString("nombre"));
-                        txtDniIn4.setText(oConn.setResult.getString("cod_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        pasar=(oConn.setResult.getString("tipoprueba"));
+                    if (oConn1.setResult.next()) {
+                        txtNombresIn4.setText(oConn1.setResult.getString("nombre"));
+                        txtDniIn4.setText(oConn1.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
+                        pasar=(oConn1.setResult.getString("tipoprueba"));
                         txtEdadIn4.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
                         //System.out.println(pasar);
@@ -2650,8 +2664,8 @@ negarcheks();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -2751,17 +2765,17 @@ negarcheks();
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
             "               WHERE n.nom_examen like '%PRUEBA CUANTITATIVA ANTIGENOS%' and  n.n_orden ='"+txtNordenIn3.getText() +"'";
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtNombresIn3.setText(oConn.setResult.getString("nombre"));
-                    txtDniIn3.setText(oConn.setResult.getString("cod_pa"));
-                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                if (oConn1.setResult.next()) {
+                    txtNombresIn3.setText(oConn1.setResult.getString("nombre"));
+                    txtDniIn3.setText(oConn1.setResult.getString("cod_pa"));
+                    FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                     txtEdadIn3.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                    FechaExIn3.setDate(oConn.setResult.getDate("fecha_examen"));
-                    cboMarca3.setSelectedItem(oConn.setResult.getString("cbomarca"));
-                    jTextField15.setText(oConn.setResult.getString("medico"));
-                    jTextField13.setText(oConn.setResult.getString("valorigm"));
+                    FechaExIn3.setDate(oConn1.setResult.getDate("fecha_examen"));
+                    cboMarca3.setSelectedItem(oConn1.setResult.getString("cbomarca"));
+                    jTextField15.setText(oConn1.setResult.getString("medico"));
+                    jTextField13.setText(oConn1.setResult.getString("valorigm"));
                                     desbloqueo2();
 
                     //  jTextField9.setText(oConn.setResult.getString("valorigg"));
@@ -2769,8 +2783,8 @@ negarcheks();
                 }else{
                     oFunc.SubSistemaMensajeError("VErificar si existe registro, si la prueba es:  PRUEBA CUANTITATIVA ANTIGENOS");
                 }
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+                oConn1.sqlStmt.close();
+                oConn1.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -2789,13 +2803,13 @@ negarcheks();
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "WHERE n.n_orden ='"+txtNordenIn3.getText() +"'";
-                oConn.FnBoolQueryExecute(Sql);
+                oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombresIn3.setText(oConn.setResult.getString("nombre"));
-                        txtDniIn3.setText(oConn.setResult.getString("cod_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        pasar=(oConn.setResult.getString("tipoprueba"));
+                    if (oConn1.setResult.next()) {
+                        txtNombresIn3.setText(oConn1.setResult.getString("nombre"));
+                        txtDniIn3.setText(oConn1.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
+                        pasar=(oConn1.setResult.getString("tipoprueba"));
                         txtEdadIn3.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
                         //System.out.println(pasar);
@@ -2811,8 +2825,8 @@ negarcheks();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -2907,25 +2921,25 @@ limpiar2();
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
             "               WHERE n.nom_examen like '%PRUEBA CUANTITATIVA ANTICUERPOS%' and  n.n_orden ='"+txtNordenIn2.getText() +"'";
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtNombresIn2.setText(oConn.setResult.getString("nombre"));
-                    txtDniIn2.setText(oConn.setResult.getString("cod_pa"));
-                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                if (oConn1.setResult.next()) {
+                    txtNombresIn2.setText(oConn1.setResult.getString("nombre"));
+                    txtDniIn2.setText(oConn1.setResult.getString("cod_pa"));
+                    FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                     txtEdadIn2.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                    FechaExIn2.setDate(oConn.setResult.getDate("fecha_examen"));
-                    cboMarca2.setSelectedItem(oConn.setResult.getString("cbomarca"));
-                    jTextField10.setText(oConn.setResult.getString("medico"));
-                    jTextField8.setText(oConn.setResult.getString("valorigm"));
-                    jTextField9.setText(oConn.setResult.getString("valorigg"));
+                    FechaExIn2.setDate(oConn1.setResult.getDate("fecha_examen"));
+                    cboMarca2.setSelectedItem(oConn1.setResult.getString("cbomarca"));
+                    jTextField10.setText(oConn1.setResult.getString("medico"));
+                    jTextField8.setText(oConn1.setResult.getString("valorigm"));
+                    jTextField9.setText(oConn1.setResult.getString("valorigg"));
                     desbloqueo1();
 
                 }else{
                     oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
                 }
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+                oConn1.sqlStmt.close();
+                oConn1.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -2944,13 +2958,13 @@ limpiar2();
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "WHERE n.n_orden ='"+txtNordenIn2.getText() +"'";
-                oConn.FnBoolQueryExecute(Sql);
+                oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombresIn2.setText(oConn.setResult.getString("nombre"));
-                        txtDniIn2.setText(oConn.setResult.getString("cod_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        pasar=(oConn.setResult.getString("tipoprueba"));
+                    if (oConn1.setResult.next()) {
+                        txtNombresIn2.setText(oConn1.setResult.getString("nombre"));
+                        txtDniIn2.setText(oConn1.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
+                        pasar=(oConn1.setResult.getString("tipoprueba"));
                         txtEdadIn2.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
                         //System.out.println(pasar);
@@ -2966,8 +2980,8 @@ limpiar2();
                     }else{
                     oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
                     }
-                    oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -3128,22 +3142,22 @@ limpiar2();
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
             "               WHERE n.n_orden ='"+txtNordenIn1.getText() +"'";
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtNombresIn1.setText(oConn.setResult.getString("nombre"));
-                    txtDniIn1.setText(oConn.setResult.getString("cod_pa"));
-                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                if (oConn1.setResult.next()) {
+                    txtNombresIn1.setText(oConn1.setResult.getString("nombre"));
+                    txtDniIn1.setText(oConn1.setResult.getString("cod_pa"));
+                    FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                     txtEdadIn1.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                    FechaExIn1.setDate(oConn.setResult.getDate("fecha_examen"));
-                    cboMarca1.setSelectedItem(oConn.setResult.getString("cbomarca"));
-                    chkIgmReactivo1.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
-                    chkIgmNoReactivo1.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
-                    chkIggReactivo1.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
-                    chkIggNoReactivo1.setSelected(oConn.setResult.getBoolean("chkigg_noreactivo"));
-                    jTextField5.setText(oConn.setResult.getString("medico"));
-                    jTextField3.setText(oConn.setResult.getString("valorigm"));
-                    jTextField4.setText(oConn.setResult.getString("valorigg"));
+                    FechaExIn1.setDate(oConn1.setResult.getDate("fecha_examen"));
+                    cboMarca1.setSelectedItem(oConn1.setResult.getString("cbomarca"));
+                    chkIgmReactivo1.setSelected(oConn1.setResult.getBoolean("chkigm_reactivo"));
+                    chkIgmNoReactivo1.setSelected(oConn1.setResult.getBoolean("chkigm_noreactivo"));
+                    chkIggReactivo1.setSelected(oConn1.setResult.getBoolean("chkigg_reactivo"));
+                    chkIggNoReactivo1.setSelected(oConn1.setResult.getBoolean("chkigg_noreactivo"));
+                    jTextField5.setText(oConn1.setResult.getString("medico"));
+                    jTextField3.setText(oConn1.setResult.getString("valorigm"));
+                    jTextField4.setText(oConn1.setResult.getString("valorigg"));
 
                     // chkInvalido1.setSelected(oConn.setResult.getBoolean("chkinvalido"));
                     // chkInvalido1.setEnabled(true);
@@ -3155,8 +3169,8 @@ limpiar2();
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+                oConn1.sqlStmt.close();
+                oConn1.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -3175,13 +3189,13 @@ limpiar2();
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "WHERE n.n_orden ='"+txtNordenIn1.getText() +"'";
-                oConn.FnBoolQueryExecute(Sql);
+                oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombresIn1.setText(oConn.setResult.getString("nombre"));
-                        txtDniIn1.setText(oConn.setResult.getString("cod_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        pasar=(oConn.setResult.getString("tipoprueba"));
+                    if (oConn1.setResult.next()) {
+                        txtNombresIn1.setText(oConn1.setResult.getString("nombre"));
+                        txtDniIn1.setText(oConn1.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
+                        pasar=(oConn1.setResult.getString("tipoprueba"));
                         txtEdadIn1.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
                         //System.out.println(pasar);
@@ -3197,8 +3211,8 @@ limpiar2();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -3280,32 +3294,32 @@ limpiar2();
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
             "               WHERE n.n_orden ='"+txtNordenIn.getText() +"'";
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {   
-                if (oConn.setResult.next()) {
-                    txtNombresIn.setText(oConn.setResult.getString("nombre"));
-                    txtDniIn.setText(oConn.setResult.getString("cod_pa"));
-                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                if (oConn1.setResult.next()) {
+                    txtNombresIn.setText(oConn1.setResult.getString("nombre"));
+                    txtDniIn.setText(oConn1.setResult.getString("cod_pa"));
+                    FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                     txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                    FechaExIn.setDate(oConn.setResult.getDate("fecha_examen"));
-                    chkIgmReactivo.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
-                    chkIgmNoReactivo.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
-                    chkIggReactivo.setSelected(oConn.setResult.getBoolean("chkigg_reactivo"));
-                    chkIggNoReactivo.setSelected(oConn.setResult.getBoolean("chkigg_noreactivo"));
-                    chkInvalido.setSelected(oConn.setResult.getBoolean("chkinvalido"));
-                    cboMarca.setSelectedItem(oConn.setResult.getString("cbomarca"));
-                    txtVRIgm.setText(oConn.setResult.getString("txtvrigm"));
-                    txtVRIgg.setText(oConn.setResult.getString("txtvrigg"));
-                    pasar=(oConn.setResult.getString("tipoprueba"));
-                    FechaHotel.setDate(oConn.setResult.getDate("fecha_examen"));
+                    FechaExIn.setDate(oConn1.setResult.getDate("fecha_examen"));
+                    chkIgmReactivo.setSelected(oConn1.setResult.getBoolean("chkigm_reactivo"));
+                    chkIgmNoReactivo.setSelected(oConn1.setResult.getBoolean("chkigm_noreactivo"));
+                    chkIggReactivo.setSelected(oConn1.setResult.getBoolean("chkigg_reactivo"));
+                    chkIggNoReactivo.setSelected(oConn1.setResult.getBoolean("chkigg_noreactivo"));
+                    chkInvalido.setSelected(oConn1.setResult.getBoolean("chkinvalido"));
+                    cboMarca.setSelectedItem(oConn1.setResult.getString("cbomarca"));
+                    txtVRIgm.setText(oConn1.setResult.getString("txtvrigm"));
+                    txtVRIgg.setText(oConn1.setResult.getString("txtvrigg"));
+                    pasar=(oConn1.setResult.getString("tipoprueba"));
+                    FechaHotel.setDate(oConn1.setResult.getDate("fecha_examen"));
                     if(pasar.equals("PC")) habilitarPc();
                     else negarPc();
                     
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
-                     oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                     oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
         }
@@ -3324,13 +3338,13 @@ limpiar2();
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "WHERE n.n_orden ='"+txtNordenIn.getText() +"'";
-                oConn.FnBoolQueryExecute(Sql);
+                oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombresIn.setText(oConn.setResult.getString("nombre"));
-                        txtDniIn.setText(oConn.setResult.getString("cod_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        pasar=(oConn.setResult.getString("tipoprueba"));
+                    if (oConn1.setResult.next()) {
+                        txtNombresIn.setText(oConn1.setResult.getString("nombre"));
+                        txtDniIn.setText(oConn1.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
+                        pasar=(oConn1.setResult.getString("tipoprueba"));
                         txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
                         //System.out.println(pasar);
@@ -3346,8 +3360,8 @@ limpiar2();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
@@ -3754,9 +3768,9 @@ public void  habilitarPc(){
             negarPc();
             jTextFieldSaturacion.setText("");
             //  System.out.println(sql2);
-            oConn.FnBoolQueryExecute(sql2);
+            oConn1.FnBoolQueryExecute(sql2);
             agregarSimtocasPc();
-            oConn.sqlStmt.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -4044,20 +4058,20 @@ public void  habilitarPc(){
         try
         {
             //oConn.FnBoolConnectionOpen(strConnector, strHost,strUser,strPassword);
-            oConn.FnBoolQueryExecute(sql);
+            oConn1.FnBoolQueryExecute(sql);
 
             ArrayList lista = new ArrayList();
-            while (oConn.setResult.next())
+            while (oConn1.setResult.next())
             {
-                lista.add(oConn.setResult.getString(1));
+                lista.add(oConn1.setResult.getString(1));
             }
             veDats = new String[lista.size()];
             for (int i = 0; i < lista.size(); i++)
             {
                 veDats[i]=lista.get(i).toString();
             }
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -4133,6 +4147,42 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         }
 
     }
+    
+    private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNordenIn4.getText().toString().trim();
+        String cboSede="1";
+        if (oConn1.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn1.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn1.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn1.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+    
     private void print(Integer cod) {
   //Integer n;
         //n = Integer.parseInt(txtNorden.getText());
@@ -4186,16 +4236,16 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         if(!txtNordenIn.getText().isEmpty()){
         String sQuery;
         sQuery  = "Select n_orden from examen_inmunologico Where n_orden ="+txtNordenIn.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
         } catch (SQLException ex) {
         }
         }       
@@ -4208,16 +4258,16 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         if(!txtNordenIn1.getText().isEmpty()){
         String sQuery;
         sQuery  = "Select n_orden from examen_inmunologico Where n_orden ="+txtNordenIn1.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
         } catch (SQLException ex) {
         }
         }       
@@ -4230,9 +4280,9 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         String sQuery;
         sQuery  = "Select e.n_orden from examen_inmunologico as e inner join n_orden_ocupacional as n on e.n_orden=n.n_orden  "
                 + "Where n.nom_examen like '%PRUEBA CUANTITATIVA ANTICUERPOS%' and  e.n_orden ="+txtNordenIn2.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 bResultado = true;
                 desbloqueo1();
@@ -4241,8 +4291,8 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             }
             else 
           // oFunc.SubSistemaMensajeError("Verificar que exista, el examen es:PRUEBA CUANTITATIVA ANTICUERPOS ");
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
         } catch (SQLException ex) {
         }
         }       
@@ -4256,9 +4306,9 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         String sQuery;
         sQuery  = "Select e.n_orden from examen_inmunologico as e inner join n_orden_ocupacional as n on e.n_orden=n.n_orden  "
                 + "Where n.nom_examen like '%PRUEBA CUANTITATIVA ANTIGENOS%' and  e.n_orden ="+txtNordenIn3.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 bResultado = true;
                 desbloqueo2();
@@ -4267,8 +4317,8 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             }
             else 
             oFunc.SubSistemaMensajeError("VErificar si existe registro, si la prueba es:  PRUEBA CUANTITATIVA ANTIGENOS");
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
         } catch (SQLException ex) {
         }
         }       
@@ -4281,9 +4331,9 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         String sQuery;
         sQuery  = "Select e.n_orden from examen_inmunologico as e inner join n_orden_ocupacional as n on e.n_orden=n.n_orden  "
                 + "Where n.nom_examen like '%PRUEBA CUALITATIVA ANTIGENOS%' and  n.n_orden ="+txtNordenIn4.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {                desbloqueo3();
 
                 bResultado = true;
@@ -4292,8 +4342,8 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             }
             else
             oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
-            oConn.sqlStmt.close();
-            oConn.setResult.close();
+            oConn1.sqlStmt.close();
+            oConn1.setResult.close();
         } catch (SQLException ex) {
         }
         }       
@@ -4355,7 +4405,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     "','"+txtVRIgm.getText()+ 
                     "','"+txtVRIgg.getText()+"')";
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
@@ -4364,7 +4414,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                
                }
                  try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4387,7 +4437,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     valorigm+","+valorigg+",'"+jTextField5.getText()+"'"
                     + ")";
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
@@ -4395,7 +4445,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    
                }
                try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4415,7 +4465,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     + ")";
             System.out.println(strSqlStmt);
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
@@ -4424,7 +4474,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 
                }
                 try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4443,7 +4493,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     + ")";
             System.out.println(strSqlStmt);
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
@@ -4452,7 +4502,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                }
                  
                    try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4471,7 +4521,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     "','"+jTextAreaIgm3.getText()+ 
                     "','"+jTextField18.getText()+"')";
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
@@ -4479,7 +4529,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    
                }
                try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4502,7 +4552,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     + "      txtvrigg='"+txtVRIgg.getText()+"'"+
                     " WHERE n_orden='"+sCodigo+"';";
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn();
               //  Limpiar();
@@ -4511,7 +4561,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
              try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4536,7 +4586,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     "        medico='"+jTextField5.getText()+
                     "' WHERE n_orden='"+sCodigo+"';";
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn1();
                 //Limpiar();
@@ -4545,7 +4595,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
              try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4571,7 +4621,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     "' WHERE n_orden='"+sCodigo+"';";
                  System.out.println(strSqlStmt);
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn2();
                 limpiar2();
@@ -4580,7 +4630,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
              try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4601,7 +4651,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     "' WHERE n_orden='"+sCodigo+"';";
                  System.out.println(strSqlStmt);
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimirIn3();
                 limpiar3();
@@ -4610,7 +4660,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
              try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4629,7 +4679,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     "' WHERE n_orden='"+sCodigo+"';";
                  System.out.println(strSqlStmt);
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                  
                          if(sed.contains("Huancayo"))
@@ -4649,7 +4699,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
             try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 } 
@@ -5083,20 +5133,20 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         // Prepara el Query
         sQuery = "SELECT marca_c FROM marca_covid";
 
-        if (oConn.FnBoolQueryExecute(sQuery)) {
+        if (oConn1.FnBoolQueryExecute(sQuery)) {
             try {
 
-                while (oConn.setResult.next()) {
-                    cboMarca.addItem(oConn.setResult.getString("marca_c"));
-                        cboMarca1.addItem(oConn.setResult.getString("marca_c"));
-                        cboMarca2.addItem(oConn.setResult.getString("marca_c"));
-                        cboMarca3.addItem(oConn.setResult.getString("marca_c"));
-                        cboMarca4.addItem(oConn.setResult.getString("marca_c"));
+                while (oConn1.setResult.next()) {
+                    cboMarca.addItem(oConn1.setResult.getString("marca_c"));
+                        cboMarca1.addItem(oConn1.setResult.getString("marca_c"));
+                        cboMarca2.addItem(oConn1.setResult.getString("marca_c"));
+                        cboMarca3.addItem(oConn1.setResult.getString("marca_c"));
+                        cboMarca4.addItem(oConn1.setResult.getString("marca_c"));
                 }
 
                 // Cierra Resultados
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+                oConn1.sqlStmt.close();
+                oConn1.setResult.close();
             } catch (SQLException ex) {
                 //JOptionPane.showMessageDialorootPane,ex);
                 oFunc.SubSistemaMensajeError(ex.toString());

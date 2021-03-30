@@ -59,7 +59,7 @@ import org.json.JSONObject;
  */
 public final class RegistrarCliente extends javax.swing.JInternalFrame {
     clsFunciones oFunc = new clsFunciones();
-    clsConnection oConn = new clsConnection();
+    clsConnection oConn1 = new clsConnection();
        Ingreso objet= new Ingreso();
    String nomsede,rucempresa,nombreempresa,ruccontrata,nombrecontrata;
    int codigosede,pkprotocolo,codigo_norden,operacion;
@@ -177,15 +177,15 @@ URL url = new URL("https://api.reniec.cloud/dni/")
             // Prepara el Query
             sQuery ="SELECT UPPER(razon_contrata) AS razon_contrata  FROM contratas;";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) 
+            if (oConn1.FnBoolQueryExecute(sQuery)) 
             {
                 try
                 {
                     // Verifica resultados
-                    while (oConn.setResult.next())
+                    while (oConn1.setResult.next())
                     {
                         // Obtiene los datos de la Consulta
-                        //       cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
+                              //cboContratas.addItem(oConn.setResult.getString ("razon_contrata"));
                         
                     }
                     
@@ -200,8 +200,8 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                 }
                 
             }
-            oConn.setResult.close();            
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();            
+            oConn1.sqlStmt.close();
             // selecciona
             // cboContratas.setSelectedIndex(0);
         } catch (SQLException ex) {
@@ -214,15 +214,15 @@ URL url = new URL("https://api.reniec.cloud/dni/")
             // Prepara el Query
             sQuery ="select idprotocolo from protocolo where nombreprotocolo='"+jComboBoxProtocolos.getSelectedItem()+"'";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) 
+            if (oConn1.FnBoolQueryExecute(sQuery)) 
             {
                 try
                 {
                     // Verifica resultados
-                    while (oConn.setResult.next())
+                    while (oConn1.setResult.next())
                     {
                         // Obtiene los datos de la Consulta
-                        pkprotocolo=oConn.setResult.getInt ("idprotocolo");
+                        pkprotocolo=oConn1.setResult.getInt ("idprotocolo");
                         
                     }
                     
@@ -236,8 +236,8 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -252,12 +252,12 @@ URL url = new URL("https://api.reniec.cloud/dni/")
             sQuery ="SELECT UPPER(razon_empresa) AS razon_empresa FROM empresas";
             
             
-            if (oConn.FnBoolQueryExecute(sQuery)) 
+            if (oConn1.FnBoolQueryExecute(sQuery)) 
             {
                 try
                 {
                     // Verifica resultados
-                    while (oConn.setResult.next())
+                    while (oConn1.setResult.next())
                     {
                         // Obtiene los datos de la Consulta
                         
@@ -266,8 +266,8 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                     }
                     
                     // Cierra Resultados
-                    oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                    oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
                 }
                 catch (SQLException ex)
                 {
@@ -276,8 +276,8 @@ URL url = new URL("https://api.reniec.cloud/dni/")
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
             
             // selecciona
             
@@ -290,11 +290,11 @@ URL url = new URL("https://api.reniec.cloud/dni/")
          
         String sql="select spFuncionHistorialClienteProtocolo("+num+","+pkprotocolo+","
              +operacion+")";
-        oConn.FnBoolQueryExecute(sql);
+        oConn1.FnBoolQueryExecute(sql);
         System.out.println(sql);
         operacion=0;
         try {
-            oConn.sqlStmt.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -364,15 +364,15 @@ public void valorsede(){
             // Prepara el Query
             sQuery ="select cod_sede from sede where nombre_sede= '"+nomsede+"';";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) 
+            if (oConn1.FnBoolQueryExecute(sQuery)) 
             {
                 try
                 {
                     // Verifica resultados
-                    while (oConn.setResult.next())
+                    while (oConn1.setResult.next())
                     {
                         // Obtiene los datos de la Consulta
-                        codigosede=oConn.setResult.getInt("cod_sede");
+                        codigosede=oConn1.setResult.getInt("cod_sede");
                     }
                     
                     // Cierra Resultados
@@ -388,8 +388,8 @@ public void valorsede(){
             
             agregarConsulta=" and n.cod_sede="+codigosede;
             agregarConsulta+=" ";
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2720,32 +2720,32 @@ this.chkAltaTrabCal.setVisible(false);
             cboProfesion.setSelectedIndex(-1);
             String sQuery;
             sQuery = "SELECT * from datos_paciente where cod_pa='" + txtDni.getText() + "'";
-            oConn.FnBoolQueryExecute(sQuery);
+            oConn1.FnBoolQueryExecute(sQuery);
             try {
-                if (oConn.setResult.next()) {
+                if (oConn1.setResult.next()) {
                     deshabilitar();
                     ckbSinDni.setEnabled(false);
                     
                     //FechaNacimiento.setEnabled(true);
                     //Calendar fecha = new GregorianCalendar();
-                    txtNombre.setText(oConn.setResult.getString("nombres_pa"));
-                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                    txtApellidos.setText(oConn.setResult.getString("apellidos_pa"));
-                    cboSexo.setSelectedItem(oConn.setResult.getString("sexo_pa"));
+                    txtNombre.setText(oConn1.setResult.getString("nombres_pa"));
+                    FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
+                    txtApellidos.setText(oConn1.setResult.getString("apellidos_pa"));
+                    cboSexo.setSelectedItem(oConn1.setResult.getString("sexo_pa"));
                     
-                    txtEmail.setText(oConn.setResult.getString("email_pa"));
-                    txtLugarNacimiento.setText(oConn.setResult.getString("lugar_nac_pa"));
-                    cboNivelEstudio.setSelectedItem(oConn.setResult.getString("nivel_est_pa"));
-                    cboProfesion.setSelectedItem(oConn.setResult.getString("ocupacion_pa"));
-                    cboEstadoCivil.setSelectedItem(oConn.setResult.getString("estado_civil_pa"));
-                    txtDireccion.setText(oConn.setResult.getString("direccion_pa"));
-                    cboDepartamento.setSelectedItem(oConn.setResult.getString("departamento_pa"));
-                    cboProvincia.setSelectedItem(oConn.setResult.getString("provincia_pa"));
-                    cboDistrito.setSelectedItem(oConn.setResult.getString("distrito_pa"));
-                    cboCaserio.setSelectedItem(oConn.setResult.getString("caserio_pa"));
-                    txtTelefonoCasa.setText(oConn.setResult.getString("tel_casa_pa"));
-                    txtCelular.setText(oConn.setResult.getString("cel_pa"));
-                    txtHistorial.setText(oConn.setResult.getString("historial_pa"));
+                    txtEmail.setText(oConn1.setResult.getString("email_pa"));
+                    txtLugarNacimiento.setText(oConn1.setResult.getString("lugar_nac_pa"));
+                    cboNivelEstudio.setSelectedItem(oConn1.setResult.getString("nivel_est_pa"));
+                    cboProfesion.setSelectedItem(oConn1.setResult.getString("ocupacion_pa"));
+                    cboEstadoCivil.setSelectedItem(oConn1.setResult.getString("estado_civil_pa"));
+                    txtDireccion.setText(oConn1.setResult.getString("direccion_pa"));
+                    cboDepartamento.setSelectedItem(oConn1.setResult.getString("departamento_pa"));
+                    cboProvincia.setSelectedItem(oConn1.setResult.getString("provincia_pa"));
+                    cboDistrito.setSelectedItem(oConn1.setResult.getString("distrito_pa"));
+                    cboCaserio.setSelectedItem(oConn1.setResult.getString("caserio_pa"));
+                    txtTelefonoCasa.setText(oConn1.setResult.getString("tel_casa_pa"));
+                    txtCelular.setText(oConn1.setResult.getString("cel_pa"));
+                    txtHistorial.setText(oConn1.setResult.getString("historial_pa"));
                     btnAgregar.setEnabled(false);
                     txtDni.setEnabled(false);
                     btnLimpiar.setEnabled(false);
@@ -2766,13 +2766,13 @@ this.chkAltaTrabCal.setVisible(false);
                     btnLimpiar.setEnabled(true);
                     deshabilitarbotones();
                 }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Cod Paciente:" + ex.getMessage().toString());
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);     
         }
@@ -2883,7 +2883,7 @@ this.chkAltaTrabCal.setVisible(false);
                 }
 
              // oFunc.SubSistemaMensajeInformacion(strSqlStmt.concat(") ") + Query.concat(")"));  
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))) {
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     limpiar();
                     deshabilitar();
@@ -2897,8 +2897,8 @@ this.chkAltaTrabCal.setVisible(false);
                 }
                 try {
                     //       System.out.println(strSqlStmt);
-                    oConn.sqlStmt.close();
-                    oConn.setResult.close();
+                    oConn1.sqlStmt.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -3001,13 +3001,13 @@ this.chkAltaTrabCal.setVisible(false);
                 oFunc.SubSistemaMensajeError("Seleccione Servicio");
             } else {
                 String sql = "select precio_examen from examen_medico_ocupacional where nom_examen ='" + cboExamenMedico.getSelectedItem().toString() + "'";
-                oConn.FnBoolQueryExecute(sql);
+                oConn1.FnBoolQueryExecute(sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtPrecio.setText(oConn.setResult.getString("precio_examen"));
+                    if (oConn1.setResult.next()) {
+                        txtPrecio.setText(oConn1.setResult.getString("precio_examen"));
                     }
-                    oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                    oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     
                     oFunc.SubSistemaMensajeError(ex.toString());
@@ -3015,8 +3015,8 @@ this.chkAltaTrabCal.setVisible(false);
                 }
 
             }
-            oConn.setResult.close();            
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();            
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3079,10 +3079,10 @@ public void agregarAltaEpidemiologica(String numero){
         try {
             String sConsulta;
             sConsulta = "select spAgregarPE("+numero+");";
-            if (oConn.FnBoolQueryExecute(sConsulta)) {
+            if (oConn1.FnBoolQueryExecute(sConsulta)) {
                 try {
                     // Verifica resultados
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
                         // Obtiene los datos de la Consulta
                         
@@ -3093,8 +3093,8 @@ public void agregarAltaEpidemiologica(String numero){
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3185,10 +3185,10 @@ public void agregarAltaEpidemiologica(String numero){
                       + "') RETURNING n_orden;";
               //oFunc.SubSistemaMensajeError(Sql);
               
-              if (oConn.FnBoolQueryExecute(Sql)) {
+              if (oConn1.FnBoolQueryExecute(Sql)) {
                   try {
-                      oConn.setResult.next();
-                      num = oConn.setResult.getString("n_orden");
+                      oConn1.setResult.next();
+                      num = oConn1.setResult.getString("n_orden");
                       txtNorden1.setText(num);
                       oFunc.SubSistemaMensajeInformacion("Alta Correctamente\nSu numero de Orden es :** " + num + " **");
                       agregarAltaEpidemiologica(num);
@@ -3212,8 +3212,8 @@ public void agregarAltaEpidemiologica(String numero){
               } else {
                   oFunc.SubSistemaMensajeError("No se pudo dar de Alta");
               }
-              oConn.setResult.close();
-              oConn.sqlStmt.close();
+              oConn1.setResult.close();
+              oConn1.sqlStmt.close();
           } catch (SQLException ex) {
               Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
           }
@@ -3255,7 +3255,17 @@ int seleccion = JOptionPane.showOptionDialog(
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
         try {
-            oConn.sqlStmt.close();
+            if (oConn1.setResult != null) 
+         
+            oConn1.setResult.close();
+         
+            if ( oConn1.sqlStmt != null) 
+             
+                oConn1.sqlStmt .close();
+             
+           // if (oConn1.oConnection != null) 
+             //
+              //  oConn1.oConnection.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3272,13 +3282,13 @@ int seleccion = JOptionPane.showOptionDialog(
         sQuery = "Select n_orden from n_orden_ocupacional Where n_orden=" + txtDniAlta.getText().toString();
 
         //Ejecuta el Query
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
 
         // Capturo el Error
         try {
 
             // Verifico que haya habido resultados
-            if (oConn.setResult.next()) {
+            if (oConn1.setResult.next()) {
                 // Resultado
                 bResultado = true;
             //    oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
@@ -3286,8 +3296,8 @@ int seleccion = JOptionPane.showOptionDialog(
             }
 
             // Cierro los Resultados
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
 
         }
@@ -3305,13 +3315,13 @@ int seleccion = JOptionPane.showOptionDialog(
  
         //System.out.println("paso al orden existe 1");
         //Ejecuta el Query
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
 
         // Capturo el Error
         try {
 
             // Verifico que haya habido resultados
-            if (oConn.setResult.next()) {
+            if (oConn1.setResult.next()) {
                 // Resultado
                 bResultado = true;
                 
@@ -3321,9 +3331,9 @@ int seleccion = JOptionPane.showOptionDialog(
             }
 
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn1.setResult.close();
                 //        System.out.println("el valor de bresutltado"+bResultado);
-            oConn.sqlStmt.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
 
         }
@@ -3449,13 +3459,13 @@ int seleccion = JOptionPane.showOptionDialog(
                     " where dp.cod_pa ='"+ txtDniAlta.getText().toString() + "' "+
                    "group by dp.nombres_pa, dp.apellidos_pa,l.chko ,l.chka ,l.chkb ,l.chkab, \n" +
                       "l.rbrhpositivo ,l.rbrhnegativo limit 1";
-                oConn.FnBoolQueryExecute(sql);
+                oConn1.FnBoolQueryExecute(sql);
                 try {
-                    if (oConn.setResult.next()) {
+                    if (oConn1.setResult.next()) {
 
-                        txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
-                        txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                        String gs=oConn.setResult.getString("Grupoyfactor");
+                        txtNombresAlta.setText(oConn1.setResult.getString("nombres_pa"));
+                        txtApellidosAlta.setText(oConn1.setResult.getString("apellidos_pa"));
+                        String gs=oConn1.setResult.getString("Grupoyfactor");
                         oFunc.SubSistemaMensajeError(gs);
                         if(gs!=null){
                             txtGS.setText(gs);
@@ -3480,8 +3490,8 @@ int seleccion = JOptionPane.showOptionDialog(
                         txtDniAlta.requestFocus();
                     }
 
-                oConn.setResult.close();
-                oConn.sqlStmt.close();  
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();  
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
@@ -3521,31 +3531,31 @@ public void cargarDatosPaciente(){
             boolean pago=false;
             boolean pago1=false;
             boolean pago2=false;
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
-                    txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
-                    txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
-                    txtMedico.setText(oConn.setResult.getString("n_medico"));
-                    txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
-                    cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
-                    cboExamenMedico.setSelectedItem(oConn.setResult.getString("nom_examen"));
-                    cboExplotacion.setSelectedItem(oConn.setResult.getString("nom_ex"));
-                    cboMineralExp.setSelectedItem(oConn.setResult.getString("mineral_po"));
-                    cboAltura.setSelectedItem(oConn.setResult.getString("altura_po"));
-                    txtPrecio.setText(oConn.setResult.getString("precio_po"));
+                if (oConn1.setResult.next()) {
+                    txtDniAlta.setText(oConn1.setResult.getString("cod_pa"));
+                    txtNombresAlta.setText(oConn1.setResult.getString("nombres_pa"));
+                    txtApellidosAlta.setText(oConn1.setResult.getString("apellidos_pa"));
+                    txtEmpresa.setText(oConn1.setResult.getString("razon_empresa"));
+                    txtContrata.setText(oConn1.setResult.getString("razon_contrata"));
+                    txtMedico.setText(oConn1.setResult.getString("n_medico"));
+                    txtCargoDesempenar.setText(oConn1.setResult.getString("cargo_de"));
+                    cboArea.setSelectedItem(oConn1.setResult.getString("area_o"));
+                    cboExamenMedico.setSelectedItem(oConn1.setResult.getString("nom_examen"));
+                    cboExplotacion.setSelectedItem(oConn1.setResult.getString("nom_ex"));
+                    cboMineralExp.setSelectedItem(oConn1.setResult.getString("mineral_po"));
+                    cboAltura.setSelectedItem(oConn1.setResult.getString("altura_po"));
+                    txtPrecio.setText(oConn1.setResult.getString("precio_po"));
                   //  txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                    // txtNorden.setText(oConn.setResult.getString("n_orden"));
-                    cboTipoExamen.setSelectedItem(oConn.setResult.getString("tipoprueba"));
-                    jComboBoxHotel.setSelectedItem(oConn.setResult.getString("nombrehotel"));
+                    cboTipoExamen.setSelectedItem(oConn1.setResult.getString("tipoprueba"));
+                    jComboBoxHotel.setSelectedItem(oConn1.setResult.getString("nombrehotel"));
                       if(cboTipoExamen.getSelectedItem().toString().equals("PC"))
                         jComboBoxHotel.setEnabled(true);
                              else
                              jComboBoxHotel.setEnabled(false);
-                    stip=oConn.setResult.getString("tipo_pago");
+                    stip=oConn1.setResult.getString("tipo_pago");
                      if("EFECTIVO".equals(stip)){
                         pago=true;
                      } 
@@ -3558,20 +3568,20 @@ public void cargarDatosPaciente(){
                     rbCredito.setSelected(pago1);
                     rbEfectivo.setSelected(pago);
                     rbDeposito.setSelected(pago2);
-                    chkAltaFist.setSelected(oConn.setResult.getBoolean("n_fisttest"));
-                    chkAltaPsicosen.setSelected(oConn.setResult.getBoolean("n_psicosen"));
-                    chkAltaTestAltura.setSelected(oConn.setResult.getBoolean("n_testaltura"));
-                    chkAltaVisualCom.setSelected(oConn.setResult.getBoolean("visual_compl"));
-                    chkAltaTrabCal.setSelected(oConn.setResult.getBoolean("trab_calientes"));
-                    chkAltaCovid1.setSelected(oConn.setResult.getBoolean("chkcovid1"));
-                    chkAltaCovid2.setSelected(oConn.setResult.getBoolean("chkcovid2"));
-                    txtGS.setText(oConn.setResult.getString("gruposan"));
-                    txtNumColor.setText(oConn.setResult.getString("color"));
-                    txtGrupoSan.setText(oConn.setResult.getString("grupofactorsan"));
-                    jLabel44.setText(oConn.setResult.getString("cod_clinica"));
-                    chkAltaManipAlimen.setSelected(oConn.setResult.getBoolean("manip_alimentos"));
-                    txtObserv1.setText(oConn.setResult.getString("txtobserv1"));
-                    txtObserv2.setText(oConn.setResult.getString("txtobserv2"));
+                    chkAltaFist.setSelected(oConn1.setResult.getBoolean("n_fisttest"));
+                    chkAltaPsicosen.setSelected(oConn1.setResult.getBoolean("n_psicosen"));
+                    chkAltaTestAltura.setSelected(oConn1.setResult.getBoolean("n_testaltura"));
+                    chkAltaVisualCom.setSelected(oConn1.setResult.getBoolean("visual_compl"));
+                    chkAltaTrabCal.setSelected(oConn1.setResult.getBoolean("trab_calientes"));
+                    chkAltaCovid1.setSelected(oConn1.setResult.getBoolean("chkcovid1"));
+                    chkAltaCovid2.setSelected(oConn1.setResult.getBoolean("chkcovid2"));
+                    txtGS.setText(oConn1.setResult.getString("gruposan"));
+                    txtNumColor.setText(oConn1.setResult.getString("color"));
+                    txtGrupoSan.setText(oConn1.setResult.getString("grupofactorsan"));
+                    jLabel44.setText(oConn1.setResult.getString("cod_clinica"));
+                    chkAltaManipAlimen.setSelected(oConn1.setResult.getBoolean("manip_alimentos"));
+                    txtObserv1.setText(oConn1.setResult.getString("txtobserv1"));
+                    txtObserv2.setText(oConn1.setResult.getString("txtobserv2"));
                     if(nomsede.equals("Trujillo")){
                             jLabel44.setText(txtNorden.getText()+" - T");
                     }else {
@@ -3581,8 +3591,8 @@ public void cargarDatosPaciente(){
                    // hBotones(true);
                    
                 }
-                 oConn.setResult.close();
-                 oConn.sqlStmt.close();
+                 oConn1.setResult.close();
+                 oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
 
@@ -3632,33 +3642,33 @@ public void cargarDatosPaciente(){
             boolean pago=false;
             boolean pago1=false;
             boolean pago2=false;
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
-                    txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
-                    txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                    txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
-                    txtMedico.setText(oConn.setResult.getString("n_medico"));
-                    txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
-                    cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
-                    cboExamenMedico.setSelectedItem(oConn.setResult.getString("nom_examen"));
-                    cboExplotacion.setSelectedItem(oConn.setResult.getString("nom_ex"));
-                    cboMineralExp.setSelectedItem(oConn.setResult.getString("mineral_po"));
-                    cboAltura.setSelectedItem(oConn.setResult.getString("altura_po"));
-                    txtPrecio.setText(oConn.setResult.getString("precio_po"));
-                    txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
-                    txtNorden.setText(oConn.setResult.getString("n_orden"));
-                    cboTipoExamen.setSelectedItem(oConn.setResult.getString("tipoprueba"));
-                    jComboBoxHotel.setSelectedItem(oConn.setResult.getString("nombrehotel"));
-                    jComboBoxProtocolos.setSelectedItem(oConn.setResult.getString("protocolo"));
+                if (oConn1.setResult.next()) {
+                    txtDniAlta.setText(oConn1.setResult.getString("cod_pa"));
+                    txtNombresAlta.setText(oConn1.setResult.getString("nombres_pa"));
+                    txtApellidosAlta.setText(oConn1.setResult.getString("apellidos_pa"));
+                    txtEmpresa.setText(oConn1.setResult.getString("razon_empresa"));
+                    txtContrata.setText(oConn1.setResult.getString("razon_contrata"));
+                    txtMedico.setText(oConn1.setResult.getString("n_medico"));
+                    txtCargoDesempenar.setText(oConn1.setResult.getString("cargo_de"));
+                    cboArea.setSelectedItem(oConn1.setResult.getString("area_o"));
+                    cboExamenMedico.setSelectedItem(oConn1.setResult.getString("nom_examen"));
+                    cboExplotacion.setSelectedItem(oConn1.setResult.getString("nom_ex"));
+                    cboMineralExp.setSelectedItem(oConn1.setResult.getString("mineral_po"));
+                    cboAltura.setSelectedItem(oConn1.setResult.getString("altura_po"));
+                    txtPrecio.setText(oConn1.setResult.getString("precio_po"));
+                    txtFechaAlta.setDate(oConn1.setResult.getDate("fecha_apertura_po"));
+                    txtNorden.setText(oConn1.setResult.getString("n_orden"));
+                    cboTipoExamen.setSelectedItem(oConn1.setResult.getString("tipoprueba"));
+                    jComboBoxHotel.setSelectedItem(oConn1.setResult.getString("nombrehotel"));
+                    jComboBoxProtocolos.setSelectedItem(oConn1.setResult.getString("protocolo"));
 
                       if(cboTipoExamen.getSelectedItem().toString().equals("PC"))
                         jComboBoxHotel.setEnabled(true);
                              else
                              jComboBoxHotel.setEnabled(false);
-                    stip=oConn.setResult.getString("tipo_pago");
+                    stip=oConn1.setResult.getString("tipo_pago");
                      if("EFECTIVO".equals(stip)){
                         pago=true;
                      } 
@@ -3671,21 +3681,21 @@ public void cargarDatosPaciente(){
                     rbCredito.setSelected(pago1);
                     rbEfectivo.setSelected(pago);
                     rbDeposito.setSelected(pago2);
-                    chkAltaFist.setSelected(oConn.setResult.getBoolean("n_fisttest"));
-                    chkAltaPsicosen.setSelected(oConn.setResult.getBoolean("n_psicosen"));
-                    chkAltaTestAltura.setSelected(oConn.setResult.getBoolean("n_testaltura"));
-                    chkAltaVisualCom.setSelected(oConn.setResult.getBoolean("visual_compl"));
-                    chkAltaTrabCal.setSelected(oConn.setResult.getBoolean("trab_calientes"));
-                    chkAltaCovid1.setSelected(oConn.setResult.getBoolean("chkcovid1"));
-                    chkAltaCovid2.setSelected(oConn.setResult.getBoolean("chkcovid2"));
-                    txtGS.setText(oConn.setResult.getString("gruposan"));
-                    txtNumColor.setText(oConn.setResult.getString("color"));
-                    txtGrupoSan.setText(oConn.setResult.getString("grupofactorsan"));
-                    jLabel44.setText(oConn.setResult.getString("cod_clinica"));
+                    chkAltaFist.setSelected(oConn1.setResult.getBoolean("n_fisttest"));
+                    chkAltaPsicosen.setSelected(oConn1.setResult.getBoolean("n_psicosen"));
+                    chkAltaTestAltura.setSelected(oConn1.setResult.getBoolean("n_testaltura"));
+                    chkAltaVisualCom.setSelected(oConn1.setResult.getBoolean("visual_compl"));
+                    chkAltaTrabCal.setSelected(oConn1.setResult.getBoolean("trab_calientes"));
+                    chkAltaCovid1.setSelected(oConn1.setResult.getBoolean("chkcovid1"));
+                    chkAltaCovid2.setSelected(oConn1.setResult.getBoolean("chkcovid2"));
+                    txtGS.setText(oConn1.setResult.getString("gruposan"));
+                    txtNumColor.setText(oConn1.setResult.getString("color"));
+                    txtGrupoSan.setText(oConn1.setResult.getString("grupofactorsan"));
+                    jLabel44.setText(oConn1.setResult.getString("cod_clinica"));
                     System.out.println("codigo clinico es:"+jLabel44.getText());
-                    chkAltaManipAlimen.setSelected(oConn.setResult.getBoolean("manip_alimentos"));
-                    txtObserv1.setText(oConn.setResult.getString("txtobserv1"));
-                    txtObserv2.setText(oConn.setResult.getString("txtobserv2"));
+                    chkAltaManipAlimen.setSelected(oConn1.setResult.getBoolean("manip_alimentos"));
+                    txtObserv1.setText(oConn1.setResult.getString("txtobserv1"));
+                    txtObserv2.setText(oConn1.setResult.getString("txtobserv2"));
                     if(nomsede.equals("Trujillo")){
                             jLabel44.setText(txtNorden.getText()+" - T");
                     }else {
@@ -3695,8 +3705,8 @@ public void cargarDatosPaciente(){
                     hBotones(true);
                     
                 }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }
@@ -3781,7 +3791,7 @@ public void cargarDatosPaciente(){
                 spFuncionHistorialClienteProtocolo();
             }
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 agregarAltaEpidemiologica(txtNorden.getText());
                 AltaDesabilitar();
@@ -3789,8 +3799,8 @@ public void cargarDatosPaciente(){
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
             sbCargarOcupacional("");
             
         } catch (SQLException ex) {
@@ -3816,10 +3826,10 @@ public void cargarDatosPaciente(){
                         + chkCovid2.isSelected() + "','"
                         + chkManipAliment.isSelected() +  "') RETURNING n_orden;";
                 
-                if (oConn.FnBoolQueryExecute(Sql)) {
+                if (oConn1.FnBoolQueryExecute(Sql)) {
                     try {
-                        oConn.setResult.next();
-                        num = oConn.setResult.getString("n_orden");
+                        oConn1.setResult.next();
+                        num = oConn1.setResult.getString("n_orden");
                         
                         oFunc.SubSistemaMensajeInformacion("Su numero de Orden es :** " + num + " **");
                         
@@ -3830,8 +3840,8 @@ public void cargarDatosPaciente(){
                 } else {
                     oFunc.SubSistemaMensajeError("Nº Orden ya existe");
                 }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3858,7 +3868,7 @@ public void cargarDatosPaciente(){
                     "', t_ex6='" + chkCovid2.isSelected()+
                     "', t_ex7='"+chkManipAliment.isSelected()+"'";
             Sql += " Where n_orden = '" + cod + "'";
-            oConn.FnBoolQueryExecuteUpdate(Sql);
+            oConn1.FnBoolQueryExecuteUpdate(Sql);
             oFunc.SubSistemaMensajeInformacion("Examenes Actualizados");
             chkFistTest.setSelected(false);
             chkPsicosen.setSelected(false);
@@ -3867,8 +3877,8 @@ public void cargarDatosPaciente(){
             chkCovid1.setSelected(false);
             chkCovid2.setSelected(false);
             chkManipAliment.setSelected(false);
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -3898,25 +3908,25 @@ public void cargarDatosPaciente(){
 
             String stip;
             boolean pago=false;
-            oConn.FnBoolQueryExecute(Sql);
+            oConn1.FnBoolQueryExecute(Sql);
             try {
-                if (oConn.setResult.next()) {
-                    txtDniAlta.setText(oConn.setResult.getString("cod_pa"));
-                    txtNombresAlta.setText(oConn.setResult.getString("nombres_pa"));
-                    txtApellidosAlta.setText(oConn.setResult.getString("apellidos_pa"));
-                     txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                    txtContrata.setText(oConn.setResult.getString("razon_contrata"));
-                    txtMedico.setText(oConn.setResult.getString("n_medico"));
-                    txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
-                    cboArea.setSelectedItem(oConn.setResult.getString("area_o"));
-                    cboExamenMedico.setSelectedItem(oConn.setResult.getString("nom_examen"));
-                    cboExplotacion.setSelectedItem(oConn.setResult.getString("nom_ex"));
-                    cboMineralExp.setSelectedItem(oConn.setResult.getString("mineral_po"));
-                    cboAltura.setSelectedItem(oConn.setResult.getString("altura_po"));
-                    txtPrecio.setText(oConn.setResult.getString("precio_po"));
-                    txtFechaAlta.setDate(oConn.setResult.getDate("fecha_apertura_po"));
-                    txtNorden.setText(oConn.setResult.getString("n_orden"));
-                    stip=oConn.setResult.getString("tipo_pago");
+                if (oConn1.setResult.next()) {
+                    txtDniAlta.setText(oConn1.setResult.getString("cod_pa"));
+                    txtNombresAlta.setText(oConn1.setResult.getString("nombres_pa"));
+                    txtApellidosAlta.setText(oConn1.setResult.getString("apellidos_pa"));
+                     txtEmpresa.setText(oConn1.setResult.getString("razon_empresa"));
+                    txtContrata.setText(oConn1.setResult.getString("razon_contrata"));
+                    txtMedico.setText(oConn1.setResult.getString("n_medico"));
+                    txtCargoDesempenar.setText(oConn1.setResult.getString("cargo_de"));
+                    cboArea.setSelectedItem(oConn1.setResult.getString("area_o"));
+                    cboExamenMedico.setSelectedItem(oConn1.setResult.getString("nom_examen"));
+                    cboExplotacion.setSelectedItem(oConn1.setResult.getString("nom_ex"));
+                    cboMineralExp.setSelectedItem(oConn1.setResult.getString("mineral_po"));
+                    cboAltura.setSelectedItem(oConn1.setResult.getString("altura_po"));
+                    txtPrecio.setText(oConn1.setResult.getString("precio_po"));
+                    txtFechaAlta.setDate(oConn1.setResult.getDate("fecha_apertura_po"));
+                    txtNorden.setText(oConn1.setResult.getString("n_orden"));
+                    stip=oConn1.setResult.getString("tipo_pago");
                      if("EFECTIVO".equals(stip)){
                         pago=true;
                      }if("CREDITO".equals(stip)){
@@ -3924,19 +3934,19 @@ public void cargarDatosPaciente(){
                     }
                     rbCredito.setSelected(pago);
                     rbEfectivo.setSelected(pago);
-                    chkAltaFist.setSelected(oConn.setResult.getBoolean("n_fisttest"));
-                    chkAltaPsicosen.setSelected(oConn.setResult.getBoolean("n_psicosen"));
-                    chkAltaTestAltura.setSelected(oConn.setResult.getBoolean("n_testaltura"));
-                    chkAltaVisualCom.setSelected(oConn.setResult.getBoolean("visual_compl"));
-                    chkAltaTrabCal.setSelected(oConn.setResult.getBoolean("trab_calientes"));
-                    chkAltaCovid1.setSelected(oConn.setResult.getBoolean("chkcovid1"));
-                    chkAltaCovid2.setSelected(oConn.setResult.getBoolean("chkcovid2"));
-                    chkAltaManipAlimen.setSelected(oConn.setResult.getBoolean("manip_alimentos"));
-                    txtNumColor.setText(oConn.setResult.getString("color"));
-                    txtGrupoSan.setText(oConn.setResult.getString("grupofactorsan"));
-                    jLabel44.setText(oConn.setResult.getString("cod_clinica"));
-                    txtObserv1.setText(oConn.setResult.getString("txtobserv1"));
-                    txtObserv2.setText(oConn.setResult.getString("txtobserv2"));
+                    chkAltaFist.setSelected(oConn1.setResult.getBoolean("n_fisttest"));
+                    chkAltaPsicosen.setSelected(oConn1.setResult.getBoolean("n_psicosen"));
+                    chkAltaTestAltura.setSelected(oConn1.setResult.getBoolean("n_testaltura"));
+                    chkAltaVisualCom.setSelected(oConn1.setResult.getBoolean("visual_compl"));
+                    chkAltaTrabCal.setSelected(oConn1.setResult.getBoolean("trab_calientes"));
+                    chkAltaCovid1.setSelected(oConn1.setResult.getBoolean("chkcovid1"));
+                    chkAltaCovid2.setSelected(oConn1.setResult.getBoolean("chkcovid2"));
+                    chkAltaManipAlimen.setSelected(oConn1.setResult.getBoolean("manip_alimentos"));
+                    txtNumColor.setText(oConn1.setResult.getString("color"));
+                    txtGrupoSan.setText(oConn1.setResult.getString("grupofactorsan"));
+                    jLabel44.setText(oConn1.setResult.getString("cod_clinica"));
+                    txtObserv1.setText(oConn1.setResult.getString("txtobserv1"));
+                    txtObserv2.setText(oConn1.setResult.getString("txtobserv2"));
                     if(nomsede.equals("Trujillo")){
                             jLabel44.setText(txtNorden.getText()+" - T");
                     }else {
@@ -3946,8 +3956,8 @@ public void cargarDatosPaciente(){
                     hBotones(true);
                     
                 } 
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }
@@ -4010,14 +4020,14 @@ public void cargarDatosPaciente(){
 "            n_orden, t_pelicula, fecha_perimetro)" +
             " VALUES ('"+txtNorden1.getText()+"', 'NO PASO EXAMEN','"+lblFecha.getText()+"'";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4037,14 +4047,14 @@ public void cargarDatosPaciente(){
     "            n_orden, fecha_abs, interpretacion)" +
             " VALUES ('"+txtNorden1.getText()+"', '"+lblFecha.getText()+"','NO PASO EXAMEN'";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.sqlStmt.close();
-                oConn.sqlStmt.close();
+                oConn1.sqlStmt.close();
+                oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4064,14 +4074,14 @@ public void cargarDatosPaciente(){
     "            n_orden, fecha_au)" +
             " VALUES ('"+txtNorden1.getText()+"', '"+lblFecha.getText()+"'";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4090,14 +4100,14 @@ public void cargarDatosPaciente(){
     "            n_orden, fecha_examen, txtconclusiones)" +
             " VALUES ('"+txtNorden1.getText()+"', '"+lblFecha.getText()+"','NO PASA EXAMEN' ";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4116,14 +4126,14 @@ public void cargarDatosPaciente(){
     "            n_orden, fecha_informe, hallazgo)\n" +
             " VALUES ('"+txtNorden1.getText()+"', '"+lblFecha.getText()+"','NO PASA EXAMEN' ";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                      
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4145,17 +4155,17 @@ public void cargarDatosPaciente(){
             if((seleccion + 1)==1){
                 try {
                     String triaje ="DELETE FROM "+From+" WHERE n_orden="+txtNorden1.getText();
-                    if(oConn.FnBoolQueryExecuteUpdate(triaje)){
+                    if(oConn1.FnBoolQueryExecuteUpdate(triaje)){
                         oFunc.SubSistemaMensajeInformacion("Eliminado Correctamente");
                         bResultado = true;
                         try {
-                            oConn.sqlStmt.close();
+                            oConn1.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }else{oFunc.SubSistemaMensajeInformacion("No se pudo Eliminar Registro");bResultado = true;}
-                    oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                    oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4178,14 +4188,14 @@ public void cargarDatosPaciente(){
         "tipo_servicio,n_orden, fecha_lab)" +
         " VALUES ('NO PASO EXAMEN', '"+txtNorden1.getText()+"','"+lblFecha.getText()+"' ";
         try {
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                 oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                 
             }else{
                 oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
             }
-            oConn.setResult.close();
-                    oConn.sqlStmt.close();
+            oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
         } catch (Exception e) {
         }
        }else{
@@ -4202,18 +4212,18 @@ public boolean OrdenExiste(String tabla,String orden)
         String sQuery;
         sQuery  = "Select n_orden from "+tabla+" Where n_orden="+orden;
         //Ejecuta el Query
-        oConn.FnBoolQueryExecute(sQuery);       
+        oConn1.FnBoolQueryExecute(sQuery);       
         // Capturo el Error
         try {           
             // Verifico que haya habido resultados
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 // Resultado
                 bResultado = true;
             }
             // Cierro los Resultados
-            oConn.setResult.close();
-                    oConn.sqlStmt.close();
+            oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -4230,14 +4240,14 @@ public boolean OrdenExiste(String tabla,String orden)
      "            n_orden, fecha_certificacion,dni_user,observaciones)" +
              " VALUES ('"+txtNorden1.getText()+"', '"+lblFecha.getText()+"','42664426','NO PASO EXAMEN' ";
              try {
-                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                 if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                      oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                       
                  }else{
                      oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                  }
-                 oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                 oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
              } catch (Exception e) {
              }
         }else{
@@ -4260,14 +4270,14 @@ public boolean OrdenExiste(String tabla,String orden)
 "            n_orden, fecha_od,txtobservaciones)" +
             " VALUES ('"+txtNorden1.getText()+"', '"+lblFecha.getText()+"','NO PASO EXAMEN'";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                      
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4286,14 +4296,14 @@ public boolean OrdenExiste(String tabla,String orden)
 "            n_orden, e_oculares, fecha_of)" +
             " VALUES ('"+txtNorden1.getText()+"', 'NO PASO EXAMEN','"+lblFecha.getText()+"'";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                      
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4316,14 +4326,14 @@ public boolean OrdenExiste(String tabla,String orden)
 "            n_orden, fecha_entrevista,edad_inf,recomendaciones)" +
             " VALUES ('"+txtNorden1.getText()+"', '"+lblFecha.getText()+"','0','NO PASO EXAMEN'";
             try {
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") "))){
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                      
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                 }
-                oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                    oConn1.sqlStmt.close();
             } catch (Exception e) {
             }
         }else{
@@ -4373,20 +4383,20 @@ public boolean OrdenExiste(String tabla,String orden)
             // Prepara el Query
             sQuery =" select nombrehotel from infohoteles;";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) 
+            if (oConn1.FnBoolQueryExecute(sQuery)) 
             {
                 try
                 {
                     // Verifica resultados
-                    while (oConn.setResult.next())
+                    while (oConn1.setResult.next())
                     {
                         // Obtiene los datos de la Consulta
-                        jComboBoxHotel.addItem(oConn.setResult.getString ("nombrehotel"));
+                        jComboBoxHotel.addItem(oConn1.setResult.getString ("nombrehotel"));
                         
                     }
                     
                     // Cierra Resultados
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 }
                 catch (SQLException ex)
                 {
@@ -4395,8 +4405,8 @@ public boolean OrdenExiste(String tabla,String orden)
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
             
             // selecciona
             cboTipoExamen.setSelectedIndex(0);
@@ -4413,20 +4423,20 @@ private void CargarTipoExamenes(){
             // Prepara el Query
             sQuery ="select descripcion from tipoPruebas;";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) 
+            if (oConn1.FnBoolQueryExecute(sQuery)) 
             {
                 try
                 {
                     // Verifica resultados
-                    while (oConn.setResult.next())
+                    while (oConn1.setResult.next())
                     {
                         // Obtiene los datos de la Consulta
-                        cboTipoExamen.addItem(oConn.setResult.getString ("descripcion"));
+                        cboTipoExamen.addItem(oConn1.setResult.getString ("descripcion"));
                         
                     }
                     
                     // Cierra Resultados
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 }
                 catch (SQLException ex)
                 {
@@ -4435,8 +4445,8 @@ private void CargarTipoExamenes(){
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
             
             // selecciona
             cboTipoExamen.setSelectedIndex(1);
@@ -4534,15 +4544,15 @@ private void CargarTipoExamenes(){
             // Prepara el Query
             sQuery ="select nombreprotocolo from protocolo";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) 
+            if (oConn1.FnBoolQueryExecute(sQuery)) 
             {
                 try
                 {
                     // Verifica resultados
-                    while (oConn.setResult.next())
+                    while (oConn1.setResult.next())
                     {
                         // Obtiene los datos de la Consulta
-                        jComboBoxProtocolos.addItem(oConn.setResult.getString ("nombreprotocolo"));
+                        jComboBoxProtocolos.addItem(oConn1.setResult.getString ("nombreprotocolo"));
                         
                     }
                     
@@ -4556,8 +4566,8 @@ private void CargarTipoExamenes(){
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
             // selecciona
             // cboProtocolo.setSelectedItem(seded);
             jComboBoxProtocolos.setSelectedIndex(0);
@@ -5008,7 +5018,7 @@ private void CargarTipoExamenes(){
                     "',cel_pa = '" + txtCelular.getText();
             strSqlStmt += "' Where cod_pa = '" + txtDni.getText() + "'";
             
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
                 limpiar();
                 deshabilitar();
                 btnAgregar.setEnabled(false);
@@ -5016,15 +5026,15 @@ private void CargarTipoExamenes(){
                 ckbSinDni.setSelected(false);
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 try {
-                    oConn.sqlStmt.close();
+                    oConn1.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5081,26 +5091,26 @@ private void CargarTipoExamenes(){
             }
             //    System.out.println("la consulta es:"+Sql);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            if (oConn.FnBoolQueryExecute(Sql)) {
+            if (oConn1.FnBoolQueryExecute(Sql)) {
                 try {
                     
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
-                        registros[0] = oConn.setResult.getString("n_orden");
-                        registros[1] = oConn.setResult.getString("nombres");
-                        registros[2] = formato.format(oConn.setResult.getDate("fecha_apertura_po"));
-                        registros[3]= oConn.setResult.getString("razon_empresa");
-                        registros[4]= oConn.setResult.getString("razon_contrata");
-                        String exa=oConn.setResult.getString("nom_examen");
+                        registros[0] = oConn1.setResult.getString("n_orden");
+                        registros[1] = oConn1.setResult.getString("nombres");
+                        registros[2] = formato.format(oConn1.setResult.getDate("fecha_apertura_po"));
+                        registros[3]= oConn1.setResult.getString("razon_empresa");
+                        registros[4]= oConn1.setResult.getString("razon_contrata");
+                        String exa=oConn1.setResult.getString("nom_examen");
                         registros[5]= exa;
-                        String s=oConn.setResult.getString("aptitud");
-                        String a=oConn.setResult.getString("anexo7d");
-                        String o=oConn.setResult.getString("observados");
-                        String ac=oConn.setResult.getString("anexoc");
-                        String bc=oConn.setResult.getString("conduccion");
-                        String ba=oConn.setResult.getString("altura");
-                        String csm=oConn.setResult.getString("covid");
-                        String ctc=oConn.setResult.getString("tamizaje");
+                        String s=oConn1.setResult.getString("aptitud");
+                        String a=oConn1.setResult.getString("anexo7d");
+                        String o=oConn1.setResult.getString("observados");
+                        String ac=oConn1.setResult.getString("anexoc");
+                        String bc=oConn1.setResult.getString("conduccion");
+                        String ba=oConn1.setResult.getString("altura");
+                        String csm=oConn1.setResult.getString("covid");
+                        String ctc=oConn1.setResult.getString("tamizaje");
                         if(s != null ){
                             registros[6]="COMPLETO";
                         }else if( a != null && "ANEXO-7D".equals(exa)){
@@ -5135,8 +5145,8 @@ private void CargarTipoExamenes(){
                     Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5380,11 +5390,11 @@ private void CargarTipoExamenes(){
             // Prepara el Query
             sQuery = "SELECT ocupacion_pa FROM ocupaciones_pa";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) {
+            if (oConn1.FnBoolQueryExecute(sQuery)) {
                 try {
                     
-                    while (oConn.setResult.next()) {
-                        cboProfesion.addItem(oConn.setResult.getString("ocupacion_pa"));
+                    while (oConn1.setResult.next()) {
+                        cboProfesion.addItem(oConn1.setResult.getString("ocupacion_pa"));
                         
                     }
                     
@@ -5396,8 +5406,8 @@ private void CargarTipoExamenes(){
                     
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5410,24 +5420,24 @@ private void CargarTipoExamenes(){
             // Prepara el Query
             sQuery = "SELECT area_o FROM area_ocupacional";
             
-            if (oConn.FnBoolQueryExecute(sQuery)) {
+            if (oConn1.FnBoolQueryExecute(sQuery)) {
                 try {
                     
-                    while (oConn.setResult.next()) {
-                        cboArea.addItem(oConn.setResult.getString("area_o"));
+                    while (oConn1.setResult.next()) {
+                        cboArea.addItem(oConn1.setResult.getString("area_o"));
                         
                     }
                     
                     // Cierra Resultados
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
                     
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5481,19 +5491,19 @@ private void CargarTipoExamenes(){
         try {
             String sQuery;
             sQuery = "SELECT count(cod_aleatorio_pa)+1 as aleatorio from datos_paciente";
-            if (oConn.FnBoolQueryExecute(sQuery)) {
+            if (oConn1.FnBoolQueryExecute(sQuery)) {
                 try {
-                    while (oConn.setResult.next()) {
-                        txtDni.setText(oConn.setResult.getString("aleatorio"));
+                    while (oConn1.setResult.next()) {
+                        txtDni.setText(oConn1.setResult.getString("aleatorio"));
                     }
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     
                     JOptionPane.showMessageDialog(null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
             
             //    txtDni.setBackground(Color.lightGray);
         } catch (SQLException ex) {
@@ -5704,22 +5714,22 @@ private void CargarTipoExamenes(){
             String Consulta;
             
             Consulta = "select nom_examen from examen_medico_ocupacional ";
-            if (oConn.FnBoolQueryExecute(Consulta)) {
+            if (oConn1.FnBoolQueryExecute(Consulta)) {
                 try {
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
-                        cboExamenMedico.addItem(oConn.setResult.getString("nom_examen"));
+                        cboExamenMedico.addItem(oConn1.setResult.getString("nom_examen"));
                     }
                     
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5729,22 +5739,22 @@ private void CargarTipoExamenes(){
             String Consulta;
             
             Consulta = "select razon_empresa from empresas where ruc_empresa= '"+rucempresa+"'";
-            if (oConn.FnBoolQueryExecute(Consulta)) {
+            if (oConn1.FnBoolQueryExecute(Consulta)) {
                 try {
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
-                        nombreempresa= oConn.setResult.getString("razon_empresa");
+                        nombreempresa= oConn1.setResult.getString("razon_empresa");
                     }
                     
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5755,22 +5765,22 @@ private void CargarTipoExamenes(){
             
             Consulta = "select razon_contrata from contratas where ruc_contrata= '"+ruccontrata+"'";
             System.out.println(Consulta);
-            if (oConn.FnBoolQueryExecute(Consulta)) {
+            if (oConn1.FnBoolQueryExecute(Consulta)) {
                 try {
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
-                        nombrecontrata= oConn.setResult.getString("razon_contrata");
+                        nombrecontrata= oConn1.setResult.getString("razon_contrata");
                     }
                     
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5781,22 +5791,22 @@ private void CargarTipoExamenes(){
             String Consulta;
             
             Consulta = "select altura_po from altura_po ";
-            if (oConn.FnBoolQueryExecute(Consulta)) {
+            if (oConn1.FnBoolQueryExecute(Consulta)) {
                 try {
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
-                        cboAltura.addItem(oConn.setResult.getString("altura_po"));
+                        cboAltura.addItem(oConn1.setResult.getString("altura_po"));
                     }
                     
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5807,22 +5817,22 @@ private void CargarTipoExamenes(){
             String Consulta;
             
             Consulta = "select nom_ex from explotacion_en_po ";
-            if (oConn.FnBoolQueryExecute(Consulta)) {
+            if (oConn1.FnBoolQueryExecute(Consulta)) {
                 try {
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
-                        cboExplotacion.addItem(oConn.setResult.getString("nom_ex"));
+                        cboExplotacion.addItem(oConn1.setResult.getString("nom_ex"));
                     }
                     
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5833,22 +5843,22 @@ private void CargarTipoExamenes(){
             String Consulta;
             
             Consulta = "select mineral_po from mineral_ex_po ";
-            if (oConn.FnBoolQueryExecute(Consulta)) {
+            if (oConn1.FnBoolQueryExecute(Consulta)) {
                 try {
-                    while (oConn.setResult.next()) {
+                    while (oConn1.setResult.next()) {
                         
-                        cboMineralExp.addItem(oConn.setResult.getString("mineral_po"));
+                        cboMineralExp.addItem(oConn1.setResult.getString("mineral_po"));
                     }
                     
-                    oConn.setResult.close();
+                    oConn1.setResult.close();
                 } catch (SQLException ex) {
                     //JOptionPane.showMessageDialorootPane,ex);
                     oFunc.SubSistemaMensajeError(ex.toString());
                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -5949,10 +5959,10 @@ private void CargarTipoExamenes(){
     
     private void CargarNorden() {
         String sql = "SELECT max(n_orden)+1 as cod from n_orden_ocupacional";
-        oConn.FnBoolQueryExecute(sql);
+        oConn1.FnBoolQueryExecute(sql);
         try {
-            if (oConn.setResult.next()) {
-                txtNorden.setText(oConn.setResult.getString("cod"));
+            if (oConn1.setResult.next()) {
+                txtNorden.setText(oConn1.setResult.getString("cod"));
                 if(nomsede.equals("Trujillo")){
                             jLabel44.setText(txtNorden.getText()+" - T");
                 }else {
@@ -5962,8 +5972,8 @@ private void CargarTipoExamenes(){
 
             }
 
-        oConn.setResult.close();
-        oConn.sqlStmt.close();
+        oConn1.setResult.close();
+        oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialorootPane,ex);
             oFunc.SubSistemaMensajeError(ex.toString());
@@ -5974,21 +5984,21 @@ private void CargarTipoExamenes(){
     private void NumColor() {
         String sql = "SELECT max(color)+1 as cod from n_orden_ocupacional\n" +
                         "where fecha_apertura_po='"+lblFecha.getText().toString()+"'";
-        oConn.FnBoolQueryExecute(sql);
+        oConn1.FnBoolQueryExecute(sql);
         
         int numc;
         String n;
         try {
-            if (oConn.setResult.next()) {
-                n=oConn.setResult.getString("cod");
+            if (oConn1.setResult.next()) {
+                n=oConn1.setResult.getString("cod");
                 if(n!=null){
                    numc = Integer.parseInt(n);
                    txtNumColor.setText(String.valueOf(numc));
                 }else
                     txtNumColor.setText("1");
             } 
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
             //JOptionPane.showMessageDialorootPane,ex);
             oFunc.SubSistemaMensajeError(ex.toString());

@@ -116,6 +116,23 @@ public class HCL extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setTitle("Historia Clinica - Horizonte medic");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Historia Clinica"));
 
@@ -520,7 +537,7 @@ public class HCL extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar)
                             .addComponent(btnLimpiar))
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jSeparator3)))
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
@@ -600,6 +617,10 @@ public class HCL extends javax.swing.JInternalFrame {
             
         }
     }//GEN-LAST:event_tbHCMousePressed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
   private void print(Integer cod){
 
                 Map parameters = new HashMap(); 
@@ -620,6 +641,21 @@ public class HCL extends javax.swing.JInternalFrame {
                  
  
  }
+  
+  public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(HCL.class.getName()).log(Level.SEVERE, null, ex);
+     }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
  private com.toedter.calendar.JDateChooser FNacimiento;
     public void cLLenar(JTextField cod){
         FNacimiento = new com.toedter.calendar.JDateChooser();
@@ -636,8 +672,9 @@ public class HCL extends javax.swing.JInternalFrame {
                 txtEdad.setText(String.valueOf(oFunc.calcularEdad(FNacimiento.getCalendar())) );
                 
                txtNombre.setEditable(false);
-               oConn.setResult.close();
+               
             } 
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ticket: " + ex.getMessage().toString());
         }
@@ -784,7 +821,12 @@ public class HCL extends javax.swing.JInternalFrame {
                 oFunc.SubSistemaMensajeError(ex.toString());
                 Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }    
+        } 
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(HCL.class.getName()).log(Level.SEVERE, null, ex);
+     }
          
 }
     void tabla(){

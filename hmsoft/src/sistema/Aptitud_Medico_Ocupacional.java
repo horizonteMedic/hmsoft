@@ -1080,6 +1080,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                 oConn.sqlStmt.close();
+                oConn.setResult.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1348,6 +1350,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                     }
                 oConn.sqlStmt.close();
+                oConn.setResult.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Ficha Aptitud:" + ex.getMessage().toString());}
        
@@ -1444,6 +1448,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //             txtNorden.setText(null);
             }
             oConn.sqlStmt.close();
+            oConn.setResult.close();
+
         } catch (SQLException ex) {
         }
         }   
@@ -1468,6 +1474,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         }
         try {
             oConn.sqlStmt.close();
+            oConn.setResult.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1496,6 +1504,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                }
               
               oConn.sqlStmt.close();
+                oConn.setResult.close();
+
                 return bResult;       
         }
     
@@ -1673,6 +1683,8 @@ private void Limpiar(){
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
                 oConn.sqlStmt.close();
+                oConn.setResult.close();
+
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1717,6 +1729,8 @@ private void Limpiar(){
         }
         try {
             oConn.sqlStmt.close();
+            oConn.setResult.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
         }
