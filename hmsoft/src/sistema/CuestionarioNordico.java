@@ -348,6 +348,7 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cuestionario Nórdico de Signos y Síntomas Osteomusculares");
         setPreferredSize(new java.awt.Dimension(790, 646));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -356,6 +357,7 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -3694,13 +3696,17 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Audiometria:" + ex.getMessage().toString());
          
        }
     }     
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
    void cuello1(boolean f){
        chkPCNo2.setEnabled(f);
        chkPCSi2.setEnabled(f);
@@ -3810,7 +3816,7 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Cuestionario Nordico:" + ex.getMessage().toString());
             }
@@ -3868,13 +3874,15 @@ void Guardar(){
                 oFunc.SubSistemaMensajeInformacion("Agregado correctamente");
                 limpiar();
                 txtNorden.requestFocus();
-                try {
-                    oConn.setResult.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                    
+                                    
                }
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+            }
+              
+              
         }  
       }
 }
@@ -3937,14 +3945,15 @@ private void Actualizar(){
             imp();  
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
             limpiar();
-        try {
-            oConn.setResult.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+             try {
+                 oConn.sqlStmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+             }
 }
 private boolean validar(){
 boolean bResultado=true;
@@ -3985,7 +3994,7 @@ FechaExamen.setDate(fechaDate);
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -4062,7 +4071,7 @@ public boolean OrdenImp()
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -4398,6 +4407,21 @@ if (imprimir1(Integer.valueOf(txtNorden.getText()))){
 }
 
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+             try {
+                 oConn.sqlStmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+             }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
 private boolean imprimir1(Integer num){
     boolean im = false;
 int seleccion = JOptionPane.showOptionDialog(

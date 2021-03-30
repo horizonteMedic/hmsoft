@@ -273,8 +273,25 @@ Fecha();
         });
         menu.add(btnNormal);
 
-        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Odontograma");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setText("N° Orden :");
 
@@ -1731,7 +1748,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
        }
@@ -1925,6 +1942,10 @@ int seleccion = JOptionPane.showOptionDialog(
             txtObservaciones.setText(" NO PASO EXAMEN ODONTOLOGICO");
         }
     }//GEN-LAST:event_chkPasoExamenActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
  
     private void Agregar(){
          if(!txtNorden.getText().isEmpty()){
@@ -2109,7 +2130,11 @@ int seleccion = JOptionPane.showOptionDialog(
                 }
               }else {oFunc.SubSistemaMensajeError("No se pudo Agregar Registro Intente Nuevamente");
              }
-          
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+            }
        }
         }          
        }  
@@ -2239,13 +2264,13 @@ int seleccion = JOptionPane.showOptionDialog(
                 txtNorden.setEditable(true);
                 txtNorden.requestFocus();
                 CargarDatos("");
-            try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-            }
               }else {oFunc.SubSistemaMensajeError("No se pudo Agregar Registro Intente Nuevamente");
              }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     private void Editar(){
         if(!txtNorden.getText().isEmpty()){
@@ -2419,7 +2444,7 @@ int seleccion = JOptionPane.showOptionDialog(
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
     
@@ -2516,7 +2541,7 @@ public boolean OrdenExiste()
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -2601,6 +2626,11 @@ public void CargarDatos(String valor){
                 oFunc.SubSistemaMensajeError(ex.toString());
                 Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        try {        
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
         }
            
 }
@@ -2765,6 +2795,21 @@ if (imprimir1(Integer.valueOf(txtOrden.getText()))){
 }
 
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+    try {
+        oConn.sqlStmt.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
 private boolean imprimir1(Integer num){
     boolean im = false;
    int seleccion = JOptionPane.showOptionDialog(

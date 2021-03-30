@@ -125,6 +125,7 @@ clsConnection oConn = new clsConnection();
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Radiografia de Torax P.A");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -132,6 +133,7 @@ clsConnection oConn = new clsConnection();
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
             }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -1008,7 +1010,7 @@ clsConnection oConn = new clsConnection();
                       }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Radiografia:" + ex.getMessage().toString());}
            
@@ -1052,6 +1054,10 @@ clsConnection oConn = new clsConnection();
         imagenRayosX dal= new imagenRayosX();
         dal.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     public static com.toedter.calendar.JDateChooser FechaNacimiento;
     private void Actualizar(){
         String sCodigo=txtNumero.getText();
@@ -1077,11 +1083,12 @@ clsConnection oConn = new clsConnection();
             }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-            try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
+        }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     void AddNorden(){
@@ -1126,14 +1133,14 @@ clsConnection oConn = new clsConnection();
                         FechaNacimiento.setDate(null);
                         CargarDatos("");
                         Limpiar();
-                        try {
-                            oConn.sqlStmt.close();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
+                        
                     }else {oFunc.SubSistemaMensajeError("No se pudo Agregar Registro Intente Nuevamente");
                     }
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
        }else{oFunc.SubSistemaMensajeError("Ingrese Nro ");
        }
@@ -1167,7 +1174,7 @@ boolean bResultado=true;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Radiografia:" + ex.getMessage().toString());}
            }
@@ -1198,7 +1205,7 @@ boolean bResultado=true;
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -1293,6 +1300,11 @@ boolean bResultado=true;
                 Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
+        }
            
 }
 void Fecha(){
@@ -1335,6 +1347,22 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+    try {
+        oConn.sqlStmt.close();
+    } catch (SQLException ex) {
+        Logger.getLogger(RadiografiaTorax.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
+
    private void printer(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      

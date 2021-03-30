@@ -44,16 +44,16 @@ import net.sf.jasperreports.engine.util.JRLoader;
 public final class FichaMedicaMarsa1 extends javax.swing.JInternalFrame {
 
 //    public static frmObservaciones addObsv;
-    clsConnection oConn = new clsConnection();
+    clsConnection oConn2 = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
-         Ingreso ads = new Ingreso();
+         //Ingreso ads = new Ingreso();
 String sed="";
     clsOperacionesUsuarios oPu = new clsOperacionesUsuarios();
     boolean ordenVer=true;
     DefaultTableModel model;
     public FichaMedicaMarsa1() {
         initComponents();
-        sed=ads.nombresede;
+        //sed=ads.nombresede;
 //        jtFichaMedica.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/id.png")));
 //        jtFichaMedica.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/invoice.png")));
 //        jtFichaMedica.setIconAt(2, new ImageIcon(ClassLoader.getSystemResource("imagenes/botiquin.png")));
@@ -1759,6 +1759,7 @@ String sed="";
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         consultar();
+        CargarSedes();
         
         
     }//GEN-LAST:event_txtNordenActionPerformed
@@ -1897,21 +1898,21 @@ String sed="";
         sQuery = "Select n_orden from fmedica_covid_marsa1 Where n_orden=" + txtNorden.getText().toString();
 
         //Ejecuta el Query
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn2.FnBoolQueryExecute(sQuery);
 
         // Capturo el Error
         try {
 
             // Verifico que haya habido resultados
-            if (oConn.setResult.next()) {
+            if (oConn2.setResult.next()) {
                 // Resultado
                 bResultado = true;
 
             }
 
             // Cierro los Resultados
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn2.setResult.close();
+            oConn2.sqlStmt.close();
         } catch (SQLException ex) {
 
         }
@@ -1920,6 +1921,41 @@ String sed="";
 
     }
 
+    private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNorden.getText().toString().trim();
+        String cboSede="1";
+        if (oConn2.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn2.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn2.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn2.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+    
     void Fecha() {
         Date fechaDate = new Date();
 //SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
@@ -1961,92 +1997,92 @@ String sed="";
         "left JOIN constancia_salud_marsa AS c ON (n.n_orden = c.n_orden) "+
 "                WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
                 
-                oConn.FnBoolQueryExecute(Consulta);
+                oConn2.FnBoolQueryExecute(Consulta);
                 
                 try {
-                    if (oConn.setResult.next()) {
-                        txtTipoExamen.setText(oConn.setResult.getString("nom_examen"));
-                        txtDni.setText(oConn.setResult.getString("cod_pa"));
-                        txtNombre.setText(oConn.setResult.getString("nombres_pa"));
-                        txtApellido.setText(oConn.setResult.getString("apellidos_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        txtSexo.setText(oConn.setResult.getString("sexo_pa"));
-                        txtLugarNacimiento.setText(oConn.setResult.getString("lugar_nac_pa"));
-                        txtDomicilio.setText(oConn.setResult.getString("direccion_pa"));
-                        txtTelefono.setText(oConn.setResult.getString("tel_casa_pa"));//== null ? "-":oConn.setResult.getString("cel_pa"));
-                        txtEstadoCivil.setText(oConn.setResult.getString("estado_civil_pa"));
-                        txtGradoInstruccion.setText(oConn.setResult.getString("nivel_est_pa"));
-                        txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                        txtContrata.setText(oConn.setResult.getString("razon_contrata"));
+                    if (oConn2.setResult.next()) {
+                        txtTipoExamen.setText(oConn2.setResult.getString("nom_examen"));
+                        txtDni.setText(oConn2.setResult.getString("cod_pa"));
+                        txtNombre.setText(oConn2.setResult.getString("nombres_pa"));
+                        txtApellido.setText(oConn2.setResult.getString("apellidos_pa"));
+                        FechaNacimiento.setDate(oConn2.setResult.getDate("fecha_nacimiento_pa"));
+                        txtSexo.setText(oConn2.setResult.getString("sexo_pa"));
+                        txtLugarNacimiento.setText(oConn2.setResult.getString("lugar_nac_pa"));
+                        txtDomicilio.setText(oConn2.setResult.getString("direccion_pa"));
+                        txtTelefono.setText(oConn2.setResult.getString("tel_casa_pa"));//== null ? "-":oConn.setResult.getString("cel_pa"));
+                        txtEstadoCivil.setText(oConn2.setResult.getString("estado_civil_pa"));
+                        txtGradoInstruccion.setText(oConn2.setResult.getString("nivel_est_pa"));
+                        txtEmpresa.setText(oConn2.setResult.getString("razon_empresa"));
+                        txtContrata.setText(oConn2.setResult.getString("razon_contrata"));
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
-                        txtExplotacionEn.setText(oConn.setResult.getString("nom_ex"));
-                        txtAlturaLabor.setText(oConn.setResult.getString("altura_po"));
-                        txtMineralesExplotados.setText(oConn.setResult.getString("mineral_po"));
-                        txtPuestoPostula.setText(oConn.setResult.getString("cargo_de"));
+                        txtExplotacionEn.setText(oConn2.setResult.getString("nom_ex"));
+                        txtAlturaLabor.setText(oConn2.setResult.getString("altura_po"));
+                        txtMineralesExplotados.setText(oConn2.setResult.getString("mineral_po"));
+                        txtPuestoPostula.setText(oConn2.setResult.getString("cargo_de"));
                         if ("ANUAL".equals(txtTipoExamen.getText().toString())) {
-                            txtPuestoActual.setText(oConn.setResult.getString("cargo_de"));
+                            txtPuestoActual.setText(oConn2.setResult.getString("cargo_de"));
                         }
-                        txtIMC.setText(oConn.setResult.getString("imc"));
+                        txtIMC.setText(oConn2.setResult.getString("imc"));
                         
-                    txtTalla.setText(oConn.setResult.getString("talla"));
-                    txtPeso.setText(oConn.setResult.getString("peso"));
-                    txtTemperatura.setText(oConn.setResult.getString("temperatura"));
-                    txtCintura.setText(oConn.setResult.getString("cintura"));
-                    txtCadera.setText(oConn.setResult.getString("cadera"));
-                    txticc.setText(oConn.setResult.getString("icc"));
-                    txtFcardiaca.setText(oConn.setResult.getString("f_cardiaca"));
-                    txtSatO2.setText(oConn.setResult.getString("sat_02"));
-                    txtSistolica.setText(oConn.setResult.getString("sistolica"));
-                    txtDiastolica.setText(oConn.setResult.getString("diastolica"));
-                        txtArea.setText(oConn.setResult.getString("area_o"));
-                        txtLeucocitos.setText(oConn.setResult.getString("txtleucocitosematologia"));
-                        txtLinfocitos.setText(oConn.setResult.getString("txtlinfocitosematologia"));
-                        txtBastones.setText(oConn.setResult.getString("txtbasofilosematologia"));
-                        txteosinofilos.setText(oConn.setResult.getString("txteosinofiosematologia"));
-                        txtPlaquetas.setText(oConn.setResult.getString("txtplaquetas"));
+                    txtTalla.setText(oConn2.setResult.getString("talla"));
+                    txtPeso.setText(oConn2.setResult.getString("peso"));
+                    txtTemperatura.setText(oConn2.setResult.getString("temperatura"));
+                    txtCintura.setText(oConn2.setResult.getString("cintura"));
+                    txtCadera.setText(oConn2.setResult.getString("cadera"));
+                    txticc.setText(oConn2.setResult.getString("icc"));
+                    txtFcardiaca.setText(oConn2.setResult.getString("f_cardiaca"));
+                    txtSatO2.setText(oConn2.setResult.getString("sat_02"));
+                    txtSistolica.setText(oConn2.setResult.getString("sistolica"));
+                    txtDiastolica.setText(oConn2.setResult.getString("diastolica"));
+                        txtArea.setText(oConn2.setResult.getString("area_o"));
+                        txtLeucocitos.setText(oConn2.setResult.getString("txtleucocitosematologia"));
+                        txtLinfocitos.setText(oConn2.setResult.getString("txtlinfocitosematologia"));
+                        txtBastones.setText(oConn2.setResult.getString("txtbasofilosematologia"));
+                        txteosinofilos.setText(oConn2.setResult.getString("txteosinofiosematologia"));
+                        txtPlaquetas.setText(oConn2.setResult.getString("txtplaquetas"));
                     
-                    txtRx.setText(oConn.setResult.getString("n_orden"));
-                    txtVertices.setText(oConn.setResult.getString("txtvertices"));
-                    txtHilios.setText(oConn.setResult.getString("txthilios"));
-                    txtSenos.setText(oConn.setResult.getString("txtsenoscostofrenicos"));
-                    txtMediastinos.setText(oConn.setResult.getString("txtmediastinos"));
-                    txtSiluetaCardioVascular.setText(oConn.setResult.getString("txtsiluetacardiovascular"));
-                    txtConclusionesRx.setText(oConn.setResult.getString("txtconclusionesradiograficas"));
-                    txtHemoHema.setText(oConn.setResult.getString("txthemoglobina"));
-                    txtPuestoActual.setText(oConn.setResult.getString("txtpuestoactual"));
-                    txtTiempo.setText(oConn.setResult.getString("txttiempo"));
-                    txtAntecedentesPersonales.setText(oConn.setResult.getString("txtantecedentespersonales"));
-                    txtAntecedentesFamiliares.setText(oConn.setResult.getString("txtantecedentesfamiliares"));
-                    rbNormal.setSelected(oConn.setResult.getBoolean("rbnormal"));
-                    rbAnormal.setSelected(oConn.setResult.getBoolean("rbanormal"));
-                    txtPulmones.setText(oConn.setResult.getString("txtpulmones"));
-                    txtAnamnesis.setText(oConn.setResult.getString("txtanamnesis"));
+                    txtRx.setText(oConn2.setResult.getString("n_orden"));
+                    txtVertices.setText(oConn2.setResult.getString("txtvertices"));
+                    txtHilios.setText(oConn2.setResult.getString("txthilios"));
+                    txtSenos.setText(oConn2.setResult.getString("txtsenoscostofrenicos"));
+                    txtMediastinos.setText(oConn2.setResult.getString("txtmediastinos"));
+                    txtSiluetaCardioVascular.setText(oConn2.setResult.getString("txtsiluetacardiovascular"));
+                    txtConclusionesRx.setText(oConn2.setResult.getString("txtconclusionesradiograficas"));
+                    txtHemoHema.setText(oConn2.setResult.getString("txthemoglobina"));
+                    txtPuestoActual.setText(oConn2.setResult.getString("txtpuestoactual"));
+                    txtTiempo.setText(oConn2.setResult.getString("txttiempo"));
+                    txtAntecedentesPersonales.setText(oConn2.setResult.getString("txtantecedentespersonales"));
+                    txtAntecedentesFamiliares.setText(oConn2.setResult.getString("txtantecedentesfamiliares"));
+                    rbNormal.setSelected(oConn2.setResult.getBoolean("rbnormal"));
+                    rbAnormal.setSelected(oConn2.setResult.getBoolean("rbanormal"));
+                    txtPulmones.setText(oConn2.setResult.getString("txtpulmones"));
+                    txtAnamnesis.setText(oConn2.setResult.getString("txtanamnesis"));
 //                    txtEncuestaCovid.setText(oConn.setResult.getString("encuesta_covid"));
-                    FechaRx.setDate(oConn.setResult.getDate("fecha_exra"));
-                    txtCalidad.setText(oConn.setResult.getString("txtcalidad"));
-                    txtSimbolos.setText(oConn.setResult.getString("txtsimbolos"));
-                    rb0.setSelected(oConn.setResult.getBoolean("ex_0"));
-                    rb1.setSelected(oConn.setResult.getBoolean("ex_10"));
-                    rb2.setSelected(oConn.setResult.getBoolean("ex_11"));
-                    rb3.setSelected(oConn.setResult.getBoolean("ex_12"));
-                    rb4.setSelected(oConn.setResult.getBoolean("ex_21"));
-                    rb5.setSelected(oConn.setResult.getBoolean("ex_22"));
-                    rb6.setSelected(oConn.setResult.getBoolean("ex_23"));
-                    rb7.setSelected(oConn.setResult.getBoolean("ex_32"));
-                    rb8.setSelected(oConn.setResult.getBoolean("ex_33"));
-                    rb9.setSelected(oConn.setResult.getBoolean("ex_3mas"));
-                    rb10.setSelected(oConn.setResult.getBoolean("ex_abc"));
-                    rb11.setSelected(oConn.setResult.getBoolean("ex_st"));
-                    rbSI.setSelected(oConn.setResult.getBoolean("apto_si"));
-                    rbNO.setSelected(oConn.setResult.getBoolean("apto_no"));
-                    FechaFicha.setDate(oConn.setResult.getDate("fecha"));
+                    FechaRx.setDate(oConn2.setResult.getDate("fecha_exra"));
+                    txtCalidad.setText(oConn2.setResult.getString("txtcalidad"));
+                    txtSimbolos.setText(oConn2.setResult.getString("txtsimbolos"));
+                    rb0.setSelected(oConn2.setResult.getBoolean("ex_0"));
+                    rb1.setSelected(oConn2.setResult.getBoolean("ex_10"));
+                    rb2.setSelected(oConn2.setResult.getBoolean("ex_11"));
+                    rb3.setSelected(oConn2.setResult.getBoolean("ex_12"));
+                    rb4.setSelected(oConn2.setResult.getBoolean("ex_21"));
+                    rb5.setSelected(oConn2.setResult.getBoolean("ex_22"));
+                    rb6.setSelected(oConn2.setResult.getBoolean("ex_23"));
+                    rb7.setSelected(oConn2.setResult.getBoolean("ex_32"));
+                    rb8.setSelected(oConn2.setResult.getBoolean("ex_33"));
+                    rb9.setSelected(oConn2.setResult.getBoolean("ex_3mas"));
+                    rb10.setSelected(oConn2.setResult.getBoolean("ex_abc"));
+                    rb11.setSelected(oConn2.setResult.getBoolean("ex_st"));
+                    rbSI.setSelected(oConn2.setResult.getBoolean("apto_si"));
+                    rbNO.setSelected(oConn2.setResult.getBoolean("apto_no"));
+                    FechaFicha.setDate(oConn2.setResult.getDate("fecha"));
 //                    txtPruebaCovid.setText(oConn.setResult.getString("prueba_covid"));
-                    txtEncuestaCovid.append(String.valueOf(oConn.setResult.getBoolean("chk_asintomatico")).equals("true")?"ASINTOMATICO":"");
-                        txtEncuestaCovid.append(String.valueOf(oConn.setResult.getBoolean("chk_sintomatico")).equals("true")?"SINTOMATICO ".concat(oConn.setResult.getString("txtresultados")):"");
-                        txtPruebaCovid.append(String.valueOf(oConn.setResult.getBoolean("chkigm_reactivo")).equals("true")? ", IgM:POSITIVO":"IgM:NEGATIVO") ;
-                        txtPruebaCovid.append(String.valueOf(oConn.setResult.getBoolean("chkigg_reactivo")).equals("true")? ", IgG:POSITIVO":"IgG:NEGATIVO") ;  
-                    txtDiagnostico.setText(oConn.setResult.getString("txtdiagnostico"));
-                    txtRecomendaciones.setText(oConn.setResult.getString("txtrecomendaciones"));
+                    txtEncuestaCovid.append(String.valueOf(oConn2.setResult.getBoolean("chk_asintomatico")).equals("true")?"ASINTOMATICO":"");
+                        txtEncuestaCovid.append(String.valueOf(oConn2.setResult.getBoolean("chk_sintomatico")).equals("true")?"SINTOMATICO ".concat(oConn2.setResult.getString("txtresultados")):"");
+                        txtPruebaCovid.append(String.valueOf(oConn2.setResult.getBoolean("chkigm_reactivo")).equals("true")? ", IgM:POSITIVO":"IgM:NEGATIVO") ;
+                        txtPruebaCovid.append(String.valueOf(oConn2.setResult.getBoolean("chkigg_reactivo")).equals("true")? ", IgG:POSITIVO":"IgG:NEGATIVO") ;  
+                    txtDiagnostico.setText(oConn2.setResult.getString("txtdiagnostico"));
+                    txtRecomendaciones.setText(oConn2.setResult.getString("txtrecomendaciones"));
                     txtAnamnesis.setText("PACIENTE REFIERE ESTAR ".concat(txtEncuestaCovid.getText()));
                //      txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
                  //           txtDiagnostico.append("2.PRESENTA: ".concat(txtPruebaCovid.getText())+"\n");
@@ -2079,8 +2115,8 @@ String sed="";
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
-                    oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                    oConn2.setResult.close();
+                    oConn2.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -2125,45 +2161,45 @@ String sed="";
         + "left JOIN constancia_salud_marsa1 AS c ON (n.n_orden = c.n_orden) "
                         + "WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
                 
-                oConn.FnBoolQueryExecute(Consulta);
+                oConn2.FnBoolQueryExecute(Consulta);
                 
                 try {
-                    if (oConn.setResult.next()) {
+                    if (oConn2.setResult.next()) {
                         //oFunc.SubSistemaMensajeError(oConn.setResult.getString("txtobservaciones"));
                         
-                        txtTipoExamen.setText(oConn.setResult.getString("nom_examen"));
-                        nombre=oConn.setResult.getString("nom_examen");
-                        String s=oConn.setResult.getString("cod_pa");
+                        txtTipoExamen.setText(oConn2.setResult.getString("nom_examen"));
+                        nombre=oConn2.setResult.getString("nom_examen");
+                        String s=oConn2.setResult.getString("cod_pa");
                         txtDni.setText(s);
-                        txtNombre.setText(oConn.setResult.getString("nombres_pa"));
-                        txtApellido.setText(oConn.setResult.getString("apellidos_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        txtSexo.setText(oConn.setResult.getString("sexo_pa"));
-                        txtLugarNacimiento.setText(oConn.setResult.getString("lugar_nac_pa"));
-                        txtDomicilio.setText(oConn.setResult.getString("direccion_pa"));
-                        txtTelefono.setText(oConn.setResult.getString("tel_casa_pa"));//== null ? "-":oConn.setResult.getString("cel_pa"));
-                        txtEstadoCivil.setText(oConn.setResult.getString("estado_civil_pa"));
-                        txtGradoInstruccion.setText(oConn.setResult.getString("nivel_est_pa"));
-                        txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                        txtContrata.setText(oConn.setResult.getString("razon_contrata"));
+                        txtNombre.setText(oConn2.setResult.getString("nombres_pa"));
+                        txtApellido.setText(oConn2.setResult.getString("apellidos_pa"));
+                        FechaNacimiento.setDate(oConn2.setResult.getDate("fecha_nacimiento_pa"));
+                        txtSexo.setText(oConn2.setResult.getString("sexo_pa"));
+                        txtLugarNacimiento.setText(oConn2.setResult.getString("lugar_nac_pa"));
+                        txtDomicilio.setText(oConn2.setResult.getString("direccion_pa"));
+                        txtTelefono.setText(oConn2.setResult.getString("tel_casa_pa"));//== null ? "-":oConn.setResult.getString("cel_pa"));
+                        txtEstadoCivil.setText(oConn2.setResult.getString("estado_civil_pa"));
+                        txtGradoInstruccion.setText(oConn2.setResult.getString("nivel_est_pa"));
+                        txtEmpresa.setText(oConn2.setResult.getString("razon_empresa"));
+                        txtContrata.setText(oConn2.setResult.getString("razon_contrata"));
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
-                        txtExplotacionEn.setText(oConn.setResult.getString("nom_ex"));
-                        txtAlturaLabor.setText(oConn.setResult.getString("altura_po"));
-                        txtMineralesExplotados.setText(oConn.setResult.getString("mineral_po"));
-                        txtPuestoPostula.setText(oConn.setResult.getString("cargo_de"));
+                        txtExplotacionEn.setText(oConn2.setResult.getString("nom_ex"));
+                        txtAlturaLabor.setText(oConn2.setResult.getString("altura_po"));
+                        txtMineralesExplotados.setText(oConn2.setResult.getString("mineral_po"));
+                        txtPuestoPostula.setText(oConn2.setResult.getString("cargo_de"));
                         if ("ANUAL".equals(txtTipoExamen.getText().toString())) {
-                            txtPuestoActual.setText(oConn.setResult.getString("cargo_de"));
+                            txtPuestoActual.setText(oConn2.setResult.getString("cargo_de"));
                         }
-                        txtArea.setText(oConn.setResult.getString("area_o"));
-                        txtGFSPrevio.setText(oConn.setResult.getString("grupofactorsan"));
-                        txtTalla.setText(oConn.setResult.getString("talla"));
-                        txtPeso.setText(oConn.setResult.getString("peso"));
-                        txtIMC.setText(oConn.setResult.getString("imc"));
-                        valorigm=oConn.setResult.getFloat("valorigm");
-                        ir=oConn.setResult.getBoolean("chkigm_reactivo");
-                        inr=oConn.setResult.getBoolean("chkigm_noreactivo");
-                        gr=oConn.setResult.getBoolean("chkigg_reactivo");
-                        gnr=oConn.setResult.getBoolean("chkigg_noreactivo");
+                        txtArea.setText(oConn2.setResult.getString("area_o"));
+                        txtGFSPrevio.setText(oConn2.setResult.getString("grupofactorsan"));
+                        txtTalla.setText(oConn2.setResult.getString("talla"));
+                        txtPeso.setText(oConn2.setResult.getString("peso"));
+                        txtIMC.setText(oConn2.setResult.getString("imc"));
+                        valorigm=oConn2.setResult.getFloat("valorigm");
+                        ir=oConn2.setResult.getBoolean("chkigm_reactivo");
+                        inr=oConn2.setResult.getBoolean("chkigm_noreactivo");
+                        gr=oConn2.setResult.getBoolean("chkigg_reactivo");
+                        gnr=oConn2.setResult.getBoolean("chkigg_noreactivo");
                         if(nombre.contains("CUALITATIVA"))
                         {
                         if(ir==true)
@@ -2180,27 +2216,27 @@ String sed="";
                         else
                             mensaje=" RESULTADO NO REACTIVO";
                         }
-                        txtTemperatura.setText(oConn.setResult.getString("temperatura"));
-                        txtCintura.setText(oConn.setResult.getString("cintura"));
-                        txtCadera.setText(oConn.setResult.getString("cadera"));
-                        txticc.setText(oConn.setResult.getString("icc"));
-                        txtFcardiaca.setText(oConn.setResult.getString("f_cardiaca"));
-                        txtSatO2.setText(oConn.setResult.getString("sat_02"));
-                        txtSistolica.setText(oConn.setResult.getString("sistolica"));
-                        txtDiastolica.setText(oConn.setResult.getString("diastolica"));
-                        txtGrupoFacLab.setText(oConn.setResult.getString("Grupofactor"));
-                        txtEncuestaCovid.append(String.valueOf(oConn.setResult.getBoolean("chk_asintomatico")).equals("true")?"ASINTOMATICO":"");
-                        txtEncuestaCovid.append(String.valueOf(oConn.setResult.getBoolean("chk_sintomatico")).equals("true")?"SINTOMATICO: ".concat(oConn.setResult.getString("txtresultados")):"");
+                        txtTemperatura.setText(oConn2.setResult.getString("temperatura"));
+                        txtCintura.setText(oConn2.setResult.getString("cintura"));
+                        txtCadera.setText(oConn2.setResult.getString("cadera"));
+                        txticc.setText(oConn2.setResult.getString("icc"));
+                        txtFcardiaca.setText(oConn2.setResult.getString("f_cardiaca"));
+                        txtSatO2.setText(oConn2.setResult.getString("sat_02"));
+                        txtSistolica.setText(oConn2.setResult.getString("sistolica"));
+                        txtDiastolica.setText(oConn2.setResult.getString("diastolica"));
+                        txtGrupoFacLab.setText(oConn2.setResult.getString("Grupofactor"));
+                        txtEncuestaCovid.append(String.valueOf(oConn2.setResult.getBoolean("chk_asintomatico")).equals("true")?"ASINTOMATICO":"");
+                        txtEncuestaCovid.append(String.valueOf(oConn2.setResult.getBoolean("chk_sintomatico")).equals("true")?"SINTOMATICO: ".concat(oConn2.setResult.getString("txtresultados")):"");
                        // txtPruebaCovid.append(String.valueOf(oConn.setResult.getBoolean("chkigm_reactivo")).equals("true")? "IgM:POSITIVO":"IgM:NEGATIVO") ;
                       //  txtPruebaCovid.append(String.valueOf(oConn.setResult.getBoolean("chkigg_reactivo")).equals("true")? ", IgG:POSITIVO":"IgG:NEGATIVO") ;
-                            txtRx.setText(oConn.setResult.getString("n_orden"));
-                            txtVertices.setText(oConn.setResult.getString("txtvertices"));
-                            txtHilios.setText(oConn.setResult.getString("txthilios"));
-                            txtSenos.setText(oConn.setResult.getString("txtsenoscostofrenicos"));
-                            txtMediastinos.setText(oConn.setResult.getString("txtmediastinos"));
-                            txtSiluetaCardioVascular.setText(oConn.setResult.getString("txtsiluetacardiovascular"));
-                            txtConclusionesRx.setText(oConn.setResult.getString("txtconclusionesradiograficas"));
-                            txtHemoHema.setText(oConn.setResult.getString("txthemoglobina"));
+                            txtRx.setText(oConn2.setResult.getString("n_orden"));
+                            txtVertices.setText(oConn2.setResult.getString("txtvertices"));
+                            txtHilios.setText(oConn2.setResult.getString("txthilios"));
+                            txtSenos.setText(oConn2.setResult.getString("txtsenoscostofrenicos"));
+                            txtMediastinos.setText(oConn2.setResult.getString("txtmediastinos"));
+                            txtSiluetaCardioVascular.setText(oConn2.setResult.getString("txtsiluetacardiovascular"));
+                            txtConclusionesRx.setText(oConn2.setResult.getString("txtconclusionesradiograficas"));
+                            txtHemoHema.setText(oConn2.setResult.getString("txthemoglobina"));
                             txtAnamnesis.setText("PACIENTE REFIERE ESTAR ".concat(txtEncuestaCovid.getText()));
                             txtDiagnostico.append("1.".concat(txtEncuestaCovid.getText())+"\n");
                             txtDiagnostico.append("2.PRESENTA: ".concat(mensaje)+"\n");
@@ -2242,8 +2278,8 @@ String sed="";
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
-                    oConn.setResult.close();
-                    oConn.sqlStmt.close();
+                    oConn2.setResult.close();
+                    oConn2.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
@@ -2283,7 +2319,7 @@ String sed="";
                     "',txtdiagnostico='"+txtDiagnostico.getText().toString()+
                     "',txtrecomendaciones='"+txtRecomendaciones.getText().toString()+   
                     "' WHERE n_orden='"+txtNorden.getText().toString()+"'";
-                if (oConn.FnBoolQueryExecuteUpdate(sql)) {
+                if (oConn2.FnBoolQueryExecuteUpdate(sql)) {
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                     imprimir();
                     limpiar();
@@ -2293,7 +2329,7 @@ String sed="";
                 }
                 
                 try {
-                        oConn.sqlStmt.close();
+                        oConn2.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -2383,7 +2419,7 @@ String sed="";
                 } 
                 
 //                oFunc.SubSistemaMensajeInformacion(insert + values);
-                if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
+                if (oConn2.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     r = true;
                     
@@ -2403,7 +2439,7 @@ String sed="";
         }
         
         try {
-                        oConn.sqlStmt.close();
+                        oConn2.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -2476,7 +2512,17 @@ String sed="";
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
         try {
-            oConn.sqlStmt.close();
+            if (oConn2.setResult != null) 
+         
+            oConn2.setResult.close();
+         
+            if ( oConn2.sqlStmt != null) 
+             
+                oConn2.sqlStmt .close();
+             
+            /*if (oConn2.oConnection != null) 
+             
+                oConn2.oConnection.close();*/
         } catch (SQLException ex) {
             Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2835,12 +2881,12 @@ public static int calcularEdad(String fecha) {
         };
 
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        if (oConn.FnBoolQueryExecute(sql)) {
+        if (oConn2.FnBoolQueryExecute(sql)) {
             try {
-                while (oConn.setResult.next()) {
-                    registros[0] = formato.format(oConn.setResult.getDate("fecha_apertura_po"));
-                    String c1=oConn.setResult.getString("chkcovid1");
-                    String c2 = oConn.setResult.getString("chkcovid2");
+                while (oConn2.setResult.next()) {
+                    registros[0] = formato.format(oConn2.setResult.getDate("fecha_apertura_po"));
+                    String c1=oConn2.setResult.getString("chkcovid1");
+                    String c2 = oConn2.setResult.getString("chkcovid2");
                     if("t".equals(c1)){
                         c1="PRUEBA-1";
                         registros[1] = c1;
@@ -2850,10 +2896,10 @@ public static int calcularEdad(String fecha) {
                     }else {
                         registros[1] = "";
                     }
-                    registros[2] = oConn.setResult.getString("IGM");;
-                    registros[3] = oConn.setResult.getString("IGG");
-                    registros[4] =  oConn.setResult.getString("SINTOMAS");
-                    registros[5] = oConn.setResult.getString("RESULTADO");
+                    registros[2] = oConn2.setResult.getString("IGM");;
+                    registros[3] = oConn2.setResult.getString("IGG");
+                    registros[4] =  oConn2.setResult.getString("SINTOMAS");
+                    registros[5] = oConn2.setResult.getString("RESULTADO");
                     //registros[3]=oConn.setResult.getString("anexo7c");
                     tbPruebasCovid.setDefaultRenderer(Object.class, new MyCellRenderer());
                     model.addRow(registros);
@@ -2863,8 +2909,8 @@ public static int calcularEdad(String fecha) {
                 sbTablaPruebasCovid();
 
                 // Cierra Resultados
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn2.setResult.close();
+                oConn2.sqlStmt.close();
             } catch (SQLException ex) {
                 //JOptionPane.showMessageDialorootPane,ex);
                 oFunc.SubSistemaMensajeError(ex.toString());

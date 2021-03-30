@@ -40,7 +40,7 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author Richard
  */
 public class Aptitud_Medico_Ocupacional2 extends javax.swing.JInternalFrame {    
-    clsConnection oConn = new clsConnection();
+    clsConnection oConn1 = new clsConnection();
     clsFunciones  oFunc = new clsFunciones();
     
     public Aptitud_Medico_Ocupacional2() {
@@ -786,6 +786,8 @@ public class Aptitud_Medico_Ocupacional2 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public static com.toedter.calendar.JDateChooser FechaNacimiento;
+ 
+
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
           FechaNacimiento = new com.toedter.calendar.JDateChooser();
@@ -846,44 +848,44 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 "LEFT OUTER JOIN ficha_sas AS fs ON(fs.n_orden = n.n_orden)"+
 "LEFT OUTER JOIN oit AS oi ON(oi.n_orden = n.n_orden)"              
  + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
-         oConn.FnBoolQueryExecute(Sql);
+         oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombres.setText(oConn.setResult.getString("nombre"));
-                        txtEmpresa.setText(oConn.setResult.getString("razon_empresa")); 
-                        txtContratista.setText(oConn.setResult.getString("razon_contrata"));
-                        txtDni.setText(oConn.setResult.getString("cod_pa"));
-                        txtTipoExamen.setText(oConn.setResult.getString("nom_examen"));
-                        txtPuestoPostula.setText(oConn.setResult.getString("cargo_de"));
-                        txtOcupacion.setText(oConn.setResult.getString("ocupacion_pa"));
-                        String sexo=oConn.setResult.getString("sexo_pa");
+                    if (oConn1.setResult.next()) {
+                        txtNombres.setText(oConn1.setResult.getString("nombre"));
+                        txtEmpresa.setText(oConn1.setResult.getString("razon_empresa")); 
+                        txtContratista.setText(oConn1.setResult.getString("razon_contrata"));
+                        txtDni.setText(oConn1.setResult.getString("cod_pa"));
+                        txtTipoExamen.setText(oConn1.setResult.getString("nom_examen"));
+                        txtPuestoPostula.setText(oConn1.setResult.getString("cargo_de"));
+                        txtOcupacion.setText(oConn1.setResult.getString("ocupacion_pa"));
+                        String sexo=oConn1.setResult.getString("sexo_pa");
                        txtGenero.setText(sexo.equals("M")?"MASCULINO" : "FEMENINO");    
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                        
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                         txtNorden.setEditable(false);
                      // FechaHoy.requestFocusInWindow();
-                        String hemog=oConn.setResult.getString("txthemoglobina");
+                        String hemog=oConn1.setResult.getString("txthemoglobina");
                         txtHemoglobina.setText(hemog);
-                        String hematocrito=oConn.setResult.getString("txthematocrito");
-                        String vsg=oConn.setResult.getString("txtvsg");
+                        String hematocrito=oConn1.setResult.getString("txthematocrito");
+                        String vsg=oConn1.setResult.getString("txtvsg");
                         txtVSG.setText(vsg);
-                        String hma=oConn.setResult.getString("txtleucocitosematologia");
-                        String glu=oConn.setResult.getString("txtglucosabio");
+                        String hma=oConn1.setResult.getString("txtleucocitosematologia");
+                        String glu=oConn1.setResult.getString("txtglucosabio");
                         txtGlucosaBio.setText(glu);
-                        String creat=oConn.setResult.getString("txtcreatininabio");
+                        String creat=oConn1.setResult.getString("txtcreatininabio");
                         txtCreatininaBio.setText(creat);
-                        String orina=oConn.setResult.getString("txtdensidadef");
-                        String coca=oConn.setResult.getString("txtcocaina");
-                        String marig=oConn.setResult.getString("txtmarihuana");
-                        String bram=oConn.setResult.getString("txtbacteriassu");
-                        String gsan=oConn.setResult.getString("Grupofactor");
-                        chkApto.setSelected(oConn.setResult.getBoolean("chkapto"));
-                        chkRestriccion.setSelected(oConn.setResult.getBoolean("chkapto_restriccion"));
-                         chkNoApto.setSelected(oConn.setResult.getBoolean("chkno_apto"));
-                        if(oConn.setResult.getString("triaje")!=null){
-                            atxtConclusiones.append("- TRIAJE ( PESO:"+ oConn.setResult.getString("peso")+ " KG ; TALLA: "
-                                    + oConn.setResult.getString("talla")+ " CM"+'\n');
+                        String orina=oConn1.setResult.getString("txtdensidadef");
+                        String coca=oConn1.setResult.getString("txtcocaina");
+                        String marig=oConn1.setResult.getString("txtmarihuana");
+                        String bram=oConn1.setResult.getString("txtbacteriassu");
+                        String gsan=oConn1.setResult.getString("Grupofactor");
+                        chkApto.setSelected(oConn1.setResult.getBoolean("chkapto"));
+                        chkRestriccion.setSelected(oConn1.setResult.getBoolean("chkapto_restriccion"));
+                         chkNoApto.setSelected(oConn1.setResult.getBoolean("chkno_apto"));
+                        if(oConn1.setResult.getString("triaje")!=null){
+                            atxtConclusiones.append("- TRIAJE ( PESO:"+ oConn1.setResult.getString("peso")+ " KG ; TALLA: "
+                                    + oConn1.setResult.getString("talla")+ " CM"+'\n');
                         }
                         String lab="";
                         if(hma!=null){
@@ -919,56 +921,56 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                           if(!"N/A".equals(marig)){
                             lab+=" y Marihuana";
                         }
-                        if(oConn.setResult.getString("laboratorio")!=null){
+                        if(oConn1.setResult.getString("laboratorio")!=null){
                             
                             atxtConclusiones.append("- LABORATORIO: "+ lab+ '\n');
                         }
-                        if(oConn.setResult.getString("audiomtria")!=null){
+                        if(oConn1.setResult.getString("audiomtria")!=null){
                             atxtConclusiones.append("- AUDIOMETRIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("espirometria")!=null){
+                        if(oConn1.setResult.getString("espirometria")!=null){
                             atxtConclusiones.append("- ESPIROMETRIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("oftalmologia")!=null){
+                        if(oConn1.setResult.getString("oftalmologia")!=null){
                             atxtConclusiones.append("- OFTALMOLOGIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("rayosx")!=null){
+                        if(oConn1.setResult.getString("rayosx")!=null){
                             atxtConclusiones.append("- RAYOS X"+ '\n');
                         }
-                        if(oConn.setResult.getString("odontologia")!=null){
+                        if(oConn1.setResult.getString("odontologia")!=null){
                             atxtConclusiones.append("- ODONTOLOGIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("psicologia")!=null){
+                        if(oConn1.setResult.getString("psicologia")!=null){
                             atxtConclusiones.append("- PSICOLOGIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("electrocardiograma")!=null){
+                        if(oConn1.setResult.getString("electrocardiograma")!=null){
                             atxtConclusiones.append("- ELECTROCARDIOGRAMA"+ '\n');
                         }
-                        if(oConn.setResult.getString("cerificadoAltura")!=null || oConn.setResult.getString("b_certiAltura")!=null){
+                        if(oConn1.setResult.getString("cerificadoAltura")!=null || oConn1.setResult.getString("b_certiAltura")!=null){
                             atxtConclusiones.append("- TEST DE ALTURA"+ '\n');
                         }
-                         if(oConn.setResult.getString("conduccion")!=null || oConn.setResult.getString("b_certiAltura")!=null){
+                         if(oConn1.setResult.getString("conduccion")!=null || oConn1.setResult.getString("b_certiAltura")!=null){
                             atxtConclusiones.append("- CERTIFICADO DE CONDUCCION"+ '\n');
                         }
 //                        if(oConn.setResult.getString("audiomtria")!=null){
 //                            atxtConclusiones.append("- AUDIOMETRIA"+ '\n');
 //                        }
-                        if(oConn.setResult.getString("antecendetesp")!=null){
+                        if(oConn1.setResult.getString("antecendetesp")!=null){
                             atxtConclusiones.append("- ANTECEDENTES PATOLOGICOS"+ '\n');
                         }
-                        if(oConn.setResult.getString("usorespiradores")!=null){
+                        if(oConn1.setResult.getString("usorespiradores")!=null){
                             atxtConclusiones.append("- USO DE RESPIRADORES"+ '\n');
                         }
-                        if(oConn.setResult.getString("oit")!=null){
+                        if(oConn1.setResult.getString("oit")!=null){
                             atxtConclusiones.append("- OIT"+ '\n');
                         }
-                        if(oConn.setResult.getString("cuestionarionordico")!=null){
+                        if(oConn1.setResult.getString("cuestionarionordico")!=null){
                             atxtConclusiones.append("- CUESTIONARIO NORDICO"+ '\n');
                         }
-                        if(oConn.setResult.getString("fichasas")!=null){
+                        if(oConn1.setResult.getString("fichasas")!=null){
                             atxtConclusiones.append("- FICHA SAS"+ '\n');
                         }
-                          if(oConn.setResult.getString("anexo7c")!=null){
+                          if(oConn1.setResult.getString("anexo7c")!=null){
                             atxtConclusiones.append("- FICHA MEDICA"+ '\n');
                         }
                         if(!txtHemoglobina.getText().isEmpty() && !"N/A".equals(txtHemoglobina.getText().toString())){
@@ -1014,8 +1016,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }   
-                oConn.setResult.close();
-                oConn.sqlStmt.close(); 
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close(); 
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1135,82 +1137,82 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 "LEFT OUTER JOIN ficha_sas AS fs ON(fs.n_orden = n.n_orden)"+
 "LEFT OUTER JOIN oit AS oi ON(oi.n_orden = n.n_orden)"              
  + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
-         oConn.FnBoolQueryExecute(Sql);
+         oConn1.FnBoolQueryExecute(Sql);
                 try {
-                    if (oConn.setResult.next()) {
-                        txtNombres.setText(oConn.setResult.getString("nombre"));
-                        txtEmpresa.setText(oConn.setResult.getString("razon_empresa")); 
-                        txtContratista.setText(oConn.setResult.getString("razon_contrata"));
-                        txtDni.setText(oConn.setResult.getString("cod_pa"));
-                        txtTipoExamen.setText(oConn.setResult.getString("nom_examen"));
-                        txtPuestoPostula.setText(oConn.setResult.getString("cargo_de"));
-                        txtOcupacion.setText(oConn.setResult.getString("ocupacion_pa"));
-                        String sexo=oConn.setResult.getString("sexo_pa");
+                    if (oConn1.setResult.next()) {
+                        txtNombres.setText(oConn1.setResult.getString("nombre"));
+                        txtEmpresa.setText(oConn1.setResult.getString("razon_empresa")); 
+                        txtContratista.setText(oConn1.setResult.getString("razon_contrata"));
+                        txtDni.setText(oConn1.setResult.getString("cod_pa"));
+                        txtTipoExamen.setText(oConn1.setResult.getString("nom_examen"));
+                        txtPuestoPostula.setText(oConn1.setResult.getString("cargo_de"));
+                        txtOcupacion.setText(oConn1.setResult.getString("ocupacion_pa"));
+                        String sexo=oConn1.setResult.getString("sexo_pa");
                        txtGenero.setText(sexo.equals("M")?"MASCULINO" : "FEMENINO");    
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                        
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                         txtNorden.setEditable(false);
                      // FechaHoy.requestFocusInWindow();
-                        txtHemoglobina.setText(oConn.setResult.getString("txthemoglobina"));
-                        txtVSG.setText(oConn.setResult.getString("txtvsg"));
-                        txtGlucosaBio.setText(oConn.setResult.getString("txtglucosabio"));
-                        txtCreatininaBio.setText(oConn.setResult.getString("txtcreatininabio"));
-                        chkApto.setSelected(oConn.setResult.getBoolean("chkapto"));
-                        chkRestriccion.setSelected(oConn.setResult.getBoolean("chkapto_restriccion"));
-                         chkNoApto.setSelected(oConn.setResult.getBoolean("chkno_apto"));
-                        if(oConn.setResult.getString("triaje")!=null){
+                        txtHemoglobina.setText(oConn1.setResult.getString("txthemoglobina"));
+                        txtVSG.setText(oConn1.setResult.getString("txtvsg"));
+                        txtGlucosaBio.setText(oConn1.setResult.getString("txtglucosabio"));
+                        txtCreatininaBio.setText(oConn1.setResult.getString("txtcreatininabio"));
+                        chkApto.setSelected(oConn1.setResult.getBoolean("chkapto"));
+                        chkRestriccion.setSelected(oConn1.setResult.getBoolean("chkapto_restriccion"));
+                         chkNoApto.setSelected(oConn1.setResult.getBoolean("chkno_apto"));
+                        if(oConn1.setResult.getString("triaje")!=null){
                             atxtConclusiones.append("- TRIAJE "+ '\n');
                         }
-                        if(oConn.setResult.getString("laboratorio")!=null){
+                        if(oConn1.setResult.getString("laboratorio")!=null){
                             atxtConclusiones.append("- LABORATORIO"+ '\n');
                         }
-                        if(oConn.setResult.getString("audiologia")!=null){
+                        if(oConn1.setResult.getString("audiologia")!=null){
                             atxtConclusiones.append("- AUDIOLOGIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("espirometria")!=null){
+                        if(oConn1.setResult.getString("espirometria")!=null){
                             atxtConclusiones.append("- ESPIROMETRIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("oftalmologia")!=null){
+                        if(oConn1.setResult.getString("oftalmologia")!=null){
                             atxtConclusiones.append("- OFTALMOLOGIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("rayosx")!=null){
+                        if(oConn1.setResult.getString("rayosx")!=null){
                             atxtConclusiones.append("- RAYOS X"+ '\n');
                         }
-                        if(oConn.setResult.getString("odontologia")!=null){
+                        if(oConn1.setResult.getString("odontologia")!=null){
                             atxtConclusiones.append("- ODONTOLOGIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("psicologia")!=null){
+                        if(oConn1.setResult.getString("psicologia")!=null){
                             atxtConclusiones.append("- PSICOLOGIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("electrocardiograma")!=null){
+                        if(oConn1.setResult.getString("electrocardiograma")!=null){
                             atxtConclusiones.append("- ELRCTROCARDIOGRAMA"+ '\n');
                         }
-                        if(oConn.setResult.getString("cerificadoAltura")!=null || oConn.setResult.getString("b_certiAltura")!=null){
+                        if(oConn1.setResult.getString("cerificadoAltura")!=null || oConn1.setResult.getString("b_certiAltura")!=null){
                             atxtConclusiones.append("- TEST DE ALTURA"+ '\n');
                         }
-                         if(oConn.setResult.getString("conduccion")!=null || oConn.setResult.getString("b_certiAltura")!=null){
+                         if(oConn1.setResult.getString("conduccion")!=null || oConn1.setResult.getString("b_certiAltura")!=null){
                             atxtConclusiones.append("- CERTIFICADO DE CONDUCCION"+ '\n');
                         }
-                        if(oConn.setResult.getString("audiomtria")!=null){
+                        if(oConn1.setResult.getString("audiomtria")!=null){
                             atxtConclusiones.append("- AUDIOMETRIA"+ '\n');
                         }
-                        if(oConn.setResult.getString("antecendetesp")!=null){
+                        if(oConn1.setResult.getString("antecendetesp")!=null){
                             atxtConclusiones.append("- ANTECEDENTES PATOLOGICOS"+ '\n');
                         }
-                        if(oConn.setResult.getString("usorespiradores")!=null){
+                        if(oConn1.setResult.getString("usorespiradores")!=null){
                             atxtConclusiones.append("- USO DE RESPIRADORES"+ '\n');
                         }
-                        if(oConn.setResult.getString("oit")!=null){
+                        if(oConn1.setResult.getString("oit")!=null){
                             atxtConclusiones.append("- OIT"+ '\n');
                         }
-                        if(oConn.setResult.getString("cuestionarionordico")!=null){
+                        if(oConn1.setResult.getString("cuestionarionordico")!=null){
                             atxtConclusiones.append("- CUESTIONARIO NORDICO"+ '\n');
                         }
-                        if(oConn.setResult.getString("fichasas")!=null){
+                        if(oConn1.setResult.getString("fichasas")!=null){
                             atxtConclusiones.append("- FICHA SAS"+ '\n');
                         }
-                          if(oConn.setResult.getString("anexo7c")!=null){
+                          if(oConn1.setResult.getString("anexo7c")!=null){
                             atxtConclusiones.append("- FICHA MEDICA"+ '\n');
                         }
                         if(!txtHemoglobina.getText().isEmpty() && !"N/A".equals(txtHemoglobina.getText().toString())){
@@ -1256,8 +1258,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1306,16 +1308,16 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         String sQuery;
 
         sQuery  = "Select n_orden from certificado_aptitud_medico_resumen Where n_orden ="+txtNorden.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
+        oConn1.FnBoolQueryExecute(sQuery);
         try {
-            if (oConn.setResult.next())
+            if (oConn1.setResult.next())
             {
                 bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //              txtNorden.setText(null);
             }
-            oConn.setResult.close();
-            oConn.sqlStmt.close();
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
         } catch (SQLException ex) {
          
         }
@@ -1342,7 +1344,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                     "','"+chkRestriccion.isSelected()+  "','"+chkNoApto.isSelected()+ "','"+lblHora.getText().toString()+"','"+FechaHasta.getDate()+"','"+atxtConclusiones.getText().toString()+"')";
            
 //          oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
                 
 //                   oConn.setResult.next();
             
@@ -1353,7 +1355,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                }
              
                 try {
-                        oConn.sqlStmt.close();
+                        oConn1.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -1498,30 +1500,30 @@ private void Limpiar(){
 "     FROM oftalmologia as o\n" +
 "     left JOIN oftalmologia_lo as ol on (o.n_orden=ol.n_orden)\n" +
 "     WHERE o.n_orden ='"+txtNorden.getText().toString()+"'";
-         oConn.FnBoolQueryExecute(sql);      
+         oConn1.FnBoolQueryExecute(sql);      
              try {
-                    if (oConn.setResult.next()) {                        
-                        txtCercaSinCorregirOD.setText(oConn.setResult.getString("v_cerca_s_od"));
-                        txtCercaSinCorregirOI.setText(oConn.setResult.getString("v_cerca_s_oi"));
-                        txtLejosSinCorregirOD.setText(oConn.setResult.getString("v_lejos_s_od"));
-                        txtLejosSinCorregirOI.setText(oConn.setResult.getString("v_lejos_s_oi"));
+                    if (oConn1.setResult.next()) {                        
+                        txtCercaSinCorregirOD.setText(oConn1.setResult.getString("v_cerca_s_od"));
+                        txtCercaSinCorregirOI.setText(oConn1.setResult.getString("v_cerca_s_oi"));
+                        txtLejosSinCorregirOD.setText(oConn1.setResult.getString("v_lejos_s_od"));
+                        txtLejosSinCorregirOI.setText(oConn1.setResult.getString("v_lejos_s_oi"));
                        
-                        txtCercaCorregidaOD.setText(oConn.setResult.getString("ODCC"));
-                        txtCercaCorregidaOI.setText(oConn.setResult.getString("OICC"));
-                        txtLejosCorregidaOD.setText(oConn.setResult.getString("ODLC"));
-                        txtLejosCorregidaOI.setText(oConn.setResult.getString("OILC"));
-                        txtVisionColores.setText(oConn.setResult.getString("VC"));
-                        txtVisionBinocular.setText(oConn.setResult.getString("VB"));
-                        txtReflejosPupilares.setText(oConn.setResult.getString("RP"));
+                        txtCercaCorregidaOD.setText(oConn1.setResult.getString("ODCC"));
+                        txtCercaCorregidaOI.setText(oConn1.setResult.getString("OICC"));
+                        txtLejosCorregidaOD.setText(oConn1.setResult.getString("ODLC"));
+                        txtLejosCorregidaOI.setText(oConn1.setResult.getString("OILC"));
+                        txtVisionColores.setText(oConn1.setResult.getString("VC"));
+                        txtVisionBinocular.setText(oConn1.setResult.getString("VB"));
+                        txtReflejosPupilares.setText(oConn1.setResult.getString("RP"));
                         
-                       txtEnfermedadesOculares.setText(oConn.setResult.getString("e_oculares"));
+                       txtEnfermedadesOculares.setText(oConn1.setResult.getString("e_oculares"));
                         
                        
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
-                oConn.sqlStmt.close();
-                oConn.setResult.close();
+                oConn1.sqlStmt.close();
+                oConn1.setResult.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -1540,7 +1542,7 @@ private void Limpiar(){
          
             
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+        if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
 //            if(OrdenObservado()){
 //             if(chkApto.isSelected() || chkRestriccion.isSelected()){
@@ -1554,7 +1556,7 @@ private void Limpiar(){
         }
         
          try {
-                oConn.sqlStmt.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
                 Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1565,19 +1567,19 @@ private void Limpiar(){
             String sQuery;
             sQuery = "Select n_orden from observaciones Where n_orden =" + txtNorden.getText().toString();
             //Ejecuta el Query
-            oConn.FnBoolQueryExecute(sQuery);
+            oConn1.FnBoolQueryExecute(sQuery);
             // Capturo el Error
             try {
                 // Verifico que haya habido resultados
-                if (oConn.setResult.next()) {
+                if (oConn1.setResult.next()) {
                     // Resultado
                     bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
                 }
                 // Cierro los Resultados
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
             }
         }
@@ -1588,7 +1590,17 @@ private void Limpiar(){
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
         try {
-            oConn.sqlStmt.close();
+            if (oConn1.setResult != null) 
+         
+            oConn1.setResult.close();
+         
+            if ( oConn1.sqlStmt != null) 
+             
+                oConn1.sqlStmt .close();
+             
+           // if (oConn1.oConnection != null) 
+             //
+              //  oConn1.oConnection.close();
         } catch (SQLException ex) {
             Logger.getLogger(Aptitud_Medico_Ocupacional2.class.getName()).log(Level.SEVERE, null, ex);
         }

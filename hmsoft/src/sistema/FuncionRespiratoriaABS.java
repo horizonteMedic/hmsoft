@@ -57,7 +57,25 @@ public class FuncionRespiratoriaABS extends javax.swing.JInternalFrame {
         txtFVCTeo = new javax.swing.JTextField();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Espirometría");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setText("Nro Orden :");
 
@@ -418,7 +436,7 @@ public class FuncionRespiratoriaABS extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Falta Pasar por Triaje o \n    Aperture EX-Preocupacional de nuevo");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Función Respiratoria:" + ex.getMessage().toString());
         }
@@ -534,7 +552,7 @@ public class FuncionRespiratoriaABS extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Función Respiratoria:" + ex.getMessage().toString());
             }
@@ -565,6 +583,10 @@ public class FuncionRespiratoriaABS extends javax.swing.JInternalFrame {
     private void txtFVCTeoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFVCTeoKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFVCTeoKeyTyped
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+      cerrarVentana();  // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
      private com.toedter.calendar.JDateChooser FechaNacimiento;
     void Fecha(){
 Date fechaDate = new Date();
@@ -619,7 +641,12 @@ String values="VALUES ('"+txtNorden.getText()+"'";
                         Logger.getLogger(FuncionRespiratoriaABS.class.getName()).log(Level.SEVERE, null, ex);
                     }
                                  
-         }       
+         }    
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FuncionRespiratoriaABS.class.getName()).log(Level.SEVERE, null, ex);
+            }
        }
     }
 
@@ -639,14 +666,15 @@ private void Actualizar(){
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-            try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(FuncionRespiratoriaABS.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(FuncionRespiratoriaABS.class.getName()).log(Level.SEVERE, null, ex);
+         }
 }
 void Limpiar(){
 txtNorden.setEditable(true);  
@@ -686,6 +714,21 @@ boolean bResultado=true;
   
    return bResultado;
 }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+         try {
+             oConn.sqlStmt.close();
+         } catch (SQLException ex) {
+             Logger.getLogger(FuncionRespiratoriaABS.class.getName()).log(Level.SEVERE, null, ex);
+         }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
  public boolean OrdenExiste()
     {
         
@@ -711,7 +754,7 @@ boolean bResultado=true;
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          

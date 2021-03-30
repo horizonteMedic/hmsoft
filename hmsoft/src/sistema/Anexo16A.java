@@ -261,7 +261,25 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Anexo N° 16-A");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         txtNorden.setBackground(new java.awt.Color(233, 230, 230));
         txtNorden.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +307,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
 
         txtEdad.setEditable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, null), "Funciones Vitales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), java.awt.Color.blue)); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, null), "Funciones Vitales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), java.awt.Color.blue)); // NOI18N
 
         jLabel2.setText("F.C :");
 
@@ -1136,7 +1154,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel75)
                                     .addComponent(jLabel74))
                                 .addGap(48, 48, 48)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)))
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtVisionBinocular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel48))
@@ -1502,7 +1520,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
         }}else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
@@ -1707,7 +1725,7 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Triaje , o Alta en Ex-Ocupacionales)");
                     }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo 16A:" + ex.getMessage().toString());
         }
@@ -1761,6 +1779,10 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_no12ActionPerformed
 
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
+
 public void direccion(){
 String di="select direccion_clinica from datos_clinica";
          oConn.FnBoolQueryExecute(di);
@@ -1769,7 +1791,7 @@ String di="select direccion_clinica from datos_clinica";
                        txtDireccion.setText(oConn.setResult.getString("direccion_clinica"));
                        }
                         
-                    oConn.setResult.next();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Anexo 7D:" + ex.getMessage().toString());
         }
@@ -2089,7 +2111,7 @@ private void print(Integer cod){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2127,15 +2149,14 @@ private void print(Integer cod){
        if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                bResultado = true;        
-            
+                           
+                }else{
+             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
      try {
          oConn.sqlStmt.close();
      } catch (SQLException ex) {
          Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
      }
-               
-                }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
     }
  }}
 return bResultado;
@@ -2227,7 +2248,7 @@ return bResultado;
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -2430,6 +2451,21 @@ if(buttonGroup17.isSelected(null)){oFunc.SubSistemaMensajeError("Falta Seleccion
           }
     
   }
+ 
+ public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
+     }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
   public void Actualizar7d(){
          String sCodigo=txtNorden.getText();
         String strSqlStmt;
@@ -2456,14 +2492,15 @@ if(buttonGroup17.isSelected(null)){oFunc.SubSistemaMensajeError("Falta Seleccion
              
              txtNorden.setEnabled(true);
              txtNorden.requestFocus();
-             try {
-                 oConn.sqlStmt.close();
-             } catch (SQLException ex) {
-                 Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
-             }
+             
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
+     }
         
      }  
 }
