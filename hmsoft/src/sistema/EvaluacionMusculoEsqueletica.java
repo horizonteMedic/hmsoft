@@ -541,7 +541,25 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("EVALUACION MUSCULO ESQUELETICA");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Filiación"));
 
@@ -700,7 +718,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel15.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Cabeza y Cuello", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Cabeza y Cuello", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel33.setText("Extensión: ");
 
@@ -806,7 +824,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel16.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Hombro)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Hombro)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbFlexionHombro_N1.setBackground(new java.awt.Color(153, 204, 255));
         bgFlexionHombro1.add(rbFlexionHombro_N1);
@@ -1046,7 +1064,6 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(rbFlexionHombro_N1)
                             .addComponent(rbExtensioHombro_N1))
@@ -1062,7 +1079,6 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel19))
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(rbAbduccionHombro_N1)
                             .addComponent(rbAduccionHombro_N1))
@@ -1075,7 +1091,6 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                             .addComponent(rbAbduccionHombro_M1)
                             .addComponent(rbAduccionHombro_M1)))
                     .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(rbRotacionInHombro_N1)
                             .addComponent(rbRotacionExHombro_N1))
@@ -1168,7 +1183,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel17.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Brazo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Brazo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel28.setText("Grado :");
 
@@ -1261,7 +1276,6 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel28))
                     .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(rbFlexionBrazo_N1)
                             .addComponent(rbExtensionBrazo_N1))
@@ -1309,7 +1323,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel18.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Antebrazo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Antebrazo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel32.setText("Grado :");
 
@@ -1402,7 +1416,6 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel32))
                     .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(rbPronacionAntebrazo_N1)
                             .addComponent(rbSupinacionAntebrazo_N1))
@@ -1450,7 +1463,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel19.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Torax)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Torax)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel36.setText("Grado :");
 
@@ -1682,7 +1695,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         Tabla.addTab("Examen Fisico I", jPanel3);
 
         jPanel20.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Muñeca)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Superiores (Muñeca)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbFlexionMuñeca_N1.setBackground(new java.awt.Color(153, 204, 255));
         bgMuñecaF1.add(rbFlexionMuñeca_N1);
@@ -1987,7 +2000,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel21.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Cadera)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Cadera)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbFlexionCadera_N1.setBackground(new java.awt.Color(153, 204, 255));
         bgCaderaF1.add(rbFlexionCadera_N1);
@@ -2346,7 +2359,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel22.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Rodilla)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Rodilla)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel64.setText("Grado :");
 
@@ -2597,7 +2610,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel23.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Pierna)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Pierna)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel68.setText("Grado :");
 
@@ -2768,7 +2781,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         Tabla.addTab("Examen Fisico II", jPanel4);
 
         jPanel14.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Columna Vertebral (Desviación de Eje: )", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Columna Vertebral (Desviación de Eje: )", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel93.setText("Cervical :");
 
@@ -2881,7 +2894,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel26.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Columna Vertebral (Palpación - Dolor )", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Columna Vertebral (Palpación - Dolor )", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel101.setText("Cervical :");
 
@@ -2968,7 +2981,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel28.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Columna Vertebral (Exploración)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Columna Vertebral (Exploración)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel107.setText("Derecho :");
 
@@ -3044,7 +3057,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel24.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Tobillo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Miembros Inferiores (Tobillo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel89.setText("Grado :");
 
@@ -3184,7 +3197,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel25.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Fuerza Muscular (Grado)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Fuerza Muscular (Grado)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbFuerzaMuscular_1.setBackground(new java.awt.Color(153, 204, 255));
         bgFuerzaMuscular.add(rbFuerzaMuscular_1);
@@ -3239,7 +3252,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel30.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "C. Vertebral (Desv. de Columna : )", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "C. Vertebral (Desv. de Columna : )", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel42.setText("Cifosis :");
 
@@ -3350,9 +3363,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -3385,10 +3396,10 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
 
         Tabla.addTab("Examen Fisico III", jPanel7);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Conclusion & Comentarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Conclusion & Comentarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jPanel6.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tratamiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tratamiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         bgTratamiento.add(chkTratameinto_Si);
         chkTratameinto_Si.setText("SI");
@@ -3514,7 +3525,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         });
 
         jPanel29.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Conclusion: Asintomatico:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 204)));
+        jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Conclusion: Asintomatico:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         bgConclusion.add(chkConclusion_Si);
         chkConclusion_Si.setSelected(true);
@@ -3568,7 +3579,6 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                                 .addComponent(btnAgregar)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19))))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -3645,7 +3655,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel10.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sintomas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 255)));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sintomas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 255))); // NOI18N
 
         rbSintoma_si.setBackground(new java.awt.Color(153, 204, 255));
         bgSintomas.add(rbSintoma_si);
@@ -3697,7 +3707,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
         );
 
         jPanel11.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Uso de Faja Lumbar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 0, 255)));
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Uso de Faja Lumbar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 255))); // NOI18N
 
         rbFaja_si.setBackground(new java.awt.Color(153, 204, 255));
         bgFajaLumbar.add(rbFaja_si);
@@ -4304,7 +4314,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                 }
-                oConn.setResult.close();
+                oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -4346,7 +4356,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();;
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
                 }
@@ -4365,6 +4375,10 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
     private void rbSintoma_noMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbSintoma_noMouseClicked
         txtSintomas.setEditable(false);
     }//GEN-LAST:event_rbSintoma_noMouseClicked
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+       cerrarVentana();  // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     
      
     private void Agregar(){
@@ -4708,14 +4722,15 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                     imp();
                     limpiar();   
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito"); 
-                    try {
-                        oConn.setResult.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    
                 }else{
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                        }
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
         }
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
@@ -5095,6 +5110,21 @@ private void printer2(Integer cod){
        chkConclusion_Si.setSelected(true);
        
    }
+   
+   public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
    public void Actualizar(){
        if(!txtNorden.getText().isEmpty()){
                 if(validar()){
@@ -5433,15 +5463,15 @@ private void printer2(Integer cod){
                  oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                   imp();
                 limpiar();   
-                try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                   
+                                   
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
+                    try {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
         }
         
         }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");

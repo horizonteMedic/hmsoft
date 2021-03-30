@@ -206,7 +206,25 @@ public final class EmpresasLugaresGeograficos extends javax.swing.JInternalFrame
         pHO.add(btnEliminar);
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Historia Ocupacional");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Datos Historia ocupacional"));
 
@@ -1507,7 +1525,7 @@ public final class EmpresasLugaresGeograficos extends javax.swing.JInternalFrame
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
         
@@ -2131,7 +2149,7 @@ void limpiar2(){
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
         
@@ -2182,6 +2200,11 @@ void limpiar2(){
                     Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+        }
   
     }//GEN-LAST:event_btnAgregarRegistrosActionPerformed
 
@@ -2192,6 +2215,10 @@ void limpiar2(){
     private void txtActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActividadActionPerformed
         txtAreaEmpresa.requestFocus();
     }//GEN-LAST:event_txtActividadActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
     private void numeros(java.awt.event.KeyEvent evt){
        int k=(int)evt.getKeyChar();
 if (k >= 97 && k <= 122 || k>=65 && k<=90){
@@ -2239,7 +2266,8 @@ if(k==10){
                               
                 else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
-                  return bResult;
+               oConn.sqlStmt.close();   
+               return bResult;
                   
         }
     
@@ -2250,15 +2278,15 @@ if(k==10){
              String strSqlStmt;          
         // Variable para las filas de la Tabla de Productos
          if(tbHT.getRowCount()< 1){
-             strSqlStmt="INSERT INTO historia_oc_detalle(cod_ho) VALUES('"+num+"')";
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-                  bResult = true; 
-                 try {
-                     oConn.sqlStmt.close();
-                 } catch (SQLException ex) {
-                     Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
-                 }
-                }
+            try {
+                strSqlStmt="INSERT INTO historia_oc_detalle(cod_ho) VALUES('"+num+"')";
+                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+                    bResult = true;
+                  }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+            }
          }
          else{    
         int iFila;
@@ -2302,12 +2330,13 @@ if(k==10){
                     // Ejecuta la Sentencia
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
-                        try {
-                            oConn.sqlStmt.close();
-                        } catch (SQLException ex) {
-                            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                         
                     }
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+            }
              }
          }
          return bResult;
@@ -2478,7 +2507,13 @@ public void CargarAreaOcupacional(){
                 
                 
             }
-        }}
+        }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
 
 void sbCargarDatosHisOcupacional(){
         
@@ -2636,7 +2671,7 @@ txtNorden.requestFocus();
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -2796,7 +2831,7 @@ public final String[]getRowsToVector(String sql)
             {
                 veDats[i]=lista.get(i).toString();
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex)
         {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
@@ -2878,6 +2913,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+        }
   }
    private boolean ActualizaHOInfo() throws SQLException{
         boolean bResult = false;
@@ -2897,9 +2937,25 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                }          
                 else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
+               
+               oConn.sqlStmt.close();
                   return bResult;     
         }
     
+   public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
     private boolean ActualizarHODetalle()
     {
          boolean bResult = false;
@@ -2941,6 +2997,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                             bResult = true;
                         }
+                try {
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
          }
          return bResult;

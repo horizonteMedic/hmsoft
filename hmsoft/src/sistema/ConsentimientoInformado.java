@@ -3,6 +3,8 @@ package sistema;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConsentimientoInformado extends javax.swing.JInternalFrame {
    clsConnection oConn = new clsConnection();
@@ -50,7 +52,7 @@ public class ConsentimientoInformado extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Consentimiento :" + ex.getMessage().toString());
             }
@@ -58,6 +60,21 @@ public class ConsentimientoInformado extends javax.swing.JInternalFrame {
         }
     
     }
+    
+    public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+       try {
+           oConn.sqlStmt.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(ConsentimientoInformado.class.getName()).log(Level.SEVERE, null, ex);
+       }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
      public boolean OrdenExiste()
     {
         
@@ -83,7 +100,7 @@ public class ConsentimientoInformado extends javax.swing.JInternalFrame {
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -119,7 +136,25 @@ public class ConsentimientoInformado extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("CONSENTIMIENTO INFORMADO PARA EXAMEN MEDICO");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -283,6 +318,10 @@ public class ConsentimientoInformado extends javax.swing.JInternalFrame {
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();        // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser Fecha;

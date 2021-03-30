@@ -383,8 +383,26 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         jLabel6.setText("Cod. Cliente:");
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Antecdentes Patológicos");
         setPreferredSize(new java.awt.Dimension(1060, 630));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ingresar Información"));
 
@@ -901,7 +919,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -950,7 +968,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                         .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -966,7 +984,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                         .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1000,7 +1018,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel63, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                         .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1009,7 +1027,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel61, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel61, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                         .addComponent(jLabel70, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1210,7 +1228,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                             .addComponent(chk40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(chk60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
                     .addComponent(jSeparator2))
                 .addGap(2, 2, 2)
                 .addComponent(txtotrosap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2356,7 +2374,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel121)
                         .addGap(54, 54, 54))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jtReproduccion.addTab("En caso de Damas", jPanel13);
@@ -2709,7 +2727,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
         
@@ -2736,7 +2754,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
             } else {
                 oFunc.SubSistemaMensajeInformacion("Despues de terminar este Formato, El Paciente debe pasar por triaje");
             }
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
         } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
         }
@@ -2853,6 +2871,11 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         } else {
             oFunc.SubSistemaMensajeError("No se pudo eliminar");
         }
+       try {
+           oConn.sqlStmt.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_btnQuiMouseClicked
 
     private void txtVhijosVivosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVhijosVivosKeyTyped
@@ -3124,13 +3147,17 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Antecedentes Patologicos:" + ex.getMessage().toString());
             }
           
      }else{  oFunc.SubSistemaMensajeInformacion("Ingrese N° Orden");}
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        cerrarVentana();    // TODO add your handling code here:
+    }//GEN-LAST:event_formInternalFrameClosing
   private void muestraVisual(){
         String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
 "          CASE  WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od  ELSE ol.v_cerca_c_od  END as ODCC, \n" +
@@ -3166,7 +3193,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -3206,6 +3233,11 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                 Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+       try {
+           oConn.sqlStmt.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
   }
     private void Oftalmologia(){
         String Sql="SELECT o.e_oculares,e_oculares1 "
@@ -3227,7 +3259,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                             oFunc.SubSistemaMensajeError("No se encuentra registro de enfermedades ocualres");
                         }
                     }
-                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Oftlamologia" + ex.getMessage().toString());
         
@@ -3257,7 +3289,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -3292,7 +3324,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
             }
             
             // Cierro los Resultados
-            oConn.setResult.close();
+            oConn.sqlStmt.close();
             
         } catch (SQLException ex) {
          
@@ -3422,6 +3454,7 @@ private boolean GrabarAPInfo() throws SQLException{
                 else{
              //oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
+               oConn.sqlStmt.close();
                   return bResult;
                   
         }
@@ -3535,6 +3568,7 @@ private boolean ActualizarAPInfo()throws SQLException{
                 else{
              //oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
                }
+               oConn.sqlStmt.close();
                return bResult;   
         }
 private void ReImp(){
@@ -3590,15 +3624,13 @@ private boolean GrabarAPDetalle() {
                     // Ejecuta la Sentencia
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                         bResult = true;
-                try {
-                    
-                  oConn.sqlStmt.close();
-      
-                } catch (SQLException ex) {
-                    Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                        
+                                  
                     }
+             try {
+                 oConn.sqlStmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+             }
                   }
          return bResult;
     }
@@ -3641,24 +3673,29 @@ private boolean ActualizarAPDetalle()
         // Ciclo para grabar el detalle de la venta
         for(iFila = 0; iFila < tbQuirurgicos.getRowCount();iFila++)
         {
-            //Obtiene dato contenido en una celda de la tabla
-            Fecha = tbQuirurgicos.getModel().getValueAt(iFila, 0).toString();
-            HospitalQui = tbQuirurgicos.getModel().getValueAt(iFila, 1).toString();
-            OperacionQui = tbQuirurgicos.getModel().getValueAt(iFila, 2).toString();
-            diasHospitalizacionQui = tbQuirurgicos.getModel().getValueAt(iFila, 3).toString();
-            ComplicacionesQui = tbQuirurgicos.getModel().getValueAt(iFila, 4).toString();
-        
-        
-           strSqlStmt="UPDATE antecedentes_patologicos_quirurgicos "; 
-                    strSqlStmt = strSqlStmt + " SET fecha='"+ Fecha+"',hospital_operacion='"+ HospitalQui+"',"
-                            + "operacion='"+ OperacionQui+"',dias_hospitalizado='"+diasHospitalizacionQui+"',"
-                            + "complicaciones='"+ComplicacionesQui+"' ";
-                    strSqlStmt+="where cod_ap='"+num+"'";
-                    // Ejecuta la Sentencia
-                    if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-                        bResult = true;
-                        
-                    }
+             try {
+                 //Obtiene dato contenido en una celda de la tabla
+                 Fecha = tbQuirurgicos.getModel().getValueAt(iFila, 0).toString();
+                 HospitalQui = tbQuirurgicos.getModel().getValueAt(iFila, 1).toString();
+                 OperacionQui = tbQuirurgicos.getModel().getValueAt(iFila, 2).toString();
+                 diasHospitalizacionQui = tbQuirurgicos.getModel().getValueAt(iFila, 3).toString();
+                 ComplicacionesQui = tbQuirurgicos.getModel().getValueAt(iFila, 4).toString();
+                 
+                 
+                 strSqlStmt="UPDATE antecedentes_patologicos_quirurgicos ";
+                 strSqlStmt = strSqlStmt + " SET fecha='"+ Fecha+"',hospital_operacion='"+ HospitalQui+"',"
+                         + "operacion='"+ OperacionQui+"',dias_hospitalizado='"+diasHospitalizacionQui+"',"
+                         + "complicaciones='"+ComplicacionesQui+"' ";
+                 strSqlStmt+="where cod_ap='"+num+"'";
+                 // Ejecuta la Sentencia
+                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+                     bResult = true;
+                     
+                 }
+                 oConn.sqlStmt.close();
+             } catch (SQLException ex) {
+                 Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+             }
                   }
          return bResult;
     }
@@ -4285,6 +4322,21 @@ private void printer1(Integer cod){
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }
+
+public void cerrarVentana(){
+        // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
+        System.out.println("cerro esta ventana");
+       try {
+           oConn.sqlStmt.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+  
+    this.dispose();
+      //  System.exit(0);
+
+    }
+
 private void printer2(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      

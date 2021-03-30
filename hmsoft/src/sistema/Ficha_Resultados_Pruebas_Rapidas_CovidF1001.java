@@ -34,14 +34,14 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class Ficha_Resultados_Pruebas_Rapidas_CovidF1001 extends javax.swing.JInternalFrame {
    
-    clsConnection oConn = new clsConnection();
+    clsConnection oConn1 = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
-        Ingreso ads = new Ingreso();
-String sed="";
+        //Ingreso ads = new Ingreso();
+    String sed="";
     public Ficha_Resultados_Pruebas_Rapidas_CovidF1001() {
         initComponents();
-        sed=ads.nombresede;
+        //sed=ads.nombresede;
         new ajTextFieldConsulta.autocompleterText(txtNombresEval, "select nombre_user||' '||apellido_user as nombre FROM usuarios WHERE CONCAT(nombre_user,' ',apellido_user)");
     }
 
@@ -1874,6 +1874,7 @@ String sed="";
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         // TODO add your handling code here:
+        CargarSedes();
         if(!txtNorden.getText().isEmpty()){
           if(!oPe.nOrden(txtNorden, "ficha_pruebas_rapidas_covidf1001"))  {
             dateFechaNacimiento = new com.toedter.calendar.JDateChooser();
@@ -1887,19 +1888,19 @@ String sed="";
                 + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                 + "LEFT JOIN constancia_salud_marsa1 AS c ON (n.n_orden = c.n_orden) "
                 + "WHERE n.n_orden ='"+txtNorden.getText().toString()+"'";
-            oConn.FnBoolQueryExecute(Sql);      
+            oConn1.FnBoolQueryExecute(Sql);      
             try {
-                    if (oConn.setResult.next()) {
-                        txtNombres.setText(oConn.setResult.getString("nombre"));
-                        txtDNI.setText(oConn.setResult.getString("cod_pa"));
-                        dateFechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                    if (oConn1.setResult.next()) {
+                        txtNombres.setText(oConn1.setResult.getString("nombre"));
+                        txtDNI.setText(oConn1.setResult.getString("cod_pa"));
+                        dateFechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
                         
-                        txtSexo.setText(oConn.setResult.getString("sexo_pa").equals("M")? "MASCULINO":"FEMENINO") ;
-                        igm=oConn.setResult.getBoolean("chkigm_reactivo");
-                        igg=oConn.setResult.getBoolean("chkigg_reactivo");
-                        inval=oConn.setResult.getBoolean("chkinvalido");
-                        neg=oConn.setResult.getBoolean("chkigm_noreactivo");
-                        neg1=oConn.setResult.getBoolean("chkigg_noreactivo");
+                        txtSexo.setText(oConn1.setResult.getString("sexo_pa").equals("M")? "MASCULINO":"FEMENINO") ;
+                        igm=oConn1.setResult.getBoolean("chkigm_reactivo");
+                        igg=oConn1.setResult.getBoolean("chkigg_reactivo");
+                        inval=oConn1.setResult.getBoolean("chkinvalido");
+                        neg=oConn1.setResult.getBoolean("chkigm_noreactivo");
+                        neg1=oConn1.setResult.getBoolean("chkigg_noreactivo");
                         if(inval){
                             chkNovalido.setSelected(inval);
                         }else if(igm &&igg){
@@ -1911,9 +1912,9 @@ String sed="";
                         }else if(igg){
                             chkIgGPos.setSelected(igg);
                         }
-                        if(oConn.setResult.getBoolean("chk_sintomatico")){
+                        if(oConn1.setResult.getBoolean("chk_sintomatico")){
                             rbSintomaSi.setSelected(true);
-                            txtOtroSintoma.setText(oConn.setResult.getString("txtresultados"));
+                            txtOtroSintoma.setText(oConn1.setResult.getString("txtresultados"));
                             FechaSintoma.setEnabled(true);
                                 chkTos.setEnabled(true);
                                 chkDolorG.setEnabled(true);
@@ -1934,19 +1935,19 @@ String sed="";
                                 chkPecho.setEnabled(true);
                                 chkArticulaciones.setEnabled(true);
                                 atxtOtrosSintomas.setEnabled(true);
-                                chkTos.setSelected(oConn.setResult.getBoolean("chks1"));
-                        chkDolorG.setSelected(oConn.setResult.getBoolean("chks2"));
-                        chkCongestionN.setSelected(oConn.setResult.getBoolean("chks3"));
-                        chkDificultadR.setSelected(oConn.setResult.getBoolean("chks4"));
-                        chkFiebre.setSelected(oConn.setResult.getBoolean("chks5"));
-                        chkMalestar.setSelected(oConn.setResult.getBoolean("chks6"));
-                        chkDiarrea.setSelected(oConn.setResult.getBoolean("chks7"));
-                        chkNauseas.setSelected(oConn.setResult.getBoolean("chks8"));
-                        chkCefalea.setSelected(oConn.setResult.getBoolean("chks9"));
-                        chkIrritaibilidad.setSelected(oConn.setResult.getBoolean("chks10"));
-                        chkDolor.setSelected(oConn.setResult.getBoolean("chks11"));
-                        chkExpctoracion.setSelected(oConn.setResult.getBoolean("chks12"));
-                        chkPerdidaOlf1.setSelected(oConn.setResult.getBoolean("chks13"));
+                                chkTos.setSelected(oConn1.setResult.getBoolean("chks1"));
+                        chkDolorG.setSelected(oConn1.setResult.getBoolean("chks2"));
+                        chkCongestionN.setSelected(oConn1.setResult.getBoolean("chks3"));
+                        chkDificultadR.setSelected(oConn1.setResult.getBoolean("chks4"));
+                        chkFiebre.setSelected(oConn1.setResult.getBoolean("chks5"));
+                        chkMalestar.setSelected(oConn1.setResult.getBoolean("chks6"));
+                        chkDiarrea.setSelected(oConn1.setResult.getBoolean("chks7"));
+                        chkNauseas.setSelected(oConn1.setResult.getBoolean("chks8"));
+                        chkCefalea.setSelected(oConn1.setResult.getBoolean("chks9"));
+                        chkIrritaibilidad.setSelected(oConn1.setResult.getBoolean("chks10"));
+                        chkDolor.setSelected(oConn1.setResult.getBoolean("chks11"));
+                        chkExpctoracion.setSelected(oConn1.setResult.getBoolean("chks12"));
+                        chkPerdidaOlf1.setSelected(oConn1.setResult.getBoolean("chks13"));
                         }
                         
                         txtNorden.setEditable(false);
@@ -1957,8 +1958,8 @@ String sed="";
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro en Laboratorio");
                     }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2012,19 +2013,19 @@ String sed="";
 "INNER JOIN ficha_pruebas_rapidas_covidf1001 AS f ON (n.n_orden=f.n_orden) \n" +
 "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "+
 "WHERE n.n_orden ='"+txtNorden.getText()+"'";
-            oConn.FnBoolQueryExecute(Sql);      
+            oConn1.FnBoolQueryExecute(Sql);      
             try {
-                    if (oConn.setResult.next()) {
-                        txtNombres.setText(oConn.setResult.getString("nombre"));
-                        txtDNI.setText(oConn.setResult.getString("cod_pa"));
-                        dateFechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        txtSexo.setText(oConn.setResult.getString("sexo_pa").equals("M")? "MASCULINO":"FEMENINO") ;
+                    if (oConn1.setResult.next()) {
+                        txtNombres.setText(oConn1.setResult.getString("nombre"));
+                        txtDNI.setText(oConn1.setResult.getString("cod_pa"));
+                        dateFechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
+                        txtSexo.setText(oConn1.setResult.getString("sexo_pa").equals("M")? "MASCULINO":"FEMENINO") ;
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(dateFechaNacimiento.getCalendar())) );
-                        igm=oConn.setResult.getBoolean("chkigm_reactivo");
-                        igg=oConn.setResult.getBoolean("chkigg_reactivo");
-                        inval=oConn.setResult.getBoolean("chkinvalido");
-                        neg=oConn.setResult.getBoolean("chkigm_noreactivo");
-                        neg1=oConn.setResult.getBoolean("chkigg_noreactivo");
+                        igm=oConn1.setResult.getBoolean("chkigm_reactivo");
+                        igg=oConn1.setResult.getBoolean("chkigg_reactivo");
+                        inval=oConn1.setResult.getBoolean("chkinvalido");
+                        neg=oConn1.setResult.getBoolean("chkigm_noreactivo");
+                        neg1=oConn1.setResult.getBoolean("chkigg_noreactivo");
                         if(inval){
                             chkNovalido.setSelected(inval);
                         }else if(igm && igg){
@@ -2036,126 +2037,126 @@ String sed="";
                         }else if(igg){
                             chkIgGPos.setSelected(igg);
                         }
-                        FechaExamen.setDate(oConn.setResult.getDate("fecha_registro"));
-                        rbExposicion_si.setSelected(oConn.setResult.getBoolean("rbexposicion_si"));
-                        rbExposicion_no.setSelected(oConn.setResult.getBoolean("rbexposicion_no"));
-                        rbViaje_si.setSelected(oConn.setResult.getBoolean("rbviajep_si"));
-                        rbViaje_no.setSelected(oConn.setResult.getBoolean("rbviajep_no"));
-                        txtPais.setText(oConn.setResult.getString("txtpvisita"));
-                        FechaRetornoP.setDate(oConn.setResult.getDate("fecharetorno"));
-                        rbCaso_si.setSelected(oConn.setResult.getBoolean("rbcaso_si"));
-                        rbCaso_no.setSelected(oConn.setResult.getBoolean("rbcaso_no"));
-                        chkEntornoFam.setSelected(oConn.setResult.getBoolean("chkentornof"));
-                        chkEntornoFam1.setSelected(oConn.setResult.getBoolean("chkentornol"));
-                        chkEntornoFam2.setSelected(oConn.setResult.getBoolean("chkentornos"));
-                        rbCuarentena_si.setSelected(oConn.setResult.getBoolean("rbcuarentena_si"));
-                        rbCuarentena_no.setSelected(oConn.setResult.getBoolean("rbcuarentena_no"));
-                        rbVisitaS_si.setSelected(oConn.setResult.getBoolean("rbvisitas_si"));
-                        rbVisitaS_no.setSelected(oConn.setResult.getBoolean("rbvisitas_no"));
-                       rbtomamed_si.setSelected(oConn.setResult.getBoolean("rbtomamed_si"));
-                        rbtomamed_no.setSelected(oConn.setResult.getBoolean("rbcuarentena_no"));
-                        txtMedicacion.setText(oConn.setResult.getString("txtespecifiquem"));
-                        rbCondicion_si.setSelected(oConn.setResult.getBoolean("chkcondicion_r1"));
-                        rbCondicion_no.setSelected(oConn.setResult.getBoolean("rbcondicion_si"));
-                        chkCondicionR1.setSelected(oConn.setResult.getBoolean("rbcondicion_no"));
-                        chkCondicionR2.setSelected(oConn.setResult.getBoolean("chkcondicion_r2"));
-                        chkCondicionR3.setSelected(oConn.setResult.getBoolean("chkcondicion_r3"));
-                        chkCondicionR4.setSelected(oConn.setResult.getBoolean("chkcondicion_r4"));
-                        chkCondicionR5.setSelected(oConn.setResult.getBoolean("chkcondicion_r5"));
-                        chkCondicionR6.setSelected(oConn.setResult.getBoolean("chkcondicion_r6"));
-                        chkCondicionR7.setSelected(oConn.setResult.getBoolean("chkcondicion_r7"));
-                        chkCondicionR8.setSelected(oConn.setResult.getBoolean("chkcondicion_r8"));
-                        chkCondicionR9.setSelected(oConn.setResult.getBoolean("chkcondicion_r9"));
-                        chkCondicionR10.setSelected(oConn.setResult.getBoolean("chkcondicion_r10"));
-                        chkCondicionR11.setSelected(oConn.setResult.getBoolean("chkcondicion_r11"));
-                        chkCondicionR12.setSelected(oConn.setResult.getBoolean("chkcondicion_r12"));
-                        txtEspecifiqueCondicion.setText(oConn.setResult.getString("txtotracondicion"));
-                        rbSaludSi.setSelected(oConn.setResult.getBoolean("rbsalud_si"));
-                        rbSaludNo.setSelected(oConn.setResult.getBoolean("rbsalud_no"));
-                        rbMedico.setSelected(oConn.setResult.getBoolean("rbmedico"));
-                        rbEnfermero.setSelected(oConn.setResult.getBoolean("rbenfermero"));
-                        rbObstetra.setSelected(oConn.setResult.getBoolean("rbobstetra"));
-                        rbBiologo.setSelected(oConn.setResult.getBoolean("rbbiologo"));
-                        rbTecnologo.setSelected(oConn.setResult.getBoolean("rbtecnologo"));
-                        rbTecnica.setSelected(oConn.setResult.getBoolean("rbtecnica"));
-                        rbOtros.setSelected(oConn.setResult.getBoolean("rbotros"));
-                        rbSintomaSi.setSelected(oConn.setResult.getBoolean("rbsintomas_si"));
-                        rbSintomasNo.setSelected(oConn.setResult.getBoolean("rbsintomas_no"));
-                        FechaSintoma.setDate(oConn.setResult.getDate("fecha_sintoma"));
-                        chkTos.setSelected(oConn.setResult.getBoolean("chktos"));
-                        chkDolorG.setSelected(oConn.setResult.getBoolean("chkdolor_g"));
-                        chkCongestionN.setSelected(oConn.setResult.getBoolean("chkcongestion_n"));
-                        chkDificultadR.setSelected(oConn.setResult.getBoolean("chkdificultad_r"));
-                        chkFiebre.setSelected(oConn.setResult.getBoolean("chkfiebre"));
-                        chkMalestar.setSelected(oConn.setResult.getBoolean("chkmalestar_g"));
-                        chkDiarrea.setSelected(oConn.setResult.getBoolean("chkdiarrea"));
-                        chkNauseas.setSelected(oConn.setResult.getBoolean("chknauseas"));
-                        chkCefalea.setSelected(oConn.setResult.getBoolean("chkcefalea"));
-                        chkIrritaibilidad.setSelected(oConn.setResult.getBoolean("chkirritabilidad"));
-                        chkDolor.setSelected(oConn.setResult.getBoolean("chkdolor"));
-                        chkExpctoracion.setSelected(oConn.setResult.getBoolean("chkexpectoracion"));
-                        chkPerdidaOlf1.setSelected(oConn.setResult.getBoolean("chkperdidaolfa"));
-                        txtOtroSintoma.setText(oConn.setResult.getString("txtotros"));
-                        chkMuscular.setSelected(oConn.setResult.getBoolean("chkmuscular"));
-                        chkAbdominal.setSelected(oConn.setResult.getBoolean("chkabdominal"));
-                        chkPecho.setSelected(oConn.setResult.getBoolean("chkpecho"));
-                        chkArticulaciones.setSelected(oConn.setResult.getBoolean("chkarticulaciones"));
-                        atxtOtrosSintomas.setText(oConn.setResult.getString("atxtotros_sintomas"));
-                        rbHabita_si.setSelected(oConn.setResult.getBoolean("rbhabita_si"));
-                        rbHabita_no.setSelected(oConn.setResult.getBoolean("rbhabita_no"));
-                        chkGHabita1.setSelected(oConn.setResult.getBoolean("chkadulto"));
-                        chkGHabita2.setSelected(oConn.setResult.getBoolean("chknino"));
-                        chkGHabita3.setSelected(oConn.setResult.getBoolean("chkgestante"));
-                        chkGHabita4.setSelected(oConn.setResult.getBoolean("chkfamiliar"));
-                        txtContactosDom.setText(oConn.setResult.getString("txtcontactos_dom"));
-                        rbAtencionm_si.setSelected(oConn.setResult.getBoolean("rbatencion_si"));
-                        rbAtencionm_no.setSelected(oConn.setResult.getBoolean("rbatencion_no"));
-                        chkAtendio_si_dentro.setSelected(oConn.setResult.getBoolean("chkatendio_si_dentro"));
-                        chkAtendio_si_fuera.setSelected(oConn.setResult.getBoolean("chkatendio_si_fuera"));
-                        chkAtendio_no.setSelected(oConn.setResult.getBoolean("chkatendio_no"));
-                        txtAtencionM.setText(oConn.setResult.getString("txtatencion"));
-                        rbAsintomatico.setSelected(oConn.setResult.getBoolean("rbasintomatico"));
-                        rbLeve.setSelected(oConn.setResult.getBoolean("rbleve"));
-                        rbModerado.setSelected(oConn.setResult.getBoolean("rbmodrado"));
-                        rbSevera.setSelected(oConn.setResult.getBoolean("rbsevera"));
-                        chkSolicitud1.setSelected(oConn.setResult.getBoolean("chksolicitud1"));
-                        chkSolicitud2.setSelected(oConn.setResult.getBoolean("chksolicitud2"));
-                        chkSolicitud3.setSelected(oConn.setResult.getBoolean("chksolicitud3"));
-                        chkSolicitud4.setSelected(oConn.setResult.getBoolean("chksolicitud4"));
-                        chkSolicitud5.setSelected(oConn.setResult.getBoolean("chksolicitud5"));
-                        chkSolicitud6.setSelected(oConn.setResult.getBoolean("chksolicitud6"));
-                        chkSolicitud7.setSelected(oConn.setResult.getBoolean("chksolicitud7"));
+                        FechaExamen.setDate(oConn1.setResult.getDate("fecha_registro"));
+                        rbExposicion_si.setSelected(oConn1.setResult.getBoolean("rbexposicion_si"));
+                        rbExposicion_no.setSelected(oConn1.setResult.getBoolean("rbexposicion_no"));
+                        rbViaje_si.setSelected(oConn1.setResult.getBoolean("rbviajep_si"));
+                        rbViaje_no.setSelected(oConn1.setResult.getBoolean("rbviajep_no"));
+                        txtPais.setText(oConn1.setResult.getString("txtpvisita"));
+                        FechaRetornoP.setDate(oConn1.setResult.getDate("fecharetorno"));
+                        rbCaso_si.setSelected(oConn1.setResult.getBoolean("rbcaso_si"));
+                        rbCaso_no.setSelected(oConn1.setResult.getBoolean("rbcaso_no"));
+                        chkEntornoFam.setSelected(oConn1.setResult.getBoolean("chkentornof"));
+                        chkEntornoFam1.setSelected(oConn1.setResult.getBoolean("chkentornol"));
+                        chkEntornoFam2.setSelected(oConn1.setResult.getBoolean("chkentornos"));
+                        rbCuarentena_si.setSelected(oConn1.setResult.getBoolean("rbcuarentena_si"));
+                        rbCuarentena_no.setSelected(oConn1.setResult.getBoolean("rbcuarentena_no"));
+                        rbVisitaS_si.setSelected(oConn1.setResult.getBoolean("rbvisitas_si"));
+                        rbVisitaS_no.setSelected(oConn1.setResult.getBoolean("rbvisitas_no"));
+                       rbtomamed_si.setSelected(oConn1.setResult.getBoolean("rbtomamed_si"));
+                        rbtomamed_no.setSelected(oConn1.setResult.getBoolean("rbcuarentena_no"));
+                        txtMedicacion.setText(oConn1.setResult.getString("txtespecifiquem"));
+                        rbCondicion_si.setSelected(oConn1.setResult.getBoolean("chkcondicion_r1"));
+                        rbCondicion_no.setSelected(oConn1.setResult.getBoolean("rbcondicion_si"));
+                        chkCondicionR1.setSelected(oConn1.setResult.getBoolean("rbcondicion_no"));
+                        chkCondicionR2.setSelected(oConn1.setResult.getBoolean("chkcondicion_r2"));
+                        chkCondicionR3.setSelected(oConn1.setResult.getBoolean("chkcondicion_r3"));
+                        chkCondicionR4.setSelected(oConn1.setResult.getBoolean("chkcondicion_r4"));
+                        chkCondicionR5.setSelected(oConn1.setResult.getBoolean("chkcondicion_r5"));
+                        chkCondicionR6.setSelected(oConn1.setResult.getBoolean("chkcondicion_r6"));
+                        chkCondicionR7.setSelected(oConn1.setResult.getBoolean("chkcondicion_r7"));
+                        chkCondicionR8.setSelected(oConn1.setResult.getBoolean("chkcondicion_r8"));
+                        chkCondicionR9.setSelected(oConn1.setResult.getBoolean("chkcondicion_r9"));
+                        chkCondicionR10.setSelected(oConn1.setResult.getBoolean("chkcondicion_r10"));
+                        chkCondicionR11.setSelected(oConn1.setResult.getBoolean("chkcondicion_r11"));
+                        chkCondicionR12.setSelected(oConn1.setResult.getBoolean("chkcondicion_r12"));
+                        txtEspecifiqueCondicion.setText(oConn1.setResult.getString("txtotracondicion"));
+                        rbSaludSi.setSelected(oConn1.setResult.getBoolean("rbsalud_si"));
+                        rbSaludNo.setSelected(oConn1.setResult.getBoolean("rbsalud_no"));
+                        rbMedico.setSelected(oConn1.setResult.getBoolean("rbmedico"));
+                        rbEnfermero.setSelected(oConn1.setResult.getBoolean("rbenfermero"));
+                        rbObstetra.setSelected(oConn1.setResult.getBoolean("rbobstetra"));
+                        rbBiologo.setSelected(oConn1.setResult.getBoolean("rbbiologo"));
+                        rbTecnologo.setSelected(oConn1.setResult.getBoolean("rbtecnologo"));
+                        rbTecnica.setSelected(oConn1.setResult.getBoolean("rbtecnica"));
+                        rbOtros.setSelected(oConn1.setResult.getBoolean("rbotros"));
+                        rbSintomaSi.setSelected(oConn1.setResult.getBoolean("rbsintomas_si"));
+                        rbSintomasNo.setSelected(oConn1.setResult.getBoolean("rbsintomas_no"));
+                        FechaSintoma.setDate(oConn1.setResult.getDate("fecha_sintoma"));
+                        chkTos.setSelected(oConn1.setResult.getBoolean("chktos"));
+                        chkDolorG.setSelected(oConn1.setResult.getBoolean("chkdolor_g"));
+                        chkCongestionN.setSelected(oConn1.setResult.getBoolean("chkcongestion_n"));
+                        chkDificultadR.setSelected(oConn1.setResult.getBoolean("chkdificultad_r"));
+                        chkFiebre.setSelected(oConn1.setResult.getBoolean("chkfiebre"));
+                        chkMalestar.setSelected(oConn1.setResult.getBoolean("chkmalestar_g"));
+                        chkDiarrea.setSelected(oConn1.setResult.getBoolean("chkdiarrea"));
+                        chkNauseas.setSelected(oConn1.setResult.getBoolean("chknauseas"));
+                        chkCefalea.setSelected(oConn1.setResult.getBoolean("chkcefalea"));
+                        chkIrritaibilidad.setSelected(oConn1.setResult.getBoolean("chkirritabilidad"));
+                        chkDolor.setSelected(oConn1.setResult.getBoolean("chkdolor"));
+                        chkExpctoracion.setSelected(oConn1.setResult.getBoolean("chkexpectoracion"));
+                        chkPerdidaOlf1.setSelected(oConn1.setResult.getBoolean("chkperdidaolfa"));
+                        txtOtroSintoma.setText(oConn1.setResult.getString("txtotros"));
+                        chkMuscular.setSelected(oConn1.setResult.getBoolean("chkmuscular"));
+                        chkAbdominal.setSelected(oConn1.setResult.getBoolean("chkabdominal"));
+                        chkPecho.setSelected(oConn1.setResult.getBoolean("chkpecho"));
+                        chkArticulaciones.setSelected(oConn1.setResult.getBoolean("chkarticulaciones"));
+                        atxtOtrosSintomas.setText(oConn1.setResult.getString("atxtotros_sintomas"));
+                        rbHabita_si.setSelected(oConn1.setResult.getBoolean("rbhabita_si"));
+                        rbHabita_no.setSelected(oConn1.setResult.getBoolean("rbhabita_no"));
+                        chkGHabita1.setSelected(oConn1.setResult.getBoolean("chkadulto"));
+                        chkGHabita2.setSelected(oConn1.setResult.getBoolean("chknino"));
+                        chkGHabita3.setSelected(oConn1.setResult.getBoolean("chkgestante"));
+                        chkGHabita4.setSelected(oConn1.setResult.getBoolean("chkfamiliar"));
+                        txtContactosDom.setText(oConn1.setResult.getString("txtcontactos_dom"));
+                        rbAtencionm_si.setSelected(oConn1.setResult.getBoolean("rbatencion_si"));
+                        rbAtencionm_no.setSelected(oConn1.setResult.getBoolean("rbatencion_no"));
+                        chkAtendio_si_dentro.setSelected(oConn1.setResult.getBoolean("chkatendio_si_dentro"));
+                        chkAtendio_si_fuera.setSelected(oConn1.setResult.getBoolean("chkatendio_si_fuera"));
+                        chkAtendio_no.setSelected(oConn1.setResult.getBoolean("chkatendio_no"));
+                        txtAtencionM.setText(oConn1.setResult.getString("txtatencion"));
+                        rbAsintomatico.setSelected(oConn1.setResult.getBoolean("rbasintomatico"));
+                        rbLeve.setSelected(oConn1.setResult.getBoolean("rbleve"));
+                        rbModerado.setSelected(oConn1.setResult.getBoolean("rbmodrado"));
+                        rbSevera.setSelected(oConn1.setResult.getBoolean("rbsevera"));
+                        chkSolicitud1.setSelected(oConn1.setResult.getBoolean("chksolicitud1"));
+                        chkSolicitud2.setSelected(oConn1.setResult.getBoolean("chksolicitud2"));
+                        chkSolicitud3.setSelected(oConn1.setResult.getBoolean("chksolicitud3"));
+                        chkSolicitud4.setSelected(oConn1.setResult.getBoolean("chksolicitud4"));
+                        chkSolicitud5.setSelected(oConn1.setResult.getBoolean("chksolicitud5"));
+                        chkSolicitud6.setSelected(oConn1.setResult.getBoolean("chksolicitud6"));
+                        chkSolicitud7.setSelected(oConn1.setResult.getBoolean("chksolicitud7"));
 //                        chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
 //                        chkNovalido.setSelected(oConn.setResult.getBoolean("chknovalido"));
 //                        chkIgMPos.setSelected(oConn.setResult.getBoolean("chkigmpositivo"));
 //                        chkIgGPos.setSelected(oConn.setResult.getBoolean("chkiggpositivo"));
 //                        chkIgMIgGPos.setSelected(oConn.setResult.getBoolean("chkigmiggpositivo"));
-                        chkNegativo1.setSelected(oConn.setResult.getBoolean("chknegativo1"));
-                        chkNovalido1.setSelected(oConn.setResult.getBoolean("chknovalido1"));
-                        chkIgMPos1.setSelected(oConn.setResult.getBoolean("chkigmpositivo1"));
-                        chkIgGPos1.setSelected(oConn.setResult.getBoolean("chkiggpositivo1"));
-                        chkIgMIgGPos1.setSelected(oConn.setResult.getBoolean("chkigmiggpositivo1"));
-                        txtFotoprueba1.setText(oConn.setResult.getString("txtfotografiap1"));
-                        txtFotoPrueba2.setText(oConn.setResult.getString("txtfotofrafiap2"));
-                        rbPCR_NA.setSelected(oConn.setResult.getBoolean("chkpcr_na"));                        
-                        rbPCR_SI.setSelected(oConn.setResult.getBoolean("chkpcr_si"));
-                        rbPCR_NO.setSelected(oConn.setResult.getBoolean("chkpcr_no"));
-                        chkContinuidad1.setSelected(oConn.setResult.getBoolean("chkcontinuidad1"));
-                        chkContinuidad2.setSelected(oConn.setResult.getBoolean("chkcontinuidad2"));
-                        chkContinuidad3.setSelected(oConn.setResult.getBoolean("chkcontinuidad3"));
-                        chkContinuidad4.setSelected(oConn.setResult.getBoolean("chkcontinuidad4"));
-                        chkContinuidad5.setSelected(oConn.setResult.getBoolean("chkcontinuidad5"));
-                        atxtObservaciones.setText(oConn.setResult.getString("txtobservaciones"));
-                         txtDniEvaluador.setText(oConn.setResult.getString("dni_user"));
-                        txtNombresEval.setText(oConn.setResult.getString("txtnombres_medico"));
+                        chkNegativo1.setSelected(oConn1.setResult.getBoolean("chknegativo1"));
+                        chkNovalido1.setSelected(oConn1.setResult.getBoolean("chknovalido1"));
+                        chkIgMPos1.setSelected(oConn1.setResult.getBoolean("chkigmpositivo1"));
+                        chkIgGPos1.setSelected(oConn1.setResult.getBoolean("chkiggpositivo1"));
+                        chkIgMIgGPos1.setSelected(oConn1.setResult.getBoolean("chkigmiggpositivo1"));
+                        txtFotoprueba1.setText(oConn1.setResult.getString("txtfotografiap1"));
+                        txtFotoPrueba2.setText(oConn1.setResult.getString("txtfotofrafiap2"));
+                        rbPCR_NA.setSelected(oConn1.setResult.getBoolean("chkpcr_na"));                        
+                        rbPCR_SI.setSelected(oConn1.setResult.getBoolean("chkpcr_si"));
+                        rbPCR_NO.setSelected(oConn1.setResult.getBoolean("chkpcr_no"));
+                        chkContinuidad1.setSelected(oConn1.setResult.getBoolean("chkcontinuidad1"));
+                        chkContinuidad2.setSelected(oConn1.setResult.getBoolean("chkcontinuidad2"));
+                        chkContinuidad3.setSelected(oConn1.setResult.getBoolean("chkcontinuidad3"));
+                        chkContinuidad4.setSelected(oConn1.setResult.getBoolean("chkcontinuidad4"));
+                        chkContinuidad5.setSelected(oConn1.setResult.getBoolean("chkcontinuidad5"));
+                        atxtObservaciones.setText(oConn1.setResult.getString("txtobservaciones"));
+                         txtDniEvaluador.setText(oConn1.setResult.getString("dni_user"));
+                        txtNombresEval.setText(oConn1.setResult.getString("txtnombres_medico"));
                         
                         txtNorden.setEditable(false);
                         FechaExamen.requestFocusInWindow();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro algun examen");
                     }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2347,16 +2348,16 @@ String sed="";
     String Sql="SELECT dni_user\n" +
             "  FROM usuarios\n" +
             "  where nombre_user||' '||apellido_user='"+txtNombresEval.getText()+"'";
-            oConn.FnBoolQueryExecute(Sql);      
+            oConn1.FnBoolQueryExecute(Sql);      
             try {
-                    if (oConn.setResult.next()) {
-                        txtDniEvaluador.setText(oConn.setResult.getString("dni_user"));
+                    if (oConn1.setResult.next()) {
+                        txtDniEvaluador.setText(oConn1.setResult.getString("dni_user"));
                         
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro como usuario");
                     }
-                oConn.setResult.close();
-                oConn.sqlStmt.close();
+                oConn1.setResult.close();
+                oConn1.sqlStmt.close();
             } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
             }
@@ -2578,7 +2579,7 @@ String sed="";
                         + ", txtnombres_medico='"+txtNombresEval.getText()+"'"
                 +" WHERE n_orden="+txtNorden.getText();
                      //  System.out.println(strSqlStmt);
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+                if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                     imprimir();
                     limpiar();
@@ -2588,13 +2589,48 @@ String sed="";
                        }
                 
                 try {
-                        oConn.sqlStmt.close();
+                        oConn1.sqlStmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
                     }
             }
         }
     }
+    
+    private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNorden.getText().toString().trim();
+        String cboSede="1";
+        if (oConn1.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn1.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn1.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn1.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     
     private void agregar(){
         if(!txtNorden.getText().isEmpty()){
@@ -2728,7 +2764,7 @@ String sed="";
                          //               System.out.println(strSqlStmt.concat(") ") + query.concat(")"));
                     strSqlStmt += ",txtnombres_medico";query += ",'"+txtNombresEval.getText()+ "'";
                  //   System.out.println(strSqlStmt.concat(") ") + query.concat(")"));
-                    if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + query.concat(")"))){
+                    if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + query.concat(")"))){
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                         imprimir();
                         limpiar();
@@ -2736,7 +2772,7 @@ String sed="";
                    }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada!!");} 
                     
                     try {
-                            oConn.sqlStmt.close();
+                            oConn1.sqlStmt.close();
                         } catch (SQLException ex) {
                             Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -2956,7 +2992,17 @@ String sed="";
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
         try {
-            oConn.sqlStmt.close();
+            if (oConn1.setResult != null) 
+         
+            oConn1.setResult.close();
+         
+            if ( oConn1.sqlStmt != null) 
+             
+                oConn1.sqlStmt .close();
+             
+           // if (oConn1.oConnection != null) 
+             //
+              //  oConn1.oConnection.close();
         } catch (SQLException ex) {
             Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
         }
