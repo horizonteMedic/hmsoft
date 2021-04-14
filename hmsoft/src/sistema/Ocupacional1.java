@@ -5,7 +5,7 @@
 package sistema;
 
 
-import static Caja.Admision.nombreSede;
+
 import Caja.Reporteador;
 import Caja.Valorizacion;
 import Clases.clsConnection;
@@ -13,7 +13,11 @@ import Clases.clsFunciones;
 import Clases.clsGlobales;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -22,7 +26,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
-
 
 //import org.jvnet.substance.SubstanceLookAndFeel;
 
@@ -34,7 +37,6 @@ public class Ocupacional1 extends javax.swing.JFrame {
  clsFunciones  oFunc = new clsFunciones();
     clsConnection oConn = new clsConnection();
     FichaTriaje ft;
-    Ingreso ads = new Ingreso();
     HistoriaClinicaPs hcl;
     AntecedentesPatologicos ap;
     BuscarUsuarios pe;
@@ -121,6 +123,29 @@ public class Ocupacional1 extends javax.swing.JFrame {
         String ipa="",seded="";
         public static String lasede="";
     public Ocupacional1() {
+          
+         Properties props = new Properties();
+       
+            FileInputStream in = null;
+        try {
+            in = new FileInputStream("pierola.properties");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            props.load(in);
+        } catch (IOException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           String url = props.getProperty("dataBaseServer");
+           String db = props.getProperty("dataBaseCatalog");
+           String username = props.getProperty("dataBaseUser");
+           String password = props.getProperty("dataBasePassword");
+         
+  
+           lasede=props.getProperty("nameSede");
+           seded=props.getProperty("nameSede");
+           ipa= props.getProperty("dataBaseServer");
             getRootPane().setWindowDecorationStyle(JRootPane.NONE);
             initComponents();
             sede();
@@ -149,10 +174,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 });  
    }
     public void sede(){
-    Ingreso elobjeto= new Ingreso();
-    seded=elobjeto.nombresede;
-    lasede=elobjeto.nombresede;
-    ipa=elobjeto.ipd;
+  
     String mensaje="";
     if(ipa.contains("192.168.1.3"))
         mensaje="SERVIDOR HUAMACHUCO";

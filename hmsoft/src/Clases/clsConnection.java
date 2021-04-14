@@ -91,7 +91,7 @@ public class clsConnection {
         catch (Exception e) 
         {
             // Mensaje de Error
-            JOptionPane.showMessageDialog(null,"Error SubQueryExecute:createStatement:"+e.getMessage());
+          //  JOptionPane.showMessageDialog(null,"Error SubQueryExecute:createStatement:"+e.getMessage());
             
             // retorna false
             return false;
@@ -113,7 +113,7 @@ public class clsConnection {
         catch (Exception e) 
         {
             // Mensaje de Error
-            JOptionPane.showMessageDialog(null,"Error SubQueryExecute:executeQuery:"+e.getMessage());               
+         //   JOptionPane.showMessageDialog(null,"Error SubQueryExecute:executeQuery:"+e.getMessage());               
             
             // Retorna false
             return false;

@@ -2,20 +2,24 @@ package Caja;
 import Clases.clsGlobales;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
-import sistema.Ingreso;
+import static sistema.Ocupacional1.lasede;
 
 
 public class Admision extends javax.swing.JFrame {
 // Comprobantes t = new Comprobantes(); 
 // RegistrarCliente r = new RegistrarCliente();
 // PacientesEspera p = new PacientesEspera();
-// Ingreso elobjeto= new Ingreso();
  // MenuEmpresas age;
    //MenuContrata cont;
  //  ServiciosGenerales sg;
@@ -27,12 +31,36 @@ public class Admision extends javax.swing.JFrame {
    public static String nombreSede;
      String ipa="",seded="";
    public Admision() {
+       
+          Properties props = new Properties();
+       
+            FileInputStream in = null;
+        try {
+            in = new FileInputStream("pierola.properties");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Admision.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            props.load(in);
+        } catch (IOException ex) {
+            Logger.getLogger(Admision.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           String url = props.getProperty("dataBaseServer");
+           String db = props.getProperty("dataBaseCatalog");
+           String username = props.getProperty("dataBaseUser");
+           String password = props.getProperty("dataBasePassword");
+         
+  
+           lasede=props.getProperty("nameSede");
+           nombreSede=props.getProperty("nameSede");
+           seded=props.getProperty("nameSede");
+           ipa= props.getProperty("dataBaseServer");
+         
            // System.out.println("admision-entro a admision");
        initComponents();
        sedee();
        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-      lblFecha.setText(Fecha());
-     sede();
+
       lblUsuarioCaja.setText(clsGlobales.sNomOperador);
         this.setLocationRelativeTo(null);
       KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
@@ -56,15 +84,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         }
 });  
    }
-public void sede(){
-    Ingreso elobjeto= new Ingreso();
-    nombreSede=elobjeto.nombresede;
-    // System.out.println("nombre sede:"+nombreSede);
-};
+
       public void sedee(){
-    Ingreso elobjeto= new Ingreso();
-    seded=elobjeto.nombresede;
-    ipa=elobjeto.ipd;
+   
     String mensaje="";
     if(ipa.contains("192.168.1.3"))
         mensaje="SERVIDOR HUAMACHUCO";
@@ -74,6 +96,7 @@ public void sede(){
       {mensaje="SERVIDOR PUBLICO-";
       
       mensaje+=seded;
+        System.out.println("nombre sede:"+mensaje);
       }
           jLabel2.setText(mensaje);
 
@@ -469,9 +492,9 @@ public void sede(){
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addGap(20, 20, 20))
         );

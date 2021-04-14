@@ -339,7 +339,7 @@ URL url = new URL("https://api.reniec.cloud/dni/")
             // System.out.println("nombres: "+myResponse.get("nombres").toString().replace("&Uuml;","Ü") );
             txtNombre.setText(myResponse2.get("preNombres").toString());
             txtApellidos.setText(myResponse2.get("apePaterno").toString()+" "+myResponse2.get("apeMaterno").toString() );
-            FechaNacimiento.setDate(ParseFecha(myResponse2.get("feNacimiento").toString()));
+         //   FechaNacimiento.setDate(ParseFecha(myResponse2.get("feNacimiento").toString()));
             cboSexo.setSelectedItem(myResponse2.get("sexo").toString());
             txtLugarNacimiento.setText(myResponse2.get("departamento").toString()+"-"+myResponse2.get("provincia").toString());
             cboNivelEstudio.setSelectedItem(myResponse2.get("gradoInstruccion").toString());
@@ -349,21 +349,20 @@ URL url = new URL("https://api.reniec.cloud/dni/")
             cboProvincia.setSelectedItem(myResponse2.get("provDireccion").toString());
             cboDistrito.setSelectedItem(myResponse2.get("distDireccion").toString());    
        JSONObject myResponse3 = myResponse2.getJSONObject("imagenes");
-            urlfotoreniec=myResponse3.get("foto").toString();
+        //    urlfotoreniec=myResponse3.get("foto").toString();
 //System.out.println("response: "+output);
-  Image image = null;
-URL url1 = new URL(urlfotoreniec);
-            try {
-                image = ImageIO.read(url1);
-                Icon icon = new ImageIcon(image);
-                            jLabel49.setIcon(icon);
-            } catch (IOException ex) {
-                Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
+ // Image image = null;
+
+ //URL url1 = new URL(urlfotoreniec);
+   //         try {
+     //           image = ImageIO.read(url1);
+      //          Icon icon = new ImageIcon(image);
+       //                     jLabel49.setIcon(icon);
+        //    } catch (IOException ex) {
+         //       Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+         //   }
 
         } catch (JSONException ex) {
-            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MalformedURLException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -2849,7 +2848,7 @@ this.chkAltaTrabCal.setVisible(false);
                     //txtDni.setText("");
                     txtNombre.requestFocus();
                     btnAgregar.setEnabled(true);
-                    funcion3();
+                   funcion3();
                    // comunirApiReniecDesconocida();
                     btnLimpiar.setEnabled(true);
                     deshabilitarbotones();
@@ -4751,7 +4750,7 @@ private void CargarTipoExamenes(){
          
         try {
             String c=cboExamenMedico.getSelectedItem().toString();
-            String empresa=txtEmpresa.getText().toString().toString();
+            String empresa=txtEmpresa.getText().toString().toString().trim();
             if(("MINERA BARRICK MISQUICHILCA SA".equals(empresa) && "RETIRO".equals(c))|| "LA ARENA S.A.".equals(empresa) && "RETIRO".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamenR.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4832,7 +4831,8 @@ private void CargarTipoExamenes(){
             }
              if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)
                  ||  c.contains("CUALITATIVA ANTI") || c.contains("CUANTITATIVA ANTI")||
-                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c)
+                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c) || c.contains("CONSULTA MEDICA") 
+                     || c.contains("CONSTANCIA DE ALTA MEDICA + DESCANSO MEDICO")
                      ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4979,7 +4979,8 @@ private void CargarTipoExamenes(){
             }
              if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)
                  ||  c.contains("CUALITATIVA ANTI") || c.contains("CUANTITATIVA ANTI")||
-                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c)
+                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c) 
+                     || c.contains("CONSTANCIA DE ALTA MEDICA + DESCANSO MEDICO")
                      ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4998,7 +4999,7 @@ private void CargarTipoExamenes(){
                 // viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
             }          
-                   if(c.contains("FACTORES DE RIESGO")){
+                   if(c.contains("FACTORES DE RIESGO")||c.equals("CONSULTA MEDICA") ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);

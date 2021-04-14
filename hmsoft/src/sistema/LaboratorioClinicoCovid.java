@@ -2472,6 +2472,13 @@ negarcheks();
                             + "Especificidad : 97.3 %");
         
         }
+        if(cboMarca4.getSelectedItem().toString().contains("INSCIENSE"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.330% \n"
+                            + "Especificidad : 99.569 %");
+        
+        }
         if(cboMarca4.getSelectedItem().toString().contains("LEPU MEDICAL"))
         {
         jTextAreaIgm3.setText("Metodo de Detección de ácidos nucleicos\n"

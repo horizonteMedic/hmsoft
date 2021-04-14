@@ -57,7 +57,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
     String operador;
     Formatter serie;
     Formatter numero;
- 
+    String foranea;
    public Comprobantes() {
        super();
       initComponents();      
@@ -69,6 +69,8 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
        }
        cboServicios.setSelectedIndex(-1);
         fecha();
+             chkAsistencial.setSelected(true);
+
        AutoCompleteDecorator.decorate(this.cboServicios);
        AutoCompleteDecorator.decorate(this.cboTipoVenta);
        timer.start();
@@ -80,6 +82,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
          sbTicket();
          Genera();
          ControlNumeracion();
+         CargarServicios();
          CargarId();
          desabilitar(false);
          
@@ -462,7 +465,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                                 .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(7, 7, 7)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(2, 2, 2))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -612,7 +615,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel32)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cboDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(txtNroTicket, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2))
         );
@@ -708,8 +711,6 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -728,7 +729,12 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(txtdescuento)))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(2, 2, 2))
         );
         jPanel1Layout.setVerticalGroup(
@@ -809,7 +815,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -835,7 +841,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addContainerGap(438, Short.MAX_VALUE))
         );
 
         jtcomprobantes.addTab("Reportes", jPanel2);
@@ -844,11 +850,11 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtcomprobantes, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jtcomprobantes)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtcomprobantes, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jtcomprobantes)
         );
 
         pack();
@@ -1192,6 +1198,8 @@ boolean bResultado=true;
 
     private void btnImprimirFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirFichaActionPerformed
             grabarAsistencial();
+             imprimir();
+
             Limpiar();
     }//GEN-LAST:event_btnImprimirFichaActionPerformed
 
@@ -1288,7 +1296,8 @@ boolean bResultado=true;
         
  
  }
-  private void grabarAsistencial(){
+  
+   private void grabarAsistencial(){
        if (!txtCodPaciente.getText().isEmpty()) {
              String strSqlStmt;
                 String Query;
@@ -1343,12 +1352,19 @@ boolean bResultado=true;
                     strSqlStmt += ",fecha_nac";
                     Query += ",'" + FechaNac.getDate() + "'";
                 
-System.out.println(strSqlStmt.concat(") ") + Query.concat(")"));
+System.out.println(strSqlStmt.concat(") ") + Query.concat(") RETURNING id_datos"));
              // oFunc.SubSistemaMensajeInformacion(strSqlStmt.concat(") ") + Query.concat(")"));  
-                if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))) {
+                if (oConn.FnBoolQueryExecute(strSqlStmt.concat(") ") + Query.concat(") RETURNING id_datos"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                    //Limpiar();
-                    imprimir();
+                 try {
+                     //Limpiar();
+                     oConn.setResult.next();
+                    foranea=oConn.setResult.getString("id_datos");
+                    System.out.println("foranea es: "+foranea);
+                    insertarCita();
+                 } catch (SQLException ex) {
+                     Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+                 }
                     CargarId();
                  try {
                      oConn.sqlStmt.close();
@@ -1370,8 +1386,46 @@ System.out.println(strSqlStmt.concat(") ") + Query.concat(")"));
 
         }
   }
+  public void insertarCita(){
+    String Sql;
+  for(int i=0;i<tbTicket.getRowCount();i++)
+  {   
+        try {
+            Sql="insert into citaAsistencial values ('"+tbTicket.getValueAt(i, 0).toString()+"',"+
+                    tbTicket.getValueAt(i, 1).toString()+",'"+
+                    tbTicket.getValueAt(i, 2).toString()+"','"+
+                    tbTicket.getValueAt(i, 3).toString()+"','"+
+                    tbTicket.getValueAt(i, 4).toString()+"','"+
+                    tbTicket.getValueAt(i, 5).toString()+"','"+
+                    tbTicket.getValueAt(i, 6).toString()+"','"+
+                     cboServicios.getSelectedItem()+"',"+
+                    foranea+
+                    ")";
+            if (oConn.FnBoolQueryExecute(Sql)) {
+                try {
+                    oConn.setResult.next();
+                    
+                    oFunc.SubSistemaMensajeInformacion("seregistro correctamente ");
+                    
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+             //   oFunc.SubSistemaMensajeError("No se pudo dar de Alta");
+            }
+            oConn.setResult.close();
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          } 
+
+  }
+  
  private void Limpiar(){
  txtCodPaciente.setText(null);
+ FechaNac.setDate(null);
  txtNombre.setText(null);
  txtApellidos.setText(null);
  cboTipoVenta.setSelectedIndex(0);
@@ -1398,6 +1452,8 @@ System.out.println(strSqlStmt.concat(") ") + Query.concat(")"));
  Genera();
  habilitar(false); 
      desabilitar(false);
+          chkAsistencial.setSelected(true);
+
  }
  private void desabilitar(boolean r){
      txtNombre.setEnabled(r);
@@ -1496,14 +1552,15 @@ private void bID1(JTextField cod){
         return bResultado;
     }
 private void bID(JTextField cod){
-    String oSql="select nombres_pa||' '||apellidos_pa as nombres,sexo_pa,estado_civil_pa,direccion_pa,"
+    String oSql="select nombres_pa,apellidos_pa,sexo_pa,estado_civil_pa,direccion_pa,"
             + "direccion_pa,cel_pa,fecha_nacimiento_pa,historial_pa from datos_paciente where cod_pa = '"+cod.getText().toString()+"'"; 
     
     oConn.FnBoolQueryExecute(oSql);
     try {
             if (oConn.setResult.next()) {
                 FechaNacimiento = new com.toedter.calendar.JDateChooser();
-                txtNombre.setText(oConn.setResult.getString("nombres")); 
+                txtNombre.setText(oConn.setResult.getString("nombres_pa")); 
+                txtApellidos.setText(oConn.setResult.getString("apellidos_pa")); 
                 cboSexo.setSelectedItem(oConn.setResult.getString("sexo_pa"));
                 cboEstadoCivil.setSelectedItem(oConn.setResult.getString("estado_civil_pa"));
                 txtDireccion.setText(oConn.setResult.getString("direccion_pa"));
@@ -1645,15 +1702,25 @@ public void sbServicioAgrega()
                         oFila[1]="1";
                         oFila[2]=oConn.setResult.getString("unidad");
                         oFila[3]=oConn.setResult.getString("descripcion");
-                        oFila[4]=oFunc.convertir(Double.valueOf(oConn.setResult.getString("precio")));
+                    // oFila[4]=oFunc.convertir(Double.valueOf(txtPrecioT.getText().toString()));
+                       // oFila[4]=oFunc.convertir(Double.valueOf(txtPrecioT.getText().toString()));  
+                      
+                       // System.out.println("el mensaje es en fila 4 con txt"+oFila[4]);
+                        //oFila[4]=oFunc.convertir(Double.valueOf(oConn.setResult.getString("precio")));
+                     // 
+                     oFila[4]=txtPrecioT.getText().toString();     
+                       System.out.println("el mensaje es en fila 4 con txt "+oFila[4]);
+                     oFila[5]= cboDescuento.getSelectedItem().toString();
                         
-                        oFila[5]= cboDescuento.getSelectedItem().toString();
-                        
-                        
-                        decPrecio = oConn.setResult.getDouble("precio");
-                        
+                  decPrecio = oConn.setResult.getDouble("precio");
+                  System.out.println("el dec precio "+decPrecio);
+                  // decPrecio =Double.valueOf(txtPrecioT.getText().toString());
+                   //  System.out.println("el dec precio "+decPrecio);
+
                         Double Total = decPrecio / oFunc.num(cboDescuento); 
                         oFila[6]= oFunc.convertir(Total);
+                     System.out.println("el mensaje es en fila 6 con txt"+oFila[6]);
+
                         tblDatos.insertRow(0, oFila);  
                         tbTicket.setModel(tblDatos);
                        txtTotal.setText(oFunc.convertir(Total));
@@ -2181,7 +2248,8 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtId.getText()));
+      System.out.println("el mensaje es :"+txtId.getText().toString());
+      printer(Integer.valueOf(foranea));
    }
    else
    {
@@ -2191,6 +2259,7 @@ int seleccion = JOptionPane.showOptionDialog(
 
 }
 private void printer(Integer cod){
+    System.out.print("entro a imprimir");
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
                  try 
