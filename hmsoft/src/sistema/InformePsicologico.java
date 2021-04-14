@@ -5906,7 +5906,7 @@ if (((JTextField)FechaEntrevista.getDateEditor().getUiComponent()).getText().tri
     if(atxtOrganicidad.getText().isEmpty()){bResultado = false;}
     if(atxtPersonalidad.getText().isEmpty()){bResultado = false;}
     if(atxtPsicomotricidad.getText().isEmpty()){bResultado = false;}
-      if(jComboBox1.getSelectedItem().toString().isEmpty()){bResultado = false;}
+    //  if(jComboBox1.getSelectedItem().toString().isEmpty()){bResultado = false;}
 //    if(atxtRecomendaciones.getText().isEmpty()){bResultado = false;}
     if(!bgAprobo.getSelection().isSelected()){
         oFunc.SubSistemaMensajeError("Seleccione si aprobo o no aprobo");
