@@ -10,6 +10,9 @@ import java.util.Date;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -17,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -38,6 +42,8 @@ public class contanciaSaludCovid1 extends javax.swing.JFrame {
  clsFunciones  oFunc = new clsFunciones();
       //Ingreso ads = new Ingreso();
 String sed="";
+    String ipa="",seded="";
+ String codvalor="";
  public static com.toedter.calendar.JDateChooser FechaNacimiento;
 String medicouser="",cmppp;
 //Ingreso objt=new Ingreso();
@@ -47,6 +53,32 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
      * Creates new form contanciaSaludCovid
      */
     public contanciaSaludCovid1() {
+        
+         Properties props = new Properties();
+       
+            FileInputStream in = null;
+        try {
+            in = new FileInputStream("configuracion.properties");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            props.load(in);
+        } catch (IOException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           String url = props.getProperty("dataBaseServer");
+           String db = props.getProperty("dataBaseCatalog");
+           String username = props.getProperty("dataBaseUser");
+           String password = props.getProperty("dataBasePassword");
+         
+  
+           seded=props.getProperty("nameSede");
+           ipa= props.getProperty("dataBaseServer");
+
+
+        valorSede(seded);
+
         initComponents();
        // jComboBox1.setSelectedIndex(1);
         //cmpMedico();
@@ -689,10 +721,22 @@ int seleccion = JOptionPane.showOptionDialog(
         }       
         return bResultado;
         }
+     public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         //activar(true);
         
         CargarSedes();
+        valorSede(seded);
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNorden.getText().isEmpty()){
             
@@ -703,7 +747,7 @@ int seleccion = JOptionPane.showOptionDialog(
 "                         dp.fecha_nacimiento_pa    \n" +
 "                     from datos_paciente as dp inner join n_orden_ocupacional as nocp on    \n" +
 "                         dp.cod_pa=nocp.cod_pa "
-                + "WHERE nocp.n_orden ="+txtNorden.getText().toString() +"";
+                + "WHERE nocp.n_orden ="+txtNorden.getText().toString()+" AND nocp.cod_Sede="+codvalor;
                 oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {

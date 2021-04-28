@@ -15,6 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -24,6 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -48,7 +52,35 @@ public class ConstanciaAltaMarsa1 extends javax.swing.JInternalFrame {
     String condicional;
     //Ingreso ads = new Ingreso();
     String sed="";
+     String ipa="",seded="";
+ String codvalor="";
     public ConstanciaAltaMarsa1() {
+        
+         Properties props = new Properties();
+       
+            FileInputStream in = null;
+        try {
+            in = new FileInputStream("configuracion.properties");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            props.load(in);
+        } catch (IOException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           String url = props.getProperty("dataBaseServer");
+           String db = props.getProperty("dataBaseCatalog");
+           String username = props.getProperty("dataBaseUser");
+           String password = props.getProperty("dataBasePassword");
+         
+  
+           seded=props.getProperty("nameSede");
+           ipa= props.getProperty("dataBaseServer");
+
+
+        valorSede(seded);
+
         initComponents();
         activar(false);
         //sed=ads.nombresede;
@@ -118,6 +150,13 @@ public class ConstanciaAltaMarsa1 extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("CONSTANCIA ALTA DE ANTIGENOS");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
@@ -125,13 +164,6 @@ public class ConstanciaAltaMarsa1 extends javax.swing.JInternalFrame {
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameClosing(evt);
             }
         });
 
@@ -496,7 +528,7 @@ public class ConstanciaAltaMarsa1 extends javax.swing.JInternalFrame {
                         .addComponent(btnImp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtimp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(657, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -652,11 +684,13 @@ private void CargarSedes(){
     String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, "
                + "d.fecha_nacimiento_pa,n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
             "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,e.fecha_examen "
-                + "FROM datos_paciente AS d "
+                + " FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
-               + "WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
-                + " and e.fecha_examen<>'"+fecha1+"' order by n.n_orden desc limit 1;";
+              + "LEFT JOIN constancia_salud_marsa1 AS c ON (n.n_orden = c.n_orden) "
+               + " WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
+                + " and e.fecha_examen<>'"+fecha1+"' and c.chk_sintomatico<>'true'  and n.cod_sede="+codvalor
+            + "  order by n.n_orden desc limit 1;";
             System.out.println("la consulta es:"+Sql);
 
          oConn1.FnBoolQueryExecute(Sql);
@@ -690,6 +724,7 @@ private void CargarSedes(){
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         //activar(true);
         CargarSedes();
+                valorSede(seded);
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         String fecha1=dateFormat.format(date); 
@@ -747,7 +782,18 @@ private void CargarSedes(){
         
            } 
     }//GEN-LAST:event_txtNordenActionPerformed
-public boolean OrdenExiste()
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+    public boolean OrdenExiste()
     {
         boolean bResultado=false;
         if(!txtNorden.getText().isEmpty()){
@@ -851,6 +897,9 @@ else
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
           FechaNacimiento = new com.toedter.calendar.JDateChooser();
+              CargarSedes();
+                valorSede(seded);
+
         String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre,d.fecha_nacimiento_pa, "
                 + "n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
             "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,c.fecha_examen,c.txtdias_desc, c.txtinstitucion,"
@@ -859,7 +908,11 @@ else
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "LEFT JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                 + "INNER JOIN constancia_alta_marsa1 AS c ON (c.n_orden = n.n_orden) "
-               + "WHERE n.n_orden ="+txtNorden.getText().toString() +";";
+                 + "INNER JOIN constancia_salud_marsa1 AS cs ON (cs.n_orden = n.n_orden) "
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +" and cs.chk_sintomatico<>'true'"
+                + " AND n.cod_sede="+codvalor;
+                System.out.println("sql:"+Sql);
+
          oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -1088,12 +1141,8 @@ int seleccion = JOptionPane.showOptionDialog(
         DefaultTableModel model;
     String [] titulos={"N ORDEN","FECHA","RESULTADOS"};
     String [] registros = new String[3];
-    String sql="SELECT n.n_orden as orden, l.fecha_examen,  \n" +
-"concat('IGM: ',(CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
-"  WHEN l.chkigm_noreactivo = 'TRUE' THEN 'NEGATIVO' END ),\n" +
-"			'-IGG: ',(CASE WHEN l.chkigg_reactivo = 'TRUE' THEN 'POSITIVO'\n" +
-"  WHEN l.chkigg_noreactivo = 'TRUE' THEN 'NEGATIVO' END)) AS RESULTADO\n" +
-"FROM datos_paciente AS d  \n" +
+    String sql="SELECT n.n_orden as orden, l.fecha_examen, reactivoono(n.n_orden) as RESULTADO \n" +
+" FROM datos_paciente AS d  \n" +
 "                   INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)  \n" +
 "                  INNER JOIN examen_inmunologico AS l ON (n.n_orden = l.n_orden)  \n" +
 "                  WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText()+")";

@@ -2416,6 +2416,7 @@ negarcheks();
 
     private void btnLimpiarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarIn4ActionPerformed
         limpiar4();
+         limpiar4();
     }//GEN-LAST:event_btnLimpiarIn4ActionPerformed
 
     private void btnGrabarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn4ActionPerformed
@@ -2434,11 +2435,15 @@ negarcheks();
                     if(validarIn4()){
                         if(GrabarIn4()){
                             if(sed.contains("Huancayo"))
-                 printerIn12(Integer.valueOf(txtNordenIn4.getText().toString())); 
-                                else
+                            { printerIn12(Integer.valueOf(txtNordenIn4.getText().toString())); 
+                             limpiar4();
+                            }   
+                            else
                             {
                             if(jCheckBox1.isSelected())    
-                            imprimirIn5();
+                            { imprimirIn5();
+                             limpiar4();
+                            }
                             else
                             {     imprimirIn4(); 
                             limpiar4();
@@ -2472,7 +2477,14 @@ negarcheks();
                             + "Especificidad : 97.3 %");
         
         }
-        if(cboMarca4.getSelectedItem().toString().contains("INSCIENSE"))
+           if(cboMarca4.getSelectedItem().toString().contains("UNSCIENCE"))
+        {
+        jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.330% \n"
+                            + "Especificidad : 99.569 %");
+        
+        }
+                 if(cboMarca4.getSelectedItem().toString().contains("UNscience SARS-CoV-2 Antigen"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad  : 96.330% \n"
@@ -2532,7 +2544,7 @@ negarcheks();
                             + "Sensibilidad  : 96.52% \n"
                             + "Especificidad : 99.68%");
         } 
-         if(cboMarca4.getSelectedItem().toString().contains("ONSITE COVID-19 AG RAPID TEST"))
+         if(cboMarca4.getSelectedItem().toString().contains("OnSite COVID-19 Ag Rapid Test"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad  : 92.3% \n"
@@ -2607,7 +2619,7 @@ negarcheks();
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.nom_examen like '%PRUEBA CUALITATIVA ANTIGENOS%' and  n.n_orden ='"+txtNordenIn4.getText() +"'";
+            "               WHERE  n.n_orden ="+txtNordenIn4.getText();
             oConn1.FnBoolQueryExecute(Sql);
             try {
                 if (oConn1.setResult.next()) {
@@ -2626,7 +2638,7 @@ negarcheks();
                     //  jTextField9.setText(oConn.setResult.getString("valorigg"));
 
                 }else{
-                    oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
+                //    oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
                 }
                 oConn1.sqlStmt.close();
                 oConn1.setResult.close();
@@ -4338,7 +4350,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         if(!txtNordenIn4.getText().isEmpty()){
         String sQuery;
         sQuery  = "Select e.n_orden from examen_inmunologico as e inner join n_orden_ocupacional as n on e.n_orden=n.n_orden  "
-                + "Where n.nom_examen like '%PRUEBA CUALITATIVA ANTIGENOS%' and  n.n_orden ="+txtNordenIn4.getText().toString();
+                + "Where n.n_orden ="+txtNordenIn4.getText().toString();
         oConn1.FnBoolQueryExecute(sQuery);
         try {
             if (oConn1.setResult.next())
@@ -4349,7 +4361,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
 //             txtNorden.setText(null);
             }
             else
-            oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
+          //  oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
             oConn1.sqlStmt.close();
             oConn1.setResult.close();
         } catch (SQLException ex) {

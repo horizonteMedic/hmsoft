@@ -2138,9 +2138,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
                 }
                 
-                vSql+="and (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19' "
-                        + " or UPPER(n.nom_examen) LIKE '%ANTIGENO%'  or UPPER(n.nom_examen) LIKE '%ANTICUERPO%') "+
-                        agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
                 System.out.println("la consulta aplicada es:"+vSql);
                 if (oConn.FnBoolQueryExecute(vSql)) {
                     try {
@@ -2304,9 +2302,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
        if(jCheckBox1.isSelected())
        {   nomsede=nombre;
            agregarConsulta="";
-           agregarConsulta="and n.cod_sede="+codigosede;
+           agregarConsulta=" and n.cod_sede="+codigosede;
             agregarConsulta1="";
-                      agregarConsulta1="and n_orden_ocupacional.cod_sede="+codigosede;
+                      agregarConsulta1=" and n_orden_ocupacional.cod_sede="+codigosede;
 
        } 
        else

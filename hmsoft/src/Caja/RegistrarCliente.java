@@ -136,7 +136,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         hBotones(false);
         CargarTipoExamenes();
         ocultarOpcionesCovid();
-        //autorizarCertificado();
+      //autorizarCertificado();
         CargarinfoHotel();
      // cargarContratas();
         cargarEmpresas();
@@ -2848,7 +2848,7 @@ this.chkAltaTrabCal.setVisible(false);
                     //txtDni.setText("");
                     txtNombre.requestFocus();
                     btnAgregar.setEnabled(true);
-                   funcion3();
+                   //funcion3();
                    // comunirApiReniecDesconocida();
                     btnLimpiar.setEnabled(true);
                     deshabilitarbotones();
@@ -4831,8 +4831,8 @@ private void CargarTipoExamenes(){
             }
              if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)
                  ||  c.contains("CUALITATIVA ANTI") || c.contains("CUANTITATIVA ANTI")||
-                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c) || c.contains("CONSULTA MEDICA") 
-                     || c.contains("CONSTANCIA DE ALTA MEDICA + DESCANSO MEDICO")
+                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c) || c.contains("PRUEBA CUALITATIVA ANTIGENOS+CONSULTA MEDICA") 
+                     || c.contains("CONSTANCIA DE ALTA MEDICA + DESCANSO MEDICO")|| c.contains("MOLECULAR") 
                      ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4846,6 +4846,20 @@ private void CargarTipoExamenes(){
                  JasperPrintManager.printReport(myPrint,true);
                 
             }
+               if(c.contains("LABORATORIO CLINICO")||c.equals("CONSULTA MEDICA") ){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "labClinico.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta de Laboratorio Clinico");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
+             
                     if("FACTORES DE RIESGO".equals(c)){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4979,8 +4993,8 @@ private void CargarTipoExamenes(){
             }
              if("COVID-19".equals(c)||"ALTA-EPIDEMIOLOGICA".equals(c)||"COVID-19 CUANTITATIVA".equals(c)
                  ||  c.contains("CUALITATIVA ANTI") || c.contains("CUANTITATIVA ANTI")||
-                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c) 
-                     || c.contains("CONSTANCIA DE ALTA MEDICA + DESCANSO MEDICO")
+                     "PRUEBA CUANTITATIVA ANTIGENOS".equals(c) || c.contains("ANTIGENOS")
+                     || c.contains("CONSTANCIA DE ALTA MEDICA + DESCANSO MEDICO")|| c.contains("MOLECULAR")
                      ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Covid19.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4999,7 +5013,7 @@ private void CargarTipoExamenes(){
                 // viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
             }          
-                   if(c.contains("FACTORES DE RIESGO")||c.equals("CONSULTA MEDICA") ){
+                   if(c.contains("FACTORES DE RIESGO") ){
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -5007,6 +5021,19 @@ private void CargarTipoExamenes(){
                 JasperViewer viewer = new JasperViewer(myPrint, false);
               
                 viewer.setTitle("Hoja de Ruta factores de riesgo");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                 JasperPrintManager.printReport(myPrint,true);
+                
+            }
+               if(c.contains("LABORATORIO CLINICO")||c.equals("CONSULTA MEDICA") ){
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "labClinico.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+              
+                viewer.setTitle("Hoja de Ruta de Laboratorio Clinico");
                 // viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
                  JasperPrintManager.printReport(myPrint,true);

@@ -12,6 +12,9 @@ import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.Component;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +23,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -48,10 +52,41 @@ public final class FichaMedicaMarsa1 extends javax.swing.JInternalFrame {
     clsFunciones oFunc = new clsFunciones();
          //Ingreso ads = new Ingreso();
 String sed="";
+     String ipa="",seded="";
+ String codvalor="";
+
     clsOperacionesUsuarios oPu = new clsOperacionesUsuarios();
     boolean ordenVer=true;
     DefaultTableModel model;
     public FichaMedicaMarsa1() {
+        
+         Properties props = new Properties();
+       
+            FileInputStream in = null;
+        try {
+            in = new FileInputStream("configuracion.properties");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            props.load(in);
+        } catch (IOException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           String url = props.getProperty("dataBaseServer");
+           String db = props.getProperty("dataBaseCatalog");
+           String username = props.getProperty("dataBaseUser");
+           String password = props.getProperty("dataBasePassword");
+         
+  
+           seded=props.getProperty("nameSede");
+           ipa= props.getProperty("dataBaseServer");
+
+
+        valorSede(seded);
+
+        
+        
         initComponents();
         //sed=ads.nombresede;
 //        jtFichaMedica.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/id.png")));
@@ -1758,10 +1793,10 @@ String sed="";
     }//GEN-LAST:event_FechaNacimientoPropertyChange
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-        consultar();
         CargarSedes();
-        
-        
+                valorSede(seded);
+
+        consultar();  
     }//GEN-LAST:event_txtNordenActionPerformed
 
     private void txtAntecedentesPersonalesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAntecedentesPersonalesFocusGained
@@ -1787,6 +1822,16 @@ String sed="";
     private void txtNordenKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNordenKeyReleased
 
     }//GEN-LAST:event_txtNordenKeyReleased
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+}
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
        if(Orden()){
@@ -1806,6 +1851,10 @@ String sed="";
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnEditarFMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFMActionPerformed
+            CargarSedes();
+                   valorSede(seded);
+
+
         if(!txtNorden.getText().isEmpty()){
             if(Orden()){
             editar();
@@ -1995,7 +2044,7 @@ String sed="";
 "       inner JOIN fmedica_covid_marsa1 AS fm ON(n.n_orden = fm.n_orden)" +
              "left JOIN examen_inmunologico AS i ON (n.n_orden = i.n_orden) "+
         "left JOIN constancia_salud_marsa AS c ON (n.n_orden = c.n_orden) "+
-"                WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
+"                WHERE n.n_orden ="+ txtNorden.getText().toString()+" AND n.cod_Sede="+codvalor;
                 
                 oConn2.FnBoolQueryExecute(Consulta);
                 
@@ -2159,7 +2208,7 @@ String sed="";
 "       left JOIN ex_radiograficos_sanguineos AS e ON(n.n_orden = e.n_orden)"
         + "left JOIN examen_inmunologico AS i ON (n.n_orden = i.n_orden) "
         + "left JOIN constancia_salud_marsa1 AS c ON (n.n_orden = c.n_orden) "
-                        + "WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
+                        + "WHERE n.n_orden ="+ txtNorden.getText().toString()+" AND n.cod_Sede="+codvalor;;
                 
                 oConn2.FnBoolQueryExecute(Consulta);
                 

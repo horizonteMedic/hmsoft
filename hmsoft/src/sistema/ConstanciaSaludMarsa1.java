@@ -12,11 +12,15 @@ import Clases.clsFunciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,6 +32,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import static sistema.Ocupacional1.lasede;
 
 /**
  *
@@ -40,9 +45,34 @@ public class ConstanciaSaludMarsa1 extends javax.swing.JInternalFrame {
  String sintomas="";
     // Ingreso ads = new Ingreso();
 String sed="";
+ String ipa="",seded="";
+ String codvalor="";
     public ConstanciaSaludMarsa1() {
+          
+         Properties props = new Properties();
+       
+            FileInputStream in = null;
+        try {
+            in = new FileInputStream("configuracion.properties");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            props.load(in);
+        } catch (IOException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           String url = props.getProperty("dataBaseServer");
+           String db = props.getProperty("dataBaseCatalog");
+           String username = props.getProperty("dataBaseUser");
+           String password = props.getProperty("dataBasePassword");
+         
+  
+           lasede=props.getProperty("nameSede");
+           seded=props.getProperty("nameSede");
+           ipa= props.getProperty("dataBaseServer");
         initComponents();
-        activar(false);
+           activar(false);
         timer.start();
         Fecha();
         chkIgmPositivo.setVisible(false);
@@ -100,6 +130,10 @@ chkInvalido.setVisible(false);
         btnLimpiar = new javax.swing.JButton();
         btnImp = new javax.swing.JButton();
         txtimp = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaRecomendaciones = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtNorden = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
@@ -140,7 +174,7 @@ chkInvalido.setVisible(false);
 
         jLabel8.setText("de la empresa ");
 
-        jLabel3.setText("PRUEBA RÁPIDA");
+        jLabel3.setText("ANTIGENOS");
 
         chkIgmPositivo.setText("POSITIVO");
         chkIgmPositivo.setEnabled(false);
@@ -184,6 +218,7 @@ chkInvalido.setVisible(false);
             }
         });
 
+        txtMuestra.setEditable(false);
         txtMuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMuestraActionPerformed(evt);
@@ -318,14 +353,49 @@ chkInvalido.setVisible(false);
             }
         });
 
+        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entrar.png"))); // NOI18N
+        btnGuardar.setText("Guardar/Actualizar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnImp.setBackground(new java.awt.Color(102, 0, 51));
+        btnImp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora.png"))); // NOI18N
+        btnImp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImpActionPerformed(evt);
+            }
+        });
+
+        txtimp.setBackground(new java.awt.Color(0, 153, 153));
+        txtimp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtimpActionPerformed(evt);
+            }
+        });
+
+        jTextAreaRecomendaciones.setColumns(20);
+        jTextAreaRecomendaciones.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaRecomendaciones);
+
+        jLabel1.setText("RECOMENDACIONES:");
+
+        jLabel4.setText("N° PRUEBA:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -361,17 +431,44 @@ chkInvalido.setVisible(false);
                                     .addComponent(chkCefalea)
                                     .addComponent(chkNauseas)
                                     .addComponent(chkDiarrea)))
-                            .addComponent(chkPerdidaOlf1)))
+                            .addComponent(chkPerdidaOlf1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtSintoma, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel38)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGuardar)
+                            .addComponent(txtMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnLimpiar)
+                                .addGap(53, 53, 53)
+                                .addComponent(btnImp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtimp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(FechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabel38)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(61, 61, 61))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkAsintomatico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chkSintomatico)
+                .addGap(15, 15, 15))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -387,14 +484,9 @@ chkInvalido.setVisible(false);
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(chkAsintomatico)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkSintomatico))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 52, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,8 +521,7 @@ chkInvalido.setVisible(false);
                             .addComponent(chkIggPositivo)
                             .addComponent(chkIggNegativo))
                         .addGap(10, 10, 10)
-                        .addComponent(chkInvalido)
-                        .addGap(36, 36, 36))
+                        .addComponent(chkInvalido))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkTos, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -454,47 +545,29 @@ chkInvalido.setVisible(false);
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(chkMalestar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkExpctoracion, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chkPerdidaOlf1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)))
+                            .addComponent(chkExpctoracion, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkPerdidaOlf1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(FechaHoy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel38)
-                        .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(txtMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtMuestra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnImp)
+                    .addComponent(txtimp)))
         );
-
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entrar.png"))); // NOI18N
-        btnGuardar.setText("Guardar/Actualizar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
-        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
-
-        btnImp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora.png"))); // NOI18N
-        btnImp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImpActionPerformed(evt);
-            }
-        });
-
-        txtimp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtimpActionPerformed(evt);
-            }
-        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel13.setText("N° Ficha :");
@@ -521,27 +594,16 @@ chkInvalido.setVisible(false);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(btnGuardar)
-                        .addGap(2, 2, 2)
-                        .addComponent(btnLimpiar)
-                        .addGap(77, 77, 77)
-                        .addComponent(btnImp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtimp, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)))
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEditar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -555,20 +617,24 @@ chkInvalido.setVisible(false);
                     .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnImp)
-                    .addComponent(txtimp))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public static com.toedter.calendar.JDateChooser FechaNacimiento;
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
 
+}
 private void CargarSedes(){
       String sQuery;        
         // Prepara el Query
@@ -620,7 +686,8 @@ private void CargarSedes(){
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         //activar(true);
-        CargarSedes();
+          CargarSedes();
+        valorSede(seded);
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNorden.getText().isEmpty()){
         if(!OrdenExiste()){  
@@ -631,7 +698,7 @@ private void CargarSedes(){
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +" AND n.cod_Sede="+codvalor;
          oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -716,7 +783,7 @@ private boolean Grabar() throws SQLException{
        String strSqlStmt ="INSERT INTO constancia_salud_marsa1(\n" +
 "            n_orden, fecha_examen, hora_examen, txtmuestra, chk_asintomatico, \n" +
 "            chk_sintomatico, txtresultados, chks1, chks2, chks3, chks4, chks5, \n" +
-"            chks6, chks7, chks8, chks9, chks10, chks11, chks12, chks13)";       
+"            chks6, chks7, chks8, chks9, chks10, chks11, chks12, chks13,recomendaciones)";       
             strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"',"
                     + "'"+ FechaHoy.getDate()+"',"
                     + "'"+ lblHora.getText()+"',"
@@ -736,7 +803,8 @@ private boolean Grabar() throws SQLException{
                     + "'"+chkIrritaibilidad.isSelected()+ "',"
                     + "'"+chkDolor.isSelected()+ "',"
                     + "'"+chkExpctoracion.isSelected()+ "',"
-                    + "'"+chkPerdidaOlf1.isSelected()+"' )";
+                    + "'"+chkPerdidaOlf1.isSelected()+"','" 
+                    +jTextAreaRecomendaciones.getText().toString()+"' )";
              if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
 //                   oConn.setResult.next();
                    bResult = true;
@@ -752,7 +820,8 @@ private boolean Grabar() throws SQLException{
                 return bResult;       
         }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         if(OrdenExiste()){  
+        CargarSedes();
+        if(OrdenExiste()){  
             Actualizar();
          }else{
               if(!txtNorden.getText().isEmpty()){
@@ -791,17 +860,19 @@ private boolean Grabar() throws SQLException{
     }//GEN-LAST:event_txtimpActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        CargarSedes();
+                valorSede(seded);
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre,d.fecha_nacimiento_pa, "
                 + "n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
             "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,c.fecha_examen,c.hora_examen, "
                 + "c.txtmuestra, c.chk_asintomatico, c.chk_sintomatico, c.txtresultados,n.chkcovid1,n.chkcovid2,chks1,chks2,"
-               + "chks3, chks4, chks5, chks6, chks7, chks8, chks9, chks10, chks11, chks12, chks13,n.tipoprueba "
-                + "FROM datos_paciente AS d "
+               + "chks3, chks4, chks5, chks6, chks7, chks8, chks9, chks10, chks11, chks12, chks13,n.tipoprueba,c.recomendaciones "
+                + " FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                 + "INNER JOIN constancia_salud_marsa1 AS c ON (c.n_orden = n.n_orden) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +"  AND n.cod_Sede="+codvalor;
          oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -832,6 +903,7 @@ private boolean Grabar() throws SQLException{
                         chkDolor.setSelected(oConn1.setResult.getBoolean("chks11"));
                         chkExpctoracion.setSelected(oConn1.setResult.getBoolean("chks12"));
                         chkPerdidaOlf1.setSelected(oConn1.setResult.getBoolean("chks13"));
+                        jTextAreaRecomendaciones.setText(oConn1.setResult.getString("recomendaciones"));
                         if(oConn1.setResult.getString("tipoprueba").equals("P1"))
                               txtMuestra.setText("1era MUESTRA");
                            if(oConn1.setResult.getString("tipoprueba").equals("P2"))
@@ -1123,7 +1195,8 @@ private boolean Grabar() throws SQLException{
                         + ", chks10='"+chkIrritaibilidad.isSelected()+"'"
                         + ", chks11='"+chkDolor.isSelected()+"'"
                         + ", chks12='"+chkExpctoracion.isSelected()+"'"
-                        + ", chks13='"+chkPerdidaOlf1.isSelected()+"'"+
+                        + ", chks13='"+chkPerdidaOlf1.isSelected()+"'"
+                       + ", recomendaciones='"+jTextAreaRecomendaciones.getText().toString()+"'"+
                 " WHERE n_orden='" + sCodigo + "'";
             
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
@@ -1226,6 +1299,7 @@ int seleccion = JOptionPane.showOptionDialog(
 private void limpiar(){
 txtNombre.setText(null);
 txtDNI.setText(null);
+jTextAreaRecomendaciones.setText(null);
 txtEmpresa.setText(null);
 txtMuestra.setText(null);
 btgSintoma.clearSelection();
@@ -1311,14 +1385,18 @@ public void cerrarVentana(){
     private javax.swing.JCheckBox chkPerdidaOlf1;
     private javax.swing.JCheckBox chkSintomatico;
     private javax.swing.JCheckBox chkTos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextAreaRecomendaciones;
     private javax.swing.JLabel lblHora;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtEmpresa;

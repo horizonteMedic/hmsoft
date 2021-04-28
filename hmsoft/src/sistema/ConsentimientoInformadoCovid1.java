@@ -12,11 +12,15 @@ import Clases.clsFunciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,8 +44,35 @@ public class ConsentimientoInformadoCovid1 extends javax.swing.JInternalFrame {
  clsFunciones  oFunc = new clsFunciones();
       //Ingreso ads = new Ingreso();
 String sed="";
- 
+      String ipa="",seded="";
+ String codvalor="";
     public ConsentimientoInformadoCovid1() {
+        
+         Properties props = new Properties();
+       
+            FileInputStream in = null;
+        try {
+            in = new FileInputStream("configuracion.properties");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            props.load(in);
+        } catch (IOException ex) {
+            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           String url = props.getProperty("dataBaseServer");
+           String db = props.getProperty("dataBaseCatalog");
+           String username = props.getProperty("dataBaseUser");
+           String password = props.getProperty("dataBasePassword");
+         
+  
+           seded=props.getProperty("nameSede");
+           ipa= props.getProperty("dataBaseServer");
+
+
+        valorSede(seded);
+
         initComponents();
         activar(false);
         //sed=ads.nombresede;
@@ -310,7 +341,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
         //activar(true);
         CargarSedes();
-        FechaNacimiento = new com.toedter.calendar.JDateChooser();
+valorSede(seded);
+FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNorden.getText().isEmpty()){
         if(!OrdenExiste()){  
                
@@ -318,7 +350,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                + "d.fecha_nacimiento_pa,n.razon_empresa,n.cargo_de  "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString()+" AND n.cod_Sede="+codvalor;
          oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -343,7 +375,19 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         }
            } 
     }//GEN-LAST:event_txtNordenActionPerformed
-public boolean OrdenExiste()
+
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+}
+
+    public boolean OrdenExiste()
     {
         boolean bResultado=false;
         if(!txtNorden.getText().isEmpty()){
@@ -428,18 +472,24 @@ private boolean Grabar() throws SQLException{
 
     private void txtimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimpActionPerformed
         if(!txtimp.getText().isEmpty()){
+                if(sed.contains("Huancayo"))
+                 print12(Integer.valueOf(txtimp.getText().toString()));
+             else
             print(Integer.valueOf(txtimp.getText().toString()));
         }
     }//GEN-LAST:event_txtimpActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
+            CargarSedes();
+            valorSede(seded);
+
         String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre,d.fecha_nacimiento_pa, "
                 + "n.razon_empresa,n.cargo_de, fecha_examen "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "INNER JOIN consentimiento_informado_covid AS c ON (c.n_orden = n.n_orden) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString()+" AND n.cod_Sede="+codvalor;
          oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
