@@ -52,7 +52,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF1001 extends javax.swing.JIn
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("huanchaco.properties");
+            in = new FileInputStream("huancayo.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
         }
