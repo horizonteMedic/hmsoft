@@ -64,7 +64,7 @@ String sed="";
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("configuracion.properties");
+            in = new FileInputStream("huanchaco.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -328,14 +328,6 @@ String sed="";
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(1268, 647));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
             }
@@ -343,6 +335,14 @@ String sed="";
             }
             public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
 
@@ -1642,7 +1642,7 @@ String sed="";
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnImprimir)))))
+                                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1853,8 +1853,6 @@ codvalor="4";
     private void btnEditarFMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFMActionPerformed
             CargarSedes();
                    valorSede(seded);
-
-
         if(!txtNorden.getText().isEmpty()){
             if(Orden()){
             editar();
@@ -1883,6 +1881,7 @@ codvalor="4";
     }//GEN-LAST:event_txtAnamnesisFocusGained
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+         CargarSedes1();
         Integer Norden = Integer.valueOf(txtImprimir.getText());
          if(sed.contains("Huancayo"))
         oPu.print(Norden, "Ficha_Medica_COVID3213.jasper", "Ficha Médica Marza ANtigenos");
@@ -1891,7 +1890,12 @@ codvalor="4";
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void txtImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirActionPerformed
-
+   CargarSedes1();
+        Integer Norden = Integer.valueOf(txtImprimir.getText());
+         if(sed.contains("Huancayo"))
+        oPu.print(Norden, "Ficha_Medica_COVID3213.jasper", "Ficha Médica Marza ANtigenos");
+         else 
+        oPu.print(Norden, "Ficha_Medica_COVID1.jasper", "Ficha Médica Marza ANtigenos");
     }//GEN-LAST:event_txtImprimirActionPerformed
 
     private void txtAntecedentesPersonalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntecedentesPersonalesActionPerformed
@@ -2004,6 +2008,40 @@ codvalor="4";
 
 
 }
+       private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtImprimir.getText().toString().trim();
+        String cboSede="1";
+        if (oConn2.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn2.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn2.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn2.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     
     void Fecha() {
         Date fechaDate = new Date();
@@ -2043,7 +2081,7 @@ codvalor="4";
 "       LEFT JOIN lab_clinico AS l ON(n.n_orden = l.n_orden)\n" +
 "       inner JOIN fmedica_covid_marsa1 AS fm ON(n.n_orden = fm.n_orden)" +
              "left JOIN examen_inmunologico AS i ON (n.n_orden = i.n_orden) "+
-        "left JOIN constancia_salud_marsa AS c ON (n.n_orden = c.n_orden) "+
+        "left JOIN constancia_salud_marsa1 AS c ON (n.n_orden = c.n_orden) "+
 "                WHERE n.n_orden ="+ txtNorden.getText().toString()+" AND n.cod_Sede="+codvalor;
                 
                 oConn2.FnBoolQueryExecute(Consulta);

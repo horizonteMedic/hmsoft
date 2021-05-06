@@ -52,7 +52,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF1001 extends javax.swing.JIn
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("configuracion.properties");
+            in = new FileInputStream("huanchaco.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1875,7 +1875,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF1001 extends javax.swing.JIn
     }//GEN-LAST:event_chkContinuidad5ActionPerformed
 
     private void txtIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIMPActionPerformed
-//        
+CargarSedes1();   
         if(!txtIMP.getText().isEmpty()){        
           
                 if(sed.contains("Huancayo"))
@@ -2677,7 +2677,40 @@ codvalor="4";
 
 
 }
-    
+     private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtIMP.getText().toString().trim();
+        String cboSede="1";
+        if (oConn1.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn1.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn1.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn1.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+} 
     private void agregar(){
         if(!txtNorden.getText().isEmpty()){
             if(!oPe.nOrden(txtNorden, "ficha_pruebas_rapidas_covidf1001")){

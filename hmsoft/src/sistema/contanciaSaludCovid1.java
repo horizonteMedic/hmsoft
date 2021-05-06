@@ -58,7 +58,7 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("configuracion.properties");
+            in = new FileInputStream("huanchaco.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -453,7 +453,40 @@ jTextField2.setVisible(false);
 
 
 }
-    
+     private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtimp.getText().toString().trim();
+        String cboSede="1";
+        if (oConn1.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn1.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn1.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn1.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     public void resultadolaboratorio(){
   
                    String sQuery;
@@ -798,6 +831,7 @@ jDateChooser2.setDate(null);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
+CargarSedes1();
         if(!txtimp.getText().isEmpty()){
             if(sed.contains("Huancayo"))
                  print12(Integer.valueOf(txtimp.getText().toString()));
@@ -848,6 +882,7 @@ jDateChooser2.setDate(null);
  
  }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+CargarSedes();
         if(OrdenExiste()){
             Actualizar();
         }else{
@@ -868,7 +903,11 @@ jDateChooser2.setDate(null);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimpActionPerformed
+      CargarSedes1();
         if(!txtimp.getText().isEmpty()){
+            if(sed.contains("Huancayo"))
+                 print12(Integer.valueOf(txtimp.getText().toString()));
+            else
             print(Integer.valueOf(txtimp.getText().toString()));
         }
     }//GEN-LAST:event_txtimpActionPerformed

@@ -3801,8 +3801,8 @@ public void cargarDatosPaciente(){
     }//GEN-LAST:event_tbOcupacionalMousePressed
 
     private void BtnEditarExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarExActionPerformed
-        txtEmpresa.setEnabled(true);
-        txtContrata.setEnabled(true);
+        txtEmpresa.setEnabled(false);
+        txtContrata.setEnabled(false);
         txtMedico.setEnabled(true);
         txtCargoDesempenar.setEnabled(true);
         cboArea.setEnabled(true);
@@ -6032,8 +6032,8 @@ private void CargarTipoExamenes(){
         txtCargoDesempenar.setEnabled(true);
         cboArea.setEnabled(true);
         jpOcupacional.setEnabled(true);
-        txtEmpresa.setEnabled(true);
-        txtContrata.setEnabled(true);
+        txtEmpresa.setEnabled(false);
+        txtContrata.setEnabled(false);
         txtNombresAlta.setEnabled(true);
         txtApellidosAlta.setEnabled(true);
         cboAltura.setEnabled(true);
@@ -6058,6 +6058,7 @@ private void CargarTipoExamenes(){
 //        cboSedeClinica.setEnabled(true);
         txtObserv1.setEnabled(true);
         txtObserv2.setEnabled(true);
+        jComboBoxProtocolos.setEnabled(false);
     }
 
     public void AltaLimpiar() {

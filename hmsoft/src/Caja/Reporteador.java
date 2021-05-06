@@ -763,27 +763,28 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     public boolean isCellEditable(int rowIndex, int columnIndex) {
                         return false;
                     }};
-                
+              
                 String vSql="SELECT n_orden_ocupacional.n_orden AS EXAM_COD_ATENCION,\n" +
                         " LPAD(n_orden_ocupacional.cod_pa::text, 8, '0')AS DNI,\n" +
                         " datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS PACIENTE,\n" +
                         " datos_paciente.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
                         " obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
                         " datos_paciente.direccion_pa as DIRECCIÓN,datos_paciente.cel_pa as CELULAR,n_orden_ocupacional.cargo_de AS CARGO,\n" +
-                        " n_orden_ocupacional.razon_contrata AS EMPRESA,\n" +
+                        " n_orden_ocupacional.razon_empresa AS EMPRESA,\n" +
                         "n_orden_ocupacional.razon_contrata AS CONTRATA,\n" +
                         "n_orden_ocupacional.fecha_apertura_po AS FECHA_REGISTRO,\n" +
                         "						( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then constancia_salud_marsa.fecha_examen\n" +
                         "								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
                         "						 		when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
-                        "						 end ) AS FECHA_EXAMEN,\n" +
+                        "		else 	n_orden_ocupacional.fecha_apertura_po			 "
+                        + "end ) AS FECHA_EXAMEN,\n" +
                         "						 n_orden_ocupacional.nom_examen AS  NOMBRE_EXAMEN,\n" +
                         "						                         n_orden_ocupacional.tipoprueba AS NUMERO_PRUEBA,\n" +
                         "                        ( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then 'RA'\n" +
                         "								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then 'AG'\n" +
                         "			when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then 'AG'\n" +
                         "\n" +
-                        "						 end ) AS TIPOPRUEBA,\n" +
+                        "			else 'AG'			 end ) AS TIPOPRUEBA,\n" +
                         "                    	reactivoono(n_orden_ocupacional.n_orden) as RESULTADO_PRUEBA_COVID\n" +
                         ",\n" +
                         "                        (CASE\n" +
@@ -821,8 +822,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     empresa=cboEmpresas.getSelectedItem().toString();
                 else
                     empresa="";
-                vSql +="  WHERE UPPER(n_orden_ocupacional.nom_examen) like '%ANTIGENOS%'  AND  ";
-                vSql +="  UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
+              //  vSql +="  WHERE UPPER(n_orden_ocupacional.nom_examen) like '%ANTIGENOS%'  AND  ";
+                vSql +="  WHERE UPPER(n_orden_ocupacional.razon_contrata) like UPPER('%"+contrata+"%') ";
                 
                 vSql += " AND UPPER(n_orden_ocupacional.razon_empresa) like UPPER('%"+empresa+"%')";
                 
@@ -831,12 +832,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 vSql+=" AND\n" +
                         "        ((n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
                         "	or (n_orden_ocupacional.fecha_apertura_po BETWEEN '"+Fdesde.getDate().toString()+"' AND '"+Fhasta.getDate().toString()+"')\n" +
-                        "						 )";
+                        "						 )  ";
                 
                 
                 
                 
-                vSql+=" " +agregarConsulta1;
+                vSql+=" " +agregarConsulta1 +"  order by NUMERO_PRUEBA,RESULTADO_PRUEBA_COVID ";
                 System.out.println("consulta:"+vSql);
                 //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
