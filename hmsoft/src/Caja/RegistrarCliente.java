@@ -136,7 +136,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         hBotones(false);
         CargarTipoExamenes();
         ocultarOpcionesCovid();
-      //autorizarCertificado();
+      autorizarCertificado();
         CargarinfoHotel();
      // cargarContratas();
         cargarEmpresas();
@@ -2849,7 +2849,7 @@ this.chkAltaTrabCal.setVisible(false);
                     txtNombre.requestFocus();
                     btnAgregar.setEnabled(true);
                    //funcion3();
-                   // comunirApiReniecDesconocida();
+                    comunirApiReniecDesconocida();
                     btnLimpiar.setEnabled(true);
                     deshabilitarbotones();
                 }

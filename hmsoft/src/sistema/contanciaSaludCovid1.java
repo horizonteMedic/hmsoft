@@ -58,14 +58,14 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("huancayo.properties");
+            in = new FileInputStream("trujillo.properties");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(contanciaSaludCovid1.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             props.load(in);
         } catch (IOException ex) {
-            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(contanciaSaludCovid1.class.getName()).log(Level.SEVERE, null, ex);
         }
            String url = props.getProperty("dataBaseServer");
            String db = props.getProperty("dataBaseCatalog");

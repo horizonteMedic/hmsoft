@@ -1008,7 +1008,7 @@
     </Component>
     <Component class="javax.swing.JCheckBox" name="jCheckBoxAntigeno">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ANTIGENOS"/>
+        <Property name="text" type="java.lang.String" value="ANTIG MARSA"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="jCheckBox2">

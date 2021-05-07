@@ -765,45 +765,33 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     }};
               
                 String vSql="SELECT n_orden_ocupacional.n_orden AS EXAM_COD_ATENCION,\n" +
-                        " LPAD(n_orden_ocupacional.cod_pa::text, 8, '0')AS DNI,\n" +
-                        " datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS PACIENTE,\n" +
-                        " datos_paciente.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
-                        " obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
-                        " datos_paciente.direccion_pa as DIRECCIÓN,datos_paciente.cel_pa as CELULAR,n_orden_ocupacional.cargo_de AS CARGO,\n" +
-                        " n_orden_ocupacional.razon_empresa AS EMPRESA,\n" +
-                        "n_orden_ocupacional.razon_contrata AS CONTRATA,\n" +
-                        "n_orden_ocupacional.fecha_apertura_po AS FECHA_REGISTRO,\n" +
-                        "						( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then constancia_salud_marsa.fecha_examen\n" +
-                        "								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
-                        "						 		when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then constancia_salud_marsa1.fecha_examen\n" +
-                        "		else 	n_orden_ocupacional.fecha_apertura_po			 "
-                        + "end ) AS FECHA_EXAMEN,\n" +
-                        "						 n_orden_ocupacional.nom_examen AS  NOMBRE_EXAMEN,\n" +
-                        "						                         n_orden_ocupacional.tipoprueba AS NUMERO_PRUEBA,\n" +
-                        "                        ( case when UPPER(n_orden_ocupacional.nom_examen)='COVID-19'then 'RA'\n" +
-                        "								when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' then 'AG'\n" +
-                        "			when UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' then 'AG'\n" +
-                        "\n" +
-                        "			else 'AG'			 end ) AS TIPOPRUEBA,\n" +
-                        "                    	reactivoono(n_orden_ocupacional.n_orden) as RESULTADO_PRUEBA_COVID\n" +
-                        ",\n" +
-                        "                        (CASE\n" +
-                        "    WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
-                        "        WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
-                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
-                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
-                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
-                        "       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
-                        "						 END) AS SINTOMATOLOGIA,        \n" +
-                        "                        triaje.sat_02 AS SPO2,\n" +
-                        "                        examen_inmunologico.cbomarca AS MARCATEST,\n" +
-                        "                        (CASE \n" +
-                        "                        WHEN examen_inmunologico.txtobservaciones is null THEN 'N/A'\n" +
-                        "                        ELSE examen_inmunologico.txtobservaciones\n" +
-                        "                        END) AS DIAG_OBSERVACIONES,\n" +
-                        "						n_orden_ocupacional.txtobserv1 AS OBSERV1 ,n_orden_ocupacional.txtobserv2 AS OBSERV2,\n" +
-                        "						n_orden_ocupacional.tipo_pago AS TIPOPAGO ,n_orden_ocupacional.precio_po::numeric AS PRECIO, \n" +
-                        "						sede.nombre_sede AS ESTABLECIMIENTO\n" +
+" LPAD(n_orden_ocupacional.cod_pa::text, 8, '0')AS DNI,\n" +
+" datos_paciente.nombres_pa ||' '||datos_paciente.apellidos_pa AS PACIENTE,\n" +
+" datos_paciente.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+" obtener_edad(datos_paciente.fecha_nacimiento_pa,n_orden_ocupacional.fecha_apertura_po) AS EDAD,\n" +
+" datos_paciente.direccion_pa as DIRECCIÓN,datos_paciente.cel_pa as CELULAR,n_orden_ocupacional.cargo_de AS CARGO,\n" +
+" n_orden_ocupacional.razon_empresa AS EMPRESA,\n" +
+"n_orden_ocupacional.razon_contrata AS CONTRATA,\n" +
+"n_orden_ocupacional.fecha_apertura_po AS FECHA_REGISTRO,\n" +
+"						 n_orden_ocupacional.nom_examen AS  NOMBRE_EXAMEN\n" +
+",\n" +
+"                        (CASE\n" +
+"    WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+"        WHEN UPPER(n_orden_ocupacional.nom_examen)='COVID-19' and constancia_salud_marsa.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUALITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_sintomatico = true THEN 'SINTOMATICO'\n" +
+"       WHEN UPPER(n_orden_ocupacional.nom_examen)='PRUEBA CUANTITATIVA ANTIGENOS' and constancia_salud_marsa1.chk_asintomatico = true THEN 'ASINTOMATICO'\n" +
+"						 END) AS SINTOMATOLOGIA,        \n" +
+"                        triaje.sat_02 AS SPO2,\n" +
+"                        examen_inmunologico.cbomarca AS MARCATEST,\n" +
+"						n_orden_ocupacional.txtobserv1 AS OBSERV1 ,n_orden_ocupacional.txtobserv2 AS OBSERV2,\n" +
+"						                         n_orden_ocupacional.tipoprueba AS NUMERO_PRUEBA,\n" +
+"                    	reactivoono(n_orden_ocupacional.n_orden) as RESULTADO_PRUEBA_COVID,\n" +
+"						n_orden_ocupacional.tipo_pago AS TIPOPAGO ,n_orden_ocupacional.precio_po::numeric AS PRECIO_INGRESADO,\n" +
+"						sppreciomarsa(n_orden_ocupacional.n_orden) as Precio_Marsa,sede.nombre_sede AS ESTABLECIMIENTO "
+                        
+                        +
                         "                        FROM n_orden_ocupacional\n" +
                         "                        LEFT JOIN datos_paciente ON n_orden_ocupacional.cod_pa = datos_paciente.cod_pa \n" +
                         "                        LEFT JOIN sede ON n_orden_ocupacional.cod_sede = sede.cod_sede\n" +
@@ -1615,7 +1603,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }
         });
 
-        jCheckBoxAntigeno.setText("ANTIGENOS");
+        jCheckBoxAntigeno.setText("ANTIG MARSA");
 
         jCheckBox2.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(102, 0, 0));
