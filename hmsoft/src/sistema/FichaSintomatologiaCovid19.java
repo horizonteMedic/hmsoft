@@ -42,7 +42,9 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
    String[]aintelectual = new String[]{};
     DefaultTableModel model;
- 
+ String sed="";
+ String ipa="",seded="";
+ String codvalor="";
    public FichaSintomatologiaCovid19() {
       initComponents();
    //new ajTextArea.autocompleterText(atxtIntelectual, "razon_empresa", "empresas");
@@ -1260,7 +1262,94 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNordenEP.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+
+private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtImpEP.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     private void txtNordenEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenEPActionPerformed
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
         if(!oPe.nOrden(txtNordenEP, "ficha_sintomatologica_covid19")){ 
         String Sql="select d.nombres_pa,d.apellidos_pa,"
                  + "d.fecha_nacimiento_pa,d.lugar_nac_pa,"
@@ -1269,7 +1358,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                  + "n.cargo_de "
                  + "From datos_paciente as d"
                 + " INNER JOIN n_orden_ocupacional as n on (n.cod_pa=d.cod_pa) "
-                 + " where n.n_orden ='"+txtNordenEP.getText()+"'";
+                 + " where n.n_orden ="+txtNordenEP.getText()+" AND n.cod_Sede="+codvalor;
         
              oConn.FnBoolQueryExecute(Sql);
                 try {
@@ -1301,14 +1390,18 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
     }//GEN-LAST:event_FechaExamenPropertyChange
 
     private void btnEditarEP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEP1ActionPerformed
-         String Sql="select d.nombres_pa,d.apellidos_pa,"
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+ 
+        String Sql="select d.nombres_pa,d.apellidos_pa,"
                  + "d.fecha_nacimiento_pa,d.lugar_nac_pa,"
                  + "d.direccion_pa,d.cel_pa,d.ocupacion_pa,"
                  + "n.cargo_de,area_o,f.* "
                  + "From datos_paciente as d "
                + "inner join n_orden_ocupacional as n on(d.cod_pa = n.cod_pa) "
                + "inner join ficha_sintomatologica_covid19 as f on(n.n_orden = f.n_orden) "
-                 + "where  n.n_orden ='"+txtNordenEP.getText()+"'";
+                 + "where  n.n_orden ="+txtNordenEP.getText()+" AND n.cod_Sede="+codvalor;
              oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -1417,7 +1510,13 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
     }//GEN-LAST:event_btnLimpiarEPActionPerformed
 
     private void txtImpEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImpEPActionPerformed
-        print(Integer.parseInt(txtImpEP.getText()));
+        CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+         if(sed.contains("Huancayo"))
+        print12(Integer.parseInt(txtImpEP.getText()));
+         else
+             print(Integer.parseInt(txtImpEP.getText()));
     }//GEN-LAST:event_txtImpEPActionPerformed
 
     private void txtImpEPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImpEPKeyTyped
@@ -1425,7 +1524,13 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
     }//GEN-LAST:event_txtImpEPKeyTyped
 
     private void btnIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMPActionPerformed
-        print(Integer.parseInt(txtImpEP.getText()));
+          CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+         if(sed.contains("Huancayo"))
+        print12(Integer.parseInt(txtImpEP.getText()));
+         else
+             print(Integer.parseInt(txtImpEP.getText()));
     }//GEN-LAST:event_btnIMPActionPerformed
 
     private void btnAgregarEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEPActionPerformed
@@ -1637,7 +1742,11 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                 "Si");
         if (seleccion != -1) {
             if ((seleccion + 1) == 1) {
-                printer(Integer.valueOf(txtNordenEP.getText().toString()));
+                
+                if(sed.contains("Huancayo"))
+                printer12(Integer.valueOf(txtNordenEP.getText().toString()));
+                else
+                printer(Integer.valueOf(txtNordenEP.getText().toString()));     
                 im = true;
             } else {
                 // PRESIONO NO
@@ -1658,7 +1767,22 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
                     JasperPrintManager.printReport(jasperPrint,true);
 //                  JasperExportManager.exportReportToPdfFile( jasperPrint, "E:/prueba/reporte.pdf");
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+    private void printer12(Integer cod){
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"FichaSintomatologiaCovid1912.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer.viewReport(jasperPrint, false);
+                    JasperPrintManager.printReport(jasperPrint,true);
+//                  JasperExportManager.exportReportToPdfFile( jasperPrint, "E:/prueba/reporte.pdf");
+                   } catch (JRException ex) {
+                    Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
      private void print(Integer cod) {
@@ -1675,10 +1799,26 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
             // viewer.setAchkReactivoIgmtrue);
             viewer.setVisible(true);
         } catch (JRException ex) {
-            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
+      private void print12(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "FichaSintomatologiaCovid1912.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("Resultados de la ficha sintomatologica ");
+            // viewer.setAchkReactivoIgmtrue);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(FichaSintomatologiaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void cerrarVentana(){
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");

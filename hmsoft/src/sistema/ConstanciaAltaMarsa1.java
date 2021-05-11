@@ -60,7 +60,7 @@ public class ConstanciaAltaMarsa1 extends javax.swing.JInternalFrame {
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("trujillo.properties");
+            in = new FileInputStream("huancayo.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ConstanciaAltaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
         }

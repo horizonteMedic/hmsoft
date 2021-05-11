@@ -1134,12 +1134,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
         cboContratas.setEditable(true);
         cboContratas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cboContratas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
                 cboContratasPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
         cboContratas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1167,12 +1167,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
         cboEmpresas.setEditable(true);
         cboEmpresas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cboEmpresas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
                 cboEmpresasPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
         cboEmpresas.addMouseListener(new java.awt.event.MouseAdapter() {

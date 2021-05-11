@@ -37,7 +37,10 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
     clsConnection oConn = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
-    
+    String sed="";
+ String ipa="",seded="";
+ String codvalor="";
+
     public Resultados_Pruebas_Rapidas() {
         initComponents();
         new ajTextFieldConsulta.autocompleterText(txtNombresEval, "select nombre_user||' '||apellido_user as nombre FROM usuarios WHERE CONCAT(nombre_user,' ',apellido_user)");
@@ -930,16 +933,116 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
 
     private void txtIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIMPActionPerformed
 //        
-        if(!txtIMP.getText().isEmpty()){        
-           print(Integer.valueOf(txtIMP.getText().toString()));
-         }
+        CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+
+        if(!txtIMP.getText().isEmpty()){      
+            
+            if(sed.contains("Huancayo"))
+           print12(Integer.valueOf(txtIMP.getText().toString()));
+            else
+            print(Integer.valueOf(txtIMP.getText().toString()));
+               
+        }
     }//GEN-LAST:event_txtIMPActionPerformed
 
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNorden.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+
+private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtIMP.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
-//        ReImp();
-        if(!txtIMP.getText().isEmpty()){        
-           print(Integer.valueOf(txtIMP.getText().toString()));
-         }
+        CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+
+        if(!txtIMP.getText().isEmpty()){      
+            
+            if(sed.contains("Huancayo"))
+           print12(Integer.valueOf(txtIMP.getText().toString()));
+            else
+            print(Integer.valueOf(txtIMP.getText().toString()));
+               
+        }
     }//GEN-LAST:event_jLabel44MouseClicked
 
     private void rbSaludSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSaludSiActionPerformed
@@ -949,8 +1052,10 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbSaludSiActionPerformed
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-        // TODO add your handling code here:
-        if(!txtNorden.getText().isEmpty()){
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+      if(!txtNorden.getText().isEmpty()){
           if(!oPe.nOrden(txtNorden, "resultados_pruebas_rapidas"))  {
             dateFechaNacimiento = new com.toedter.calendar.JDateChooser();
             boolean igm,igg,inval,neg,neg1;
@@ -961,7 +1066,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) "
                 + "left JOIN lab_clinico AS l ON (n.n_orden=l.n_orden) "
                 + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
-                + "WHERE n.n_orden ='"+txtNorden.getText().toString()+"'";
+                + "WHERE n.n_orden ="+txtNorden.getText().toString()+" AND n.cod_Sede="+codvalor;
             oConn.FnBoolQueryExecute(Sql);      
             try {
                     if (oConn.setResult.next()) {
@@ -1016,7 +1121,10 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnGrabarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        // TODO add your handling code here:
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
         if(!txtNorden.getText().isEmpty()){
         dateFechaNacimiento = new com.toedter.calendar.JDateChooser();
         boolean igm,igg,inval,neg,neg1;
@@ -1037,7 +1145,7 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
 "INNER JOIN resultados_pruebas_rapidas AS p ON (n.n_orden=p.n_orden) \n" +
             "left JOIN lab_clinico AS l ON (n.n_orden=l.n_orden) " +
             "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "+
-"WHERE n.n_orden ='"+txtNorden.getText()+"'";
+"WHERE n.n_orden ="+txtNorden.getText()+" AND n.cod_Sede="+codvalor;
             oConn.FnBoolQueryExecute(Sql);      
             try {
                     if (oConn.setResult.next()) {
@@ -1446,8 +1554,11 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                 "Si");
         if (seleccion != -1) {
             if ((seleccion + 1) == 1) {
-                printer(Integer.valueOf(txtNorden.getText().toString()));
-                im = true;
+                 if(sed.contains("Huancayo"))
+                printer12(Integer.valueOf(txtNorden.getText().toString()));
+                else
+                  printer(Integer.valueOf(txtNorden.getText().toString()));   
+                 im = true;
             } else {
                 // PRESIONO NO
             }
@@ -1467,7 +1578,22 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
                     JasperPrintManager.printReport(jasperPrint,true);
 //                  JasperExportManager.exportReportToPdfFile( jasperPrint, "E:/prueba/reporte.pdf");
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+       private void printer12(Integer cod){
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Resultados_Pruebas_Rapidas12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer.viewReport(jasperPrint, false);
+                    JasperPrintManager.printReport(jasperPrint,true);
+//                  JasperExportManager.exportReportToPdfFile( jasperPrint, "E:/prueba/reporte.pdf");
+                   } catch (JRException ex) {
+                    Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
      private void print(Integer cod) {
@@ -1484,7 +1610,24 @@ public class Resultados_Pruebas_Rapidas extends javax.swing.JInternalFrame {
             // viewer.setAchkReactivoIgmtrue);
             viewer.setVisible(true);
         } catch (JRException ex) {
-            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+      private void print12(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Resultados_Pruebas_Rapidas12.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("Resultados de Prueba Rapida");
+            // viewer.setAchkReactivoIgmtrue);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Resultados_Pruebas_Rapidas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
      

@@ -48,6 +48,9 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
     clsConnection oConn = new clsConnection();
  clsFunciones  oFunc = new clsFunciones();
  String condicional;
+ String sed="";
+ String ipa="",seded="";
+ String codvalor="";
     public ConstanciaAltaMarsa() {
         initComponents();
         activar(false);
@@ -544,6 +547,89 @@ public class ConstanciaAltaMarsa extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 public static com.toedter.calendar.JDateChooser FechaNacimiento;
 
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNorden.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+
+private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtimp.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
 public void calcularTipoexamen(){
 
  String sQuery;
@@ -621,7 +707,7 @@ public void  altasinAEV2(){
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                + "WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
-                + " and e.fecha_examen<>'"+fecha1+"' order by n.n_orden desc limit 1;";
+                + " and e.fecha_examen<>'"+fecha1+"' AND n.cod_Sede="+codvalor+" order by n.n_orden desc limit 1;";
             System.out.println("la consulta es:"+Sql);
 
          oConn.FnBoolQueryExecute(Sql);
@@ -653,7 +739,9 @@ public void  altasinAEV2(){
     }
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-        //activar(true);
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         String fecha1=dateFormat.format(date); 
@@ -673,7 +761,7 @@ public void  altasinAEV2(){
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                + "WHERE d.cod_pa =(select  cod_pa from n_orden_ocupacional where n_orden="+txtNorden.getText().toString() +")"
-               + " and e.fecha_examen<>'"+fecha1+"' limit 1;";
+               + " and e.fecha_examen<>'"+fecha1+"'"+" AND n.cod_Sede="+codvalor+ "   limit 1;";
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -800,8 +888,15 @@ else
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
+       CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+
         if(!txtimp.getText().isEmpty()){
-            print(Integer.valueOf(txtimp.getText().toString()));
+             if(sed.contains("Huancayo"))
+            print12(Integer.valueOf(txtimp.getText().toString()));
+             else
+                 print(Integer.valueOf(txtimp.getText().toString()));
         }
     }//GEN-LAST:event_btnImpActionPerformed
 
@@ -810,13 +905,26 @@ else
     }//GEN-LAST:event_txtNordenKeyTyped
 
     private void txtimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimpActionPerformed
+       
+	CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+
         if(!txtimp.getText().isEmpty()){
-            print(Integer.valueOf(txtimp.getText().toString()));
+             if(sed.contains("Huancayo"))
+            print12(Integer.valueOf(txtimp.getText().toString()));
+             else
+                 print(Integer.valueOf(txtimp.getText().toString()));
         }
     }//GEN-LAST:event_txtimpActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-          FechaNacimiento = new com.toedter.calendar.JDateChooser();
+	CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
+        
+        FechaNacimiento = new com.toedter.calendar.JDateChooser();
         String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre,d.fecha_nacimiento_pa, "
                 + "n.razon_empresa,e.chkigm_reactivo, e.chkigm_noreactivo, \n" +
             "       e.chkigg_reactivo, e.chkigg_noreactivo, e.chkinvalido,c.fecha_examen,c.txtdias_desc, c.txtinstitucion,"
@@ -825,7 +933,7 @@ else
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
                 + "INNER JOIN constancia_alta_marsa AS c ON (c.n_orden = n.n_orden) "
-               + "WHERE n.n_orden ="+txtNorden.getText().toString() +";";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +" AND n.cod_Sede="+codvalor;
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -928,7 +1036,27 @@ public void calcularDias(){
                         viewer.setVisible(true);
                    
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+ 
+ }
+        private void print12(Integer cod){
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                try 
+                {
+                        String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Constancia_Alta_Marsa12.jasper";
+                        JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                        JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                        JasperViewer viewer = new JasperViewer(myPrint, false);
+                        viewer.setTitle("CONSTANCIA SALUD MARSA");
+                        // viewer.setAlwaysOnTop(true);
+                        viewer.setVisible(true);
+                   
+                 } catch (JRException ex) {
+                    Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
                 }
                  
  
@@ -978,8 +1106,10 @@ int seleccion = JOptionPane.showOptionDialog(
     if (seleccion != -1)
     {
    if((seleccion + 1)==1)
-   {
-      printer(Integer.valueOf(txtNorden.getText().toString()));
+   {     if(sed.contains("Huancayo"))
+      printer12(Integer.valueOf(txtNorden.getText().toString()));
+   else
+           printer(Integer.valueOf(txtNorden.getText().toString()));
        im = true;
    }
    else
@@ -1005,7 +1135,25 @@ int seleccion = JOptionPane.showOptionDialog(
 //                    viewer.setVisible(true);
                     
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+      private void printer12(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {          
+                    String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Constancia_Alta_Marsa12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+//                    JasperViewer viewer = new JasperViewer(myPrint, true);
+                    JasperPrintManager.printReport(myPrint,true);
+//                    viewer.setTitle("CONSTANCIA MÉDICA COVID 19");
+                    // viewer.setAlwaysOnTop(true);
+//                    viewer.setVisible(true);
+                    
+                   } catch (JRException ex) {
+                    Logger.getLogger(ConstanciaAltaMarsa.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
    

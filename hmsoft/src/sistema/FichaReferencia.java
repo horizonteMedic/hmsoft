@@ -36,6 +36,10 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
     clsFunciones oFunc = new clsFunciones();
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     DefaultTableModel model;
+String sed="";
+ String ipa="",seded="";
+ String codvalor="";
+
 
     public FichaReferencia() {
         initComponents();
@@ -1297,6 +1301,10 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
         }
     });
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
         if(!txtNorden.getText().isEmpty()){
             if(!oPe.nOrden(txtNorden, "hoja_referencia"))  {
                 FechaNacimiento = new com.toedter.calendar.JDateChooser();
@@ -1307,7 +1315,7 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                      + "FROM datos_paciente AS d "
                      + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) "
                      + "INNER JOIN triaje AS t ON (n.n_orden=t.n_orden) "
-                     + "WHERE n.n_orden ='"+txtNorden.getText()+"'";
+                     + "WHERE n.n_orden ="+txtNorden.getText()+" AND n.cod_Sede="+codvalor;
                      oConn.FnBoolQueryExecute(Sql);      
                      try {
                         if(oConn.setResult.next()){
@@ -1338,7 +1346,90 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_txtNordenActionPerformed
-    
+  
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNorden.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}  
+
+private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtImp.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}  
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
        limpiar();
     }//GEN-LAST:event_btnCleanActionPerformed
@@ -1361,9 +1452,17 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNordenFocusGained
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-       if(!txtImp.getText().isEmpty()){
-          if(oPe.nOrden(txtImp, "hoja_referencia"))  {          
-           print(Integer.valueOf(txtImp.getText().toString()));
+     	CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+
+        if(!txtImp.getText().isEmpty()){
+          if(oPe.nOrden(txtImp, "hoja_referencia"))  {    
+              
+                 if(sed.contains("Huancayo"))
+           print12(Integer.valueOf(txtImp.getText().toString()));
+                 else
+           print(Integer.valueOf(txtImp.getText().toString()));           
          }else{oFunc.SubSistemaMensajeError("Numero de Ficha Incorrecto");}
        }else{oFunc.SubSistemaMensajeError("Ingrese numero de Ficha");}
     }//GEN-LAST:event_btnImprimirActionPerformed
@@ -1373,6 +1472,10 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtImpKeyReleased
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+           CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
         if(!txtNorden.getText().isEmpty()){
             FechaNacimiento = new com.toedter.calendar.JDateChooser();
             String Sql="SELECT d.nombres_pa||' '||d.apellidos_pa AS nombre,d.cod_pa, d.fecha_nacimiento_pa, \n" +
@@ -1394,7 +1497,7 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
            "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) \n" +
            "INNER JOIN hoja_referencia AS h ON (n.n_orden=h.n_orden) \n" +
            "INNER JOIN triaje AS t ON (n.n_orden=t.n_orden) \n" +
-           "WHERE n.n_orden ='"+txtNorden.getText()+"'";
+           "WHERE n.n_orden ="+txtNorden.getText()+" AND n.cod_Sede="+codvalor;
             oConn.FnBoolQueryExecute(Sql);      
              try {
                 if (oConn.setResult.next()) {
@@ -1604,7 +1707,11 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                 "Si");
         if (seleccion != -1) {
             if ((seleccion + 1) == 1) {
-                printer(Integer.valueOf(txtNorden.getText().toString()));
+                 if(sed.contains("Huancayo"))
+                printer12(Integer.valueOf(txtNorden.getText().toString()));
+                 else
+                 printer(Integer.valueOf(txtNorden.getText().toString()));
+    
                 im = true;
             } else {
                 // PRESIONO NO
@@ -1625,7 +1732,22 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
                   JasperPrintManager.printReport(jasperPrint,true);
 //                  JasperExportManager.exportReportToPdfFile( jasperPrint, "E:/prueba/reporte.pdf");
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+     private void printer12(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"HojaReferencia12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer.viewReport(jasperPrint, false);
+                  JasperPrintManager.printReport(jasperPrint,true);
+//                  JasperExportManager.exportReportToPdfFile( jasperPrint, "E:/prueba/reporte.pdf");
+                   } catch (JRException ex) {
+                    Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
     private void print(Integer cod) {
@@ -1642,10 +1764,26 @@ public class FichaReferencia extends javax.swing.JInternalFrame {
             // viewer.setAlwaysOnTop(true);
             viewer.setVisible(true);
         } catch (JRException ex) {
-            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-  
+     private void print12(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HojaReferencia12.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("Hoja de Referencia");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(FichaReferencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void limpiar(){
         txtNorden.setText(null);
         txtNombres.setText(null);

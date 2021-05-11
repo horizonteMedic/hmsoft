@@ -36,7 +36,7 @@ public class Admision extends javax.swing.JFrame {
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("trujillo.properties");
+            in = new FileInputStream("huancayo.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Admision.class.getName()).log(Level.SEVERE, null, ex);
         }

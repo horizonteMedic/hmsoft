@@ -43,7 +43,10 @@ import net.sf.jasperreports.view.JasperViewer;
 public class Constancia_Tamizaje_COVID19 extends javax.swing.JInternalFrame {    
     clsConnection oConn = new clsConnection();
     clsFunciones  oFunc = new clsFunciones();
-    
+    String sed="";
+ String ipa="",seded="";
+ String codvalor="";
+
     public Constancia_Tamizaje_COVID19() {
         initComponents();
         txtCertifica.setText( clsGlobales.sNomOperador  );
@@ -550,7 +553,11 @@ public class Constancia_Tamizaje_COVID19 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 public static com.toedter.calendar.JDateChooser FechaNacimiento;
     private void txtNordenInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenInActionPerformed
-          FechaNacimiento = new com.toedter.calendar.JDateChooser();
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
+        FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNordenIn.getText().isEmpty()){
             if(!OrdenExiste()){     
               String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
@@ -559,7 +566,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                   + "FROM datos_paciente AS d "
                   + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                   + "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "
-                 + "WHERE n.n_orden ='"+txtNordenIn.getText().toString() +"'";
+                 + "WHERE n.n_orden ="+txtNordenIn.getText().toString()+" AND n.cod_Sede="+codvalor ;
                oConn.FnBoolQueryExecute(Sql);
                   try {
                       if (oConn.setResult.next()) {
@@ -594,6 +601,90 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         } 
     }//GEN-LAST:event_txtNordenInActionPerformed
  
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNordenIn.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+
+
+private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtImprimir.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         Limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
@@ -630,12 +721,23 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
     }//GEN-LAST:event_txtImprimirActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        CargarSedes1();
+	seded=sed;
+	valorSede(seded);
         if(!txtImprimir.getText().isEmpty()){
+             if(sed.contains("Huancayo"))
+            print12(Integer.valueOf(txtImprimir.getText()));
+             else
             print(Integer.valueOf(txtImprimir.getText()));
+    
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn.getText().isEmpty()){
        String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
@@ -645,7 +747,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
                 "INNER JOIN examen_inmunologico AS e ON (n.n_orden = e.n_orden) "+
 "               INNER JOIN constancia_tamizaje_covid19 AS ct ON (n.n_orden = ct.n_orden) \n" +
-"               WHERE ct.n_orden ='"+txtNordenIn.getText() +"'";
+"               WHERE ct.n_orden ="+txtNordenIn.getText() +" AND n.cod_Sede="+codvalor;
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -810,7 +912,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtNordenIn.getText()));
+        if(sed.contains("Huancayo"))
+      printer12(Integer.valueOf(txtNordenIn.getText()));
+        else
+        printer(Integer.valueOf(txtNordenIn.getText()));
+
        im = true;
    }
    else
@@ -860,7 +966,24 @@ private void Limpiar(){
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }
+     private void print12(Integer cod){
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Constancia_Tamizaje_COVID1912.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }
    
@@ -876,10 +999,24 @@ private void Limpiar(){
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
-
+   private void printer12(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Constancia_Tamizaje_COVID1912.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(Constancia_Tamizaje_COVID19.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
    private void triaje() {
 
         String Sql = "SELECT talla, peso, "

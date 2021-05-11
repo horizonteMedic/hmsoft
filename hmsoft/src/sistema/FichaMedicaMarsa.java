@@ -49,7 +49,11 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
     clsOperacionesUsuarios oPu = new clsOperacionesUsuarios();
     boolean ordenVer=true;
     DefaultTableModel model;
+    String sed="";
+ String ipa="",seded="";
+ String codvalor="";
     public FichaMedicaMarsa() {
+        
         initComponents();
 //        jtFichaMedica.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/id.png")));
 //        jtFichaMedica.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/invoice.png")));
@@ -1755,11 +1759,97 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_FechaNacimientoPropertyChange
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
+            CargarSedes();
+            seded=sed;
+            valorSede(seded);
         consultar();
         
         
     }//GEN-LAST:event_txtNordenActionPerformed
 
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNorden.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(FichaMedicaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+
+private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtImprimir.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(FichaMedicaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     private void txtAntecedentesPersonalesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAntecedentesPersonalesFocusGained
         txtAntecedentesPersonales.selectAll();
     }//GEN-LAST:event_txtAntecedentesPersonalesFocusGained
@@ -1802,6 +1892,11 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnEditarFMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFMActionPerformed
+
+	CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
         if(!txtNorden.getText().isEmpty()){
             if(Orden()){
             editar();
@@ -1830,7 +1925,14 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtAnamnesisFocusGained
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+       	CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+
         Integer Norden = Integer.valueOf(txtImprimir.getText());
+           if(sed.contains("Huancayo"))
+             oPu.print(Norden, "Ficha_Medica_COVID12.jasper", "Ficha Médica Marza");   
+           else   
         oPu.print(Norden, "Ficha_Medica_COVID.jasper", "Ficha Médica Marza");
     }//GEN-LAST:event_btnImprimirActionPerformed
 
@@ -1953,7 +2055,7 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
 "       inner JOIN fmedica_covid_marsa AS fm ON(n.n_orden = fm.n_orden)" +
              "left JOIN examen_inmunologico AS i ON (n.n_orden = i.n_orden) "+
         "left JOIN constancia_salud_marsa AS c ON (n.n_orden = c.n_orden) "+
-"                WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
+"                WHERE n.n_orden =" + txtNorden.getText().toString() + " AND n.cod_Sede="+codvalor;
                 
                 oConn.FnBoolQueryExecute(Consulta);
                 
@@ -2112,7 +2214,7 @@ public final class FichaMedicaMarsa extends javax.swing.JInternalFrame {
 "       left JOIN ex_radiograficos_sanguineos AS e ON(n.n_orden = e.n_orden)"
         + "left JOIN examen_inmunologico AS i ON (n.n_orden = i.n_orden) "
         + "left JOIN constancia_salud_marsa AS c ON (n.n_orden = c.n_orden) "
-                        + "WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
+                        + "WHERE n.n_orden =" + txtNorden.getText().toString() + " AND n.cod_Sede="+codvalor;
                 
                 oConn.FnBoolQueryExecute(Consulta);
                 
@@ -2725,8 +2827,10 @@ public static int calcularEdad(String fecha) {
             if (seleccion != -1)
             {
            if((seleccion + 1)==1)
-           {
-              printer(Integer.valueOf(txtNorden.getText()));
+           {   if(sed.contains("Huancayo"))
+              printer12(Integer.valueOf(txtNorden.getText()));
+           else
+                printer(Integer.valueOf(txtNorden.getText()));
                im = true;
            }
            else
@@ -2749,7 +2853,22 @@ public static int calcularEdad(String fecha) {
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FichaMedicaMarsa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+       private void printer12(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Ficha_Medica_COVID12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(FichaMedicaMarsa.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
    void sbCargarDatosPruebaCovid(String valor) {

@@ -38,6 +38,11 @@ public class ConsentimientoInformadoCovid extends javax.swing.JInternalFrame {
 
     clsConnection oConn = new clsConnection();
  clsFunciones  oFunc = new clsFunciones();
+ String sed="";
+ String ipa="",seded="";
+ String codvalor="";
+
+
     public ConsentimientoInformadoCovid() {
         initComponents();
         activar(false);
@@ -303,8 +308,95 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         }
     });
 
+public void valorSede(String sede){
+if(sede.equals("Trujillo"))
+codvalor="1";
+if(sede.equals("Huamachuco"))
+codvalor="2";
+if(sede.equals("Huancayo"))
+codvalor="3";
+if(sede.equals("Trujillo-Pierola"))
+codvalor="4";
+
+}
+
+private void CargarSedes(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtNorden.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(ConsentimientoInformadoCovid.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+
+private void CargarSedes1(){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" + txtimp.getText().toString().trim();
+        String cboSede="1";
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn.setResult.getString ("nombre_Sede"));
+                     System.out.println(sed);
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(ConsentimientoInformadoCovid.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-        //activar(true);
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
+        
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
        if(!txtNorden.getText().isEmpty()){
         if(!OrdenExiste()){  
@@ -313,7 +405,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                + "d.fecha_nacimiento_pa,n.razon_empresa,n.cargo_de  "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +" AND n.cod_Sede="+codvalor;
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -410,8 +502,15 @@ private boolean Grabar() throws SQLException{
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
+        CargarSedes1();
+	seded=sed;
+	valorSede(seded); 
         if(!txtimp.getText().isEmpty()){
-            print(Integer.valueOf(txtimp.getText().toString()));
+             if(sed.contains("Huancayo"))
+            print12(Integer.valueOf(txtimp.getText().toString()));
+             else
+             print(Integer.valueOf(txtimp.getText().toString()));
+ 
         }
     }//GEN-LAST:event_btnImpActionPerformed
 
@@ -420,19 +519,31 @@ private boolean Grabar() throws SQLException{
     }//GEN-LAST:event_txtNordenKeyTyped
 
     private void txtimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimpActionPerformed
+    	CargarSedes1();
+	seded=sed;
+	valorSede(seded);
+
         if(!txtimp.getText().isEmpty()){
-            print(Integer.valueOf(txtimp.getText().toString()));
+             if(sed.contains("Huancayo"))
+            print12(Integer.valueOf(txtimp.getText().toString()));
+             else
+             print(Integer.valueOf(txtimp.getText().toString()));
+ 
         }
     }//GEN-LAST:event_txtimpActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        CargarSedes();
+	seded=sed;
+	valorSede(seded);
+
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre,d.fecha_nacimiento_pa, "
                 + "n.razon_empresa,n.cargo_de, fecha_examen "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
                 + "INNER JOIN consentimiento_informado_covid AS c ON (c.n_orden = n.n_orden) "
-               + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+               + "WHERE n.n_orden ="+txtNorden.getText().toString() +" AND n.cod_Sede="+codvalor;
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -473,7 +584,27 @@ private boolean Grabar() throws SQLException{
                         viewer.setVisible(true);
                    
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ConsentimientoInformadoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                 
+ 
+ }
+     private void print12(Integer cod){
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                try 
+                {
+                        String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Consentimiento_Informado_Covid12.jasper";
+                        JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                        JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                        JasperViewer viewer = new JasperViewer(myPrint, false);
+                        viewer.setTitle("CONSTANCIA SALUD MARSA");
+                        // viewer.setAlwaysOnTop(true);
+                        viewer.setVisible(true);
+                   
+                 } catch (JRException ex) {
+                    Logger.getLogger(ConsentimientoInformadoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
                  
  
@@ -516,8 +647,12 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtNorden.getText().toString()));
-       im = true;
+        if(sed.contains("Huancayo"))
+      printer12(Integer.valueOf(txtNorden.getText().toString()));
+       else
+            printer(Integer.valueOf(txtNorden.getText().toString()));
+      
+        im = true;
    }
    else
    {
@@ -542,7 +677,25 @@ int seleccion = JOptionPane.showOptionDialog(
 //                    viewer.setVisible(true);
                     
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ConsentimientoInformadoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+      private void printer12(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {          
+                    String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Consentimiento_Informado_Covid12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+//                    JasperViewer viewer = new JasperViewer(myPrint, true);
+                    JasperPrintManager.printReport(myPrint,true);
+//                    viewer.setTitle("CONSTANCIA MÉDICA COVID 19");
+                    // viewer.setAlwaysOnTop(true);
+//                    viewer.setVisible(true);
+                    
+                   } catch (JRException ex) {
+                    Logger.getLogger(ConsentimientoInformadoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
     private void activar(boolean b){
