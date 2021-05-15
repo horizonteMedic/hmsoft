@@ -369,6 +369,11 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
         txtNumHcl.setBackground(new java.awt.Color(255, 255, 204));
 
         txtOperador.setEditable(false);
+        txtOperador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOperadorActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Apellidos:");
 
@@ -1284,6 +1289,10 @@ boolean bResultado=true;
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();        // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void txtOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOperadorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtOperadorActionPerformed
    private void ReporteFechas(Date date1, Date date2){
 
                 Map parameters = new HashMap(); 
