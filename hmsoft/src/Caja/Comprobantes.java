@@ -776,6 +776,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22))
         );
 
+        jPanel7.getAccessibleContext().setAccessibleName("Agregar");
         txtdescuento.getAccessibleContext().setAccessibleName("S/.00.00");
 
         jtcomprobantes.addTab("Ticket(F1)", jPanel1);
