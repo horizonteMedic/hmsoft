@@ -581,6 +581,9 @@
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOperadorActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtId">
                 </Component>
@@ -624,6 +627,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Agregar"/>
+              </AccessibilityProperties>
 
               <Layout>
                 <DimensionLayout dim="0">
