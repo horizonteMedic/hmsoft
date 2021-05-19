@@ -2586,6 +2586,7 @@ negarcheks();
     }//GEN-LAST:event_jTextField18ActionPerformed
 
     private void btnImprimir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir4ActionPerformed
+        CargarSedes2(txtImprimirIn4.getText().toString().trim());
         if(!txtImprimirIn4.getText().isEmpty()){
                      if(sed.contains("Huancayo"))
                  printIn12(Integer.valueOf(txtImprimirIn4.getText().toString())); 
@@ -2759,9 +2760,13 @@ negarcheks();
     }//GEN-LAST:event_jTextField13ActionPerformed
 
     private void btnImprimir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir3ActionPerformed
+        CargarSedes2(txtImprimirIn3.getText().toString().trim());
         if(!txtImprimirIn3.getText().isEmpty()){
-            //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
-            printIn3(Integer.valueOf(txtImprimirIn3.getText()));
+       if(sed.contains("Huancayo"))
+            printIn312(Integer.valueOf(txtImprimirIn3.getText()));
+       else
+                       printIn3(Integer.valueOf(txtImprimirIn3.getText()));
+
         }
     }//GEN-LAST:event_btnImprimir3ActionPerformed
 
@@ -2774,6 +2779,8 @@ negarcheks();
     }//GEN-LAST:event_FechaExIn3PropertyChange
 
     private void btnEditarIn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIn3ActionPerformed
+        CargarSedes2(txtNordenIn3.getText().toString().trim());
+
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn3.getText().isEmpty()){
             String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
@@ -2783,7 +2790,7 @@ negarcheks();
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.nom_examen like '%PRUEBA CUANTITATIVA ANTIGENOS%' and  n.n_orden ='"+txtNordenIn3.getText() +"'";
+            "               WHERE n.nom_examen like '%PRUEBA CUANTITATIVA ANTIGENOS%' and  n.n_orden ="+txtNordenIn3.getText();
             oConn1.FnBoolQueryExecute(Sql);
             try {
                 if (oConn1.setResult.next()) {
@@ -2814,6 +2821,7 @@ negarcheks();
     }//GEN-LAST:event_txtNordenIn3KeyTyped
 
     private void txtNordenIn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenIn3ActionPerformed
+        CargarSedes2(txtNordenIn3.getText().toString().trim());
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn3.getText().isEmpty()){
             if(!OrdenExisteIn3()){
@@ -2821,7 +2829,7 @@ negarcheks();
                 + "d.sexo_pa,n.tipoprueba "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-                + "WHERE n.n_orden ='"+txtNordenIn3.getText() +"'";
+                + "WHERE n.n_orden ="+txtNordenIn3.getText() +"";
                 oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -2915,9 +2923,14 @@ limpiar2();
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void btnImprimir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir2ActionPerformed
+       CargarSedes2(txtImprimirIn2.getText().toString().trim());
+
         if(!txtImprimirIn2.getText().isEmpty()){
-            //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
-            printIn2(Integer.valueOf(txtImprimirIn2.getText()));
+           if(sed.contains("Huancayo"))
+            printIn212(Integer.valueOf(txtImprimirIn2.getText()));
+           else
+                           printIn2(Integer.valueOf(txtImprimirIn2.getText()));
+
         }
     }//GEN-LAST:event_btnImprimir2ActionPerformed
 
@@ -2930,6 +2943,7 @@ limpiar2();
     }//GEN-LAST:event_FechaExIn2PropertyChange
 
     private void btnEditarIn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIn2ActionPerformed
+       CargarSedes2(txtNordenIn2.getText().toString().trim());
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn2.getText().isEmpty()){
             String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
@@ -2939,7 +2953,7 @@ limpiar2();
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.nom_examen like '%PRUEBA CUANTITATIVA ANTICUERPOS%' and  n.n_orden ='"+txtNordenIn2.getText() +"'";
+            "               WHERE n.nom_examen like '%PRUEBA CUANTITATIVA ANTICUERPOS%' and  n.n_orden ="+txtNordenIn2.getText();
             oConn1.FnBoolQueryExecute(Sql);
             try {
                 if (oConn1.setResult.next()) {
@@ -2969,6 +2983,7 @@ limpiar2();
     }//GEN-LAST:event_txtNordenIn2KeyTyped
 
     private void txtNordenIn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenIn2ActionPerformed
+       CargarSedes2(txtNordenIn2.getText().toString().trim());
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn2.getText().isEmpty()){
             if(!OrdenExisteIn2()){
@@ -2976,7 +2991,7 @@ limpiar2();
                 + "d.sexo_pa,n.tipoprueba "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-                + "WHERE n.n_orden ='"+txtNordenIn2.getText() +"'";
+                + "WHERE n.n_orden ="+txtNordenIn2.getText();
                 oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -3289,8 +3304,14 @@ limpiar2();
     }//GEN-LAST:event_FechaHotelPropertyChange
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+         CargarSedes2(txtImprimirIn.getText().toString().trim());
+
         if(!txtImprimirIn.getText().isEmpty()){
-            printIn(Integer.valueOf(txtImprimirIn.getText()));
+             if(sed.contains("Huancayo"))
+            printIn112(Integer.valueOf(txtImprimirIn.getText()));
+             else
+                       printIn(Integer.valueOf(txtImprimirIn.getText()));
+      
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
@@ -3303,6 +3324,7 @@ limpiar2();
     }//GEN-LAST:event_FechaExInPropertyChange
 
     private void btnEditarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarInActionPerformed
+         CargarSedes2(txtNordenIn.getText().toString().trim());
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn.getText().isEmpty()){
             String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
@@ -3312,7 +3334,7 @@ limpiar2();
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.n_orden ='"+txtNordenIn.getText() +"'";
+            "               WHERE n.n_orden ="+txtNordenIn.getText();
             oConn1.FnBoolQueryExecute(Sql);
             try {   
                 if (oConn1.setResult.next()) {
@@ -3349,6 +3371,7 @@ limpiar2();
     }//GEN-LAST:event_txtNordenInKeyTyped
 
     private void txtNordenInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenInActionPerformed
+         CargarSedes2(txtNordenIn.getText().toString().trim());
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNordenIn.getText().isEmpty()){
             if(!OrdenExisteIn()){
@@ -3356,7 +3379,7 @@ limpiar2();
                 + "d.sexo_pa,n.tipoprueba "
                 + "FROM datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-                + "WHERE n.n_orden ='"+txtNordenIn.getText() +"'";
+                + "WHERE n.n_orden ="+txtNordenIn.getText();
                 oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -4202,7 +4225,40 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
 
 
 }
-    
+    private void CargarSedes2(String pasarP){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select s.nombre_sede from n_orden_ocupacional as n inner join sede as s on n.cod_sede=s.cod_sede where n_orden=" +pasarP;
+        String cboSede="1";
+        if (oConn1.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn1.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     sed=(oConn1.setResult.getString ("nombre_Sede"));
+                     
+                 }
+                 
+                 
+                 // Cierra Resultados
+                 oConn1.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
     private void print(Integer cod) {
   //Integer n;
         //n = Integer.parseInt(txtNorden.getText());
@@ -4769,8 +4825,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             if (seleccion != -1)
             {
            if((seleccion + 1)==1)
-           {
+           {     if(sed.contains("Huancayo"))
+              printerIn112(Integer.valueOf(txtNordenIn.getText()));
+           else
               printerIn(Integer.valueOf(txtNordenIn.getText()));
+
                im = true;
            }
            else
@@ -4821,7 +4880,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             if (seleccion != -1)
             {
            if((seleccion + 1)==1)
-           {
+           { if(sed.contains("Huancayo"))
+                             printerIn212(Integer.valueOf(txtNordenIn2.getText()));
+
+               else
+               
               printerIn2(Integer.valueOf(txtNordenIn2.getText()));
                im = true;
            }
@@ -4849,7 +4912,11 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             {
            if((seleccion + 1)==1)
            {
+                if(sed.contains("Huancayo"))
+              printerIn312(Integer.valueOf(txtNordenIn3.getText()));
+                else
               printerIn3(Integer.valueOf(txtNordenIn3.getText()));
+
                im = true;
            }
            else
@@ -4927,7 +4994,25 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }
+     private void printIn112(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Inmunologia112.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("EXAMEN INMUNOLOGICO");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }
         private void printIn1(Integer cod){
@@ -4945,7 +5030,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }
                private void printIn2(Integer cod){
@@ -4963,7 +5048,25 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }
+                     private void printIn212(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantianti12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("Prueba cauntitativa de anticuerpos");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }
          private void printIn3(Integer cod){
@@ -4981,9 +5084,27 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
- }         
+ }   
+             private void printIn312(Integer cod){
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);             
+                
+                  try 
+                {
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantiantigeno12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("Prueba cuantitativa de antigenos");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ } 
                   private void printIn4(Integer cod){
 
                 Map parameters = new HashMap(); 
@@ -4999,7 +5120,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }      
                         private void printIn5(Integer cod){
@@ -5017,7 +5138,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }  
                            private void printIn12(Integer cod){
@@ -5035,7 +5156,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }  
          private void printerIn2(Integer cod){
@@ -5050,10 +5171,24 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
-         
+           private void printerIn212(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantianti12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }  
           private void printerIn3(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
@@ -5066,7 +5201,22 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+              private void printerIn312(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantiantigeno12.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
            private void printerIn4(Integer cod){
@@ -5081,7 +5231,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    } 
                      private void printerIn12(Integer cod){
@@ -5096,7 +5246,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    } 
         private void printerIn5(Integer cod){
@@ -5111,7 +5261,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }    
  private void printerIn1(Integer cod){
@@ -5126,7 +5276,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
    private void printerIn(Integer cod){
@@ -5141,7 +5291,22 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                   JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+    private void printerIn112(Integer cod){
+                 Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                    try 
+                {                     
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Inmunologia112.jasper";
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    
+                  JasperPrintManager.printReport(jasperPrint,true);
+                  
+                   } catch (JRException ex) {
+                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
    public void cboAreaOcupacional(String Ocupacion) {
