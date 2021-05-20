@@ -53,7 +53,7 @@ String sed="";
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("huancayo.properties");
+            in = new FileInputStream("trujillo.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
         }
