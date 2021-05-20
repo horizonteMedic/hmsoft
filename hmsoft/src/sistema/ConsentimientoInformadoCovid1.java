@@ -52,7 +52,7 @@ String sed="";
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("trujillo.properties");
+            in = new FileInputStream("pierola.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ConsentimientoInformadoCovid1.class.getName()).log(Level.SEVERE, null, ex);
         }

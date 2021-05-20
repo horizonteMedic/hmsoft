@@ -58,7 +58,7 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("trujillo.properties");
+            in = new FileInputStream("pierola.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(contanciaSaludCovid1.class.getName()).log(Level.SEVERE, null, ex);
         }

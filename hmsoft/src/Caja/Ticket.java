@@ -238,7 +238,7 @@ public class Ticket extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(246, Short.MAX_VALUE)
+                .addContainerGap(324, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(185, 185, 185))
         );
@@ -247,7 +247,7 @@ public class Ticket extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -278,16 +278,16 @@ public class Ticket extends javax.swing.JFrame {
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 350, -1, -1));
 
         jComboBox1.setEditable(true);
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 280, -1));
+        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 370, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, 200, -1));
-        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, 200, -1));
-        jPanel4.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 200, -1));
+        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 290, 290, -1));
+        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, 290, -1));
+        jPanel4.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 290, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -332,8 +332,9 @@ public class Ticket extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel4.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, 280, 70));
+        jPanel4.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 380, 370, 50));
 
+        jPanel2.setForeground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -377,7 +378,7 @@ public class Ticket extends javax.swing.JFrame {
         txtNroTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtNroTicket.setText("0000 - 0000000");
         txtNroTicket.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Nro Ticket"));
-        jPanel2.add(txtNroTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 260, 120));
+        jPanel2.add(txtNroTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 50, 330, 120));
 
         jButton3.setText("GENERAR TICKET");
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 180, 30));
@@ -421,13 +422,7 @@ public class Ticket extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void cboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSexoActionPerformed
-        cboSexo.getEditor().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                txtEmail.requestFocus();
-            }
-        });
+ 
     }//GEN-LAST:event_cboSexoActionPerformed
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -435,30 +430,18 @@ public class Ticket extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtLugarNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarNacimientoActionPerformed
-        cboNivelEstudio.requestFocus();
+
     }//GEN-LAST:event_txtLugarNacimientoActionPerformed
 
     private void cboEstadoCivilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEstadoCivilActionPerformed
-        // txtTelefonoCasa.requestFocus();
-        cboEstadoCivil.getEditor().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                //                 departamentos();
-                txtTelefonoCasa.requestFocus();
-            }
-        });
+    
     }//GEN-LAST:event_cboEstadoCivilActionPerformed
 
     private void txtCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelularActionPerformed
-        txtDireccion.requestFocus();
     }//GEN-LAST:event_txtCelularActionPerformed
 
     private void FechaNacimientoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaNacimientoPropertyChange
-        if (((JTextField) FechaNacimiento.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
-
-            cboSexo.requestFocus();
-        }
+   
     }//GEN-LAST:event_FechaNacimientoPropertyChange
 
     private void txtApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidosActionPerformed
@@ -466,22 +449,11 @@ public class Ticket extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidosActionPerformed
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        if (txtDni.getText().length() <=10) {
-            cargardatos();
-            dni=txtDni.getText().toString();
-        } else {
-            oFunc.SubSistemaMensajeError("Es correcto el DNI?");
-        }
+   
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void txtDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyTyped
-        int limite = 10;
-        {
-            if (txtDni.getText().length() == limite) {
-                evt.consume();
-            }
-        }
-        oFunc.NoLetras(evt);
+     
     }//GEN-LAST:event_txtDniKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -493,17 +465,7 @@ public class Ticket extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (bAgruparProductos) {
-            if (!ServicioExiste()) {
-                sbServicioAgrega();
-                sumar();
-                LimpiarServicios();
-            }
-        } else {
-            sbServicioAgrega();
-            sumar();
-            LimpiarServicios();
-        }
+ 
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
