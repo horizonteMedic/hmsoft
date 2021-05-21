@@ -6032,8 +6032,10 @@ private void CargarTipoExamenes(){
         txtCargoDesempenar.setEnabled(true);
         cboArea.setEnabled(true);
         jpOcupacional.setEnabled(true);
-        txtEmpresa.setEnabled(false);
-        txtContrata.setEnabled(false);
+        //txtEmpresa.setEnabled(false);
+       // txtContrata.setEnabled(false);
+        txtEmpresa.setEnabled(true);
+        txtContrata.setEnabled(true);
         txtNombresAlta.setEnabled(true);
         txtApellidosAlta.setEnabled(true);
         cboAltura.setEnabled(true);

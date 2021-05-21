@@ -52,7 +52,7 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF1001 extends javax.swing.JIn
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("pierola.properties");
+            in = new FileInputStream("trujillo.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
         }
