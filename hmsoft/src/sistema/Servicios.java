@@ -28,19 +28,6 @@ public class Servicios extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jTextField5 = new javax.swing.JTextField();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        txtApellidos = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        Fdesde = new com.toedter.calendar.JDateChooser();
-        jLabel15 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -50,15 +37,32 @@ public class Servicios extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jComboBox1 = new javax.swing.JComboBox<>();
-        btnAgregar = new javax.swing.JButton();
+        Agregar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnImprimir = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnImprimirFicha = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jTextField7 = new javax.swing.JTextField();
+        txtApellidos = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        Fdesde = new com.toedter.calendar.JDateChooser();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jTextField5 = new javax.swing.JTextField();
+        btnNuevo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,87 +71,49 @@ public class Servicios extends javax.swing.JFrame {
         jInternalFrame1.setTitle("Servicios");
         jInternalFrame1.setVisible(true);
         jInternalFrame1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jInternalFrame1.getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 150, -1));
-
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton3.setText("Historia Clínica");
-        jInternalFrame1.getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
-
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jRadioButton4.setText("D.N.I.");
-        jInternalFrame1.getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
-
-        jLabel1.setText("Nombres :");
-        jInternalFrame1.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-        jInternalFrame1.getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 330, -1));
-
-        jLabel14.setText("Apellidos:");
-        jInternalFrame1.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
-
-        txtApellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidosActionPerformed(evt);
-            }
-        });
-        jInternalFrame1.getContentPane().add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 330, -1));
-
-        jLabel2.setText("Edad :");
-        jInternalFrame1.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-        jInternalFrame1.getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, -1));
-        jInternalFrame1.getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 80, 20));
-
-        jLabel16.setText("Hora:");
-        jInternalFrame1.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, 20));
-        jInternalFrame1.getContentPane().add(Fdesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
-
-        jLabel15.setText("Fecha:");
-        jInternalFrame1.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
         jLabel3.setText("DIAGNOSTICO:");
-        jInternalFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        jInternalFrame1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, -1));
 
         jLabel4.setText("OBSERVACION:");
-        jInternalFrame1.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        jInternalFrame1.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
 
         jLabel5.setText("SERVICIOS:");
-        jInternalFrame1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, -1));
+        jInternalFrame1.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 420, 80));
+        jInternalFrame1.getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 190, 420, 80));
 
+        txtNroTicket.setBackground(new java.awt.Color(255, 204, 204));
         txtNroTicket.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         txtNroTicket.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtNroTicket.setText("0000 - 0000000");
         txtNroTicket.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Nro Ticket"));
-        jInternalFrame1.getContentPane().add(txtNroTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, 260, 120));
+        jInternalFrame1.getContentPane().add(txtNroTicket, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 560, 120));
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jInternalFrame1.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 286, 420, 80));
+        jInternalFrame1.getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 280, 420, 80));
 
         jComboBox1.setEditable(true);
-        jInternalFrame1.getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 420, -1));
+        jInternalFrame1.getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 370, 280, -1));
 
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entrar.png"))); // NOI18N
-        btnAgregar.setMnemonic('a');
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        Agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entrar.png"))); // NOI18N
+        Agregar.setMnemonic('a');
+        Agregar.setText("Agregar");
+        Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                AgregarActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 60, 50));
+        jInternalFrame1.getContentPane().add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 370, 130, 30));
 
+        jTable1.setBackground(new java.awt.Color(204, 255, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -161,7 +127,7 @@ public class Servicios extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        jInternalFrame1.getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 560, 180));
+        jInternalFrame1.getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 550, 170));
 
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora.png"))); // NOI18N
         btnImprimir.setText("Imprimir");
@@ -170,7 +136,7 @@ public class Servicios extends javax.swing.JFrame {
                 btnImprimirActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, -1, -1));
+        jInternalFrame1.getContentPane().add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 130, 30));
 
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -179,7 +145,7 @@ public class Servicios extends javax.swing.JFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 490, 90, -1));
+        jInternalFrame1.getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 590, 130, 30));
 
         btnImprimirFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/entrar.png"))); // NOI18N
         btnImprimirFicha.setText("Guardar");
@@ -188,7 +154,76 @@ public class Servicios extends javax.swing.JFrame {
                 btnImprimirFichaActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(btnImprimirFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 520, -1, -1));
+        jInternalFrame1.getContentPane().add(btnImprimirFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 590, 130, 30));
+
+        jLabel6.setText("MÉDICO:");
+        jInternalFrame1.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, -1, -1));
+
+        jComboBox2.setEditable(true);
+        jInternalFrame1.getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 420, -1));
+
+        jTable2.setBackground(new java.awt.Color(204, 255, 255));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jTable2);
+
+        jInternalFrame1.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 460, 420));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel7.setText("HISTORIAL MEDICO");
+        jInternalFrame1.getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 100, -1));
+
+        txtApellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 390, -1));
+
+        jLabel16.setText("Hora:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, 20));
+        jPanel1.add(Fdesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 100, -1));
+
+        jLabel15.setText("Fecha:");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 80, -1));
+
+        jLabel2.setText("Edad :");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+
+        jLabel14.setText("Apellidos:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, -1, -1));
+
+        jLabel1.setText("Nombres :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 390, -1));
+
+        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton4.setText("D.N.I.");
+        jPanel1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton3.setText("Historia Clínica");
+        jPanel1.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 150, -1));
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnNuevo.setMnemonic('n');
@@ -197,15 +232,11 @@ public class Servicios extends javax.swing.JFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        jInternalFrame1.getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 40, 30));
+        jPanel1.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 40, 30));
 
-        jLabel6.setText("MÉDICO:");
-        jInternalFrame1.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
+        jInternalFrame1.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 460, 140));
 
-        jComboBox2.setEditable(true);
-        jInternalFrame1.getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 420, -1));
-
-        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 640));
+        getContentPane().add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,7 +249,7 @@ public class Servicios extends javax.swing.JFrame {
         FechaNacimiento.requestFocusInWindow();
     }//GEN-LAST:event_txtApellidosActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         if (bAgruparProductos) {
             if (!ServicioExiste()) {
                 sbServicioAgrega();
@@ -230,7 +261,7 @@ public class Servicios extends javax.swing.JFrame {
             sumar();
             LimpiarServicios();
         }
-    }//GEN-LAST:event_btnAgregarActionPerformed
+    }//GEN-LAST:event_AgregarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         ReporteFechas(Fdesde.getDate(), Fhasta.getDate());
@@ -249,7 +280,7 @@ public class Servicios extends javax.swing.JFrame {
         deshabilitar();
         btnEditar.setEnabled(false);
         btnGrabar.setEnabled(false);
-        btnAgregar.setEnabled(false);
+        Agregar.setEnabled(false);
         ckbSinDni.setEnabled(true);
         txtHistorial.setVisible(false);
         txtDni.requestFocus();
@@ -291,8 +322,8 @@ public class Servicios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agregar;
     private com.toedter.calendar.JDateChooser Fdesde;
-    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnImprimirFicha;
     private javax.swing.JButton btnLimpiar;
@@ -309,12 +340,16 @@ public class Servicios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
