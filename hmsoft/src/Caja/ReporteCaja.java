@@ -350,50 +350,11 @@ public class ReporteCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnExportarExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarExelActionPerformed
-        //        if(this.tbReporte.getRowCount()==0){
-            //            JOptionPane.showMessageDialog(null, "No hay datos en la tabla para exportar.","Aviso",JOptionPane.INFORMATION_MESSAGE);
-            //            return;
-            //        }
-        //        JFileChooser chooser = new JFileChooser();
-        //        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de exel", "xls");
-        //        chooser.setFileFilter(filter);
-        //        chooser.setDialogTitle("Guardar archivo");
-        //        chooser.setMultiSelectionEnabled(false);
-        //        chooser.setAcceptAllFileFilterUsed(false);
-        //        if(chooser.showSaveDialog(null)== JFileChooser.APPROVE_OPTION){
-            //            List<JTable> tb = new ArrayList<>();
-            //            List<String> nom = new ArrayList<>();
-            //        tb.add(tbReporte);
-            //        nom.add("socios");
-            //        String file=chooser.getSelectedFile().toString().concat(".xls");
-            //        try{
-                //            ExportarExel e = new ExportarExel(new File(file), tb, nom);
-                //            if(e.export()){
-                    //                JOptionPane.showMessageDialog(null, "Los datos fueron exportados a excel.","Reportes",JOptionPane.INFORMATION_MESSAGE);
-                    //            }
-                //        }catch (Exception ex){
-                //            JOptionPane.showMessageDialog(null, "Hubo un error"+ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
-                //
-                //        }
-            //
-            //        }
-        if(this.tbReporte.getRowCount()==0){
-            JOptionPane.showMessageDialog(null, "No hay datos en la tabla para exportar.","Aviso",JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        generar(tbReporte);
+ 
     }//GEN-LAST:event_btnExportarExelActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        if(jCheckBox2.isSelected())
-        cPersonalizadaadecco();
-        else{
-            if(jCheckBoxAntigeno.isSelected())
-            cAntigenos();
-            else
-            cPersonalizada();
-
-        }
+  
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void cboContratasPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboContratasPopupMenuWillBecomeInvisible
@@ -449,7 +410,6 @@ public class ReporteCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_btnImprimirFichaActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        LimpiarPersonalizado();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**

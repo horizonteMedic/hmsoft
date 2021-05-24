@@ -6034,8 +6034,8 @@ private void CargarTipoExamenes(){
         jpOcupacional.setEnabled(true);
         //txtEmpresa.setEnabled(false);
        // txtContrata.setEnabled(false);
-        txtEmpresa.setEnabled(true);
-        txtContrata.setEnabled(true);
+        txtEmpresa.setEnabled(false);
+        txtContrata.setEnabled(false);
         txtNombresAlta.setEnabled(true);
         txtApellidosAlta.setEnabled(true);
         cboAltura.setEnabled(true);
