@@ -8,6 +8,7 @@ import Caja.AddCargos;
 import static Caja.RegistrarCliente.addExEn;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.Component;
@@ -60,28 +61,10 @@ String sed="";
     DefaultTableModel model;
     public FichaMedicaMarsa1() {
         
-         Properties props = new Properties();
+     
+           seded=clsGlobales.sedeSede;
+           ipa=clsGlobales.ipIp;
        
-            FileInputStream in = null;
-        try {
-            in = new FileInputStream("trujillo.properties");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            props.load(in);
-        } catch (IOException ex) {
-            Logger.getLogger(FichaMedicaMarsa1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           String url = props.getProperty("dataBaseServer");
-           String db = props.getProperty("dataBaseCatalog");
-           String username = props.getProperty("dataBaseUser");
-           String password = props.getProperty("dataBasePassword");
-         
-  
-           seded=props.getProperty("nameSede");
-           ipa= props.getProperty("dataBaseServer");
-
 
         valorSede(seded);
 

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -54,29 +55,8 @@ boolean asin,sin,invalido,igmreactivo,iggreactivo;
      */
     public contanciaSaludCovid1() {
         
-         Properties props = new Properties();
-       
-            FileInputStream in = null;
-        try {
-            in = new FileInputStream("trujillo.properties");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(contanciaSaludCovid1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            props.load(in);
-        } catch (IOException ex) {
-            Logger.getLogger(contanciaSaludCovid1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           String url = props.getProperty("dataBaseServer");
-           String db = props.getProperty("dataBaseCatalog");
-           String username = props.getProperty("dataBaseUser");
-           String password = props.getProperty("dataBasePassword");
-         
-  
-           seded=props.getProperty("nameSede");
-           ipa= props.getProperty("dataBaseServer");
-
-
+     seded=clsGlobales.sedeSede;
+           ipa=clsGlobales.ipIp;
         valorSede(seded);
 
         initComponents();

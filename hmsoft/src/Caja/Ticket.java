@@ -5,17 +5,34 @@
  */
 package Caja;
 
+import Clases.clsConnection;
+import Clases.clsFunciones;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import Clases.clsGlobales;
+
 /**
  *
  * @author Horizonte Medic
  */
 public class Ticket extends javax.swing.JFrame {
-
+    clsConnection oConn = new clsConnection();
+    clsFunciones oFunc = new clsFunciones();
     /**
      * Creates new form TTTT
      */
     public Ticket() {
         initComponents();
+        CargarServicios();
+        CargarDoctor();
+        AutoCompleteDecorator.decorate(this.cboServicios);
+        AutoCompleteDecorator.decorate(this.jComboBox3);
+        AutoCompleteDecorator.decorate(this.jComboBox2);
+
+   jComboBox3.setSelectedItem(clsGlobales.sNomOperador.toString()); 
+
     }
 
     /**
@@ -63,7 +80,6 @@ public class Ticket extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -94,14 +110,19 @@ public class Ticket extends javax.swing.JFrame {
         txtNroTicket = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jTextField9 = new javax.swing.JTextField();
+        cboServicios = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jInternalFrame1.setClosable(true);
         jInternalFrame1.setTitle("Ticket");
         jInternalFrame1.setVisible(true);
 
         jtcomprobantes.setBackground(new java.awt.Color(204, 204, 255));
+        jtcomprobantes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtcomprobantesKeyPressed(evt);
+            }
+        });
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -209,10 +230,21 @@ public class Ticket extends javax.swing.JFrame {
         });
         jPanel5.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 251, -1));
 
+        jRadioButton1.setSelected(true);
         jRadioButton1.setText("D.N.I.");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
         jRadioButton2.setText("Pasaporte");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, -1, -1));
 
         jLabel9.setText("Dirección:");
@@ -266,7 +298,7 @@ public class Ticket extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Servicio:");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, -1, -1));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
 
         jLabel4.setText("Cod. Servicio:");
         jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, -1, -1));
@@ -276,9 +308,6 @@ public class Ticket extends javax.swing.JFrame {
 
         jLabel11.setText("Unidad:");
         jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 350, -1, -1));
-
-        jComboBox1.setEditable(true);
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 260, 370, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -338,11 +367,22 @@ public class Ticket extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRadioButton4.setSelected(true);
         jRadioButton4.setText("D.N.I.");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRadioButton3.setText("Historia Clínica");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
         jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 130, -1));
         jPanel2.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 320, -1));
@@ -372,6 +412,7 @@ public class Ticket extends javax.swing.JFrame {
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 90, -1));
 
         jComboBox2.setEditable(true);
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CONTADO", "CREDITO", "TARJETA DEBITO", "TARJETA CREDITO" }));
         jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 270, -1));
 
         txtNroTicket.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
@@ -389,6 +430,23 @@ public class Ticket extends javax.swing.JFrame {
         jPanel2.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 210, 110));
 
         jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 970, 220));
+
+        cboServicios.setEditable(true);
+        cboServicios.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cboServiciosPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        cboServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboServiciosActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cboServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 250, 370, 30));
 
         jtcomprobantes.addTab("Generar Ticket", jPanel4);
 
@@ -411,7 +469,7 @@ public class Ticket extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -424,7 +482,52 @@ public class Ticket extends javax.swing.JFrame {
     private void cboSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSexoActionPerformed
  
     }//GEN-LAST:event_cboSexoActionPerformed
-
+   private void CargarServicios(){
+    String Consulta;    
+    Consulta = "select descripcion from servicios_generales "
+             + " ORDER BY  descripcion asc ";
+        if (oConn.FnBoolQueryExecute(Consulta))
+        {
+            try 
+            {
+                while (oConn.setResult.next())
+                 {                     
+                   cboServicios.addItem(oConn.setResult.getString ("descripcion"));                     
+                 }
+                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Comprobantes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+}
+  private void CargarDoctor(){
+    String Consulta;    
+    Consulta = "select nombre_user||' '||apellido_user as nombre FROM usuarios  ";
+        if (oConn.FnBoolQueryExecute(Consulta))
+        {
+            try 
+            {
+                while (oConn.setResult.next())
+                 {                     
+                   jComboBox3.addItem(oConn.setResult.getString ("nombre"));                     
+                 }
+                    oConn.setResult.close();
+                    oConn.sqlStmt.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Ticket.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+}  
+   
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         txtLugarNacimiento.requestFocus();
     }//GEN-LAST:event_txtEmailActionPerformed
@@ -457,7 +560,17 @@ public class Ticket extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDniKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       String dni=txtDni.getText().toString();
+        jRadioButton4.setSelected(true);
+        jRadioButton3.setSelected(false);
+        jTextField5.setText(dni);
+       jTextField5.requestFocus();
+       System.out.println("paso el primer focus");
+       jTextField5.setEditable(true);
+       jTextField5.requestFocus();
+
+    //   jPanel3.setVisible(false);
+    //   jPanel4.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -471,6 +584,35 @@ public class Ticket extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void cboServiciosPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboServiciosPopupMenuWillBecomeInvisible
+       
+    }//GEN-LAST:event_cboServiciosPopupMenuWillBecomeInvisible
+
+    private void cboServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboServiciosActionPerformed
+   
+    }//GEN-LAST:event_cboServiciosActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+       jRadioButton3.setSelected(false);
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+       jRadioButton4.setSelected(false);
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        jRadioButton2.setSelected(false);
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+       jRadioButton1.setSelected(false);
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jtcomprobantesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtcomprobantesKeyPressed
+       jTextField5.requestFocus();
+       System.out.println("paso el panel");
+    }//GEN-LAST:event_jtcomprobantesKeyPressed
 
     /**
      * @param args the command line arguments
@@ -513,6 +655,7 @@ public class Ticket extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser FechaNacimiento;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JComboBox cboEstadoCivil;
+    private javax.swing.JComboBox cboServicios;
     private javax.swing.JComboBox cboSexo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -520,7 +663,6 @@ public class Ticket extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JInternalFrame jInternalFrame1;

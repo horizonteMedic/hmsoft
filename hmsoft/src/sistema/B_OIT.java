@@ -2539,9 +2539,10 @@ boolean bResultado=true;
         if (!txt_s_comentarios.getText().isEmpty()) {
             values += "',' " + txt_s_comentarios.getText().toString();
         }
+                     System.out.println("consulta: "+insert.concat(")") + values.concat("') "));
+
       // oFunc.SubSistemaMensajeInformacion(insert.concat(") ") + values.concat("') "));
         if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat("') "))) {
-
 //            oConn.setResult.next();
             bResult = true;
             oConn.sqlStmt.close();

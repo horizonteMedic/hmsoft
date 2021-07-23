@@ -16,6 +16,8 @@ public class clsGlobales {
     public static String sDniOperador;
     public static String sNomOperador;
     public static String sUser;
+    public static String sedeSede;
+    public static String ipIp;
     public static String sCMPOperador;
     public static String sFormaPago;
     public static String sReferencia;

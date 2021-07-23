@@ -9,6 +9,7 @@ package sistema;
 import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -48,29 +49,11 @@ String sed="";
  String ipa="",seded="";
  String codvalor="";
     public ConstanciaSaludMarsa1() {
-          
-         Properties props = new Properties();
-       
-            FileInputStream in = null;
-        try {
-            in = new FileInputStream("trujillo.properties");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            props.load(in);
-        } catch (IOException ex) {
-            Logger.getLogger(ConstanciaSaludMarsa1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           String url = props.getProperty("dataBaseServer");
-           String db = props.getProperty("dataBaseCatalog");
-           String username = props.getProperty("dataBaseUser");
-           String password = props.getProperty("dataBasePassword");
+             lasede=clsGlobales.sedeSede;
+           seded=clsGlobales.sedeSede;
+           ipa=clsGlobales.ipIp;
          
-  
-           lasede=props.getProperty("nameSede");
-           seded=props.getProperty("nameSede");
-           ipa= props.getProperty("dataBaseServer");
+ 
         initComponents();
            activar(false);
         timer.start();

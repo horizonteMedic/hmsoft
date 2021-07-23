@@ -31,31 +31,12 @@ public class Admision extends javax.swing.JFrame {
    public static String nombreSede;
      String ipa="",seded="";
    public Admision() {
+        
+        lasede=clsGlobales.sedeSede;
+           nombreSede=clsGlobales.sedeSede;
+           seded=clsGlobales.sedeSede;
+           ipa=clsGlobales.ipIp;
        
-          Properties props = new Properties();
-       
-            FileInputStream in = null;
-        try {
-            in = new FileInputStream("trujillo.properties");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Admision.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            props.load(in);
-        } catch (IOException ex) {
-            Logger.getLogger(Admision.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           String url = props.getProperty("dataBaseServer");
-           String db = props.getProperty("dataBaseCatalog");
-           String username = props.getProperty("dataBaseUser");
-           String password = props.getProperty("dataBasePassword");
-         
-  
-           lasede=props.getProperty("nameSede");
-           nombreSede=props.getProperty("nameSede");
-           seded=props.getProperty("nameSede");
-           ipa= props.getProperty("dataBaseServer");
-         
            // System.out.println("admision-entro a admision");
        initComponents();
        sedee();
@@ -125,6 +106,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jButton21 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
+        jButton28 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         btncerrar_caja = new javax.swing.JButton();
@@ -351,6 +333,23 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jToolBar2.add(jButton25);
 
+        jButton28.setForeground(new java.awt.Color(102, 102, 102));
+        jButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cajita.jpg"))); // NOI18N
+        jButton28.setMnemonic(KeyEvent.VK_F6);
+        jButton28.setText("CAJA");
+        jButton28.setToolTipText("F6 (Recoger Análisis Clinicos)");
+        jButton28.setFocusable(false);
+        jButton28.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton28.setMaximumSize(new java.awt.Dimension(80, 72));
+        jButton28.setMinimumSize(new java.awt.Dimension(65, 72));
+        jButton28.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(jButton28);
+
         jButton27.setForeground(new java.awt.Color(102, 102, 102));
         jButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/protocolos+.png"))); // NOI18N
         jButton27.setMnemonic(KeyEvent.VK_F6);
@@ -543,7 +542,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
    private void btnTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketActionPerformed
-       Comprobantes t = new Comprobantes(); 
+     ticketAsistencial neo= new ticketAsistencial();
+      neo.setVisible(true);
+       /*   Comprobantes t = new Comprobantes(); 
        if(estacerrado(t)){             
           Admision.Desktop.add(t);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -564,6 +565,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         }
       //JFrame tenga el tamaño de todos sus elementos
      // this.pack();
+       */
    }//GEN-LAST:event_btnTicketActionPerformed
 
    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
@@ -758,6 +760,16 @@ String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
 
         }//GEN-LAST:event_jButton27ActionPerformed
 
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
+        if(entradaUsuario.equals("87654321"))
+        {
+        ReporteCaja pro= new ReporteCaja();
+        pro.setVisible(true);
+        }
+        else 
+          JOptionPane.showMessageDialog(null, "LA CALVE NO COINCIDE");    }//GEN-LAST:event_jButton28ActionPerformed
+
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -804,6 +816,7 @@ String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton27;
+    private javax.swing.JButton jButton28;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

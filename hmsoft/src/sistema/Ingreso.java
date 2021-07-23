@@ -51,7 +51,7 @@ public final class Ingreso extends javax.swing.JFrame {
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("trujillo.properties");
+            in = new FileInputStream("campañas.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,6 +65,8 @@ public final class Ingreso extends javax.swing.JFrame {
            String username = props.getProperty("dataBaseUser");
            String password = props.getProperty("dataBasePassword");
            seded=props.getProperty("nameSede");
+           clsGlobales.sedeSede=props.getProperty("nameSede");
+           clsGlobales.ipIp=props.getProperty("dataBaseServer");
            ipd= props.getProperty("dataBaseServer");
       if (! oConn.FnBoolConnectionOpen("org.postgresql.Driver", "jdbc:postgresql://"+url+ ":5432/"+ db,username,password))
         {
@@ -366,7 +368,7 @@ enter(evt);
         System.out.println("cerro esta ventana");
         try {
             oConn.sqlStmt.close();
-        } catch (SQLException ex) {
+        }  catch (SQLException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
   

@@ -48,28 +48,9 @@ public class Ficha_Resultados_Pruebas_Rapidas_CovidF1001 extends javax.swing.JIn
 
     public Ficha_Resultados_Pruebas_Rapidas_CovidF1001() {
         
-         Properties props = new Properties();
+           seded=clsGlobales.sedeSede;
+           ipa=clsGlobales.ipIp;
        
-            FileInputStream in = null;
-        try {
-            in = new FileInputStream("trujillo.properties");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            props.load(in);
-        } catch (IOException ex) {
-            Logger.getLogger(Ficha_Resultados_Pruebas_Rapidas_CovidF1001.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           String url = props.getProperty("dataBaseServer");
-           String db = props.getProperty("dataBaseCatalog");
-           String username = props.getProperty("dataBaseUser");
-           String password = props.getProperty("dataBasePassword");
-         
-  
-           seded=props.getProperty("nameSede");
-           ipa= props.getProperty("dataBaseServer");
-
 
         valorSede(seded);
 

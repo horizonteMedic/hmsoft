@@ -124,28 +124,10 @@ public class Ocupacional1 extends javax.swing.JFrame {
         public static String lasede="";
     public Ocupacional1() {
           
-         Properties props = new Properties();
+          lasede=clsGlobales.sedeSede;
+           seded=clsGlobales.sedeSede;
+           ipa=clsGlobales.ipIp;
        
-            FileInputStream in = null;
-        try {
-            in = new FileInputStream("trujillo.properties");
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            props.load(in);
-        } catch (IOException ex) {
-            Logger.getLogger(Ocupacional1.class.getName()).log(Level.SEVERE, null, ex);
-        }
-           String url = props.getProperty("dataBaseServer");
-           String db = props.getProperty("dataBaseCatalog");
-           String username = props.getProperty("dataBaseUser");
-           String password = props.getProperty("dataBasePassword");
-         
-  
-           lasede=props.getProperty("nameSede");
-           seded=props.getProperty("nameSede");
-           ipa= props.getProperty("dataBaseServer");
             getRootPane().setWindowDecorationStyle(JRootPane.NONE);
             initComponents();
             sede();
@@ -397,8 +379,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
         btnActualizar = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
         mBarrick1 = new javax.swing.JMenu();
         mCertificacionConduccion1 = new javax.swing.JMenuItem();
         mCertificacionTrabajoAltura1 = new javax.swing.JMenuItem();
@@ -1776,11 +1759,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu3.add(jMenuItem2);
 
-        MenuOcupacional.add(jMenu3);
-
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ayuda.png"))); // NOI18N
-        jMenu4.setText("Ayuda");
-
         btnActualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
         btnActualizar.setText("Actualizar Sistema");
@@ -1789,7 +1767,20 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                 btnActualizarActionPerformed(evt);
             }
         });
-        jMenu4.add(btnActualizar);
+        jMenu3.add(btnActualizar);
+
+        MenuOcupacional.add(jMenu3);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ayuda.png"))); // NOI18N
+        jMenu4.setText("ASISTENCIAL");
+
+        jMenuItem10.setText("CONSULTORIO ASISTENCIAL");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem10);
 
         MenuOcupacional.add(jMenu4);
 
@@ -3997,6 +3988,11 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+     Servicios objt=new Servicios();
+     objt.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -4119,6 +4115,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
