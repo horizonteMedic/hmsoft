@@ -2555,7 +2555,14 @@ negarcheks();
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad  : 95.04% \n"
                             + "Especificidad : 100%");
-        }    
+        }
+          if(cboMarca4.getSelectedItem().toString().contains("GLINE-2019-nCoV Ag"))
+        {
+         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 96.49% \n"
+                            + "Especificidad : 99.25%");
+        }
+        
           
     }//GEN-LAST:event_cboMarca4ActionPerformed
 
@@ -3608,7 +3615,19 @@ limpiar2();
                                                                 +  "IGG-  SENSIBILIDAD: 95.60% \n"
                                                                 +"      ESPECIFICIDAD: 96.00 %");
                                                         }
-                                                    }
+                                                    
+//                                                    else if(cboMarca.getSelectedIndex()==11){
+//                                                        //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+//
+//                                                            txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+//                                                                + "IGM- SENSIBILIDAD: 96.49% \n"
+//                                                                + "     ESPECIFICIDAD: 99.25 %");
+//                                                            txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+//                                                                +  "IGG-  SENSIBILIDAD: 96.49% \n"
+//                                                                +"      ESPECIFICIDAD: 99.25 %");
+//                                                        }
+                                                    
+                                                   }
                                                 });
     }//GEN-LAST:event_cboMarcaActionPerformed
 

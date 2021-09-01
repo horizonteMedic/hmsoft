@@ -51,7 +51,7 @@ public final class Ingreso extends javax.swing.JFrame {
        
             FileInputStream in = null;
         try {
-            in = new FileInputStream("campañas.properties");
+            in = new FileInputStream("huancayo.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
