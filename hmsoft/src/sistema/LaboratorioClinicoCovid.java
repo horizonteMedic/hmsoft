@@ -2562,6 +2562,12 @@ negarcheks();
                             + "Sensibilidad  : 96.49% \n"
                             + "Especificidad : 99.25%");
         }
+          if(cboMarca4.getSelectedItem().toString().contains("MEDOMICS/LFIA"))
+        {
+         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
+                            + "Sensibilidad  : 97.73% \n"
+                            + "Especificidad : 99.51%");
+        }
         
           
     }//GEN-LAST:event_cboMarca4ActionPerformed
