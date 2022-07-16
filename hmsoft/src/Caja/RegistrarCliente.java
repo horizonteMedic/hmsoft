@@ -4432,11 +4432,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         cboEmpresa.getEditor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+    
                if (cboEmpresa.getSelectedIndex() <= -1) {
                    cboEmpresa.getEditor().getEditorComponent().setBackground(Color.red);
         ((JTextField) cboEmpresa.getEditor().getEditorComponent()).setOpaque(true);
-        cargarEmpresas();
+//        cargarEmpresas();
                 } else {
                     cboContrata.requestFocus();
                     cboEmpresa.getEditor().getEditorComponent().setBackground(Color.WHITE);
@@ -4455,7 +4455,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 if (cboContrata.getSelectedIndex() <= -1) {
                     cboContrata.getEditor().getEditorComponent().setBackground(Color.red);
         ((JTextField) cboContrata.getEditor().getEditorComponent()).setOpaque(true);
-        cargarEmpresas();
+//        cargarEmpresas();
                 } else {
                     txtMedico.requestFocus();
                     cboContrata.getEditor().getEditorComponent().setBackground(Color.WHITE);
