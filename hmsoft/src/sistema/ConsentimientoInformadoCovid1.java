@@ -439,12 +439,13 @@ private boolean Grabar() throws SQLException{
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
-CargarSedes1();
-        if(!txtimp.getText().isEmpty()){
-             if(sed.contains("Huancayo"))
-                 print12(Integer.valueOf(txtimp.getText().toString()));
-             else
-            print(Integer.valueOf(txtimp.getText().toString()));
+        CargarSedes1();
+        if (!txtimp.getText().isEmpty()) {
+            if (sed.contains("Huancayo")) {
+                print12(Integer.valueOf(txtimp.getText().toString()));
+            } else {
+                print(Integer.valueOf(txtimp.getText().toString()));
+            }
         }
     }//GEN-LAST:event_btnImpActionPerformed
 

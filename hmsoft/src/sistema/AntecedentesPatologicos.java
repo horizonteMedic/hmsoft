@@ -939,7 +939,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
+                .addGap(70, 70, 70)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chk1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -961,9 +961,9 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addComponent(chk3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGap(40, 40, 40)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1009,9 +1009,9 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addComponent(chk38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(40, 40, 40)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1035,7 +1035,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chk41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chk42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1232,7 +1232,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                     .addComponent(jSeparator2))
                 .addGap(2, 2, 2)
                 .addComponent(txtotrosap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
@@ -3159,18 +3159,37 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         cerrarVentana();    // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
   private void muestraVisual(){
-        String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
-"          CASE  WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od  ELSE ol.v_cerca_c_od  END as ODCC, \n" +
-"          CASE  WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi  ELSE ol.v_cerca_c_oi  END as OICC, \n" +
-"          o.v_lejos_s_od, o.v_lejos_s_oi, \n" +
-"	  CASE  WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
-"          CASE  WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC, \n" +
-"	  CASE  WHEN ol.v_colores IS NULL THEN o.v_colores  ELSE ol.v_colores  END as VC, \n" +
-"          CASE  WHEN ol.v_binocular IS NULL THEN o.v_binocular  ELSE ol.v_binocular  END as VB, \n" +
-"          CASE  WHEN ol.r_pupilares IS NULL THEN o.r_pupilares  ELSE ol.r_pupilares  END as RP, o.e_oculares\n" +
-"     FROM oftalmologia as o\n" +
-"     left JOIN oftalmologia_lo as ol on (o.n_orden=ol.n_orden)\n" +
-"     WHERE o.n_orden ='"+txtNorden.getText().toString()+"'";
+        String sql = "SELECT n.n_orden, CASE WHEN oft.txtcercasincorregirod is not null THEN oft.txtcercasincorregirod else o.v_cerca_s_od end as v_cerca_s_od,\n" +
+"       CASE WHEN oft.txtcercasincorregiroi is not null THEN oft.txtcercasincorregiroi else o.v_cerca_s_oi end as v_cerca_s_oi,\n" +
+"       CASE WHEN oft.txtcercacorregidaod is not null THEN oft.txtcercacorregidaod \n" +
+"	    WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od\n" +
+"            else ol.v_cerca_c_od end as ODCC,\n" +
+"       CASE WHEN oft.txtcercacorregidaoi is not null THEN oft.txtcercacorregidaoi \n" +
+"	    WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi\n" +
+"            else ol.v_cerca_c_oi end as OICC,\n" +
+"       CASE WHEN oft.txtlejossincorregirod is not null THEN oft.txtlejossincorregirod else o.v_lejos_s_od end as v_lejos_s_od,\n" +
+"       CASE WHEN oft.txtlejossincorregiroi is not null THEN oft.txtlejossincorregiroi else o.v_lejos_s_oi end as v_lejos_s_oi,\n" +
+"       CASE WHEN oft.txtlejoscorregidaod is not null THEN oft.txtlejoscorregidaod \n" +
+"            WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
+"       CASE WHEN oft.txtlejoscorregidaoi is not null THEN oft.txtlejoscorregidaoi \n" +
+"            WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC,\n" +
+"         \n" +
+"       CASE  WHEN oft.rbtecishihara_normal='TRUE' THEN 'NORMAL'\n" +
+"             WHEN oft.rbtecishihara_anormal='TRUE'THEN 'ANORMAL'\n" +
+"             WHEN ol.v_colores IS NULL THEN o.v_colores  \n" +
+"             ELSE ol.v_colores  END as VC,\n" +
+"      CASE  WHEN oft.txtbinocularsincorregir IS not NULL THEN oft.txtbinocularsincorregir  \n" +
+"	    WHEN ol.v_binocular IS NULL THEN o.v_binocular  \n" +
+"            ELSE ol.v_binocular  END as VB,\n" +
+"      CASE  WHEN oft.txtrp IS not NULL THEN oft.txtrp\n" +
+"	    WHEN ol.r_pupilares IS NULL THEN o.r_pupilares\n" +
+"            ELSE ol.r_pupilares  END as RP,\n" +
+"      CASE  WHEN oft.txtdiagnostico IS not NULL THEN oft.txtdiagnostico  else o.e_oculares end as e_oculares\n" +
+"    FROM n_orden_ocupacional as n\n" +
+"     left JOIN oftalmologia as o on (n.n_orden=o.n_orden)\n" +
+"     left JOIN oftalmologia_lo as ol on (n.n_orden=ol.n_orden)\n" +
+"     left JOIN oftalmologia2021 as oft on (n.n_orden=oft.n_orden)" +
+"     WHERE n.n_orden ='" + txtNorden.getText()+ "'";
          oConn.FnBoolQueryExecute(sql);      
              try {
                     if (oConn.setResult.next()) {                        
@@ -3240,9 +3259,10 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
        }
   }
     private void Oftalmologia(){
-        String Sql="SELECT o.e_oculares,e_oculares1 "
+        String Sql="SELECT CASE  WHEN oft.txtdiagnostico IS not NULL THEN oft.txtdiagnostico  else o.e_oculares end as e_oculares,e_oculares1 "
                 + "from n_orden_ocupacional as n"
-                + " inner join oftalmologia as o ON(n.n_orden = o.n_orden) \n" 
+                + " inner join oftalmologia as o ON(n.n_orden = o.n_orden) "
+                + "left JOIN oftalmologia2021 as oft on (n.n_orden=oft.n_orden)\n" 
                 +"where n.n_orden='"+ txtNorden.getText().toString()+  "'";
         oConn.FnBoolQueryExecute(Sql);      
              try {
@@ -3250,7 +3270,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                         String enf=oConn.setResult.getString("e_oculares");
                         String enf1=oConn.setResult.getString("e_oculares1");
                         oFunc.SubSistemaMensajeInformacion(enf);
-                        if(enf != null && enf!=""|| enf1!=null || enf1!="" ){
+                        if((enf != null && !"".equals(enf))|| (enf1!=null && !"".equals(enf1) )){
                            if(!"NINGUNA".equals(enf) ){
                                chk14.setSelected(true);
                            }
@@ -3265,40 +3285,37 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         
             }
     }
-    public boolean OrdenImp()
-    {
-        
-        boolean bResultado=false;
-        if(!txtImp.getText().isEmpty()){
-        String sQuery;
+    public boolean OrdenImp() {
 
-        sQuery  = "Select n_orden from antecedentes_patologicos Where n_orden ="+txtImp.getText().toString();
-        
-        //Ejecuta el Query
-        oConn.FnBoolQueryExecute(sQuery);
-        
-        // Capturo el Error
-        try {
-            
-            // Verifico que haya habido resultados
-            if (oConn.setResult.next())
-            {
-                // Resultado
-                bResultado = true;
-            
+        boolean bResultado = false;
+        if (!txtImp.getText().isEmpty()) {
+            String sQuery;
+
+            sQuery = "Select n_orden from antecedentes_patologicos Where n_orden =" + txtImp.getText().toString();
+
+            //Ejecuta el Query
+            oConn.FnBoolQueryExecute(sQuery);
+
+            // Capturo el Error
+            try {
+
+                // Verifico que haya habido resultados
+                if (oConn.setResult.next()) {
+                    // Resultado
+                    bResultado = true;
+
+                }
+
+                // Cierro los Resultados
+                oConn.sqlStmt.close();
+
+            } catch (SQLException ex) {
+
             }
-            
-            // Cierro los Resultados
-            oConn.sqlStmt.close();
-            
-        } catch (SQLException ex) {
-         
         }
-        }       
         return bResultado;
-        
-    
-        }
+
+    }
     public boolean OrdenExiste()
     {
         

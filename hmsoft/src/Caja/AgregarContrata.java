@@ -4,6 +4,7 @@ import Clases.clsConnection;
 import Clases.clsFunciones;
 import java.awt.KeyEventPostProcessor;
 import java.awt.KeyboardFocusManager;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -44,6 +45,7 @@ public final class AgregarContrata extends javax.swing.JDialog {
         Limpiar();
        sbTablacontrata();
        sbCargarDatosContrata("");
+       desactivarBotones();
           setLocationRelativeTo(this);
         KeyboardFocusManager kb = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         kb.addKeyEventPostProcessor(new KeyEventPostProcessor(){
@@ -105,9 +107,74 @@ public final class AgregarContrata extends javax.swing.JDialog {
 
         jLabel6.setText("Email :");
 
+        txtRUC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtRUCMouseClicked(evt);
+            }
+        });
+        txtRUC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRUCActionPerformed(evt);
+            }
+        });
         txtRUC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtRUCKeyTyped(evt);
+            }
+        });
+
+        txtRazonSocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRazonSocialActionPerformed(evt);
+            }
+        });
+        txtRazonSocial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRazonSocialKeyTyped(evt);
+            }
+        });
+
+        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDireccionMouseClicked(evt);
+            }
+        });
+        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionActionPerformed(evt);
+            }
+        });
+
+        txtTelefonos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelefonosMouseClicked(evt);
+            }
+        });
+        txtTelefonos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonosActionPerformed(evt);
+            }
+        });
+
+        txtResponsable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtResponsableMouseClicked(evt);
+            }
+        });
+        txtResponsable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtResponsableActionPerformed(evt);
+            }
+        });
+
+        txtEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEmailMouseClicked(evt);
+            }
+        });
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
             }
         });
 
@@ -205,40 +272,35 @@ public final class AgregarContrata extends javax.swing.JDialog {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtRUC, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTelefonos, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRazonSocial, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                            .addComponent(txtDireccion)
+                            .addComponent(txtResponsable))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnActualizar)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(398, 398, 398))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(txtBuscarRazonSocial))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1)
-                        .addContainerGap())))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,16 +342,14 @@ public final class AgregarContrata extends javax.swing.JDialog {
                         .addComponent(btnCerrar)))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 14, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
-                        .addGap(7, 7, 7)
                         .addComponent(txtBuscarRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminar))
+                .addGap(2, 2, 2)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -299,7 +359,7 @@ public final class AgregarContrata extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -314,7 +374,8 @@ public final class AgregarContrata extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-    if(txtRUC.getText().isEmpty()| txtRazonSocial.getText().isEmpty())
+     txtEmail.setText(txtEmail.getText().replaceAll(" +", " ").trim());
+        if(txtRUC.getText().isEmpty()| txtRazonSocial.getText().isEmpty())
         {
             oFunc.SubSistemaMensajeError("Los datos RUC y Razón Social son Necesarios");
             }   
@@ -359,23 +420,29 @@ public final class AgregarContrata extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtRUCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRUCKeyTyped
-             int k=(int)evt.getKeyChar();
-if (k >= 97 && k <= 122 || k>=65 && k<=90){
-evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-JOptionPane.showMessageDialog(null,"No puede ingresar letras!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
-}
-if(k==241 || k==209){
-evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-JOptionPane.showMessageDialog(null,"No puede ingresar letras!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
-}
-if(k==32){
-evt.setKeyChar((char)KeyEvent.VK_CLEAR);
-JOptionPane.showMessageDialog(null,"No puede ingresar Espacios!!!","Ventana Error Datos",JOptionPane.ERROR_MESSAGE);
-}
-if(k==10){
-    
-//txtnombreApellido.transferFocus();
-}
+        int key = evt.getKeyChar();
+    boolean numeros = (key >= 48 && key <= 57 )||key==10 ||key==8;
+       
+    if (!numeros )
+    {
+        if(key==10 && txtRUC.getText().length()==11){
+            txtRazonSocial.requestFocus();    
+        }else{
+           evt.consume();
+        oFunc.SubSistemaMensajeError("SOLO ADMITE NUMEROS"); 
+        }
+    }
+       if (txtRUC.getSelectedText() != null) { // See if they selected something 
+           String s = txtRUC.getSelectedText();
+//        oFunc.SubSistemaMensajeInformacion(s);
+        }else{
+        if(txtRUC.getText().trim().length()==11){
+//            txtRUC.requestFocus();
+            evt.consume();
+          if(OrdenExiste()){oFunc.SubSistemaMensajeError("RUC REGISTRADO");}
+          
+        }
+       }
     }//GEN-LAST:event_txtRUCKeyTyped
 
     private void txtBuscarRazonSocialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarRazonSocialKeyReleased
@@ -384,6 +451,7 @@ if(k==10){
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
           Limpiar();
+          desactivarBotones();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void tbContratasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbContratasMousePressed
@@ -429,6 +497,7 @@ if(k==10){
             dispose();
             
         }
+        activarBotones();
     }//GEN-LAST:event_tbContratasMousePressed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -544,6 +613,84 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         generar(tbContratas);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtRUCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRUCActionPerformed
+        // TODO add your handling code here:
+        if (!OrdenExiste()){
+            if (txtRUC.getText().trim().length() < 11) {
+                oFunc.SubSistemaMensajeError("REVISAR RUC");
+                txtRUC.requestFocus();
+            } else {
+                activarBotones();
+                txtRazonSocial.requestFocus();
+            }
+        } else {
+           oFunc.SubSistemaMensajeError("RUC REGISTRADO");   
+        }
+    }//GEN-LAST:event_txtRUCActionPerformed
+
+    private void txtRUCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRUCMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtRUCMouseClicked
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+        txtTelefonos.requestFocus();        // TODO add your handling code here:
+    txtDireccion.setText(txtDireccion.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtDireccionActionPerformed
+
+    private void txtTelefonosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonosActionPerformed
+       txtResponsable.requestFocus();        // TODO add your handling code here:
+       txtTelefonos.setText(txtTelefonos.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtTelefonosActionPerformed
+
+    private void txtResponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResponsableActionPerformed
+         txtEmail.requestFocus();        // TODO add your handling code here:
+     txtResponsable.setText(txtResponsable.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtResponsableActionPerformed
+
+    private void txtRazonSocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonSocialActionPerformed
+       txtDireccion.requestFocus();        // TODO add your handling code here:
+     txtRazonSocial.setText(txtRazonSocial.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtRazonSocialActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+        btnAgregar.requestFocusInWindow();        // TODO add your handling code here:
+txtEmail.setText(txtEmail.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtRazonSocialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRazonSocialKeyTyped
+        // TODO add your handling code here:
+        int k = (int) evt.getKeyChar();
+        if (txtRazonSocial.getText().isEmpty()) {
+            if (k == 32) {
+                evt.setKeyChar((char) KeyEvent.VK_CLEAR);
+                Toolkit.getDefaultToolkit().beep();
+                JOptionPane.showMessageDialog(null, "No puede ingresar Espacios!!!", "Ventana Error Ingreso de Datos", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_txtRazonSocialKeyTyped
+
+    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
+        // TODO add your handling code here:
+        txtRazonSocial.setText(txtRazonSocial.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtDireccionMouseClicked
+
+    private void txtTelefonosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonosMouseClicked
+        // TODO add your handling code here:
+        txtDireccion.setText(txtDireccion.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtTelefonosMouseClicked
+
+    private void txtResponsableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtResponsableMouseClicked
+        // TODO add your handling code here:
+         txtTelefonos.setText(txtTelefonos.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtResponsableMouseClicked
+
+    private void txtEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEmailMouseClicked
+        // TODO add your handling code here:
+        txtResponsable.setText(txtResponsable.getText().replaceAll(" +", " ").trim());
+    }//GEN-LAST:event_txtEmailMouseClicked
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -757,4 +904,42 @@ public void actualizar(){
           }
     
 }
+void activarBotones(){
+    txtRazonSocial.setEnabled(true);
+    txtDireccion.setEnabled(true);
+    txtTelefonos.setEnabled(true);
+    txtResponsable.setEnabled(true);
+    txtEmail.setEnabled(true);
+    txtRazonSocial.requestFocus();
+}
+void desactivarBotones(){
+    txtRazonSocial.setEnabled(false);
+    txtDireccion.setEnabled(false);
+    txtTelefonos.setEnabled(false);
+    txtResponsable.setEnabled(false);
+    txtEmail.setEnabled(false);
+    txtRUC.requestFocus();
+}
+public boolean OrdenExiste(){
+        boolean bResultado=false;
+        if(!txtRUC.getText().isEmpty()){
+        String sQuery;
+
+        sQuery  = "Select ruc_contrata from contratas Where ruc_contrata ='"+txtRUC.getText()+"'";
+        oConn.FnBoolQueryExecute(sQuery);
+        try {
+            if (oConn.setResult.next())
+            {
+                bResultado = true;
+//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+//             txtNorden.setText(null);
+            }
+            oConn.setResult.close();
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+         
+        }
+        }       
+        return bResultado;
+        }
 }

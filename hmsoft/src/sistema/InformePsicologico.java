@@ -12,6 +12,8 @@ import autocomplete.AutoTextComplete;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -1189,26 +1191,18 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                                             .addComponent(chkP3)
                                             .addComponent(chkP4)
                                             .addComponent(chkP5))))
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(31, 31, 31)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel17)
-                                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                                        .addGap(0, 0, 0)
-                                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel16)
-                                                            .addComponent(jLabel20)
-                                                            .addComponent(jLabel21))))
-                                                .addGap(25, 25, 25))
-                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel17)
+                                            .addComponent(jLabel16)
+                                            .addComponent(jLabel20)
+                                            .addComponent(jLabel21))
+                                        .addGap(25, 25, 25))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1285,13 +1279,16 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(chkP1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(0, 0, 0)
                                 .addComponent(chkP2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkP3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(chkP4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(0, 0, 0)
+                                .addComponent(chkP3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(chkP4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, 0)
                         .addComponent(chkP5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -1307,7 +1304,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
+                                .addGap(5, 5, 5)
                                 .addComponent(jLabel22))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(chkO2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1317,13 +1314,13 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                                 .addComponent(chkO4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(15, 15, 15)
                                 .addComponent(chkO5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(1, 1, 1)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Informe", jPanel5);
@@ -1413,14 +1410,14 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(605, Short.MAX_VALUE))
+                .addContainerGap(510, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Reportes", jPanel6);
@@ -1755,7 +1752,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         });
 
         jPanel17.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Intelectual:Capacidad ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Intelectual:Capacidad ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbNivIntelectual_S.setBackground(new java.awt.Color(153, 204, 255));
         bgACI_1.add(rbNivIntelectual_S);
@@ -2118,7 +2115,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         );
 
         jPanel18.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Afectiva-Personalidad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Afectiva-Personalidad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbEstabEmocional_S.setBackground(new java.awt.Color(153, 204, 255));
         bgAAP_1.add(rbEstabEmocional_S);
@@ -2526,7 +2523,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         );
 
         jPanel19.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área de Seguridad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área de Seguridad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbNivProactividad_S.setBackground(new java.awt.Color(153, 204, 255));
         bgAS_1.add(rbNivProactividad_S);
@@ -2670,7 +2667,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         );
 
         jPanel20.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Motivaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Motivaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbMotTrabajo_S.setBackground(new java.awt.Color(153, 204, 255));
         bgACM_1.add(rbMotTrabajo_S);
@@ -2837,7 +2834,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                         .addGap(15, 15, 15)
                         .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Áreas de Evaluación", jPanel11);
@@ -2893,17 +2890,11 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 738, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane11))
-                        .addContainerGap())
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel46)
@@ -2921,7 +2912,13 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                                     .addComponent(btnActualizarEP)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btnLimpiarEP))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(13, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3280,9 +3277,6 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
@@ -3338,8 +3332,9 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                         .addComponent(jCheckBox24, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCheckBox25, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3384,7 +3379,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                         .addComponent(jCheckBox18)
                         .addComponent(jCheckBox19)
                         .addComponent(jCheckBox20)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addComponent(jLabel70)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3396,11 +3391,11 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                         .addComponent(jCheckBox25))))
         );
 
-        jPanel13.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 310, 310));
+        jPanel13.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 310, 310));
 
         jLabel62.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel62.setText("CRITERIOS PSICOLÓGICOS");
-        jPanel13.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 280, -1));
+        jPanel13.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 280, -1));
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS PERSONALIDAD"));
 
@@ -3499,39 +3494,37 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addComponent(jCheckBox26, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(jCheckBox30, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addComponent(jCheckBox31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
-                                .addComponent(jCheckBox35, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox49)
-                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox47)
-                                    .addComponent(jCheckBox41, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox46, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox48))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jCheckBox26, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jCheckBox30, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(jCheckBox36, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox39, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                        .addComponent(jCheckBox31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(jCheckBox35, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox49)
+                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addComponent(jCheckBox36, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCheckBox39, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel15Layout.createSequentialGroup()
+                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jCheckBox47)
+                                .addComponent(jCheckBox41, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jCheckBox46, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jCheckBox48)))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(0, 0, 0)
                 .addComponent(jLabel71)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -3561,19 +3554,19 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                     .addComponent(jCheckBox48))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox49)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGap(0, 79, Short.MAX_VALUE))
         );
 
-        jPanel13.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 290, 310));
+        jPanel13.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 320, 310));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane5.setViewportView(jTextArea1);
 
-        jPanel13.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 370, 300, -1));
+        jPanel13.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 340, 300, -1));
 
         jLabel76.setText("CONCLUSIONES:");
-        jPanel13.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 470, -1, -1));
+        jPanel13.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 440, -1, -1));
 
         jLabel77.setText("NOMBRE DEL EXAMEN:");
         jPanel13.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, -1, -1));
@@ -3582,10 +3575,10 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         jTextArea2.setRows(5);
         jScrollPane7.setViewportView(jTextArea2);
 
-        jPanel13.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 230, 300, -1));
+        jPanel13.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, 300, -1));
 
         jLabel78.setText("RECOMENDACIONES");
-        jPanel13.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 340, -1, -1));
+        jPanel13.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
 
         jCheckBox27.setText("NO APTO");
         jCheckBox27.addActionListener(new java.awt.event.ActionListener() {
@@ -3593,7 +3586,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 jCheckBox27ActionPerformed(evt);
             }
         });
-        jPanel13.add(jCheckBox27, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 500, -1, -1));
+        jPanel13.add(jCheckBox27, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 470, -1, -1));
 
         jCheckBox28.setText("APTO");
         jCheckBox28.addActionListener(new java.awt.event.ActionListener() {
@@ -3601,7 +3594,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 jCheckBox28ActionPerformed(evt);
             }
         });
-        jPanel13.add(jCheckBox28, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 500, -1, -1));
+        jPanel13.add(jCheckBox28, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 470, -1, -1));
 
         btnActualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
         btnActualizar1.setMnemonic('i');
@@ -3655,10 +3648,10 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 cboExamenKeyPressed(evt);
             }
         });
-        jPanel13.add(cboExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 330, -1));
+        jPanel13.add(cboExamen, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 100, 250, -1));
 
         jLabel79.setText("ANALISIS Y RESULADOS:");
-        jPanel13.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, -1, -1));
+        jPanel13.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, -1, -1));
 
         jTabbedPane1.addTab("FORMATO TRABAJO-ALTURAS", jPanel13);
 
@@ -3666,31 +3659,33 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1061, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public void llenarNombreExamen(){
-    cboExamen.addItem("INFORME PSICOLÓGICO - TRABAJO EN ALTURA/FOBIAS");
+        cboExamen.addItem("INFORME PSICOLÓGICO - TRABAJO EN ALTURA/FOBIAS");
         cboExamen.addItem("INFORME PSICOLÓGICO - TRABAJO EN ALTURA");
 
     }
-    public void llenarComboBox(){
-jComboBox1.addItem("ORIENTACION Y CONSEJERIA PSICOLOGICA");
-jComboBox1.addItem("ASISTIR A TERAPIA PSICOLOGICA");
-jComboBox1.addItem("ASISTIR A TALLERES DE CONTROL DE EMOCIONES");
-jComboBox1.addItem("ASISTIR A TALLERES DE HABILIDADES SOCIALES");
-jComboBox1.addItem("ASISTIR A TALLERES de AUTOESTIMA Y/O SUPERACION PERSONAL");
-jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
-}
+    public void llenarComboBox() {
+        jComboBox1.addItem("ORIENTACION Y CONSEJERIA PSICOLOGICA");
+        jComboBox1.addItem("ASISTIR A TERAPIA PSICOLOGICA");
+        jComboBox1.addItem("ASISTIR A TALLERES DE CONTROL DE EMOCIONES");
+        jComboBox1.addItem("ASISTIR A TALLERES DE HABILIDADES SOCIALES");
+        jComboBox1.addItem("ASISTIR A TALLERES de AUTOESTIMA Y/O SUPERACION PERSONAL");
+        jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
+    }
    private void atxtIntelectualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtIntelectualFocusGained
     atxtIntelectual.setBackground(Color .ORANGE);
    }//GEN-LAST:event_atxtIntelectualFocusGained
@@ -4001,7 +3996,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
     }//GEN-LAST:event_chkI3ActionPerformed
 
     private void chkI4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI4ActionPerformed
-        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL ALTO.\n.");
+        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL ALTO.\n");
     }//GEN-LAST:event_chkI4ActionPerformed
 
     private void chkI12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI12ActionPerformed
@@ -4069,15 +4064,15 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
     }//GEN-LAST:event_chkP5ActionPerformed
 
     private void chkI5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI5ActionPerformed
-        atxtIntelectual.setText("EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO SUPERIOR.\n");
+        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO SUPERIOR.\n");
     }//GEN-LAST:event_chkI5ActionPerformed
 
     private void chkI6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI6ActionPerformed
-        atxtIntelectual.setText("EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO MEDIO.\n");
+        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO MEDIO.\n");
     }//GEN-LAST:event_chkI6ActionPerformed
 
     private void chkI7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI7ActionPerformed
-         atxtIntelectual.setText("EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO BAJO.\n");
+         atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO BAJO.\n");
     }//GEN-LAST:event_chkI7ActionPerformed
 
     private void txtNordenEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenEPActionPerformed
@@ -4563,9 +4558,44 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
     }//GEN-LAST:event_jComboBox1KeyPressed
 
     private void btnImprimir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir3ActionPerformed
-  printIn (Integer.parseInt(txtImprimirIn3.getText().toString()));
+        if(OrdenImp()){
+           printIn (Integer.valueOf(txtImprimirIn3.getText()));
+        }else{
+           oFunc.SubSistemaMensajeError("Codigo no existe"); 
+        }
+        
     }//GEN-LAST:event_btnImprimir3ActionPerformed
+    public boolean OrdenImp() {
 
+        boolean bResultado = false;
+        if (!txtImprimirIn3.getText().isEmpty()) {
+            String sQuery;
+
+            sQuery = "Select n_orden from psicologiafobias Where n_orden =" + txtImprimirIn3.getText().toString();
+
+            //Ejecuta el Query
+            oConn.FnBoolQueryExecute(sQuery);
+
+            // Capturo el Error
+            try {
+
+                // Verifico que haya habido resultados
+                if (oConn.setResult.next()) {
+                    // Resultado
+                    bResultado = true;
+
+                }
+
+                // Cierro los Resultados
+                oConn.sqlStmt.close();
+
+            } catch (SQLException ex) {
+
+            }
+        }
+        return bResultado;
+
+    }
     private void txtImprimirIn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirIn3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtImprimirIn3ActionPerformed
@@ -4580,7 +4610,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
             String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
                     + "fecha,r1,r2,r3,r4,r5,m1,m2,m3,m4,m5,    \n" +
 "  at1,at2,at3,at4,at5,coo1,coo2,coo3,coo4,coo5,oo1,oo2,oo3,oo4,oo5,e1,e2,an1,an2,ca1,ca2,    \n" +
-" f1,f2,f3,f4,f5,adpto,noadpto,analisis,recomendacion,nombre_examen\n" +
+" f1,f2,f3,f4,f5,adpto,noadpto,analisis,recomendacion,nombre_examen \n" +
 "                            FROM datos_paciente AS d     \n" +
 "                            LEFT JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)     \n" +
 "                            LEFT JOIN psicologiafobias AS ps ON (ps.n_orden = n.n_orden)  \n" +
@@ -4634,7 +4664,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                     jTextArea2.setText(oConn.setResult.getString("analisis"));
                     jTextArea1.setText(oConn.setResult.getString("recomendacion"));
                     cboExamen.setSelectedItem(oConn.setResult.getString("nombre_examen"));
-
+                    
                     //  jTextField9.setText(oConn.setResult.getString("valorigg"));
 
                 }else{
@@ -4666,7 +4696,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                         txtDniIn3.setText(oConn.setResult.getString("cod_pa"));
                         FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
                         txtEdadIn3.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) +" AÑOS" );
-
+                        
                         //System.out.println(pasar);
 
                         //soloPc(pasar);
@@ -4720,7 +4750,6 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
         if(jCheckBox35.isSelected())
         {
         jCheckBox31.setSelected(false);
-       
         }
     }//GEN-LAST:event_jCheckBox35ActionPerformed
 
@@ -4730,6 +4759,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
         jCheckBox36.setSelected(false);
        
         }
+         
     }//GEN-LAST:event_jCheckBox39ActionPerformed
 
      private boolean imprimirIn(){
@@ -4827,6 +4857,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
   jCheckBox47.setSelected(false); 
   jCheckBox48.setSelected(false); 
   jCheckBox49.setSelected(false); 
+  
 
   }
     
@@ -4954,17 +4985,16 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
                }
                 return bResult;       
         }
-    
-       private void printerIn(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
+    private void printerIn(Integer cod){
+            Map parameters = new HashMap(); 
+            parameters.put("Norden",cod);      
+            try 
                 {                     
                     String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"formatPsicologia.jasper";
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     
-                  JasperPrintManager.printReport(jasperPrint,true);
+                    JasperPrintManager.printReport(jasperPrint,true);
                   
                    } catch (JRException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
@@ -5005,7 +5035,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
     }//GEN-LAST:event_cboExamenPopupMenuWillBecomeInvisible
 
     private void cboExamenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboExamenMouseClicked
-
+        
     }//GEN-LAST:event_cboExamenMouseClicked
 
     private void cboExamenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboExamenMouseEntered
@@ -5013,11 +5043,12 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
     }//GEN-LAST:event_cboExamenMouseEntered
 
     private void cboExamenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboExamenMousePressed
-
+       
     }//GEN-LAST:event_cboExamenMousePressed
 
     private void cboExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboExamenActionPerformed
-
+       
+        
     }//GEN-LAST:event_cboExamenActionPerformed
 
     private void cboExamenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cboExamenKeyPressed
@@ -5287,6 +5318,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
         {
         jCheckBox35.setSelected(false);
        
+        
         }
     }//GEN-LAST:event_jCheckBox31ActionPerformed
 
@@ -5296,6 +5328,7 @@ jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
         jCheckBox39.setSelected(false);
        
         }
+         
     }//GEN-LAST:event_jCheckBox36ActionPerformed
 
     private void jCheckBox41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox41ActionPerformed
@@ -6231,6 +6264,5 @@ private void printer(Integer cod) {
         
  
  }
-
 
 }

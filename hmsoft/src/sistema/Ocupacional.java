@@ -71,6 +71,8 @@ public class Ocupacional extends javax.swing.JFrame {
     Eliminar Exc;
     InformePsicologicoPoderosa ipp;
     FichaPsicologica_Anexo03 fpa;
+    ExamenSuficienciaEspaciosConfinados esec;
+    InformePsicolaboral ipsico;
     B_Certificacion_conduccion b_cercon;
     B_OIT b_oit;
     Observados obs;
@@ -82,6 +84,18 @@ public class Ocupacional extends javax.swing.JFrame {
       FichaAgroindustriales frm_agro;
       javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
         javax.swing.ImageIcon oNo = null;
+    //nuevos formatos
+       EvaluacionMusculoEsqueletica2021 eme2021;
+       CuestionarioCalidadSueño ccs2021;
+       TestFatigaSomnolencia tfs2021;
+       Audiometria2021 audio2021;
+       EvaluacionOftalmologica evof2021;
+       CertificadoManipuladoresBarrick cmb;
+       ExamenesLaboratorio2021 el2021;   
+       InformePsicologicoAdeco ipa;
+       CertificadoFisicoMental cfm;
+       LaboratorioClinicoAsistencial lab_asist;
+    
     public Ocupacional() {
             getRootPane().setWindowDecorationStyle(JRootPane.NONE);
             initComponents();
@@ -237,7 +251,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         lblUsuarioCaja = new javax.swing.JLabel();
         jbarra = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
-        Desktop = new javax.swing.JDesktopPane();
+        btnCertificadoFisicoM = new javax.swing.JDesktopPane();
         MenuOcupacional = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCambiarUsuario = new javax.swing.JMenuItem();
@@ -256,8 +270,22 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu5 = new javax.swing.JMenu();
         btnPsicologicaPoderosa = new javax.swing.JMenuItem();
         btnFichaPsicologica_Anexo03 = new javax.swing.JMenuItem();
+        btnExamenSuficienciaEspaciosConfinados = new javax.swing.JMenuItem();
+        btnInformePsicolaboral = new javax.swing.JMenuItem();
+        btnInformePsicologicoA = new javax.swing.JMenuItem();
+        btnInformePsicologicoA1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMNuevosFormatos = new javax.swing.JMenu();
+        mEvaluaciónMuscoloEsqueletico2021 = new javax.swing.JMenuItem();
+        mCuestionarioCalidadSueño = new javax.swing.JMenuItem();
+        mTestFatigaSomnolencia = new javax.swing.JMenuItem();
+        mFichaAudiometrica2021 = new javax.swing.JMenuItem();
+        mEvaluacionOftalmologica = new javax.swing.JMenuItem();
+        mCertificadoManipuladores = new javax.swing.JMenuItem();
+        mExamenesLaboratorio2021 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         Observados.setText("Observados");
         Observados.addActionListener(new java.awt.event.ActionListener() {
@@ -838,7 +866,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1424, Short.MAX_VALUE)
+            .addComponent(barraPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -915,18 +943,18 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
-        Desktop.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Desktop.setComponentPopupMenu(Menu);
+        btnCertificadoFisicoM.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnCertificadoFisicoM.setComponentPopupMenu(Menu);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
+            .addComponent(btnCertificadoFisicoM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Desktop, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(btnCertificadoFisicoM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -941,7 +969,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
 
-        btnCambiarUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        btnCambiarUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnCambiarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
         btnCambiarUsuario.setText("Cambiar Usuario");
         btnCambiarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -951,7 +979,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu1.add(btnCambiarUsuario);
 
-        btnSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        btnSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -966,7 +994,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         btnconfiguracionsistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         btnconfiguracionsistema.setText("Configuración del sistema");
 
-        btnconfigurarservicios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        btnconfigurarservicios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnconfigurarservicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/enfermera.png"))); // NOI18N
         btnconfigurarservicios.setText("Configurar servicios");
         btnconfigurarservicios.addActionListener(new java.awt.event.ActionListener() {
@@ -976,7 +1004,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         btnconfiguracionsistema.add(btnconfigurarservicios);
 
-        btnAddUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        btnAddUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnAddUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lapiz.png"))); // NOI18N
         btnAddUsuarios.setText("Crear Usuarios");
         btnAddUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -986,7 +1014,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         btnconfiguracionsistema.add(btnAddUsuarios);
 
-        btnAddUsuariosEmpresas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        btnAddUsuariosEmpresas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnAddUsuariosEmpresas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lapiz.png"))); // NOI18N
         btnAddUsuariosEmpresas.setText("Crear Usuarios Empresas");
         btnAddUsuariosEmpresas.addActionListener(new java.awt.event.ActionListener() {
@@ -1005,7 +1033,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         btnconfiguracionsistema.add(btnConfiguracion);
 
-        btnEliminarEx.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        btnEliminarEx.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnEliminarEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
         btnEliminarEx.setText("Eliminar Examenes completos");
         btnEliminarEx.addActionListener(new java.awt.event.ActionListener() {
@@ -1042,7 +1070,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ayuda.png"))); // NOI18N
         jMenu4.setText("Ayuda");
 
-        btnActualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        btnActualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
         btnActualizar.setText("Actualizar Sistema");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -1057,7 +1085,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         jMenu5.setText("Evaluaciones Poderosa");
 
-        btnPsicologicaPoderosa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        btnPsicologicaPoderosa.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnPsicologicaPoderosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
         btnPsicologicaPoderosa.setText("Psicologia Poderosa");
         btnPsicologicaPoderosa.addActionListener(new java.awt.event.ActionListener() {
@@ -1067,7 +1095,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu5.add(btnPsicologicaPoderosa);
 
-        btnFichaPsicologica_Anexo03.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        btnFichaPsicologica_Anexo03.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnFichaPsicologica_Anexo03.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
         btnFichaPsicologica_Anexo03.setText("Ficha Psicologica -Anexo03");
         btnFichaPsicologica_Anexo03.addActionListener(new java.awt.event.ActionListener() {
@@ -1076,6 +1104,46 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         jMenu5.add(btnFichaPsicologica_Anexo03);
+
+        btnExamenSuficienciaEspaciosConfinados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        btnExamenSuficienciaEspaciosConfinados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        btnExamenSuficienciaEspaciosConfinados.setText("Examen Suficiencia Espacios Confinados");
+        btnExamenSuficienciaEspaciosConfinados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExamenSuficienciaEspaciosConfinadosActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnExamenSuficienciaEspaciosConfinados);
+
+        btnInformePsicolaboral.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        btnInformePsicolaboral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        btnInformePsicolaboral.setText("Informe Psicolaboral");
+        btnInformePsicolaboral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformePsicolaboralActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnInformePsicolaboral);
+
+        btnInformePsicologicoA.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        btnInformePsicologicoA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        btnInformePsicologicoA.setText("Informe Psicologico Adeco");
+        btnInformePsicologicoA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformePsicologicoAActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnInformePsicologicoA);
+
+        btnInformePsicologicoA1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        btnInformePsicologicoA1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        btnInformePsicologicoA1.setText("Certificado Físico Mental");
+        btnInformePsicologicoA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformePsicologicoA1ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(btnInformePsicologicoA1);
 
         MenuOcupacional.add(jMenu5);
 
@@ -1090,6 +1158,92 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu2.add(jMenuItem3);
 
         MenuOcupacional.add(jMenu2);
+
+        jMNuevosFormatos.setText("Formatos");
+
+        mEvaluaciónMuscoloEsqueletico2021.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mEvaluaciónMuscoloEsqueletico2021.setText("1. EvaluaciónMuscoloEsqueletico");
+        mEvaluaciónMuscoloEsqueletico2021.setActionCommand("Cert. Conducción de Vehiculos");
+        mEvaluaciónMuscoloEsqueletico2021.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mEvaluaciónMuscoloEsqueletico2021ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mEvaluaciónMuscoloEsqueletico2021);
+
+        mCuestionarioCalidadSueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mCuestionarioCalidadSueño.setText("2. CuestionarioCalidadSueño");
+        mCuestionarioCalidadSueño.setActionCommand("Cert. Conducción de Vehiculos");
+        mCuestionarioCalidadSueño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mCuestionarioCalidadSueñoActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mCuestionarioCalidadSueño);
+
+        mTestFatigaSomnolencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mTestFatigaSomnolencia.setText("3. TestFatigaSomnolencia");
+        mTestFatigaSomnolencia.setActionCommand("Cert. Conducción de Vehiculos");
+        mTestFatigaSomnolencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mTestFatigaSomnolenciaActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mTestFatigaSomnolencia);
+
+        mFichaAudiometrica2021.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mFichaAudiometrica2021.setText("4. Ficha Audiométrica");
+        mFichaAudiometrica2021.setActionCommand("Cert. Conducción de Vehiculos");
+        mFichaAudiometrica2021.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mFichaAudiometrica2021ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mFichaAudiometrica2021);
+
+        mEvaluacionOftalmologica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mEvaluacionOftalmologica.setText("5. Evaluacion Oftalmologica");
+        mEvaluacionOftalmologica.setActionCommand("Cert. Conducción de Vehiculos");
+        mEvaluacionOftalmologica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mEvaluacionOftalmologicaActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mEvaluacionOftalmologica);
+
+        mCertificadoManipuladores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mCertificadoManipuladores.setText("6. Certificado Manipuladores");
+        mCertificadoManipuladores.setActionCommand("Cert. Conducción de Vehiculos");
+        mCertificadoManipuladores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mCertificadoManipuladoresActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mCertificadoManipuladores);
+
+        mExamenesLaboratorio2021.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mExamenesLaboratorio2021.setText("7. Examenes Laboratorio 2021");
+        mExamenesLaboratorio2021.setActionCommand("Cert. Conducción de Vehiculos");
+        mExamenesLaboratorio2021.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mExamenesLaboratorio2021ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mExamenesLaboratorio2021);
+
+        MenuOcupacional.add(jMNuevosFormatos);
+
+        jMenu6.setText("LABORATORIO ASISTENCIAL");
+
+        jMenuItem4.setText("LABORATORIO ASISTENCIAL");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem4);
+
+        MenuOcupacional.add(jMenu6);
 
         setJMenuBar(MenuOcupacional);
 
@@ -1138,7 +1292,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         
        if(estacerrado(ft)){   
          ft = new FichaTriaje();  
-          Ocupacional.Desktop.add(ft);
+          Ocupacional.btnCertificadoFisicoM.add(ft);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           ft.setFrameIcon(ticon);
@@ -1168,7 +1322,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
          
        if(estacerrado(ap)){ 
             ap = new AntecedentesPatologicos();     
-             Ocupacional.Desktop.add(ap);
+             Ocupacional.btnCertificadoFisicoM.add(ap);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           ap.setFrameIcon(ticon);
@@ -1188,7 +1342,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
       
        if (estacerrado(pe)) {
             pe = new BuscarUsuarios();
-         Ocupacional.Desktop.add(pe);
+         Ocupacional.btnCertificadoFisicoM.add(pe);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          pe.setFrameIcon(ticon);
          pe.setLocation(centradoXY(pe));
@@ -1204,7 +1358,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         
        if (estacerrado(te)) {
            te = new TestPsicologico();
-         Ocupacional.Desktop.add(te);
+         Ocupacional.btnCertificadoFisicoM.add(te);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          te.setFrameIcon(ticon);
          te.setLocation(centradoXY(te));
@@ -1220,7 +1374,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
      
        if (estacerrado(ips)) {
          ips   = new InformePsicologico();
-         Ocupacional.Desktop.add(ips);
+         Ocupacional.btnCertificadoFisicoM.add(ips);
 
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          ips.setFrameIcon(ticon);
@@ -1248,7 +1402,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
        
         if(estacerrado(fm)){  
           fm = new FichaMedica();  
-          Ocupacional.Desktop.add(fm);
+          Ocupacional.btnCertificadoFisicoM.add(fm);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          fm.setFrameIcon(ticon);
@@ -1268,7 +1422,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           
         if(estacerrado(fn)){    
             fn = new FuncionRespiratoriaABS();
-          Ocupacional.Desktop.add(fn);
+          Ocupacional.btnCertificadoFisicoM.add(fn);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          fn.setFrameIcon(ticon);
@@ -1288,7 +1442,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         
         if(estacerrado(fo)){ 
              fo = new FichaOftalmologica();
-          Ocupacional.Desktop.add(fo);
+          Ocupacional.btnCertificadoFisicoM.add(fo);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          fo.setFrameIcon(ticon);
@@ -1308,7 +1462,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           
         if(estacerrado(el)){   
             el = new ElectroCardiograma(); 
-          Ocupacional.Desktop.add(el);
+          Ocupacional.btnCertificadoFisicoM.add(el);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          el.setFrameIcon(ticon);
@@ -1328,7 +1482,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
          
         if(estacerrado(pmt)){  
             pmt = new PerimetroToraxico();
-          Ocupacional.Desktop.add(pmt);
+          Ocupacional.btnCertificadoFisicoM.add(pmt);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          pmt.setFrameIcon(ticon);
@@ -1348,7 +1502,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           
         if(estacerrado(au)){ 
             au = new Audiometria();
-          Ocupacional.Desktop.add(au);
+          Ocupacional.btnCertificadoFisicoM.add(au);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          au.setFrameIcon(ticon);
@@ -1367,7 +1521,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             
         if(estacerrado(an)){   
             an = new LaboratorioClinico(); 
-          Ocupacional.Desktop.add(an);
+          Ocupacional.btnCertificadoFisicoM.add(an);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          an.setFrameIcon(ticon);
@@ -1387,7 +1541,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
  
             if(estacerrado(lca)){
             lca =new AnalisisBioquimico();
-          Desktop.add(lca);
+          btnCertificadoFisicoM.add(lca);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          lca.setFrameIcon(ticon);
@@ -1409,7 +1563,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
          
         if(estacerrado(hc)){  
             hc = new EmpresasLugaresGeograficos();    
-          Ocupacional.Desktop.add(hc);
+          Ocupacional.btnCertificadoFisicoM.add(hc);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          hc.setFrameIcon(ticon);
@@ -1432,7 +1586,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         
         if(estacerrado(a16)){   
              a16 = new Anexo16A();     
-          Ocupacional.Desktop.add(a16);
+          Ocupacional.btnCertificadoFisicoM.add(a16);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          a16.setFrameIcon(ticon);
@@ -1452,7 +1606,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
       
         if(estacerrado(cmc)){ 
              cmc = new ConsentimientoDosajeMC();
-          Ocupacional.Desktop.add(cmc);
+          Ocupacional.btnCertificadoFisicoM.add(cmc);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          cmc.setFrameIcon(ticon);
@@ -1472,7 +1626,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         
         if(estacerrado(cmta)){ 
             cmta =new CertificacionMedicaTrabajoAltura();
-          Ocupacional.Desktop.add(cmta);
+          Ocupacional.btnCertificadoFisicoM.add(cmta);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          cmta.setFrameIcon(ticon);
@@ -1491,7 +1645,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnOdontologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdontologiaActionPerformed
        if(estacerrado(odn)){ 
          odn =new Odontograma();
-         Desktop.add(odn);          
+         btnCertificadoFisicoM.add(odn);          
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          odn.setFrameIcon(ticon);
          odn.setLocation(centradoXY(odn));
@@ -1511,7 +1665,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           
         if(estacerrado(rtpa)){ 
             rtpa =new RadiografiaTorax();
-          Desktop.add(rtpa);
+          btnCertificadoFisicoM.add(rtpa);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          rtpa.setFrameIcon(ticon);
@@ -1531,7 +1685,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         
         if(estacerrado(fs)){
             fs =new DetecciondeSAS();
-          Desktop.add(fs);
+          btnCertificadoFisicoM.add(fs);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          fs.setFrameIcon(ticon);
@@ -1552,7 +1706,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           
         if(estacerrado(cn)){  
             cn =new CuestionarioNordico();
-          Desktop.add(cn);
+          btnCertificadoFisicoM.add(cn);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          cn.setFrameIcon(ticon);
@@ -1572,7 +1726,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
        
         if(estacerrado(er)){  
           er =new ExamenRadiograficoSanguineo();
-          Desktop.add(er);          
+          btnCertificadoFisicoM.add(er);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          er.setFrameIcon(ticon);
       er.setLocation(centradoXY(er));
@@ -1597,7 +1751,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnPelisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPelisaActionPerformed
        if(estacerrado(an7c)){   
              an7c = new AnexoC();     
-          Ocupacional.Desktop.add(an7c);
+          Ocupacional.btnCertificadoFisicoM.add(an7c);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          an7c.setFrameIcon(ticon);
@@ -1616,7 +1770,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
         if(estacerrado(cf)){  
           cf =new Configurar();
-          Desktop.add(cf);          
+          btnCertificadoFisicoM.add(cf);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          cf.setFrameIcon(ticon);
       cf.setLocation(centradoXY(cf));
@@ -1634,7 +1788,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnHCLPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHCLPSActionPerformed
         if(estacerrado(hcl)){  
           hcl =new HistoriaClinicaPs();
-          Desktop.add(hcl);          
+          btnCertificadoFisicoM.add(hcl);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          hcl.setFrameIcon(ticon);
       hcl.setLocation(centradoXY(hcl));
@@ -1652,7 +1806,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnHCLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHCLActionPerformed
          if(estacerrado(his)){  
           his =new HCL();
-          Desktop.add(his);          
+          btnCertificadoFisicoM.add(his);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          his.setFrameIcon(ticon);
       his.setLocation(centradoXY(his));
@@ -1670,7 +1824,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnHCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHCActionPerformed
          if(estacerrado(hcO)){  
           hcO =new HistorialPacientes();
-          Desktop.add(hcO);          
+          btnCertificadoFisicoM.add(hcO);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          hcO.setFrameIcon(ticon);
       hcO.setLocation(centradoXY(hcO));
@@ -1688,7 +1842,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnEliminarExActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarExActionPerformed
          if(estacerrado(Exc)){  
           Exc =new Eliminar();
-          Desktop.add(Exc);          
+          btnCertificadoFisicoM.add(Exc);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          Exc.setFrameIcon(ticon);
       Exc.setLocation(centradoXY(Exc));
@@ -1706,7 +1860,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void ConsentimientoInformadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsentimientoInformadoActionPerformed
         if(estacerrado(coi)){  
           coi =new ConsentimientoInformado();
-          Desktop.add(coi);          
+          btnCertificadoFisicoM.add(coi);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          coi.setFrameIcon(ticon);
       coi.setLocation(centradoXY(coi));
@@ -1730,7 +1884,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mCertificacionConduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCertificacionConduccionActionPerformed
          if(estacerrado(b_cercon)){  
           b_cercon =new B_Certificacion_conduccion();
-          Desktop.add(b_cercon);          
+          btnCertificadoFisicoM.add(b_cercon);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          b_cercon.setFrameIcon(ticon);
       b_cercon.setLocation(centradoXY(b_cercon));
@@ -1748,7 +1902,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mCertificacionTrabajoAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCertificacionTrabajoAlturaActionPerformed
         if(estacerrado(b_ceral)){   
          b_ceral = new B_Certificacion_Trabajo_Altura();  
-          Ocupacional.Desktop.add(b_ceral);
+          Ocupacional.btnCertificadoFisicoM.add(b_ceral);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           b_ceral.setFrameIcon(ticon);
@@ -1767,7 +1921,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mUsoRespiradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mUsoRespiradoresActionPerformed
          if(estacerrado(b_uso)){   
          b_uso = new B_Uso_Respiradores();  
-          Ocupacional.Desktop.add(b_uso);
+          Ocupacional.btnCertificadoFisicoM.add(b_uso);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           b_uso.setFrameIcon(ticon);
@@ -1786,7 +1940,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mApneaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mApneaActionPerformed
         if(estacerrado(b_sas)){   
          b_sas = new b_Ficha_Sas();  
-          Ocupacional.Desktop.add(b_sas);
+          Ocupacional.btnCertificadoFisicoM.add(b_sas);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           b_sas.setFrameIcon(ticon);
@@ -1805,7 +1959,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void OITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OITActionPerformed
          if(estacerrado(b_oit)){   
          b_oit = new B_OIT();  
-          Ocupacional.Desktop.add(b_oit);
+          Ocupacional.btnCertificadoFisicoM.add(b_oit);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           b_oit.setFrameIcon(ticon);
@@ -1825,7 +1979,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
        
                if(estacerrado(frm_conal)){   
          frm_conal = new Frm_conalvias();  
-          Ocupacional.Desktop.add(frm_conal);
+          Ocupacional.btnCertificadoFisicoM.add(frm_conal);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           frm_conal.setFrameIcon(ticon);
@@ -1844,7 +1998,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mFichaRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaRetiroActionPerformed
         if(estacerrado(frm_constancia)){   
          frm_constancia = new ConstanciaCovid19();  
-          Ocupacional.Desktop.add(frm_constancia);
+          Ocupacional.btnCertificadoFisicoM.add(frm_constancia);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           frm_constancia.setFrameIcon(ticon);
@@ -1863,7 +2017,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mAptitudMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAptitudMedicoActionPerformed
         if(estacerrado(frm_aptitud)){   
          frm_aptitud = new Aptitud_Medico_Ocupacional();  
-          Ocupacional.Desktop.add(frm_aptitud);
+          Ocupacional.btnCertificadoFisicoM.add(frm_aptitud);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           frm_aptitud.setFrameIcon(ticon);
@@ -1882,7 +2036,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnFichaRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaRetiroActionPerformed
         if(estacerrado(frm_constancia)){   
          frm_constancia = new ConstanciaCovid19();  
-          Ocupacional.Desktop.add(frm_constancia);
+          Ocupacional.btnCertificadoFisicoM.add(frm_constancia);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           frm_constancia.setFrameIcon(ticon);
@@ -1901,7 +2055,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnFichaAptitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaAptitudActionPerformed
         if(estacerrado(frm_aptitud)){   
          frm_aptitud = new Aptitud_Medico_Ocupacional();  
-          Ocupacional.Desktop.add(frm_aptitud);
+          Ocupacional.btnCertificadoFisicoM.add(frm_aptitud);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           frm_aptitud.setFrameIcon(ticon);
@@ -1920,7 +2074,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void ObservadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObservadosActionPerformed
         if(estacerrado(frm_agro)){   
          frm_agro = new FichaAgroindustriales();  
-          Ocupacional.Desktop.add(frm_agro);
+          Ocupacional.btnCertificadoFisicoM.add(frm_agro);
           
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
           frm_agro.setFrameIcon(ticon);
@@ -1955,7 +2109,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnCuestionarioAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuestionarioAudioActionPerformed
          if(estacerrado(ca)){ 
              ca = new CuestionarioAudiometría();
-          Ocupacional.Desktop.add(ca);
+          Ocupacional.btnCertificadoFisicoM.add(ca);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          ca.setFrameIcon(ticon);
@@ -1974,7 +2128,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void ExamenesAdicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExamenesAdicionalesActionPerformed
         if(estacerrado(exaadi)){
             exaadi = new ExamenesAdicionales();
-            Ocupacional.Desktop.add(exaadi);
+            Ocupacional.btnCertificadoFisicoM.add(exaadi);
             ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
             exaadi.setFrameIcon(ticon);
             exaadi.setLocation(centradoXY(exaadi));
@@ -1992,7 +2146,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mPsicosensometriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mPsicosensometriaActionPerformed
         if(estacerrado(psico)){
             psico = new Psicosensometrico();
-            Ocupacional.Desktop.add(psico);
+            Ocupacional.btnCertificadoFisicoM.add(psico);
             ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
             psico.setFrameIcon(ticon);
             psico.setLocation(centradoXY(psico));
@@ -2010,7 +2164,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnPsicologicaPoderosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPsicologicaPoderosaActionPerformed
         if(estacerrado(ipp)){  
           ipp =new InformePsicologicoPoderosa();
-          Desktop.add(ipp);          
+          btnCertificadoFisicoM.add(ipp);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          ipp.setFrameIcon(ticon);
       ipp.setLocation(centradoXY(ipp));
@@ -2032,7 +2186,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void btnFichaPsicologica_Anexo03ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaPsicologica_Anexo03ActionPerformed
         if(estacerrado(fpa)){  
           fpa =new FichaPsicologica_Anexo03();
-          Desktop.add(fpa);          
+          btnCertificadoFisicoM.add(fpa);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          fpa.setFrameIcon(ticon);
       fpa.setLocation(centradoXY(fpa));
@@ -2057,7 +2211,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
    if(estacerrado(frm_agro)){  
           lab =new LaboratorioClinicoCovid();
-          Desktop.add(lab);          
+          btnCertificadoFisicoM.add(lab);          
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          lab.setFrameIcon(ticon);
       lab.setLocation(centradoXY(lab));
@@ -2073,6 +2227,217 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void btnExamenSuficienciaEspaciosConfinadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExamenSuficienciaEspaciosConfinadosActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(esec)){  
+          esec =new ExamenSuficienciaEspaciosConfinados();
+          btnCertificadoFisicoM.add(esec);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         esec.setFrameIcon(ticon);
+      esec.setLocation(centradoXY(esec));
+
+          esec.show();
+          //fn.setVisible(true);
+       }
+             else{
+         esec.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_btnExamenSuficienciaEspaciosConfinadosActionPerformed
+
+    private void btnInformePsicolaboralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformePsicolaboralActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(ipsico)){  
+          ipsico =new InformePsicolaboral();
+          btnCertificadoFisicoM.add(ipsico);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         ipsico.setFrameIcon(ticon);
+      ipsico.setLocation(centradoXY(ipsico));
+
+          ipsico.show();
+          //fn.setVisible(true);
+       }
+             else{
+         ipsico.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_btnInformePsicolaboralActionPerformed
+
+    private void mEvaluaciónMuscoloEsqueletico2021ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEvaluaciónMuscoloEsqueletico2021ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(eme2021)){
+            eme2021 =new EvaluacionMusculoEsqueletica2021();
+            btnCertificadoFisicoM.add(eme2021);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            eme2021.setFrameIcon(ticon);
+            eme2021.setLocation(centradoXY(eme2021));
+            eme2021.show();
+            //fn.setVisible(true);
+        }else{
+            eme2021.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mEvaluaciónMuscoloEsqueletico2021ActionPerformed
+
+    private void mCuestionarioCalidadSueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCuestionarioCalidadSueñoActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(ccs2021)){
+            ccs2021 =new CuestionarioCalidadSueño();
+            btnCertificadoFisicoM.add(ccs2021);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ccs2021.setFrameIcon(ticon);
+            ccs2021.setLocation(centradoXY(ccs2021));
+            ccs2021.show();
+            //fn.setVisible(true);
+        }else{
+            ccs2021.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mCuestionarioCalidadSueñoActionPerformed
+
+    private void mTestFatigaSomnolenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mTestFatigaSomnolenciaActionPerformed
+        // TODO add your handling code here:
+
+        if(estacerrado(tfs2021)){
+            tfs2021 =new TestFatigaSomnolencia();
+            btnCertificadoFisicoM.add(tfs2021);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            tfs2021.setFrameIcon(ticon);
+            tfs2021.setLocation(centradoXY(tfs2021));
+            tfs2021.show();
+            //fn.setVisible(true);
+        }else{
+            tfs2021.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mTestFatigaSomnolenciaActionPerformed
+
+    private void mFichaAudiometrica2021ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaAudiometrica2021ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(audio2021)){
+            audio2021 =new Audiometria2021();
+            btnCertificadoFisicoM.add(audio2021);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            audio2021.setFrameIcon(ticon);
+            audio2021.setLocation(centradoXY(audio2021));
+            audio2021.show();
+            //fn.setVisible(true);
+        }else{
+            audio2021.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mFichaAudiometrica2021ActionPerformed
+
+    private void mEvaluacionOftalmologicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEvaluacionOftalmologicaActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(evof2021)){
+            evof2021 =new EvaluacionOftalmologica();
+            btnCertificadoFisicoM.add(evof2021);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            evof2021.setFrameIcon(ticon);
+            evof2021.setLocation(centradoXY(evof2021));
+            evof2021.show();
+            //fn.setVisible(true);
+        }else{
+            evof2021.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mEvaluacionOftalmologicaActionPerformed
+
+    private void mCertificadoManipuladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCertificadoManipuladoresActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(cmb)){
+            cmb =new CertificadoManipuladoresBarrick();
+            btnCertificadoFisicoM.add(cmb);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            cmb.setFrameIcon(ticon);
+            cmb.setLocation(centradoXY(cmb));
+            cmb.show();
+            //fn.setVisible(true);
+        }else{
+            cmb.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mCertificadoManipuladoresActionPerformed
+
+    private void mExamenesLaboratorio2021ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mExamenesLaboratorio2021ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(el2021)){
+            el2021 =new ExamenesLaboratorio2021();
+            btnCertificadoFisicoM.add(el2021);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            el2021.setFrameIcon(ticon);
+            el2021.setLocation(centradoXY(el2021));
+            el2021.show();
+            //fn.setVisible(true);
+        }else{
+            el2021.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mExamenesLaboratorio2021ActionPerformed
+
+    private void btnInformePsicologicoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformePsicologicoAActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(ipa)){
+            ipa =new InformePsicologicoAdeco();
+            btnCertificadoFisicoM.add(ipa);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ipa.setFrameIcon(ticon);
+            ipa.setLocation(centradoXY(ipa));
+            ipa.show();
+            //fn.setVisible(true);
+        }else{
+            ipa.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_btnInformePsicologicoAActionPerformed
+
+    private void btnInformePsicologicoA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformePsicologicoA1ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(cfm)){
+            cfm =new CertificadoFisicoMental();
+            btnCertificadoFisicoM.add(cfm);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            cfm.setFrameIcon(ticon);
+            cfm.setLocation(centradoXY(cfm));
+            cfm.show();
+            //fn.setVisible(true);
+        }else{
+            cfm.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_btnInformePsicologicoA1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(lab_asist)) {
+            lab_asist = new LaboratorioClinicoAsistencial();
+            btnCertificadoFisicoM.add(lab_asist);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            lab_asist.setFrameIcon(ticon);
+            lab_asist.setLocation(centradoXY(lab_asist));
+
+            lab_asist.show();
+            //fn.setVisible(true);
+        } else {
+            lab_asist.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -2132,7 +2497,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem ConsentimientoDosaje;
     private javax.swing.JMenuItem ConsentimientoInformado;
     private javax.swing.JMenuItem CuestionarioNordico;
-    public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem ExamenesAdicionales;
     private javax.swing.JMenuItem FichaSaS;
     private javax.swing.JMenu FrmVarios;
@@ -2152,10 +2516,12 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JButton btnApatologicos;
     private javax.swing.JButton btnAudiometria;
     private javax.swing.JMenuItem btnCambiarUsuario;
+    public static javax.swing.JDesktopPane btnCertificadoFisicoM;
     private javax.swing.JMenuItem btnConfiguracion;
     private javax.swing.JButton btnCuestionarioAudio;
     private javax.swing.JButton btnElectrocardigrama;
     private javax.swing.JMenuItem btnEliminarEx;
+    private javax.swing.JMenuItem btnExamenSuficienciaEspaciosConfinados;
     private javax.swing.JButton btnFichaAptitud;
     private javax.swing.JButton btnFichaMedica;
     private javax.swing.JMenuItem btnFichaPsicologica_Anexo03;
@@ -2165,7 +2531,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem btnHCL;
     private javax.swing.JMenuItem btnHCLPS;
     private javax.swing.JButton btnHistoriaOcupacional;
+    private javax.swing.JMenuItem btnInformePsicolaboral;
     private javax.swing.JButton btnInformePsicologico;
+    private javax.swing.JMenuItem btnInformePsicologicoA;
+    private javax.swing.JMenuItem btnInformePsicologicoA1;
     private javax.swing.JButton btnLclinico;
     private javax.swing.JButton btnOdontologia;
     private javax.swing.JButton btnOftalmologia;
@@ -2183,14 +2552,17 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMNuevosFormatos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -2203,14 +2575,21 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenu mBarrick;
     private javax.swing.JMenuItem mCertificacionConduccion;
     private javax.swing.JMenuItem mCertificacionTrabajoAltura;
+    private javax.swing.JMenuItem mCertificadoManipuladores;
+    private javax.swing.JMenuItem mCuestionarioCalidadSueño;
+    private javax.swing.JMenuItem mEvaluacionOftalmologica;
+    private javax.swing.JMenuItem mEvaluaciónMuscoloEsqueletico2021;
     private javax.swing.JMenu mExamenesAdicionales;
+    private javax.swing.JMenuItem mExamenesLaboratorio2021;
+    private javax.swing.JMenuItem mFichaAudiometrica2021;
     private javax.swing.JMenuItem mFichaRetiro;
     private javax.swing.JMenuItem mPsicosensometria;
+    private javax.swing.JMenuItem mTestFatigaSomnolencia;
     private javax.swing.JMenuItem mUsoRespiradores;
     // End of variables declaration//GEN-END:variables
     
     private boolean estacerrado(Object obj){
-        JInternalFrame[] activos=Desktop.getAllFrames();
+        JInternalFrame[] activos=btnCertificadoFisicoM.getAllFrames();
         boolean cerrado=true;
         int i=0;
         while (i<activos.length && cerrado){
@@ -2226,7 +2605,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     {
         Point p = new Point(0,0);
         //se obtiene dimension del contenedor
-        Dimension pantalla = Ocupacional.Desktop.getSize();
+        Dimension pantalla = Ocupacional.btnCertificadoFisicoM.getSize();
         //se obtiene dimension del JInternalFrame
         Dimension ventana = jif.getSize();
         //se calcula posición para el centrado

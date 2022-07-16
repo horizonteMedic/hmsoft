@@ -2954,6 +2954,7 @@
                   <ComponentRef name="bg2"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Aptop con Restricci&#xf3;n"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

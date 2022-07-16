@@ -69,7 +69,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
        }
        cboServicios.setSelectedIndex(-1);
         fecha();
-             chkAsistencial.setSelected(true);
+        chkAsistencial.setSelected(true);
 
        AutoCompleteDecorator.decorate(this.cboServicios);
        AutoCompleteDecorator.decorate(this.cboTipoVenta);
@@ -747,7 +747,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                        .addGap(0, 83, Short.MAX_VALUE)))
                 .addGap(2, 2, 2))
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -830,7 +830,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 779, Short.MAX_VALUE)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -856,7 +856,7 @@ public final class Comprobantes extends javax.swing.JInternalFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(442, Short.MAX_VALUE))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
 
         jtcomprobantes.addTab("Reportes", jPanel2);
@@ -1417,7 +1417,7 @@ System.out.println(strSqlStmt.concat(") ") + Query.concat(") RETURNING id_datos"
                     tbTicket.getValueAt(i, 4).toString()+"','"+
                     tbTicket.getValueAt(i, 5).toString()+"','"+
                     tbTicket.getValueAt(i, 6).toString()+"','"+
-                     cboServicios.getSelectedItem()+"',"+
+                    cboServicios.getSelectedItem()+"',"+
                     foranea+
                     ")";
             if (oConn.FnBoolQueryExecute(Sql)) {
@@ -2067,191 +2067,187 @@ private void sbTicket(){
         tbTicket.getColumnModel().getColumn(6).setCellRenderer(cellAlinear);
         
     }
- void sbImprimeTicket()
-    {
-        if(tbTicket.getRowCount()>=0){
-        int iFila;
-        SimpleDateFormat formato = new SimpleDateFormat("dd / MM / yyyy");
-        SimpleDateFormat FechaCancelacion = new SimpleDateFormat("dd        MM             yy");
-              ESCPrinter escp = new ESCPrinter("\\\\CAJA\\epson", false); //create ESCPrinter on network location \\computer\sharename, 9pin printer
-        if (escp.initialize()) {
-            escp.setCharacterSet(ESCPrinter.USA);
-            escp.select15CPI();//15 characters per inch printing
-            //NroFactura
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5);
-            escp.bold(true);
-            escp.print("CENTRO MEDICO - HORIZONTE MEDIC S.A.C.");
-            //Nro Ticket
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(10);
-            escp.print("Nro : "+ txtNroTicket.getText().toString());
-            //Dirección
-            escp.advanceVertical(1); //go down 5cm
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.print("Jr. Leoncio Prado #786 - Huamachuco "); 
-            //Teléfono            
-            escp.advanceVertical(1);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.print("Tel: 044 - 652832 / #989603777");
-            escp.bold(false);
-            //DATOS
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(6);
-            escp.print("FECHA : "+ txtFechaT.getText().toString());
-            if(!txtHoraT.getText().isEmpty()){
-            escp.print("  HORA : "+ txtHoraT.getText().toString());
-            }
-            if(!txtNumHcl.getText().isEmpty()){
-                escp.print("  HCL : "+ txtNumHcl.getText().toString());
-            }
+    void sbImprimeTicket() {
+        if (tbTicket.getRowCount() >= 0) {
+            int iFila;
+            SimpleDateFormat formato = new SimpleDateFormat("dd / MM / yyyy");
+            SimpleDateFormat FechaCancelacion = new SimpleDateFormat("dd        MM             yy");
+            ESCPrinter escp = new ESCPrinter("\\\\CAJA\\epson", false); //create ESCPrinter on network location \\computer\sharename, 9pin printer
+            if (escp.initialize()) {
+                escp.setCharacterSet(ESCPrinter.USA);
+                escp.select15CPI();//15 characters per inch printing
+                //NroFactura
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.bold(true);
+                escp.print("CENTRO MEDICO - HORIZONTE MEDIC S.A.C.");
+                //Nro Ticket
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(10);
+                escp.print("Nro : " + txtNroTicket.getText().toString());
+                //Dirección
+                escp.advanceVertical(1); //go down 5cm
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.print("Jr. Leoncio Prado #786 - Huamachuco ");
+                //Teléfono            
+                escp.advanceVertical(1);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.print("Tel: 044 - 652832 / #989603777");
+                escp.bold(false);
+                //DATOS
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(6);
+                escp.print("FECHA : " + txtFechaT.getText().toString());
+                if (!txtHoraT.getText().isEmpty()) {
+                    escp.print("  HORA : " + txtHoraT.getText().toString());
+                }
+                if (!txtNumHcl.getText().isEmpty()) {
+                    escp.print("  HCL : " + txtNumHcl.getText().toString());
+                }
 //                escp.print("  HCL : "+ hcl.toString());
-            //Cliente
-            escp.advanceVertical(2);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.print("PACIENTE : "+ txtNombre.getText().toString());
-            //DNI
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(6);
-            escp.print("DNI : "+ txtCodPaciente.getText().toString());
-            //Medico
-            
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(8);
-            if(!txtDoctor.getText().isEmpty()){
-            escp.print("MEDICO : "+ txtDoctor.getText().toString());
-            }else{
-            escp.print("MEDICO : -");            
-            }
-            
-            escp.advanceVertical(2);
-            escp.setAbsoluteHorizontalPosition(3); 
-            escp.print("--------------------------------------------------------------------------------------------------------");
-            //
-            escp.advanceVertical(1);
-            escp.setAbsoluteHorizontalPosition(3); 
-            escp.print("|");
-            //*************************************
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.print("CODIGO");            
-            //
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5);
-            escp.horizontalTab(1);
-            escp.print("   CANT."); 
-             //
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(2);
-            escp.print("  UNI.");
-            //
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(3);
-            escp.print("           DESCRIPCION");
-            //
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(9);
-            escp.print("P.UNIT.");
-            //
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(10);
-            escp.print("  DSCNTO");
-            //
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(11);
-            escp.print("   P.TOTAL.");
-            
-            //***************************************
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(3); 
-            escp.print("                                                                                                       |");
-          
-             escp.advanceVertical(1);
-            escp.setAbsoluteHorizontalPosition(3); 
-            escp.print("--------------------------------------------------------------------------------------------------------");
-             //
-            for(iFila = 0; iFila < tbTicket.getRowCount();iFila++)
-        {   
-            //Codigo
-            escp.advanceVertical(1);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.print(tbTicket.getValueAt(iFila, 0).toString());
-            //Cantidad
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5);
-            escp.horizontalTab(1);
-            escp.print("   "+tbTicket.getValueAt(iFila, 1).toString());
-            //Unidad
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(2);
-            escp.print("  "+tbTicket.getValueAt(iFila, 2).toString());
-            //Descripción
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(3);
-            escp.print(" "+tbTicket.getValueAt(iFila, 3).toString());
-            //Precio Unitario
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(9);
-            escp.print(oFunc.SolImp(tbTicket.getValueAt(iFila, 4).toString()));
-            //Precio Dscto
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(10);
-            escp.print("  "+tbTicket.getValueAt(iFila, 5).toString());
-            //Precio Total
-            escp.advanceVertical(0);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(11);
-            escp.print("   "+oFunc.SolImp(tbTicket.getValueAt(iFila, 6).toString()));
-                            
-        }
-            escp.advanceVertical(1);
-            escp.setAbsoluteHorizontalPosition(3); 
-            escp.print("--------------------------------------------------------------------------------------------------------");
-           //descuento
-            escp.bold(true);
-            escp.advanceVertical(1);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(10);
-            escp.print("DESCUENTO : "+txtdescuento.getText().toString());
-            //TOTAL
-            escp.bold(true);
-            escp.advanceVertical(1);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.horizontalTab(10);
-            escp.print("TOTAL : "+txtTotal.getText().toString());
-            //mensaje
-            escp.advanceVertical(2);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.print("ATENDIDO POR :  "+txtOperador.getText().toString());
-            escp.bold(false);
-            
-            escp.advanceVertical(3);
-            escp.setAbsoluteHorizontalPosition(5); 
-            escp.print("Si desea acérquese a cajear por boleta.");
-            escp.bold(false);
-            //escp.formFeed(); //eject paper
-            escp.close(); //close stream
-        }
-        else {
+                //Cliente
+                escp.advanceVertical(2);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.print("PACIENTE : " + txtNombre.getText().toString());
+                //DNI
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(6);
+                escp.print("DNI : " + txtCodPaciente.getText().toString());
+                //Medico
+
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(8);
+                if (!txtDoctor.getText().isEmpty()) {
+                    escp.print("MEDICO : " + txtDoctor.getText().toString());
+                } else {
+                    escp.print("MEDICO : -");
+                }
+
+                escp.advanceVertical(2);
+                escp.setAbsoluteHorizontalPosition(3);
+                escp.print("--------------------------------------------------------------------------------------------------------");
+                //
+                escp.advanceVertical(1);
+                escp.setAbsoluteHorizontalPosition(3);
+                escp.print("|");
+                //*************************************
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.print("CODIGO");
+                //
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(1);
+                escp.print("   CANT.");
+                //
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(2);
+                escp.print("  UNI.");
+                //
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(3);
+                escp.print("           DESCRIPCION");
+                //
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(9);
+                escp.print("P.UNIT.");
+                //
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(10);
+                escp.print("  DSCNTO");
+                //
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(11);
+                escp.print("   P.TOTAL.");
+
+                //***************************************
+                escp.advanceVertical(0);
+                escp.setAbsoluteHorizontalPosition(3);
+                escp.print("                                                                                                       |");
+
+                escp.advanceVertical(1);
+                escp.setAbsoluteHorizontalPosition(3);
+                escp.print("--------------------------------------------------------------------------------------------------------");
+                //
+                for (iFila = 0; iFila < tbTicket.getRowCount(); iFila++) {
+                    //Codigo
+                    escp.advanceVertical(1);
+                    escp.setAbsoluteHorizontalPosition(5);
+                    escp.print(tbTicket.getValueAt(iFila, 0).toString());
+                    //Cantidad
+                    escp.advanceVertical(0);
+                    escp.setAbsoluteHorizontalPosition(5);
+                    escp.horizontalTab(1);
+                    escp.print("   " + tbTicket.getValueAt(iFila, 1).toString());
+                    //Unidad
+                    escp.advanceVertical(0);
+                    escp.setAbsoluteHorizontalPosition(5);
+                    escp.horizontalTab(2);
+                    escp.print("  " + tbTicket.getValueAt(iFila, 2).toString());
+                    //Descripción
+                    escp.advanceVertical(0);
+                    escp.setAbsoluteHorizontalPosition(5);
+                    escp.horizontalTab(3);
+                    escp.print(" " + tbTicket.getValueAt(iFila, 3).toString());
+                    //Precio Unitario
+                    escp.advanceVertical(0);
+                    escp.setAbsoluteHorizontalPosition(5);
+                    escp.horizontalTab(9);
+                    escp.print(oFunc.SolImp(tbTicket.getValueAt(iFila, 4).toString()));
+                    //Precio Dscto
+                    escp.advanceVertical(0);
+                    escp.setAbsoluteHorizontalPosition(5);
+                    escp.horizontalTab(10);
+                    escp.print("  " + tbTicket.getValueAt(iFila, 5).toString());
+                    //Precio Total
+                    escp.advanceVertical(0);
+                    escp.setAbsoluteHorizontalPosition(5);
+                    escp.horizontalTab(11);
+                    escp.print("   " + oFunc.SolImp(tbTicket.getValueAt(iFila, 6).toString()));
+
+                }
+                escp.advanceVertical(1);
+                escp.setAbsoluteHorizontalPosition(3);
+                escp.print("--------------------------------------------------------------------------------------------------------");
+                //descuento
+                escp.bold(true);
+                escp.advanceVertical(1);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(10);
+                escp.print("DESCUENTO : " + txtdescuento.getText().toString());
+                //TOTAL
+                escp.bold(true);
+                escp.advanceVertical(1);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.horizontalTab(10);
+                escp.print("TOTAL : " + txtTotal.getText().toString());
+                //mensaje
+                escp.advanceVertical(2);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.print("ATENDIDO POR :  " + txtOperador.getText().toString());
+                escp.bold(false);
+
+                escp.advanceVertical(3);
+                escp.setAbsoluteHorizontalPosition(5);
+                escp.print("Si desea acérquese a cajear por boleta.");
+                escp.bold(false);
+                //escp.formFeed(); //eject paper
+                escp.close(); //close stream
+            } else {
                 System.out.println("No se ha podido abrir la secuencia para impresora");
             }
-    }
-    else{
-    oFunc.SubSistemaMensajeError("No se puede Crear Factura no hay Servicio Agregado");
-        }      
+        } else {
+            oFunc.SubSistemaMensajeError("No se puede Crear Factura no hay Servicio Agregado");
+        }
     }
  private void imprimir(){
 int seleccion = JOptionPane.showOptionDialog(
@@ -2304,7 +2300,7 @@ private void printer(Integer cod){
             } 
             JasperPrint myPrint = JasperFillManager.fillReport(masterReport,parameters,clsConnection.oConnection);
                            
-                    JasperViewer.viewReport(myPrint,false);
+            JasperViewer.viewReport(myPrint,false);
             
 //            JasperPrint jasperPrint= JasperFillManager.fillReport(masterReport,parameters,clsConnection.oConnection);
 //            JasperPrintManager.printReport(jasperPrint,true);

@@ -90,6 +90,10 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
         btnObrainsa = new javax.swing.JButton();
         btnPoderosa = new javax.swing.JButton();
         chkAnexo2 = new javax.swing.JCheckBox();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbReporte = new javax.swing.JTable();
@@ -163,6 +167,38 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
 
         chkAnexo2.setText("ANEXO2");
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        jButton2.setText("Caravelli");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        jButton3.setText("Proseguridad");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        jButton4.setText("Boroo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
+        jButton5.setText("Suma Gold");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,23 +213,35 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
                 .addGap(5, 5, 5)
-                .addComponent(jLabel2)
-                .addGap(8, 8, 8)
-                .addComponent(F_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(F_final, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chkAnexo2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(8, 8, 8)
+                        .addComponent(F_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(F_final, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkAnexo2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnPoderosa))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(btnObrainsa))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnPoderosa)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnObrainsa))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnLimpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -210,17 +258,25 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(F_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(F_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(rbEmpresa)
-                        .addComponent(rbContrata)
-                        .addComponent(chkAnexo2))
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(F_final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(F_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(rbEmpresa)
+                            .addComponent(rbContrata)
+                            .addComponent(chkAnexo2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)
+                            .addComponent(jButton4)
+                            .addComponent(jButton5)))))
         );
 
         tbReporte.setModel(new javax.swing.table.DefaultTableModel(
@@ -264,13 +320,13 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Exportar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();
@@ -349,6 +405,26 @@ public class Frm_conalvias extends javax.swing.JInternalFrame {
     private void btnPoderosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoderosaActionPerformed
         poderosa();
     }//GEN-LAST:event_btnPoderosaActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        caraveli();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        proseguridad();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        boroo();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        sumagold();
+    }//GEN-LAST:event_jButton5ActionPerformed
     private void cEmpresa(){
     model = new DefaultTableModel(){        
                  @Override
@@ -911,6 +987,10 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkAnexo2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -1016,39 +1096,46 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "	CASE WHEN lc.txthemoglobina < '14' or lc.txthemoglobina > '20' THEN 'ANORMAL' \n" +
 "	     WHEN lc.txthemoglobina >= '14' AND lc.txthemoglobina <='20' THEN 'NORMAL' \n" +
 "	     END AS CONCLUCION_HEMOGLOBINA ,\n" +
-"	CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS Glucosa ,\n" +
-"	CASE WHEN lc.txtglucosabio < '70' or lc.txtglucosabio > '110' THEN 'ANORMAL' \n" +
-"	     WHEN lc.txtglucosabio >= '70' AND lc.txtglucosabio <='110' THEN 'NORMAL' \n" +
-"	     END AS CONCLUCION_GLUCOSA ,\n" +
+"	CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS Glucosa,\n" +
+"	CASE WHEN lc.txtglucosabio = 'N/A' OR lc.txtglucosabio = ''OR lc.txtglucosabio = '-'OR lc.txtglucosabio = '.' or lc.txtglucosabio is null THEN 'N/A'\n" +
+"             WHEN lc.txtglucosabio::decimal <'70' or lc.txtglucosabio::decimal >'110' THEN 'ANORMAL' \n" +
+"             WHEN lc.txtglucosabio::decimal >='70' AND lc.txtglucosabio::decimal<='110' THEN 'NORMAL' \n" +
+"	     END AS CONCLUCION_GLUCOSA  ,\n" +
 "	CASE WHEN ab.txtcolesterol IS NOT NULL THEN ab.txtcolesterol ELSE '...'\n" +
 "	     END  AS Colesterol,   \n" +
-"	CASE WHEN ab.txtcolesterol < '200' THEN 'NORMAL' \n" +
-"	     WHEN ab.txtcolesterol >= '200'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txtcolesterol= '' or ab.txtcolesterol= '-' or ab.txtldlcolesterol= '.' or ab.txtcolesterol= 'N/A' or ab.txtcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txtcolesterol::decimal < '200' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtcolesterol::decimal >= '200'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_COLESTEROL,    \n" +
 "	CASE WHEN ab.txtldlcolesterol IS NOT NULL THEN ab.txtldlcolesterol ELSE '...'\n" +
 "	     END  AS LDL_COLESTEROL,  \n" +
-"	CASE WHEN ab.txtldlcolesterol < '129' THEN 'NORMAL' \n" +
-"	     WHEN ab.txtldlcolesterol >= '129'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txtldlcolesterol= '' or ab.txtldlcolesterol= '-' or ab.txtldlcolesterol= '.'or ab.txtldlcolesterol= 'N/A' or ab.txtldlcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txtldlcolesterol::decimal < '129' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtldlcolesterol::decimal >= '129'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_LDL_COLESTEROL,     \n" +
 "	CASE WHEN ab.txthdlcolesterol IS NOT NULL THEN ab.txthdlcolesterol ELSE '...'\n" +
 "	     END  AS HDL_Colesterol,   \n" +
-"	CASE WHEN ab.txthdlcolesterol < '40' or ab.txthdlcolesterol > '60'  THEN 'ANORMAL' \n" +
-"	     WHEN ab.txthdlcolesterol >= '40' AND ab.txthdlcolesterol <='60'   THEN 'NORMAL' \n" +
+"	CASE WHEN ab.txthdlcolesterol= '' or ab.txthdlcolesterol= '-' or ab.txthdlcolesterol= '.'or ab.txthdlcolesterol= 'N/A' or ab.txthdlcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txthdlcolesterol::decimal < '40' or ab.txthdlcolesterol::decimal > '60'  THEN 'ANORMAL' \n" +
+"	     WHEN ab.txthdlcolesterol::decimal >= '40' AND ab.txthdlcolesterol::decimal<='60'   THEN 'NORMAL' \n" +
 "	     END AS CONCLUCION_HDL_COLESTEROL,  \n" +
 "	CASE WHEN ab.txtvldlcolesterol IS NOT NULL THEN ab.txtvldlcolesterol ELSE '...'\n" +
 "	     END  AS VLDL_Colesterol,   \n" +
-"	CASE WHEN ab.txtvldlcolesterol < '30' THEN 'NORMAL' \n" +
-"	     WHEN ab.txtvldlcolesterol >= '30'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txtvldlcolesterol= '' or ab.txtvldlcolesterol= '-' or ab.txtvldlcolesterol= '.'or ab.txtvldlcolesterol= 'N/A' or ab.txtvldlcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txtvldlcolesterol::decimal < '30' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtvldlcolesterol::decimal >= '30'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_VLDL_COLESTEROL, \n" +
 "	CASE WHEN ab.txttrigliseridos IS NOT NULL THEN ab.txttrigliseridos ELSE '...'\n" +
 "	    END  AS trigliceridos, \n" +
-"	CASE WHEN ab.txttrigliseridos < '150' THEN 'NORMAL' \n" +
-"	     WHEN ab.txttrigliseridos >= '150'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txttrigliseridos= '' or ab.txttrigliseridos= '-' or ab.txttrigliseridos= '.'or ab.txttrigliseridos= 'N/A' or ab.txttrigliseridos IS NULL THEN 'N/A'\n" +
+"	     WHEN ab.txttrigliseridos::decimal < '150' THEN 'NORMAL' \n" +
+"	     WHEN ab.txttrigliseridos::decimal >= '150'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_TRIGLISERIDOS,     \n" +
 "	CASE WHEN ab.txtcreatinina IS NOT NULL THEN ab.txtcreatinina ELSE '...'\n" +
 "	    END  AS Creatinina, \n" +
-"	CASE WHEN ab.txtcreatinina < '0.8' or ab.txtcreatinina > '1.4'  THEN 'ANORMAL' \n" +
-"	     WHEN ab.txtcreatinina >= '0.8' AND ab.txtcreatinina <='1.4'   THEN 'NORMAL' \n" +
+"	CASE WHEN ab.txtcreatinina= '' or ab.txtcreatinina= '-' or ab.txtcreatinina= '.'or ab.txtcreatinina= 'N/A' or ab.txtcreatinina IS NULL THEN 'N/A'\n" +
+"	     WHEN ab.txtcreatinina::decimal < '0.8' or ab.txtcreatinina::decimal > '1.4'  THEN 'ANORMAL' \n" +
+"	     WHEN ab.txtcreatinina::decimal >= '0.8' AND ab.txtcreatinina::decimal <='1.4'   THEN 'NORMAL' \n" +
 "	     END AS CONCLUCION_CREATININA,  \n" +
 "	CASE WHEN t.cintura is null THEN 'INF. NO TOMADA' ELSE t.cintura END,\n" +
 "	CASE WHEN t.cadera is null THEN 'INF. NO TOMADA' ELSE t.cadera END,\n" +
@@ -1061,7 +1148,6 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "	     WHEN t.sistolica >= '160' THEN 'HTA-2'\n" +
 "	     ELSE 'DATOS INSUFICIENTES'   \n" +
 "	     END AS R_SIST,\n" +
-"	     \n" +
 "	CASE WHEN t.diastolica IS NULL THEN 'INF NO TOMADA' ELSE t.diastolica END ,\n" +
 "	CASE WHEN t.diastolica ='100' THEN 'HTA-2'\n" +
 "	     WHEN t.diastolica <'80' THEN 'NORMAL'\n" +
@@ -1137,7 +1223,7 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
 "left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
 "left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
-"Left join informe_psicologico as ip ON (ip.n_orden=n.n_orden) "
+"Left join informe_psicologico as ip ON (ip.n_orden=n.n_orden)  "
                 + "WHERE ";
               
         if(rbContrata.isSelected()){
@@ -1152,7 +1238,8 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
         if (((JTextField) F_final.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
             vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
         }
-        //oFunc.SubSistemaMensajeInformacion(vSql);      
+        //oFunc.SubSistemaMensajeInformacion(vSql); 
+        System.out.println(vSql);
         if (oConn.FnBoolQueryExecute(vSql)) {
             try {
                 java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
@@ -1231,40 +1318,47 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "	CASE WHEN lc.txthemoglobina < '14' or lc.txthemoglobina > '20' THEN 'ANORMAL' \n" +
 "	     WHEN lc.txthemoglobina >= '14' AND lc.txthemoglobina <='20' THEN 'NORMAL' \n" +
 "	     END AS CONCLUCION_HEMOGLOBINA ,\n" +
-"	CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS Glucosa ,\n" +
-"	CASE WHEN lc.txtglucosabio < '70' or lc.txtglucosabio > '110' THEN 'ANORMAL' \n" +
-"	     WHEN lc.txtglucosabio >= '70' AND lc.txtglucosabio <='110' THEN 'NORMAL' \n" +
-"	     END AS CONCLUCION_GLUCOSA ,\n" +
+"	CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS Glucosa,\n" +
+"	CASE WHEN lc.txtglucosabio = 'N/A' OR lc.txtglucosabio = ''OR lc.txtglucosabio = '-'OR lc.txtglucosabio = '.' or lc.txtglucosabio is null THEN 'N/A'\n" +
+"             WHEN lc.txtglucosabio::decimal <'70' or lc.txtglucosabio::decimal >'110' THEN 'ANORMAL' \n" +
+"             WHEN lc.txtglucosabio::decimal >='70' AND lc.txtglucosabio::decimal<='110' THEN 'NORMAL' \n" +
+"	     END AS CONCLUCION_GLUCOSA  ,\n" +
 "	CASE WHEN ab.txtcolesterol IS NOT NULL THEN ab.txtcolesterol ELSE '...'\n" +
 "	     END  AS Colesterol,   \n" +
-"	CASE WHEN ab.txtcolesterol < '200' THEN 'NORMAL' \n" +
-"	     WHEN ab.txtcolesterol >= '200'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txtcolesterol= '' or ab.txtcolesterol= '-' or ab.txtldlcolesterol= '.' or ab.txtcolesterol= 'N/A' or ab.txtcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txtcolesterol::decimal < '200' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtcolesterol::decimal >= '200'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_COLESTEROL,    \n" +
 "	CASE WHEN ab.txtldlcolesterol IS NOT NULL THEN ab.txtldlcolesterol ELSE '...'\n" +
 "	     END  AS LDL_COLESTEROL,  \n" +
-"	CASE WHEN ab.txtldlcolesterol < '129' THEN 'NORMAL' \n" +
-"	     WHEN ab.txtldlcolesterol >= '129'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txtldlcolesterol= '' or ab.txtldlcolesterol= '-' or ab.txtldlcolesterol= '.'or ab.txtldlcolesterol= 'N/A' or ab.txtldlcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txtldlcolesterol::decimal < '129' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtldlcolesterol::decimal >= '129'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_LDL_COLESTEROL,     \n" +
 "	CASE WHEN ab.txthdlcolesterol IS NOT NULL THEN ab.txthdlcolesterol ELSE '...'\n" +
 "	     END  AS HDL_Colesterol,   \n" +
-"	CASE WHEN ab.txthdlcolesterol < '40' or ab.txthdlcolesterol > '60'  THEN 'ANORMAL' \n" +
-"	     WHEN ab.txthdlcolesterol >= '40' AND ab.txthdlcolesterol <='60'   THEN 'NORMAL' \n" +
+"	CASE WHEN ab.txthdlcolesterol= '' or ab.txthdlcolesterol= '-' or ab.txthdlcolesterol= '.'or ab.txthdlcolesterol= 'N/A' or ab.txthdlcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txthdlcolesterol::decimal < '40' or ab.txthdlcolesterol::decimal > '60'  THEN 'ANORMAL' \n" +
+"	     WHEN ab.txthdlcolesterol::decimal >= '40' AND ab.txthdlcolesterol::decimal<='60'   THEN 'NORMAL' \n" +
 "	     END AS CONCLUCION_HDL_COLESTEROL,  \n" +
 "	CASE WHEN ab.txtvldlcolesterol IS NOT NULL THEN ab.txtvldlcolesterol ELSE '...'\n" +
 "	     END  AS VLDL_Colesterol,   \n" +
-"	CASE WHEN ab.txtvldlcolesterol < '30' THEN 'NORMAL' \n" +
-"	     WHEN ab.txtvldlcolesterol >= '30'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txtvldlcolesterol= '' or ab.txtvldlcolesterol= '-' or ab.txtvldlcolesterol= '.'or ab.txtvldlcolesterol= 'N/A' or ab.txtvldlcolesterol IS NULL THEN 'N/A' \n" +
+"	     WHEN ab.txtvldlcolesterol::decimal < '30' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtvldlcolesterol::decimal >= '30'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_VLDL_COLESTEROL, \n" +
 "	CASE WHEN ab.txttrigliseridos IS NOT NULL THEN ab.txttrigliseridos ELSE '...'\n" +
 "	    END  AS trigliceridos, \n" +
-"	CASE WHEN ab.txttrigliseridos < '150' THEN 'NORMAL' \n" +
-"	     WHEN ab.txttrigliseridos >= '150'  THEN 'ANORMAL' \n" +
+"	CASE WHEN ab.txttrigliseridos= '' or ab.txttrigliseridos= '-' or ab.txttrigliseridos= '.'or ab.txttrigliseridos= 'N/A' or ab.txttrigliseridos IS NULL THEN 'N/A'\n" +
+"	     WHEN ab.txttrigliseridos::decimal < '150' THEN 'NORMAL' \n" +
+"	     WHEN ab.txttrigliseridos::decimal >= '150'  THEN 'ANORMAL' \n" +
 "	     END AS CONCLUCION_TRIGLISERIDOS,     \n" +
 "	CASE WHEN ab.txtcreatinina IS NOT NULL THEN ab.txtcreatinina ELSE '...'\n" +
 "	    END  AS Creatinina, \n" +
-"	CASE WHEN ab.txtcreatinina < '0.8' or ab.txtcreatinina > '1.4'  THEN 'ANORMAL' \n" +
-"	     WHEN ab.txtcreatinina >= '0.8' AND ab.txtcreatinina <='1.4'   THEN 'NORMAL' \n" +
-"	     END AS CONCLUCION_CREATININA,  \n" +
+"	CASE WHEN ab.txtcreatinina= '' or ab.txtcreatinina= '-' or ab.txtcreatinina= '.'or ab.txtcreatinina= 'N/A' or ab.txtcreatinina IS NULL THEN 'N/A'\n" +
+"	     WHEN ab.txtcreatinina::decimal < '0.8' or ab.txtcreatinina::decimal > '1.4'  THEN 'ANORMAL' \n" +
+"	     WHEN ab.txtcreatinina::decimal >= '0.8' AND ab.txtcreatinina::decimal <='1.4'   THEN 'NORMAL' \n" +
+"	     END AS CONCLUCION_CREATININA,    \n" +
 "	CASE WHEN t.cintura is null THEN 'INF. NO TOMADA' ELSE t.cintura END,\n" +
 "	CASE WHEN t.cadera is null THEN 'INF. NO TOMADA' ELSE t.cadera END,\n" +
 "	CASE WHEN t.icc is null THEN 'INF. NO TOMADA' ELSE t.icc END,\n" +
@@ -1565,7 +1659,7 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
         if (((JTextField) F_final.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
             vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
         }
-        //oFunc.SubSistemaMensajeInformacion(vSql);      
+        //oFunc.SubSistemaMensajeInformacion(vSql); 
         if (oConn.FnBoolQueryExecute(vSql)) {
             try {
                 java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
@@ -1601,48 +1695,32 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
             }
         };
         String vSql = "SELECT n.n_orden AS N° ,d.apellidos_pa||', '||nombres_pa AS NOMBRES, \n" +
-"	d.cod_pa AS DNI,obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
-"	n.razon_empresa,n.nom_examen as Tipo_examen, n.cargo_de,d.lugar_nac_pa as procedencia,\n" +
-"        fecha_apertura_po AS FECHAEVALUACION, \n" +
-"        CASE WHEN n.razon_empresa !='' THEN '...' END  AS FECHAAPTITUD,\n" +
-"        CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
-"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"       d.cod_pa AS DNI,obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
+"       n.razon_empresa,n.razon_contrata,n.nom_examen as Tipo_examen, n.cargo_de,d.provincia_pa,d.departamento_pa,\n" +
+"       fecha_apertura_po AS FECHAEVALUACION, \n" +
+"       CASE WHEN ca.n_orden is NOT null THEN ca.fecha end FECHAAPTITUD,\n" +
+"       CASE  WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
 "             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"             WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
-"             WHEN ad.apto = 'TRUE' THEN 'Apto'\n" +
-"             WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
-"             WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"             WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
-"             WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"             WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
-"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
-"             WHEN ac.no_apto = 'TRUE' THEN 'No Apto' \n" +
-"             WHEN ad.no_apto = 'TRUE' THEN 'No Apto'\n" +
-"             WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
-"             WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
-"	     WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
-"             WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as CONDICION,\n" +
-"        CASE WHEN n.razon_empresa !='' THEN 'HORIZ0NTE MEDIC' END  AS ESTABLECIMIENTO, \n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto' END as CONDICION,\n" +
+"             ca.atxtrestricciones RESTRICCIONES,\n" +
+"        CASE WHEN n.n_orden is not null THEN 'HORIZ0NTE MEDIC' END  AS ESTABLECIMIENTO, \n" +
 "        CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
 "	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
 "	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
 "	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
 "	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
 "	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS Grupoyfactor,\n" +
-"	CASE WHEN a.txtobservacionesfm IS NULL THEN '...' ELSE a.txtobservacionesfm END AS OBSERVACIONES          \n" +
-"	\n" +
+"	CASE WHEN ca.n_orden IS NOT NULL THEN 'N/A' END AS OBSERVACIONES,         \n" +
+"	CASE WHEN ba.n_orden is null then 'N/A'\n" +
+"	     WHEN ba.chk_apto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto' end TRABAJOSENALTURA\n" +
 "FROM datos_paciente AS d\n" +
 "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
-"LEFT JOIN triaje AS t ON (t.n_orden = n.n_orden)\n" +
 "LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
 "left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
 "left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
-"left join anexo7d as ad ON (ad.n_orden=n.n_orden)\n" +
-"left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
-"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
-"left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
-"left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
-"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) "
+"left join certificado_altura_poderosa as ba ON (ba.n_orden=n.n_orden)    "
                 + "WHERE ";
         if(rbContrata.isSelected()){
            vSql+= "n.razon_contrata='"+txtEmpresa.getText().toString()+"' ";
@@ -1656,7 +1734,8 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
         if (((JTextField) F_final.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
             vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
         }
-        //oFunc.SubSistemaMensajeInformacion(vSql);      
+        //oFunc.SubSistemaMensajeInformacion(vSql);  
+        System.out.println(vSql);
         if (oConn.FnBoolQueryExecute(vSql)) {
             try {
                 java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
@@ -1683,5 +1762,600 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
             }
         }
     
+    }
+    private void caraveli(){
+        model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
+         String vSql = "SELECT n.n_orden AS N°, CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN caa.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN caa.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN caa.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"	     WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+"             WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END as CONDICION,\n" +
+"        fecha_apertura_po AS FECHADIGITACION,  n.razon_empresa AS EMPRESA,n.razon_contrata,     \n" +
+"        d.apellidos_pa AS APELLIDOS,nombres_pa AS NOMBRES,d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+"        obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
+"        CASE WHEN d.sexo_pa='F' THEN 'FEMENINO' ELSE 'MASCULINO' END AS SEXO,\n" +
+"        CASE WHEN d.cod_pa is null THEN '' ELSE 'DNI' END AS TIPODOC,d.cod_pa AS DNI_CARNETEXT,     \n" +
+"	n.cargo_de AS PUESTO,d.cel_pa as FONOCONTACTO,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END  AS CENTROMEDICO,\n" +
+"	n.nom_examen AS TIPODEEMO,\n" +
+"	CASE WHEN a.fecha is not null THEN a.fecha\n" +
+"             WHEN aag.fecha is not null THEN aag.fecha END as FECHAEXAMENMEDICO,\n" +
+"        CASE WHEN ca.fecha_hasta is not null THEN ca.fecha_hasta \n" +
+"             WHEN caa.fecha_hasta is not null THEN caa.fecha_hasta END as VIGENCIAHASTA,\n" +
+"	au.o_d_500,au.o_d_1000,au.o_d_2000, au.o_d_3000, au.o_d_4000, \n" +
+"	au.o_d_6000, au.o_d_8000, \n" +
+"	CASE WHEN n.n_orden is not null THEN 'NA' END PROMEDIO_OD,\n" +
+"	au.o_i_500, au.o_i_1000,au.o_i_2000, au.o_i_3000, au.o_i_4000,\n" +
+"	au.o_i_6000, au.o_i_8000,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'NA' END PROMEDIO_OI,\n" +
+"	au.o_d1_500,au.o_d1_1000,au.o_d1_2000,au.o_d1_3000,au.o_d1_4000,au.o_d1_6000 ,au.o_d1_8000,\n" +
+"	au.o_i1_500,au.o_i1_1000,au.o_i1_2000,au.o_i1_3000,au.o_i1_4000,au.o_i1_6000,au.o_i1_8000,\n" +
+"        au.diagnostico AS CONCLUSION,a.txtdiagnosticoaudio as DESCRIPCION,\n" +
+"        rt.txtconclusionesradiograficas, rt.txtobservacionesrt as descripcion,\n" +
+"	f.fvc,f.fev1, f.fev1fvc,a.txtconclusion,\n" +
+"	CASE WHEN t.peso is null THEN 'INF. NO TOMADA' ELSE t.peso END,\n" +
+"	CASE WHEN t.talla is null THEN 'INF. NO TOMADA' ELSE t.talla END,\n" +
+"	CASE WHEN t.imc is null THEN 'INF. NO TOMADA' ELSE t.imc END,\n" +
+"	CASE WHEN t.imc < '18.5' THEN 'PESO BAJO'\n" +
+"	     WHEN t.imc > '18.4' AND t.imc < '25'  THEN 'NORMAL'\n" +
+"	     WHEN t.imc > '24.9' AND t.imc < '30'  THEN 'SOBREPESO'   \n" +
+"	     WHEN t.imc > '29.9' AND t.imc < '35' THEN 'OBESIDAD I'\n" +
+"	     WHEN t.imc > '34.9' AND t.imc < '40' THEN 'OBESIDAD II'\n" +
+"	     WHEN t.imc > '39.9' THEN 'OBESIDAD'\n" +
+"	     WHEN t.imc is null THEN 'SIN FICHA 7C'\n" +
+"	     END  AS CONCLUSION_IMC,\n" +
+"	o.v_lejos_s_od AS Lejos_OD,\n" +
+"	o.v_lejos_s_oi AS Lejos_OI,\n" +
+"	CASE WHEN o.v_lejos_c_od ='00' THEN ol.v_lejos_c_od ELSE o.v_lejos_c_od END \n" +
+"	AS Lejos_Corregida_OD,\n" +
+"	CASE WHEN o.v_lejos_c_oi ='00' THEN ol.v_lejos_c_oi ELSE o.v_lejos_c_oi END\n" +
+"	AS Lejos_Corregida_OI,\n" +
+"	CASE WHEN ol.e_oculares is null THEN o.e_oculares ELSE ol.e_oculares END,\n" +
+"	CASE WHEN ol.e_oculares1 IS NULL THEN o.e_oculares1 ELSE ol.e_oculares1  END,\n" +
+"	o.v_colores ,CASE WHEN n.n_orden is not null THEN '...' END  AS DESCRIPCION_VC,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'N/A' END  AS VP_CONCLUCION,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'N/A' END  AS VP_DESCRIPCION,\n" +
+"	CASE WHEN lc.txthemoglobina IS NULL THEN '...' ELSE lc.txthemoglobina END AS Hemoglobina,\n" +
+"	CASE WHEN lc.txthemoglobina < '14' or lc.txthemoglobina > '20' THEN 'ANORMAL' \n" +
+"	     WHEN lc.txthemoglobina >= '14' AND lc.txthemoglobina <='20' THEN 'NORMAL' \n" +
+"	     END AS CONCLUCION_HEMOGLOBINA ,\n" +
+"	CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS Glucosa ,\n" +
+"	CASE WHEN lc.txtglucosabio < '70' or lc.txtglucosabio > '110' THEN 'ANORMAL' \n" +
+"	     WHEN lc.txtglucosabio >= '70' AND lc.txtglucosabio <='110' THEN 'NORMAL' \n" +
+"	     END AS CONCLUCION_GLUCOSA,\n" +
+"	CASE WHEN ab.txtcolesterol IS NOT NULL THEN ab.txtcolesterol ELSE '...'\n" +
+"	     END  AS Colesterol,   \n" +
+"	CASE WHEN ab.txtcolesterol < '200' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtcolesterol >= '200'  THEN 'ANORMAL' \n" +
+"	     END AS CONCLUCION_COLESTEROL,    \n" +
+"	CASE WHEN ab.txtldlcolesterol IS NOT NULL THEN ab.txtldlcolesterol ELSE '...'\n" +
+"	     END  AS LDL_COLESTEROL,  \n" +
+"	CASE WHEN ab.txtldlcolesterol < '129' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtldlcolesterol >= '129'  THEN 'ANORMAL' \n" +
+"	     END AS CONCLUCION_LDL_COLESTEROL,     \n" +
+"	CASE WHEN ab.txthdlcolesterol IS NOT NULL THEN ab.txthdlcolesterol ELSE '...'\n" +
+"	     END  AS HDL_Colesterol,   \n" +
+"	CASE WHEN ab.txthdlcolesterol < '40' or ab.txthdlcolesterol > '60'  THEN 'ANORMAL' \n" +
+"	     WHEN ab.txthdlcolesterol >= '40' AND ab.txthdlcolesterol <='60'   THEN 'NORMAL' \n" +
+"	     END AS CONCLUCION_HDL_COLESTEROL,  \n" +
+"	CASE WHEN ab.txtvldlcolesterol IS NOT NULL THEN ab.txtvldlcolesterol ELSE '...'\n" +
+"	     END  AS VLDL_Colesterol,   \n" +
+"	CASE WHEN ab.txtvldlcolesterol < '30' THEN 'NORMAL' \n" +
+"	     WHEN ab.txtvldlcolesterol >= '30'  THEN 'ANORMAL' \n" +
+"	     END AS CONCLUCION_VLDL_COLESTEROL, \n" +
+"	CASE WHEN ab.txttrigliseridos IS NOT NULL THEN ab.txttrigliseridos ELSE '...'\n" +
+"	    END  AS trigliceridos, \n" +
+"	CASE WHEN ab.txttrigliseridos < '150' THEN 'NORMAL' \n" +
+"	     WHEN ab.txttrigliseridos >= '150'  THEN 'ANORMAL' \n" +
+"	     END AS CONCLUCION_TRIGLISERIDOS,     \n" +
+"	CASE WHEN ab.txtcreatinina IS NOT NULL THEN ab.txtcreatinina ELSE '...'\n" +
+"	    END  AS Creatinina, \n" +
+"	CASE WHEN ab.txtcreatinina < '0.8' or ab.txtcreatinina > '1.4'  THEN 'ANORMAL' \n" +
+"	     WHEN ab.txtcreatinina >= '0.8' AND ab.txtcreatinina <='1.4'   THEN 'NORMAL' \n" +
+"	     END AS CONCLUCION_CREATININA,  \n" +
+"	CASE WHEN t.cintura is null THEN 'INF. NO TOMADA' ELSE t.cintura END,\n" +
+"	CASE WHEN t.cadera is null THEN 'INF. NO TOMADA' ELSE t.cadera END,\n" +
+"	CASE WHEN t.icc is null THEN 'INF. NO TOMADA' ELSE t.icc END,\n" +
+"	CASE WHEN t.sistolica IS NULL THEN 'INF. NO TOMADA' ELSE t.sistolica END,\n" +
+"	CASE WHEN t.sistolica < '120' THEN 'NORMAL' \n" +
+"	     WHEN t.sistolica > '119.9' AND t.sistolica < '140' THEN 'PREHIPERTENSION' \n" +
+"	     WHEN t.sistolica >= '140' AND t.sistolica <'160' THEN 'HTA-1' \n" +
+"	     WHEN t.sistolica <= '99'  THEN 'NORMAL' \n" +
+"	     WHEN t.sistolica >= '160' THEN 'HTA-2'\n" +
+"	     ELSE 'DATOS INSUFICIENTES'   \n" +
+"	     END AS R_SIST,\n" +
+"	CASE WHEN t.diastolica IS NULL THEN 'INF NO TOMADA' ELSE t.diastolica END ,\n" +
+"	CASE WHEN t.diastolica ='100' THEN 'HTA-2'\n" +
+"	     WHEN t.diastolica <'80' THEN 'NORMAL'\n" +
+"	     WHEN t.diastolica >'79.9' AND t.diastolica < '90' THEN 'PREHIPERTENSION' \n" +
+"	     WHEN t.diastolica >='90' AND t.diastolica < '100' THEN 'HTA-1' \n" +
+"	     WHEN t.diastolica >='90' THEN 'HTA-1' \n" +
+"	     WHEN t.diastolica >'100' THEN 'HTA-2'\n" +
+"	     ELSE 'DATOS INSUFICIENTES'  \n" +
+"	     END AS R_DIAST,\n" +
+"        CASE WHEN t.f_cardiaca IS NULL THEN 'INF. NO TOMADA' ELSE t.f_cardiaca END AS FC,\n" +
+"	CASE WHEN t.f_respiratoria IS NULL THEN 'INF. NO TOMADA' ELSE t.f_respiratoria END AS FR,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'N/A' END  as PLOMO_SANGRE,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'N/A' END  as CADMIO_ORINA,	\n" +
+"	CASE WHEN n.n_orden is not null THEN 'N/A' END  as TIOCINATOS_ORINA,\n" +
+"	CASE WHEN a.txtobservacionesfm IS NULL THEN '...' ELSE a.txtobservacionesfm END AS ResultadodeEvaluaciones, \n" +
+"	ca.txtrecomendaciones as RECOMENDACIONES,\n" +
+"	ca.atxtrestricciones AS OBSERVACIONES,           \n" +
+"	CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
+"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
+"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
+"	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END GUPOSAN,\n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS FACTOR,\n" +
+"	CASE WHEN n.n_orden IS NOT NULL THEN 'N/A' END  as ALERGIAS,\n" +
+"		\n" +
+"	CASE WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
+"             WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+"             END AS APTITUD_MANEJO,	\n" +
+"	CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN caa.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN caa.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN caa.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"	     WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+"             WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END  as APTITUD_OCUP,\n" +
+"	ca.atxtrestricciones AS RESTRICCIONES,\n" +
+"	ca.nom_medico,\n" +
+"	 CASE WHEN n.n_orden IS NOT NULL THEN 'N/A' END  as RESPONSABLE_DIGITACION,\n" +
+"	oi.txt_s_comentarios as NOTAS,\n" +
+"	ip.a_intelectual,ip.a_personalidad,ip.recomendaciones,\n" +
+"	od.txtcariadasoturar AS DX_NCARIES,\n" +
+"	ie.hallazgo AS EKG_RESULTADO,ie.recomendaciones AS EKG_OBS,\n" +
+"	CASE WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
+"	     WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+"	     WHEN cma.p_si2 = 'TRUE' THEN 'Apto con restriccion'\n" +
+"	     WHEN cma.p_si3 = 'TRUE' THEN 'Apto con restriccion'\n" +
+"	     WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con restricción'\n" +
+"	     WHEN ba.chk_observado = 'TRUE' THEN 'Observado'\n" +
+"             WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
+"             END AS APTITUD_TRAB_ALTURA,\n" +
+"        CASE WHEN n.n_orden IS NOT NULL THEN 'N/A' END  as RESPONSABLE_REVISION,\n" +
+"        CASE WHEN n.n_orden IS NOT NULL THEN 'N/A' END  as REZONANCIA_MAGNETICA,\n" +
+"        CASE WHEN n.n_orden IS NOT NULL THEN 'N/A' END  as PRUEBAESFUERZOS,\n" +
+"        OD.txtobservaciones AS DX_ODONTOLOGICO             \n" +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN triaje AS t ON (t.n_orden = n.n_orden)\n" +
+"LEFT JOIN oftalmologia AS o ON (o.n_orden = n.n_orden)\n" +
+"LEFT JOIN oftalmologia_lo AS ol ON (ol.n_orden = n.n_orden)\n" +
+"LEFT JOIN audiometria_po AS au ON (au.n_orden = n.n_orden)\n" +
+"LEFT JOIN funcion_abs AS f ON (f.n_orden = n.n_orden)\n" +
+"LEFT JOIN ficha_audiologica AS fa ON(fa.n_orden = n.n_orden) \n" +
+"LEFT JOIN informe_electrocardiograma AS ie ON (ie.n_orden = n.n_orden)\n" +
+"LEFT JOIN ex_radiograficos_sanguineos AS er ON (er.n_orden = n.n_orden)\n" +
+"LEFT JOIN radiografia_torax AS rt ON (rt.n_orden = n.n_orden)\n" +
+"LEFT JOIN oit AS oi ON (oi.n_orden = n.n_orden)\n" +
+"LEFT JOIN odontograma AS od ON(od.n_orden = n.n_orden)\n" +
+"LEFT JOIN analisis_bioquimicos AS ab ON(ab.n_orden = n.n_orden)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_anexo02 as caa ON (caa.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aag ON (aag.n_orden=n.n_orden)\n" +
+"left join anexo7d as ad ON (ad.n_orden=n.n_orden)\n" +
+"left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
+"left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
+"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden) "+
+"left join informe_psicologico as ip ON (ip.n_orden=n.n_orden)   "
+                + "WHERE ";
+              
+        if(rbContrata.isSelected()){
+           vSql+= "n.razon_contrata='"+txtEmpresa.getText().toString()+"' ";
+        }else{
+            vSql+= "n.razon_empresa='"+txtEmpresa.getText().toString()+"' ";
+        }
+          
+        if (((JTextField) F_inicio.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po >= '" + F_inicio.getDate().toString() + "'";
+        }
+        if (((JTextField) F_final.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
+        }
+        //oFunc.SubSistemaMensajeInformacion(vSql); 
+//        System.out.println(vSql);
+        if (oConn.FnBoolQueryExecute(vSql)) {
+            try {
+                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                int CantidaColumnas = rsmt.getColumnCount();
+                for (int i = 1; i <= CantidaColumnas; i++) {
+                    model.addColumn(rsmt.getColumnLabel(i));
+                }
+                while (oConn.setResult.next()) {
+                    Object[] Fila = new Object[CantidaColumnas];
+                    for (int i = 0; i < CantidaColumnas; i++) {
+                        Fila[i] = oConn.setResult.getObject(i + 1);
+                    }
+                    model.addRow(Fila);
+                }
+
+                tbReporte = autoResizeColWidth(tbReporte, model);
+
+                tbReporte.setModel(model);
+
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    private void proseguridad(){
+        model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
+        String vSql = "SELECT n.n_orden AS N°, d.cod_pa AS DNI_CARNETEXT,   \n" +
+"        concat(d.apellidos_pa,' ',nombres_pa )AS NOMBRES,\n" +
+"	d.email_pa as CORREO,d.cel_pa as FONOCONTACTO,n.nom_examen AS TIPODEEMO,\n" +
+"	CASE WHEN n.n_orden is not null THEN '..' END  AS PERFIL,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END  AS CLINICA,\n" +
+"	CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN caa.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN caa.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN caa.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"	     WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+"             WHEN ba.chk_observado = 'TRUE' THEN 'Observado' END  as APTITUD,\n" +
+"        CASE WHEN ca.atxtrestricciones is not null THEN ca.atxtrestricciones \n" +
+"             WHEN caa.atxtrestricciones is not null THEN caa.atxtrestricciones END  AS MOTIVORESTRICCION,\n" +
+"        fecha_apertura_po AS FECHAEXAMEN,\n" +
+"	CASE WHEN a.txtantecedentespersonales is null THEN 'SIN FICHA ANT. PAT.' ELSE a.txtantecedentespersonales END AS  ANTECEDENTESPERSNALES,\n" +
+"        CASE WHEN ap.chk1 = 'TRUE' THEN 'SI' END  AS ALERGIAS,\n" +
+"        CASE WHEN n.n_orden is not null THEN '..' END  AS MEDICAMENTOSDEUSO,\n" +
+"        CASE WHEN t.peso is null THEN 'INF. NO TOMADA' ELSE t.peso END,\n" +
+"	CASE WHEN t.talla is null THEN 'INF. NO TOMADA' ELSE t.talla END,\n" +
+"	CASE WHEN t.imc is null THEN 'INF. NO TOMADA' ELSE t.imc END,\n" +
+"	CASE WHEN t.sistolica is null THEN 'INF. NO TOMADA' ELSE t.sistolica END ||'/'||\n" +
+"	CASE WHEN t.diastolica is null THEN 'INF. NO TOMADA' ELSE t.diastolica END as PA,\n" +
+"	CASE WHEN t.f_cardiaca is null THEN 'INF. NO TOMADA' ELSE t.f_cardiaca END,\n" +
+"	CASE WHEN t.f_respiratoria is null THEN 'INF. NO TOMADA' ELSE t.f_respiratoria END,\n" +
+"	CASE WHEN n.n_orden is not null THEN '..' END  AS EXAMENOSTEOMUSCULAR,\n" +
+"	CASE WHEN ol.e_oculares is null THEN o.e_oculares ELSE ol.e_oculares END AS EXAMENOFTALMOLOGICO,\n" +
+"	o.v_cerca_s_od AS Cerca_OD,\n" +
+"	o.v_cerca_s_oi AS Cerca_OI,\n" +
+"	CASE WHEN o.v_cerca_c_od ='00' THEN ol.v_cerca_c_od ELSE o.v_cerca_c_od END \n" +
+"	AS Cerca_Corregida_OD,\n" +
+"	CASE WHEN o.v_cerca_c_oi ='00' THEN ol.v_cerca_c_oi ELSE o.v_cerca_c_oi END\n" +
+"	AS Cerca_Corregida_OI,\n" +
+"	o.v_lejos_s_od AS Lejos_OD,\n" +
+"	o.v_lejos_s_oi AS Lejos_OI,\n" +
+"	CASE WHEN o.v_lejos_c_od ='00' THEN ol.v_lejos_c_od ELSE o.v_lejos_c_od END \n" +
+"	AS Lejos_Corregida_OD,\n" +
+"	CASE WHEN o.v_lejos_c_oi ='00' THEN ol.v_lejos_c_oi ELSE o.v_lejos_c_oi END\n" +
+"	AS Lejos_Corregida_OI,\n" +
+"	CASE WHEN lc.txthemoglobina IS NULL THEN '...' ELSE lc.txthemoglobina END AS Hemoglobina,\n" +
+"	CASE WHEN lc.txtleucocitosematologia IS NULL THEN '...' ELSE lc.txtleucocitosematologia END AS LEUCOCITOS,\n" +
+"	CASE WHEN lc.txtplaquetas IS NULL THEN '...' ELSE lc.txtplaquetas END AS PLAQUETAS,\n" +
+"	CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
+"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
+"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
+"	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||' '||\n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS GRUPOSAN,\n" +
+"	CASE WHEN lc.txtglucosabio IS NULL THEN '...' ELSE lc.txtglucosabio END AS Glucosa ,\n" +
+"	CASE WHEN ab.txtcolesterol IS NOT NULL THEN ab.txtcolesterol ELSE '...'\n" +
+"	     END  AS Colesterol,   \n" +
+"	CASE WHEN ab.txttrigliseridos IS NOT NULL THEN ab.txttrigliseridos ELSE '...'\n" +
+"	    END  AS trigliceridos,\n" +
+"	CASE WHEN lc.txtobservacioneslb IS NOT NULL THEN lc.txtobservacioneslb ELSE '...'\n" +
+"	    END  AS EXAORINA, \n" +
+"	ie.hallazgo AS EKG_RESULTADO,\n" +
+"	CASE WHEN n.n_orden is not null THEN '...' END  AS SINTOMARESPIRATORIO,\n" +
+"	CASE WHEN n.n_orden is not null THEN 'N/A' END  AS TESTSOMNOLENCIA,\n" +
+"	CASE WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
+"	     WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+"	     WHEN cma.p_si2 = 'TRUE' THEN 'Apto con restriccion'\n" +
+"	     WHEN cma.p_si3 = 'TRUE' THEN 'Apto con restriccion'\n" +
+"	     WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con restricción'\n" +
+"	     WHEN ba.chk_observado = 'TRUE' THEN 'Observado'\n" +
+"             WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
+"             END AS APTITUD_TRAB_ALTURA,\n" +
+"	au.diagnostico AS CONCLUSIONAUDIO,a.txtconclusion AS RESULTESPIROMETRIA, \n" +
+"	ip.recomendaciones AS EVALUACIONPSICOLOGICA,\n" +
+"	CASE WHEN ip.aprobo_inf = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ip.desaprobo_inf = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ip.n_orden IS NULL THEN 'NA'\n" +
+"             END AS APTITUDPSICOLOGICA,\n" +
+"       CASE WHEN a.txtobservacionesfm IS NULL THEN '...' ELSE a.txtobservacionesfm END AS DIAGNOSTICOGENERAL, \n" +
+"       CASE WHEN n.n_orden is not null THEN 'N/A' END  AS NUTRICIONAL,\n" +
+"       CASE WHEN ol.e_oculares is null THEN o.e_oculares ELSE ol.e_oculares END ||' '||\n" +
+"	CASE WHEN ol.e_oculares1 IS NULL THEN o.e_oculares1 ELSE ol.e_oculares1  END AS OFTALMOLOGICO,\n" +
+"       CASE WHEN n.n_orden is not null THEN 'N/A' END  AS MUSCULOESQUELETICO,\n" +
+"       CASE WHEN lc.txtobservacioneslb is not null THEN lc.txtobservacioneslb END  AS LABORATORIAL,\n" +
+"       CASE WHEN n.n_orden is not null THEN 'N/A' END  AS CARDIOVASCULAR,\n" +
+"       CASE WHEN n.n_orden is not null THEN 'N/A' END  AS DERMATOLOGICO,\n" +
+"       CASE WHEN ip.recomendaciones is not null THEN ip.recomendaciones END  AS PSICOLOGICO,\n" +
+"       CASE WHEN n.n_orden is not null THEN 'N/A' END  AS BIOQUIMICO,\n" +
+"       CASE WHEN n.n_orden is not null THEN 'N/A' END  AS ENFERMPREXISTENTES,\n" +
+"       a.txtdiagnosticoaudio as AUDIOMETRICO,a.txtconclusion AS ESPIROMETRICO,\n" +
+"        CASE WHEN ca.txtrecomendaciones is NOT  null THEN ca.txtrecomendaciones \n" +
+"	     WHEN caa.txtrecomendaciones is NOT null THEN caa.txtrecomendaciones END  AS RECOMENDACIONES,\n" +
+"         CASE WHEN ca.atxtrestricciones is not null THEN ca.atxtrestricciones \n" +
+"              WHEN caa.atxtrestricciones is not null THEN caa.atxtrestricciones END  AS RESTRICCIONES\n" +
+"	         \n" +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN triaje AS t ON (t.n_orden = n.n_orden)\n" +
+"LEFT JOIN oftalmologia AS o ON (o.n_orden = n.n_orden)\n" +
+"LEFT JOIN oftalmologia_lo AS ol ON (ol.n_orden = n.n_orden)\n" +
+"LEFT JOIN audiometria_po AS au ON (au.n_orden = n.n_orden)\n" +
+"LEFT JOIN funcion_abs AS f ON (f.n_orden = n.n_orden)\n" +
+"LEFT JOIN ficha_audiologica AS fa ON(fa.n_orden = n.n_orden) \n" +
+"LEFT JOIN informe_electrocardiograma AS ie ON (ie.n_orden = n.n_orden)\n" +
+"LEFT JOIN ex_radiograficos_sanguineos AS er ON (er.n_orden = n.n_orden)\n" +
+"LEFT JOIN radiografia_torax AS rt ON (rt.n_orden = n.n_orden)\n" +
+"LEFT JOIN oit AS oi ON (oi.n_orden = n.n_orden)\n" +
+"LEFT JOIN odontograma AS od ON(od.n_orden = n.n_orden)\n" +
+"LEFT JOIN analisis_bioquimicos AS ab ON(ab.n_orden = n.n_orden)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join aptitud_medico_ocupacional_agro as caa ON (caa.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aag ON (aag.n_orden=n.n_orden)\n" +
+"left join anexo7d as ad ON (ad.n_orden=n.n_orden)\n" +
+"left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
+"left join antecedentes_patologicos as ap ON (ap.n_orden=n.n_orden)\n" +
+"left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
+"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
+"Left join informe_psicologico as ip ON (ip.n_orden=n.n_orden)"
+                + "WHERE ";
+              
+        if(rbContrata.isSelected()){
+           vSql+= "n.razon_contrata='"+txtEmpresa.getText().toString()+"' ";
+        }else{
+            vSql+= "n.razon_empresa='"+txtEmpresa.getText().toString()+"' ";
+        }
+          
+        if (((JTextField) F_inicio.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po >= '" + F_inicio.getDate().toString() + "'";
+        }
+        if (((JTextField) F_final.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
+        }
+        //oFunc.SubSistemaMensajeInformacion(vSql); 
+//        System.out.println(vSql);
+        if (oConn.FnBoolQueryExecute(vSql)) {
+            try {
+                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                int CantidaColumnas = rsmt.getColumnCount();
+                for (int i = 1; i <= CantidaColumnas; i++) {
+                    model.addColumn(rsmt.getColumnLabel(i));
+                }
+                while (oConn.setResult.next()) {
+                    Object[] Fila = new Object[CantidaColumnas];
+                    for (int i = 0; i < CantidaColumnas; i++) {
+                        Fila[i] = oConn.setResult.getObject(i + 1);
+                    }
+                    model.addRow(Fila);
+                }
+
+                tbReporte = autoResizeColWidth(tbReporte, model);
+
+                tbReporte.setModel(model);
+
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    private void boroo(){
+        model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
+        String vSql = "SELECT 	n.n_orden AS N°,\n" +
+"	d.apellidos_pa ||' ' ||nombres_pa AS NOMBRES,\n" +
+"	d.cod_pa AS DNI_CARNETEXT,d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+"	CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
+"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
+"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
+"	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||' '||\n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS GRUPOSAN,\n" +
+"	n.razon_empresa AS EMPRESA,n.razon_contrata AS CONTRATA,n.cargo_de AS CARGO, \n" +
+"	case when n.cod_sede=1 then 'HORIZONTE MEDIC-TRUJILLO'\n" +
+"                   when n.cod_sede=2 then 'HORIZONTE MEDIC-HUAMACHUCO'\n" +
+"                   WHEN n.cod_sede=3 then 'HORIZONTE MEDIC-HUANCAYO'\n" +
+"                   WHEN n.cod_sede=4 then 'HORIZONTE MEDIC-TRUJILLO-PIEROLA' END LUGAREXAMEN,\n" +
+"	n.fecha_apertura_po AS FECHAEXAMEN,\n" +
+"	CASE WHEN ap.chk1 = 'TRUE' THEN 'SI' \n" +
+"	     WHEN ap.chk1 = 'FALSE' THEN 'NO' \n" +
+"	     WHEN ap.n_orden is null then 'N/A'END  AS ALERGIAS,\n" +
+"	d.lugar_nac_pa AS CIUDAD,\n" +
+"	n.nom_examen AS TIPODEEMO,\n" +
+"	CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN caa.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN caa.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN caa.chkno_apto = 'TRUE' THEN 'No Apto' END  as APTITUD,\n" +
+"	CASE WHEN cma.p_si1 = 'TRUE' THEN 'Apto'\n" +
+"	     WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+"	     WHEN cma.p_si2 = 'TRUE' THEN 'Apto con restriccion'\n" +
+"	     WHEN cma.p_si3 = 'TRUE' THEN 'Apto con restriccion'\n" +
+"	     WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con restricción'\n" +
+"	     WHEN ba.chk_observado = 'TRUE' THEN 'Observado'\n" +
+"             WHEN cma.p_no1 = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto'\n" +
+"             END AS APTITUD_TRAB_ALTURA,       \n" +
+"	CASE WHEN a.txtobservacionesfm IS NULL THEN '...' ELSE a.txtobservacionesfm END AS DIAGNOSTICOGENERAL, \n" +
+"	CASE WHEN ca.atxtrestricciones is not null THEN ca.atxtrestricciones else '...' END  AS RESTRICCIONES,	\n" +
+"	CASE WHEN n.n_orden is not null THEN '' END  AS NUMERODEBREVETE,\n" +
+"	CASE WHEN n.n_orden is not null THEN '' END  AS CATEGORIA,\n" +
+"	CASE WHEN n.n_orden is not null THEN '' END  AS FECHAVENCIMIENTO\n" +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_anexo02 as caa ON (caa.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aag ON (aag.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
+"left join antecedentes_patologicos as ap ON (ap.n_orden=n.n_orden)\n" +
+"left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
+"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
+"Left join informe_psicologico as ip ON (ip.n_orden=n.n_orden)   "
+                + "WHERE ";
+              
+        if(rbContrata.isSelected()){
+           vSql+= "n.razon_contrata='"+txtEmpresa.getText().toString()+"' ";
+        }else{
+            vSql+= "n.razon_empresa='"+txtEmpresa.getText().toString()+"' ";
+        }
+          
+        if (((JTextField) F_inicio.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po >= '" + F_inicio.getDate().toString() + "'";
+        }
+        if (((JTextField) F_final.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
+        }
+        vSql += " order by n.n_orden asc";
+        //oFunc.SubSistemaMensajeInformacion(vSql); 
+        System.out.println(vSql);
+        if (oConn.FnBoolQueryExecute(vSql)) {
+            try {
+                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                int CantidaColumnas = rsmt.getColumnCount();
+                for (int i = 1; i <= CantidaColumnas; i++) {
+                    model.addColumn(rsmt.getColumnLabel(i));
+                }
+                while (oConn.setResult.next()) {
+                    Object[] Fila = new Object[CantidaColumnas];
+                    for (int i = 0; i < CantidaColumnas; i++) {
+                        Fila[i] = oConn.setResult.getObject(i + 1);
+                    }
+                    model.addRow(Fila);
+                }
+
+                tbReporte = autoResizeColWidth(tbReporte, model);
+
+                tbReporte.setModel(model);
+
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    private void sumagold(){
+        model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
+        String vSql = "SELECT 	n.n_orden AS N°,d.cod_pa AS DNI_CARNETEXT,\n" +
+"	d.apellidos_pa as APELLIDOS,nombres_pa AS NOMBRES,\n" +
+"        obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
+"        CASE WHEN d.sexo_pa='F' THEN 'FEMENINO' ELSE 'MASCULINO' END AS SEXO,\n" +
+"        d.estado_civil_pa as ESTADOCIVIL,\n" +
+"	d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+"	CONCAT(d.direccion_pa,' ',caserio_pa)AS DOMICILIO,\n" +
+"	d.distrito_pa as DISTRITO,\n" +
+"	d.provincia_pa as PROVINCIA,\n" +
+"	d.departamento_pa as DEPARTAMENTO,\n" +
+"	d.cel_pa as TELEFONO,\n" +
+"	n.fecha_apertura_po AS FECHAEXAMEN,\n" +
+"	\n" +
+"	n.cargo_de as CARGO,\n" +
+"	n.area_o as AREA,\n" +
+"	n.razon_empresa as EMPRESA,\n" +
+"	CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN caa.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN caa.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN caa.chkno_apto = 'TRUE' THEN 'No Apto' END  as APTITUD,\n" +
+"	CASE WHEN a.txtobservacionesfm IS NULL THEN '...' ELSE a.txtobservacionesfm END AS DIAGNOSTICOGENERAL, \n" +
+"	CASE WHEN ca.atxtrestricciones is not null THEN ca.atxtrestricciones END  AS RESTRICCIONES	\n" +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_anexo02 as caa ON (caa.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aag ON (aag.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"left join b_certificado_conduccion as bc ON (bc.n_orden=n.n_orden)\n" +
+"left join antecedentes_patologicos as ap ON (ap.n_orden=n.n_orden)\n" +
+"left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
+"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
+"Left join informe_psicologico as ip ON (ip.n_orden=n.n_orden)   "
+                + "WHERE ";
+              
+        if(rbContrata.isSelected()){
+           vSql+= "n.razon_contrata='"+txtEmpresa.getText().toString()+"' ";
+        }else{
+            vSql+= "n.razon_empresa='"+txtEmpresa.getText().toString()+"' ";
+        }
+          
+        if (((JTextField) F_inicio.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po >= '" + F_inicio.getDate().toString() + "'";
+        }
+        if (((JTextField) F_final.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+            vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
+        }
+        //oFunc.SubSistemaMensajeInformacion(vSql); 
+//        System.out.println(vSql);
+        if (oConn.FnBoolQueryExecute(vSql)) {
+            try {
+                java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                int CantidaColumnas = rsmt.getColumnCount();
+                for (int i = 1; i <= CantidaColumnas; i++) {
+                    model.addColumn(rsmt.getColumnLabel(i));
+                }
+                while (oConn.setResult.next()) {
+                    Object[] Fila = new Object[CantidaColumnas];
+                    for (int i = 0; i < CantidaColumnas; i++) {
+                        Fila[i] = oConn.setResult.getObject(i + 1);
+                    }
+                    model.addRow(Fila);
+                }
+
+                tbReporte = autoResizeColWidth(tbReporte, model);
+
+                tbReporte.setModel(model);
+
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

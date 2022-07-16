@@ -204,6 +204,13 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle(" Ficha Sintomatología Covid 19");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
             public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
@@ -211,13 +218,6 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameClosing(evt);
             }
         });
 
@@ -428,7 +428,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         jTabbedPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jPanel22.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "En los últomos catorce (14) días ha tenido alguno de los sintomas siguientes:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "En los últimos catorce (14) días ha tenido alguno de los sintomas siguientes:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbSntoma1_si.setBackground(new java.awt.Color(153, 204, 255));
         bgS1.add(rbSntoma1_si);
@@ -732,7 +732,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         );
 
         jPanel23.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "<html>En los últimos catorce (14) días (detallar, de ser afirmativa la respuesta):</html>", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "<html>En los últimos catorce (14) días (detallar, de ser afirmativa la respuesta):</html>", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbAfirma1_si.setBackground(new java.awt.Color(153, 204, 255));
         bgAF1.add(rbAfirma1_si);
@@ -929,7 +929,7 @@ public final class FichaSintomatologiaCovid19 extends javax.swing.JInternalFrame
         jTabbedPane3.addTab("Sintomas", jPanel21);
 
         jPanel24.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tiene los siguientes factores de riesgo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tiene los siguientes factores de riesgo:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbFactorR1_si.setBackground(new java.awt.Color(153, 204, 255));
         bgF1.add(rbFactorR1_si);

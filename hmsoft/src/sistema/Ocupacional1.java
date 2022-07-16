@@ -5,7 +5,6 @@
 package sistema;
 
 
-
 import Caja.Reporteador;
 import Caja.Valorizacion;
 import Clases.clsConnection;
@@ -118,6 +117,20 @@ public class Ocupacional1 extends javax.swing.JFrame {
        IndicacionesMedicas im;
        ConstanciaAltaEpidemiologica cae;
        EvaluacionMusculoEsqueletica eme;
+       //nuevos formatos
+       EvaluacionMusculoEsqueletica2021 eme2021;
+       CuestionarioCalidadSueño ccs2021;
+       TestFatigaSomnolencia tfs2021;
+       Audiometria2021 audio2021;
+       EvaluacionOftalmologica evof2021;
+       CertificadoManipuladoresBarrick cmb;
+       ExamenesLaboratorio2021 el2021;
+       ConsentimientoDosajeMCBoroo cdboroo;
+       Aptitud_Medico_Ocupacional11 amo11;
+       LaboratorioClinicoAsistencial laba;
+       Aptitud_Trabajos_EnCaliente apt_t_c;
+       Aptitud_Licencia_Conducir_Interna apt_l_ci;
+       Hoja_Consulta_Externa hoja_ce;
       javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
         javax.swing.ImageIcon oNo = null;
         String ipa="",seded="";
@@ -248,7 +261,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         A_CertificacionTrabajoAltura = new javax.swing.JMenuItem();
         PerimetroToraxico = new javax.swing.JMenuItem();
         FichaSaS = new javax.swing.JMenuItem();
+        FrmLaboratorio = new javax.swing.JMenu();
         LaboratorioClinico = new javax.swing.JMenuItem();
+        LaboratorioClinicoAsistencial = new javax.swing.JMenuItem();
         FuncionRespiratoria = new javax.swing.JMenuItem();
         btnHCL = new javax.swing.JMenuItem();
         btnHC = new javax.swing.JMenuItem();
@@ -396,6 +411,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         mFichaAptitudResumen = new javax.swing.JMenuItem();
         mFichaAlturaPoderosa = new javax.swing.JMenuItem();
         mFichaAptitudAlturaPoderosa = new javax.swing.JMenuItem();
+        mFichaAptitudTrabajosEnCaliente = new javax.swing.JMenuItem();
+        mFichaAptitudTramitarLicencia = new javax.swing.JMenuItem();
+        mFichaAptitudTramitarLicencia1 = new javax.swing.JMenuItem();
         mEliminarRegistros = new javax.swing.JMenu();
         mEliminar = new javax.swing.JMenuItem();
         mValorizacionn = new javax.swing.JMenu();
@@ -429,6 +447,16 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMNuevosFormatos = new javax.swing.JMenu();
+        mEvaluaciónMuscoloEsqueletico2021 = new javax.swing.JMenuItem();
+        mCuestionarioCalidadSueño = new javax.swing.JMenuItem();
+        mTestFatigaSomnolencia = new javax.swing.JMenuItem();
+        mFichaAudiometrica2021 = new javax.swing.JMenuItem();
+        mEvaluacionOftalmologica = new javax.swing.JMenuItem();
+        mCertificadoManipuladores = new javax.swing.JMenuItem();
+        mExamenesLaboratorio2021 = new javax.swing.JMenuItem();
+        mConsentimientoDosajeBoroo = new javax.swing.JMenuItem();
+        mAptitudMedicoOcup11 = new javax.swing.JMenuItem();
 
         Reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
         Reporte.setText("Reporte");
@@ -487,6 +515,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         Menu.add(FichaSaS);
 
+        FrmLaboratorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mask.png"))); // NOI18N
+        FrmLaboratorio.setText("Formatos Laboratorio");
+        FrmLaboratorio.setActionCommand("Laboratorio Clinico");
+
         LaboratorioClinico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/enfermera.png"))); // NOI18N
         LaboratorioClinico.setLabel("Labtoratorio Clínico");
         LaboratorioClinico.addActionListener(new java.awt.event.ActionListener() {
@@ -494,7 +526,18 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                 LaboratorioClinicoActionPerformed(evt);
             }
         });
-        Menu.add(LaboratorioClinico);
+        FrmLaboratorio.add(LaboratorioClinico);
+
+        LaboratorioClinicoAsistencial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/enfermera.png"))); // NOI18N
+        LaboratorioClinicoAsistencial.setText("Labtoratorio Clínico Asistencial");
+        LaboratorioClinicoAsistencial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LaboratorioClinicoAsistencialActionPerformed(evt);
+            }
+        });
+        FrmLaboratorio.add(LaboratorioClinicoAsistencial);
+
+        Menu.add(FrmLaboratorio);
 
         FuncionRespiratoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/enfermera.png"))); // NOI18N
         FuncionRespiratoria.setText("Función Respiración ABS");
@@ -1628,7 +1671,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
 
-        btnCambiarUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        btnCambiarUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnCambiarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/actualizar.png"))); // NOI18N
         btnCambiarUsuario.setText("Cambiar Usuario");
         btnCambiarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -1646,7 +1689,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu1.add(jMenuItem4);
 
-        btnSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        btnSalir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -1661,7 +1704,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         btnconfiguracionsistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         btnconfiguracionsistema.setText("Configuración del sistema");
 
-        btnconfigurarservicios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        btnconfigurarservicios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnconfigurarservicios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/enfermera.png"))); // NOI18N
         btnconfigurarservicios.setText("Configurar servicios");
         btnconfigurarservicios.addActionListener(new java.awt.event.ActionListener() {
@@ -1671,7 +1714,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         btnconfiguracionsistema.add(btnconfigurarservicios);
 
-        btnAddUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        btnAddUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnAddUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lapiz.png"))); // NOI18N
         btnAddUsuarios.setText("Crear Usuarios");
         btnAddUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -1698,7 +1741,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         btnconfiguracionsistema.add(jMenuItem7);
 
-        btnEliminarEx.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        btnEliminarEx.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnEliminarEx.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar.png"))); // NOI18N
         btnEliminarEx.setText("Eliminar Examenes completos");
         btnEliminarEx.addActionListener(new java.awt.event.ActionListener() {
@@ -1759,7 +1802,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu3.add(jMenuItem2);
 
-        btnActualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
+        btnActualizar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
         btnActualizar.setText("Actualizar Sistema");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -1899,6 +1942,33 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         mFSinRestriccion.add(mFichaAptitudAlturaPoderosa);
+
+        mFichaAptitudTrabajosEnCaliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/altura.png"))); // NOI18N
+        mFichaAptitudTrabajosEnCaliente.setText("Aptitud para Trabajos en Caliente");
+        mFichaAptitudTrabajosEnCaliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mFichaAptitudTrabajosEnCalienteActionPerformed(evt);
+            }
+        });
+        mFSinRestriccion.add(mFichaAptitudTrabajosEnCaliente);
+
+        mFichaAptitudTramitarLicencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/altura.png"))); // NOI18N
+        mFichaAptitudTramitarLicencia.setText("Aptitud para Tramitar Licencia Interna");
+        mFichaAptitudTramitarLicencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mFichaAptitudTramitarLicenciaActionPerformed(evt);
+            }
+        });
+        mFSinRestriccion.add(mFichaAptitudTramitarLicencia);
+
+        mFichaAptitudTramitarLicencia1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/altura.png"))); // NOI18N
+        mFichaAptitudTramitarLicencia1.setText("Hoja de Consulta Externa");
+        mFichaAptitudTramitarLicencia1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mFichaAptitudTramitarLicencia1ActionPerformed(evt);
+            }
+        });
+        mFSinRestriccion.add(mFichaAptitudTramitarLicencia1);
 
         MenuOcupacional.add(mFSinRestriccion);
 
@@ -2203,6 +2273,100 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
         MenuOcupacional.add(jMenu2);
 
+        jMNuevosFormatos.setText("Formatos");
+
+        mEvaluaciónMuscoloEsqueletico2021.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mEvaluaciónMuscoloEsqueletico2021.setText("1. EvaluaciónMuscoloEsqueletico");
+        mEvaluaciónMuscoloEsqueletico2021.setActionCommand("Cert. Conducción de Vehiculos");
+        mEvaluaciónMuscoloEsqueletico2021.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mEvaluaciónMuscoloEsqueletico2021ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mEvaluaciónMuscoloEsqueletico2021);
+
+        mCuestionarioCalidadSueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mCuestionarioCalidadSueño.setText("2. CuestionarioCalidadSueño");
+        mCuestionarioCalidadSueño.setActionCommand("Cert. Conducción de Vehiculos");
+        mCuestionarioCalidadSueño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mCuestionarioCalidadSueñoActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mCuestionarioCalidadSueño);
+
+        mTestFatigaSomnolencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mTestFatigaSomnolencia.setText("3. TestFatigaSomnolencia");
+        mTestFatigaSomnolencia.setActionCommand("Cert. Conducción de Vehiculos");
+        mTestFatigaSomnolencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mTestFatigaSomnolenciaActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mTestFatigaSomnolencia);
+
+        mFichaAudiometrica2021.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mFichaAudiometrica2021.setText("4. Ficha Audiométrica");
+        mFichaAudiometrica2021.setActionCommand("Cert. Conducción de Vehiculos");
+        mFichaAudiometrica2021.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mFichaAudiometrica2021ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mFichaAudiometrica2021);
+
+        mEvaluacionOftalmologica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mEvaluacionOftalmologica.setText("5. Evaluacion Oftalmologica");
+        mEvaluacionOftalmologica.setActionCommand("Cert. Conducción de Vehiculos");
+        mEvaluacionOftalmologica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mEvaluacionOftalmologicaActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mEvaluacionOftalmologica);
+
+        mCertificadoManipuladores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mCertificadoManipuladores.setText("6. Certificado Manipuladores");
+        mCertificadoManipuladores.setActionCommand("Cert. Conducción de Vehiculos");
+        mCertificadoManipuladores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mCertificadoManipuladoresActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mCertificadoManipuladores);
+
+        mExamenesLaboratorio2021.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mExamenesLaboratorio2021.setText("7. Examenes Laboratorio 2021");
+        mExamenesLaboratorio2021.setActionCommand("Cert. Conducción de Vehiculos");
+        mExamenesLaboratorio2021.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mExamenesLaboratorio2021ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mExamenesLaboratorio2021);
+
+        mConsentimientoDosajeBoroo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mConsentimientoDosajeBoroo.setText("8. Consentimiento Dosaje");
+        mConsentimientoDosajeBoroo.setActionCommand("Cert. Conducción de Vehiculos");
+        mConsentimientoDosajeBoroo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mConsentimientoDosajeBorooActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mConsentimientoDosajeBoroo);
+
+        mAptitudMedicoOcup11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mAptitudMedicoOcup11.setText("9. Aptitud Medica Ocup. Nueva");
+        mAptitudMedicoOcup11.setActionCommand("Cert. Conducción de Vehiculos");
+        mAptitudMedicoOcup11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mAptitudMedicoOcup11ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mAptitudMedicoOcup11);
+
+        MenuOcupacional.add(jMNuevosFormatos);
+
         setJMenuBar(MenuOcupacional);
 
         pack();
@@ -2301,8 +2465,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
      barraPrincipal.setVisible(false);
     }else{
        barraPrincipal.setVisible(true);
-    
-   }
+    }
    }//GEN-LAST:event_jbarraActionPerformed
 
     private void btnFichaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaMedicaActionPerformed
@@ -2636,12 +2799,11 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
     private void btnPelisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPelisaActionPerformed
        if(estacerrado(an7c)){   
-             an7c = new AnexoC();     
-          Ocupacional1.Desktop.add(an7c);
-          
-        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
-         an7c.setFrameIcon(ticon);
-          an7c.setLocation(centradoXY(an7c));
+            an7c = new AnexoC();     
+            Ocupacional1.Desktop.add(an7c);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            an7c.setFrameIcon(ticon);
+            an7c.setLocation(centradoXY(an7c));
 
            an7c.show();
           //an7.setVisible(true);
@@ -3230,14 +3392,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           Desktop.add(ri);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
-         ri.setFrameIcon(ticon);
-      ri.setLocation(centradoXY(ri));
+        ri.setFrameIcon(ticon);
+        ri.setLocation(centradoXY(ri));
 
-           ri.show();
+        ri.show();
           //rtpa.setVisible(true);
        }
              else{
-         ri.moveToFront();
+        ri.moveToFront();
          
           //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
@@ -3768,9 +3930,9 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         if(estacerrado(csm)){  
           csm =new ConstanciaSaludMarsa();
           Desktop.add(csm);          
-        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
-         csm.setFrameIcon(ticon);
-      csm.setLocation(centradoXY(csm));
+          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+          csm.setFrameIcon(ticon);
+          csm.setLocation(centradoXY(csm));
 
           csm.show();
           //fn.setVisible(true);
@@ -3993,10 +4155,236 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
      Servicios objt=new Servicios();
      objt.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void mEvaluaciónMuscoloEsqueletico2021ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEvaluaciónMuscoloEsqueletico2021ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(eme2021)){  
+           eme2021 =new EvaluacionMusculoEsqueletica2021();
+           Desktop.add(eme2021);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           eme2021.setFrameIcon(ticon);
+           eme2021.setLocation(centradoXY(eme2021));
+           eme2021.show();
+          //fn.setVisible(true);
+        }else{
+         eme2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mEvaluaciónMuscoloEsqueletico2021ActionPerformed
+
+    private void mCuestionarioCalidadSueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCuestionarioCalidadSueñoActionPerformed
+        // TODO add your handling code here:
+         if(estacerrado(ccs2021)){  
+           ccs2021 =new CuestionarioCalidadSueño();
+           Desktop.add(ccs2021);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           ccs2021.setFrameIcon(ticon);
+           ccs2021.setLocation(centradoXY(ccs2021));
+           ccs2021.show();
+          //fn.setVisible(true);
+        }else{
+         ccs2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mCuestionarioCalidadSueñoActionPerformed
+
+    private void mTestFatigaSomnolenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mTestFatigaSomnolenciaActionPerformed
+        // TODO add your handling code here:
+        
+        if(estacerrado(tfs2021)){  
+           tfs2021 =new TestFatigaSomnolencia();
+           Desktop.add(tfs2021);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           tfs2021.setFrameIcon(ticon);
+           tfs2021.setLocation(centradoXY(tfs2021));
+           tfs2021.show();
+          //fn.setVisible(true);
+        }else{
+         tfs2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mTestFatigaSomnolenciaActionPerformed
+
+    private void mFichaAudiometrica2021ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaAudiometrica2021ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(audio2021)){  
+           audio2021 =new Audiometria2021();
+           Desktop.add(audio2021);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           audio2021.setFrameIcon(ticon);
+           audio2021.setLocation(centradoXY(audio2021));
+           audio2021.show();
+          //fn.setVisible(true);
+        }else{
+         audio2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mFichaAudiometrica2021ActionPerformed
+
+    private void mEvaluacionOftalmologicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mEvaluacionOftalmologicaActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(evof2021)){  
+           evof2021 =new EvaluacionOftalmologica();
+           Desktop.add(evof2021);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           evof2021.setFrameIcon(ticon);
+           evof2021.setLocation(centradoXY(evof2021));
+           evof2021.show();
+          //fn.setVisible(true);
+        }else{
+         evof2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mEvaluacionOftalmologicaActionPerformed
+
+    private void mCertificadoManipuladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCertificadoManipuladoresActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(cmb)){  
+           cmb =new CertificadoManipuladoresBarrick();
+           Desktop.add(cmb);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           cmb.setFrameIcon(ticon);
+           cmb.setLocation(centradoXY(cmb));
+           cmb.show();
+          //fn.setVisible(true);
+        }else{
+         cmb.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mCertificadoManipuladoresActionPerformed
+
+    private void mExamenesLaboratorio2021ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mExamenesLaboratorio2021ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(el2021)){  
+           el2021 =new ExamenesLaboratorio2021();
+           Desktop.add(el2021);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           el2021.setFrameIcon(ticon);
+           el2021.setLocation(centradoXY(el2021));
+           el2021.show();
+          //fn.setVisible(true);
+        }else{
+         el2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mExamenesLaboratorio2021ActionPerformed
+
+    private void LaboratorioClinicoAsistencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LaboratorioClinicoAsistencialActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(laba)){   
+            laba = new LaboratorioClinicoAsistencial(); 
+          Ocupacional1.Desktop.add(laba);
+          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+         laba.setFrameIcon(ticon);
+        //  an.setLocation(centradoXY(an));
+           laba.show();
+         // an.setVisible(true);
+       }
+             else{
+           laba.moveToFront();
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_LaboratorioClinicoAsistencialActionPerformed
+
+    private void mFichaAptitudTrabajosEnCalienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaAptitudTrabajosEnCalienteActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(apt_t_c)) {
+            apt_t_c = new Aptitud_Trabajos_EnCaliente();
+            Desktop.add(apt_t_c);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            apt_t_c.setFrameIcon(ticon);
+            apt_t_c.setLocation(centradoXY(apt_t_c));
+
+            apt_t_c.show();
+            //fn.setVisible(true);
+        } else {
+            apt_t_c.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mFichaAptitudTrabajosEnCalienteActionPerformed
+
+    private void mFichaAptitudTramitarLicenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaAptitudTramitarLicenciaActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(apt_l_ci)) {
+            apt_l_ci = new Aptitud_Licencia_Conducir_Interna();
+            Desktop.add(apt_l_ci);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            apt_l_ci.setFrameIcon(ticon);
+            apt_l_ci.setLocation(centradoXY(apt_l_ci));
+
+            apt_l_ci.show();
+            //fn.setVisible(true);
+        } else {
+            apt_l_ci.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mFichaAptitudTramitarLicenciaActionPerformed
+
+    private void mFichaAptitudTramitarLicencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaAptitudTramitarLicencia1ActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(hoja_ce)) {
+            hoja_ce = new Hoja_Consulta_Externa();
+            Desktop.add(hoja_ce);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            hoja_ce.setFrameIcon(ticon);
+            hoja_ce.setLocation(centradoXY(hoja_ce));
+
+            hoja_ce.show();
+            //fn.setVisible(true);
+        } else {
+            hoja_ce.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mFichaAptitudTramitarLicencia1ActionPerformed
+
+    private void mConsentimientoDosajeBorooActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConsentimientoDosajeBorooActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(cdboroo)){  
+           cdboroo =new ConsentimientoDosajeMCBoroo();
+           Desktop.add(cdboroo);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           cdboroo.setFrameIcon(ticon);
+           cdboroo.setLocation(centradoXY(cdboroo));
+           cdboroo.show();
+          //fn.setVisible(true);
+        }else{
+         el2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mConsentimientoDosajeBorooActionPerformed
+
+    private void mAptitudMedicoOcup11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAptitudMedicoOcup11ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(amo11)){  
+           amo11 =new Aptitud_Medico_Ocupacional11();
+           Desktop.add(amo11);          
+           ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+           amo11.setFrameIcon(ticon);
+           amo11.setLocation(centradoXY(amo11));
+           amo11.show();
+          //fn.setVisible(true);
+        }else{
+         el2021.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mAptitudMedicoOcup11ActionPerformed
 @Override
-     public Image getIconImage() {
-    Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
-    return retValue;
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
+        return retValue;
     }
    /**
     * @param args the command line arguments
@@ -4059,12 +4447,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem FichaSaS;
     private javax.swing.JMenu FrmAgroindustrial;
     private javax.swing.JMenu FrmAudiometria;
+    private javax.swing.JMenu FrmLaboratorio;
     private javax.swing.JMenu FrmVarios;
     private javax.swing.JMenuItem FuncionRespiratoria;
     private javax.swing.JPopupMenu HclMenu;
     private javax.swing.JMenuItem InformeAudiometria;
     private javax.swing.JMenuItem InformePsicologia;
     private javax.swing.JMenuItem LaboratorioClinico;
+    private javax.swing.JMenuItem LaboratorioClinicoAsistencial;
     private javax.swing.JPopupMenu Menu;
     private javax.swing.JMenuBar MenuOcupacional;
     private javax.swing.JMenuItem Observados;
@@ -4110,6 +4500,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMNuevosFormatos;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -4186,6 +4577,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mApnea1;
     private javax.swing.JMenuItem mAptitudMedico;
     private javax.swing.JMenuItem mAptitudMedico1;
+    private javax.swing.JMenuItem mAptitudMedicoOcup11;
     private javax.swing.JMenu mBarrick;
     private javax.swing.JMenu mBarrick1;
     private javax.swing.JMenuItem mCartaCompromisoAislamiento;
@@ -4193,6 +4585,8 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mCertificacionConduccion1;
     private javax.swing.JMenuItem mCertificacionTrabajoAltura;
     private javax.swing.JMenuItem mCertificacionTrabajoAltura1;
+    private javax.swing.JMenuItem mCertificadoManipuladores;
+    private javax.swing.JMenuItem mConsentimientoDosajeBoroo;
     private javax.swing.JMenuItem mConsentimientoInformadoCovid;
     private javax.swing.JMenuItem mConsentimientoInformadoCovid1;
     private javax.swing.JMenuItem mConstanciaAltaEpidemiologica;
@@ -4205,9 +4599,13 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mConstanciaTamizaje;
     private javax.swing.JMenuItem mConstanciaTamizajeMarza;
     private javax.swing.JMenu mCovid19;
+    private javax.swing.JMenuItem mCuestionarioCalidadSueño;
     private javax.swing.JMenuItem mEliminar;
     private javax.swing.JMenu mEliminarRegistros;
+    private javax.swing.JMenuItem mEvaluacionOftalmologica;
+    private javax.swing.JMenuItem mEvaluaciónMuscoloEsqueletico2021;
     private javax.swing.JMenu mExamenMarsa;
+    private javax.swing.JMenuItem mExamenesLaboratorio2021;
     private javax.swing.JMenu mFAgroindustrial;
     private javax.swing.JMenu mFSinRestriccion;
     private javax.swing.JMenuItem mFichaAlturaPoderosa;
@@ -4216,6 +4614,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mFichaAptitudAlturaPoderosa;
     private javax.swing.JMenuItem mFichaAptitudAnexo2;
     private javax.swing.JMenuItem mFichaAptitudResumen;
+    private javax.swing.JMenuItem mFichaAptitudTrabajosEnCaliente;
+    private javax.swing.JMenuItem mFichaAptitudTramitarLicencia;
+    private javax.swing.JMenuItem mFichaAptitudTramitarLicencia1;
+    private javax.swing.JMenuItem mFichaAudiometrica2021;
     private javax.swing.JMenuItem mFichaMedica1;
     private javax.swing.JMenuItem mFichaMedicaMarsa;
     private javax.swing.JMenuItem mFichaMedicaMarsa1;
@@ -4229,6 +4631,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mInformeElectrocardiogramaP;
     private javax.swing.JMenuItem mRegistroPrueba;
     private javax.swing.JMenuItem mResultadosPruebaRapida;
+    private javax.swing.JMenuItem mTestFatigaSomnolencia;
     private javax.swing.JMenuItem mUsoRespiradores;
     private javax.swing.JMenuItem mUsoRespiradores1;
     private javax.swing.JMenuItem mValorizacion;

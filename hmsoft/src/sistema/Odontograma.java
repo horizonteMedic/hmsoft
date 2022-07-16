@@ -273,6 +273,7 @@ Fecha();
         });
         menu.add(btnNormal);
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Odontograma");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {

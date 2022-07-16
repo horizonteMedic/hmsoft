@@ -279,7 +279,7 @@
                               <Component id="jLabel34" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel5" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="chk1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="chk2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -302,9 +302,9 @@
                               <Component id="chk4" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="chk5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="14" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel42" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -354,9 +354,9 @@
                               <Component id="chk39" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="chk40" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" pref="14" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -383,7 +383,7 @@
                               <Component id="jLabel69" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
                               <Component id="jLabel67" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="chk41" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="chk42" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -606,7 +606,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Component id="txtotrosap" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="81" max="32767" attributes="0"/>
+                          <EmptySpace pref="94" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

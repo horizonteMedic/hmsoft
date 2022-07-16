@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteFechasTicket" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="efd5cab7-51fb-4a37-b219-346d57bcaacb">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="90"/>
+	<parameter name="Fecha1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT distinct (d.cod_pa),  d.nombres_pa||' ' ||d.apellidos_pa as nombres
+FROM ticket AS t
+INNER JOIN datos_paciente_asistencial AS d ON (d.cod_pa = t.cod_pa)
+INNER JOIN ticket_contenido AS tc ON (tc.n_ticket= t.n_ticket)
+
+WHERE
+    t.f_ticket >= $P{Fecha1}
+AND
+    t.f_ticket <= $P{Fecha2}]]>
+	</queryString>
+	<field name="cod_pa" class="java.lang.Integer"/>
+	<field name="nombres" class="java.lang.String"/>
+	<variable name="TotalReporte" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="TotalDescuento" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="TotalTicket" class="java.lang.Integer" calculation="Count"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<image>
+				<reportElement uuid="35ac554b-e0c3-4915-b049-dae53c07b691" x="0" y="0" width="224" height="84"/>
+				<imageExpression><![CDATA["C:\\reportes\\Logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="5f564673-70ba-417d-9f2e-d536e49e01d6" x="276" y="10" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Jr. Leoncio Prado N° 786 - Huamachuco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="276" y="44" width="258" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Email: admision@horizontemedic.com / web: www.horizontemedic.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="276" y="33" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sánchez Carrión - La Libertad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="de8fca2f-252f-4487-b80a-5ccf8b1af78e" x="276" y="22" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Telefono :  044-348070 / CEL. 969603777]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b99de470-1eb9-415a-b9d0-c809f9fd2ad3" x="36" y="0" width="393" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE ATENCIÓN Y SERVICIOS POR TICKET]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="3aa1bb25-5426-4b68-bbe6-47afdcf57580" x="506" y="0" width="47" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="287ed06a-97ca-466e-95ed-1808488f1e91" x="429" y="0" width="77" height="16"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Pagina N°]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="43fc1934-b35a-4b4e-953f-a7ee18cf4f07" x="0" y="1" width="555" height="20" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="b2019896-1185-478a-a7e3-af78d25b51b8" x="8" y="6" width="52" height="11" forecolor="#0000CC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NRO TICKET]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f9d235c-23ed-43b0-9c31-a0dd2e0c19a0" x="489" y="6" width="64" height="11" forecolor="#0000CC"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MONTO TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="933161d8-4755-4b39-bb5a-3af5e3906c1d" x="126" y="6" width="40" height="11" forecolor="#0000CC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14ad1545-54f8-407f-a612-93a83a0fe334" x="242" y="6" width="34" height="11" forecolor="#0000CC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="933161d8-4755-4b39-bb5a-3af5e3906c1d" x="344" y="6" width="51" height="11" forecolor="#0000CC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b86bbcf5-98b6-4f06-a63b-d128f5158c7c" x="433" y="6" width="55" height="11" forecolor="#0000CC"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MODO PAGO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField pattern="####">
+				<reportElement uuid="41eda9b2-263f-44f8-952b-99741d389901" x="2" y="0" width="58" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_pa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f3d2657-484f-44e7-92eb-edeaab0c5e90" x="60" y="0" width="164" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="21">
+			<line>
+				<reportElement uuid="e0fd9056-14af-4578-97b8-dc6005d97ef5" x="155" y="0" width="400" height="1"/>
+			</line>
+			<subreport>
+				<reportElement uuid="445d690a-3f2b-462f-a27d-f209a3cf1e4b" x="9" y="0" width="545" height="20"/>
+				<subreportParameter name="Norden">
+					<subreportParameterExpression><![CDATA[$F{cod_pa}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Fecha1">
+					<subreportParameterExpression><![CDATA[$P{Fecha1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="Fecha2">
+					<subreportParameterExpression><![CDATA[$P{Fecha2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:\\reportes\\prueba_ticket_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="32">
+			<line>
+				<reportElement uuid="1b5252ec-80fd-4709-a1ed-ed7bb71c6820" x="1" y="25" width="555" height="1"/>
+			</line>
+			<textField pattern="&apos;S/.&apos; #,##0.00">
+				<reportElement uuid="544296c8-81b6-42e5-adae-8a0bdf93729c" x="485" y="1" width="68" height="11"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8d9505c7-8514-40a3-98dc-d499e9062701" x="368" y="1" width="108" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESCUENTO ADICIONAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="87286a41-e1ee-4739-a3b9-8f8c431883e0" x="384" y="12" width="92" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL A PAGAR]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="bbfb792d-8674-4e30-a246-8e573eb95503" x="242" y="7" width="131" height="11" forecolor="#000066"/>
+				<textElement textAlignment="Center">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3991aba5-dcbb-4790-93de-ebaf45f3ea5a" x="150" y="7" width="92" height="11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[USUARIO QUE REGISTRÓ:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="10" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement uuid="fbe78a6f-4156-4c23-bd9a-f83f49fbe0e5" x="2" y="0" width="553" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="04b4cd89-46db-4558-81c1-be97f6670e51" x="389" y="8" width="67" height="17"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Total :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50fb7450-3719-4c4d-8173-cdaf9b1826c3" x="265" y="8" width="67" height="17"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desc. Total :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d1581133-21a3-427e-98c5-21e555a91daa" x="141" y="8" width="36" height="17"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalTicket}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="25d4315c-368d-4f8d-ad45-d7df46e217e7" x="46" y="8" width="95" height="17"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° ATENCIONES:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

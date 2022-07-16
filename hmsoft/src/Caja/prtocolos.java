@@ -1009,30 +1009,28 @@ int operacion=0;
      calcularServicio();
      calcularProtocolos();
      laEdad= Integer.parseInt(jTextField1.getText());   
-        if(pkprotocolo>=1)
-     {
-              if(pkservicio>=1)
-              {
-     if(!OrdenExisteIn3()){   
-        operacion=1;
-        System.out.println("llegooooo");
-        nameservis=cboServicio.getSelectedItem().toString();
-        nameproto=cboProtocolo.getSelectedItem().toString();
-        funcionprotocoloservicio();
-        //limpiar();
-        
-     }
-     else 
-          JOptionPane.showMessageDialog(null, "YA EXISTE UN REGISTRO CON EL MISMO NOMBRE");
-              }
-              else 
-              JOptionPane.showMessageDialog(null, "ASIGNE UN SERVICIO");
- 
-              }
-     else 
-     JOptionPane.showMessageDialog(null, "ASIGNE UN PROTOCOLO");
-     mostrar3(); 
-                 jTextField1.setEditable(false);
+        if (pkprotocolo >= 1) {
+            if (pkservicio >= 1) {
+                if (!OrdenExisteIn3()) {
+                    operacion = 1;
+                    System.out.println("llegooooo");
+                    nameservis = cboServicio.getSelectedItem().toString();
+                    nameproto = cboProtocolo.getSelectedItem().toString();
+                    funcionprotocoloservicio();
+                    //limpiar();
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "YA EXISTE UN REGISTRO CON EL MISMO NOMBRE");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "ASIGNE UN SERVICIO");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "ASIGNE UN PROTOCOLO");
+        }
+        mostrar3();
+        jTextField1.setEditable(false);
 
     }//GEN-LAST:event_jButtonAgregarActionPerformed
 

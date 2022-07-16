@@ -38,10 +38,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
       txtNorden.requestFocus();
       txtMedico.setText(Clases.clsGlobales.sNomOperador);
       txtCMP.setText("CMP - "+ Clases.clsGlobales.sCMPOperador);
-      if(rbFueraMinaNO.isSelected()== true){
       
-      accidente(true);
-      }
     }
     private void accidente(boolean t){
     
@@ -392,7 +389,6 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
         });
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("FICHA DE DETECCIÓN DE S.A.S.");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -2592,6 +2588,10 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
                 + "WHERE n.n_orden ='"+txtNorden.getText().toString()+"'";
              oConn.FnBoolQueryExecute(Sql);
                 try {
+                    choque(false);
+                    if (rbFueraMinaNO.isSelected() == true) {
+                        accidente(true);
+                    }
                     if (oConn.setResult.next()) {
                         txtNombres.setText(oConn.setResult.getString("apellidos_pa").concat(" ").concat(oConn.setResult.getString("nombres_pa")));
                         FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
@@ -2607,7 +2607,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
                          txtDiastolica.setText(oConn.setResult.getString("diastolica"));
                          txtDni.setText(oConn.setResult.getString("cod_pa"));
                          Fecha();
-                         choque(false);
+                         
                          psg(true);
                          if(!txtCircunferencia.getText().isEmpty()){
                          Double a = Double.valueOf(txtCircunferencia.getText().toString());
@@ -3251,7 +3251,7 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkGradoIVActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-       cerrarVentana(); // TODO add your handling code here:
+//       cerrarVentana(); // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosed
 void Fecha(){
 Date fechaDate = new Date();

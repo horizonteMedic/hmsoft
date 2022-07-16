@@ -556,50 +556,62 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_FechaAnalisisPropertyChange
 
     private void txtCreatininaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreatininaActionPerformed
-         float cretinina=Float.parseFloat(txtCreatinina.getText().toString());
+         if(!txtCreatinina.getText().equals("-")){
+             float cretinina=Float.parseFloat(txtCreatinina.getText().toString());
                if(cretinina>1.4){
                    txtCreatinina.setForeground(Color.red);
                }
+         }
         txtColesterol.requestFocus();
     }//GEN-LAST:event_txtCreatininaActionPerformed
 
     private void txtColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColesterolActionPerformed
-       float colesterol=Float.parseFloat(txtColesterol.getText().toString());
-       if(colesterol>200){
-           txtColesterol.setForeground(Color.red);
-       }
+        if (!txtColesterol.getText().equals("-")) {
+            float colesterol = Float.parseFloat(txtColesterol.getText().toString());
+            if (colesterol > 200) {
+                txtColesterol.setForeground(Color.red);
+            }
+        }
         txtLDLColesterol.requestFocus();
     }//GEN-LAST:event_txtColesterolActionPerformed
 
     private void txtLDLColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLDLColesterolActionPerformed
-      float ldlcolesterol=Float.parseFloat(txtLDLColesterol.getText().toString());
-       if(ldlcolesterol>129){
-           txtLDLColesterol.setForeground(Color.red);
-       }
-        txtHDLColesterol.requestFocus();
+      if (!txtLDLColesterol.getText().equals("-")) {
+        float ldlcolesterol = Float.parseFloat(txtLDLColesterol.getText().toString());
+            if (ldlcolesterol > 129) {
+                txtLDLColesterol.setForeground(Color.red);
+            }            
+        }
+      txtHDLColesterol.requestFocus();
     }//GEN-LAST:event_txtLDLColesterolActionPerformed
 
     private void txtHDLColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHDLColesterolActionPerformed
-        float HDLcolesterol=Float.parseFloat(txtHDLColesterol.getText().toString());
-       if(HDLcolesterol<40){
-           txtHDLColesterol.setForeground(Color.red);
-       }
+        if (!txtHDLColesterol.getText().equals("-")) {
+            float HDLcolesterol = Float.parseFloat(txtHDLColesterol.getText().toString());
+            if (HDLcolesterol < 40) {
+                txtHDLColesterol.setForeground(Color.red);
+            }
+        }
         txtVLDLColesterol.requestFocus();
     }//GEN-LAST:event_txtHDLColesterolActionPerformed
 
     private void txtVLDLColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVLDLColesterolActionPerformed
-       float VLDcolesterol=Float.parseFloat(txtVLDLColesterol.getText().toString());
-       if(VLDcolesterol>30){
-           txtVLDLColesterol.setForeground(Color.red);
-       }
+        if (!txtVLDLColesterol.getText().equals("-")) {
+            float VLDcolesterol = Float.parseFloat(txtVLDLColesterol.getText().toString());
+            if (VLDcolesterol > 30) {
+                txtVLDLColesterol.setForeground(Color.red);
+            }  
+        }
         txtTrigliseridos.requestFocus();
     }//GEN-LAST:event_txtVLDLColesterolActionPerformed
 
     private void txtTrigliseridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrigliseridosActionPerformed
-        float trigliceridos=Float.parseFloat(txtTrigliseridos.getText().toString());
-       if(trigliceridos>150){
-           txtTrigliseridos.setForeground(Color.red);
-       }
+        if (!txtVLDLColesterol.getText().equals("-")) {
+            float trigliceridos = Float.parseFloat(txtTrigliseridos.getText().toString());
+            if (trigliceridos > 150) {
+                txtTrigliseridos.setForeground(Color.red);
+            }
+        }
         btnAceptar.requestFocusInWindow();
     }//GEN-LAST:event_txtTrigliseridosActionPerformed
 

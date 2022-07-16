@@ -151,7 +151,7 @@ public class Aptitud_Altura_Poderosa extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
+        setTitle("CERTIFICADO DE APTITUD ALTURA");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -323,6 +323,7 @@ public class Aptitud_Altura_Poderosa extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(chkRestriccion);
         chkRestriccion.setText("APTO CON RESTRICCION (para el puesto en el que trabaja o postula)");
+        chkRestriccion.setEnabled(false);
         chkRestriccion.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkRestriccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,6 +333,7 @@ public class Aptitud_Altura_Poderosa extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(chkNoAptoTemp);
         chkNoAptoTemp.setText("NO APTO TEMPORAL (para el puesto en el que trabaja o postula)        ");
+        chkNoAptoTemp.setEnabled(false);
         chkNoAptoTemp.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         chkNoAptoTemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -946,7 +948,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 "                l.txtglucosabio, l.txtcreatininabio  \n" +
 "                FROM datos_paciente AS d \n" +
 "                INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
-"               INNER JOIN anexo7c AS a ON (a.n_orden = n.n_orden) \n" +
+"               left JOIN anexo7c AS a ON (a.n_orden = n.n_orden) \n" +
 "	       left JOIN lab_clinico AS l ON (l.n_orden = n.n_orden)  "
                + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
          oConn.FnBoolQueryExecute(Sql);
@@ -1176,7 +1178,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         chk11.setSelected(false);
         chk12.setSelected(false);
         txtObservaciones.setText(null);
-        txtObservaciones.append("- NINGUNO." + '\n');
+        fechaHasta();
     }//GEN-LAST:event_chkAptoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -1335,6 +1337,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 
     private void chkNoAptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNoAptoActionPerformed
         // TODO add your handling code here:
+        if(chkNoApto.isSelected())
+           FechaHasta.setDate(null);
     }//GEN-LAST:event_chkNoAptoActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
@@ -1364,7 +1368,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
         }
         }       
         return bResultado;
-        }  
+    }  
 //  public void levantarObservacion(){
 //       String strSqlStmt;
 //        strSqlStmt = "DELETE FROM observaciones\n" +
@@ -1378,19 +1382,21 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //  }
   private boolean Grabar() throws SQLException{
         boolean bResult = false;
-         String strSqlStmt ="INSERT INTO aptitud_altura_poderosa( n_orden, cod_pa, fecha_examen, fecha_hasta, nom_medico, chkapto, \n" +
-"            chkapto_restriccion, chkno_apto_temporal, chkno_apto, txtobservaciones, \n" +
-"            horasalida )";       
-            strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"','"+txtDni.getText().toString()+"','"+Fecha.getDate()+
-                    "','"+Fecha.getDate()+"','"+txtCertifica.getText().toString()+  "','"+chkApto.isSelected()+
-                    "','"+chkRestriccion.isSelected()+  "','"+chkNoAptoTemp.isSelected()+ "','"+chkNoApto.isSelected()+"'"
-                    + ",'"+txtObservaciones.getText().toString()+"','"+lblHora.getText()+"')";      
-//       String strSqlStmt ="INSERT INTO certificado_aptitud_medico_ocupacional(n_orden,cod_pa, fecha, nom_medico, atxtrestricciones, chkapto, chkapto_restriccion,chkno_apto,horasalida,fecha_hasta )";       
-//            strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"','"+txtDni.getText().toString()+"','"+Fecha.getDate().toString()+
-//                    "','"+txtCertifica.getText().toString()+"','"+atxtRestricciones.getText().toString()+  "','"+chkApto.isSelected()+
-//                    "','"+chkRestriccion.isSelected()+  "','"+chkNoApto.isSelected()+ "','"+lblHora.getText().toString()+"','"+FechaHasta.getDate()+"')"
-//          oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+        String strSqlStmt;
+        String Query;
+        strSqlStmt ="INSERT INTO aptitud_altura_poderosa( n_orden, cod_pa, fecha_examen";
+        Query= "values ('"+ txtNorden.getText().toString()+"','"+txtDni.getText().toString()+"','"+Fecha.getDate()+"'";
+        if (((JTextField) FechaHasta.getDateEditor().getUiComponent()).getText().trim().length() > 1) {
+            strSqlStmt += ", fecha_hasta";
+            Query+= ",'"+FechaHasta.getDate()+"'";
+        }
+            strSqlStmt += ", nom_medico, chkapto,chkapto_restriccion, chkno_apto_temporal, chkno_apto, txtobservaciones, \n" +
+"            horasalida ";       
+            Query+= ",'"+txtCertifica.getText()+  "','"+chkApto.isSelected()+"'"
+                    + ",'"+chkRestriccion.isSelected()+  "','"+chkNoAptoTemp.isSelected()+ "','"+chkNoApto.isSelected()+"'"
+                    + ",'"+txtObservaciones.getText()+"','"+lblHora.getText()+"'";      
+
+             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
                    bResult = true;
@@ -1458,6 +1464,7 @@ private void Limpiar(){
     txtObservaciones.setText(null);
     buttonGroup1.clearSelection();
     Fecha.setDate(null);
+    FechaHasta.setDate(null);
     txtNorden.setEditable(true);
     txtNorden.requestFocus();
     chkNinguno.setSelected(false);
@@ -1484,7 +1491,7 @@ private void Limpiar(){
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
+                    viewer.setTitle("CERTIFICADO DE APTITUD PARA TRABAJOS EN ALTURA");
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
@@ -1522,18 +1529,37 @@ private void Limpiar(){
         }
     });
     private void muestraVisual(){
-        String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
-"          CASE  WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od  ELSE ol.v_cerca_c_od  END as ODCC, \n" +
-"          CASE  WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi  ELSE ol.v_cerca_c_oi  END as OICC, \n" +
-"          o.v_lejos_s_od, o.v_lejos_s_oi, \n" +
-"	  CASE  WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
-"          CASE  WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC, \n" +
-"	  CASE  WHEN ol.v_colores IS NULL THEN o.v_colores  ELSE ol.v_colores  END as VC, \n" +
-"          CASE  WHEN ol.v_binocular IS NULL THEN o.v_binocular  ELSE ol.v_binocular  END as VB, \n" +
-"          CASE  WHEN ol.r_pupilares IS NULL THEN o.r_pupilares  ELSE ol.r_pupilares  END as RP, o.e_oculares\n" +
-"     FROM oftalmologia as o\n" +
-"     left JOIN oftalmologia_lo as ol on (o.n_orden=ol.n_orden)\n" +
-"     WHERE o.n_orden ='"+txtNorden.getText().toString()+"'";
+        String sql = "SELECT n.n_orden, CASE WHEN oft.txtcercasincorregirod is not null THEN oft.txtcercasincorregirod else o.v_cerca_s_od end as v_cerca_s_od,\n" +
+"       CASE WHEN oft.txtcercasincorregiroi is not null THEN oft.txtcercasincorregiroi else o.v_cerca_s_oi end as v_cerca_s_oi,\n" +
+"       CASE WHEN oft.txtcercacorregidaod is not null THEN oft.txtcercacorregidaod \n" +
+"	    WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od\n" +
+"            else ol.v_cerca_c_od end as ODCC,\n" +
+"       CASE WHEN oft.txtcercacorregidaoi is not null THEN oft.txtcercacorregidaoi \n" +
+"	    WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi\n" +
+"            else ol.v_cerca_c_oi end as OICC,\n" +
+"       CASE WHEN oft.txtlejossincorregirod is not null THEN oft.txtlejossincorregirod else o.v_lejos_s_od end as v_lejos_s_od,\n" +
+"       CASE WHEN oft.txtlejossincorregiroi is not null THEN oft.txtlejossincorregiroi else o.v_lejos_s_oi end as v_lejos_s_oi,\n" +
+"       CASE WHEN oft.txtlejoscorregidaod is not null THEN oft.txtlejoscorregidaod \n" +
+"            WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
+"       CASE WHEN oft.txtlejoscorregidaoi is not null THEN oft.txtlejoscorregidaoi \n" +
+"            WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC,\n" +
+"         \n" +
+"       CASE  WHEN oft.rbtecishihara_normal='TRUE' THEN 'NORMAL'\n" +
+"             WHEN oft.rbtecishihara_anormal='TRUE'THEN 'ANORMAL'\n" +
+"             WHEN ol.v_colores IS NULL THEN o.v_colores  \n" +
+"             ELSE ol.v_colores  END as VC,\n" +
+"      CASE  WHEN oft.txtbinocularsincorregir IS not NULL THEN oft.txtbinocularsincorregir  \n" +
+"	    WHEN ol.v_binocular IS NULL THEN o.v_binocular  \n" +
+"            ELSE ol.v_binocular  END as VB,\n" +
+"      CASE  WHEN oft.txtrp IS not NULL THEN oft.txtrp\n" +
+"	    WHEN ol.r_pupilares IS NULL THEN o.r_pupilares\n" +
+"            ELSE ol.r_pupilares  END as RP,\n" +
+"      CASE  WHEN oft.txtdiagnostico IS not NULL THEN oft.txtdiagnostico  else o.e_oculares end as e_oculares\n" +
+"    FROM n_orden_ocupacional as n\n" +
+"     left JOIN oftalmologia as o on (n.n_orden=o.n_orden)\n" +
+"     left JOIN oftalmologia_lo as ol on (n.n_orden=ol.n_orden)\n" +
+"     left JOIN oftalmologia2021 as oft on (n.n_orden=oft.n_orden)" +
+"     WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
          oConn.FnBoolQueryExecute(sql);      
              try {
                     if (oConn.setResult.next()) {                        
@@ -1567,9 +1593,11 @@ private void Limpiar(){
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
         strSqlStmt="UPDATE aptitud_altura_poderosa\n" +
-                "   SET fecha_examen='"+Fecha.getDate()+"'"
-                + ",fecha_hasta='"+FechaHasta.getDate()+"'"
-                + ",nom_medico='"+txtCertifica.getText().toString()+"'"
+                "   SET fecha_examen='"+Fecha.getDate()+"'";
+            if (((JTextField) FechaHasta.getDateEditor().getUiComponent()).getText().trim().length() > 1) {
+               strSqlStmt+= ",fecha_hasta='"+FechaHasta.getDate()+"'";
+            }
+                strSqlStmt+= ",nom_medico='"+txtCertifica.getText().toString()+"'"
                 + ",chkapto='"+chkApto.isSelected()+"'"
                 + ",chkapto_restriccion='"+chkRestriccion.isSelected()+"'"
                 + ",chkno_apto_temporal='"+chkNoAptoTemp.isSelected()+"'"

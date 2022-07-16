@@ -202,8 +202,6 @@ SqlStmt+= txtAddMarcaCovid.getText()+"')";
       // nada
    }
 }
-
- 
-    
+   
 }
 }

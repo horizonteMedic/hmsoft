@@ -84,6 +84,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
     txtEmpresa.setText(null);
     Fhasta.setDate(null);
     Fdesde.setDate(null);
+    chkEfectivo.setSelected(false);
+    chkCredito.setSelected(false);
     if(chkPersonalizada.isSelected()== true){
         txtContrata.requestFocus();
     }
@@ -506,7 +508,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 if(chk6.isSelected()== true){
                     vSql+= ",n.tipo_pago AS TIPOPAGO ";
                 }
-                vSql+= ",n.precio_po::numeric AS PRECIO "
+                vSql+= ",n.precio_po::numeric AS PRECIO,n.precio_adic::numeric as PRECIOADIC, n.autoriza "
                         +", (case when n.cod_sede=1 then 'TRUJILLO' "
                         + " WHEN n.cod_sede=2 then 'Huamachuco' "
                         + " WHEN n.cod_sede=4 then 'Trujillo-Pierola' "
@@ -751,8 +753,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
-    
-    
     }
    
     
@@ -872,18 +872,28 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         return false;
                     }};
                 
-                String vSql="select \n" +
-                        "n.fecha_apertura_po as fecha, dp.cod_pa, CONCAT(dp.apellidos_pa,' ',dp.nombres_pa) as ApellidosNombres,\n" +
-                        "dp.ocupacion_pa as Puesto, splistadoNombres(n.n_orden) as TipoEvaluacion,n.protocolo,n.n_orden NroContrato,\n" +
-                        "n.razon_contrata as Cliente,\n" +
-                        "( CASE WHEN n.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
-                        "		WHEN n.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
-                        "        ELSE n.razon_empresa END\n" +
-                        ") TIPO\n" +
-                        ", spsumaSERVICIOS(n.n_orden) as Importe\n" +
-                        "from historialclienteprotocolo as hcp inner join n_orden_ocupacional as n on hcp.n_orden=n.n_orden\n" +
-                        "left join \n" +
-                        "datos_paciente as dp on n.cod_pa=dp.cod_pa ";
+                String vSql="select n.fecha_apertura_po as fecha, dp.cod_pa, CONCAT(dp.apellidos_pa,' ',dp.nombres_pa) as ApellidosNombres,\n" +
+"dp.ocupacion_pa as Puesto, n.nom_examen,\n" +
+"CONCAT(CASE WHEN n.n_fisttest='TRUE' THEN 'FIST TEST,' END ,\n" +
+"  CASE WHEN n.n_psicosen='TRUE' THEN 'PSICOSENSOMETRICO,' END,\n" +
+"  CASE WHEN n.n_testaltura='TRUE' THEN 'TEST ALTURA,' END,\n" +
+"  CASE WHEN n.visual_compl='TRUE' THEN 'VISUAL COMPLEMENTARIO,' END,\n" +
+"  CASE WHEN n.trab_calientes='TRUE' THEN 'TRABAJOS EN CALIENTE,' END,\n" +
+"  CASE WHEN n.manip_alimentos='TRUE' THEN 'MANIPULADOR DE ALIMENTOS' END\n" +
+")EXAMENADD,\n" +
+"n.protocolo,splistadoNombres(n.n_orden) as TipoEvaluacion,n.txtobserv1,txtobserv2, \n" +
+"n.razon_contrata as Contrata,\n" +
+"(CASE WHEN n.razon_empresa='ADECCO PERÚ S.A.' THEN 'AP'\n" +
+"      WHEN n.razon_empresa='ADECCO CONSULTING S.A.' THEN 'AC'\n" +
+"      ELSE n.razon_empresa END\n" +
+")Empresa,\n" +
+"spsumaSERVICIOS(n.n_orden) as Importe, \n" +
+"obtener_edad(dp.fecha_nacimiento_pa,n.fecha_apertura_po) as edad, \n" +
+"case when dp.sexo_pa='F' then '5.00' else '0.00'end hcg,\n" +
+"n.precio_adic::numeric EXAADICIONAL,n.n_orden Historia\n" +
+"from historialclienteprotocolo as hcp \n" +
+"inner join n_orden_ocupacional as n on hcp.n_orden=n.n_orden\n" +
+"left join datos_paciente as dp on n.cod_pa=dp.cod_pa  ";
                 if(cboContratas.getSelectedItem().toString().length()>2)
                     contrata=cboContratas.getSelectedItem().toString();
                 else
@@ -918,8 +928,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 
                 vSql+=" " +agregarConsulta;
                 
-                vSql+="   group by fecha,dp.cod_pa,ApellidosNombres,Puesto,TipoEvaluacion,n.protocolo,NroContrato,\n" +
-                        " Cliente,razon_empresa,Importe,TIPO";
+                vSql+="   group by fecha,dp.cod_pa,ApellidosNombres,Puesto,TipoEvaluacion,n.protocolo,Historia,\n" +
+"Contrata,Importe,Empresa";
                 System.out.println("consulta:"+vSql);
                 //oFunc.SubSistemaMensajeInformacion(vSql);      
                 if (oConn.FnBoolQueryExecute(vSql))
@@ -963,6 +973,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         btTipoReporte = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbReporte = new javax.swing.JTable();
@@ -1033,6 +1044,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
         btnMostrar1 = new javax.swing.JButton();
         jCheckBoxAntigeno = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        chkEfectivo = new javax.swing.JCheckBox();
+        chkCredito = new javax.swing.JCheckBox();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -1134,12 +1149,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
         cboContratas.setEditable(true);
         cboContratas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cboContratas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
                 cboContratasPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
         cboContratas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1167,12 +1182,12 @@ public class Reporteador extends javax.swing.JInternalFrame {
         cboEmpresas.setEditable(true);
         cboEmpresas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cboEmpresas.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
                 cboEmpresasPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
         });
         cboEmpresas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1604,10 +1619,35 @@ public class Reporteador extends javax.swing.JInternalFrame {
         });
 
         jCheckBoxAntigeno.setText("ANTIG MARSA");
+        jCheckBoxAntigeno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxAntigenoActionPerformed(evt);
+            }
+        });
 
         jCheckBox2.setFont(new java.awt.Font("Ebrima", 1, 14)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(102, 0, 0));
         jCheckBox2.setText("ADECCO");
+
+        jButton6.setText("COVID LILI");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Nuevo R.Covid-marza");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(chkEfectivo);
+        chkEfectivo.setText("V.EFECTIVO");
+
+        buttonGroup1.add(chkCredito);
+        chkCredito.setText("V.CREDITO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1639,16 +1679,28 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(2, 2, 2)
-                                        .addComponent(lblNservicio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(2, 2, 2)
+                                                .addComponent(lblNservicio)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chkEfectivo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chkCredito)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jCheckBox2))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(jButton1))
+                                            .addComponent(jCheckBox2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1668,14 +1720,16 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(70, 70, 70)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton1)
-                                            .addComponent(jButton4))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButton4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButton6))
+                                            .addComponent(jButton7))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -1704,14 +1758,18 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblNservicio))
-                                    .addComponent(txtRuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtRuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCheckBox2)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton7))))
+                        .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -1732,25 +1790,32 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)
+                                .addGap(1, 1, 1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(chkCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chkEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)))
+                                .addComponent(jLabel6))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnExportarExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1837,15 +1902,18 @@ public class Reporteador extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExportarExelActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-       if(jCheckBox2.isSelected())
-        cPersonalizadaadecco();
-        else{
-        if(jCheckBoxAntigeno.isSelected())
-        cAntigenos();
-    else
-        cPersonalizada();
-                
-                }
+        if (jCheckBox2.isSelected())
+            cPersonalizadaadecco();
+        else if(chkEfectivo.isSelected()|| chkCredito.isSelected()){
+            Valorizacion();
+        }else {
+            if (jCheckBoxAntigeno.isSelected()) {
+                cAntigenos();
+            } else {
+                cPersonalizada();
+            }
+
+        }
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void chkContratistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkContratistaActionPerformed
@@ -2406,12 +2474,217 @@ public class Reporteador extends javax.swing.JInternalFrame {
         cerrarVentana();        // TODO add your handling code here:
             try {
                 oConn.oConnection.close();
-                 System.out.println("cierra reportedorrrrrrrrrrrrrrrr");
+                 System.out.println("cierra reporteadorrrrrrrrrrrrrrrr");
             } catch (SQLException ex) {
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
         
     }//GEN-LAST:event_formInternalFrameClosing
+ public void PruebaCovidLili(){
+     try {
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT i.n_orden,CASE WHEN n.n_orden is not null THEN 'DNI' ELSE '.' END AS TIPODOC,\n" +
+"       d.cod_pa,d.apellidos_pa,d.nombres_pa,d.direccion_pa, \n" +
+"       d.fecha_nacimiento_pa,d.cel_pa, n.razon_empresa,n.razon_contrata,n.cargo_de,n.nom_examen,CASE WHEN  n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
+"       WHEN n.tipoprueba = 'P2' THEN 'Prueba 2'\n" +
+"       WHEN n.tipoprueba = 'PA' THEN 'Prueba de anticuerpos' \n" +
+"       WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
+"       WHEN n.tipoprueba = 'P3' THEN 'Prueba 3'\n" +
+"       WHEN n.tipoprueba = 'PCON' THEN 'PCON'\n" +
+"       WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A' END AS NUMPRUEBA,\n" +
+"       CASE WHEN n.n_orden is not null THEN 'POLICLINICO HORIZONTE MEDIC' ELSE '.' END AS UBICACION,\n" +
+"       n.fecha_apertura_po AS FECHAPRUEBA, \n" +
+"       CASE WHEN n.n_orden is not null THEN 'PRUEBA RAPIDA' ELSE '.' END AS TIPOPRUEBA,\n" +
+"       (CASE WHEN n.nom_examen='PRUEBA CUALITATIVA ANTIGENOS' THEN (CASE WHEN i.chkigm_reactivo ='TRUE' THEN 'REACTIVO' \n" +
+"									  WHEN i.chkigg_reactivo ='TRUE' THEN 'NO REACTIVO' ELSE '.' END)\n" +
+"\n" +
+"		ELSE '.' END) AS RESULTADOCUALIANTIG,\n" +
+"	(CASE WHEN n.nom_examen='PRUEBA CUANTITATIVA ANTIGENOS' THEN concat('VALOR: ',i.valorigm ) END) AS RESULTADOCUANTIANTIG,\n" +
+"	concat((CASE WHEN n.nom_examen='PRUEBA CUANTITATIVA ANTICUERPOS' THEN concat('VALOR IGM: ',i.valorigm) END),\n" +
+"	       (CASE WHEN n.nom_examen='PRUEBA CUANTITATIVA ANTICUERPOS' THEN concat('VALOR IGG: ',i.valorigg) END)) AS RESULTADOCUANTIANTIC,\n" +
+"\n" +
+"        concat((CASE WHEN n.nom_examen='COVID-19 CUANTITATIVA' THEN (CASE WHEN i.chkigm_reactivo ='TRUE' THEN 'IGM: POSITIVO & ' \n" +
+"								         WHEN i.chkigm_noreactivo ='TRUE' THEN 'IGM: NEGATIVO & ' ELSE '.' END)END),\n" +
+"								        \n" +
+"	       (CASE WHEN n.nom_examen='COVID-19 CUANTITATIVA' THEN (CASE WHEN i.chkigg_reactivo ='TRUE' THEN 'IGG: POSITIVO' \n" +
+"								         WHEN i.chkigg_noreactivo ='TRUE' THEN 'IGG: NEGATIVO' ELSE '.' END)END),\n" +
+"	       (CASE WHEN n.nom_examen='COVID-19 CUANTITATIVA' THEN concat('- VALOR IGM: ',i.valorigm) END),\n" +
+"	       (CASE WHEN n.nom_examen='COVID-19 CUANTITATIVA' THEN concat('- VALOR IGG: ',i.valorigg) END))AS RESULTADOCOVIDCUANTITATIVO,\n" +
+"\n" +
+"	concat((CASE WHEN n.nom_examen='COVID-19' THEN (CASE WHEN i.chkigm_reactivo ='TRUE' THEN 'IGM: REACTIVO & ' \n" +
+"								         WHEN i.chkigm_noreactivo ='TRUE' THEN 'IGM: NO REACTIVO & ' ELSE '.' END)END),\n" +
+"								        \n" +
+"	       (CASE WHEN n.nom_examen='COVID-19' THEN (CASE WHEN i.chkigg_reactivo ='TRUE' THEN 'IGG: REACTIVO' \n" +
+"								         WHEN i.chkigG_noreactivo ='TRUE' THEN 'IGG: NO REACTIVO' ELSE '.' END)END))AS RESULTADOCOVID19,							         \n" +
+"	       						       \n" +
+"        (case when n.cod_sede=1 then 'TRUJILLO' \n" +
+"              WHEN n.cod_sede=2 then 'Huamachuco' \n" +
+"              WHEN n.cod_sede=4 then 'Trujillo-Pierola' \n" +
+"              WHEN n.cod_sede=3 then 'Huancayo' \n" +
+"        end ) as SEDE \n" +
+" FROM datos_paciente AS d\n" +
+" INNER JOIN n_orden_ocupacional as n on(d.cod_pa=n.cod_pa)\n" +
+" LEFT JOIN examen_inmunologico as i on(n.n_orden=i.n_orden)\n" +
+" LEFT JOIN triaje as t ON(n.n_orden = t.n_orden)";
+                
+                vSql +=" WHERE (n.razon_empresa='COMPAÑIA MINERA PODEROSA S.A.' \n" +
+"        or n.razon_empresa='MINERA BARRICK MISQUICHILCA SA' \n" +
+"        or n.razon_empresa='SUMMA GOLD CORPORATION S.A.C.'\n" +
+"        or n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.')";
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                //vSql+="and n.nom_examen='COVID-19' order by n.n_orden asc";
+                vSql+="AND (n.nom_examen='COVID-19 CUANTITATIVA' or n.nom_examen='COVID-19'\n" +
+"	or n.nom_examen='PRUEBA CUALITATIVA ANTIGENOS' \n" +
+"	or n.nom_examen='PRUEBA CUANTITATIVA ANTICUERPOS'\n" +
+"	or n.nom_examen='PRUEBA CUANTITATIVA ANTIGENOS') ";
+//                System.out.println("la consulta aplicada es:"+vSql);
+            //
+            //oFunc.SubSistemaMensajeInformacion(vSql);
+            if (oConn.FnBoolQueryExecute(vSql)) {
+                try {
+                    java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                    int CantidaColumnas = rsmt.getColumnCount();
+                    for (int i = 1; i <= CantidaColumnas; i++) {
+                        model.addColumn(rsmt.getColumnLabel(i));
+                    }
+                    while (oConn.setResult.next()) {
+                        Object[] Fila = new Object[CantidaColumnas];
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                            Fila[i] = oConn.setResult.getObject(i + 1);
+                        }
+                        model.addRow(Fila);
+                    }
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+                    tbReporte.setModel(model);
+
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        if(chkPersonalizada.isSelected()){
+            PruebaCovidLili();
+        }else{
+            
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         try {
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden,fecha_apertura_po, d.apellidos_pa, d.nombres_pa,d.cod_pa, n.cargo_de,n.razon_empresa, n.razon_contrata,n.nom_examen,  \n" +
+"CASE WHEN n.tipoprueba = 'P1' THEN 'Prueba 1' \n" +
+"     WHEN n.tipoprueba = 'P2' THEN 'Prueba 2' \n" +
+"     WHEN n.tipoprueba = 'P3' THEN 'Prueba 3' \n" +
+"     WHEN n.tipoprueba = 'PA' THEN 'PA' \n" +
+"     WHEN n.tipoprueba = 'PCON' THEN 'PCON' \n" +
+"     WHEN n.tipoprueba = 'AE' THEN 'ALTA EPIDEMIALOGICA' \n" +
+"     WHEN n.tipoprueba = 'PC' THEN 'Prueba C' ELSE 'N/A'  END AS NUMEXACOVID, \n" +
+"CASE WHEN l.chkigm_reactivo = 'TRUE' THEN 'POSITIVO' \n" +
+"     WHEN l.chkigg_reactivo = 'TRUE' THEN 'NEGATIVO'  END AS RESULTADO,\n" +
+" CONCAT((case when cs.chktos=true THEN 'TOS,' END ),\n" +
+"			(case when cs.chkdolor_g=true THEN 'DOLOR DE GARGANTA,' END ),\n" +
+"			(case when cs.chkcongestion_n=true THEN 'CONGESTION NASAL,' END ),\n" +
+"			(case when cs.chkdificultad_r=true THEN 'DIFICULTAD RESPIRATORIA,' END ),\n" +
+"			(case when cs.chkfiebre=true THEN 'FIEBRE/ESCALOFRIO,' END ),\n" +
+"			(case when cs.chkmalestar_g=true THEN 'MALESTAR GENERAL,' END ),\n" +
+"			(case when cs.chkdiarrea=true THEN 'DIARREA,' END ),\n" +
+"			(case when cs.chknauseas=true THEN 'NAUSEAS / VOMITOS,' END ),\n" +
+"			(case when cs.chkcefalea=true THEN 'CEFALEA,' END ),\n" +
+"			(case when cs.chkirritabilidad=true THEN 'IRRITABILIDAD/CONFUSION,' END ),\n" +
+"			(case when cs.chkdolor=true THEN 'DOLOR,' END ),\n" +
+"			(case when cs.chkexpectoracion=true THEN 'EXPECTORACION,' END ),\n" +
+"			(case when cs.chkperdidaolfa=true THEN 'PERDIDA DE OLFATO Y GUSTO,' END ),\n" +
+"			(case when cs.txtotros is not null THEN cs.txtotros END )) as observaciones, \n" +
+"(case when n.cod_sede=1 then 'TRUJILLO'  \n" +
+"      WHEN n.cod_sede=2 then 'Huamachuco'  \n" +
+"      WHEN n.cod_sede=4 then 'Trujillo-Pierola'  \n" +
+"      WHEN n.cod_sede=3 then 'Huancayo'  end ) as SEDE , n.nom_examen \n" +
+"      FROM datos_paciente as d \n" +
+"INNER JOIN n_orden_ocupacional AS n ON (n.cod_pa = d.cod_pa) \n" +
+"LEFT JOIN examen_inmunologico AS l ON (n.n_orden=l.n_orden) \n" +
+"LEFT JOIN const_tamizaje_covid19_marza AS c ON (n.n_orden=c.n_orden)\n" +
+"left join ficha_pruebas_rapidas_covidf1001 as cs on (n.n_orden=cs.n_orden)  ";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                
+                
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                System.out.println("la consulta aplicada es:"+vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jCheckBoxAntigenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAntigenoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxAntigenoActionPerformed
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -2548,6 +2821,7 @@ marcador=1;
     private javax.swing.JButton btnMostrar1;
     private javax.swing.JButton btnRepDiario;
     private javax.swing.JButton btnRepSemanal;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cboContratas;
     private javax.swing.JComboBox cboEmpresas;
     private javax.swing.JCheckBox chk1;
@@ -2568,6 +2842,8 @@ marcador=1;
     private javax.swing.JCheckBox chk8;
     private javax.swing.JCheckBox chk9;
     private javax.swing.JCheckBox chkContratista;
+    private javax.swing.JCheckBox chkCredito;
+    private javax.swing.JCheckBox chkEfectivo;
     private javax.swing.JCheckBox chkEmpresa;
     private javax.swing.JCheckBox chkOservicio;
     private javax.swing.JCheckBox chkPersonalizada;
@@ -2583,6 +2859,8 @@ marcador=1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBoxAlta;
@@ -2770,4 +3048,82 @@ marcador=1;
                 Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+   public void Valorizacion(){
+     try {
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden,d.cod_pa, d.nombres_pa,d.apellidos_pa, n.razon_empresa, n.razon_contrata, n.fecha_apertura_po, \n" +
+"       n.n_hora, n.nom_examen, n.tipo_pago, n.precio_po::numeric,\n" +
+"       CONCAT(case when n.n_fisttest='true' then 'FIST TEST,' END,\n" +
+"              case when n.n_psicosen='true' then 'PSICOSENSOMETRICO,' END,\n" +
+"              case when n.n_testaltura='true' then 'TEST ALTURA,' END,\n" +
+"              case when n.visual_compl='true' then 'VISUAL COMPLEMENTARIO,' END,\n" +
+"              case when  n.trab_calientes='true' then 'TRABAJOS EN CALIENTE,' END,\n" +
+"              case when  n.manip_alimentos='true' then 'MANIPULADOR DE ALIMENTOS' END) EXAADICIONAL,\n" +
+"              n.tipoprueba,  n.precio_adic::numeric, n.autoriza,n.txtobserv1, n.txtobserv2,\n" +
+"              case when n.cod_sede=1 then 'TRUJILLO'\n" +
+"                   when n.cod_sede=2 then 'HUAMACHUCO'\n" +
+"                   WHEN n.cod_sede=3 then 'HUANCAYO'\n" +
+"                   WHEN n.cod_sede=4 then 'TRUJILLO-PIEROLA' END SEDE\n" +
+"FROM datos_paciente d \n" +
+"inner join n_orden_ocupacional n on(n.cod_pa=d.cod_pa)";
+                if(chkEfectivo.isSelected()){
+                    vSql +=" WHERE n.tipo_pago<>'CREDITO' \n" ;
+                }else if(chkCredito.isSelected()){
+                    vSql +=" WHERE n.tipo_pago='CREDITO' \n";
+                }
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                vSql +=" AND upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                vSql+="  "+agregarConsulta+" order by n.n_orden asc";   
+                
+//                System.out.println("la consulta aplicada es:"+vSql);
+            //
+            //oFunc.SubSistemaMensajeInformacion(vSql);
+            if (oConn.FnBoolQueryExecute(vSql)) {
+                try {
+                    java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                    int CantidaColumnas = rsmt.getColumnCount();
+                    for (int i = 1; i <= CantidaColumnas; i++) {
+                        model.addColumn(rsmt.getColumnLabel(i));
+                    }
+                    while (oConn.setResult.next()) {
+                        Object[] Fila = new Object[CantidaColumnas];
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                            Fila[i] = oConn.setResult.getObject(i + 1);
+                        }
+                        model.addRow(Fila);
+                    }
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+                    tbReporte.setModel(model);
+
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
 }

@@ -348,7 +348,7 @@ Limpiar();
                         
                         txtNombres.setText(oConn.setResult.getString("nombre"));
                         txtDni.setText(oConn.setResult.getString("cod_pa"));
-                      FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
                         txtNorden.setEditable(false);
                         FechaDosaje.requestFocusInWindow();
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
@@ -390,14 +390,11 @@ Limpiar();
         if (evt.getClickCount() == 2) {
             Integer num = Integer.valueOf(tbConsentimiento.getValueAt(tbConsentimiento.getSelectedRow(), 0).toString());
             reporte(num);
-
         }
     }//GEN-LAST:event_tbConsentimientoMousePressed
 
     private void txtBuscarCodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarCodKeyReleased
-        
            sbCargarDatosMC(txtBuscarCod.getText());
-        
     }//GEN-LAST:event_txtBuscarCodKeyReleased
 private void reporte(Integer cod){
                  Map parameters = new HashMap(); 

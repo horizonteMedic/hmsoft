@@ -20,7 +20,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -149,7 +148,7 @@ ruta=fichero.getAbsolutePath().toString();
                          Row fila = sheet.getRow(a);
 sql="SELECT spfuncionRegistroAutomaticoPaciente('"+      
                        hacer(fila.getCell(1).getDateCellValue())+"','"+fila.getCell(2).getStringCellValue()+"',"+
-                      devolverDni(String.valueOf( fila.getCell(3).getNumericCellValue()))+",'"+fila.getCell(4).getStringCellValue()+"','"+
+                       devolverDni(String.valueOf( fila.getCell(3).getNumericCellValue()))+",'"+fila.getCell(4).getStringCellValue()+"','"+
                        fila.getCell(5).getStringCellValue()+"','"+fila.getCell(6).getStringCellValue()+"','"+
                        fila.getCell(7).getStringCellValue()+"','"+ fila.getCell(8).getStringCellValue()+"','"+
                        fila.getCell(9).getStringCellValue()+"','"+ fila.getCell(10).getStringCellValue()+"','"+
@@ -192,11 +191,11 @@ sql="SELECT spfuncionRegistroAutomaticoPaciente('"+
                        fila.getCell(15).getStringCellValue()+"','"+ fila.getCell(16).getStringCellValue()+"','"+
                        fila.getCell(17).getStringCellValue()+"','"+ fila.getCell(18).getStringCellValue()+"','"+
                        fila.getCell(19).getStringCellValue()+"','"+ fila.getCell(20).getStringCellValue()+"');";
-   System.out.println(sql);
+         System.out.println(sql);
                      oConn.FnBoolQueryExecute(sql);
                      
                      JOptionPane.showMessageDialog(null, "Se envio los resgistros del excel");
-                     try {
+                      try {
                          oConn.sqlStmt.close();oConn.setResult.close();
                      } catch (SQLException ex) {
                          Logger.getLogger(importarExcel.class.getName()).log(Level.SEVERE, null, ex);

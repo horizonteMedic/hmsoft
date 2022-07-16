@@ -542,30 +542,20 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
    private void btnTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTicketActionPerformed
-     ticketAsistencial neo= new ticketAsistencial();
-      neo.setVisible(true);
-       /*   Comprobantes t = new Comprobantes(); 
-       if(estacerrado(t)){             
-          Admision.Desktop.add(t);
+     RegistroAsistencial ra = new RegistroAsistencial(); 
+       if(estacerrado(ra)){             
+          Admision.Desktop.add(ra);
          ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
-          t.setFrameIcon(ticon);
-          t.setLocation(centradoXY(t));
-         // t.setVisible(true);
-         //try {
-           // t.setMaximum(true);
-         //} catch (PropertyVetoException ex) {
-           // Logger.getLogger(Caja.class.getName()).log(Level.SEVERE, null, ex);
-         //}
-           t.show();
-       }
-             else{
-           t.moveToFront();
+         ra.setFrameIcon(ticon);
+          ra.setLocation(centradoXY(ra));
+          ra.setVisible(true);
          
-          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+           ra.show();
+       }else{
+           ra.moveToFront();
+         
+            JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
-      //JFrame tenga el tamaño de todos sus elementos
-     // this.pack();
-       */
    }//GEN-LAST:event_btnTicketActionPerformed
 
    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
@@ -739,7 +729,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        importarExcel neo= new importarExcel();
+        importarExcel1 neo= new importarExcel1();
       neo.setVisible(true);
     }//GEN-LAST:event_jButton24ActionPerformed
 
@@ -749,8 +739,8 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
-        if(entradaUsuario.equals("76574022"))
+    String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
+        if(entradaUsuario.equals("123456"))
         {
         prtocolos pro= new prtocolos();
         pro.setVisible(true);

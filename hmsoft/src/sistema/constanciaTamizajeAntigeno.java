@@ -452,7 +452,7 @@ private void CargarSedes(){
                     oConn1.sqlStmt.close();
                     oConn1.setResult.close();
                 } catch (SQLException ex) {
-                    oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
+                    oFunc.SubSistemaMensajeInformacion("constanciatamizaje:" + ex.getMessage().toString());}
             }else{
                 oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
             }

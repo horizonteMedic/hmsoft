@@ -404,7 +404,7 @@ Fdesde.setDate(fechaact);
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(233, 233, 233)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -758,13 +758,17 @@ Fdesde.setDate(fechaact);
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -959,8 +963,9 @@ txtEmail.requestFocus();
         insertarPciente();
         String dni=txtDni.getText().toString();
         jTextField5.setText(dni);
-        jTextField5.requestFocus();
         limpiar_paciente();
+        jTextField5.requestFocus();
+        
         }
         
         //   jPanel3.setVisible(false);
@@ -990,7 +995,6 @@ txtEmail.requestFocus();
                     oConn.sqlStmt.close();
             } catch (Exception e) {
             }
-    
     }
     
        public void Act_ticket_info( ){
@@ -1074,8 +1078,7 @@ txtEmail.requestFocus();
        String namesede=clsGlobales.sedeSede;
        String ipi=clsGlobales.ipIp;
        String inicial="";
-       if(ipi.equals("148.251.179.84"))
-       {
+       if(ipi.equals("148.251.179.84")){
             if(namesede.equals("Huamachuco"))
                  {
                  inicial="HM-";
@@ -1092,9 +1095,7 @@ txtEmail.requestFocus();
              {
             inicial="HC-";
             }  
-       }
-       else
-       {
+       }else{
         if(namesede.equals("Trujillo"))
              {
             inicial="SD-";
@@ -1181,7 +1182,9 @@ mostrar_datos_servicio();
      
         String sQuery;
 
-        sQuery  = "select pa.nombres,pa.apellidos,pa.cod_pa,tg.fecha, tg.doctor,tg.metodo_pago,pa.historia_clinica from ticket_g as tg inner join paciente_asistencial as pa on tg.cod_pa=pa.cod_pa\n" +
+        sQuery  = "select pa.nombres,pa.apellidos,pa.cod_pa,tg.fecha, tg.doctor,tg.metodo_pago,pa.historia_clinica "
+                + "from ticket_g as tg "
+                + "inner join paciente_asistencial as pa on tg.cod_pa=pa.cod_pa\n" +
 " where tg.nro_ticket='"+jTextField12.getText().toString().trim()+"'";
         oConn.FnBoolQueryExecute(sQuery);
         try {

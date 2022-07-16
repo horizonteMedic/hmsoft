@@ -50,19 +50,18 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
     javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
     javax.swing.ImageIcon oIconoNo = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/xx.png"));
     javax.swing.ImageIcon oNo = null;
-    boolean ordenVer=true;
-        int contador=1;
+    boolean ordenVer = true;
+    int contador = 1;
 
     public FichaMedica() {
         initComponents();
-                timer.start();
+        timer.start();
         jtFichaMedica.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/id.png")));
         jtFichaMedica.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/invoice.png")));
         jtFichaMedica.setIconAt(2, new ImageIcon(ClassLoader.getSystemResource("imagenes/botiquin.png")));
         //Fecha();
 
     }
-
 
     Timer timer = new Timer(1000, new ActionListener() {
 
@@ -74,8 +73,10 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
 
             GestorTime.setFfechaSystem(FfechaSystemA);
             jLabelhora.setText(GestorTime.getFfechaSystem());
+            jLabelhora1.setText(GestorTime.getFfechaSystem());
         }
     });
+
     private void vExamenes(String Nro) {
 
         vSql(txtTriaje, lblTriaje, "triaje", Nro);
@@ -98,32 +99,36 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
         vSql(txtOftalmologia, lblOftalmologia, "oftalmologia", Nro);
 
     }
-        private boolean GrabarIn4() throws SQLException{
+
+    private boolean GrabarIn4() throws SQLException {
         boolean bResult = false;
-        String strSqlStmt = "insert into consentimientoInformado ";       
-            strSqlStmt+= "values("+ txtNordenIn4.getText()+",'"+FechaExIn4.getDate().toString()+"','"+jLabelhora.getText()+
-                    "')";
-            System.out.println(strSqlStmt);
+        String strSqlStmt = "insert into consentimientoInformado ";
+        strSqlStmt += "values(" + txtNordenIn4.getText() + ",'" + FechaExIn4.getDate().toString() + "','" + jLabelhora.getText()
+                + "')";
+        System.out.println(strSqlStmt);
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
 //                   oConn.setResult.next();
-                    oFunc.SubSistemaMensajeInformacion("Examen Registrada");
-                    
-                   bResult = true;
-                   oConn.sqlStmt.close();
-               }
-             oConn.sqlStmt.close();
-             return bResult;       
+            oFunc.SubSistemaMensajeInformacion("Examen Registrada");
+
+            bResult = true;
+            oConn.sqlStmt.close();
         }
-      
-   private boolean validarIn4(){
-        boolean bResultado=true;
+        oConn.sqlStmt.close();
+        return bResult;
+    }
 
-            if (((JTextField)FechaExIn4.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-                {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
+    private boolean validarIn4() {
+        boolean bResultado = true;
 
-           return bResultado;
-}  
+        if (((JTextField) FechaExIn4.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
+            oFunc.SubSistemaMensajeError("Ingrese Fecha ");
+            bResultado = false;
+        }
+
+        return bResultado;
+    }
+
     private boolean vSql(JTextField txt, JLabel lbl, String sTabla, String sOpcion) {
         String sStmt;
         boolean bResult = false;
@@ -205,22 +210,37 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
             jtFichaMedica.setSelectedIndex(0);
             bResultado = false;
         }
-        if (((JTextField)FechaRx.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-        {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
-      if(btEx.isSelected(null)){oFunc.SubSistemaMensajeError("Falta llenar "); bResultado = false;}
-      if(btApto.isSelected(null)){bResultado = false;}
+        if (((JTextField) FechaRx.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
+            oFunc.SubSistemaMensajeError("Ingrese Fecha ");
+            bResultado = false;
+        }
+        if (btEx.isSelected(null)) {
+            oFunc.SubSistemaMensajeError("Falta llenar ");
+            bResultado = false;
+        }
+        if (btApto.isSelected(null)) {
+            bResultado = false;
+        }
 
         return bResultado;
     }
-    private boolean validar1(){
-boolean bResultado=true;
-      if (((JTextField)FechaRx.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-        {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
-      if(btEx.isSelected(null)){oFunc.SubSistemaMensajeError("Falta llenar "); bResultado = false;}
-      if(btApto.isSelected(null)){bResultado = false;}
-  
-   return bResultado;
-}
+
+    private boolean validar1() {
+        boolean bResultado = true;
+        if (((JTextField) FechaRx.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
+            oFunc.SubSistemaMensajeError("Ingrese Fecha ");
+            bResultado = false;
+        }
+        if (btEx.isSelected(null)) {
+            oFunc.SubSistemaMensajeError("Falta llenar ");
+            bResultado = false;
+        }
+        if (btApto.isSelected(null)) {
+            bResultado = false;
+        }
+
+        return bResultado;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -787,6 +807,29 @@ boolean bResultado=true;
         btnLimpiarIn4 = new javax.swing.JButton();
         txtImprimirIn4 = new javax.swing.JTextField();
         btnImprimir4 = new javax.swing.JButton();
+        jPanel31 = new javax.swing.JPanel();
+        btnGrabarIn5 = new javax.swing.JButton();
+        btnLimpiarIn5 = new javax.swing.JButton();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel229 = new javax.swing.JLabel();
+        txtNorden5 = new javax.swing.JTextField();
+        btnEditarIn5 = new javax.swing.JButton();
+        jLabel232 = new javax.swing.JLabel();
+        txtNombres5 = new javax.swing.JTextField();
+        jLabel233 = new javax.swing.JLabel();
+        txtEdad5 = new javax.swing.JTextField();
+        jLabel234 = new javax.swing.JLabel();
+        txtDni5 = new javax.swing.JTextField();
+        jLabel235 = new javax.swing.JLabel();
+        jLabel236 = new javax.swing.JLabel();
+        jLabel238 = new javax.swing.JLabel();
+        jLabel231 = new javax.swing.JLabel();
+        FechaEx5 = new com.toedter.calendar.JDateChooser();
+        jLabel244 = new javax.swing.JLabel();
+        jLabelhora1 = new javax.swing.JLabel();
+        jPanel33 = new javax.swing.JPanel();
+        txtImprimir5 = new javax.swing.JTextField();
+        btnImprimir5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtObservacionesFichaMedica = new javax.swing.JTextArea();
         jLabel123 = new javax.swing.JLabel();
@@ -1598,9 +1641,6 @@ boolean bResultado=true;
                         .addGap(15, 15, 15)
                         .addComponent(jLabel6))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
@@ -1614,7 +1654,10 @@ boolean bResultado=true;
                         .addComponent(FechaFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnLimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLimpiar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1763,7 +1806,7 @@ boolean bResultado=true;
                             .addComponent(txtGFSPrevio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtGrupoFacLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel140))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jtFichaMedica.addTab("Datos Personales", jPanel2);
@@ -1964,7 +2007,7 @@ boolean bResultado=true;
                             .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMalEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                            .addComponent(txtMalEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                             .addComponent(txtFaltan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1986,7 +2029,7 @@ boolean bResultado=true;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtObservOdonto, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel198))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Ojos"));
@@ -2279,7 +2322,7 @@ boolean bResultado=true;
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel75)
                     .addComponent(jLabel76))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtOI500, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2307,7 +2350,7 @@ boolean bResultado=true;
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel74, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtOI8000, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(2, 2, 2))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2445,7 +2488,7 @@ boolean bResultado=true;
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel83, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtOD8000, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(2, 2, 2))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2703,20 +2746,16 @@ boolean bResultado=true;
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtPerimetro, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtNariz, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtB_A_F_L, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtB_A_F_L, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel66)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtEnfermedadesOculares, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -2738,7 +2777,7 @@ boolean bResultado=true;
                         .addComponent(txtEnfermedadesOculares1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3037,7 +3076,7 @@ boolean bResultado=true;
                 .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkDescribirObservacion)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3628,50 +3667,49 @@ boolean bResultado=true;
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator15)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel112)
-                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel108))
-                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel106)
-                                .addComponent(jLabel107)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtAnillosInguinales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                                .addComponent(txtAbdomen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtcolumnaVertebral, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(txtOrganosGenitales, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel113)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtLenguage))
-                            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel109)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtHernias, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel110)
-                                .addGap(10, 10, 10)
-                                .addComponent(txtVarices, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel111)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtGanglios, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))))
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator15, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel112)
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jLabel108))
+                                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel106)
+                                        .addComponent(jLabel107)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtAnillosInguinales, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                                        .addComponent(txtAbdomen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtcolumnaVertebral, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtOrganosGenitales, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(5, 5, 5)
+                                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addComponent(jLabel113)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtLenguage))
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addComponent(jLabel109)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtHernias, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel110)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txtVarices, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel111)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtGanglios))
+                                    .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3693,9 +3731,8 @@ boolean bResultado=true;
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addComponent(jLabel189)
                                 .addGap(10, 10, 10)
-                                .addComponent(txtConNeumoconiosis, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(txtConNeumoconiosis, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, 0))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3760,7 +3797,7 @@ boolean bResultado=true;
                         .addGap(3, 3, 3)
                         .addComponent(jLabel189))
                     .addComponent(txtConNeumoconiosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         jtFichaMedica.addTab("Abdomen", jPanel15);
@@ -4108,7 +4145,7 @@ boolean bResultado=true;
                                         .addComponent(txtAntPatologicos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblFichaAPatologicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 186, Short.MAX_VALUE))
+                                .addGap(0, 154, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel155)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -4140,7 +4177,7 @@ boolean bResultado=true;
                                 .addComponent(txtOftalmologia, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblOftalmologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 39, Short.MAX_VALUE)))
+                        .addGap(0, 7, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -4315,7 +4352,7 @@ boolean bResultado=true;
                 .addGap(1, 1, 1)
                 .addComponent(rbAB)
                 .addGap(1, 1, 1)
-                .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(rbRhPositivo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -4808,47 +4845,50 @@ boolean bResultado=true;
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCoca, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(jLabel192)
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCoca, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtVSG, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel21Layout.createSequentialGroup()
+                                        .addComponent(jLabel192)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtVSG, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel21Layout.createSequentialGroup()
+                                        .addComponent(jLabel125)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtMarig, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(jLabel125)
+                                .addComponent(jLabel193)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMarig, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(jLabel193)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGlucosaBio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel194)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCreatininaBio, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtGlucosaBio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel194)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCreatininaBio, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
+                        .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5052,7 +5092,7 @@ boolean bResultado=true;
                                 .addComponent(jLabel230)
                                 .addGap(35, 35, 35)
                                 .addComponent(jLabelhora, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5098,7 +5138,7 @@ boolean bResultado=true;
                         .addComponent(jLabel227)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel228)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                         .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel200)
                             .addComponent(FechaExIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -5117,6 +5157,233 @@ boolean bResultado=true;
         );
 
         jtFichaMedica.addTab("Consentimiento Informado", jPanel28);
+
+        btnGrabarIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnGrabarIn5.setText("Grabar/Actualizar");
+        btnGrabarIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrabarIn5ActionPerformed(evt);
+            }
+        });
+
+        btnLimpiarIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
+        btnLimpiarIn5.setText("Limpiar");
+        btnLimpiarIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarIn5ActionPerformed(evt);
+            }
+        });
+
+        jPanel32.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel229.setText("Nº Orden :");
+
+        txtNorden5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNorden5ActionPerformed(evt);
+            }
+        });
+        txtNorden5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNorden5KeyTyped(evt);
+            }
+        });
+
+        btnEditarIn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
+        btnEditarIn5.setText("Editar");
+        btnEditarIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarIn5ActionPerformed(evt);
+            }
+        });
+
+        jLabel232.setText("Yo:");
+
+        txtNombres5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombres5ActionPerformed(evt);
+            }
+        });
+
+        jLabel233.setText("de ");
+
+        jLabel234.setText("años de edad, con DNI");
+
+        txtDni5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDni5ActionPerformed(evt);
+            }
+        });
+
+        jLabel235.setText("NO PADEZCO DE ENFERMEDAD ALGUNA, NI PRESENTO ");
+
+        jLabel236.setText("SÍNTOMAS DE NINGÚN TIPO, por lo cual me considero un persona completamente SANA.  ");
+
+        jLabel238.setText("Por lo que soy responsable de lo anteriormente declarado.");
+
+        jLabel231.setText("Fecha :");
+
+        FechaEx5.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                FechaEx5PropertyChange(evt);
+            }
+        });
+
+        jLabel244.setText("Hora:");
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(jLabel229)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNorden5, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEditarIn5))
+                    .addComponent(jLabel236)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(jLabel232)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNombres5, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel233)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEdad5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(jLabel234, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDni5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel235))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel32Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel231)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FechaEx5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel244))
+                            .addComponent(jLabel238, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabelhora1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60))
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel229)
+                    .addComponent(txtNorden5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditarIn5))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel232)
+                    .addComponent(txtNombres5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel233)
+                    .addComponent(txtEdad5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtDni5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel235))
+                    .addComponent(jLabel234))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel236, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel238)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel231)
+                            .addComponent(FechaEx5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel244)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelhora1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37))
+        );
+
+        jPanel33.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "IMPRIMIR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 12), new java.awt.Color(0, 0, 204))); // NOI18N
+
+        txtImprimir5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtImprimir5ActionPerformed(evt);
+            }
+        });
+
+        btnImprimir5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora.png"))); // NOI18N
+        btnImprimir5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimir5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtImprimir5, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimir5)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel33Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(txtImprimir5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnImprimir5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
+        jPanel31.setLayout(jPanel31Layout);
+        jPanel31Layout.setHorizontalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(btnGrabarIn5)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnLimpiarIn5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+        jPanel31Layout.setVerticalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiarIn5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGrabarIn5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(183, Short.MAX_VALUE))
+        );
+
+        jtFichaMedica.addTab("Consentimiento Buena Salud", jPanel31);
 
         txtObservacionesFichaMedica.setBackground(new java.awt.Color(189, 222, 255));
         txtObservacionesFichaMedica.setColumns(20);
@@ -5222,11 +5489,16 @@ boolean bResultado=true;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jtFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 970, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jtFichaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 943, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addComponent(jLabel123)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnObsv, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel135)
@@ -5249,18 +5521,9 @@ boolean bResultado=true;
                                     .addComponent(jLabel127)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtColesterol, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel123)
-                                .addGap(3, 3, 3)
-                                .addComponent(btnObsv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGap(1266, 1266, 1266))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -5268,11 +5531,11 @@ boolean bResultado=true;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel123)
                     .addComponent(btnObsv, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addGap(2, 2, 2)
                 .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel127)
                     .addComponent(txtColesterol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -5304,9 +5567,9 @@ boolean bResultado=true;
     }//GEN-LAST:event_FechaNacimientoPropertyChange
 
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-        consultar();  
+        consultar();
         Ordenobservado();
-        
+
     }//GEN-LAST:event_txtNordenActionPerformed
 
     private void txtAntecedentesPersonalesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAntecedentesPersonalesFocusGained
@@ -5426,9 +5689,9 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtNordenKeyReleased
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if(Orden()){
+        if (Orden()) {
             actualizar();
-        }else if (validar()) {
+        } else if (validar()) {
             Insertar();
             if (Agregar()) {
                 txtEOrden.setText(txtNorden.getText().toString());
@@ -5492,21 +5755,23 @@ boolean bResultado=true;
         chkNormal.setSelected(false);
         if (chkPatrobs.isSelected()) {
             txtConclusion.append("-PATRON OBSTRUCTIVO LEVE");
-            txtObservacionesFichaMedica.append(String.valueOf(contador)+"\n-PATRON OBSTRUCTIVO LEVE.EVALUACION EN 6 MESES");
-        contador++;
+            txtObservacionesFichaMedica.append(String.valueOf(contador) + "\n-PATRON OBSTRUCTIVO LEVE.EVALUACION EN 6 MESES");
+            contador++;
         }
     }//GEN-LAST:event_chkPatrobsActionPerformed
 
     private void btnEditarFMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarFMActionPerformed
-        if(!txtNorden.getText().isEmpty()){
-            if(Orden()){
-            editar();
-            
-        }else {oFunc.SubSistemaMensajeError("No hay datos en anexo 7c o orden no existe");}
-        }else{
+        if (!txtNorden.getText().isEmpty()) {
+            if (Orden()) {
+                editar();
+
+            } else {
+                oFunc.SubSistemaMensajeError("No hay datos en anexo 7c o orden no existe");
+            }
+        } else {
             oFunc.SubSistemaMensajeError("Debe ingresar numero de orden");
         }
-        
+
 //        String sql="Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'";
     }//GEN-LAST:event_btnEditarFMActionPerformed
 
@@ -5515,8 +5780,8 @@ boolean bResultado=true;
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
 
     private void txtColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColesterolActionPerformed
-        float colesterol=Float.parseFloat(txtColesterol.getText().toString());
-        if(colesterol>200){
+        float colesterol = Float.parseFloat(txtColesterol.getText().toString());
+        if (colesterol > 200) {
             txtColesterol.setForeground(Color.red);
         }
         txtLDLColesterol.requestFocus();
@@ -5527,8 +5792,8 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtColesterolKeyTyped
 
     private void txtLDLColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLDLColesterolActionPerformed
-        float ldlcolesterol=Float.parseFloat(txtLDLColesterol.getText().toString());
-        if(ldlcolesterol>129){
+        float ldlcolesterol = Float.parseFloat(txtLDLColesterol.getText().toString());
+        if (ldlcolesterol > 129) {
             txtLDLColesterol.setForeground(Color.red);
         }
         txtHDLColesterol.requestFocus();
@@ -5539,8 +5804,8 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtLDLColesterolKeyTyped
 
     private void txtHDLColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHDLColesterolActionPerformed
-        float HDLcolesterol=Float.parseFloat(txtHDLColesterol.getText().toString());
-        if(HDLcolesterol<40){
+        float HDLcolesterol = Float.parseFloat(txtHDLColesterol.getText().toString());
+        if (HDLcolesterol < 40) {
             txtHDLColesterol.setForeground(Color.red);
         }
         txtVLDLColesterol.requestFocus();
@@ -5551,8 +5816,8 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtHDLColesterolKeyTyped
 
     private void txtVLDLColesterolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVLDLColesterolActionPerformed
-        float VLDcolesterol=Float.parseFloat(txtVLDLColesterol.getText().toString());
-        if(VLDcolesterol>30){
+        float VLDcolesterol = Float.parseFloat(txtVLDLColesterol.getText().toString());
+        if (VLDcolesterol > 30) {
             txtVLDLColesterol.setForeground(Color.red);
         }
         txtTrigliseridos.requestFocus();
@@ -5563,11 +5828,11 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtVLDLColesterolKeyTyped
 
     private void txtTrigliseridosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTrigliseridosActionPerformed
-        float trigliceridos=Float.parseFloat(txtTrigliseridos.getText().toString());
-        if(trigliceridos>150){
+        float trigliceridos = Float.parseFloat(txtTrigliseridos.getText().toString());
+        if (trigliceridos > 150) {
             txtTrigliseridos.setForeground(Color.red);
         }
-        
+
     }//GEN-LAST:event_txtTrigliseridosActionPerformed
 
     private void txtTrigliseridosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTrigliseridosKeyTyped
@@ -5579,7 +5844,7 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtDniActionPerformed
 
     private void txtFVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFVCActionPerformed
-       
+
     }//GEN-LAST:event_txtFVCActionPerformed
 
     private void txtEnfermedadesOculares1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEnfermedadesOculares1FocusGained
@@ -5656,7 +5921,7 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtSimbolosFocusGained
 
     private void chkPositivoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkPositivoStateChanged
-        if(chkPositivo.isSelected()== true){
+        if (chkPositivo.isSelected() == true) {
             txtSinNeumoconiosis.setText(null);
             txtImagenRxExPolvo.setText(null);
             txtSinNeumoconiosis.requestFocus();
@@ -5668,7 +5933,7 @@ boolean bResultado=true;
     }//GEN-LAST:event_chkPositivoActionPerformed
 
     private void chkNegativoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkNegativoStateChanged
-        if(chkNegativo.isSelected()== true){
+        if (chkNegativo.isSelected() == true) {
             txtSinNeumoconiosis.setText("NORMAL");
             txtImagenRxExPolvo.setText("SOSPECHA");
         }
@@ -5721,35 +5986,33 @@ boolean bResultado=true;
     private void txtSangreEQFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSangreEQFocusGained
         txtSangreEQ.selectAll();
     }//GEN-LAST:event_txtSangreEQFocusGained
- public boolean OrdenExisteIn4()
-     {
-        boolean bResultado=false;
-        if(!txtNordenIn4.getText().isEmpty()){
-        String sQuery;
-        sQuery  = "Select n_orden from consentimientoInformado Where n_orden ="+txtNordenIn4.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
-        try {
-            if (oConn.setResult.next())
-            {
-                bResultado = true;
+    public boolean OrdenExisteIn4() {
+        boolean bResultado = false;
+        if (!txtNordenIn4.getText().isEmpty()) {
+            String sQuery;
+            sQuery = "Select n_orden from consentimientoInformado Where n_orden =" + txtNordenIn4.getText().toString();
+            oConn.FnBoolQueryExecute(sQuery);
+            try {
+                if (oConn.setResult.next()) {
+                    bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
             }
-            oConn.sqlStmt.close();
-        } catch (SQLException ex) {
         }
-        }       
         return bResultado;
-     }
+    }
     private void txtNordenIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenIn4ActionPerformed
-   
-        if(!txtNordenIn4.getText().isEmpty()){
-            if(!OrdenExisteIn4()){
-                String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
-                + "d.sexo_pa,n.tipoprueba,n.razon_empresa, n.cargo_de "
-                + "FROM datos_paciente AS d "
-                + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-                + "WHERE n.n_orden ='"+txtNordenIn4.getText() +"'";
+
+        if (!txtNordenIn4.getText().isEmpty()) {
+            if (!OrdenExisteIn4()) {
+                String Sql = "SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
+                        + "d.sexo_pa,n.tipoprueba,n.razon_empresa, n.cargo_de "
+                        + "FROM datos_paciente AS d "
+                        + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
+                        + "WHERE n.n_orden ='" + txtNordenIn4.getText() + "'";
                 oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -5762,16 +6025,17 @@ boolean bResultado=true;
                         txtNordenIn4.setEditable(false);
                         Fecha1();
                         // FechaHoy.requestFocusInWindow();
-                     //   oPe.fecha(FechaExIn4);
+                        //   oPe.fecha(FechaExIn4);
                         //   oPe.fecha(FechaHotel);
 
-                    }else{
+                    } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
                     }
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
-                    oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
-            }else{
+                    oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());
+                }
+            } else {
                 oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
             }
         }
@@ -5782,35 +6046,42 @@ boolean bResultado=true;
     }//GEN-LAST:event_txtNordenIn4KeyTyped
 
     private void btnEditarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIn4ActionPerformed
-        if(!txtNordenIn4.getText().isEmpty()){
-            String Sql=" SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa,n.razon_empresa,\n" +
-                                " n.cargo_de,ci.fecha\n" +
-"                            FROM datos_paciente AS d   \n" +
-"                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
-"                            left JOIN consentimientoInformado AS ci ON (ci.n_orden = n.n_orden) \n" +
-"                            WHERE n.n_orden ="+txtNordenIn4.getText();
+        if (!txtNordenIn4.getText().isEmpty()) {
+            String Sql = " SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa,n.razon_empresa,\n"
+                    + " n.cargo_de,ci.fecha\n"
+                    + "                            FROM datos_paciente AS d   \n"
+                    + "                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n"
+                    + "                            left JOIN consentimientoInformado AS ci ON (ci.n_orden = n.n_orden) \n"
+                    + "                            WHERE n.n_orden =" + txtNordenIn4.getText();
             oConn.FnBoolQueryExecute(Sql);
             try {
                 if (oConn.setResult.next()) {
                     txtNombresIn4.setText(oConn.setResult.getString("nombre"));
                     txtDniIn4.setText(oConn.setResult.getString("cod_pa"));
-                 //   txtEdadIn4.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
+                    //   txtEdadIn4.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
                     FechaExIn4.setDate(oConn.setResult.getDate("fecha"));
                     txtLaboral.setText(oConn.setResult.getString("cargo_de"));
                     txtLaempresa.setText(oConn.setResult.getString("razon_empresa"));
-                }else{
+                } else {
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
+                oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());
+            }
         }
     }//GEN-LAST:event_btnEditarIn4ActionPerformed
-void Fecha1(){
-Date fechaDate = new Date();
+    void Fecha1() {
+        Date fechaDate = new Date();
 //SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
-FechaExIn4.setDate(fechaDate);
-}
+        FechaExIn4.setDate(fechaDate);
+    }
+
+    void Fecha2() {
+        Date fechaDate = new Date();
+//SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
+        FechaEx5.setDate(fechaDate);
+    }
     private void FechaExIn4PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaExIn4PropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_FechaExIn4PropertyChange
@@ -5822,36 +6093,36 @@ FechaExIn4.setDate(fechaDate);
     private void txtLaboralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLaboralActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLaboralActionPerformed
-public void ActualizarIn4(){
-            String sCodigo=txtNordenIn4.getText();
-            String strSqlStmt;
+    public void ActualizarIn4() {
+        String sCodigo = txtNordenIn4.getText();
+        String strSqlStmt;
 
-            strSqlStmt="UPDATE consentimientoInformado\n" +
-                    " SET fecha='"+FechaExIn4.getDate()+"',"
-                       + "      hora='"+jLabelhora.getText()+"' \n" 
-                 +  "  WHERE n_orden='"+sCodigo+"';";
-                 System.out.println(strSqlStmt);
-            //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
-                oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                imprimirIn4();
-                limpiar4();
-                try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        strSqlStmt = "UPDATE consentimientoInformado\n"
+                + " SET fecha='" + FechaExIn4.getDate() + "',"
+                + "      hora='" + jLabelhora.getText() + "' \n"
+                + "  WHERE n_orden='" + sCodigo + "';";
+        System.out.println(strSqlStmt);
+        //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            imprimirIn4();
+            limpiar4();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
         try {
             oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
+    }
 
-public void cerrarVentana(){
+    public void cerrarVentana() {
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
         try {
@@ -5859,65 +6130,60 @@ public void cerrarVentana(){
         } catch (SQLException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
         }
-  
-    this.dispose();
-      //  System.exit(0);
+
+        this.dispose();
+        //  System.exit(0);
 
     }
 
-   private boolean imprimirIn4(){
+    private boolean imprimirIn4() {
         boolean im = false;
         int seleccion = JOptionPane.showOptionDialog(
-            this, // Componente padre
-            "¿Desea Imprimir?", //Mensaje
-            "Seleccione una opción", // Título
-            JOptionPane.YES_NO_CANCEL_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,    // null para icono por defecto.
-            new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
-            "Si");
-            if (seleccion != -1)
-            {
-           if((seleccion + 1)==1)
-           {
-              printerIn4(Integer.valueOf(txtNordenIn4.getText()));
-               im = true;
-           }
-           else
-           {
-              // PRESIONO NO
-             }
+                this, // Componente padre
+                "¿Desea Imprimir?", //Mensaje
+                "Seleccione una opción", // Título
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[]{"Si", "No"}, // null para YES, NO y CANCEL
+                "Si");
+        if (seleccion != -1) {
+            if ((seleccion + 1) == 1) {
+                printerIn4(Integer.valueOf(txtNordenIn4.getText()));
+                im = true;
+            } else {
+                // PRESIONO NO
             }
-            return im;
-
         }
-   private void printerIn4(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"conInformadoOcupacional.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    
-                  JasperPrintManager.printReport(jasperPrint,true);
-                  
-                   } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-   }
+        return im;
+
+    }
+
+    private void printerIn4(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "conInformadoOcupacional.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void btnGrabarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn4ActionPerformed
-     
-        if(OrdenExisteIn4()){
+
+        if (OrdenExisteIn4()) {
             ActualizarIn4();
             limpiar4();
 
-        }
-        else{
-            if(!txtNordenIn4.getText().isEmpty()){
+        } else {
+            if (!txtNordenIn4.getText().isEmpty()) {
                 try {
-                    if(validarIn4()){
-                        if(GrabarIn4()){
+                    if (validarIn4()) {
+                        if (GrabarIn4()) {
                             imprimirIn4();
                             limpiar4();
                         }
@@ -5938,7 +6204,7 @@ public void cerrarVentana(){
     }//GEN-LAST:event_txtImprimirIn4ActionPerformed
 
     private void btnImprimir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir4ActionPerformed
-        if(!txtImprimirIn4.getText().isEmpty()){
+        if (!txtImprimirIn4.getText().isEmpty()) {
             //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
             printIn4(Integer.valueOf(txtImprimirIn4.getText()));
         }
@@ -5947,38 +6213,152 @@ public void cerrarVentana(){
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();// TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
-    
-         private void printIn4(Integer cod){
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"conInformadoOcupacional.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("CONSENTIMIENTO INFORMADO");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+    private void txtNorden5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNorden5ActionPerformed
+        // TODO add your handling code here:
+        if (!txtNorden5.getText().isEmpty()) {
+            if (!OrdenExiste5()) {
+                String Sql = "SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
+                        + "d.sexo_pa,n.tipoprueba,n.razon_empresa, n.cargo_de "
+                        + "FROM datos_paciente AS d "
+                        + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
+                        + "WHERE n.n_orden ='" + txtNorden5.getText() + "'";
+                oConn.FnBoolQueryExecute(Sql);
+                try {
+                    if (oConn.setResult.next()) {
+                        txtNombres5.setText(oConn.setResult.getString("nombre"));
+                        txtDni5.setText(oConn.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        txtEdad5.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
+                        txtNorden5.setEditable(false);
+                        Fecha2();
+                    } else {
+                        oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
+                    }
+                    oConn.sqlStmt.close();
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeInformacion("Consentimiento de buena salud:" + ex.getMessage().toString());
                 }
- }     
-    public void limpiar4(){
-      txtNordenIn4.setText("");
-        txtNombresIn4.setText("");
-                    txtDniIn4.setText("");
-      FechaExIn4.setDate(null);
-                    txtLaboral.setText("");
-                    txtLaempresa.setText("");
-    txtNordenIn4.setEditable(true);
+            } else {
+                oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
+            }
+        }
+    }//GEN-LAST:event_txtNorden5ActionPerformed
+
+    private void txtNorden5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNorden5KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNorden5KeyTyped
+
+    private void btnEditarIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarIn5ActionPerformed
+        // TODO add your handling code here:
+        if (!txtNorden5.getText().isEmpty()) {
+            String Sql = " SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa,n.razon_empresa,\n"
+                    + " n.cargo_de,ci.fecha\n"
+                    + "                            FROM datos_paciente AS d   \n"
+                    + "                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n"
+                    + "                            left JOIN consentimientobuenasalud AS ci ON (ci.n_orden = n.n_orden) \n"
+                    + "                            WHERE ci.n_orden =" + txtNorden5.getText();
+            oConn.FnBoolQueryExecute(Sql);
+            try {
+                if (oConn.setResult.next()) {
+                    txtNombres5.setText(oConn.setResult.getString("nombre"));
+                    txtDni5.setText(oConn.setResult.getString("cod_pa"));
+                    FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                    txtEdad5.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
+                    FechaEx5.setDate(oConn.setResult.getDate("fecha"));
+                } else {
+                    oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());
+            }
+        }
+        
+    }//GEN-LAST:event_btnEditarIn5ActionPerformed
+
+    private void FechaEx5PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaEx5PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FechaEx5PropertyChange
+
+    private void txtNombres5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombres5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombres5ActionPerformed
+
+    private void btnGrabarIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn5ActionPerformed
+        // TODO add your handling code here:
+        if (OrdenExiste5()) {
+            Actualizar5();
+            limpiar5();
+
+        } else {
+            if (!txtNorden5.getText().isEmpty()) {
+                try {
+                    if (validar5()) {
+                        if (Grabar5()) {
+                            imprimir5();
+                            limpiar5();
+                        }
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_btnGrabarIn5ActionPerformed
+
+    private void btnLimpiarIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarIn5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpiarIn5ActionPerformed
+
+    private void txtImprimir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimir5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtImprimir5ActionPerformed
+
+    private void btnImprimir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir5ActionPerformed
+        // TODO add your handling code here:
+        if (!txtImprimir5.getText().isEmpty()) {
+            //System.out.println("el valor de imprimit es:"+txtImprimirIn1.getText());
+            print5(Integer.valueOf(txtImprimir5.getText()));
+        }
+    }//GEN-LAST:event_btnImprimir5ActionPerformed
+
+    private void txtDni5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDni5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDni5ActionPerformed
+
+    private void printIn4(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "conInformadoOcupacional.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("CONSENTIMIENTO INFORMADO");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
+    public void limpiar4() {
+        txtNordenIn4.setText("");
+        txtNombresIn4.setText("");
+        txtDniIn4.setText("");
+        FechaExIn4.setDate(null);
+        txtLaboral.setText("");
+        txtLaempresa.setText("");
+        txtNordenIn4.setEditable(true);
+    }
+
     private void Busca() {
         if (!txtEOrden.getText().isEmpty()) {
-           String sql="Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'"; if (OrdenExiste()) {
+            String sql = "Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'";
+            if (OrdenExiste()) {
                 String Sql = "SELECT d.nombres_pa||' '||d.apellidos_pa AS nombres,n.nom_examen FROM "
                         + "datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa)WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'";
                 oConn.FnBoolQueryExecute(Sql);
@@ -6064,15 +6444,16 @@ public void cerrarVentana(){
         return bResultado;
 
     }
+
     public void Ordenobservado() {
-        int cont=1;
+        int cont = 1;
         String sQuery;
         String observacion = "Observado en: \n";
-        sQuery = "SELECT d.cod_pa, d.nombres_pa, n.n_orden,examenes\n" +
-                "FROM datos_paciente as d\n" +
-                "inner join n_orden_ocupacional as n on(n.cod_pa=d.cod_pa)\n" +
-                "inner join observaciones as o on(o.n_orden=n.n_orden)\n" +
-                "where n.cod_pa=" + txtDni.getText().toString();
+        sQuery = "SELECT d.cod_pa, d.nombres_pa, n.n_orden,examenes\n"
+                + "FROM datos_paciente as d\n"
+                + "inner join n_orden_ocupacional as n on(n.cod_pa=d.cod_pa)\n"
+                + "inner join observaciones as o on(o.n_orden=n.n_orden)\n"
+                + "where n.cod_pa=" + txtDni.getText().toString();
 
         //Ejecuta el Query
         oConn.FnBoolQueryExecute(sQuery);
@@ -6080,10 +6461,10 @@ public void cerrarVentana(){
         try {
 
             // Verifico que haya habido resultados
-            while(oConn.setResult.next() && cont<5) {
+            while (oConn.setResult.next() && cont < 5) {
                 cont++;
-                observacion+=oConn.setResult.getString("examenes");
-                
+                observacion += oConn.setResult.getString("examenes");
+
             }
             oFunc.SubSistemaMensajeInformacion(observacion);
             // Cierro los Resultados
@@ -6101,141 +6482,161 @@ public void cerrarVentana(){
         FechaFicha.setDate(fechaDate);
         FechaRx.setDate(fechaDate);
     }
-    
-    void editar(){
-        
-                String Consulta = "SELECT d.cod_pa,d.nombres_pa,d.apellidos_pa,d.fecha_nacimiento_pa,d.sexo_pa,d.lugar_nac_pa,d.direccion_pa,\n" +
-                    "d.tel_casa_pa,d.cel_pa,d.estado_civil_pa,d.nivel_est_pa,n.razon_empresa,n.razon_contrata,n.nom_examen,n.nom_ex,\n" +
-                    "n.altura_po,n.mineral_po,n.cargo_de,n.area_o,ap.txtvhijosvivos,ap.txtvhijosfallecidos,ap.txtdhijosvivos,ap.txtdhijosfallecidos,\n" +
-                    "triaje.talla,triaje.peso,triaje.imc,triaje.sistolica,triaje.diastolica,triaje.f_respiratoria,triaje.f_cardiaca,\n" +
-                    "triaje.sat_02,triaje.temperatura,triaje.cintura,triaje.cadera,triaje.icc,triaje.perimetro_cuello,o.v_cerca_s_od,\n" +
-                    "o.v_cerca_s_oi,o.v_cerca_c_od,o.v_cerca_c_oi,o.v_lejos_s_od,o.v_lejos_s_oi,o.v_lejos_c_od,o.v_lejos_c_oi,o.v_binocular, \n" +
-                    "o.e_oculares,o.e_oculares1, odontograma.txtausentes,odontograma.txtobservaciones,odontograma.txtpiezasmalestado,r.txtobservacionesrt,\n" +
-                    "l.txtobservacioneslb, e.txtobservacionesrs,l.txtglucosabio,l.txtvsg,l.txtcocaina,l.txtmarihuana,l.txtcreatininabio,m.o_d_500,m.o_d_1000,m.o_d_2000,m.o_d_3000,\n" +
-                    "m.o_d_4000,m.o_d_6000,m.o_d_8000,m.o_i_500,m.o_i_1000,m.o_i_2000,m.o_i_3000,m.o_i_4000,m.o_i_6000,m.o_i_8000,m.diagnostico ,\n" +
-                    "funcion_abs.fvc,funcion_abs.fev1,funcion_abs.fev1fvc,funcion_abs.fef25_75,funcion_abs.interpretacion,funcion_abs.interpretacion,\n" +
-                    "a.fecha, a.chkruido, a.chkpolvo, a.chkvidsegmentario,a.chkvidtotal, a.chkcancerigenos, a.chkmutagenicos, a.chksolventes, a.chkmetales,  \n" +
-                    "a.chktemperatura, a.chkbiologicos, a.chkposturas, a.chkturnos, a.chkcargas, a.chkmovrepet, a.chkpvd, a.chkotros, a.tbrsi, a.rbrno, a.chktnada,\n" +
-                    "a.chktpoco,a.chkthabitual, a.chktexcesivo, a.chkanada, a.chkapoco, a.chkahabitual, a.chkaexcesivo, a.chkdnada, a.chkdpoco, a.chkdhabitual, \n" +
-                    "a.chkdexcesivo,a.txtpuestoactual, a.txttiempo, a.txtantecedentespersonales, a.txtantecedentesfamiliares,\n" +
-                    "a.txtcabeza, a.txtnariz, a.txtcuello,a.txtperimetro, a.txtb_a_f_l, a.txtvisioncolores, a.txtenfermedadesoculares,a.txtdiagnosticoaudio,a.txtenfermedadesoculares2,a.txtreflejospupilares, \n" +
-                    "a.txtbinocular, a.txtod, a.txtoi, a.txttorax, a.txtcorazon, a.rbnormal, a.rbanormal, a.txtpulmones, a.txtmiembrossuperiores, \n" +
-                    "a.txtmiembrosinferiores,a.txtreflejososteotendinosos, a.txtmarcha, a.txtcolumnavertebral, a.txtabdomen,a.txtanillosinguinales, \n" +
-                    "a.txtorganosgenitales, a.rbtnohizo, a.rbtnormal,a.rbtanormal, a.chkdescribirobservacion, a.txthernias, a.txtvarices, a.txtganglios,\n" +
-                    "a.txtlenguage, a.txtobservacionesfm, a.txtconclusion,tetano,hepatitisb,fiebreamarilla\n" +
-                    "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa) \n" +
-                    "INNER JOIN antecedentes_patologicos AS ap ON(n.n_orden = ap.n_orden) INNER JOIN triaje ON(n.n_orden = triaje.n_orden) \n" +
-                    "INNER JOIN oftalmologia AS o ON(n.n_orden = o.n_orden)\n" +
-                    "INNER JOIN funcion_abs ON(n.n_orden = funcion_abs.n_orden)\n" +
-                    "INNER JOIN radiografia_torax AS r ON(n.n_orden = r.n_orden)\n" +
-                    "INNER JOIN lab_clinico AS l ON(n.n_orden = l.n_orden)\n" +
-                    "left JOIN ex_radiograficos_sanguineos AS e ON(n.n_orden = e.n_orden)\n" +
-                    "INNER JOIN odontograma ON(n.n_orden = odontograma.n_orden)\n" +
-                    "INNER JOIN audiometria_po AS m ON(n.n_orden =m.n_orden)\n" +
-                    "INNER JOIN anexo7c as a ON(n.n_orden = a.n_orden)\n" +
-                    "WHERE a.n_orden ='" + txtNorden.getText().toString() + "'";
-                
-                oConn.FnBoolQueryExecute(Consulta);
-                
-                try {
-                    if (oConn.setResult.next()) {
-                       
-                        if (oConn.setResult.getString("txtobservaciones") != null) {
-                            txtObservacionesFichaMedica.append("-ODONTOGRAMA : " + oConn.setResult.getString("txtobservaciones").concat("\n"));
-                            
-                        }
-                        txtObservOdonto.setText(oConn.setResult.getString("txtobservaciones"));
-                        if (oConn.setResult.getString("txtobservacionesrt") != null) {
-                            txtObservacionesFichaMedica.append("-RADIOGRAFIA : " + oConn.setResult.getString("txtobservacionesrt").concat("\n"));
-                        }
-                        if (oConn.setResult.getString("txtobservacioneslb") != null) {
-                            txtObservacionesFichaMedica.append("-LAB CLINICO: " + oConn.setResult.getString("txtobservacioneslb").concat("\n"));
-                        }
-                         String coca=oConn.setResult.getString("txtcocaina");
-                         String marig=oConn.setResult.getString("txtmarihuana");
-                         if(coca!=null && marig!=null){
-                            if ("REACTIVO".equals(coca)||"POSITIVO".equals(coca)) {
-                                txtObservacionesFichaMedica.append("-COCAINA: " + coca.concat("\n"));
-                                txtCoca.setForeground(Color.red);
-                                txtCoca.setText(coca);
-                            } else {
-                                txtObservacionesFichaMedica.append("-COCAINA: " + coca.concat("\n"));
-                                txtCoca.setText(coca);
-                            }
-                            if ("REACTIVO".equals(marig)||"POSITIVO".equals(marig)) {
-                                txtObservacionesFichaMedica.append("-MARIHUANA: " + marig.concat("\n"));
-                                txtMarig.setForeground(Color.red);
-                                txtMarig.setText(marig);
-                            } else {
-                                txtObservacionesFichaMedica.append("-MARIHUANA: " + marig.concat("\n"));
-                                txtMarig.setText(marig);
-                            }
-                        }
-                         
-                            String vsg=oConn.setResult.getString("txtvsg");
-                            String gluc=oConn.setResult.getString("txtglucosabio");
-                            String creat=oConn.setResult.getString("txtcreatininabio");
-                            
-                            txtVSG.setText(vsg);
-                            txtGlucosaBio.setText(gluc);
-                            txtCreatininaBio.setText(creat);
-                            if(!txtGlucosaBio.getText().isEmpty()&& !"N/A".equals(txtGlucosaBio.getText()) ){
-                            float glucosa = Float.parseFloat(txtGlucosaBio.getText().toString());
-                                if (glucosa >= 110 || glucosa < 70) {
-                                    txtGlucosaBio.setForeground(Color.red);
-                                } else {
-                                    txtGlucosaBio.setForeground(Color.black);
-                                }
-                            }
-                            
-                        if (!txtCreatininaBio.getText().isEmpty()&& !"N/A".equals(txtCreatininaBio.getText()) ) {
-                            float cretinina = Float.parseFloat(txtCreatininaBio.getText().toString());
-                            if (cretinina >= 1.4 || cretinina < 0.8) {
-                                txtCreatininaBio.setForeground(Color.red);
-                            } else {
-                                txtCreatininaBio.setForeground(Color.black);
-                            }
 
-                        }
+    void editar() {
+
+        String Consulta = "SELECT d.cod_pa,d.nombres_pa,d.apellidos_pa,d.fecha_nacimiento_pa,d.sexo_pa,d.lugar_nac_pa,d.direccion_pa,\n"
+                + "d.tel_casa_pa,d.cel_pa,d.estado_civil_pa,d.nivel_est_pa,n.razon_empresa,n.razon_contrata,n.nom_examen,n.nom_ex,\n"
+                + "n.altura_po,n.mineral_po,n.cargo_de,n.area_o,ap.txtvhijosvivos,ap.txtvhijosfallecidos,ap.txtdhijosvivos,ap.txtdhijosfallecidos,\n"
+                + "triaje.talla,triaje.peso,triaje.imc,triaje.sistolica,triaje.diastolica,triaje.f_respiratoria,triaje.f_cardiaca,\n"
+                + "triaje.sat_02,triaje.temperatura,triaje.cintura,triaje.cadera,triaje.icc,triaje.perimetro_cuello,o.v_cerca_s_od,\n"
+                + "o.v_cerca_s_oi,o.v_cerca_c_od,o.v_cerca_c_oi,o.v_lejos_s_od,o.v_lejos_s_oi,o.v_lejos_c_od,o.v_lejos_c_oi,o.v_binocular, \n"
+                + "o.e_oculares,o.e_oculares1, odontograma.txtausentes,odontograma.txtobservaciones,odontograma.txtpiezasmalestado,r.txtobservacionesrt,\n"
+                + "l.txtobservacioneslb, e.txtobservacionesrs,l.txtglucosabio,l.txtvsg,l.txtcocaina,l.txtmarihuana,l.txtcreatininabio,"
+                + "CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_d_500 else m.o_d_500 end as o_d_500 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_d_1000 else m.o_d_1000 end as o_d_1000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_d_2000 else m.o_d_2000 end as o_d_2000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_d_3000 else m.o_d_3000 end as o_d_3000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_d_4000 else m.o_d_4000 end as o_d_4000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_d_6000 else m.o_d_6000 end as o_d_6000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_d_8000 else m.o_d_8000 end as o_d_8000 ,\n" +
+"\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_i_500 else m.o_i_500 end as o_i_500 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_i_1000 else m.o_i_1000 end as o_i_1000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_i_2000 else m.o_i_2000 end as o_i_2000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_i_3000 else m.o_i_3000 end as o_i_3000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_i_4000 else m.o_i_4000 end as o_i_4000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_i_6000 else m.o_i_6000 end as o_i_6000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN au.o_i_8000 else m.o_i_8000 end as o_i_8000 ,\n" +
+"CASE WHEN n.razon_empresa='MINERA BOROO MISQUICHILCA S.A.' THEN '' else m.diagnostico end as diagnostico ,\n" +
+"au.chkdnormal, au.chkdtaleveod, au.chkdtaleveoi, au.chkdtaavanzadood, au.chkdtaavanzadooi, \n" +
+"       au.chkdhrleveod, au.chkdhrleveoi, au.chkdhrmoderadood, au.chkdhrmoderadooi, \n" +
+"       au.chkdhravanzadaod, au.chkdhravanzadaoi, au.chkotrashipoacusias, au.txtotrashipoacusias,"
+                + "funcion_abs.fvc,funcion_abs.fev1,funcion_abs.fev1fvc,funcion_abs.fef25_75,funcion_abs.interpretacion,funcion_abs.interpretacion,\n"
+                + "a.fecha, a.chkruido, a.chkpolvo, a.chkvidsegmentario,a.chkvidtotal, a.chkcancerigenos, a.chkmutagenicos, a.chksolventes, a.chkmetales,  \n"
+                + "a.chktemperatura, a.chkbiologicos, a.chkposturas, a.chkturnos, a.chkcargas, a.chkmovrepet, a.chkpvd, a.chkotros, a.tbrsi, a.rbrno, a.chktnada,\n"
+                + "a.chktpoco,a.chkthabitual, a.chktexcesivo, a.chkanada, a.chkapoco, a.chkahabitual, a.chkaexcesivo, a.chkdnada, a.chkdpoco, a.chkdhabitual, \n"
+                + "a.chkdexcesivo,a.txtpuestoactual, a.txttiempo, a.txtantecedentespersonales, a.txtantecedentesfamiliares,\n"
+                + "a.txtcabeza, a.txtnariz, a.txtcuello,a.txtperimetro, a.txtb_a_f_l, a.txtvisioncolores, a.txtenfermedadesoculares,a.txtdiagnosticoaudio,a.txtenfermedadesoculares2,a.txtreflejospupilares, \n"
+                + "a.txtbinocular, a.txtod, a.txtoi, a.txttorax, a.txtcorazon, a.rbnormal, a.rbanormal, a.txtpulmones, a.txtmiembrossuperiores, \n"
+                + "a.txtmiembrosinferiores,a.txtreflejososteotendinosos, a.txtmarcha, a.txtcolumnavertebral, a.txtabdomen,a.txtanillosinguinales, \n"
+                + "a.txtorganosgenitales, a.rbtnohizo, a.rbtnormal,a.rbtanormal, a.chkdescribirobservacion, a.txthernias, a.txtvarices, a.txtganglios,\n"
+                + "a.txtlenguage, a.txtobservacionesfm, a.txtconclusion,tetano,hepatitisb,fiebreamarilla,txtdiagnosticoaudio\n"
+                + "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa) \n"
+                + "INNER JOIN antecedentes_patologicos AS ap ON(n.n_orden = ap.n_orden) INNER JOIN triaje ON(n.n_orden = triaje.n_orden) \n"
+                + "LEFT JOIN oftalmologia AS o ON(n.n_orden = o.n_orden)\n"
+                + "INNER JOIN funcion_abs ON(n.n_orden = funcion_abs.n_orden)\n"
+                + "INNER JOIN radiografia_torax AS r ON(n.n_orden = r.n_orden)\n"
+                + "INNER JOIN lab_clinico AS l ON(n.n_orden = l.n_orden)\n"
+                + "left JOIN ex_radiograficos_sanguineos AS e ON(n.n_orden = e.n_orden)\n"
+                + "INNER JOIN odontograma ON(n.n_orden = odontograma.n_orden)\n"
+                + "LEFT JOIN audiometria_po AS m ON(n.n_orden =m.n_orden)\n"
+                + "INNER JOIN anexo7c as a ON(n.n_orden = a.n_orden)\n"
+                + "LEFT JOIN audiometria_2021 AS au ON(n.n_orden =au.n_orden)\n" 
+                + "LEFT JOIN oftalmologia2021 AS oft ON(n.n_orden =oft.n_orden)"
+                + "WHERE a.n_orden ='" + txtNorden.getText().toString() + "'";
+
+        oConn.FnBoolQueryExecute(Consulta);
+
+        try {
+            if (oConn.setResult.next()) {
+
+                if (oConn.setResult.getString("txtobservaciones") != null) {
+                    txtObservacionesFichaMedica.append("-ODONTOGRAMA : " + oConn.setResult.getString("txtobservaciones").concat("\n"));
+
+                }
+                txtObservOdonto.setText(oConn.setResult.getString("txtobservaciones"));
+                if (oConn.setResult.getString("txtobservacionesrt") != null) {
+                    txtObservacionesFichaMedica.append("-RADIOGRAFIA : " + oConn.setResult.getString("txtobservacionesrt").concat("\n"));
+                }
+                if (oConn.setResult.getString("txtobservacioneslb") != null) {
+                    txtObservacionesFichaMedica.append("-LAB CLINICO: " + oConn.setResult.getString("txtobservacioneslb").concat("\n"));
+                }
+                String coca = oConn.setResult.getString("txtcocaina");
+                String marig = oConn.setResult.getString("txtmarihuana");
+                if (coca != null && marig != null) {
+                    if ("REACTIVO".equals(coca) || "POSITIVO".equals(coca)) {
+                        txtObservacionesFichaMedica.append("-COCAINA: " + coca.concat("\n"));
+                        txtCoca.setForeground(Color.red);
+                        txtCoca.setText(coca);
+                    } else {
+                        txtObservacionesFichaMedica.append("-COCAINA: " + coca.concat("\n"));
+                        txtCoca.setText(coca);
+                    }
+                    if ("REACTIVO".equals(marig) || "POSITIVO".equals(marig)) {
+                        txtObservacionesFichaMedica.append("-MARIHUANA: " + marig.concat("\n"));
+                        txtMarig.setForeground(Color.red);
+                        txtMarig.setText(marig);
+                    } else {
+                        txtObservacionesFichaMedica.append("-MARIHUANA: " + marig.concat("\n"));
+                        txtMarig.setText(marig);
+                    }
+                }
+
+                String vsg = oConn.setResult.getString("txtvsg");
+                String gluc = oConn.setResult.getString("txtglucosabio");
+                String creat = oConn.setResult.getString("txtcreatininabio");
+
+                txtVSG.setText(vsg);
+                txtGlucosaBio.setText(gluc);
+                txtCreatininaBio.setText(creat);
+                if (!txtGlucosaBio.getText().isEmpty() && !"N/A".equals(txtGlucosaBio.getText())) {
+                    float glucosa = Float.parseFloat(txtGlucosaBio.getText().toString());
+                    if (glucosa >= 110 || glucosa < 70) {
+                        txtGlucosaBio.setForeground(Color.red);
+                    } else {
+                        txtGlucosaBio.setForeground(Color.black);
+                    }
+                }
+
+                if (!txtCreatininaBio.getText().isEmpty() && !"N/A".equals(txtCreatininaBio.getText())) {
+                    float cretinina = Float.parseFloat(txtCreatininaBio.getText().toString());
+                    if (cretinina >= 1.4 || cretinina < 0.8) {
+                        txtCreatininaBio.setForeground(Color.red);
+                    } else {
+                        txtCreatininaBio.setForeground(Color.black);
+                    }
+
+                }
 //                            txtOtrosEx.setText(coca);
-                            txtOtrosEx.append("-HEMOGRAMA: NORMAL. \n");
-                            txtOtrosEx.append(gluc== null ? "":("-GLUCOSA: "+ gluc+ " mg/dl. \n"));
-                            txtOtrosEx.append (creat== null ? "":("-CREATININA: "+ creat + " mg/dl. \n"));
-                            txtOtrosEx.append (vsg == null ? "":("-VSG: "+ vsg + ". \n"));
-                            txtOtrosEx.append("-EX ORINA: NORMAL. \n");
-                            txtOtrosEx.append (coca == null ? "":("-COCAINA: " +coca+". \n"));
-                            txtOtrosEx.append (marig== null ? "":("-MARIHUANA: "+marig+ "."));
-                        if (oConn.setResult.getString("txtobservacionesrs") != null) {
-                            txtObservacionesFichaMedica.append("-EX. RX SANGUINEOS : " + oConn.setResult.getString("txtobservacionesrs").concat("\n"));
-                        }
-                        
-                        //txtObservacionesFichaMedica.append(oConn.setResult.getString("txtobservaciones")== null ? "":"-Odontograma : "+ oConn.setResult.getString("txtobservaciones").concat("\n"));
-                        //txtObservacionesFichaMedica.append(oConn.setResult.getString("txtobservacionesrt")== null ? "":"-Radiografia : "+ oConn.setResult.getString("txtobservacionesrt").concat("\n"));
-                        //txtObservacionesFichaMedica.append(oConn.setResult.getString("txtobservacioneslb")== null ? "":"-Laboratorio Clinico: "+ oConn.setResult.getString("txtobservacioneslb").concat("\n"));
-                        //.append(oConn.setResult.getString("txtobservacionesrs")== null ? "":"-Ex.Radiografico Sanguineo : "+ oConn.setResult.getString("txtobservacionesrs").concat("\n"));
-                        txtTipoExamen.setText(oConn.setResult.getString("nom_examen"));
-                        txtDni.setText(oConn.setResult.getString("cod_pa"));
-                        txtNombre.setText(oConn.setResult.getString("nombres_pa"));
-                        txtApellido.setText(oConn.setResult.getString("apellidos_pa"));
-                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                        txtSexo.setText(oConn.setResult.getString("sexo_pa"));
-                        txtLugarNacimiento.setText(oConn.setResult.getString("lugar_nac_pa"));
-                        txtDomicilio.setText(oConn.setResult.getString("direccion_pa"));
-                        txtTelefono.setText(oConn.setResult.getString("tel_casa_pa"));//== null ? "-":oConn.setResult.getString("cel_pa"));
-                        txtEstadoCivil.setText(oConn.setResult.getString("estado_civil_pa"));
-                        txtGradoInstruccion.setText(oConn.setResult.getString("nivel_est_pa"));
-                        txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                        txtContrata.setText(oConn.setResult.getString("razon_contrata"));
-                        txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
-                        txtExplotacionEn.setText(oConn.setResult.getString("nom_ex"));
-                        txtAlturaLabor.setText(oConn.setResult.getString("altura_po"));
-                        txtMineralesExplotados.setText(oConn.setResult.getString("mineral_po"));
-                        txtPuestoPostula.setText(oConn.setResult.getString("cargo_de"));
-                        if ("ANUAL".equals(txtTipoExamen.getText().toString())) {
-                            txtPuestoActual.setText(oConn.setResult.getString("cargo_de"));
-                        }
-                        txtArea.setText(oConn.setResult.getString("area_o"));
-                        txtFVC.setText(oConn.setResult.getString("fvc"));
+                txtOtrosEx.append("-HEMOGRAMA: NORMAL. \n");
+                txtOtrosEx.append(gluc == null ? "" : ("-GLUCOSA: " + gluc + " mg/dl. \n"));
+                txtOtrosEx.append(creat == null ? "" : ("-CREATININA: " + creat + " mg/dl. \n"));
+                txtOtrosEx.append(vsg == null ? "" : ("-VSG: " + vsg + ". \n"));
+                txtOtrosEx.append("-EX ORINA: NORMAL. \n");
+                txtOtrosEx.append(coca == null ? "" : ("-COCAINA: " + coca + ". \n"));
+                txtOtrosEx.append(marig == null ? "" : ("-MARIHUANA: " + marig + "."));
+                if (oConn.setResult.getString("txtobservacionesrs") != null) {
+                    txtObservacionesFichaMedica.append("-EX. RX SANGUINEOS : " + oConn.setResult.getString("txtobservacionesrs").concat("\n"));
+                }
+
+                //txtObservacionesFichaMedica.append(oConn.setResult.getString("txtobservaciones")== null ? "":"-Odontograma : "+ oConn.setResult.getString("txtobservaciones").concat("\n"));
+                //txtObservacionesFichaMedica.append(oConn.setResult.getString("txtobservacionesrt")== null ? "":"-Radiografia : "+ oConn.setResult.getString("txtobservacionesrt").concat("\n"));
+                //txtObservacionesFichaMedica.append(oConn.setResult.getString("txtobservacioneslb")== null ? "":"-Laboratorio Clinico: "+ oConn.setResult.getString("txtobservacioneslb").concat("\n"));
+                //.append(oConn.setResult.getString("txtobservacionesrs")== null ? "":"-Ex.Radiografico Sanguineo : "+ oConn.setResult.getString("txtobservacionesrs").concat("\n"));
+                txtTipoExamen.setText(oConn.setResult.getString("nom_examen"));
+                txtDni.setText(oConn.setResult.getString("cod_pa"));
+                txtNombre.setText(oConn.setResult.getString("nombres_pa"));
+                txtApellido.setText(oConn.setResult.getString("apellidos_pa"));
+                FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                txtSexo.setText(oConn.setResult.getString("sexo_pa"));
+                txtLugarNacimiento.setText(oConn.setResult.getString("lugar_nac_pa"));
+                txtDomicilio.setText(oConn.setResult.getString("direccion_pa"));
+                txtTelefono.setText(oConn.setResult.getString("tel_casa_pa"));//== null ? "-":oConn.setResult.getString("cel_pa"));
+                txtEstadoCivil.setText(oConn.setResult.getString("estado_civil_pa"));
+                txtGradoInstruccion.setText(oConn.setResult.getString("nivel_est_pa"));
+                txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
+                txtContrata.setText(oConn.setResult.getString("razon_contrata"));
+                txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
+                txtExplotacionEn.setText(oConn.setResult.getString("nom_ex"));
+                txtAlturaLabor.setText(oConn.setResult.getString("altura_po"));
+                txtMineralesExplotados.setText(oConn.setResult.getString("mineral_po"));
+                txtPuestoPostula.setText(oConn.setResult.getString("cargo_de"));
+                if ("ANUAL".equals(txtTipoExamen.getText().toString())) {
+                    txtPuestoActual.setText(oConn.setResult.getString("cargo_de"));
+                }
+                txtArea.setText(oConn.setResult.getString("area_o"));
+                txtFVC.setText(oConn.setResult.getString("fvc"));
 //                          if(!txtFVC.getText().isEmpty() && !"N/A".equals(txtFVC.getText().toString())){
 //                            float fvc=Float.parseFloat(txtFVC.getText().toString());
 //                            if(fvc >=80){
@@ -6246,8 +6647,8 @@ public void cerrarVentana(){
 //                                txtObservacionesFichaMedica.append("-PATRON RESTRICTIVO LEVE.EVALUACION EN 6 MESES." + '\n' );
 //                            } 
 //                        }
-                        txtFEV1.setText(oConn.setResult.getString("fev1"));
-                        txtFEV1FVC.setText(oConn.setResult.getString("fev1fvc"));
+                txtFEV1.setText(oConn.setResult.getString("fev1"));
+                txtFEV1FVC.setText(oConn.setResult.getString("fev1fvc"));
 //                         if(!txtFEV1FVC.getText().isEmpty()&&!"N/A".equals(txtFVC.getText().toString())){
 //                           float fev1fvc=Float.parseFloat(txtFEV1FVC.getText().toString());
 //                           if(fev1fvc >=70.0){
@@ -6259,327 +6660,351 @@ public void cerrarVentana(){
 //                               txtObservacionesFichaMedica.append("-PATRON OBSTRUCTIVO LEVE. EVALUACION EN 6 MESES." + '\n' );
 //                           } 
 //                        }
-                        txtFEF2575.setText(oConn.setResult.getString("fef25_75"));
-                        txtConclusion.setText(oConn.setResult.getString("interpretacion"));
-                        txtMalEstado.setText(oConn.setResult.getString("txtpiezasmalestado"));
+                txtFEF2575.setText(oConn.setResult.getString("fef25_75"));
+                txtConclusion.setText(oConn.setResult.getString("interpretacion"));
+                txtMalEstado.setText(oConn.setResult.getString("txtpiezasmalestado"));
 //                        if(!txtMalEstado.getText().isEmpty()){
 //                            float malEstado = Float.parseFloat(txtMalEstado.getText().toString());
 //                            if (malEstado >=1) {
 //                            txtObservacionesFichaMedica.append("-CARIES DENTAL.TTO.EVALUACION EN 6 MESES." + '\n');
 //                            }
 //                        }
-                        txtFaltan.setText(oConn.setResult.getString("txtausentes"));
-                        if (txtSexo.getText().equals("M")) {
-                            txtHijosvivos.setText(oConn.setResult.getString("txtvhijosvivos") == null ? "0" : oConn.setResult.getString("txtvhijosvivos"));
-                            txtHijosMuertos.setText(oConn.setResult.getString("txtvhijosfallecidos") == null ? "0" : oConn.setResult.getString("txtvhijosfallecidos"));
-                        } else {
-                            txtHijosvivos.setText(oConn.setResult.getString("txtdhijosvivos") == null ? "0" : oConn.setResult.getString("txtdhijosvivos"));
-                            txtHijosMuertos.setText(oConn.setResult.getString("txtdhijosfallecidos") == null ? "0" : oConn.setResult.getString("txtdhijosfallecidos"));
-                        }
-                        txtIMC.setText(oConn.setResult.getString("imc"));
+                txtFaltan.setText(oConn.setResult.getString("txtausentes"));
+                if (txtSexo.getText().equals("M")) {
+                    txtHijosvivos.setText(oConn.setResult.getString("txtvhijosvivos") == null ? "0" : oConn.setResult.getString("txtvhijosvivos"));
+                    txtHijosMuertos.setText(oConn.setResult.getString("txtvhijosfallecidos") == null ? "0" : oConn.setResult.getString("txtvhijosfallecidos"));
+                } else {
+                    txtHijosvivos.setText(oConn.setResult.getString("txtdhijosvivos") == null ? "0" : oConn.setResult.getString("txtdhijosvivos"));
+                    txtHijosMuertos.setText(oConn.setResult.getString("txtdhijosfallecidos") == null ? "0" : oConn.setResult.getString("txtdhijosfallecidos"));
+                }
+                txtIMC.setText(oConn.setResult.getString("imc"));
 
-                        txtTalla.setText(oConn.setResult.getString("talla"));
-                        txtPeso.setText(oConn.setResult.getString("peso"));
-                        txtPerimetro.setText(oConn.setResult.getString("perimetro_cuello"));
-                        txtTemperatura.setText(oConn.setResult.getString("temperatura"));
-                        txtCintura.setText(oConn.setResult.getString("cintura"));
-                        txtCadera.setText(oConn.setResult.getString("cadera"));
-                        txticc.setText(oConn.setResult.getString("icc"));
-                        txtFrespiratoria.setText(oConn.setResult.getString("f_respiratoria"));
-                        txtFcardiaca.setText(oConn.setResult.getString("f_cardiaca"));
-                        txtSatO2.setText(oConn.setResult.getString("sat_02"));
-                        txtSistolica.setText(oConn.setResult.getString("sistolica"));
-                        txtDiastolica.setText(oConn.setResult.getString("diastolica"));
-                        txtConclusion.setText(oConn.setResult.getString("interpretacion"));
-                        //
-                        txtCercaSinCorregirOD.setText(oConn.setResult.getString("v_cerca_s_od"));
-                        txtCercaSinCorregirOI.setText(oConn.setResult.getString("v_cerca_s_oi"));
-                        txtCercaCorregidaOD.setText(oConn.setResult.getString("v_cerca_c_od"));
-                        txtCercaCorregidaOI.setText(oConn.setResult.getString("v_cerca_c_oi"));
-                        txtLejosSinCorregirOD.setText(oConn.setResult.getString("v_lejos_s_od"));
-                        txtLejosSinCorregirOI.setText(oConn.setResult.getString("v_lejos_s_oi"));
-                        txtLejosCorregidaOD.setText(oConn.setResult.getString("v_lejos_c_od"));
-                        txtLejosCorregidaOI.setText(oConn.setResult.getString("v_lejos_c_oi"));
-                        txtBinocular.setText(oConn.setResult.getString("v_binocular"));
-                        
-      
-                        txtOD500.setText(oConn.setResult.getString("o_d_500"));
-                        txtOD1000.setText(oConn.setResult.getString("o_d_1000"));
-                        txtOD2000.setText(oConn.setResult.getString("o_d_2000"));
-                        txtOD3000.setText(oConn.setResult.getString("o_d_3000"));
-                        txtOD4000.setText(oConn.setResult.getString("o_d_4000"));
-                        txtOD6000.setText(oConn.setResult.getString("o_d_6000"));
-                        txtOD8000.setText(oConn.setResult.getString("o_d_8000"));
-                        txtOI500.setText(oConn.setResult.getString("o_i_500"));
-                        txtOI1000.setText(oConn.setResult.getString("o_i_1000"));
-                        txtOI2000.setText(oConn.setResult.getString("o_i_2000"));
-                        txtOI3000.setText(oConn.setResult.getString("o_i_3000"));
-                        txtOI4000.setText(oConn.setResult.getString("o_i_4000"));
-                        txtOI6000.setText(oConn.setResult.getString("o_i_6000"));
-                        txtOI8000.setText(oConn.setResult.getString("o_i_8000"));
-                        
-                      
-                        //anexo7c....................................
-                        FechaFicha.setDate(oConn.setResult.getDate("fecha"));
-                        chkRuido.setSelected(oConn.setResult.getBoolean("chkruido"));
-                        chkPolvo.setSelected(oConn.setResult.getBoolean("chkpolvo"));
-                        chkVidSegmentario.setSelected(oConn.setResult.getBoolean("chkvidsegmentario"));
-                        chkVidTotal.setSelected(oConn.setResult.getBoolean("chkvidtotal"));
-                        chkCancerigenos.setSelected(oConn.setResult.getBoolean("chkcancerigenos"));
-                        chkMutagenicos.setSelected(oConn.setResult.getBoolean("chkmutagenicos"));
-                        chkSolventes.setSelected(oConn.setResult.getBoolean("chksolventes"));
-                        chkMetales.setSelected(oConn.setResult.getBoolean("chkmetales"));
-                        chkTemperatura.setSelected(oConn.setResult.getBoolean("chktemperatura"));
-                        chkBiologicos.setSelected(oConn.setResult.getBoolean("chkbiologicos"));
-                        chkPosturas.setSelected(oConn.setResult.getBoolean("chkposturas"));
-                        chkTurnos.setSelected(oConn.setResult.getBoolean("chkturnos"));
-                        chkCargas.setSelected(oConn.setResult.getBoolean("chkcargas"));
-                        chkMovRepet.setSelected(oConn.setResult.getBoolean("chkmovrepet"));
-                        chkPVD.setSelected(oConn.setResult.getBoolean("chkpvd"));
-                        chkOtros.setSelected(oConn.setResult.getBoolean("chkotros"));
-                        tbRsi.setSelected(oConn.setResult.getBoolean("tbrsi"));
-                        rbRno.setSelected(oConn.setResult.getBoolean("rbrno"));
-                        chkTNada.setSelected(oConn.setResult.getBoolean("chktnada"));
-                        chkTPoco.setSelected(oConn.setResult.getBoolean("chktpoco"));
-                        chkTHabitual.setSelected(oConn.setResult.getBoolean("chkthabitual"));
-                        chkTExcesivo.setSelected(oConn.setResult.getBoolean("chktexcesivo"));
-                        chkANada.setSelected(oConn.setResult.getBoolean("chkanada"));
-                        chkAPoco.setSelected(oConn.setResult.getBoolean("chkapoco"));
-                        chkAHabitual.setSelected(oConn.setResult.getBoolean("chkahabitual"));
-                        chkAExcesivo.setSelected(oConn.setResult.getBoolean("chkaexcesivo"));
-                        chkDNada.setSelected(oConn.setResult.getBoolean("chkdnada"));
-                        chkDPoco.setSelected(oConn.setResult.getBoolean("chkdpoco"));
-                        chkDHabitual.setSelected(oConn.setResult.getBoolean("chkdhabitual"));
-                        chkDExcesivo.setSelected(oConn.setResult.getBoolean("chkdexcesivo"));
-                        txtPuestoActual.setText(oConn.setResult.getString("txtpuestoactual"));
-                        txtTiempo.setText(oConn.setResult.getString("txttiempo"));
-                        txtAntecedentesPersonales.setText(oConn.setResult.getString("txtantecedentespersonales"));
-                        txtAntecedentesFamiliares.setText(oConn.setResult.getString("txtantecedentesfamiliares"));
+                txtTalla.setText(oConn.setResult.getString("talla"));
+                txtPeso.setText(oConn.setResult.getString("peso"));
+                txtPerimetro.setText(oConn.setResult.getString("perimetro_cuello"));
+                txtTemperatura.setText(oConn.setResult.getString("temperatura"));
+                txtCintura.setText(oConn.setResult.getString("cintura"));
+                txtCadera.setText(oConn.setResult.getString("cadera"));
+                txticc.setText(oConn.setResult.getString("icc"));
+                txtFrespiratoria.setText(oConn.setResult.getString("f_respiratoria"));
+                txtFcardiaca.setText(oConn.setResult.getString("f_cardiaca"));
+                txtSatO2.setText(oConn.setResult.getString("sat_02"));
+                txtSistolica.setText(oConn.setResult.getString("sistolica"));
+                txtDiastolica.setText(oConn.setResult.getString("diastolica"));
+                txtConclusion.setText(oConn.setResult.getString("interpretacion"));
+                //
+                txtCercaSinCorregirOD.setText(oConn.setResult.getString("v_cerca_s_od"));
+                txtCercaSinCorregirOI.setText(oConn.setResult.getString("v_cerca_s_oi"));
+                txtCercaCorregidaOD.setText(oConn.setResult.getString("v_cerca_c_od"));
+                txtCercaCorregidaOI.setText(oConn.setResult.getString("v_cerca_c_oi"));
+                txtLejosSinCorregirOD.setText(oConn.setResult.getString("v_lejos_s_od"));
+                txtLejosSinCorregirOI.setText(oConn.setResult.getString("v_lejos_s_oi"));
+                txtLejosCorregidaOD.setText(oConn.setResult.getString("v_lejos_c_od"));
+                txtLejosCorregidaOI.setText(oConn.setResult.getString("v_lejos_c_oi"));
+                txtBinocular.setText(oConn.setResult.getString("v_binocular"));
+
+                txtOD500.setText(oConn.setResult.getString("o_d_500"));
+                txtOD1000.setText(oConn.setResult.getString("o_d_1000"));
+                txtOD2000.setText(oConn.setResult.getString("o_d_2000"));
+                txtOD3000.setText(oConn.setResult.getString("o_d_3000"));
+                txtOD4000.setText(oConn.setResult.getString("o_d_4000"));
+                txtOD6000.setText(oConn.setResult.getString("o_d_6000"));
+                txtOD8000.setText(oConn.setResult.getString("o_d_8000"));
+                txtOI500.setText(oConn.setResult.getString("o_i_500"));
+                txtOI1000.setText(oConn.setResult.getString("o_i_1000"));
+                txtOI2000.setText(oConn.setResult.getString("o_i_2000"));
+                txtOI3000.setText(oConn.setResult.getString("o_i_3000"));
+                txtOI4000.setText(oConn.setResult.getString("o_i_4000"));
+                txtOI6000.setText(oConn.setResult.getString("o_i_6000"));
+                txtOI8000.setText(oConn.setResult.getString("o_i_8000"));
+
+                //anexo7c....................................
+                FechaFicha.setDate(oConn.setResult.getDate("fecha"));
+                chkRuido.setSelected(oConn.setResult.getBoolean("chkruido"));
+                chkPolvo.setSelected(oConn.setResult.getBoolean("chkpolvo"));
+                chkVidSegmentario.setSelected(oConn.setResult.getBoolean("chkvidsegmentario"));
+                chkVidTotal.setSelected(oConn.setResult.getBoolean("chkvidtotal"));
+                chkCancerigenos.setSelected(oConn.setResult.getBoolean("chkcancerigenos"));
+                chkMutagenicos.setSelected(oConn.setResult.getBoolean("chkmutagenicos"));
+                chkSolventes.setSelected(oConn.setResult.getBoolean("chksolventes"));
+                chkMetales.setSelected(oConn.setResult.getBoolean("chkmetales"));
+                chkTemperatura.setSelected(oConn.setResult.getBoolean("chktemperatura"));
+                chkBiologicos.setSelected(oConn.setResult.getBoolean("chkbiologicos"));
+                chkPosturas.setSelected(oConn.setResult.getBoolean("chkposturas"));
+                chkTurnos.setSelected(oConn.setResult.getBoolean("chkturnos"));
+                chkCargas.setSelected(oConn.setResult.getBoolean("chkcargas"));
+                chkMovRepet.setSelected(oConn.setResult.getBoolean("chkmovrepet"));
+                chkPVD.setSelected(oConn.setResult.getBoolean("chkpvd"));
+                chkOtros.setSelected(oConn.setResult.getBoolean("chkotros"));
+                tbRsi.setSelected(oConn.setResult.getBoolean("tbrsi"));
+                rbRno.setSelected(oConn.setResult.getBoolean("rbrno"));
+                chkTNada.setSelected(oConn.setResult.getBoolean("chktnada"));
+                chkTPoco.setSelected(oConn.setResult.getBoolean("chktpoco"));
+                chkTHabitual.setSelected(oConn.setResult.getBoolean("chkthabitual"));
+                chkTExcesivo.setSelected(oConn.setResult.getBoolean("chktexcesivo"));
+                chkANada.setSelected(oConn.setResult.getBoolean("chkanada"));
+                chkAPoco.setSelected(oConn.setResult.getBoolean("chkapoco"));
+                chkAHabitual.setSelected(oConn.setResult.getBoolean("chkahabitual"));
+                chkAExcesivo.setSelected(oConn.setResult.getBoolean("chkaexcesivo"));
+                chkDNada.setSelected(oConn.setResult.getBoolean("chkdnada"));
+                chkDPoco.setSelected(oConn.setResult.getBoolean("chkdpoco"));
+                chkDHabitual.setSelected(oConn.setResult.getBoolean("chkdhabitual"));
+                chkDExcesivo.setSelected(oConn.setResult.getBoolean("chkdexcesivo"));
+                txtPuestoActual.setText(oConn.setResult.getString("txtpuestoactual"));
+                txtTiempo.setText(oConn.setResult.getString("txttiempo"));
+                txtAntecedentesPersonales.setText(oConn.setResult.getString("txtantecedentespersonales"));
+                txtAntecedentesFamiliares.setText(oConn.setResult.getString("txtantecedentesfamiliares"));
 //                        txtHijosvivos.setText(oConn.setResult.getString("txthijosvivos"));
 //                        txtHijosMuertos.setText(oConn.setResult.getString("txthijosmuertos"));
-                        txtcabeza.setText(oConn.setResult.getString("txtcabeza"));
-                        txtNariz.setText(oConn.setResult.getString("txtnariz"));
-                        txtCuello.setText(oConn.setResult.getString("txtcuello"));
-                        txtPerimetro.setText(oConn.setResult.getString("txtperimetro"));
-                        txtB_A_F_L.setText(oConn.setResult.getString("txtb_a_f_l"));
-                        txtVisionColores.setText(oConn.setResult.getString("txtvisioncolores"));
-                        txtEnfermedadesOculares.setText(oConn.setResult.getString("txtenfermedadesoculares"));
+                txtcabeza.setText(oConn.setResult.getString("txtcabeza"));
+                txtNariz.setText(oConn.setResult.getString("txtnariz"));
+                txtCuello.setText(oConn.setResult.getString("txtcuello"));
+                txtPerimetro.setText(oConn.setResult.getString("txtperimetro"));
+                txtB_A_F_L.setText(oConn.setResult.getString("txtb_a_f_l"));
+                txtVisionColores.setText(oConn.setResult.getString("txtvisioncolores"));
+                txtEnfermedadesOculares.setText(oConn.setResult.getString("txtenfermedadesoculares"));
 //                      txtEnfermedadesOculares2.setText(oConn.setResult.getString("txtenfermedadesoculares1"));
-                        txtEnfermedadesOculares1.setText(oConn.setResult.getString("txtenfermedadesoculares2"));
-                        txtReflejosPupilares.setText(oConn.setResult.getString("txtreflejospupilares"));
-                        txtBinocular.setText(oConn.setResult.getString("txtbinocular"));
-                        txtOD.setText(oConn.setResult.getString("txtod"));
-                        txtOI.setText(oConn.setResult.getString("txtoi"));
-                        txtTorax.setText(oConn.setResult.getString("txttorax"));
-                        txtCorazon.setText(oConn.setResult.getString("txtcorazon"));
-                        rbNormal.setSelected(oConn.setResult.getBoolean("rbnormal"));
-                        rbAnormal.setSelected(oConn.setResult.getBoolean("rbanormal"));
-                        txtPulmones.setText(oConn.setResult.getString("txtpulmones"));
-                        txtMiembrosSuperiores.setText(oConn.setResult.getString("txtmiembrossuperiores"));
-                        txtMiembrosInferiores.setText(oConn.setResult.getString("txtmiembrosinferiores"));
-                        txtReflejosOsteotendinosos.setText(oConn.setResult.getString("txtreflejososteotendinosos"));
-                        txtMarcha.setText(oConn.setResult.getString("txtmarcha"));
-                        txtcolumnaVertebral.setText(oConn.setResult.getString("txtcolumnavertebral"));
-                        txtAbdomen.setText(oConn.setResult.getString("txtabdomen"));
-                        txtAnillosInguinales.setText(oConn.setResult.getString("txtanillosinguinales"));
-                        txtOrganosGenitales.setText(oConn.setResult.getString("txtorganosgenitales"));
-                        rbTNoHizo.setSelected(oConn.setResult.getBoolean("rbtnohizo"));
-                        rbTNormal.setSelected(oConn.setResult.getBoolean("rbtnormal"));
-                        rbTAnormal.setSelected(oConn.setResult.getBoolean("rbtanormal"));
-                        chkDescribirObservacion.setSelected(oConn.setResult.getBoolean("chkdescribirobservacion"));
-                        txtHernias.setText(oConn.setResult.getString("txthernias"));
-                        txtVarices.setText(oConn.setResult.getString("txtvarices"));
-                        txtGanglios.setText(oConn.setResult.getString("txtganglios"));
-                        txtLenguage.setText(oConn.setResult.getString("txtlenguage"));
-                        txtObservacionesFichaMedica.setText(oConn.setResult.getString("txtobservacionesfm"));
-                        txtConclusion.setText(oConn.setResult.getString("txtconclusion"));
-                        chkTetano.setSelected(oConn.setResult.getBoolean("tetano"));
-                        chkHepatitisB.setSelected(oConn.setResult.getBoolean("hepatitisb"));
-                        chkFiebreAmarilla.setSelected(oConn.setResult.getBoolean("fiebreamarilla"));
-                           if(!txtOD500.getText().isEmpty() && !"N/A".equals(txtOD500.getText())&&!"NORMAL".equals(txtOD500.getText())){
-                           txtObservacionAudio.setText("AUDIOMETRIA "+oConn.setResult.getString("diagnostico").concat(".EVALUACION ANUAL "));
-                        }else if("N/A".equals(txtOD500.getText())){
-                            txtObservacionAudio.setText(null);
-                             txtObservacionAudio.append("NO PASO EXAMEN AUDIOMETRIA." + '\n');
-                        }
-                        //----
-                       oPu.fecha(FechaFicha);
-                       muestraVisual();
-                       editarRadiogrSan();
-                       electroCardiograma();
-                       examenOrina();
-                       cargarAnalisisB();
-                    } else {
-                        oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
-                    }
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
-                }
-            //}else {
-           // oFunc.SubSistemaMensajeError("No hay datos en anexo 7c");
+                txtEnfermedadesOculares1.setText(oConn.setResult.getString("txtenfermedadesoculares2"));
+                txtReflejosPupilares.setText(oConn.setResult.getString("txtreflejospupilares"));
+                txtBinocular.setText(oConn.setResult.getString("txtbinocular"));
+                txtOD.setText(oConn.setResult.getString("txtod"));
+                txtOI.setText(oConn.setResult.getString("txtoi"));
+                txtTorax.setText(oConn.setResult.getString("txttorax"));
+                txtCorazon.setText(oConn.setResult.getString("txtcorazon"));
+                rbNormal.setSelected(oConn.setResult.getBoolean("rbnormal"));
+                rbAnormal.setSelected(oConn.setResult.getBoolean("rbanormal"));
+                txtPulmones.setText(oConn.setResult.getString("txtpulmones"));
+                txtMiembrosSuperiores.setText(oConn.setResult.getString("txtmiembrossuperiores"));
+                txtMiembrosInferiores.setText(oConn.setResult.getString("txtmiembrosinferiores"));
+                txtReflejosOsteotendinosos.setText(oConn.setResult.getString("txtreflejososteotendinosos"));
+                txtMarcha.setText(oConn.setResult.getString("txtmarcha"));
+                txtcolumnaVertebral.setText(oConn.setResult.getString("txtcolumnavertebral"));
+                txtAbdomen.setText(oConn.setResult.getString("txtabdomen"));
+                txtAnillosInguinales.setText(oConn.setResult.getString("txtanillosinguinales"));
+                txtOrganosGenitales.setText(oConn.setResult.getString("txtorganosgenitales"));
+                rbTNoHizo.setSelected(oConn.setResult.getBoolean("rbtnohizo"));
+                rbTNormal.setSelected(oConn.setResult.getBoolean("rbtnormal"));
+                rbTAnormal.setSelected(oConn.setResult.getBoolean("rbtanormal"));
+                chkDescribirObservacion.setSelected(oConn.setResult.getBoolean("chkdescribirobservacion"));
+                txtHernias.setText(oConn.setResult.getString("txthernias"));
+                txtVarices.setText(oConn.setResult.getString("txtvarices"));
+                txtGanglios.setText(oConn.setResult.getString("txtganglios"));
+                txtLenguage.setText(oConn.setResult.getString("txtlenguage"));
+                txtObservacionesFichaMedica.setText(oConn.setResult.getString("txtobservacionesfm"));
+                txtConclusion.setText(oConn.setResult.getString("txtconclusion"));
+                chkTetano.setSelected(oConn.setResult.getBoolean("tetano"));
+                chkHepatitisB.setSelected(oConn.setResult.getBoolean("hepatitisb"));
+                chkFiebreAmarilla.setSelected(oConn.setResult.getBoolean("fiebreamarilla"));
+                txtObservacionAudio.setText(oConn.setResult.getString("txtdiagnosticoaudio"));
+
+                //----
+                oPu.fecha(FechaFicha);
+                muestraVisual();
+                editarRadiogrSan();
+                electroCardiograma();
+                examenOrina();
+                cargarAnalisisB();
+            } else {
+                oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
+            }
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
+        }
+        //}else {
+        // oFunc.SubSistemaMensajeError("No hay datos en anexo 7c");
         //}
     }
+
     void consultar() {
-                contador=1;
+        contador = 1;
         if (!txtNorden.getText().isEmpty()) {
-            if (!Orden()) {muestraVisual();
-                       electroCardiograma();
-                       cargarExamSanguineos();
-                       examenOrina();
-                       cargarAnalisisB();
-                 String Consulta = "SELECT d.cod_pa,d.nombres_pa,d.apellidos_pa,d.fecha_nacimiento_pa,d.sexo_pa,d.lugar_nac_pa,d.direccion_pa,"
-                         + "d.tel_casa_pa,d.cel_pa,d.estado_civil_pa,d.nivel_est_pa,n.razon_empresa,n.razon_contrata,n.nom_examen,n.nom_ex,"
-                         + "n.altura_po,n.mineral_po,n.cargo_de,n.area_o,n.grupofactorsan,a.txtvhijosvivos,a.txtvhijosfallecidos,a.txtdhijosvivos,a.txtdhijosfallecidos,"
-                        + "a.rbfumarsi,a.rblicorsi,triaje.talla,triaje.peso,triaje.imc,triaje.sistolica,triaje.diastolica,triaje.f_respiratoria,triaje.f_cardiaca,triaje.sat_02,"
-                         + "triaje.temperatura,triaje.cintura,triaje.cadera,triaje.icc,triaje.perimetro_cuello,"
-                         + "o.v_cerca_s_od,o.v_cerca_s_oi,"
-                         + "o.v_cerca_c_od,o.v_cerca_c_oi,o.v_lejos_s_od,o.v_lejos_s_oi,o.v_lejos_c_od,o.v_lejos_c_oi,o.v_colores,o.v_binocular, "
-                         + "o.e_oculares,o.e_oculares1, "
-                         + "o.e_oculvisionlejos,odontograma.txtausentes,odontograma.txtobservaciones,odontograma.txtpiezasmalestado,r.txtvertices,r.txthilios, "
-                         + "r.txtsenoscostofrenicos, r.txtmediastinos, r.txtsiluetacardiovascular, r.txtosteomuscular, r.txtconclusionesradiograficas,"
-                         + " r.txtobservacionesrt, r.txtcampospulm,l.txtobservacioneslb,"
-                         + " l.txtcocaina,l.txtmarihuana,l.txtglucosabio,l.txtvsg,l.txtcreatininabio, CASE WHEN l.chko = 'TRUE' THEN 'O'"
-                            + " WHEN l.chka = 'TRUE' THEN 'A'"
-                            + " WHEN l.chkb = 'TRUE' THEN 'B'"
-                            + " WHEN l.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| "
-                            + "CASE WHEN l.rbrhpositivo ='TRUE' THEN '+' "
-                            + " WHEN l.rbrhnegativo = 'TRUE' THEN '-' END AS Grupofactor ,"
-                         + "m.o_d_500,m.o_d_1000,m.o_d_2000,m.o_d_3000,m.o_d_4000,m.o_d_6000,m.o_d_8000,"
-                         + "m.o_i_500,m.o_i_1000,m.o_i_2000,m.o_i_3000,m.o_i_4000,m.o_i_6000,m.o_i_8000,m.diagnostico,funcion_abs.fvc,funcion_abs.fev1,"
-                         + "funcion_abs.fev1fvc,funcion_abs.fef25_75,funcion_abs.interpretacion,ba.n_orden as ordenaltura,"
-                         + " ba.b_c_observaciones as alturabarrick,bc.n_orden as ordencond,"
-                         + "bc.b_c_observaciones as conduccion,ca.n_orden as numalt, ca.observaciones as certialtura "
-                        + "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa) "
-                        + "INNER JOIN antecedentes_patologicos AS a ON(n.n_orden = a.n_orden) "
-                        + "INNER JOIN triaje ON(n.n_orden = triaje.n_orden) "
-                        + "INNER JOIN oftalmologia AS o ON(n.n_orden = o.n_orden)"
-                        + "INNER JOIN funcion_abs ON(n.n_orden = funcion_abs.n_orden)"
-                        + "INNER JOIN radiografia_torax AS r ON(n.n_orden = r.n_orden)"
-                        + "INNER JOIN lab_clinico AS l ON(n.n_orden = l.n_orden)"
-//                      + "INNER JOIN ex_radiograficos_sanguineos AS e ON(n.n_orden = e.n_orden)"
-                        + "INNER JOIN odontograma ON(n.n_orden = odontograma.n_orden)"
-                        + "INNER JOIN audiometria_po AS m ON(n.n_orden =m.n_orden)"
-                         + "LEFT JOIN b_certificado_altura as ba ON(ba.n_orden = n.n_orden)"
-                        + "LEFT JOIN b_certificado_conduccion as bc ON(bc.n_orden = n.n_orden)"
-                        + "LEFT JOIN certificacion_medica_altura as ca ON(ca.n_orden = n.n_orden)"
-                         + "WHERE n.n_orden =" + txtNorden.getText().toString() + "";
-                
+            if (!Orden()) {
+                muestraVisual();
+                electroCardiograma();
+                cargarExamSanguineos();
+                examenOrina();
+                cargarAnalisisB();
+                String Consulta = "SELECT d.cod_pa,d.nombres_pa,d.apellidos_pa,d.fecha_nacimiento_pa,d.sexo_pa,d.lugar_nac_pa,d.direccion_pa,d.tel_casa_pa,d.cel_pa,d.estado_civil_pa,d.nivel_est_pa,n.razon_empresa,n.razon_contrata,n.nom_examen,n.nom_ex,n.altura_po,n.mineral_po,n.cargo_de,n.area_o,\n" +
+"n.grupofactorsan,a.txtvhijosvivos,a.txtvhijosfallecidos,a.txtdhijosvivos,a.txtdhijosfallecidos,a.rbfumarsi,a.rblicorsi,triaje.talla,triaje.peso,triaje.imc,\n" +
+"triaje.sistolica,triaje.diastolica,triaje.f_respiratoria,triaje.f_cardiaca,triaje.sat_02,triaje.temperatura,triaje.cintura,triaje.cadera,triaje.icc,\n" +
+"triaje.perimetro_cuello,o.e_oculares,o.e_oculares1, o.e_oculvisionlejos,oft.txtdiagnostico,odontograma.txtausentes,odontograma.txtobservaciones,\n" +
+"odontograma.txtpiezasmalestado,r.txtvertices,r.txthilios, r.txtsenoscostofrenicos, r.txtmediastinos, r.txtsiluetacardiovascular, \n" +
+"r.txtosteomuscular, r.txtconclusionesradiograficas, r.txtobservacionesrt, r.txtcampospulm,l.txtobservacioneslb, l.txtcocaina,\n" +
+"l.txtmarihuana,l.txtglucosabio,l.txtvsg,l.txtcreatininabio, \n" +
+"CASE WHEN l.chko = 'TRUE' THEN 'O' \n" +
+"     WHEN l.chka = 'TRUE' THEN 'A' \n" +
+"     WHEN l.chkb = 'TRUE' THEN 'B' \n" +
+"     WHEN l.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
+"CASE WHEN l.rbrhpositivo ='TRUE' THEN '+'  \n" +
+"     WHEN l.rbrhnegativo = 'TRUE' THEN '-' END AS Grupofactor ,\n" +
+"CASE WHEN  au.o_d_500 is not null THEN au.o_d_500 else m.o_d_500 end as o_d_500 ,\n" +
+"CASE WHEN au.o_d_1000 is not null THEN au.o_d_1000 else m.o_d_1000 end as o_d_1000 ,\n" +
+"CASE WHEN au.o_d_2000 is not null THEN au.o_d_2000 else m.o_d_2000 end as o_d_2000 ,\n" +
+"CASE WHEN au.o_d_3000 is not null THEN au.o_d_3000 else m.o_d_3000 end as o_d_3000 ,\n" +
+"CASE WHEN au.o_d_4000 is not null THEN au.o_d_4000 else m.o_d_4000 end as o_d_4000 ,\n" +
+"CASE WHEN au.o_d_6000 is not null THEN au.o_d_6000 else m.o_d_6000 end as o_d_6000 ,\n" +
+"CASE WHEN au.o_d_8000 is not null THEN au.o_d_8000 else m.o_d_8000 end as o_d_8000 ,\n" +
+"CASE WHEN au.o_i_500 is not null THEN au.o_i_500 else m.o_i_500 end as o_i_500 ,\n" +
+"CASE WHEN au.o_i_1000 is not null THEN au.o_i_1000 else m.o_i_1000 end as o_i_1000 ,\n" +
+"CASE WHEN au.o_i_2000 is not null THEN au.o_i_2000 else m.o_i_2000 end as o_i_2000 ,\n" +
+"CASE WHEN au.o_i_3000 is not null THEN au.o_i_3000 else m.o_i_3000 end as o_i_3000 ,\n" +
+"CASE WHEN au.o_i_4000 is not null THEN au.o_i_4000 else m.o_i_4000 end as o_i_4000 ,\n" +
+"CASE WHEN au.o_i_6000 is not null THEN au.o_i_6000 else m.o_i_6000 end as o_i_6000 ,\n" +
+"CASE WHEN au.o_i_8000 is not null THEN au.o_i_8000 else m.o_i_8000 end as o_i_8000 ,\n" +
+"CASE WHEN au.chkdnormal ='true' THEN 'NORMAL'\n" +
+"     WHEN au.chkdtaleveod ='true' and au.chkdtaleveoi ='true' THEN 'TRAUMA ACÚSTICO BILATERAL LEVE'\n" +
+"             WHEN au.chkdtaleveod ='true' THEN 'TRAUMA ACÚSTICO LEVE  OD'\n" +
+"             WHEN au.chkdtaleveoi ='true' THEN 'TRAUMA ACÚSTICO LEVE OI'\n" +
+"             when au.chkdtaavanzadood ='true'  AND au.chkdtaavanzadooi ='true' THEN 'TRAUMA ACÚSTICO BILATERAL AVANZADO'\n" +
+"             when au.chkdtaavanzadood ='true' THEN 'TRAUMA ACÚSTICO AVANZADO OD'\n" +
+"             when au.chkdtaavanzadooi ='true' THEN 'TRAUMA ACÚSTICO AVANZADO OI'\n" +
+"             when au.chkdhrleveod ='true' AND au.chkdhrleveoi ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, BILATERAL LEVE'\n" +
+"             when au.chkdhrleveod ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, LEVE OD'\n" +
+"             when au.chkdhrleveoi ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, LEVE OI'\n" +
+"             when au.chkdhrmoderadood ='true' AND au.chkdhrmoderadooi ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, BILATERAL MODERADA'\n" +
+"             when au.chkdhrmoderadood ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, MODERADA OD'\n" +
+"             when au.chkdhrmoderadooi ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, MODERADA OI'\n" +
+"             when au.chkdhravanzadaod ='true' AND au.chkdhravanzadaoi ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, BILATERAL AVANZADA'\n" +
+"             when au.chkdhravanzadaod ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, AVANZADA OD'\n" +
+"             when au.chkdhravanzadaoi ='true' THEN 'HIPOACUSIA INDUCIDA POR RUIDO, AVANZADA OI'\n" +
+"             when au.chkotrashipoacusias ='true' THEN au.txtotrashipoacusias else m.diagnostico end as diagnostico ,\n" +
+"     funcion_abs.fvc,funcion_abs.fev1,funcion_abs.fev1fvc,funcion_abs.fef25_75,\n" +
+"     funcion_abs.interpretacion,ba.n_orden as ordenaltura, ba.b_c_observaciones as alturabarrick,\n" +
+"     bc.n_orden as ordencond,bc.b_c_observaciones as conduccion,ca.n_orden as numalt, \n" +
+"     ca.observaciones as certialtura,au.chkdnormal, \n" +
+"       au.chkdtaleveod, au.chkdtaleveoi, au.chkdtaavanzadood, au.chkdtaavanzadooi, \n" +
+"       au.chkdhrleveod, au.chkdhrleveoi, au.chkdhrmoderadood, au.chkdhrmoderadooi, \n" +
+"       au.chkdhravanzadaod, au.chkdhravanzadaoi, au.chkotrashipoacusias, au.txtotrashipoacusias\n" +
+"\n" +
+"FROM datos_paciente AS d \n" +
+"INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa) \n" +
+"INNER JOIN antecedentes_patologicos AS a ON(n.n_orden = a.n_orden) \n" +
+"INNER JOIN triaje ON(n.n_orden = triaje.n_orden) \n" +
+"left JOIN oftalmologia AS o ON(n.n_orden = o.n_orden)\n" +
+"INNER JOIN funcion_abs ON(n.n_orden = funcion_abs.n_orden)\n" +
+"INNER JOIN radiografia_torax AS r ON(n.n_orden = r.n_orden)\n" +
+"INNER JOIN lab_clinico AS l ON(n.n_orden = l.n_orden)\n" +
+"INNER JOIN odontograma ON(n.n_orden = odontograma.n_orden)\n" +
+"left JOIN audiometria_po AS m ON(n.n_orden =m.n_orden)\n" +
+"LEFT JOIN audiometria_2021 AS au ON(n.n_orden =au.n_orden)\n" +
+"LEFT JOIN oftalmologia2021 AS oft ON(n.n_orden =oft.n_orden)\n" +
+"LEFT JOIN b_certificado_altura as ba ON(ba.n_orden = n.n_orden)\n" +
+"LEFT JOIN b_certificado_conduccion as bc ON(bc.n_orden = n.n_orden)\n" +
+"LEFT JOIN certificacion_medica_altura as ca ON(ca.n_orden = n.n_orden)\n" +
+"WHERE n.n_orden =" + txtNorden.getText().toString() + "";
+
                 oConn.FnBoolQueryExecute(Consulta);
-                
+                System.out.println(Consulta);
                 try {
                     if (oConn.setResult.next()) {
                         //oFunc.SubSistemaMensajeError(oConn.setResult.getString("txtobservaciones"));
-                        
+
                         //------radio
-                       if(oConn.setResult.getString("txtvertices") != null && !"NO SE TOMÓ RX DE TORAX".equals(oConn.setResult.getString("txtvertices"))){
-                           if (oConn.setResult.getString("txtvertices") != null && !"LIBRES".equals(oConn.setResult.getString("txtvertices"))) {
-                            txtObservacionesFichaMedica.append( String.valueOf(contador)+"-"+oConn.setResult.getString("txtvertices"));
-                        contador++;
-                           }
-                        if (oConn.setResult.getString("txthilios") != null && !"NORMALES".equals(oConn.setResult.getString("txthilios"))) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+ oConn.setResult.getString("txthilios"));
-                        contador++;
-    
+                        if (oConn.setResult.getString("txtvertices") != null && !"NO SE TOMÓ RX DE TORAX".equals(oConn.setResult.getString("txtvertices"))) {
+                            if (oConn.setResult.getString("txtvertices") != null && !"LIBRES".equals(oConn.setResult.getString("txtvertices"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtvertices"));
+                                contador++;
+                            }
+                            if (oConn.setResult.getString("txthilios") != null && !"NORMALES".equals(oConn.setResult.getString("txthilios"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txthilios"));
+                                contador++;
+
+                            }
+
+                            if (oConn.setResult.getString("txtsenoscostofrenicos") != null && !"LIBRES".equals(oConn.setResult.getString("txtsenoscostofrenicos"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtsenoscostofrenicos"));
+                                contador++;
+                            }
+                            if (oConn.setResult.getString("txtcampospulm") != null && !"NORMALES".equals(oConn.setResult.getString("txtcampospulm"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtcampospulm"));
+                                contador++;
+                            }
+                            if (oConn.setResult.getString("txtmediastinos") != null && !"NORMALES".equals(oConn.setResult.getString("txtmediastinos"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtmediastinos"));
+                                contador++;
+                            }
+                            if (oConn.setResult.getString("txtsiluetacardiovascular") != null && !"NORMAL".equals(oConn.setResult.getString("txtsiluetacardiovascular"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtsiluetacardiovascular"));
+                                contador++;
+                            }
+                            if (oConn.setResult.getString("txtosteomuscular") != null && !"NORMAL".equals(oConn.setResult.getString("txtosteomuscular"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtosteomuscular"));
+                                contador++;
+                            }
+                            if (oConn.setResult.getString("txtconclusionesradiograficas") != null && !"NORMAL".equals(oConn.setResult.getString("txtconclusionesradiograficas"))) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtconclusionesradiograficas"));
+                                contador++;
+                            }
+
                         }
-                        
-                        if (oConn.setResult.getString("txtsenoscostofrenicos") != null && !"LIBRES".equals(oConn.setResult.getString("txtsenoscostofrenicos"))) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("txtsenoscostofrenicos"));
-                        contador++;
-                        }
-                        if (oConn.setResult.getString("txtcampospulm") != null && !"NORMALES".equals(oConn.setResult.getString("txtcampospulm"))) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+ oConn.setResult.getString("txtcampospulm"));
-                        contador++;
-                        }
-                        if (oConn.setResult.getString("txtmediastinos") != null && !"NORMALES".equals(oConn.setResult.getString("txtmediastinos"))) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+ oConn.setResult.getString("txtmediastinos"));
-                        contador++;
-                        }
-                        if (oConn.setResult.getString("txtsiluetacardiovascular") != null && !"NORMAL".equals(oConn.setResult.getString("txtsiluetacardiovascular"))) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("txtsiluetacardiovascular"));
-                        contador++;
-                        }
-                        if (oConn.setResult.getString("txtosteomuscular") != null && !"NORMAL".equals(oConn.setResult.getString("txtosteomuscular"))) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("txtosteomuscular"));
-                        contador++;
-                        }
-                        if (oConn.setResult.getString("txtconclusionesradiograficas") != null && !"NORMAL".equals(oConn.setResult.getString("txtconclusionesradiograficas"))) {
-                            txtObservacionesFichaMedica.append( String.valueOf(contador)+"-"+oConn.setResult.getString("txtconclusionesradiograficas"));
-                       contador++;
-                        }
-                        
-                       }
                         if (oConn.setResult.getString("txtobservacionesrt") != null && !"NORMAL".equals(oConn.setResult.getString("txtobservacionesrt"))) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("txtobservacionesrt").concat("\n"));
-                        contador++;
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtobservacionesrt").concat("\n"));
+                            contador++;
                         }
                         //-----
-                        if (oConn.setResult.getString("txtobservacioneslb") != null ) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("txtobservacioneslb"));
-                        contador++;
+                        if (oConn.setResult.getString("txtobservacioneslb") != null) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("txtobservacioneslb"));
+                            contador++;
                         }
-                        if (oConn.setResult.getString("alturabarrick") != null  ) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("alturabarrick").concat("\n"));
-                       contador++;
-                        }else if (oConn.setResult.getString("certialtura") != null ) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("certialtura").concat("\n"));
-                        contador++;
+                        if (oConn.setResult.getString("alturabarrick") != null) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("alturabarrick").concat("\n"));
+                            contador++;
+                        } else if (oConn.setResult.getString("certialtura") != null) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("certialtura").concat("\n"));
+                            contador++;
                         }
-                        if(oConn.setResult.getString("ordenaltura")== null && oConn.setResult.getString("numalt")== null){
-                            if (oConn.setResult.getString("conduccion") != null ) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+oConn.setResult.getString("conduccion").concat("\n"));
-                        contador++;
+                        if (oConn.setResult.getString("ordenaltura") == null && oConn.setResult.getString("numalt") == null) {
+                            if (oConn.setResult.getString("conduccion") != null) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + oConn.setResult.getString("conduccion").concat("\n"));
+                                contador++;
                             }
                         }
-                        
-                         
-                         String coca=oConn.setResult.getString("txtcocaina");
-                         String marig=oConn.setResult.getString("txtmarihuana");
-                         if("REACTIVO".equals(coca)){
-                             txtObservacionesFichaMedica.append(String.valueOf(contador)+"- TEST DE COCAINA: " + coca.concat(" COLABORADOR DE LA COMUNIDAD, CONSUME HOJA DE COCA.\n"));
-                             txtCoca.setForeground(Color.red);
-                             txtCoca.setText(coca);
-                             contador++;
-                         }else {//txtObservacionesFichaMedica.append("-COCAINA: " + coca.concat("\n"));
+
+                        String coca = oConn.setResult.getString("txtcocaina");
+                        String marig = oConn.setResult.getString("txtmarihuana");
+                        if ("REACTIVO".equals(coca)) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "- TEST DE COCAINA: " + coca.concat(" COLABORADOR DE LA COMUNIDAD, CONSUME HOJA DE COCA.\n"));
+                            txtCoca.setForeground(Color.red);
                             txtCoca.setText(coca);
-                         }
-                         if("REACTIVO".equals(marig)){
-                              txtObservacionesFichaMedica.append(String.valueOf(contador)+"-MARIHUANA: " + marig.concat(" COLABORADOR DE LA COMUNIDAD, CONSUME HOJA DE COCA.\n"));
-                             txtMarig.setForeground(Color.red);
-                             txtMarig.setText(marig);
-                             contador++;
-                         }else{//txtObservacionesFichaMedica.append("-MARIHUANA: " + marig.concat("\n"));
+                            contador++;
+                        } else {//txtObservacionesFichaMedica.append("-COCAINA: " + coca.concat("\n"));
+                            txtCoca.setText(coca);
+                        }
+                        if ("REACTIVO".equals(marig)) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-MARIHUANA: " + marig.concat(" COLABORADOR DE LA COMUNIDAD, CONSUME HOJA DE COCA.\n"));
+                            txtMarig.setForeground(Color.red);
                             txtMarig.setText(marig);
-                         }
-                           String vsg=oConn.setResult.getString("txtvsg");
-                            String gluc=oConn.setResult.getString("txtglucosabio");
-                            String creat=oConn.setResult.getString("txtcreatininabio");
-                            
-                            txtVSG.setText(vsg);
-                            txtGlucosaBio.setText(gluc);
-                            txtCreatininaBio.setText(creat);
-                                if(!txtGlucosaBio.getText().isEmpty()&& !"N/A".equals(txtGlucosaBio.getText())){
-                                 float glucosa = Float.parseFloat(txtGlucosaBio.getText().toString());
-                                     if (glucosa >= 110 || glucosa < 70) {
-                                         txtGlucosaBio.setForeground(Color.red);
-                                     } else {
-                                         txtGlucosaBio.setForeground(Color.black);
-                                     }
-                                } 
-                            
-                            
-                        
-                           if (!txtCreatininaBio.getText().isEmpty()&& !"N/A".equals(txtCreatininaBio.getText())) {
-                                float cretinina = Float.parseFloat(txtCreatininaBio.getText().toString());
-                                if (cretinina >= 1.4 || cretinina < 0.8) {
-                                    txtCreatininaBio.setForeground(Color.red);
-                                } else {
-                                    txtCreatininaBio.setForeground(Color.black);
-                                }
-                           } 
-                        
-                        
-                         //modi
+                            contador++;
+                        } else {//txtObservacionesFichaMedica.append("-MARIHUANA: " + marig.concat("\n"));
+                            txtMarig.setText(marig);
+                        }
+                        String vsg = oConn.setResult.getString("txtvsg");
+                        String gluc = oConn.setResult.getString("txtglucosabio");
+                        String creat = oConn.setResult.getString("txtcreatininabio");
+
+                        txtVSG.setText(vsg);
+                        txtGlucosaBio.setText(gluc);
+                        txtCreatininaBio.setText(creat);
+                        if (!txtGlucosaBio.getText().isEmpty() && !"N/A".equals(txtGlucosaBio.getText())) {
+                            float glucosa = Float.parseFloat(txtGlucosaBio.getText().toString());
+                            if (glucosa >= 110 || glucosa < 70) {
+                                txtGlucosaBio.setForeground(Color.red);
+                            } else {
+                                txtGlucosaBio.setForeground(Color.black);
+                            }
+                        }
+
+                        if (!txtCreatininaBio.getText().isEmpty() && !"N/A".equals(txtCreatininaBio.getText())) {
+                            float cretinina = Float.parseFloat(txtCreatininaBio.getText().toString());
+                            if (cretinina >= 1.4 || cretinina < 0.8) {
+                                txtCreatininaBio.setForeground(Color.red);
+                            } else {
+                                txtCreatininaBio.setForeground(Color.black);
+                            }
+                        }
+
+                        //modi
 //                        if (oConn.setResult.getString("txtobservacionesrs") != null) {
 //                            txtObservacionesFichaMedica.append("-EX. RX SANGUINEOS : " + oConn.setResult.getString("txtobservacionesrs").concat("\n"));
 //                        }
@@ -6612,30 +7037,29 @@ public void cerrarVentana(){
                         txtArea.setText(oConn.setResult.getString("area_o"));
                         txtGFSPrevio.setText(oConn.setResult.getString("grupofactorsan"));
                         txtFVC.setText(oConn.setResult.getString("fvc"));
-                        if(!txtFVC.getText().isEmpty() && !"N/A".equals(txtFVC.getText().toString())){
-                            float fvc=Float.parseFloat(txtFVC.getText().toString());
-                            if(fvc >=80){
+                        if (!txtFVC.getText().isEmpty() && !"N/A".equals(txtFVC.getText().toString())) {
+                            float fvc = Float.parseFloat(txtFVC.getText().toString());
+                            if (fvc >= 80) {
                                 txtConclusion.append("-NORMAL");
-                            }else{
-                                txtConclusion.append("-PATRON RESTRICTIVO" +'\n' );
+                            } else {
+                                txtConclusion.append("-PATRON RESTRICTIVO" + '\n');
 //                                txtInterpretacion.append("-PATRON RESTRICTIVO"+ '\n');
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"PATRON RESTRICTIVO LEVE.EVALUACION EN 6 MESES." + '\n' );
-                          contador++;
-                            } 
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "PATRON RESTRICTIVO LEVE.EVALUACION EN 6 MESES." + '\n');
+                                contador++;
+                            }
                         }
-                       
+
                         txtFEV1.setText(oConn.setResult.getString("fev1"));
                         txtFEV1FVC.setText(oConn.setResult.getString("fev1fvc"));
-                       
-                       
+
                         txtFEF2575.setText(oConn.setResult.getString("fef25_75"));
 //                        txtConclusion.setText(oConn.setResult.getString("interpretacion"));
                         txtMalEstado.setText(oConn.setResult.getString("txtpiezasmalestado"));
-                        if(!txtMalEstado.getText().isEmpty()){
+                        if (!txtMalEstado.getText().isEmpty()) {
                             float malEstado = Float.parseFloat(txtMalEstado.getText().toString());
-                            if (malEstado >=1) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"CARIES DENTAL.TTO.EVALUACION EN 6 MESES." + '\n');
-                            contador++;
+                            if (malEstado >= 1) {
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "CARIES DENTAL.TTO.EVALUACION EN 6 MESES." + '\n');
+                                contador++;
                             }
                         }
                         txtFaltan.setText(oConn.setResult.getString("txtausentes"));
@@ -6647,33 +7071,33 @@ public void cerrarVentana(){
                             txtHijosMuertos.setText(oConn.setResult.getString("txtdhijosfallecidos") == null ? "0" : oConn.setResult.getString("txtdhijosfallecidos"));
                         }
                         txtIMC.setText(oConn.setResult.getString("imc"));
-                    if(oConn.setResult.getString("ordenaltura")== null && oConn.setResult.getString("ordencond")== null 
-                            && oConn.setResult.getString("numalt")== null){
-                       if(!txtIMC.getText().isEmpty()){
-                           float imc = Float.parseFloat(txtIMC.getText().toString());
-                            txtIMC.setForeground(Color.black);
-                            if (imc >= 25 && imc < 30) {
-                                txtIMC.setForeground(Color.red);
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"SOBREPESO:DIETA HIPOCALORICA Y EJERCICIOS." + '\n');
-                                contador++;
-                            } else if (imc >= 30 && imc < 35) {
-                                txtIMC.setForeground(Color.red);
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"OBESIDAD I.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
-                                contador++;
-                            } else if (imc >= 35 && imc < 40) {
-                                txtIMC.setForeground(Color.red);
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"OBESIDAD II.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS.EVALUACION POR ENDOCRINOLOGIA Y CARDIOLOGO" + '\n');
-                                contador++;
-                            } else if(imc>=40 && imc<45){
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"OBESIDAD III.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS.EVALUACION POR ENDOCRINOLOGIA Y CARDIOLOGO" + '\n');
-                                contador++;
-                            }else if(imc>=45 && imc<50){
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"OBESIDAD IV.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS.EVALUACION POR ENDOCRINOLOGIA Y CARDIOLOGO" + '\n');
-                            contador++;
+                        if (oConn.setResult.getString("ordenaltura") == null && oConn.setResult.getString("ordencond") == null
+                                && oConn.setResult.getString("numalt") == null) {
+                            if (!txtIMC.getText().isEmpty()) {
+                                float imc = Float.parseFloat(txtIMC.getText().toString());
+                                txtIMC.setForeground(Color.black);
+                                if (imc >= 25 && imc < 30) {
+                                    txtIMC.setForeground(Color.red);
+                                    txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "SOBREPESO:DIETA HIPOCALORICA Y EJERCICIOS." + '\n');
+                                    contador++;
+                                } else if (imc >= 30 && imc < 35) {
+                                    txtIMC.setForeground(Color.red);
+                                    txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "OBESIDAD I.NO HACER TRABAJOS SOBRE 1.8 M.S.N. PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                    contador++;
+                                } else if (imc >= 35 && imc < 40) {
+                                    txtIMC.setForeground(Color.red);
+                                    txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "OBESIDAD II.NO HACER TRABAJOS SOBRE 1.8 M.S.N. PISO.DIETA HIPOCALORICA Y EJERCICIOS.EVALUACION POR ENDOCRINOLOGIA Y CARDIOLOGO" + '\n');
+                                    contador++;
+                                } else if (imc >= 40 && imc < 45) {
+                                    txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "OBESIDAD III.NO HACER TRABAJOS SOBRE 1.8 M.S.N. PISO.DIETA HIPOCALORICA Y EJERCICIOS.EVALUACION POR ENDOCRINOLOGIA Y CARDIOLOGO" + '\n');
+                                    contador++;
+                                } else if (imc >= 45 && imc < 50) {
+                                    txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "OBESIDAD IV.NO HACER TRABAJOS SOBRE 1.8 M.S.N. PISO.DIETA HIPOCALORICA Y EJERCICIOS.EVALUACION POR ENDOCRINOLOGIA Y CARDIOLOGO" + '\n');
+                                    contador++;
+                                }
                             }
+
                         }
-                       
-                     }
                         chkTPoco.setSelected(oConn.setResult.getBoolean("rbfumarsi"));
                         chkAPoco.setSelected(oConn.setResult.getBoolean("rblicorsi"));
                         txtTalla.setText(oConn.setResult.getString("talla"));
@@ -6686,15 +7110,14 @@ public void cerrarVentana(){
                         txtFrespiratoria.setText(oConn.setResult.getString("f_respiratoria"));
                         txtFcardiaca.setText(oConn.setResult.getString("f_cardiaca"));
                         txtSatO2.setText(oConn.setResult.getString("sat_02"));
-                        String sistolica=oConn.setResult.getString("sistolica");
-                        String diastolica=oConn.setResult.getString("diastolica");
+                        String sistolica = oConn.setResult.getString("sistolica");
+                        String diastolica = oConn.setResult.getString("diastolica");
                         txtSistolica.setText(sistolica);
                         txtDiastolica.setText(diastolica);
 //                        txtConclusion.setText(oConn.setResult.getString("interpretacion"));
                         //
                         txtGrupoFacLab.setText(oConn.setResult.getString("Grupofactor"));
-                       
-                        
+
 //                        txtCercaSinCorregirOD.setText(oConn.setResult.getString("v_cerca_s_od"));
 //                        txtCercaSinCorregirOI.setText(oConn.setResult.getString("v_cerca_s_oi"));
 //                        txtCercaCorregidaOD.setText(oConn.setResult.getString("v_cerca_c_od"));
@@ -6706,32 +7129,31 @@ public void cerrarVentana(){
 //                        txtVisionColores.setText(oConn.setResult.getString("v_colores"));
 //                        txtBinocular.setText(oConn.setResult.getString("v_binocular"));
 //                        oFunc.SubSistemaMensajeError(oConn.setResult.getString("e_oculares"));
-                       
-                        if (oConn.setResult.getString("e_oculares") != null  ) {
-                            txtEnfermedadesOculares.setText(oConn.setResult.getString("e_oculares"));
-                        }else{
-                            txtEnfermedadesOculares.setText("NINGUNA");
-                        }
-                        if (oConn.setResult.getString("e_oculares1") != null ) {
+//                        if (oConn.setResult.getString("e_oculares") != null) {
+//                            txtEnfermedadesOculares.setText(oConn.setResult.getString("e_oculares"));
+//                        } else {
+//                            txtEnfermedadesOculares.setText("NINGUNA");
+//                        }
+                        if (oConn.setResult.getString("e_oculares1") != null) {
                             txtEnfermedadesOculares1.setText(oConn.setResult.getString("e_oculares1"));
-                        }else{
+                        } else {
                             txtEnfermedadesOculares1.setText("NINGUNA");
                         }
 //                     diagnosticoOftalmologia();
-                        if(!"NINGUNA".equals(txtEnfermedadesOculares.getText().toString())  && 
-                                    !txtEnfermedadesOculares.getText().isEmpty() ){
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+txtEnfermedadesOculares.getText().toString() + '\n');
-                       contador++;
+                        if (!"NINGUNA".equals(txtEnfermedadesOculares.getText().toString())
+                                && !txtEnfermedadesOculares.getText().isEmpty()) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + txtEnfermedadesOculares.getText().toString() + '\n');
+                            contador++;
+                        }
+
+                        if ("PTERIGION BILATERAL".equals(txtEnfermedadesOculares1.getText().toString())) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + " PTERIGION BILATERAL:EVALUACION POR OFTALMOLOGIA." + '\n');
+                            contador++;
+                        } else if (!"NINGUNA".equals(txtEnfermedadesOculares1.getText().toString()) && !txtEnfermedadesOculares1.getText().isEmpty()) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + txtEnfermedadesOculares1.getText().toString().concat(":EVALUACION POR OFTALMOLOGIA.") + '\n');
+                            contador++;
                         }
                         
-                        if("PTERIGION BILATERAL".equals(txtEnfermedadesOculares1.getText().toString())){
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+" PTERIGION BILATERAL:EVALUACION X OFTALMOLOGIA." + '\n');
-                            contador++;
-                        }else if(!"NINGUNA".equals(txtEnfermedadesOculares1.getText().toString()) && !txtEnfermedadesOculares1.getText().isEmpty()){
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+txtEnfermedadesOculares1.getText().toString().concat(":EVALUACION X OFTALMOLOGIA.") + '\n');
-                                contador++;
-                        }
-                       
                         //************************************************************
                         txtOD500.setText(oConn.setResult.getString("o_d_500"));
                         txtOD1000.setText(oConn.setResult.getString("o_d_1000"));
@@ -6747,73 +7169,143 @@ public void cerrarVentana(){
                         txtOI4000.setText(oConn.setResult.getString("o_i_4000"));
                         txtOI6000.setText(oConn.setResult.getString("o_i_6000"));
                         txtOI8000.setText(oConn.setResult.getString("o_i_8000"));
-                       
-                         //************************************************************
-                        if(!txtOD500.getText().isEmpty() && !"N/A".equals(txtOD500.getText())&&!"NORMAL".equals(txtOD500.getText())){
-                           txtObservacionAudio.setText("AUDIOMETRIA "+oConn.setResult.getString("diagnostico").concat(".EVALUACION ANUAL "));
-                        }else if("N/A".equals(txtOD500.getText())|| txtOD500.getText().isEmpty()){
+
+                        //************************************************************
+                        if (!txtOD500.getText().isEmpty() && !"N/A".equals(txtOD500.getText()) && !"NORMAL".equals(oConn.setResult.getString("diagnostico"))&& !"".equals(oConn.setResult.getString("diagnostico"))) {
+                            txtObservacionAudio.setText("AUDIOMETRIA " + oConn.setResult.getString("diagnostico").concat(".EVALUACION ANUAL "));
+                        } else if ("N/A".equals(txtOD500.getText()) || txtOD500.getText().isEmpty()) {
                             txtObservacionAudio.setText(null);
-                             txtObservacionAudio.append("NO PASO EXAMEN AUDIOMETRIA." + '\n');
+                            txtObservacionAudio.append("NO PASO EXAMEN AUDIOMETRIA." + '\n');
                         }
-                         //************************************************************
-                       oPu.fecha(FechaFicha);
-                      
-                       
-                       if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
+                        //************************************************************
+                        if(oConn.setResult.getBoolean("chkdnormal")){
+                           txtObservacionAudio.setText("NORMAL");
+                        }else{
+                            if(oConn.setResult.getBoolean("chkdtaleveod") && oConn.setResult.getBoolean("chkdtaleveoi")){
+                                txtObservacionAudio.setText("Trauma Acústico Bilateral Leve ");
+                            }
+                            if(oConn.setResult.getBoolean("chkdtaleveod")){
+                                txtObservacionAudio.append("\n Trauma Acústico Leve OD");
+                            }
+                            if(oConn.setResult.getBoolean("chkdtaleveoi")){
+                                txtObservacionAudio.append("\n Trauma Acústico Leve OI");
+                            }
+                            if(oConn.setResult.getBoolean("chkdtaavanzadood") && oConn.setResult.getBoolean("chkdtaavanzadooi")){
+                                txtObservacionAudio.append("\n Trauma Acústico Bilateral Avanzado ");
+                            }
+                            if(oConn.setResult.getBoolean("chkdtaavanzadood")){
+                                txtObservacionAudio.append("\n Trauma Acústico Avanzado OD");
+                            }
+                            if(oConn.setResult.getBoolean("chkdtaavanzadooi")){
+                                txtObservacionAudio.append("\n Trauma Acústico Avanzado OI");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhrleveod") && oConn.setResult.getBoolean("chkdhrleveoi")){
+                                txtObservacionAudio.append("\n Hipoacusia Bilateral Inducida por Ruido, Leve ");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhrleveod")){
+                                txtObservacionAudio.append("\n Hipoacusia Inducida por Ruido, Leve  OD");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhrleveoi")){
+                                txtObservacionAudio.append("\n Hipoacusia Inducida por Ruido, Leve  OI");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhrmoderadood") && oConn.setResult.getBoolean("chkdhrmoderadooi")){
+                                txtObservacionAudio.append("\n Hipoacusia Bilateral Inducida por Ruido, Moderada");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhrmoderadood")){
+                                txtObservacionAudio.append("\n Hipoacusia Inducida por Ruido, Moderada OD");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhrmoderadooi")){
+                                txtObservacionAudio.append("\n Hipoacusia Inducida por Ruido, Moderada OI");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhravanzadaod") && oConn.setResult.getBoolean("chkdhravanzadaoi")){
+                                txtObservacionAudio.append("\n Hipoacusia Bilateral Inducida por Ruido, Avanzada ");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhravanzadaod")){
+                                txtObservacionAudio.append("\n Hipoacusia Inducida por Ruido, Avanzada  OD");
+                            }
+                            if(oConn.setResult.getBoolean("chkdhravanzadaoi")){
+                                txtObservacionAudio.append("\n Hipoacusia Inducida por Ruido, Avanzada  OI");
+                            }
+                            if(oConn.setResult.getBoolean("chkotrashipoacusias") ){
+                                txtObservacionAudio.append("\n  OTRAS HIPOACUSIAS: "+oConn.setResult.getString("txtotrashipoacusias"));
+                            }
+                        }
+                        if (!txtOD8000.getText().isEmpty() && !"N/A".equals(txtOD8000.getText())) {
+                            float edad = Float.parseFloat(txtEdad.getText());
+                            float od8000 = Float.parseFloat(txtOD8000.getText());
+                            float oi8000 = Float.parseFloat(txtOI8000.getText());
+                            if (edad > 40) {
+                                if (od8000 > 25 && oi8000 > 25) {
+                                    oFunc.SubSistemaMensajeInformacion("SOSPECHA DE PRESBIACUSIA EN OD Y OI");
+                                } else if (od8000 > 25) {
+                                    oFunc.SubSistemaMensajeInformacion("SOSPECHA DE PRESBIACUSIA EN OD");
+                                } else if (oi8000 > 25) {
+                                    oFunc.SubSistemaMensajeInformacion("SOSPECHA DE PRESBIACUSIA EN OI");
+                                }
+                            }
+                        }
+                        
+                        
+                        //************************************************************
+                        oPu.fecha(FechaFicha);
+
+                        if (txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())) {
                             oFunc.SubSistemaMensajeError("Grupo Sanguinio incongruente por favotr revisar");
                         }
-                       
-                        if (oConn.setResult.getString("txtobservaciones") != null && !"NINGUNA".equals(oConn.setResult.getString("txtobservaciones")) ) {
-                            txtObservacionesFichaMedica.append(String.valueOf(contador)+"-ODONTOGRAMA : " + oConn.setResult.getString("txtobservaciones").concat("\n"));
+
+                        if (oConn.setResult.getString("txtobservaciones") != null && !"NINGUNA".equals(oConn.setResult.getString("txtobservaciones"))) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-ODONTOGRAMA : " + oConn.setResult.getString("txtobservaciones").concat("\n"));
                             txtObservOdonto.setText(oConn.setResult.getString("txtobservaciones"));
                             contador++;
                         }
-                       
-                        if("N/A".equals(txtFVC.getText().toString())){
-                           txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"NO PASO EXAMEN DE ESPIROMETRIA." + '\n' ); 
-                        contador++;
-                        }else{
-                            if(!txtFEV1FVC.getText().isEmpty()&&!"N/A".equals(txtFVC.getText().toString())){
-                           float fev1fvc=Float.parseFloat(txtFEV1FVC.getText().toString());
-                           if(fev1fvc >=70.0){
-                               if(!"-NORMAL".equals(txtConclusion.getText().toString())){
-                                   txtConclusion.append("-NORMAL" + '\n');
-                               }
-                           }else{
-                               txtConclusion.append("-PATRON OBSTRUCTIVO"+ '\n');
-                               txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"PATRON OBSTRUCTIVO LEVE. EVALUACION EN 6 MESES." + '\n' );
-                               contador++;
-                           } 
-                        } 
+
+                        if ("N/A".equals(txtFVC.getText())) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "NO PASO EXAMEN DE ESPIROMETRIA." + '\n');
+                            contador++;
+                        } else {
+                            if (!txtFEV1FVC.getText().isEmpty() && !"N/A".equals(txtFVC.getText().toString())) {
+                                float fev1fvc = Float.parseFloat(txtFEV1FVC.getText().toString());
+                                if (fev1fvc >= 70.0) {
+                                    if (!"-NORMAL".equals(txtConclusion.getText().toString())) {
+                                        txtConclusion.append("-NORMAL" + '\n');
+                                    }
+                                } else {
+                                    txtConclusion.append("-PATRON OBSTRUCTIVO" + '\n');
+                                    txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "PATRON OBSTRUCTIVO LEVE. EVALUACION EN 6 MESES." + '\n');
+                                    contador++;
+                                }
+                            }
                         }
-                       
-                        if(!"NINGUNA".equals(txtVisionColores.getText())&& !"NORMAL".equals(txtVisionColores.getText())){
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+txtVisionColores.getText().toString() + '\n');
-                       contador++;
+
+                        if (!"NINGUNA".equals(txtVisionColores.getText()) && !"NORMAL".equals(txtVisionColores.getText())) {
+                            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + txtVisionColores.getText().toString() + '\n');
+                            contador++;
                         }
                         if (!"".equals(sistolica) && !"".equals(diastolica)) {
                             float sistolica1 = Float.parseFloat(sistolica);
                             float diastolica1 = Float.parseFloat(diastolica);
-                         
+
                             if (sistolica1 >= 140 || diastolica1 >= 90) {
-                                txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"HTA NO CONTROLADA." + '\n');
-                            contador++;
-                            } 
+                                txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "HTA NO CONTROLADA." + '\n');
+                                contador++;
+                            }
                         }
-                        
-                       
+
 //                       if (txtOtrosEx.getText().toString() != null ) {
 //                            txtObservacionesFichaMedica.append(txtOtrosEx.getText().toString());
 //                       }
                     } else {
-                        oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
+                        oFunc.SubSistemaMensajeError("Faltan Registros: \n 1- Laboratorio Clinico "
+                                + "\n 2- Radiografía de Torax P.A \n 3- Anteceentes Patologicos"
+                                + " \n 4- Oftalmologia  \n 5- Espirometria \n 6- Odontologia"
+                                + "\n 7- Audiometria");
                     }
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                 }
-            }else {
-             oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );
+            } else {
+                oFunc.SubSistemaMensajeInformacion("N° Orden registrado");
             }
         } else {
             txtNorden.setText(null);
@@ -6821,48 +7313,67 @@ public void cerrarVentana(){
             oFunc.SubSistemaMensajeInformacion("Ficha Fue llenada y Esta Lista para Imprimir.");
         }
     }
-    private void muestraVisual(){
-        String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
-"          CASE  WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od  ELSE ol.v_cerca_c_od  END as ODCC, \n" +
-"          CASE  WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi  ELSE ol.v_cerca_c_oi  END as OICC, \n" +
-"          o.v_lejos_s_od, o.v_lejos_s_oi, \n" +
-"	  CASE  WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
-"          CASE  WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC, \n" +
-"	  CASE  WHEN ol.v_colores IS NULL THEN o.v_colores  ELSE ol.v_colores  END as VC, \n" +
-"          CASE  WHEN ol.v_binocular IS NULL THEN o.v_binocular  ELSE ol.v_binocular  END as VB, \n" +
-"          CASE  WHEN ol.r_pupilares IS NULL THEN o.r_pupilares  ELSE ol.r_pupilares  END as RP, o.e_oculares\n" +
-"     FROM oftalmologia as o\n" +
-"     left JOIN oftalmologia_lo as ol on (o.n_orden=ol.n_orden)\n" +
-"     WHERE o.n_orden ='"+txtNorden.getText().toString()+"'";
-         oConn.FnBoolQueryExecute(sql);      
-             try {
-                    if (oConn.setResult.next()) {                        
-                        txtCercaSinCorregirOD.setText(oConn.setResult.getString("v_cerca_s_od"));
-                        txtCercaSinCorregirOI.setText(oConn.setResult.getString("v_cerca_s_oi"));
-                        txtLejosSinCorregirOD.setText(oConn.setResult.getString("v_lejos_s_od"));
-                        txtLejosSinCorregirOI.setText(oConn.setResult.getString("v_lejos_s_oi"));
-                       
-                        txtCercaCorregidaOD.setText(oConn.setResult.getString("ODCC"));
-                        txtCercaCorregidaOI.setText(oConn.setResult.getString("OICC"));
-                        txtLejosCorregidaOD.setText(oConn.setResult.getString("ODLC"));
-                        txtLejosCorregidaOI.setText(oConn.setResult.getString("OILC"));
-                        txtVisionColores.setText(oConn.setResult.getString("VC"));
-                        txtBinocular.setText(oConn.setResult.getString("VB"));
-                        txtReflejosPupilares.setText(oConn.setResult.getString("RP"));
-                        
-                       txtEnfermedadesOculares.setText(oConn.setResult.getString("e_oculares"));
-                        
-                       
-                       }else{
-                        oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
-                    }
-                    oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
+
+    private void muestraVisual() {
+        String sql = "SELECT n.n_orden, CASE WHEN oft.txtcercasincorregirod is not null THEN oft.txtcercasincorregirod else o.v_cerca_s_od end as v_cerca_s_od,\n" +
+"       CASE WHEN oft.txtcercasincorregiroi is not null THEN oft.txtcercasincorregiroi else o.v_cerca_s_oi end as v_cerca_s_oi,\n" +
+"       CASE WHEN oft.txtcercacorregidaod is not null THEN oft.txtcercacorregidaod \n" +
+"	    WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od\n" +
+"            else ol.v_cerca_c_od end as ODCC,\n" +
+"       CASE WHEN oft.txtcercacorregidaoi is not null THEN oft.txtcercacorregidaoi \n" +
+"	    WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi\n" +
+"            else ol.v_cerca_c_oi end as OICC,\n" +
+"       CASE WHEN oft.txtlejossincorregirod is not null THEN oft.txtlejossincorregirod else o.v_lejos_s_od end as v_lejos_s_od,\n" +
+"       CASE WHEN oft.txtlejossincorregiroi is not null THEN oft.txtlejossincorregiroi else o.v_lejos_s_oi end as v_lejos_s_oi,\n" +
+"       CASE WHEN oft.txtlejoscorregidaod is not null THEN oft.txtlejoscorregidaod \n" +
+"            WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
+"       CASE WHEN oft.txtlejoscorregidaoi is not null THEN oft.txtlejoscorregidaoi \n" +
+"            WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC,\n" +
+"         \n" +
+"       CASE  WHEN oft.rbtecishihara_normal='TRUE' THEN 'NORMAL'\n" +
+"             WHEN oft.rbtecishihara_anormal='TRUE'THEN 'ANORMAL'\n" +
+"             WHEN ol.v_colores IS NULL THEN o.v_colores  \n" +
+"             ELSE ol.v_colores  END as VC,\n" +
+"      CASE  WHEN oft.txtbinocularsincorregir IS not NULL THEN oft.txtbinocularsincorregir  \n" +
+"	    WHEN ol.v_binocular IS NULL THEN o.v_binocular  \n" +
+"            ELSE ol.v_binocular END as VB,\n" +
+"      CASE  WHEN oft.txtrp IS not NULL THEN oft.txtrp\n" +
+"	    WHEN ol.r_pupilares IS NULL THEN o.r_pupilares\n" +
+"            ELSE ol.r_pupilares  END as RP,\n" +
+"      CASE  WHEN oft.txtdiagnostico IS not NULL THEN oft.txtdiagnostico  else o.e_oculares end as e_oculares\n" +
+"    FROM n_orden_ocupacional as n\n" +
+"     left JOIN oftalmologia as o on (n.n_orden=o.n_orden)\n" +
+"     left JOIN oftalmologia_lo as ol on (n.n_orden=ol.n_orden)\n" +
+"     left JOIN oftalmologia2021 as oft on (n.n_orden=oft.n_orden)" +
+"     WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
+        oConn.FnBoolQueryExecute(sql);
+        try {
+            if (oConn.setResult.next()) {
+                txtCercaSinCorregirOD.setText(oConn.setResult.getString("v_cerca_s_od"));
+                txtCercaSinCorregirOI.setText(oConn.setResult.getString("v_cerca_s_oi"));
+                txtLejosSinCorregirOD.setText(oConn.setResult.getString("v_lejos_s_od"));
+                txtLejosSinCorregirOI.setText(oConn.setResult.getString("v_lejos_s_oi"));
+
+                txtCercaCorregidaOD.setText(oConn.setResult.getString("ODCC"));
+                txtCercaCorregidaOI.setText(oConn.setResult.getString("OICC"));
+                txtLejosCorregidaOD.setText(oConn.setResult.getString("ODLC"));
+                txtLejosCorregidaOI.setText(oConn.setResult.getString("OILC"));
+                txtVisionColores.setText(oConn.setResult.getString("VC"));
+                txtBinocular.setText(oConn.setResult.getString("VB"));
+                txtReflejosPupilares.setText(oConn.setResult.getString("RP"));
+                txtEnfermedadesOculares.setText(oConn.setResult.getString("e_oculares"));
+
+            } else {
+                oFunc.SubSistemaMensajeError("No se encuentra Registros en oftalmologia");
             }
-        
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
+        }
+
     }
-    public void diagnosticoOftalmologia(){
+
+    public void diagnosticoOftalmologia() {
         String vcercasod = txtCercaSinCorregirOD.getText();
         String vcercasoi = txtCercaSinCorregirOI.getText();
         String vcercacod = txtCercaCorregidaOD.getText();
@@ -6874,101 +7385,101 @@ public void cerrarVentana(){
         String tipoDiagnostico = null;
         String tipoDiagnostico1 = null;
         //****************************************************************
-        if((!vcercasod.equals("20/20") && !vcercasoi.equals("20/20")) || 
-              (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20-1"))||
-              (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20-2"))|| 
-              (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20-3"))|| 
-              (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20"))||
-              (!vcercasod.equals("20/20") && !vcercasoi.equals("20/20-1"))|| 
-              (!vcercasod.equals("20/20") && !vcercasoi.equals("20/20-2"))|| 
-              (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20"))|| 
-              (!vcercasod.equals("20/20") && !vcercasoi.equals("20/20-3"))|| 
-              (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20"))|| 
-              (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20-2"))|| 
-              (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20-1"))|| 
-              (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20-3"))|| 
-              (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20-1"))|| 
-              (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20-3"))|| 
-              (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20-2"))){
-            if(vcercacod.equals("00") && vcercacoi.equals("00") ){
-                tipoDiagnostico=" NO CORREGIDA";
-            }else if(!vcercacod.equals("00") && !vcercacoi.equals("00")){
-                if(vcercacod.equals("20/20") && vcercacoi.equals("20/20") || 
-                    vcercacod.equals("20/20-1") && vcercacoi.equals("20/20-1") || 
-                    vcercacod.equals("20/20-2") && vcercacoi.equals("20/20-2") || 
-                    vcercacod.equals("20/20-3") && vcercacoi.equals("20/20-3") || 
-                    (vcercacod.equals("20/20-1") && vcercacoi.equals("20/20"))||
-                    (vcercacod.equals("20/20") && vcercacoi.equals("20/20-1"))|| 
-                    (vcercacod.equals("20/20") && vcercacoi.equals("20/20-2"))|| 
-                    (vcercacod.equals("20/20-2") && vcercacoi.equals("20/20"))|| 
-                    (vcercacod.equals("20/20") && vcercacoi.equals("20/20-3"))|| 
-                    (vcercacod.equals("20/20-3") && vcercacoi.equals("20/20"))|| 
-                    (vcercacod.equals("20/20-1") && vcercacoi.equals("20/20-2"))|| 
-                    (vcercacod.equals("20/20-2") && vcercacoi.equals("20/20-1"))|| 
-                    (vcercacod.equals("20/20-1") && vcercacoi.equals("20/20-3"))|| 
-                    (vcercacod.equals("20/20-3") && vcercacoi.equals("20/20-1"))|| 
-                    (vcercacod.equals("20/20-2") && vcercacoi.equals("20/20-3"))|| 
-                    (vcercacod.equals("20/20-3") && vcercacoi.equals("20/20-2"))){
-                    tipoDiagnostico=" CORREGIDA";
+        if ((!vcercasod.equals("20/20") && !vcercasoi.equals("20/20"))
+                || (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20-1"))
+                || (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20-2"))
+                || (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20-3"))
+                || (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20"))
+                || (!vcercasod.equals("20/20") && !vcercasoi.equals("20/20-1"))
+                || (!vcercasod.equals("20/20") && !vcercasoi.equals("20/20-2"))
+                || (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20"))
+                || (!vcercasod.equals("20/20") && !vcercasoi.equals("20/20-3"))
+                || (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20"))
+                || (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20-2"))
+                || (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20-1"))
+                || (!vcercasod.equals("20/20-1") && !vcercasoi.equals("20/20-3"))
+                || (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20-1"))
+                || (!vcercasod.equals("20/20-2") && !vcercasoi.equals("20/20-3"))
+                || (!vcercasod.equals("20/20-3") && !vcercasoi.equals("20/20-2"))) {
+            if (vcercacod.equals("00") && vcercacoi.equals("00")) {
+                tipoDiagnostico = " NO CORREGIDA";
+            } else if (!vcercacod.equals("00") && !vcercacoi.equals("00")) {
+                if (vcercacod.equals("20/20") && vcercacoi.equals("20/20")
+                        || vcercacod.equals("20/20-1") && vcercacoi.equals("20/20-1")
+                        || vcercacod.equals("20/20-2") && vcercacoi.equals("20/20-2")
+                        || vcercacod.equals("20/20-3") && vcercacoi.equals("20/20-3")
+                        || (vcercacod.equals("20/20-1") && vcercacoi.equals("20/20"))
+                        || (vcercacod.equals("20/20") && vcercacoi.equals("20/20-1"))
+                        || (vcercacod.equals("20/20") && vcercacoi.equals("20/20-2"))
+                        || (vcercacod.equals("20/20-2") && vcercacoi.equals("20/20"))
+                        || (vcercacod.equals("20/20") && vcercacoi.equals("20/20-3"))
+                        || (vcercacod.equals("20/20-3") && vcercacoi.equals("20/20"))
+                        || (vcercacod.equals("20/20-1") && vcercacoi.equals("20/20-2"))
+                        || (vcercacod.equals("20/20-2") && vcercacoi.equals("20/20-1"))
+                        || (vcercacod.equals("20/20-1") && vcercacoi.equals("20/20-3"))
+                        || (vcercacod.equals("20/20-3") && vcercacoi.equals("20/20-1"))
+                        || (vcercacod.equals("20/20-2") && vcercacoi.equals("20/20-3"))
+                        || (vcercacod.equals("20/20-3") && vcercacoi.equals("20/20-2"))) {
+                    tipoDiagnostico = " CORREGIDA";
                 }
-            }else if(!vcercacod.equals("00") && !vcercacoi.equals("00")){
-                if(!vcercacod.equals("20/20") || !vcercacoi.equals("20/20") || 
-                    !vcercacod.equals("20/20-1") || !vcercacoi.equals("20/20-1") || 
-                    !vcercacod.equals("20/20-2") || !vcercacoi.equals("20/20-2") || 
-                    !vcercacod.equals("20/20-3") || !vcercacoi.equals("20/20-3") ){
-                    tipoDiagnostico=" PARCIALMENTE CORREGIDA";
+            } else if (!vcercacod.equals("00") && !vcercacoi.equals("00")) {
+                if (!vcercacod.equals("20/20") || !vcercacoi.equals("20/20")
+                        || !vcercacod.equals("20/20-1") || !vcercacoi.equals("20/20-1")
+                        || !vcercacod.equals("20/20-2") || !vcercacoi.equals("20/20-2")
+                        || !vcercacod.equals("20/20-3") || !vcercacoi.equals("20/20-3")) {
+                    tipoDiagnostico = " PARCIALMENTE CORREGIDA";
                 }
-                
+
             }
-            
-        } 
-       if((!vlejossod.equals("20/20") && !vlejossoi.equals("20/20")) || 
-              (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20-1"))||
-              (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20-2"))|| 
-              (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20-3"))|| 
-              (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20"))||
-              (!vlejossod.equals("20/20") && !vlejossoi.equals("20/20-1"))|| 
-              (!vlejossod.equals("20/20") && !vlejossoi.equals("20/20-2"))|| 
-              (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20"))|| 
-              (!vlejossod.equals("20/20") && !vlejossoi.equals("20/20-3"))|| 
-              (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20"))|| 
-              (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20-2"))|| 
-              (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20-1"))|| 
-              (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20-3"))|| 
-              (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20-1"))|| 
-              (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20-3"))|| 
-              (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20-2"))){
-            if(vlejoscod.equals("00") && vlejoscoi.equals("00") ){
-                tipoDiagnostico1=" NO CORREGIDA";
-            }else if(!vlejoscod.equals("00") && !vlejoscoi.equals("00")){
-                if(vlejoscod.equals("20/20") && vlejoscoi.equals("20/20") || 
-                    vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20-1") || 
-                    vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20-2") || 
-                    vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20-3") || 
-                    (vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20"))||
-                    (vlejoscod.equals("20/20") && vlejoscoi.equals("20/20-1"))|| 
-                    (vlejoscod.equals("20/20") && vlejoscoi.equals("20/20-2"))|| 
-                    (vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20"))|| 
-                    (vlejoscod.equals("20/20") && vlejoscoi.equals("20/20-3"))|| 
-                    (vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20"))|| 
-                    (vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20-2"))|| 
-                    (vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20-1"))|| 
-                    (vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20-3"))|| 
-                    (vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20-1"))|| 
-                    (vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20-3"))|| 
-                    (vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20-2"))){
-                  tipoDiagnostico1=" CORREGIDA";
+
+        }
+        if ((!vlejossod.equals("20/20") && !vlejossoi.equals("20/20"))
+                || (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20-1"))
+                || (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20-2"))
+                || (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20-3"))
+                || (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20"))
+                || (!vlejossod.equals("20/20") && !vlejossoi.equals("20/20-1"))
+                || (!vlejossod.equals("20/20") && !vlejossoi.equals("20/20-2"))
+                || (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20"))
+                || (!vlejossod.equals("20/20") && !vlejossoi.equals("20/20-3"))
+                || (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20"))
+                || (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20-2"))
+                || (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20-1"))
+                || (!vlejossod.equals("20/20-1") && !vlejossoi.equals("20/20-3"))
+                || (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20-1"))
+                || (!vlejossod.equals("20/20-2") && !vlejossoi.equals("20/20-3"))
+                || (!vlejossod.equals("20/20-3") && !vlejossoi.equals("20/20-2"))) {
+            if (vlejoscod.equals("00") && vlejoscoi.equals("00")) {
+                tipoDiagnostico1 = " NO CORREGIDA";
+            } else if (!vlejoscod.equals("00") && !vlejoscoi.equals("00")) {
+                if (vlejoscod.equals("20/20") && vlejoscoi.equals("20/20")
+                        || vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20-1")
+                        || vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20-2")
+                        || vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20-3")
+                        || (vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20"))
+                        || (vlejoscod.equals("20/20") && vlejoscoi.equals("20/20-1"))
+                        || (vlejoscod.equals("20/20") && vlejoscoi.equals("20/20-2"))
+                        || (vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20"))
+                        || (vlejoscod.equals("20/20") && vlejoscoi.equals("20/20-3"))
+                        || (vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20"))
+                        || (vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20-2"))
+                        || (vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20-1"))
+                        || (vlejoscod.equals("20/20-1") && vlejoscoi.equals("20/20-3"))
+                        || (vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20-1"))
+                        || (vlejoscod.equals("20/20-2") && vlejoscoi.equals("20/20-3"))
+                        || (vlejoscod.equals("20/20-3") && vlejoscoi.equals("20/20-2"))) {
+                    tipoDiagnostico1 = " CORREGIDA";
                 }
-            }else if(!vlejoscod.equals("00") && !vlejoscoi.equals("00")){
-                if(!vlejoscod.equals("20/20") || !vlejoscoi.equals("20/20") || 
-                    !vlejoscod.equals("20/20-1") || !vlejoscoi.equals("20/20-1") || 
-                    !vlejoscod.equals("20/20-2") || !vlejoscoi.equals("20/20-2") || 
-                    !vlejoscod.equals("20/20-3") || !vlejoscoi.equals("20/20-3") ){
-                    tipoDiagnostico1=" PARCIALMENTE CORREGIDA";
+            } else if (!vlejoscod.equals("00") && !vlejoscoi.equals("00")) {
+                if (!vlejoscod.equals("20/20") || !vlejoscoi.equals("20/20")
+                        || !vlejoscod.equals("20/20-1") || !vlejoscoi.equals("20/20-1")
+                        || !vlejoscod.equals("20/20-2") || !vlejoscoi.equals("20/20-2")
+                        || !vlejoscod.equals("20/20-3") || !vlejoscoi.equals("20/20-3")) {
+                    tipoDiagnostico1 = " PARCIALMENTE CORREGIDA";
                 }
             }
-        } 
-       String dvisioncerca = txtEnfermedadesOculares.getText().toString();
+        }
+        String dvisioncerca = txtEnfermedadesOculares.getText().toString();
 //       String dvisionlejos = txtEnfermedadesOculares2.getText().toString();
 //       if(!txtEnfermedadesOculares.getText().isEmpty()){
 //           dvisioncerca=txtEnfermedadesOculares.getText().toString();
@@ -6976,145 +7487,146 @@ public void cerrarVentana(){
 //       if(!txtEnfermedadesOculares2.getText().isEmpty()){
 //           dvisionlejos=txtEnfermedadesOculares2.getText().toString();
 //       }
-       if(!"NINGUNA".equals(dvisioncerca)  && !txtEnfermedadesOculares.getText().isEmpty() ){
-           txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+dvisioncerca.concat(tipoDiagnostico) + '\n');
-      contador++;
-       }
+        if (!"NINGUNA".equals(dvisioncerca) && !txtEnfermedadesOculares.getText().isEmpty()) {
+            txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + dvisioncerca.concat(tipoDiagnostico) + '\n');
+            contador++;
+        }
         //************************************************************
 
     }
-    public void diagnosticoAudio(){
-    
-        float od500=Float.parseFloat(txtOD500.getText());
-        float od1000=Float.parseFloat(txtOD1000.getText());
-        float od2000=Float.parseFloat(txtOD2000.getText());
-        float od3000=Float.parseFloat(txtOD3000.getText());
-        float od4000=Float.parseFloat(txtOD4000.getText());
-        float od6000=Float.parseFloat(txtOD6000.getText());
-        float od8000=Float.parseFloat(txtOD8000.getText());
-        float oi500=Float.parseFloat(txtOI500.getText());
-        float oi1000=Float.parseFloat(txtOI1000.getText());
-        float oi2000=Float.parseFloat(txtOI2000.getText());
-        float oi3000=Float.parseFloat(txtOI3000.getText());
-        float oi4000=Float.parseFloat(txtOI4000.getText());
-        float oi6000=Float.parseFloat(txtOI6000.getText());
-        float oi8000=Float.parseFloat(txtOI8000.getText());
-        float may=0;
-        float may1=0;
-        if(od500>=od1000 && od500>=od2000 && od500>=od3000 && od500>=od4000 && od500>=od6000 && od500>=od8000){
-            may=od500;
-        }else if(od1000>=od500 && od1000>=od2000 && od1000>=od3000 && od1000>=od4000 && od1000>=od6000 && od1000>=od8000){
-            may=od1000;
-        }else if(od2000>=od500 && od2000>=od1000 && od2000>=od3000 && od2000>=od4000 && od2000>=od6000 && od2000>=od8000){
-            may=od2000;
-        }else if(od3000>=od500 && od3000>=od1000 && od3000>=od2000 && od3000>=od4000 && od3000>=od6000 && od3000>=od8000){
-            may=od3000;
-        }else if(od4000>=od500 && od4000>=od1000 && od4000>=od2000 && od4000>=od3000 && od4000>=od6000 && od4000>=od8000){
-            may=od4000;
-        }else if(od6000>=od500 && od6000>=od1000 && od6000>=od2000 && od6000>=od3000 && od6000>=od4000 && od6000>=od8000){
-            may=od6000;
-        }else if(od8000>=od500 && od8000>=od1000 && od8000>=od2000 && od8000>=od3000 && od8000>=od4000 && od8000>=od6000){
-            may=od8000;
+
+    public void diagnosticoAudio() {
+
+        float od500 = Float.parseFloat(txtOD500.getText());
+        float od1000 = Float.parseFloat(txtOD1000.getText());
+        float od2000 = Float.parseFloat(txtOD2000.getText());
+        float od3000 = Float.parseFloat(txtOD3000.getText());
+        float od4000 = Float.parseFloat(txtOD4000.getText());
+        float od6000 = Float.parseFloat(txtOD6000.getText());
+        float od8000 = Float.parseFloat(txtOD8000.getText());
+        float oi500 = Float.parseFloat(txtOI500.getText());
+        float oi1000 = Float.parseFloat(txtOI1000.getText());
+        float oi2000 = Float.parseFloat(txtOI2000.getText());
+        float oi3000 = Float.parseFloat(txtOI3000.getText());
+        float oi4000 = Float.parseFloat(txtOI4000.getText());
+        float oi6000 = Float.parseFloat(txtOI6000.getText());
+        float oi8000 = Float.parseFloat(txtOI8000.getText());
+        float may = 0;
+        float may1 = 0;
+        if (od500 >= od1000 && od500 >= od2000 && od500 >= od3000 && od500 >= od4000 && od500 >= od6000 && od500 >= od8000) {
+            may = od500;
+        } else if (od1000 >= od500 && od1000 >= od2000 && od1000 >= od3000 && od1000 >= od4000 && od1000 >= od6000 && od1000 >= od8000) {
+            may = od1000;
+        } else if (od2000 >= od500 && od2000 >= od1000 && od2000 >= od3000 && od2000 >= od4000 && od2000 >= od6000 && od2000 >= od8000) {
+            may = od2000;
+        } else if (od3000 >= od500 && od3000 >= od1000 && od3000 >= od2000 && od3000 >= od4000 && od3000 >= od6000 && od3000 >= od8000) {
+            may = od3000;
+        } else if (od4000 >= od500 && od4000 >= od1000 && od4000 >= od2000 && od4000 >= od3000 && od4000 >= od6000 && od4000 >= od8000) {
+            may = od4000;
+        } else if (od6000 >= od500 && od6000 >= od1000 && od6000 >= od2000 && od6000 >= od3000 && od6000 >= od4000 && od6000 >= od8000) {
+            may = od6000;
+        } else if (od8000 >= od500 && od8000 >= od1000 && od8000 >= od2000 && od8000 >= od3000 && od8000 >= od4000 && od8000 >= od6000) {
+            may = od8000;
         }
-        if(oi500>=oi1000 && oi500>=oi2000 && oi500>=oi3000 && oi500>=oi4000 && oi500>=oi6000 && oi500>=oi8000){
-            may1=oi500;
-        }else if(oi1000>=oi500 && oi1000>=oi2000 && oi1000>=oi3000 && oi1000>=oi4000 && oi1000>=oi6000 && oi1000>=oi8000){
-            may1=oi1000;
-        }else if(oi2000>=oi500 && oi2000>=oi1000 && oi2000>=oi3000 && oi2000>=oi4000 && oi2000>=oi6000 && oi2000>=oi8000){
-            may1=oi2000;
-        }else if(oi3000>=oi500 && oi3000>=oi1000 && oi3000>=oi2000 && oi3000>=oi4000 && oi3000>=oi6000 && oi3000>=oi8000){
-            may1=oi3000;
-        }else if(oi4000>=oi500 && oi4000>=oi1000 && oi4000>=oi2000 && oi4000>=oi3000 && oi4000>=oi6000 && oi4000>=oi8000){
-            may1=oi4000;
-        }else if(oi6000>=oi500 && oi6000>=oi1000 && oi6000>=oi2000 && oi6000>=oi3000 && oi6000>=oi4000 && oi6000>=oi8000){
-            may1=oi6000;
-        }else if(oi8000>=oi500 && oi8000>=oi1000 && oi8000>=oi2000 && oi8000>=oi3000 && oi8000>=oi4000 && oi8000>=oi6000){
-            may1=oi8000;
+        if (oi500 >= oi1000 && oi500 >= oi2000 && oi500 >= oi3000 && oi500 >= oi4000 && oi500 >= oi6000 && oi500 >= oi8000) {
+            may1 = oi500;
+        } else if (oi1000 >= oi500 && oi1000 >= oi2000 && oi1000 >= oi3000 && oi1000 >= oi4000 && oi1000 >= oi6000 && oi1000 >= oi8000) {
+            may1 = oi1000;
+        } else if (oi2000 >= oi500 && oi2000 >= oi1000 && oi2000 >= oi3000 && oi2000 >= oi4000 && oi2000 >= oi6000 && oi2000 >= oi8000) {
+            may1 = oi2000;
+        } else if (oi3000 >= oi500 && oi3000 >= oi1000 && oi3000 >= oi2000 && oi3000 >= oi4000 && oi3000 >= oi6000 && oi3000 >= oi8000) {
+            may1 = oi3000;
+        } else if (oi4000 >= oi500 && oi4000 >= oi1000 && oi4000 >= oi2000 && oi4000 >= oi3000 && oi4000 >= oi6000 && oi4000 >= oi8000) {
+            may1 = oi4000;
+        } else if (oi6000 >= oi500 && oi6000 >= oi1000 && oi6000 >= oi2000 && oi6000 >= oi3000 && oi6000 >= oi4000 && oi6000 >= oi8000) {
+            may1 = oi6000;
+        } else if (oi8000 >= oi500 && oi8000 >= oi1000 && oi8000 >= oi2000 && oi8000 >= oi3000 && oi8000 >= oi4000 && oi8000 >= oi6000) {
+            may1 = oi8000;
         }
-        
-        if(may>=-10 && may<=25  ){
-            if( may1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=71 && may1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=56 && may1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=41 && may1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=26 && may1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(may1>=-10 && may1<=25){
-                txtObservacionAudio.append("NORMAL");    
+
+        if (may >= -10 && may <= 25) {
+            if (may1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 71 && may1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 56 && may1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 41 && may1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 26 && may1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= -10 && may1 <= 25) {
+                txtObservacionAudio.append("NORMAL");
             }
-        }else if((may>=26 && may<=40)){
-            if( may1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=71 && may1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=56 && may1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=41 && may1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=26 && may1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(may1>=-10 && may1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if ((may >= 26 && may <= 40)) {
+            if (may1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 71 && may1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 56 && may1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 41 && may1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 26 && may1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= -10 && may1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        } else if(may>=41 && may<=55){
-            if( may1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=71 && may1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=56 && may1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=41 && may1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=26 && may1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(may1>=-10 && may1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (may >= 41 && may <= 55) {
+            if (may1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 71 && may1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 56 && may1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 41 && may1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 26 && may1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= -10 && may1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        }else if(may>=56 && may<=70){
-            if(may1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=71 && may1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=56 && may1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=41 && may1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=26 && may1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(may1>=-10 && may1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (may >= 56 && may <= 70) {
+            if (may1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 71 && may1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 56 && may1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 41 && may1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 26 && may1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= -10 && may1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        }else if(may>=71 && may<=90){
-            if( may1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=71 && may1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=56 && may1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=41 && may1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=26 && may1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL  \n");    
-            }else if(may1>=-10 && may1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (may >= 71 && may <= 90) {
+            if (may1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 71 && may1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 56 && may1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 41 && may1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 26 && may1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL  \n");
+            } else if (may1 >= -10 && may1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        }else if(may>=90  ){
-            if( may1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=71 && may1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=56 && may1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=41 && may1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(may1>=26 && may1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(may1>=-10 && may1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (may >= 90) {
+            if (may1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 71 && may1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 56 && may1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 41 && may1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= 26 && may1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (may1 >= -10 && may1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
         }
 
@@ -7124,274 +7636,275 @@ public void cerrarVentana(){
 //            } catch (SQLException ex) {
 //            oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
 //            }  
-        
     }
-    public void diagnosticoAudio1(){
-   float od500=Float.parseFloat(txtOD500.getText().toString());
-        float od1000=Float.parseFloat(txtOD1000.getText().toString());
-        float od2000=Float.parseFloat(txtOD2000.getText().toString());
-        float od3000=Float.parseFloat(txtOD3000.getText().toString());
-        float od4000=Float.parseFloat(txtOD4000.getText().toString());
-        float od6000=Float.parseFloat(txtOD6000.getText().toString());
-        float od8000=Float.parseFloat(txtOD8000.getText().toString());
-        float oi500=Float.parseFloat(txtOI500.getText().toString());
-        float oi1000=Float.parseFloat(txtOI1000.getText().toString());
-        float oi2000=Float.parseFloat(txtOI2000.getText().toString());
-        float oi3000=Float.parseFloat(txtOI3000.getText().toString());
-        float oi4000=Float.parseFloat(txtOI4000.getText().toString());
-        float oi6000=Float.parseFloat(txtOI6000.getText().toString());
-        float oi8000=Float.parseFloat(txtOI8000.getText().toString());
-        float may=0;
-        float may1=0;
-        int cont=0;
-        int cont1=0;
-        float prom=0;  
-        float prom1=0; 
-        if(od500>25){
-            may=may+od500;
-            cont=cont+1;
+
+    public void diagnosticoAudio1() {
+        float od500 = Float.parseFloat(txtOD500.getText().toString());
+        float od1000 = Float.parseFloat(txtOD1000.getText().toString());
+        float od2000 = Float.parseFloat(txtOD2000.getText().toString());
+        float od3000 = Float.parseFloat(txtOD3000.getText().toString());
+        float od4000 = Float.parseFloat(txtOD4000.getText().toString());
+        float od6000 = Float.parseFloat(txtOD6000.getText().toString());
+        float od8000 = Float.parseFloat(txtOD8000.getText().toString());
+        float oi500 = Float.parseFloat(txtOI500.getText().toString());
+        float oi1000 = Float.parseFloat(txtOI1000.getText().toString());
+        float oi2000 = Float.parseFloat(txtOI2000.getText().toString());
+        float oi3000 = Float.parseFloat(txtOI3000.getText().toString());
+        float oi4000 = Float.parseFloat(txtOI4000.getText().toString());
+        float oi6000 = Float.parseFloat(txtOI6000.getText().toString());
+        float oi8000 = Float.parseFloat(txtOI8000.getText().toString());
+        float may = 0;
+        float may1 = 0;
+        int cont = 0;
+        int cont1 = 0;
+        float prom = 0;
+        float prom1 = 0;
+        if (od500 > 25) {
+            may = may + od500;
+            cont = cont + 1;
         }
-        if(od1000>25){
-            may=may+od1000;
-            cont=cont+1;
+        if (od1000 > 25) {
+            may = may + od1000;
+            cont = cont + 1;
         }
-        if(od2000>25){
-            may=may+od2000;
-            cont=cont+1;
+        if (od2000 > 25) {
+            may = may + od2000;
+            cont = cont + 1;
         }
-        if(od3000>25){
-            may=may+od3000;
-            cont=cont+1;
+        if (od3000 > 25) {
+            may = may + od3000;
+            cont = cont + 1;
         }
-        if(od4000>25){
-            may=may+od4000;
-            cont=cont+1;
-        } 
-        if(od6000>25){
-            may=may+od6000;
-            cont=cont+1;
-        } 
-        if(od8000>25){
-            may=may+od8000;
-            cont=cont+1;
+        if (od4000 > 25) {
+            may = may + od4000;
+            cont = cont + 1;
         }
-        if(oi500>25){
-            may1=may1+oi500;
-            cont1=cont1+1;
+        if (od6000 > 25) {
+            may = may + od6000;
+            cont = cont + 1;
         }
-        if(oi1000>25){
-            may1=may1+oi1000;
-            cont1=cont1+1;
+        if (od8000 > 25) {
+            may = may + od8000;
+            cont = cont + 1;
         }
-        if(oi2000>25){
-            may1=may1+oi2000;
-            cont1=cont1+1;
+        if (oi500 > 25) {
+            may1 = may1 + oi500;
+            cont1 = cont1 + 1;
         }
-        if(oi3000>25){
-            may1=may1+oi3000;
-            cont1=cont1+1;
+        if (oi1000 > 25) {
+            may1 = may1 + oi1000;
+            cont1 = cont1 + 1;
         }
-        if(oi4000>25){
-            may1=may1+oi4000;
-            cont1=cont1+1;
-        } 
-        if(oi6000>25){
-            may1=may1+oi6000;
-            cont1=cont1+1;
-        } 
-        if(oi8000>25){
-            may1=may1+oi8000;
-            cont1=cont1+1;
+        if (oi2000 > 25) {
+            may1 = may1 + oi2000;
+            cont1 = cont1 + 1;
         }
-        if(od500>25 || od1000>25 || od2000>25 || od3000>25 || od4000>25 || od6000>25 || od8000>25){
-            prom=may/cont;
-        }else{
+        if (oi3000 > 25) {
+            may1 = may1 + oi3000;
+            cont1 = cont1 + 1;
+        }
+        if (oi4000 > 25) {
+            may1 = may1 + oi4000;
+            cont1 = cont1 + 1;
+        }
+        if (oi6000 > 25) {
+            may1 = may1 + oi6000;
+            cont1 = cont1 + 1;
+        }
+        if (oi8000 > 25) {
+            may1 = may1 + oi8000;
+            cont1 = cont1 + 1;
+        }
+        if (od500 > 25 || od1000 > 25 || od2000 > 25 || od3000 > 25 || od4000 > 25 || od6000 > 25 || od8000 > 25) {
+            prom = may / cont;
+        } else {
             txtObservacionAudio.setText("NORMAL");
         }
-        if(oi500>25 || oi1000>25 || oi2000>25 || oi3000>25 || oi4000>25 || oi6000>25 || oi8000>25){
-            prom1=may1/cont1;
-        }else{
+        if (oi500 > 25 || oi1000 > 25 || oi2000 > 25 || oi3000 > 25 || oi4000 > 25 || oi6000 > 25 || oi8000 > 25) {
+            prom1 = may1 / cont1;
+        } else {
             txtObservacionAudio.setText("NORMAL");
         }
-        if(prom>=-10 && prom<=25  ){
-            if( prom1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=71 && prom1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=56 && prom1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=41 && prom1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=26 && prom1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(prom1>=-10 && prom1<=25){
-                txtObservacionAudio.append("NORMAL");    
+        if (prom >= -10 && prom <= 25) {
+            if (prom1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA IZQUIERDO  LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtObservacionAudio.append("NORMAL");
             }
-        }else if((prom>=26 && prom<=40)){
-            if( prom1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=71 && prom1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=56 && prom1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=41 && prom1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=26 && prom1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(prom1>=-10 && prom1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if ((prom >= 26 && prom <= 40)) {
+            if (prom1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        } else if(prom>=41 && prom<=55){
-            if( prom1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=71 && prom1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=56 && prom1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=41 && prom1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=26 && prom1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(prom1>=-10 && prom1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (prom >= 41 && prom <= 55) {
+            if (prom1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        }else if(prom>=56 && prom<=70){
-            if(prom1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=71 && prom1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=56 && prom1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=41 && prom1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=26 && prom1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(prom1>=-10 && prom1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (prom >= 56 && prom <= 70) {
+            if (prom1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        }else if(prom>=71 && prom<=90){
-            if( prom1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=71 && prom1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=56 && prom1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=41 && prom1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=26 && prom1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL  \n");    
-            }else if(prom1>=-10 && prom1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (prom >= 71 && prom <= 90) {
+            if (prom1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL  \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        }else if(prom>=90  ){
-            if( prom1>=90 ){
-                txtObservacionAudio.append("- HIPOACUSIA BILATERAL PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=71 && prom1<=90){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=56 && prom1<=70){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=41 && prom1<=55){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n"); 
-            }else if(prom1>=26 && prom1<=40){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
-            }else if(prom1>=-10 && prom1<=25){
-                txtObservacionAudio.append("- HIPOACUSIA DERECHO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");    
+        } else if (prom >= 90) {
+            if (prom1 >= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA BILATERAL PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA-SEVERA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA LEVE.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtObservacionAudio.append("- HIPOACUSIA DERECHO PROFUNDA.USO DE EPP AUDITIVO.EVALUACION ANUAL \n");
             }
-        }    
-}
-    void actualizar(){
+        }
+    }
+
+    void actualizar() {
         if (!txtNorden.getText().isEmpty()) {
             if (Orden()) {
-                String sql="UPDATE anexo7c SET fecha='"+FechaFicha.getDate()+
-                    "',chkruido='"+chkRuido.isSelected()+
-                    "',chkpolvo='"+chkPolvo.isSelected() +
-                    "',chkvidsegmentario='"+chkVidSegmentario.isSelected()+
-                    "',chkvidtotal='"+chkVidTotal.isSelected()+
-                    "',chkcancerigenos='"+chkCancerigenos.isSelected()+
-                    "',chkmutagenicos='"+chkMutagenicos.isSelected()+
-                    "',chksolventes='"+chkSolventes.isSelected()+
-                    "',chkmetales='"+chkMetales.isSelected()+
-                    "',chktemperatura='"+chkTemperatura.isSelected()+
-                    "',chkbiologicos='"+chkBiologicos.isSelected()+
-                    "',chkposturas='"+chkPosturas.isSelected()+
-                    "',chkturnos='"+chkTurnos.isSelected()+
-                    "',chkcargas='"+chkCargas.isSelected()+
-                    "',chkmovrepet='"+chkMovRepet.isSelected()+
-                    "',chkpvd='"+chkPVD.isSelected()+
-                    "',chkotros='"+chkOtros.isSelected()+
-                    "',tbrsi='"+tbRsi.isSelected()+
-                    "',rbrno='"+rbRno.isSelected()+
-                    "',chktnada='"+chkTNada.isSelected()+
-                    "',chktpoco='"+chkTPoco.isSelected()+
-                    "',chkthabitual='"+chkTHabitual.isSelected() +
-                    "',chktexcesivo='"+chkTExcesivo.isSelected()+
-                    "',chkanada='"+chkANada.isSelected()+
-                    "',chkapoco='"+chkAPoco.isSelected()+
-                    "',chkahabitual='"+chkAHabitual.isSelected()+
-                    "',chkaexcesivo='"+chkAExcesivo.isSelected()+
-                    "',chkdnada='"+chkDNada.isSelected()+
-                    "',chkdpoco='"+chkDPoco.isSelected()+
-                    "',chkdhabitual='"+chkDHabitual.isSelected()+
-                    "',chkdexcesivo='"+chkDExcesivo.isSelected()+
-                    "',txtpuestoactual='"+txtPuestoActual.getText().toString()+
-                    "',txttiempo='"+txtTiempo.getText().toString()+
-                    "',txtantecedentespersonales='"+txtAntecedentesPersonales.getText().toString()+
-                    "',txtantecedentesfamiliares='"+txtAntecedentesFamiliares.getText().toString()+
-                    "',txthijosvivos='"+txtHijosvivos.getText().toString()+
-                    "',txthijosmuertos='"+txtHijosMuertos.getText().toString()+
-                    "',txtcabeza='"+txtcabeza.getText().toString()+
-                    "',txtnariz='"+txtNariz.getText().toString()+
-                    "',txtcuello='"+txtCuello.getText().toString()+
-                    "',txtperimetro='"+txtPerimetro.getText().toString()+
-                    "',txtb_a_f_l='"+txtB_A_F_L.getText().toString()+
-                    "',txtvisioncolores='"+txtVisionColores.getText().toString()+
-                    "',txtenfermedadesoculares='"+txtEnfermedadesOculares.getText().toString()+
-                    "',txtreflejospupilares='"+txtReflejosPupilares.getText().toString()+
-                    "',txtbinocular='"+txtBinocular.getText().toString()+
-                    "',txtod='"+txtOD.getText().toString()+
-                    "',txtoi='"+txtOI.getText().toString()+
-                    "',txttorax='"+txtTorax.getText().toString()+
-                    "',txtcorazon='"+txtCorazon.getText().toString()+
-                    "',rbnormal='"+rbNormal.isSelected()+
-                    "',rbanormal='"+rbAnormal.isSelected()+
-                    "',txtpulmones='"+txtPulmones.getText().toString()+
-                    "',txtmiembrossuperiores='"+txtMiembrosSuperiores.getText().toString()+
-                    "',txtmiembrosinferiores='"+txtMiembrosInferiores.getText().toString()+
-                    "',txtreflejososteotendinosos='"+txtReflejosOsteotendinosos.getText().toString()+
-                    "',txtmarcha='"+txtMarcha.getText().toString()+
-                    "',txtcolumnavertebral='"+txtcolumnaVertebral.getText().toString()+
-                    "',txtabdomen='"+txtAbdomen.getText().toString()+
-                    "',txtanillosinguinales='"+txtAnillosInguinales.getText().toString()+
-                    "',txtorganosgenitales='"+txtOrganosGenitales.getText().toString()+
-                    "',rbtnohizo='"+rbTNoHizo.isSelected()+
-                    "',rbtnormal='"+rbTNormal.isSelected()+
-                    "',rbtanormal='"+rbTAnormal.isSelected()+
-                    "',chkdescribirobservacion='"+chkDescribirObservacion.isSelected()+
-                    "',txthernias='"+txtHernias.getText().toString()+
-                    "',txtvarices='"+txtVarices.getText().toString()+
-                    "',txtganglios='"+txtGanglios.getText().toString()+
-                    "',txtlenguage='"+txtLenguage.getText().toString();
-                 if ("N/A".equals(txtOD500.getText())&&"NORMAL".equals(txtObservacionAudio.getText())) {
-                    sql+="',txtobservacionesfm='"+txtObservacionesFichaMedica.getText().toString()+"\n"+txtObservacionAudio.getText().toString();
-                }else{
-                     sql+="',txtobservacionesfm='"+txtObservacionesFichaMedica.getText().toString();
-                 }
-                    
-                   sql+= "',txtconclusion='"+txtConclusion.getText().toString()+
-                    "',tetano='"+chkTetano.isSelected()+
-                    "',hepatitisb='"+chkHepatitisB.isSelected()+
-                    "',fiebreamarilla='"+chkFiebreAmarilla.isSelected()+
-                    "',txtedad='"+txtEdad.getText().toString()+
-                    "',txtdiagnosticoaudio='"+txtObservacionAudio.getText().toString()+
-                    "',txtenfermedadesoculares2='"+txtEnfermedadesOculares1.getText().toString()+
-                    "' WHERE n_orden='"+txtNorden.getText().toString()+"'";
+                String sql = "UPDATE anexo7c SET fecha='" + FechaFicha.getDate()
+                        + "',chkruido='" + chkRuido.isSelected()
+                        + "',chkpolvo='" + chkPolvo.isSelected()
+                        + "',chkvidsegmentario='" + chkVidSegmentario.isSelected()
+                        + "',chkvidtotal='" + chkVidTotal.isSelected()
+                        + "',chkcancerigenos='" + chkCancerigenos.isSelected()
+                        + "',chkmutagenicos='" + chkMutagenicos.isSelected()
+                        + "',chksolventes='" + chkSolventes.isSelected()
+                        + "',chkmetales='" + chkMetales.isSelected()
+                        + "',chktemperatura='" + chkTemperatura.isSelected()
+                        + "',chkbiologicos='" + chkBiologicos.isSelected()
+                        + "',chkposturas='" + chkPosturas.isSelected()
+                        + "',chkturnos='" + chkTurnos.isSelected()
+                        + "',chkcargas='" + chkCargas.isSelected()
+                        + "',chkmovrepet='" + chkMovRepet.isSelected()
+                        + "',chkpvd='" + chkPVD.isSelected()
+                        + "',chkotros='" + chkOtros.isSelected()
+                        + "',tbrsi='" + tbRsi.isSelected()
+                        + "',rbrno='" + rbRno.isSelected()
+                        + "',chktnada='" + chkTNada.isSelected()
+                        + "',chktpoco='" + chkTPoco.isSelected()
+                        + "',chkthabitual='" + chkTHabitual.isSelected()
+                        + "',chktexcesivo='" + chkTExcesivo.isSelected()
+                        + "',chkanada='" + chkANada.isSelected()
+                        + "',chkapoco='" + chkAPoco.isSelected()
+                        + "',chkahabitual='" + chkAHabitual.isSelected()
+                        + "',chkaexcesivo='" + chkAExcesivo.isSelected()
+                        + "',chkdnada='" + chkDNada.isSelected()
+                        + "',chkdpoco='" + chkDPoco.isSelected()
+                        + "',chkdhabitual='" + chkDHabitual.isSelected()
+                        + "',chkdexcesivo='" + chkDExcesivo.isSelected()
+                        + "',txtpuestoactual='" + txtPuestoActual.getText().toString()
+                        + "',txttiempo='" + txtTiempo.getText().toString()
+                        + "',txtantecedentespersonales='" + txtAntecedentesPersonales.getText().toString()
+                        + "',txtantecedentesfamiliares='" + txtAntecedentesFamiliares.getText().toString()
+                        + "',txthijosvivos='" + txtHijosvivos.getText().toString()
+                        + "',txthijosmuertos='" + txtHijosMuertos.getText().toString()
+                        + "',txtcabeza='" + txtcabeza.getText().toString()
+                        + "',txtnariz='" + txtNariz.getText().toString()
+                        + "',txtcuello='" + txtCuello.getText().toString()
+                        + "',txtperimetro='" + txtPerimetro.getText().toString()
+                        + "',txtb_a_f_l='" + txtB_A_F_L.getText().toString()
+                        + "',txtvisioncolores='" + txtVisionColores.getText().toString()
+                        + "',txtenfermedadesoculares='" + txtEnfermedadesOculares.getText().toString()
+                        + "',txtreflejospupilares='" + txtReflejosPupilares.getText().toString()
+                        + "',txtbinocular='" + txtBinocular.getText().toString()
+                        + "',txtod='" + txtOD.getText().toString()
+                        + "',txtoi='" + txtOI.getText().toString()
+                        + "',txttorax='" + txtTorax.getText().toString()
+                        + "',txtcorazon='" + txtCorazon.getText().toString()
+                        + "',rbnormal='" + rbNormal.isSelected()
+                        + "',rbanormal='" + rbAnormal.isSelected()
+                        + "',txtpulmones='" + txtPulmones.getText().toString()
+                        + "',txtmiembrossuperiores='" + txtMiembrosSuperiores.getText().toString()
+                        + "',txtmiembrosinferiores='" + txtMiembrosInferiores.getText().toString()
+                        + "',txtreflejososteotendinosos='" + txtReflejosOsteotendinosos.getText().toString()
+                        + "',txtmarcha='" + txtMarcha.getText().toString()
+                        + "',txtcolumnavertebral='" + txtcolumnaVertebral.getText().toString()
+                        + "',txtabdomen='" + txtAbdomen.getText().toString()
+                        + "',txtanillosinguinales='" + txtAnillosInguinales.getText().toString()
+                        + "',txtorganosgenitales='" + txtOrganosGenitales.getText().toString()
+                        + "',rbtnohizo='" + rbTNoHizo.isSelected()
+                        + "',rbtnormal='" + rbTNormal.isSelected()
+                        + "',rbtanormal='" + rbTAnormal.isSelected()
+                        + "',chkdescribirobservacion='" + chkDescribirObservacion.isSelected()
+                        + "',txthernias='" + txtHernias.getText().toString()
+                        + "',txtvarices='" + txtVarices.getText().toString()
+                        + "',txtganglios='" + txtGanglios.getText().toString()
+                        + "',txtlenguage='" + txtLenguage.getText().toString();
+                if ("N/A".equals(txtOD500.getText()) && "NORMAL".equals(txtObservacionAudio.getText())) {
+                    sql += "',txtobservacionesfm='" + txtObservacionesFichaMedica.getText().toString() + "\n" + txtObservacionAudio.getText().toString();
+                } else {
+                    sql += "',txtobservacionesfm='" + txtObservacionesFichaMedica.getText().toString();
+                }
+
+                sql += "',txtconclusion='" + txtConclusion.getText().toString()
+                        + "',tetano='" + chkTetano.isSelected()
+                        + "',hepatitisb='" + chkHepatitisB.isSelected()
+                        + "',fiebreamarilla='" + chkFiebreAmarilla.isSelected()
+                        + "',txtedad='" + txtEdad.getText().toString()
+                        + "',txtdiagnosticoaudio='" + txtObservacionAudio.getText().toString()
+                        + "',txtenfermedadesoculares2='" + txtEnfermedadesOculares1.getText().toString()
+                        + "' WHERE n_orden='" + txtNorden.getText().toString() + "'";
                 if (oConn.FnBoolQueryExecuteUpdate(sql)) {
                     ActualizarRadiograSan();
                     oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                     txtEOrden.setText(txtNorden.getText().toString());
                     Busca();
                     limpiar();
-                    
+
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
                 }
@@ -7400,45 +7913,47 @@ public void cerrarVentana(){
                 } catch (SQLException ex) {
                     Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            }else {
+            } else {
                 oFunc.SubSistemaMensajeInformacion("NUMERO ORDEN NO EXISTE");
                 txtNorden.setText(null);
                 txtNorden.requestFocus();
             }
-        }else {
+        } else {
             oFunc.SubSistemaMensajeInformacion("INGRESE EL NUMERO ORDEN");
         }
-     
+
     }
-    private void electroCardiograma(){
-   
-   String Sql="select hallazgo,recomendaciones from informe_electrocardiograma " +
-                "where n_orden='"+txtNorden.getText().toString()+"'";
-               oConn.FnBoolQueryExecute(Sql);
-             
-             try {
-                  if (oConn.setResult.next()) {
 
-                     if ((oConn.setResult.getString("hallazgo") != null && !"NORMAL.".equals(oConn.setResult.getString("hallazgo")) )) {
-                         if( oConn.setResult.getString("recomendaciones") != null ){
-                               txtObservacionesFichaMedica.append(String.valueOf(contador)+"-ELECTROCARDIOGRAMA: " + oConn.setResult.getString("hallazgo")+ "."+
-                                 oConn.setResult.getString("recomendaciones")+"\n");
-                               contador++;
-                         }else{
-                             txtObservacionesFichaMedica.append(String.valueOf(contador)+"-"+"ELECTROCARDIOGRAMA: " + oConn.setResult.getString("hallazgo")+ "\n");
-                         contador++;
-                         }
-                       
-                     }
+    private void electroCardiograma() {
 
-                 } else {
-                     oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
-                 }
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
+        String Sql = "select hallazgo,recomendaciones from informe_electrocardiograma "
+                + "where n_orden='" + txtNorden.getText().toString() + "'";
+        oConn.FnBoolQueryExecute(Sql);
+
+        try {
+            if (oConn.setResult.next()) {
+
+                if ((oConn.setResult.getString("hallazgo") != null && !"NORMAL.".equals(oConn.setResult.getString("hallazgo")))) {
+                    if (oConn.setResult.getString("recomendaciones") != null) {
+                        txtObservacionesFichaMedica.append(String.valueOf(contador) + "-ELECTROCARDIOGRAMA: " + oConn.setResult.getString("hallazgo") + "."
+                                + oConn.setResult.getString("recomendaciones") + "\n");
+                        contador++;
+                    } else {
+                        txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "ELECTROCARDIOGRAMA: " + oConn.setResult.getString("hallazgo") + "\n");
+                        contador++;
+                    }
+
+                }
+
+            } else {
+                oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
+            }
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
-            }  
-  }
+        }
+    }
+
     private void llenar() {
         String oSql = "select * from anexo7c";
         oConn.FnBoolQueryExecute(oSql);
@@ -7453,7 +7968,7 @@ public void cerrarVentana(){
 
     private boolean Agregar() {
         Boolean r = false;
-System.out.println("entro a agregar");
+        System.out.println("entro a agregar");
         if (!txtNorden.getText().isEmpty()) {
             if (!Orden()) {
                 String insert = "INSERT INTO anexo7c(n_orden, fecha, chkruido, chkpolvo, chkvidsegmentario, "
@@ -7522,7 +8037,7 @@ System.out.println("entro a agregar");
                 }
                 if (!txtEnfermedadesOculares.getText().isEmpty()) {
                     insert += ",txtenfermedadesoculares ";
-                    values += ",'" + txtEnfermedadesOculares.getText().toString()+ "'";
+                    values += ",'" + txtEnfermedadesOculares.getText().toString() + "'";
                 }
                 if (!txtReflejosPupilares.getText().isEmpty()) {
                     insert += ",txtreflejospupilares ";
@@ -7607,31 +8122,31 @@ System.out.println("entro a agregar");
                     values += ",'" + txtLenguage.getText().toString() + "'";
                 }
 //                if (!txtObservacionesFichaMedica.getText().isEmpty()) {
-                    if(!"N/A".equals(txtOD500.getText())&& !"NORMAL".equals(txtObservacionAudio.getText())){
-                        insert += ",txtobservacionesfm ";
-                        values += ",'" + txtObservacionesFichaMedica.getText().toString() + "\n"+txtObservacionAudio.getText().toString()+ "'";
-                
-                    }else{
-                       insert += ",txtobservacionesfm ";
-                       values += ",'" + txtObservacionesFichaMedica.getText().toString() +  "'";
-                 
-                    }
+                if (!"N/A".equals(txtOD500.getText()) && !"NORMAL".equals(txtObservacionAudio.getText())) {
+                    insert += ",txtobservacionesfm ";
+                    values += ",'" + txtObservacionesFichaMedica.getText().toString() + "\n" + txtObservacionAudio.getText().toString() + "'";
+
+                } else {
+                    insert += ",txtobservacionesfm ";
+                    values += ",'" + txtObservacionesFichaMedica.getText().toString() + "'";
+
+                }
 //                }
 //                if (!txtConclusion.getText().isEmpty()) {
-                    insert += ",txtconclusion ";
-                    values += ",'" + txtConclusion.getText().toString() + "'";
+                insert += ",txtconclusion ";
+                values += ",'" + txtConclusion.getText().toString() + "'";
 //                }
-                if (!txtEdad.getText().isEmpty() ) {
+                if (!txtEdad.getText().isEmpty()) {
                     insert += ",txtedad ";
                     values += ",'" + txtEdad.getText().toString() + "'";
                 }
-                if (!txtObservacionAudio.getText().isEmpty() ) {
+                if (!txtObservacionAudio.getText().isEmpty()) {
                     insert += ",txtdiagnosticoaudio ";
-                    values += ",'" + txtObservacionAudio.getText().toString()+  "'";
+                    values += ",'" + txtObservacionAudio.getText().toString() + "'";
                 }
                 if (!txtEnfermedadesOculares1.getText().isEmpty()) {
                     insert += ",txtenfermedadesoculares2 ";
-                    values += ",'" + txtEnfermedadesOculares1.getText().toString()+  "'";
+                    values += ",'" + txtEnfermedadesOculares1.getText().toString() + "'";
                 }
                 //oFunc.SubSistemaMensajeInformacion(insert.concat(")") + values.concat(")"));
                 if (oConn.FnBoolQueryExecuteUpdate(insert.concat(")") + values.concat(")"))) {
@@ -7758,11 +8273,12 @@ System.out.println("entro a agregar");
         txtGrupoFacLab.setText(null);
         txtConclusion.setText(null);
         txtObservacionAudio.setText(null);
-        
-         Limpiar();
+
+        Limpiar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser FechaEx5;
     private com.toedter.calendar.JDateChooser FechaExIn4;
     private com.toedter.calendar.JDateChooser FechaFicha;
     private com.toedter.calendar.JDateChooser FechaNacimiento;
@@ -7782,10 +8298,14 @@ System.out.println("entro a agregar");
     private javax.swing.JButton btnAnexo7C2;
     private javax.swing.JButton btnEditarFM;
     private javax.swing.JButton btnEditarIn4;
+    private javax.swing.JButton btnEditarIn5;
     private javax.swing.JButton btnGrabarIn4;
+    private javax.swing.JButton btnGrabarIn5;
     private javax.swing.JButton btnImprimir4;
+    private javax.swing.JButton btnImprimir5;
     private javax.swing.JButton btnLimpiar1;
     private javax.swing.JButton btnLimpiarIn4;
+    private javax.swing.JButton btnLimpiarIn5;
     private javax.swing.JToggleButton btnObsv;
     private javax.swing.JButton btnVLimpiar;
     private javax.swing.JRadioButton chkAExcesivo;
@@ -7971,9 +8491,18 @@ System.out.println("entro a agregar");
     private javax.swing.JLabel jLabel226;
     private javax.swing.JLabel jLabel227;
     private javax.swing.JLabel jLabel228;
+    private javax.swing.JLabel jLabel229;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel230;
+    private javax.swing.JLabel jLabel231;
+    private javax.swing.JLabel jLabel232;
+    private javax.swing.JLabel jLabel233;
+    private javax.swing.JLabel jLabel234;
+    private javax.swing.JLabel jLabel235;
+    private javax.swing.JLabel jLabel236;
+    private javax.swing.JLabel jLabel238;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel244;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -8057,6 +8586,7 @@ System.out.println("entro a agregar");
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JLabel jLabelhora;
+    private javax.swing.JLabel jLabelhora1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -8081,6 +8611,9 @@ System.out.println("entro a agregar");
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -8211,11 +8744,13 @@ System.out.println("entro a agregar");
     private javax.swing.JTextField txtDetencionSAS;
     private javax.swing.JTextField txtDiastolica;
     private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtDni5;
     private javax.swing.JTextField txtDniIn4;
     private javax.swing.JTextField txtDomicilio;
     private javax.swing.JTextField txtENombre;
     private javax.swing.JTextField txtEOrden;
     private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEdad5;
     private javax.swing.JTextField txtElectrocardiograma;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextField txtEnfermedadesOculares;
@@ -8249,6 +8784,7 @@ System.out.println("entro a agregar");
     private javax.swing.JTextField txtHistoriaOcupacional;
     private javax.swing.JTextField txtIMC;
     private javax.swing.JTextField txtImagenRxExPolvo;
+    private javax.swing.JTextField txtImprimir5;
     private javax.swing.JTextField txtImprimirIn4;
     private javax.swing.JTextField txtLDLColesterol;
     private javax.swing.JTextField txtLabClinico;
@@ -8273,9 +8809,11 @@ System.out.println("entro a agregar");
     private javax.swing.JTextField txtNitritosEQ;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtNombres5;
     private javax.swing.JTextField txtNombresIn4;
     private javax.swing.JTextField txtNorden;
     private javax.swing.JTextField txtNorden1;
+    private javax.swing.JTextField txtNorden5;
     private javax.swing.JTextField txtNordenIn4;
     private javax.swing.JTextField txtOD;
     private javax.swing.JTextField txtOD1000;
@@ -8380,59 +8918,68 @@ public static int calcularEdad(String fecha) {
     public void txtObsv(String Ocupacion) {
         txtObservacionesFichaMedica.append(Ocupacion.concat("\n"));
     }
-    
+
     //analisis bioquimicos
-    public void cargarAnalisisB(){
-        String Sql="SELECT txtcolesterol, txtldlcolesterol, txthdlcolesterol, txtvldlcolesterol, \n" +
-            "txttrigliseridos\n" +
-            "  FROM analisis_bioquimicos\n" +
-            "  where n_orden='"+txtNorden.getText().toString()+"'";
-               oConn.FnBoolQueryExecute(Sql);
-             
-             try {
-                  if (oConn.setResult.next()) {
-                      txtColesterol.setText(oConn.setResult.getString("txtcolesterol"));
-                      txtLDLColesterol.setText(oConn.setResult.getString("txtldlcolesterol"));
-                      txtHDLColesterol.setText(oConn.setResult.getString("txthdlcolesterol"));
-                      txtVLDLColesterol.setText(oConn.setResult.getString("txtvldlcolesterol"));
-                      txtTrigliseridos.setText(oConn.setResult.getString("txttrigliseridos"));
-                      
-                      float ct=Float.parseFloat(txtColesterol.getText().toString());
-                      float ldl=Float.parseFloat(txtLDLColesterol.getText().toString());
-                      float hdl=Float.parseFloat(txtHDLColesterol.getText().toString());
-                      float vldl=Float.parseFloat(txtVLDLColesterol.getText().toString());
-                      float trigli=Float.parseFloat(txtTrigliseridos.getText().toString());
-                     if (ct> 200) {
-                         txtObservacionesFichaMedica.append(String.valueOf(contador)+"- HIPERCOLESTEROLEMIA.DIETA HIPOCALORICA Y EJERCICIOS. \n ");
-                          txtColesterol.setForeground(Color.red);
-                          contador++;
-                     }
-                     if (trigli>150) {
-                         txtObservacionesFichaMedica.append(String.valueOf(contador)+"- HIPERTRIGLICERIDEMIA.DIETA HIPOCALORICA Y EJERCICIOS. \n " );
-                         txtTrigliseridos.setForeground(Color.red);
-                         contador++;
-                     }
-                     if (ldl> 129) {
-                           txtLDLColesterol.setForeground(Color.red);
-                          
-                     }
-                     if (hdl<40 || hdl>60) {
-                         txtHDLColesterol.setForeground(Color.red);
-                     }
-                     if (vldl> 30) {
-                          txtVLDLColesterol.setForeground(Color.red);
-                     }
+    public void cargarAnalisisB() {
+        String Sql = "SELECT txtcolesterol, txtldlcolesterol, txthdlcolesterol, txtvldlcolesterol, \n"
+                + "txttrigliseridos\n"
+                + "  FROM analisis_bioquimicos\n"
+                + "  where n_orden='" + txtNorden.getText().toString() + "'";
+        oConn.FnBoolQueryExecute(Sql);
+        try {
+            if (oConn.setResult.next()) {
+                txtColesterol.setText(oConn.setResult.getString("txtcolesterol"));
+                txtLDLColesterol.setText(oConn.setResult.getString("txtldlcolesterol"));
+                txtHDLColesterol.setText(oConn.setResult.getString("txthdlcolesterol"));
+                txtVLDLColesterol.setText(oConn.setResult.getString("txtvldlcolesterol"));
+                txtTrigliseridos.setText(oConn.setResult.getString("txttrigliseridos"));
+                float ct,ldl,hdl,vldl,trigli;
+                if(!txtColesterol.getText().equals("-")){
+                   ct = Float.parseFloat(txtColesterol.getText().toString());
+                   if (ct > 200) {
+                    txtObservacionesFichaMedica.append(String.valueOf(contador) + "- HIPERCOLESTEROLEMIA.DIETA HIPOCALORICA Y EJERCICIOS. \n ");
+                    txtColesterol.setForeground(Color.red);
+                    contador++;
+                   }
+                }
+                if(!txtLDLColesterol.getText().equals("-")){
+                     ldl = Float.parseFloat(txtLDLColesterol.getText().toString());
+                     if (ldl > 129) {
+                        txtLDLColesterol.setForeground(Color.red);
+                    }
+                }
+                if(!txtHDLColesterol.getText().equals("-")){
+                     hdl = Float.parseFloat(txtHDLColesterol.getText().toString());
+                     if (hdl < 40 || hdl > 60) {
+                        txtHDLColesterol.setForeground(Color.red);
+                    }
+                }
+                if(!txtVLDLColesterol.getText().equals("-")){
+                     vldl = Float.parseFloat(txtVLDLColesterol.getText().toString());
+                     if (vldl > 30) {
+                        txtVLDLColesterol.setForeground(Color.red);
+                    }
+                }
+                if(!txtTrigliseridos.getText().equals("-")){
+                     trigli = Float.parseFloat(txtTrigliseridos.getText().toString());
+                    if (trigli > 150) {
+                        txtObservacionesFichaMedica.append(String.valueOf(contador) + "- HIPERTRIGLICERIDEMIA.DIETA HIPOCALORICA Y EJERCICIOS. \n ");
+                        txtTrigliseridos.setForeground(Color.red);
+                        contador++;
+                    }
+                }
 //                     if(ct>200 || trigli>150 || ldl>129 || (hdl<40 || hdl>60) || vldl>30){
 //                         txtObservacionesFichaMedica.append("- DIETA HIPOCALORICA Y EJERCICIOS. \n ");
 //                     }
-                 } else {
-                     oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
-                 }
-                 oConn.sqlStmt.close();
-            } catch (SQLException ex) {
+            } else {
+                oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
+            }
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
-            }  
+        }
     }
+
     //***********************
     void Limpiar() {
         txtNorden1.setText(null);
@@ -8472,102 +9019,104 @@ public static int calcularEdad(String fecha) {
         txtTrigliseridos.setText(null);
         txtNorden1.setEditable(true);
         txtNorden1.requestFocus();
-        
+
     }
-private void Insertar(){
-    
-            String insert="INSERT INTO ex_radiograficos_sanguineos("
-                    + "n_rx, fecha_exra, txtcalidad, txtsimbolos, n_orden,"
-                    + "ex_0, ex_10, ex_11, ex_12, ex_21, ex_22, ex_23, ex_32, ex_33,"
-                    + "ex_3mas, ex_abc, ex_st";
 
-            String values ="VALUES('"+txtRx.getText().toString()+ "','" +FechaRx.getDate()+ "','"+txtCalidad.getText()+"'";
-                values += ",'"+ txtSimbolos.getText()+"','" +txtNorden.getText().toString()+ "'"; 
-                values += ",'"+rb0.isSelected()+ "','"+rb1.isSelected()+"'";
-                values += ",'"+rb2.isSelected()+"','"+rb3.isSelected()+"'";
-                values += ",'"+rb4.isSelected()+ "','"+rb5.isSelected()+"'";
-                values += ",'"+rb6.isSelected()+"','"+rb7.isSelected()+"'";
-                values += ",'"+rb8.isSelected()+"','"+rb9.isSelected()+"'";
-                    values += ",'"+rb10.isSelected()+"','"+rb11.isSelected()+"'";
+    private void Insertar() {
 
-                if(!txtSinNeumoconiosis.getText().isEmpty()){
-                insert+=",txtsinneumoconiosis";
-                values+= ",'"+txtSinNeumoconiosis.getText().toString()+"'";
-                }
-                if(!txtConNeumoconiosis.getText().isEmpty()){
-                insert+=",txtconneumoconiosis";
-                values+= ",'"+txtConNeumoconiosis.getText().toString()+"'";
-                }
-                if(!txtImagenRxExPolvo.getText().isEmpty()){
-                insert+=",txtirep";
-                values+= ",'"+txtImagenRxExPolvo.getText().toString()+"'";
-                }
-                if(!txtOtrosEx.getText().isEmpty()){
-                insert+=",txtotrosex";
-                values+= ",'"+txtOtrosEx.getText().toString()+"'";
-                }
-                
-                insert += ",apto_si,apto_no,apto_re)"; 
-                values += ",'"+rbSI.isSelected()+"','"+rbNO.isSelected()+"','"+rbReevaluacion.isSelected()+"')";
-               
-                 if (oConn.FnBoolQueryExecuteUpdate(insert + values)){
-             oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-             Limpiar();
-                
-        }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-             
-       }
+        String insert = "INSERT INTO ex_radiograficos_sanguineos("
+                + "n_rx, fecha_exra, txtcalidad, txtsimbolos, n_orden,"
+                + "ex_0, ex_10, ex_11, ex_12, ex_21, ex_22, ex_23, ex_32, ex_33,"
+                + "ex_3mas, ex_abc, ex_st";
+
+        String values = "VALUES('" + txtRx.getText().toString() + "','" + FechaRx.getDate() + "','" + txtCalidad.getText() + "'";
+        values += ",'" + txtSimbolos.getText() + "','" + txtNorden.getText().toString() + "'";
+        values += ",'" + rb0.isSelected() + "','" + rb1.isSelected() + "'";
+        values += ",'" + rb2.isSelected() + "','" + rb3.isSelected() + "'";
+        values += ",'" + rb4.isSelected() + "','" + rb5.isSelected() + "'";
+        values += ",'" + rb6.isSelected() + "','" + rb7.isSelected() + "'";
+        values += ",'" + rb8.isSelected() + "','" + rb9.isSelected() + "'";
+        values += ",'" + rb10.isSelected() + "','" + rb11.isSelected() + "'";
+
+        if (!txtSinNeumoconiosis.getText().isEmpty()) {
+            insert += ",txtsinneumoconiosis";
+            values += ",'" + txtSinNeumoconiosis.getText().toString() + "'";
+        }
+        if (!txtConNeumoconiosis.getText().isEmpty()) {
+            insert += ",txtconneumoconiosis";
+            values += ",'" + txtConNeumoconiosis.getText().toString() + "'";
+        }
+        if (!txtImagenRxExPolvo.getText().isEmpty()) {
+            insert += ",txtirep";
+            values += ",'" + txtImagenRxExPolvo.getText().toString() + "'";
+        }
+        if (!txtOtrosEx.getText().isEmpty()) {
+            insert += ",txtotrosex";
+            values += ",'" + txtOtrosEx.getText().toString() + "'";
+        }
+
+        insert += ",apto_si,apto_no,apto_re)";
+        values += ",'" + rbSI.isSelected() + "','" + rbNO.isSelected() + "','" + rbReevaluacion.isSelected() + "')";
+
+        if (oConn.FnBoolQueryExecuteUpdate(insert + values)) {
+            oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
+            Limpiar();
+
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+
+        }
         try {
             oConn.sqlStmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-  }
-public boolean OrdenExiste1()
-    {
-        boolean bResultado=false;
+
+    }
+
+    public boolean OrdenExiste1() {
+        boolean bResultado = false;
 
         String sQuery;
 
-        sQuery  = "Select n_orden from radiografia_torax Where n_orden="+txtNorden.getText().toString();
-        
+        sQuery = "Select n_orden from radiografia_torax Where n_orden=" + txtNorden.getText().toString();
+
         //Ejecuta el Query
         oConn.FnBoolQueryExecute(sQuery);
-        
+
         // Capturo el Error
         try {
-            
+
             // Verifico que haya habido resultados
-            if (oConn.setResult.next())
-            {
+            if (oConn.setResult.next()) {
                 // Resultado
                 bResultado = true;
-             
-             
-            }else{oFunc.SubSistemaMensajeError("Necesario Realizar Radiografía de Torax P.A");}
-            
+
+            } else {
+                oFunc.SubSistemaMensajeError("Necesario Realizar Radiografía de Torax P.A");
+            }
+
             // Cierro los Resultados
             oConn.sqlStmt.close();
-            
+
         } catch (SQLException ex) {
-         
+
         }
 
         return bResultado;
-        
+
     }
-  private void cargarExamSanguineos(){
-      if(!txtNorden.getText().isEmpty()){
-            if(OrdenExiste1()){
-                if(!oPu.nOrden(txtNorden, "ex_radiograficos_sanguineos")){
-                    String Sql="select d.cod_pa,d.sexo_pa, d.nombres_pa, d.apellidos_pa,n.n_orden,l.chkpositivo,l.chknegativo,"
-                    + "  l.chko, l.chka , l.chkb , l.chkab,l.rbrhpositivo, l.rbrhnegativo,l.txthemoglobina,l.txtglucosabio,l.txtvsg,l.txtcocaina,l.txtmarihuana,l.txtcreatininabio, "
-                    + " r.txtvertices,r.txthilios,r.txtsenoscostofrenicos,r.txtmediastinos,r.txtsiluetacardiovascular,r.txtconclusionesradiograficas "
-                    + "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)"
-                    + "INNER JOIn lab_clinico AS l ON (n.n_orden = l.n_orden) "
-                    + "INNER JOIN radiografia_torax AS r ON (n.n_orden = r.n_orden ) WHERE l.n_orden ='"+txtNorden.getText().toString()+"'";
+
+    private void cargarExamSanguineos() {
+        if (!txtNorden.getText().isEmpty()) {
+            if (OrdenExiste1()) {
+                if (!oPu.nOrden(txtNorden, "ex_radiograficos_sanguineos")) {
+                    String Sql = "select d.cod_pa,d.sexo_pa, d.nombres_pa, d.apellidos_pa,n.n_orden,l.chkpositivo,l.chknegativo,"
+                            + "  l.chko, l.chka , l.chkb , l.chkab,l.rbrhpositivo, l.rbrhnegativo,l.txthemoglobina,l.txtglucosabio,l.txtvsg,l.txtcocaina,l.txtmarihuana,l.txtcreatininabio, "
+                            + " r.txtvertices,r.txthilios,r.txtsenoscostofrenicos,r.txtmediastinos,r.txtsiluetacardiovascular,r.txtconclusionesradiograficas "
+                            + "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)"
+                            + "INNER JOIn lab_clinico AS l ON (n.n_orden = l.n_orden) "
+                            + "INNER JOIN radiografia_torax AS r ON (n.n_orden = r.n_orden ) WHERE l.n_orden ='" + txtNorden.getText().toString() + "'";
                     oConn.FnBoolQueryExecute(Sql);
                     String sexo;
                     try {
@@ -8581,7 +9130,7 @@ public boolean OrdenExiste1()
                             txtMediastinos.setText(oConn.setResult.getString("txtmediastinos"));
                             txtSiluetaCardioVascular.setText(oConn.setResult.getString("txtsiluetacardiovascular"));
                             txtConclusionesRx.setText(oConn.setResult.getString("txtconclusionesradiograficas"));
-                            String hemo=oConn.setResult.getString("txthemoglobina");
+                            String hemo = oConn.setResult.getString("txthemoglobina");
                             txtHemoHema.setText(hemo);
                             chkPositivo.setSelected(oConn.setResult.getBoolean("chkpositivo"));
                             chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
@@ -8592,76 +9141,74 @@ public boolean OrdenExiste1()
                             rbAB.setSelected(oConn.setResult.getBoolean("chkab"));
                             rbRhPositivo.setSelected(oConn.setResult.getBoolean("rbrhpositivo"));
                             rbRhNegativo.setSelected(oConn.setResult.getBoolean("rbrhnegativo"));
-                            
-                            String vsg=oConn.setResult.getString("txtvsg");
-                            String gluc=oConn.setResult.getString("txtglucosabio");
-                            String creat=oConn.setResult.getString("txtcreatininabio");
-                            
+
+                            String vsg = oConn.setResult.getString("txtvsg");
+                            String gluc = oConn.setResult.getString("txtglucosabio");
+                            String creat = oConn.setResult.getString("txtcreatininabio");
+
                             txtVSG.setText(vsg);
                             txtGlucosaBio.setText(gluc);
                             txtCreatininaBio.setText(creat);
                             txtOtrosEx.append("-HEMOGRAMA: NORMAL. \n");
-                            txtOtrosEx.append (gluc== null ? "":("-GLUCOSA: "+ gluc + " mg/dl. \n"));
-                            txtOtrosEx.append (creat== null ? "":("-CREATININA: "+ creat + " mg/dl. \n"));
-                            txtOtrosEx.append (vsg == null ? "":("-VSG: "+ vsg+ ". \n"));
+                            txtOtrosEx.append(gluc == null ? "" : ("-GLUCOSA: " + gluc + " mg/dl. \n"));
+                            txtOtrosEx.append(creat == null ? "" : ("-CREATININA: " + creat + " mg/dl. \n"));
+                            txtOtrosEx.append(vsg == null ? "" : ("-VSG: " + vsg + ". \n"));
                             txtOtrosEx.append("-EX ORINA: NORMAL. \n");
-                            txtOtrosEx.append (oConn.setResult.getString("txtcocaina") == null ? "":("-COCAINA: " + oConn.setResult.getString("txtcocaina")+". \n"));
-                            txtOtrosEx.append (oConn.setResult.getString("txtmarihuana")== null ? "":("-MARIHUANA: "+oConn.setResult.getString("txtmarihuana")+ "."));
+                            txtOtrosEx.append(oConn.setResult.getString("txtcocaina") == null ? "" : ("-COCAINA: " + oConn.setResult.getString("txtcocaina") + ". \n"));
+                            txtOtrosEx.append(oConn.setResult.getString("txtmarihuana") == null ? "" : ("-MARIHUANA: " + oConn.setResult.getString("txtmarihuana") + "."));
                             txtNorden1.setEditable(false);
                             txtCalidad.setText("2");
                             txtSimbolos.setText("N/A");
                             Fecha();
                             sexo = oConn.setResult.getString("sexo_pa");
-                            if(!txtHemoHema.getText().isEmpty()){
-                              float hemoglobina=Float.parseFloat(hemo);
-                                  if ("M".equals(sexo)) {
-                                      if(hemoglobina < 14 || hemoglobina > 20){
-                                           txtHemoHema.setForeground(Color.red);
-                                       }
-                                      else{
-                                          txtHemoHema.setForeground(Color.BLACK);
-                                      }
-                                  }
-                                  if ("F".equals(sexo)) {
-                                       if(hemoglobina < 13.5 || hemoglobina > 20){
-                                            txtHemoHema.setForeground(Color.red);
-                                       }
-                                       else{
-                                          txtHemoHema.setForeground(Color.BLACK);
-                                      }
-                                  }  
+                            if (!txtHemoHema.getText().isEmpty()) {
+                                float hemoglobina = Float.parseFloat(hemo);
+                                if ("M".equals(sexo)) {
+                                    if (hemoglobina < 14 || hemoglobina > 20) {
+                                        txtHemoHema.setForeground(Color.red);
+                                    } else {
+                                        txtHemoHema.setForeground(Color.BLACK);
+                                    }
+                                }
+                                if ("F".equals(sexo)) {
+                                    if (hemoglobina < 13.5 || hemoglobina > 20) {
+                                        txtHemoHema.setForeground(Color.red);
+                                    } else {
+                                        txtHemoHema.setForeground(Color.BLACK);
+                                    }
+                                }
                             }
-                            
-                           
-                                  
-                        }else{
+
+                        } else {
                             oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                         }
                         oConn.sqlStmt.close();
                     } catch (SQLException ex) {
                         oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
                     }
-                }else{oFunc.SubSistemaMensajeError("El Formulario ya fue Llenado");
+                } else {
+                    oFunc.SubSistemaMensajeError("El Formulario ya fue Llenado");
                 }
             }
         }
-  }    
-  private void editarRadiogrSan(){
-      if(!txtNorden.getText().isEmpty()){
+    }
 
-            String Sql="select d.cod_pa, d.nombres_pa, d.apellidos_pa,d.sexo_pa,n.n_orden,l.chkpositivo,l.chknegativo,"
-            + "  l.chko, l.chka , l.chkb , l.chkab,l.rbrhpositivo, l.rbrhnegativo,l.txthemoglobina,l.txtglucosabio,"
+    private void editarRadiogrSan() {
+        if (!txtNorden.getText().isEmpty()) {
+
+            String Sql = "select d.cod_pa, d.nombres_pa, d.apellidos_pa,d.sexo_pa,n.n_orden,l.chkpositivo,l.chknegativo,"
+                    + "  l.chko, l.chka , l.chkb , l.chkab,l.rbrhpositivo, l.rbrhnegativo,l.txthemoglobina,l.txtglucosabio,"
                     + "l.txtvsg,l.txtcocaina,l.txtmarihuana,l.txtcreatininabio, "
-            + " r.txtvertices,r.txthilios,r.txtsenoscostofrenicos,r.txtmediastinos,r.txtsiluetacardiovascular,r.txtconclusionesradiograficas,"
-            + "e.fecha_exra, e.txtcalidad, e.txtsimbolos,\n" +
-            " e.ex_0, e.ex_10, e.ex_11, e.ex_12, e.ex_21, e.ex_22, e.ex_23, e.ex_32, e.ex_33, \n" +
-            " e.ex_3mas, e.ex_abc, e.ex_st, e.txtsinneumoconiosis, e.txtconneumoconiosis, \n" +
-            " e.txtirep, e.txtotrosex, e.txtobservacionesrs, e.apto_si, e.apto_no, e.apto_re "
-            + "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)"
-            + "INNER JOIn lab_clinico AS l ON (n.n_orden = l.n_orden) "
-            + "INNER JOIn ex_radiograficos_sanguineos AS e ON (n.n_orden = e.n_orden) "
-            + "INNER JOIN radiografia_torax AS r ON (n.n_orden = r.n_orden ) "
-           + "WHERE r.n_orden ='"+txtNorden.getText().toString()+"'";
+                    + " r.txtvertices,r.txthilios,r.txtsenoscostofrenicos,r.txtmediastinos,r.txtsiluetacardiovascular,r.txtconclusionesradiograficas,"
+                    + "e.fecha_exra, e.txtcalidad, e.txtsimbolos,\n"
+                    + " e.ex_0, e.ex_10, e.ex_11, e.ex_12, e.ex_21, e.ex_22, e.ex_23, e.ex_32, e.ex_33, \n"
+                    + " e.ex_3mas, e.ex_abc, e.ex_st, e.txtsinneumoconiosis, e.txtconneumoconiosis, \n"
+                    + " e.txtirep, e.txtotrosex, e.txtobservacionesrs, e.apto_si, e.apto_no, e.apto_re "
+                    + "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)"
+                    + "INNER JOIn lab_clinico AS l ON (n.n_orden = l.n_orden) "
+                    + "INNER JOIn ex_radiograficos_sanguineos AS e ON (n.n_orden = e.n_orden) "
+                    + "INNER JOIN radiografia_torax AS r ON (n.n_orden = r.n_orden ) "
+                    + "WHERE r.n_orden ='" + txtNorden.getText().toString() + "'";
             oConn.FnBoolQueryExecute(Sql);
             String sexo;
             try {
@@ -8676,7 +9223,7 @@ public boolean OrdenExiste1()
                     txtSiluetaCardioVascular.setText(oConn.setResult.getString("txtsiluetacardiovascular"));
                     txtConclusionesRx.setText(oConn.setResult.getString("txtconclusionesradiograficas"));
                     txtHemoHema.setText(oConn.setResult.getString("txthemoglobina"));
-                    
+
                     chkPositivo.setSelected(oConn.setResult.getBoolean("chkpositivo"));
                     chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
                     txtNombres.setText(oConn.setResult.getString("nombres_pa").concat(" ").concat(oConn.setResult.getString("apellidos_pa")));
@@ -8718,54 +9265,57 @@ public boolean OrdenExiste1()
                     rbNO.setSelected(oConn.setResult.getBoolean("apto_no"));
                     rbReevaluacion.setSelected(oConn.setResult.getBoolean("apto_re"));
                     sexo = oConn.setResult.getString("sexo_pa");
-                            float hemoglobina=Float.parseFloat(txtHemoHema.getText().toString());
-                                  if ("M".equals(sexo)) {
-                                      if(hemoglobina < 14 || hemoglobina > 20){
-                                           txtHemoHema.setForeground(Color.red);
-                                       }
-                                      else{
-                                          txtHemoHema.setForeground(Color.BLACK);
-                                      }
-                                  }
-                                  if ("F".equals(sexo)) {
-                                       if(hemoglobina < 13.5 || hemoglobina > 20){
-                                            txtHemoHema.setForeground(Color.red);
-                                       }
-                                       else{
-                                          txtHemoHema.setForeground(Color.BLACK);
-                                      }
-                                  }
-
-                }else{
+                    if(txtHemoHema.getText()!= null  || txtHemoHema.getText()!=""){
+                        float hemoglobina = Float.parseFloat(txtHemoHema.getText().toString());
+                    
+                    
+                    if ("M".equals(sexo)) {
+                        if (hemoglobina < 14 || hemoglobina > 20) {
+                            txtHemoHema.setForeground(Color.red);
+                        } else {
+                            txtHemoHema.setForeground(Color.BLACK);
+                        }
+                    }
+                    if ("F".equals(sexo)) {
+                        if (hemoglobina < 13.5 || hemoglobina > 20) {
+                            txtHemoHema.setForeground(Color.red);
+                        } else {
+                            txtHemoHema.setForeground(Color.BLACK);
+                        }
+                    }
+                }
+                } else {
                     oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios)");
                 }
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
                 oFunc.SubSistemaMensajeInformacion("Historia Ocupacional:" + ex.getMessage().toString());
             }
-        }else{oFunc.SubSistemaMensajeError("ingrese N° orden");
+        } else {
+            oFunc.SubSistemaMensajeError("ingrese N° orden");
         }
-  }
-  private void ActualizarRadiograSan(){
-      String sCodigo=txtNorden.getText();
+    }
+
+    private void ActualizarRadiograSan() {
+        String sCodigo = txtNorden.getText();
         String strSqlStmt;
-        strSqlStmt="UPDATE ex_radiograficos_sanguineos\n" +
-        "SET fecha_exra='"+FechaRx.getDate()+"', txtcalidad='"+txtCalidad.getText().toString()+"', txtsimbolos='"+txtSimbolos.getText().toString()+"',"
-        + " ex_0='"+rb0.isSelected()+"', ex_10='"+rb1.isSelected()+"', ex_11='"+rb2.isSelected()+"', ex_12='"+rb3.isSelected()+"', "
-        + "ex_21='"+rb4.isSelected()+"', ex_22='"+rb5.isSelected()+"',ex_23='"+rb6.isSelected()+"', ex_32='"+rb7.isSelected()+"',"
-        + " ex_33='"+rb8.isSelected()+"', ex_3mas='"+rb9.isSelected()+"', ex_abc='"+rb10.isSelected()+"', ex_st='"+rb11.isSelected()+"', "
-        + "txtsinneumoconiosis='"+txtSinNeumoconiosis.getText().toString()+"', txtconneumoconiosis='"+txtConNeumoconiosis.getText().toString()+"',"
-        + " txtirep='"+txtImagenRxExPolvo.getText().toString()+"', txtotrosex='"+txtOtrosEx.getText().toString()+"', "
-        + "apto_si='"+rbSI.isSelected()+"', apto_no='"+rbNO.isSelected()+"',"
-        + " apto_re='"+rbReevaluacion.isSelected()+"'" +
-        " WHERE n_orden='" + sCodigo + "'";
+        strSqlStmt = "UPDATE ex_radiograficos_sanguineos\n"
+                + "SET fecha_exra='" + FechaRx.getDate() + "', txtcalidad='" + txtCalidad.getText().toString() + "', txtsimbolos='" + txtSimbolos.getText().toString() + "',"
+                + " ex_0='" + rb0.isSelected() + "', ex_10='" + rb1.isSelected() + "', ex_11='" + rb2.isSelected() + "', ex_12='" + rb3.isSelected() + "', "
+                + "ex_21='" + rb4.isSelected() + "', ex_22='" + rb5.isSelected() + "',ex_23='" + rb6.isSelected() + "', ex_32='" + rb7.isSelected() + "',"
+                + " ex_33='" + rb8.isSelected() + "', ex_3mas='" + rb9.isSelected() + "', ex_abc='" + rb10.isSelected() + "', ex_st='" + rb11.isSelected() + "', "
+                + "txtsinneumoconiosis='" + txtSinNeumoconiosis.getText().toString() + "', txtconneumoconiosis='" + txtConNeumoconiosis.getText().toString() + "',"
+                + " txtirep='" + txtImagenRxExPolvo.getText().toString() + "', txtotrosex='" + txtOtrosEx.getText().toString() + "', "
+                + "apto_si='" + rbSI.isSelected() + "', apto_no='" + rbNO.isSelected() + "',"
+                + " apto_re='" + rbReevaluacion.isSelected() + "'"
+                + " WHERE n_orden='" + sCodigo + "'";
         Limpiar();
         txtNorden1.setEnabled(true);
         txtNorden1.requestFocus();
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-          
+
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -8774,47 +9324,192 @@ public boolean OrdenExiste1()
         } catch (SQLException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
         }
-  }
-  public void examenOrina(){
-          String Sql="SELECT lc.txtcoloref, lc.txtdensidadef, lc.txtaspectoef, lc.txtphef, lc.txtnitritoseq, lc.txtproteinaseq, lc.txtcetonaseq,\n" +
-                    "lc.txtleucocitoseq, lc.txturobilinogenoeq, lc.txtbilirubinaeq, lc.txtglucosaeq, lc.txtsangreeq, lc.txtleucocitossu, \n" +
-                    "lc.txtcelepitelialessu, lc.txtcilindiossu, lc.txtbacteriassu, lc.txthematiessu, lc.txtcristalessu, lc.txtpussu, lc.txtotrossu \n" +
-                    "FROM lab_clinico as lc  \n" +
-                    "WHERE lc.n_orden ='"+txtNorden.getText().toString()+"'" ;
-              
-              oConn.FnBoolQueryExecute(Sql);
-                try {
-                    if (oConn.setResult.next()) {
-                        
-                         txtColorEF.setText(oConn.setResult.getString("txtcoloref"));
-                         txtAspectoEF.setText(oConn.setResult.getString("txtaspectoef"));
-                         txtDensidadEF.setText(oConn.setResult.getString("txtdensidadef"));
-                         txtPhEF.setText(oConn.setResult.getString("txtphef"));
-                         txtNitritosEQ.setText(oConn.setResult.getString("txtnitritoseq"));
-                         txtProteinasEQ.setText(oConn.setResult.getString("txtproteinaseq"));
-                         txtLeucocitosEQ.setText(oConn.setResult.getString("txtleucocitoseq"));
-                         txtCetonasEQ.setText(oConn.setResult.getString("txtcetonaseq"));
-                         txtUrobilinogenoEQ.setText(oConn.setResult.getString("txturobilinogenoeq"));
-                         txtBilirubinaEQ.setText(oConn.setResult.getString("txtbilirubinaeq"));
-                         txtGlucosaEQ.setText(oConn.setResult.getString("txtglucosaeq"));
-                         txtSangreEQ.setText(oConn.setResult.getString("txtsangreeq"));
-                         txtLeucocitosSU.setText(oConn.setResult.getString("txtleucocitossu"));
-                         txtCelEpitelialesSU.setText(oConn.setResult.getString("txtcelepitelialessu"));
-                         txtCilindiosSU.setText(oConn.setResult.getString("txtcilindiossu"));
-                         txtBacteriasSU.setText(oConn.setResult.getString("txtbacteriassu"));
-                         txtHematiesSU.setText(oConn.setResult.getString("txthematiessu"));
-                         txtCristalesSU.setText(oConn.setResult.getString("txtcristalessu"));
-                         txtPusSU.setText(oConn.setResult.getString("txtpussu"));
-                         txtOtrosSu.setText(oConn.setResult.getString("txtotrossu"));
-                        
-                   
-                       }else{
-                        oFunc.SubSistemaMensajeError("No se encuentra Registro en laboratorio");
-                    }
-                    oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Laboratorio Clinico:" + ex.getMessage().toString());
+    }
+
+    public void examenOrina() {
+        String Sql = "SELECT lc.txtcoloref, lc.txtdensidadef, lc.txtaspectoef, lc.txtphef, lc.txtnitritoseq, lc.txtproteinaseq, lc.txtcetonaseq,\n"
+                + "lc.txtleucocitoseq, lc.txturobilinogenoeq, lc.txtbilirubinaeq, lc.txtglucosaeq, lc.txtsangreeq, lc.txtleucocitossu, \n"
+                + "lc.txtcelepitelialessu, lc.txtcilindiossu, lc.txtbacteriassu, lc.txthematiessu, lc.txtcristalessu, lc.txtpussu, lc.txtotrossu \n"
+                + "FROM lab_clinico as lc  \n"
+                + "WHERE lc.n_orden ='" + txtNorden.getText().toString() + "'";
+
+        oConn.FnBoolQueryExecute(Sql);
+        try {
+            if (oConn.setResult.next()) {
+
+                txtColorEF.setText(oConn.setResult.getString("txtcoloref"));
+                txtAspectoEF.setText(oConn.setResult.getString("txtaspectoef"));
+                txtDensidadEF.setText(oConn.setResult.getString("txtdensidadef"));
+                txtPhEF.setText(oConn.setResult.getString("txtphef"));
+                txtNitritosEQ.setText(oConn.setResult.getString("txtnitritoseq"));
+                txtProteinasEQ.setText(oConn.setResult.getString("txtproteinaseq"));
+                txtLeucocitosEQ.setText(oConn.setResult.getString("txtleucocitoseq"));
+                txtCetonasEQ.setText(oConn.setResult.getString("txtcetonaseq"));
+                txtUrobilinogenoEQ.setText(oConn.setResult.getString("txturobilinogenoeq"));
+                txtBilirubinaEQ.setText(oConn.setResult.getString("txtbilirubinaeq"));
+                txtGlucosaEQ.setText(oConn.setResult.getString("txtglucosaeq"));
+                txtSangreEQ.setText(oConn.setResult.getString("txtsangreeq"));
+                txtLeucocitosSU.setText(oConn.setResult.getString("txtleucocitossu"));
+                txtCelEpitelialesSU.setText(oConn.setResult.getString("txtcelepitelialessu"));
+                txtCilindiosSU.setText(oConn.setResult.getString("txtcilindiossu"));
+                txtBacteriasSU.setText(oConn.setResult.getString("txtbacteriassu"));
+                txtHematiesSU.setText(oConn.setResult.getString("txthematiessu"));
+                txtCristalesSU.setText(oConn.setResult.getString("txtcristalessu"));
+                txtPusSU.setText(oConn.setResult.getString("txtpussu"));
+                txtOtrosSu.setText(oConn.setResult.getString("txtotrossu"));
+
+            } else {
+                oFunc.SubSistemaMensajeError("No se encuentra Registro en laboratorio");
+            }
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            oFunc.SubSistemaMensajeInformacion("Laboratorio Clinico:" + ex.getMessage());
         }
-  }
- 
+    }
+    //buena salud
+
+    public boolean OrdenExiste5() {
+        boolean bResultado = false;
+        if (!txtNorden5.getText().isEmpty()) {
+            String sQuery;
+            sQuery = "Select n_orden from consentimientobuenasalud Where n_orden =" + txtNorden5.getText();
+            oConn.FnBoolQueryExecute(sQuery);
+            try {
+                if (oConn.setResult.next()) {
+                    bResultado = true;
+//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+//             txtNorden.setText(null);
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+            }
+        }
+        return bResultado;
+    }
+
+    public void Actualizar5() {
+        String sCodigo = txtNorden5.getText();
+        String strSqlStmt;
+        strSqlStmt = "UPDATE consentimientobuenasalud \n"
+                + " SET fecha='" + FechaEx5.getDate() + "',"
+                + "     hora='" + jLabelhora1.getText() + "' \n"
+                + "     WHERE n_orden='" + sCodigo + "';";
+        System.out.println(strSqlStmt);
+        //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            imprimir5();
+            limpiar5();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void limpiar5() {
+        txtNorden5.setText("");
+        txtNombres5.setText("");
+        txtDni5.setText("");
+        txtEdad5.setText("");
+        FechaEx5.setDate(null);
+        jLabelhora1.setText(null);
+        txtNorden5.setEditable(true);
+    }
+
+    private boolean validar5() {
+        boolean bResultado = true;
+
+        if (((JTextField) FechaEx5.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
+            oFunc.SubSistemaMensajeError("Ingrese Fecha ");
+            bResultado = false;
+        }
+
+        return bResultado;
+    }
+
+    private boolean Grabar5() throws SQLException {
+        boolean bResult = false;
+        String strSqlStmt = "insert into consentimientobuenasalud ";
+        strSqlStmt += "values(" + txtNorden5.getText() + ",'"
+                + FechaEx5.getDate().toString() + "','"
+                + jLabelhora1.getText()
+                + "')";
+        System.out.println(strSqlStmt);
+//        oFunc.SubSistemaMensajeError(strSqlStmt);
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+//                   oConn.setResult.next();
+            oFunc.SubSistemaMensajeInformacion("Examen Registrada");
+
+            bResult = true;
+            oConn.sqlStmt.close();
+        }
+        oConn.sqlStmt.close();
+        return bResult;
+    }
+
+    private boolean imprimir5() {
+        boolean im = false;
+        int seleccion = JOptionPane.showOptionDialog(
+                this, // Componente padre
+                "¿Desea Imprimir?", //Mensaje
+                "Seleccione una opción", // Título
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[]{"Si", "No"}, // null para YES, NO y CANCEL
+                "Si");
+        if (seleccion != -1) {
+            if ((seleccion + 1) == 1) {
+                printer5(Integer.valueOf(txtNorden5.getText()));
+                im = true;
+            } else {
+                // PRESIONO NO
+            }
+        }
+        return im;
+
+    }
+
+    private void printer5(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ConsentimientoBuenaSalud2021.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void print5(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ConsentimientoBuenaSalud2021.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("CONSENTIMIENTO INFORMADO");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

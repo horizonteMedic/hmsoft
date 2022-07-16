@@ -1310,25 +1310,8 @@ public final class Audiometria extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addComponent(btnEditarAudiom)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtExMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel53)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBuscarCod, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(chkNoAudio)
-                        .addGap(35, 35, 35)
-                        .addComponent(chkGrafico))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1338,143 +1321,162 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                                 .addComponent(btnGuardar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnLimpiar))
+                            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(230, 230, 230)
+                                .addComponent(chkNoAudio)
+                                .addGap(35, 35, 35)
+                                .addComponent(chkGrafico))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtEmpresa))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(atxtObservacionesAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnDiagnostico)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(97, 97, 97))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtApellidos)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtDni)
-                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(FechaAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel9))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtEmpresa)
-                                .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(jLabel10)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addGap(8, 8, 8)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEditarAudiom)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtExMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(5, 5, 5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FechaAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, 0)))
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel53)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscarCod, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(atxtObservacionesAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(btnDiagnostico)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(97, 97, 97))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel53)
-                            .addComponent(txtBuscarCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEditarAudiom)
-                            .addComponent(txtExMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))))
-                .addGap(180, 180, 180)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkNoAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLimpiar)
-                            .addComponent(btnGuardar)
-                            .addComponent(btnActualizarAudiom))
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnDiagnostico)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atxtObservacionesAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnEditarAudiom)
+                                .addComponent(txtExMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel53)
+                                .addComponent(txtBuscarCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10)
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(jLabel1)
-                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel3)
-                                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel4)
-                                .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(jLabel5)
-                                .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(FechaAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(7, 7, 7)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel9)
-                                .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(231, 231, 231)))
-                    .addContainerGap(149, Short.MAX_VALUE)))
+                                .addComponent(jLabel1))
+                            .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDiagnostico)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(atxtObservacionesAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(FechaAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(txtContrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(11, 11, 11)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(chkGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chkNoAudio, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnLimpiar)
+                                    .addComponent(btnGuardar)
+                                    .addComponent(btnActualizarAudiom))
+                                .addGap(50, 50, 50))))))
         );
 
         jtAudiometria.addTab("Audiometría", jPanel2);
@@ -2114,12 +2116,12 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                     .addComponent(txtLDConfort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLIConfort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLDdisconfort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLIdisconfort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jLabel59.setText("Nombre del profesional que realiza la audiometría :");
@@ -2137,14 +2139,14 @@ public final class Audiometria extends javax.swing.JInternalFrame {
 
         jLabel60.setText("Conclusiones :");
 
-        txtConclusiones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConclusionesActionPerformed(evt);
-            }
-        });
         txtConclusiones.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtConclusionesFocusGained(evt);
+            }
+        });
+        txtConclusiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConclusionesActionPerformed(evt);
             }
         });
 
@@ -2332,13 +2334,24 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnActualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdAgregar)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmdLimpiar)
+                                .addGap(40, 40, 40))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel59)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2351,14 +2364,7 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtConclusiones)
                                             .addComponent(txtMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnActualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmdAgregar)
-                                .addGap(18, 18, 18)
-                                .addComponent(cmdLimpiar)
-                                .addGap(40, 40, 40)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2420,15 +2426,15 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                     .addComponent(txtOtoscopia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel59)
                             .addComponent(txtResponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2440,19 +2446,19 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel61))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmdLimpiar)
                             .addComponent(cmdAgregar)
                             .addComponent(btnActualizar))
                         .addGap(7, 7, 7))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 46, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -3759,7 +3765,7 @@ int seleccion = JOptionPane.showOptionDialog(
     txtNumero.setEnabled(ficha);
     
 }
-    public void Agregar(){
+public void Agregar(){
      
 if(!OrdenExiste()){
     if(validar()){
@@ -3809,8 +3815,7 @@ if(!OrdenExiste()){
                 txtNumero.setEnabled(true);
                 sbCargarDatosAudiometria("");
                 txtNumero.requestFocus();
-                }else{
-             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
+                }else{oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
              }
             }else  {oFunc.SubSistemaMensajeError("Error N° Orden Registrada");
             }
@@ -4134,7 +4139,8 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
 
 }
 public void diagnosticoAudio(){
-   float od500=Float.parseFloat(txtOD500.getText().toString());
+   if(!txtOD500.getText().equals("N/A")){
+       float od500=Float.parseFloat(txtOD500.getText().toString());
         float od1000=Float.parseFloat(txtOD1000.getText().toString());
         float od2000=Float.parseFloat(txtOD2000.getText().toString());
         float od3000=Float.parseFloat(txtOD3000.getText().toString());
@@ -4266,389 +4272,391 @@ public void diagnosticoAudio(){
                 txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA \n");    
             }
         }
+   }
 }
 public void diagnosticoAudio1(){
-   float od500=Float.parseFloat(txtOD500.getText().toString());
-        float od1000=Float.parseFloat(txtOD1000.getText().toString());
-        float od2000=Float.parseFloat(txtOD2000.getText().toString());
-        float od3000=Float.parseFloat(txtOD3000.getText().toString());
-        float od4000=Float.parseFloat(txtOD4000.getText().toString());
-        float od6000=Float.parseFloat(txtOD6000.getText().toString());
-        float od8000=Float.parseFloat(txtOD8000.getText().toString());
-        float oi500=Float.parseFloat(txtOI500.getText().toString());
-        float oi1000=Float.parseFloat(txtOI1000.getText().toString());
-        float oi2000=Float.parseFloat(txtOI2000.getText().toString());
-        float oi3000=Float.parseFloat(txtOI3000.getText().toString());
-        float oi4000=Float.parseFloat(txtOI4000.getText().toString());
-        float oi6000=Float.parseFloat(txtOI6000.getText().toString());
-        float oi8000=Float.parseFloat(txtOI8000.getText().toString());
-        float may=0;
-        float may1=0;
-        float cont=0;
-        float cont1=0;
-        float prom=0;  
-        float prom1=0; 
-        if(od500>25){
-            may=may+od500;
-            cont=cont+1;
+    if (!txtOD500.getText().equals("N/A")) {
+        float od500 = Float.parseFloat(txtOD500.getText().toString());
+        float od1000 = Float.parseFloat(txtOD1000.getText().toString());
+        float od2000 = Float.parseFloat(txtOD2000.getText().toString());
+        float od3000 = Float.parseFloat(txtOD3000.getText().toString());
+        float od4000 = Float.parseFloat(txtOD4000.getText().toString());
+        float od6000 = Float.parseFloat(txtOD6000.getText().toString());
+        float od8000 = Float.parseFloat(txtOD8000.getText().toString());
+        float oi500 = Float.parseFloat(txtOI500.getText().toString());
+        float oi1000 = Float.parseFloat(txtOI1000.getText().toString());
+        float oi2000 = Float.parseFloat(txtOI2000.getText().toString());
+        float oi3000 = Float.parseFloat(txtOI3000.getText().toString());
+        float oi4000 = Float.parseFloat(txtOI4000.getText().toString());
+        float oi6000 = Float.parseFloat(txtOI6000.getText().toString());
+        float oi8000 = Float.parseFloat(txtOI8000.getText().toString());
+        float may = 0;
+        float may1 = 0;
+        float cont = 0;
+        float cont1 = 0;
+        float prom = 0;
+        float prom1 = 0;
+        if (od500 > 25) {
+            may = may + od500;
+            cont = cont + 1;
         }
-        if(od1000>25){
-            may=may+od1000;
-            cont=cont+1;
+        if (od1000 > 25) {
+            may = may + od1000;
+            cont = cont + 1;
         }
-        if(od2000>25){
-            may=may+od2000;
-            cont=cont+1;
+        if (od2000 > 25) {
+            may = may + od2000;
+            cont = cont + 1;
         }
-        if(od3000>25){
-            may=may+od3000;
-            cont=cont+1;
+        if (od3000 > 25) {
+            may = may + od3000;
+            cont = cont + 1;
         }
-        if(od4000>25){
-            may=may+od4000;
-            cont=cont+1;
-        } 
-        if(od6000>25){
-            may=may+od6000;
-            cont=cont+1;
-        } 
-        if(od8000>25){
-            may=may+od8000;
-            cont=cont+1;
+        if (od4000 > 25) {
+            may = may + od4000;
+            cont = cont + 1;
         }
-        if(oi500>25){
-            may1=may1+oi500;
-            cont1=cont1+1;
+        if (od6000 > 25) {
+            may = may + od6000;
+            cont = cont + 1;
         }
-        if(oi1000>25){
-            may1=may1+oi1000;
-            cont1=cont1+1;
+        if (od8000 > 25) {
+            may = may + od8000;
+            cont = cont + 1;
         }
-        if(oi2000>25){
-            may1=may1+oi2000;
-            cont1=cont1+1;
+        if (oi500 > 25) {
+            may1 = may1 + oi500;
+            cont1 = cont1 + 1;
         }
-        if(oi3000>25){
-            may1=may1+oi3000;
-            cont1=cont1+1;
+        if (oi1000 > 25) {
+            may1 = may1 + oi1000;
+            cont1 = cont1 + 1;
         }
-        if(oi4000>25){
-            may1=may1+oi4000;
-            cont1=cont1+1;
-        } 
-        if(oi6000>25){
-            may1=may1+oi6000;
-            cont1=cont1+1;
-        } 
-        if(oi8000>25){
-            may1=may1+oi8000;
-            cont1=cont1+1;
+        if (oi2000 > 25) {
+            may1 = may1 + oi2000;
+            cont1 = cont1 + 1;
         }
-        if(od500>25 || od1000>25 || od2000>25 || od3000>25 || od4000>25 || od6000>25 || od8000>25){
-            prom=may/cont;
+        if (oi3000 > 25) {
+            may1 = may1 + oi3000;
+            cont1 = cont1 + 1;
         }
-        if(oi500>25 || oi1000>25 || oi2000>25 || oi3000>25 || oi4000>25 || oi6000>25 || oi8000>25){
-            prom1=may1/cont1;
+        if (oi4000 > 25) {
+            may1 = may1 + oi4000;
+            cont1 = cont1 + 1;
         }
-        
-        if(prom>=-10 && prom<=25  ){
-            if( prom1>90 ){
-                if(cont1==1){
+        if (oi6000 > 25) {
+            may1 = may1 + oi6000;
+            cont1 = cont1 + 1;
+        }
+        if (oi8000 > 25) {
+            may1 = may1 + oi8000;
+            cont1 = cont1 + 1;
+        }
+        if (od500 > 25 || od1000 > 25 || od2000 > 25 || od3000 > 25 || od4000 > 25 || od6000 > 25 || od8000 > 25) {
+            prom = may / cont;
+        }
+        if (oi500 > 25 || oi1000 > 25 || oi2000 > 25 || oi3000 > 25 || oi4000 > 25 || oi6000 > 25 || oi8000 > 25) {
+            prom1 = may1 / cont1;
+        }
+
+        if (prom >= -10 && prom <= 25) {
+            if (prom1 > 90) {
+                if (cont1 == 1) {
                     txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  LEVE \n");
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO PROFUNDA \n"); 
-                } 
-            }else if(prom1>70 && prom1<=90){
-                if(cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  LEVE \n");
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO SEVERA \n"); 
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO PROFUNDA \n");
                 }
-                
-            }else if(prom1>55 && prom1<=70){
-                if(cont1==1){
+            } else if (prom1 > 70 && prom1 <= 90) {
+                if (cont1 == 1) {
                     txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  LEVE \n");
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  MODERADA-SEVERA \n");  
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO SEVERA \n");
                 }
-                
-            }else if(prom1>40 && prom1<=55){
-                if(cont1==1){
+
+            } else if (prom1 > 55 && prom1 <= 70) {
+                if (cont1 == 1) {
                     txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  LEVE \n");
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  MODERADA \n"); 
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  MODERADA-SEVERA \n");
                 }
-            }else if(prom1>25 && prom1<=40){
-                   txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  LEVE \n");   
-            }else if(prom1>=-10 && prom1<=25){
-                txtDiagnostico.setText("NORMAL");    
+
+            } else if (prom1 > 40 && prom1 <= 55) {
+                if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  MODERADA \n");
+                }
+            } else if (prom1 > 25 && prom1 <= 40) {
+                txtDiagnostico.setText("- HIPOACUSIA IZQUIERDO  LEVE \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtDiagnostico.setText("NORMAL");
             }
-        }else if((prom>=26 && prom<=40)){
-            if( prom1>=90 ){
-                if(cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n"); 
-                } 
-            }else if(prom1>=71 && prom1<=90){
-                if(cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n"); 
-                } 
-            }else if(prom1>=56 && prom1<=70){
-                if(cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n"); 
-                } 
-            }else if(prom1>=41 && prom1<=55){
-                 if(cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+        } else if ((prom >= 26 && prom <= 40)) {
+            if (prom1 >= 90) {
+                if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
                 }
-            }else if(prom1>=26 && prom1<=40){
-                txtDiagnostico.setText("- HIPOACUSIA BILATERAL LEVE \n");    
-            }else if(prom1>=-10 && prom1<=25){
-                txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n");    
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
+                }
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n");
+                }
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+                }
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                txtDiagnostico.setText("- HIPOACUSIA BILATERAL LEVE \n");
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n");
             }
-        } else if(prom>=41 && prom<=55){
-            if( prom1>=90 ){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO PROFUNDA \n"); 
+        } else if (prom >= 41 && prom <= 55) {
+            if (prom1 >= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO PROFUNDA \n");
                 }
-            }else if(prom1>=71 && prom1<=90){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO SEVERA \n"); 
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO SEVERA \n");
                 }
-            }else if(prom1>=56 && prom1<=70){
-               if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO MODERADA-SEVERA \n"); 
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO MODERADA-SEVERA \n");
                 }
-            }else if(prom1>=41 && prom1<=55){
-                 if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA BILATERAL MODERADA \n"); 
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA BILATERAL MODERADA \n");
                 }
-            }else if(prom1>=26 && prom1<=40){
-                if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE \n");
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n");   
-                }       
-            }else if(prom1>=-10 && prom1<=25){
-                if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHOLEVE \n");
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA \n");  
-                } 
-                  
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA Y IZQUIERDO LEVE \n");
+                }
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHOLEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA \n");
+                }
+
             }
-        }else if(prom>=56 && prom<=70){
-            if(prom1>=90 ){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
+        } else if (prom >= 56 && prom <= 70) {
+            if (prom1 >= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n");
+                } else {
                     txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO PROFUNDA \n");
                 }
-                 
-            }else if(prom1>=71 && prom1<=90){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
-                     txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO SEVERA \n");
+
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO SEVERA \n");
                 }
-                
-            }else if(prom1>=56 && prom1<=70){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
-                     txtDiagnostico.setText("- HIPOACUSIA BILATERAL MODERADA-SEVERA \n");
+
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA BILATERAL MODERADA-SEVERA \n");
                 }
-               
-            }else if(prom1>=41 && prom1<=55){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO MODERADA \n"); 
-                } 
-            }else if(prom1>=26 && prom1<=40){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE \n");
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n"); 
-                } 
-            }else if(prom1>=-10 && prom1<=25){
-                if(cont==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA \n");     
+
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO MODERADA \n");
                 }
-            }
-        }else if(prom>=71 && prom<=90){
-            if( prom1>=90 ){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
-                     txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO PROFUNDA \n"); 
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA Y IZQUIERDO LEVE \n");
                 }
-                
-            }else if(prom1>=71 && prom1<=90){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA BILATERAL SEVERA \n"); 
-                }
-                
-            }else if(prom1>=56 && prom1<=70){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA  \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA-SEVERA \n");  
-                }
-                
-            }else if(prom1>=41 && prom1<=55){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n"); 
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA \n");  
-                }
-                
-            }else if(prom1>=26 && prom1<=40){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE  \n"); 
-                }  
-            }else if(prom1>=-10 && prom1<=25){
-                if(cont==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA \n");    
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO MODERADA-SEVERA \n");
                 }
             }
-        }else if(prom>=90  ){
-            if( prom1>=90 ){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n"); 
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA BILATERAL PROFUNDA \n");  
+        } else if (prom >= 71 && prom <= 90) {
+            if (prom1 >= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO PROFUNDA \n");
                 }
-                
-            }else if(prom1>=71 && prom1<=90){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n"); 
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA SEVERA \n");   
+
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA BILATERAL SEVERA \n");
                 }
-                
-            }else if(prom1>=56 && prom1<=70){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n"); 
-                }else{
-                  txtDiagnostico.setText("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA-SEVERA \n");   
+
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA  \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA-SEVERA \n");
                 }
-            }else if(prom1>=41 && prom1<=55){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
-                }else if(cont1==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n"); 
-                }else{
-                  txtDiagnostico.setText("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA \n"); 
+
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO MODERADA \n");
                 }
-            }else if(prom1>=26 && prom1<=40){
-                if(cont==1 && cont1==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");   
-                }else if(cont==1){
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
-                }else{
-                   txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n"); 
+
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA Y IZQUIERDO LEVE  \n");
                 }
-                  
-            }else if(prom1>=-10 && prom1<=25){
-                if(cont==1){
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n"); 
-                }else{
-                    txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA \n");       
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO SEVERA \n");
                 }
-                 
+            }
+        } else if (prom >= 90) {
+            if (prom1 >= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO PROFUNDA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA BILATERAL PROFUNDA \n");
+                }
+
+            } else if (prom1 >= 71 && prom1 <= 90) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO SEVERA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA SEVERA \n");
+                }
+
+            } else if (prom1 >= 56 && prom1 <= 70) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA-SEVERA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA-SEVERA \n");
+                }
+            } else if (prom1 >= 41 && prom1 <= 55) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+                } else if (cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHA PROFUNDA Y IZQUIERDA MODERADA \n");
+                }
+            } else if (prom1 >= 26 && prom1 <= 40) {
+                if (cont == 1 && cont1 == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO Y IZQUIERDO LEVE  \n");
+                } else if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE Y IZQUIERDO MODERADA \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA Y IZQUIERDO LEVE \n");
+                }
+
+            } else if (prom1 >= -10 && prom1 <= 25) {
+                if (cont == 1) {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO LEVE \n");
+                } else {
+                    txtDiagnostico.setText("- HIPOACUSIA DERECHO PROFUNDA \n");
+                }
+
             }
         }
-          
+    }
 //        oFunc.SubSistemaMensajeInformacion(prom +"-"+ prom1);
 }
 private void imprimir1(){

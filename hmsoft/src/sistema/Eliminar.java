@@ -87,9 +87,13 @@ public void vExamenes(String Nro){
         vSql(txtConstEncont,lblConstEncont,"constancia_encofrados",Nro,btnConstEncont);       
         vSql(txtHojaRef,lblHojaRef,"hoja_referencia",Nro,btnHojaRef);       
         vSql(txtIndicaMedic,lblIndicaMedic,"indicacion_medica_covid",Nro,btnIndicaMedic);       
-        vSql(txtConstAltaEpid,lblConstAltaEpid,"constancia_alta_epidemiologica",Nro,btnConstAltaEpid);       
-
-
+        vSql(txtConstAltaEpid,lblConstAltaEpid,"constancia_alta_epidemiologica",Nro,btnConstAltaEpid);   
+        vSql(txtAudiometria2021,lblAudiometria2021,"audiometria_2021",Nro,btnAudiometria2021); 
+        vSql(txtEvMuscEsqueletico,lblEvMuscEsqueletico,"evaluacion_musculo_esqueletica2021",Nro,btnEvMuscEsqueletico); 
+        vSql(txtCuestCalidadSueño,lblCuestCalidadSueño,"cuestionario_calidad_sueno",Nro,btnCuestCalidadSueño);
+        vSql(txtTestFatSomnolencia,lblTestFatSomnolencia,"test_fatiga_somnolencia",Nro,btnTestFatSomnolencia);
+        vSql(txtEvalOftalmologica,lblEvalOftalmologica,"oftalmologia2021",Nro,btnEvalOftalmologica);
+        vSql(txtCertManipuladores,lblCertManipuladores,"certificado_manipuladores_barrick",Nro,btnCertManipuladores);
                 
     }
     public boolean vSql(JTextField txt,JLabel lbl ,String sTabla, String sOpcion, JButton sboton)
@@ -166,6 +170,12 @@ public void vExamenes(String Nro){
     txtFAptitudAgro.setText(null);
     txtFichaAnexo02.setText(null);
     txtFAptitudAnexo02.setText(null);
+    txtAudiometria2021.setText(null);
+    txtEvMuscEsqueletico.setText(null);
+    txtCuestCalidadSueño.setText(null);
+    txtTestFatSomnolencia.setText(null);
+    txtEvalOftalmologica.setText(null);
+    txtCertManipuladores.setText(null);
     ///label
     lblTriaje.setIcon(oNo);
     lblLabClinico.setIcon(oNo);
@@ -209,6 +219,12 @@ public void vExamenes(String Nro){
     lblFAptitudAgro.setIcon(oNo);
     lblFichaAnexo02.setIcon(oNo);
     lblFAptitudAnexo02.setIcon(oNo);
+    lblAudiometria2021.setIcon(oNo);
+    lblEvMuscEsqueletico.setIcon(oNo);
+    lblCuestCalidadSueño.setIcon(oNo);
+    lblTestFatSomnolencia.setIcon(oNo);
+    lblEvalOftalmologica.setIcon(oNo);
+    lblCertManipuladores.setIcon(oNo);
     //botones
     btnTriaje.setEnabled(false);
     btnLaboratorio.setEnabled(false);
@@ -245,6 +261,12 @@ public void vExamenes(String Nro){
     btnFAptitudAgro.setEnabled(false);
     btnFichaAnexo02.setEnabled(false);
     btnFAptitudAnexo02.setEnabled(false);
+    btnAudiometria2021.setEnabled(false);
+    btnEvMuscEsqueletico.setEnabled(false);
+    btnCuestCalidadSueño.setEnabled(false);
+    btnTestFatSomnolencia.setEnabled(false);
+    btnEvalOftalmologica.setEnabled(false);
+    btnCertManipuladores.setEnabled(false);
     //
     txtNorden.setEditable(true);
    // txtENombre.setEditable(true);
@@ -522,6 +544,30 @@ public boolean OrdenExiste(String orden)
         txtPerimetroToraxico = new javax.swing.JTextField();
         lblPerimetroToraxico = new javax.swing.JLabel();
         btnPerimetroToraxico = new javax.swing.JButton();
+        jLabel147 = new javax.swing.JLabel();
+        txtAudiometria2021 = new javax.swing.JTextField();
+        btnAudiometria2021 = new javax.swing.JButton();
+        lblAudiometria2021 = new javax.swing.JLabel();
+        jLabel148 = new javax.swing.JLabel();
+        txtEvMuscEsqueletico = new javax.swing.JTextField();
+        lblEvMuscEsqueletico = new javax.swing.JLabel();
+        btnEvMuscEsqueletico = new javax.swing.JButton();
+        jLabel149 = new javax.swing.JLabel();
+        txtCuestCalidadSueño = new javax.swing.JTextField();
+        lblCuestCalidadSueño = new javax.swing.JLabel();
+        btnCuestCalidadSueño = new javax.swing.JButton();
+        lblTestFatSomnolencia = new javax.swing.JLabel();
+        btnTestFatSomnolencia = new javax.swing.JButton();
+        txtTestFatSomnolencia = new javax.swing.JTextField();
+        jLabel186 = new javax.swing.JLabel();
+        jLabel187 = new javax.swing.JLabel();
+        txtEvalOftalmologica = new javax.swing.JTextField();
+        lblEvalOftalmologica = new javax.swing.JLabel();
+        btnEvalOftalmologica = new javax.swing.JButton();
+        btnCertManipuladores = new javax.swing.JButton();
+        lblCertManipuladores = new javax.swing.JLabel();
+        txtCertManipuladores = new javax.swing.JTextField();
+        jLabel188 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel155 = new javax.swing.JLabel();
         txtCertTrabAltBarrick = new javax.swing.JTextField();
@@ -1488,25 +1534,6 @@ public boolean OrdenExiste(String orden)
                         .addComponent(lblResultPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnResultPP, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel174)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtConstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblConstancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnConstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel175)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtConstaTamM, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblConstaTamM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnConstaTamM, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel176)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1523,14 +1550,37 @@ public boolean OrdenExiste(String orden)
                         .addComponent(lblConstMedica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConstMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel174)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtConstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblConstancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnConstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel175)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtConstaTamM, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblConstaTamM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnConstaTamM, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel178)
+                                .addGap(46, 46, 46)
+                                .addComponent(txtCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel178)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24))
+                            .addComponent(btnCartaComp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1614,11 +1664,7 @@ public boolean OrdenExiste(String orden)
                             .addComponent(btnIndicaMedic))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(jLabel178)
-                                .addComponent(txtCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnCartaComp))
+                            .addComponent(lblCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                                 .addComponent(jLabel183)
                                 .addComponent(txtConstAltaEpid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1643,7 +1689,13 @@ public boolean OrdenExiste(String orden)
                             .addComponent(txtRegPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblRegPP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnRegPP))
-                        .addGap(24, 24, 24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel178)
+                                .addComponent(txtCartaComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnCartaComp))
+                        .addGap(1, 1, 1)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel177)
                             .addComponent(txtConstMedica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1709,45 +1761,229 @@ public boolean OrdenExiste(String orden)
             }
         });
 
+        jLabel147.setText("Audiometria Boroo: ");
+
+        txtAudiometria2021.setEditable(false);
+        txtAudiometria2021.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtAudiometria2021.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        btnAudiometria2021.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/xx.png"))); // NOI18N
+        btnAudiometria2021.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAudiometria2021ActionPerformed(evt);
+            }
+        });
+
+        lblAudiometria2021.setPreferredSize(new java.awt.Dimension(13, 11));
+
+        jLabel148.setText("Ev.Musc.Esqueletico:");
+
+        txtEvMuscEsqueletico.setEditable(false);
+        txtEvMuscEsqueletico.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtEvMuscEsqueletico.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lblEvMuscEsqueletico.setPreferredSize(new java.awt.Dimension(13, 11));
+
+        btnEvMuscEsqueletico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/xx.png"))); // NOI18N
+        btnEvMuscEsqueletico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEvMuscEsqueleticoActionPerformed(evt);
+            }
+        });
+
+        jLabel149.setText("Cuest.CalidadSueño:");
+
+        txtCuestCalidadSueño.setEditable(false);
+        txtCuestCalidadSueño.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtCuestCalidadSueño.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lblCuestCalidadSueño.setPreferredSize(new java.awt.Dimension(13, 11));
+
+        btnCuestCalidadSueño.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/xx.png"))); // NOI18N
+        btnCuestCalidadSueño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuestCalidadSueñoActionPerformed(evt);
+            }
+        });
+
+        lblTestFatSomnolencia.setPreferredSize(new java.awt.Dimension(13, 11));
+
+        btnTestFatSomnolencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/xx.png"))); // NOI18N
+        btnTestFatSomnolencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTestFatSomnolenciaActionPerformed(evt);
+            }
+        });
+
+        txtTestFatSomnolencia.setEditable(false);
+        txtTestFatSomnolencia.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtTestFatSomnolencia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel186.setText("TestFatSomnolencia:");
+
+        jLabel187.setText("Eval. Oftalmologica:");
+
+        txtEvalOftalmologica.setEditable(false);
+        txtEvalOftalmologica.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtEvalOftalmologica.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        lblEvalOftalmologica.setPreferredSize(new java.awt.Dimension(13, 11));
+
+        btnEvalOftalmologica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/xx.png"))); // NOI18N
+        btnEvalOftalmologica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEvalOftalmologicaActionPerformed(evt);
+            }
+        });
+
+        btnCertManipuladores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/xx.png"))); // NOI18N
+        btnCertManipuladores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCertManipuladoresActionPerformed(evt);
+            }
+        });
+
+        lblCertManipuladores.setPreferredSize(new java.awt.Dimension(13, 11));
+
+        txtCertManipuladores.setEditable(false);
+        txtCertManipuladores.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        txtCertManipuladores.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel188.setText("Cert. Manipuladores:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel140)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtCuestAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCuestAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCuestAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel142)
-                        .addGap(2, 2, 2)
-                        .addComponent(txtInformeAudiom, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(lblInformeAudiom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnInformeAudiom, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel152)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel140)
+                                .addGap(4, 4, 4)
+                                .addComponent(txtCuestAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCuestAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCuestAudiometria, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel142)
+                                .addGap(2, 2, 2)
+                                .addComponent(txtInformeAudiom, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(lblInformeAudiom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnInformeAudiom, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel188)
+                            .addGap(4, 4, 4)
+                            .addComponent(txtCertManipuladores, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblCertManipuladores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCertManipuladores, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel147)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtAudiometria2021, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblAudiometria2021, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnAudiometria2021, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel148)
+                                    .addGap(4, 4, 4)
+                                    .addComponent(txtEvMuscEsqueletico, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblEvMuscEsqueletico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnEvMuscEsqueletico, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel149)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtCuestCalidadSueño, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblCuestCalidadSueño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnCuestCalidadSueño, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel186)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtTestFatSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblTestFatSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnTestFatSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel187)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtEvalOftalmologica, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblEvalOftalmologica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnEvalOftalmologica, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel152)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(0, 0, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel148)
+                        .addComponent(txtEvMuscEsqueletico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEvMuscEsqueletico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEvMuscEsqueletico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel149)
+                        .addComponent(txtCuestCalidadSueño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCuestCalidadSueño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCuestCalidadSueño))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel186)
+                        .addComponent(txtTestFatSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTestFatSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTestFatSomnolencia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel147)
+                        .addComponent(txtAudiometria2021, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblAudiometria2021, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAudiometria2021))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel187)
+                        .addComponent(txtEvalOftalmologica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEvalOftalmologica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEvalOftalmologica))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel188)
+                        .addComponent(txtCertManipuladores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCertManipuladores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCertManipuladores))
+                .addGap(4, 4, 4)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel140)
@@ -1766,7 +2002,8 @@ public boolean OrdenExiste(String orden)
                     .addComponent(jLabel152)
                     .addComponent(txtPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPerimetroToraxico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPerimetroToraxico)))
+                    .addComponent(btnPerimetroToraxico))
+                .addContainerGap())
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Trabajos en Altura"));
@@ -1986,7 +2223,7 @@ public boolean OrdenExiste(String orden)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(jLabel134)
-                                            .addGap(18, 18, 18)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txtEspirometria, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(lblEspirometria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2108,27 +2345,22 @@ public boolean OrdenExiste(String orden)
                                 .addComponent(btnElectro, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel1)
@@ -2137,46 +2369,53 @@ public boolean OrdenExiste(String orden)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnActulizar)))
+                        .addComponent(btnActulizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(btnLimpiar)
-                    .addComponent(btnActulizar))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtExamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnActulizar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(jLabel2)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtExamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel125)
-                        .addGap(13, 13, 13)
+                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(txtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel124)
@@ -2216,7 +2455,7 @@ public boolean OrdenExiste(String orden)
                                         .addComponent(jLabel134)
                                         .addComponent(txtEspirometria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnEspirometria))
-                                .addGap(5, 5, 5))
+                                .addGap(2, 2, 2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblEspirometria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
@@ -2314,7 +2553,7 @@ public boolean OrdenExiste(String orden)
                             .addComponent(jLabel128)
                             .addComponent(lblElectrocardiograma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnElectro))))
-                .addContainerGap())
+                .addGap(25, 25, 25))
         );
 
         jPanel4.getAccessibleContext().setAccessibleName("pROBAR");
@@ -2325,8 +2564,6 @@ public boolean OrdenExiste(String orden)
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
        verifica(txtNorden.getText().toString());
       //verifica2();
-       
-       
        
     }//GEN-LAST:event_txtNordenActionPerformed
 private void verifica2(){
@@ -2524,6 +2761,7 @@ public void cerrarVentana(){
 
     private void btnConstanciaSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConstanciaSaludActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnConstanciaSaludActionPerformed
 
     private void btnFichaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaMedicaActionPerformed
@@ -2599,6 +2837,36 @@ public void cerrarVentana(){
         cerrarVentana();
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void btnAudiometria2021ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudiometria2021ActionPerformed
+        // TODO add your handling code here:
+        if(oPu.eDatos(txtAudiometria2021, "audiometria_2021", "Audiometria Boroo", txtNorden)){verifica(txtNorden.getText().toString());}
+    }//GEN-LAST:event_btnAudiometria2021ActionPerformed
+
+    private void btnEvMuscEsqueleticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvMuscEsqueleticoActionPerformed
+        // TODO add your handling code here:
+        if(oPu.eDatos(txtEvMuscEsqueletico, "evaluacion_musculo_esqueletica2021", "Evaluacion Muscolo Esqueletica", txtNorden)){verifica(txtNorden.getText().toString());}
+    }//GEN-LAST:event_btnEvMuscEsqueleticoActionPerformed
+
+    private void btnCuestCalidadSueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuestCalidadSueñoActionPerformed
+        // TODO add your handling code here:
+        if(oPu.eDatos(txtCuestCalidadSueño, "cuestionario_calidad_sueno", "Cuestionario Calidad de Sueño", txtNorden)){verifica(txtNorden.getText().toString());}
+    }//GEN-LAST:event_btnCuestCalidadSueñoActionPerformed
+
+    private void btnTestFatSomnolenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTestFatSomnolenciaActionPerformed
+        // TODO add your handling code here:
+        if(oPu.eDatos(txtTestFatSomnolencia, "test_fatiga_somnolencia", "Test Fatiga y Somnolencia", txtNorden)){verifica(txtNorden.getText().toString());}
+    }//GEN-LAST:event_btnTestFatSomnolenciaActionPerformed
+
+    private void btnEvalOftalmologicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvalOftalmologicaActionPerformed
+        // TODO add your handling code here:
+        if(oPu.eDatos(txtEvalOftalmologica, "oftalmologia2021", "Evaluación Oftalmologica", txtNorden)){verifica(txtNorden.getText().toString());}
+    }//GEN-LAST:event_btnEvalOftalmologicaActionPerformed
+
+    private void btnCertManipuladoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCertManipuladoresActionPerformed
+        // TODO add your handling code here:
+        if(oPu.eDatos(txtCertManipuladores, "certificado_manipuladores_barrick", "Certificado de Manipuladores", txtNorden)){verifica(txtNorden.getText().toString());}
+    }//GEN-LAST:event_btnCertManipuladoresActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcctitudMedOcupa;
     private javax.swing.JButton btnActulizar;
@@ -2606,8 +2874,10 @@ public void cerrarVentana(){
     private javax.swing.JButton btnAnexo7D;
     private javax.swing.JButton btnAudiologia;
     private javax.swing.JButton btnAudiometria;
+    private javax.swing.JButton btnAudiometria2021;
     private javax.swing.JButton btnCartaComp;
     private javax.swing.JButton btnCertCondVehBarrick;
+    private javax.swing.JButton btnCertManipuladores;
     private javax.swing.JButton btnCertTrabAltBarrick;
     private javax.swing.JButton btnCertiAltura;
     private javax.swing.JButton btnCertificadoM;
@@ -2620,10 +2890,13 @@ public void cerrarVentana(){
     private javax.swing.JButton btnConstanciaAlta;
     private javax.swing.JButton btnConstanciaSalud;
     private javax.swing.JButton btnCuestAudiometria;
+    private javax.swing.JButton btnCuestCalidadSueño;
     private javax.swing.JButton btnCuestionario;
     private javax.swing.JButton btnDosaje;
     private javax.swing.JButton btnElectro;
     private javax.swing.JButton btnEspirometria;
+    private javax.swing.JButton btnEvMuscEsqueletico;
+    private javax.swing.JButton btnEvalOftalmologica;
     private javax.swing.JButton btnExRxSanguineos;
     private javax.swing.JButton btnFAptitudAgro;
     private javax.swing.JButton btnFAptitudAnexo02;
@@ -2652,6 +2925,7 @@ public void cerrarVentana(){
     private javax.swing.JButton btnRegPP;
     private javax.swing.JButton btnResultPP;
     private javax.swing.JButton btnSas;
+    private javax.swing.JButton btnTestFatSomnolencia;
     private javax.swing.JButton btnTriaje;
     private javax.swing.JButton btnUsoRespirador;
     private javax.swing.JLabel jLabel1;
@@ -2673,6 +2947,9 @@ public void cerrarVentana(){
     private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel145;
     private javax.swing.JLabel jLabel146;
+    private javax.swing.JLabel jLabel147;
+    private javax.swing.JLabel jLabel148;
+    private javax.swing.JLabel jLabel149;
     private javax.swing.JLabel jLabel150;
     private javax.swing.JLabel jLabel151;
     private javax.swing.JLabel jLabel152;
@@ -2709,6 +2986,9 @@ public void cerrarVentana(){
     private javax.swing.JLabel jLabel183;
     private javax.swing.JLabel jLabel184;
     private javax.swing.JLabel jLabel185;
+    private javax.swing.JLabel jLabel186;
+    private javax.swing.JLabel jLabel187;
+    private javax.swing.JLabel jLabel188;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -2722,8 +3002,10 @@ public void cerrarVentana(){
     private javax.swing.JLabel lblAnexo7C;
     private javax.swing.JLabel lblAnexo7D;
     private javax.swing.JLabel lblAudiometria;
+    private javax.swing.JLabel lblAudiometria2021;
     private javax.swing.JLabel lblCartaComp;
     private javax.swing.JLabel lblCertCondVehBarrick;
+    private javax.swing.JLabel lblCertManipuladores;
     private javax.swing.JLabel lblCertTrabAltBarrick;
     private javax.swing.JLabel lblCertificacionAltura;
     private javax.swing.JLabel lblCertificadoM;
@@ -2737,9 +3019,12 @@ public void cerrarVentana(){
     private javax.swing.JLabel lblConstanciaAlta;
     private javax.swing.JLabel lblConstanciaSalud;
     private javax.swing.JLabel lblCuestAudiometria;
+    private javax.swing.JLabel lblCuestCalidadSueño;
     private javax.swing.JLabel lblCuestionarioNordico;
     private javax.swing.JLabel lblElectrocardiograma;
     private javax.swing.JLabel lblEspirometria;
+    private javax.swing.JLabel lblEvMuscEsqueletico;
+    private javax.swing.JLabel lblEvalOftalmologica;
     private javax.swing.JLabel lblExRxSanguineos;
     private javax.swing.JLabel lblFAptitudAgro;
     private javax.swing.JLabel lblFAptitudAnexo02;
@@ -2768,6 +3053,7 @@ public void cerrarVentana(){
     private javax.swing.JLabel lblRegPP;
     private javax.swing.JLabel lblResultPP;
     private javax.swing.JLabel lblSAS;
+    private javax.swing.JLabel lblTestFatSomnolencia;
     private javax.swing.JLabel lblTriaje;
     private javax.swing.JLabel lblUsoRespirador;
     private javax.swing.JTextField txtAcctitudMedOcupa;
@@ -2775,9 +3061,11 @@ public void cerrarVentana(){
     private javax.swing.JTextField txtAnexo7D;
     private javax.swing.JTextField txtAntPatologicos;
     private javax.swing.JTextField txtAudiometria;
+    private javax.swing.JTextField txtAudiometria2021;
     private javax.swing.JTextField txtCartaComp;
     private javax.swing.JTextField txtCerTrabajo;
     private javax.swing.JTextField txtCertCondVehBarrick;
+    private javax.swing.JTextField txtCertManipuladores;
     private javax.swing.JTextField txtCertTrabAltBarrick;
     private javax.swing.JTextField txtCertificadoM;
     private javax.swing.JTextField txtConsentimientoDosaje;
@@ -2789,10 +3077,13 @@ public void cerrarVentana(){
     private javax.swing.JTextField txtConstancia;
     private javax.swing.JTextField txtConstanciaAlta;
     private javax.swing.JTextField txtCuestAudiometria;
+    private javax.swing.JTextField txtCuestCalidadSueño;
     private javax.swing.JTextField txtCuestionarioNordico;
     private javax.swing.JTextField txtDetencionSAS;
     private javax.swing.JTextField txtElectrocardiograma;
     private javax.swing.JTextField txtEspirometria;
+    private javax.swing.JTextField txtEvMuscEsqueletico;
+    private javax.swing.JTextField txtEvalOftalmologica;
     private javax.swing.JTextField txtExRxSanguineos;
     private javax.swing.JTextField txtExamen;
     private javax.swing.JTextField txtFAptitudAgro;
@@ -2823,6 +3114,7 @@ public void cerrarVentana(){
     private javax.swing.JTextField txtRadiografiaTorax;
     private javax.swing.JTextField txtRegPP;
     private javax.swing.JTextField txtResultPP;
+    private javax.swing.JTextField txtTestFatSomnolencia;
     private javax.swing.JTextField txtTriaje;
     private javax.swing.JTextField txtUsoRespirador;
     // End of variables declaration//GEN-END:variables

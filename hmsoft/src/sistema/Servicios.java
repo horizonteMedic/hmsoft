@@ -52,27 +52,28 @@ public class Servicios extends javax.swing.JFrame {
     clsFunciones oFunc = new clsFunciones();
     DefaultTableModel ticket;
       DefaultTableModel model;
+
     /**
      * Creates new form Servicios
      */
     public Servicios() {
         initComponents();
-        CargarServicios(); 
-         CargarDoctor();
-CargarServicios();
+        CargarServicios();
+        CargarDoctor();
+        CargarServicios();
         setLocationRelativeTo(null);
         fecha();
-                AutoCompleteDecorator.decorate(this.jComboBox1);
-                AutoCompleteDecorator.decorate(this.jComboBox2);
-                jComboBox2.setSelectedItem(clsGlobales.sNomOperador);
-                jTextField2.setVisible(false);
- timer.start();
-                 
- sbTicket();
-jRadioButton4.setSelected(true);
- jComboBox1.setSelectedItem("CONSULTA MEDICA");
-popuptable();
- 
+        AutoCompleteDecorator.decorate(this.jComboBox1);
+        AutoCompleteDecorator.decorate(this.jComboBox2);
+        jComboBox2.setSelectedItem(clsGlobales.sNomOperador);
+        jTextField2.setVisible(false);
+        timer.start();
+
+        sbTicket();
+        jRadioButton4.setSelected(true);
+        jComboBox1.setSelectedItem("CONSULTA MEDICA");
+        popuptable();
+
     }
     
     Timer timer = new Timer (1000, new ActionListener ()

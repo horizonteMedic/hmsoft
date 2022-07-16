@@ -45,13 +45,13 @@ public final class Ingreso extends javax.swing.JFrame {
    String emp;
        public Ingreso()  {
             
-       initComponents(); 
+        initComponents(); 
            
-         Properties props = new Properties();
+        Properties props = new Properties();
        
-            FileInputStream in = null;
+        FileInputStream in = null;
         try {
-            in = new FileInputStream("huancayo.properties");
+            in = new FileInputStream("pierola.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -76,9 +76,8 @@ public final class Ingreso extends javax.swing.JFrame {
         }
         else
         {
-            initComponents(); 
+           initComponents(); 
            lbliduser.setVisible(false);
-            
             fecha();
             CargarUsuarios();
             CargarSedes();
@@ -248,12 +247,16 @@ public final class Ingreso extends javax.swing.JFrame {
         btIngreso.add(chkFarmacia);
         chkFarmacia.setText("Consultas");
         chkFarmacia.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        chkFarmacia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkFarmaciaActionPerformed(evt);
+            }
+        });
         getContentPane().add(chkFarmacia, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 57, -1, -1));
 
         jLabel14.setText("Ingresos Area :");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 61, -1, -1));
 
-        cboSede.setEditable(true);
         cboSede.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione la sede" }));
         cboSede.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
@@ -359,6 +362,10 @@ enter(evt);
         // TODO add your handling code here:
         cerrarVentana();
     }//GEN-LAST:event_formWindowClosing
+
+    private void chkFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFarmaciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkFarmaciaActionPerformed
     public static void main(String args[]) {
              new Ingreso().setVisible(true);
     }
@@ -405,89 +412,95 @@ int key = evt.getKeyCode();
         validar();
         }
 }
-private void validar(){
-if (cboUsuarios.getSelectedIndex() > 0 ) {
-   nombresede =cboSede.getSelectedItem().toString();
-   doctor=cboUsuarios.getSelectedItem().toString();
-  // System.out.println("nombre de la sede :"+nombresede);
-       String sqlStmt;
-       String area;
-       
-             
+    private void validar() {
+        if (cboUsuarios.getSelectedIndex() > 0) {
+            nombresede = cboSede.getSelectedItem().toString();
+            doctor = cboUsuarios.getSelectedItem().toString();
+            // System.out.println("nombre de la sede :"+nombresede);
+            String sqlStmt;
+            String area;
             // Prepara Variable para realizar el Query
-            sqlStmt = "Select rol_user, sistema, admision, farmacia, cmp_user, dni_user, nombre_user, apellido_user, usuario_user, pass_user from usuarios Where usuario_user='"+cboUsuarios.getSelectedItem()+"' And pass_user='"+String.valueOf(txtpass.getPassword()) +"'";
-            
-          
-             oConn.FnBoolQueryExecute(sqlStmt);  
-             
-             try{
-                if (oConn.setResult.next())
-                  {  
-                     clsGlobales.sNomOperador = oConn.setResult.getString("nombre_user").concat(" ").concat(oConn.setResult.getString("apellido_user"));
-                     //area=oConn.setResult.getString("area");
-                      clsGlobales.sDniOperador = oConn.setResult.getString("dni_user");
-                      clsGlobales.sCMPOperador = oConn.setResult.getString("cmp_user");
-                      clsGlobales.sRol = oConn.setResult.getString("rol_user");
-                      
-                     if(chkAdmision.isSelected() == true){
-                         if(ADMISION_CODIGO == oConn.setResult.getBoolean("admision") ){
-                                Ingreso.this.dispose();
-                                JOptionPane.showMessageDialog(null, "Bienvenido al Sistema "+clsGlobales.sNomOperador);
-                                System.out.println("salto el mensaje de bienvenida ");
-                                Admision c = new Admision();
-                                  System.out.println("instancia admision ");
-                                c.setVisible(true);
-                                  System.out.println("lo manda hacer visible ");
-                                c.setExtendedState(JFrame.MAXIMIZED_BOTH);                                
-                                oConn.setResult.close();
-                         }else{oFunc.SubSistemaMensajeInformacion("No Tiene Autorización para Ingresar a Admisión");}
-                     }
-                     if(chkFarmacia.isSelected() == true){
-                         if(FARMACIA_CODIGO == oConn.setResult.getBoolean("farmacia") ){
-                                IngresoConsultas s = new IngresoConsultas();
-                                s.setVisible(true);                      
-                                oConn.setResult.close();
-                         }else{oFunc.SubSistemaMensajeInformacion("No Tiene Autorización para Ingresar a Farmacia");}
-                         oConn.setResult.close();
-                     }
-                     if(chkSistema.isSelected() == true){
-                         if(PROCESO_CODIGO == oConn.setResult.getBoolean("sistema") ){
-                                Ingreso.this.dispose();
-                                JOptionPane.showMessageDialog(null, "Bienvenido al Sistema "+ clsGlobales.sNomOperador);
-                                String user=oConn.setResult.getString("usuario_user");
-                                if("JAZABACHE".equals(user)||"HM".equals(user)||"AGARCIA".equals(user) ||"KREYES".equals(user)
-                                        ||"MHERRERA".equals(user) ||"JPOMA".equals(user)||"VERAG".equals(user)
-                                        ||"MPAZ".equals(user)||"MMARIÑOS".equals(user)||"JCARDENAS".equals(user)
-                                        ||"HCERNA".equals(user)||"JCERQUIN".equals(user)||"JCORDOVAP".equals(user)
-                                        ||"JCORDOVA".equals(user)||"KGUEVARA".equals(user)||"lobo".equals(user)||"MGAMBOA".equals(user) ){
-                                    Ocupacional1 s= new Ocupacional1();
-                                    s.setVisible(true);
-                                    
-                                }else{
+            sqlStmt = "Select rol_user, sistema, admision, farmacia, cmp_user, dni_user, nombre_user, apellido_user, usuario_user, pass_user from usuarios Where usuario_user='" + cboUsuarios.getSelectedItem() + "' And pass_user='" + String.valueOf(txtpass.getPassword()) + "'";
+
+            oConn.FnBoolQueryExecute(sqlStmt);
+
+            try {
+                if (oConn.setResult.next()) {
+                    clsGlobales.sNomOperador = oConn.setResult.getString("nombre_user").concat(" ").concat(oConn.setResult.getString("apellido_user"));
+                    //area=oConn.setResult.getString("area");
+                    clsGlobales.sDniOperador = oConn.setResult.getString("dni_user");
+                    clsGlobales.sCMPOperador = oConn.setResult.getString("cmp_user");
+                    clsGlobales.sRol = oConn.setResult.getString("rol_user");
+
+                    if (chkAdmision.isSelected() == true) {
+                        if (ADMISION_CODIGO == oConn.setResult.getBoolean("admision")) {
+                            Ingreso.this.dispose();
+                            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + clsGlobales.sNomOperador);
+                            System.out.println("salto el mensaje de bienvenida ");
+                            Admision c = new Admision();
+                            System.out.println("instancia admision ");
+                            c.setVisible(true);
+                            System.out.println("lo manda hacer visible ");
+                            c.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            oConn.setResult.close();
+                        } else {
+                            oFunc.SubSistemaMensajeInformacion("No Tiene Autorización para Ingresar a Admisión");
+                        }
+                    }
+                    if (chkFarmacia.isSelected() == true) {
+                        if (FARMACIA_CODIGO == oConn.setResult.getBoolean("farmacia")) {
+//                            IngresoConsultas s = new IngresoConsultas();
+                            Ingreso.this.dispose();
+                            Asistencial s=new Asistencial();
+                            s.setVisible(true);
+                            s.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                            oConn.setResult.close();
+                        } else {
+                            oFunc.SubSistemaMensajeInformacion("No Tiene Autorización para Ingresar a Farmacia");
+                        }
+                        oConn.setResult.close();
+                    }
+                    if (chkSistema.isSelected() == true) {
+                        if (PROCESO_CODIGO == oConn.setResult.getBoolean("sistema")) {
+                            Ingreso.this.dispose();
+                            JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + clsGlobales.sNomOperador);
+                            String user = oConn.setResult.getString("usuario_user");
+                            if ("JAZABACHE".equals(user) || "HM".equals(user) || "AGARCIA".equals(user) || "KREYES".equals(user)
+                                    || "MHERRERA".equals(user) || "JPOMA".equals(user) || "VERAG".equals(user)
+                                    || "MPAZ".equals(user) || "MMARIÑOS".equals(user) || "JCARDENAS".equals(user)
+                                    || "HCERNA".equals(user) || "JCERQUIN".equals(user) || "JCORDOVAP".equals(user)
+                                    || "JCORDOVA".equals(user) || "KGUEVARA".equals(user) || "lobo".equals(user) || "MGAMBOA".equals(user)
+                                    || "KCANTARO".equals(user)) {
+                                Ocupacional1 s = new Ocupacional1();
+                                s.setVisible(true);
+
+                            } else {
                                 Ocupacional s = new Ocupacional();
                                 s.setVisible(true);
-                                }
-                                
-                                oConn.setResult.close();
-                         }else{oFunc.SubSistemaMensajeInformacion("No Tiene Autorización para Ingresar a Sistema");}
-                     }
-                      
-                  }else
-                  { JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrectos");
-               
-                  
+                            }
+
+                            oConn.setResult.close();
+                        } else {
+                            oFunc.SubSistemaMensajeInformacion("No Tiene Autorización para Ingresar a Sistema");
+                        }
                     }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrectos");
+
+                }
                 System.out.println("llego al setment close");
-                  oConn.setResult.close();
-                   oConn.sqlStmt.close();
-                     }catch (SQLException | HeadlessException e){
-                 JOptionPane.showMessageDialog(null, e);
-                 oConn.SubConnectionClose();
-             }
-         }else{oFunc.SubSistemaMensajeError("Usuario incorrecto");
-}
-      
-}
+                oConn.setResult.close();
+                oConn.sqlStmt.close();
+            } catch (SQLException | HeadlessException e) {
+                JOptionPane.showMessageDialog(null, e);
+                oConn.SubConnectionClose();
+            }
+        } else {
+            oFunc.SubSistemaMensajeError("Usuario incorrecto");
+        }
+
+    }
 
  public void fecha(){
 Date dateHoy = new Date();
@@ -576,9 +589,8 @@ private void CargarSedes(){
         // selecciona
         cboUsuarios.setSelectedIndex(0);
 
-
 }
-
+ 
 
 public void CerrarJF(){
 this.dispose();

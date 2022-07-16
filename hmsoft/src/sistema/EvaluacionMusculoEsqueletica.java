@@ -4865,7 +4865,7 @@ private void printer2(Integer cod){
             System.out.println("master" + master);
             if (master == null) 
             {                
-                System.out.println("No encuentro el archivo del ficha antecedente patologico.");
+                System.out.println("No encuentro el archivo del ficha .");
                 //System.exit(2);
             } 
             JasperReport masterReport = null;

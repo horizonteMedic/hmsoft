@@ -1090,53 +1090,15 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
        if(!txtNorden.getText().isEmpty()){
         
           if(OrdenExiste()){     
-       String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,d.sexo_pa,\n" +
-"       d.ocupacion_pa,n.razon_empresa,n.razon_contrata, n.cargo_de, txtobservacionesfm,\n" +
-"       n.nom_examen,l.txthemoglobina, l.txthematocrito, l.txtvsg, \n" +
-"       l.txtglucosabio, l.txtcreatininabio ,apt.chkapto,apt.chkapto_restriccion,apt.chkno_apto,\n" +
-"       f.n_orden AS audiologia,\n" +
-"       a.n_orden AS espirometria,\n" +
-"       o.n_orden AS oftalmologia,\n" +
-"       p.n_orden AS rayosx,\n" +
-"       od.n_orden AS odontologia,\n" +
-"       l.n_orden AS laboratorio,\n" +
-"       i.n_orden AS psicologia,\n" +
-"       e.n_orden AS electrocardiograma,\n" +
-"       t.n_orden AS triaje,\n" +
-"       c.n_orden AS anexo7c,\n" +
-"       cma.n_orden AS cerificadoAltura,\n" +
-"       au.n_orden AS audiomtria,\n" +      
-"       bc.n_orden AS conduccion,\n" +     
-"       ap.n_orden AS antecendetesp,\n" +           
-"       ur.n_orden AS usorespiradores,\n" +
-"       oi.n_orden AS oit,\n" +   
-"       cn.n_orden AS cuestionarionordico,\n" +    
-"       fs.n_orden AS fichasas,\n" +                
-"       bca.n_orden AS b_certiAltura \n" +
-               
-"FROM n_orden_ocupacional AS n\n" +
-"INNER JOIN datos_paciente AS d ON (d.cod_pa = n.cod_pa)\n" +
-"LEFT JOIN certificado_aptitud_medico_ocupacional AS apt ON (apt.n_orden = n.n_orden) "+
-"LEFT OUTER JOIN ficha_audiologica AS f ON(f.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN informe_electrocardiograma AS e ON(e.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN funcion_abs AS a ON(a.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN oftalmologia AS o ON(o.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN perimetro_toracico AS p ON(p.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN odontograma AS od ON(od.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN informe_psicologico AS i ON(i.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN lab_clinico AS l ON(l.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN triaje AS t ON(t.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN anexo7c AS c ON(c.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN certificacion_medica_altura AS cma ON(cma.n_orden = n.n_orden)\n" +
-"LEFT OUTER JOIN b_certificado_altura AS bca ON(bca.n_orden = n.n_orden)"+
-"LEFT OUTER JOIN audiometria_po AS au ON(au.n_orden = n.n_orden)"+
-"LEFT OUTER JOIN b_certificado_conduccion AS bc ON(bc.n_orden = n.n_orden)"+
-"LEFT OUTER JOIN antecedentes_patologicos AS ap ON(ap.n_orden = n.n_orden)"+
-"LEFT OUTER JOIN b_uso_respiradores AS ur ON(ur.n_orden = n.n_orden)"+
-"LEFT OUTER JOIN cuestionario_nordico AS cn ON(cn.n_orden = n.n_orden)"+
-"LEFT OUTER JOIN ficha_sas AS fs ON(fs.n_orden = n.n_orden)"+
-"LEFT OUTER JOIN oit AS oi ON(oi.n_orden = n.n_orden)"              
- + "WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+              String Sql = "SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,d.sexo_pa,\n"
+                      + "     d.ocupacion_pa,n.razon_empresa,n.razon_contrata, n.cargo_de,\n"
+                      + "       n.nom_examen,l.txthemoglobina, l.txthematocrito, l.txtvsg, \n"
+                      + "       l.txtglucosabio, l.txtcreatininabio ,apt.chkapto,apt.chkapto_restriccion,apt.chkno_apto,apt.txtexamenes\n"
+                      + "FROM n_orden_ocupacional AS n\n"
+                      + "INNER JOIN datos_paciente AS d ON (d.cod_pa = n.cod_pa)\n"
+                      + "INNER JOIN certificado_aptitud_medico_resumen AS apt ON (apt.n_orden = n.n_orden) \n"
+                      + "LEFT OUTER JOIN lab_clinico AS l ON(l.n_orden = n.n_orden)\n"
+                      + "where apt.n_orden='" + txtNorden.getText() + "'";
          oConn1.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn1.setResult.next()) {
@@ -1160,61 +1122,8 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         txtCreatininaBio.setText(oConn1.setResult.getString("txtcreatininabio"));
                         chkApto.setSelected(oConn1.setResult.getBoolean("chkapto"));
                         chkRestriccion.setSelected(oConn1.setResult.getBoolean("chkapto_restriccion"));
-                         chkNoApto.setSelected(oConn1.setResult.getBoolean("chkno_apto"));
-                        if(oConn1.setResult.getString("triaje")!=null){
-                            atxtConclusiones.append("- TRIAJE "+ '\n');
-                        }
-                        if(oConn1.setResult.getString("laboratorio")!=null){
-                            atxtConclusiones.append("- LABORATORIO"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("audiologia")!=null){
-                            atxtConclusiones.append("- AUDIOLOGIA"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("espirometria")!=null){
-                            atxtConclusiones.append("- ESPIROMETRIA"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("oftalmologia")!=null){
-                            atxtConclusiones.append("- OFTALMOLOGIA"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("rayosx")!=null){
-                            atxtConclusiones.append("- RAYOS X"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("odontologia")!=null){
-                            atxtConclusiones.append("- ODONTOLOGIA"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("psicologia")!=null){
-                            atxtConclusiones.append("- PSICOLOGIA"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("electrocardiograma")!=null){
-                            atxtConclusiones.append("- ELRCTROCARDIOGRAMA"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("cerificadoAltura")!=null || oConn1.setResult.getString("b_certiAltura")!=null){
-                            atxtConclusiones.append("- TEST DE ALTURA"+ '\n');
-                        }
-                         if(oConn1.setResult.getString("conduccion")!=null || oConn1.setResult.getString("b_certiAltura")!=null){
-                            atxtConclusiones.append("- CERTIFICADO DE CONDUCCION"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("audiomtria")!=null){
-                            atxtConclusiones.append("- AUDIOMETRIA"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("antecendetesp")!=null){
-                            atxtConclusiones.append("- ANTECEDENTES PATOLOGICOS"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("usorespiradores")!=null){
-                            atxtConclusiones.append("- USO DE RESPIRADORES"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("oit")!=null){
-                            atxtConclusiones.append("- OIT"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("cuestionarionordico")!=null){
-                            atxtConclusiones.append("- CUESTIONARIO NORDICO"+ '\n');
-                        }
-                        if(oConn1.setResult.getString("fichasas")!=null){
-                            atxtConclusiones.append("- FICHA SAS"+ '\n');
-                        }
-                          if(oConn1.setResult.getString("anexo7c")!=null){
-                            atxtConclusiones.append("- FICHA MEDICA"+ '\n');
-                        }
+                        chkNoApto.setSelected(oConn1.setResult.getBoolean("chkno_apto"));
+                        atxtConclusiones.setText(oConn1.setResult.getString("txtexamenes"));
                         if(!txtHemoglobina.getText().isEmpty() && !"N/A".equals(txtHemoglobina.getText().toString())){
                         float hemoglobina=Float.parseFloat(txtHemoglobina.getText().toString());
                               if ("M".equals(sexo)) {
@@ -1250,8 +1159,6 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                             txtCreatininaBio.setForeground(Color.black);
                         }
                         }
-                        
-                        
                         Fecha();
                         fechaHasta();
                         muestraVisual();
@@ -1261,7 +1168,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                 oConn1.setResult.close();
                 oConn1.sqlStmt.close();
             } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Odontograma:" + ex.getMessage().toString());}
+            oFunc.SubSistemaMensajeInformacion("Aptitud:" + ex.getMessage().toString());}
           }else { oFunc.SubSistemaMensajeInformacion("N° Orden registrado" );}
            } 
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -1488,18 +1395,37 @@ private void Limpiar(){
         }
     });
     private void muestraVisual(){
-        String sql="SELECT o.v_cerca_s_od, o.v_cerca_s_oi,\n" +
-"          CASE  WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od  ELSE ol.v_cerca_c_od  END as ODCC, \n" +
-"          CASE  WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi  ELSE ol.v_cerca_c_oi  END as OICC, \n" +
-"          o.v_lejos_s_od, o.v_lejos_s_oi, \n" +
-"	  CASE  WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
-"          CASE  WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC, \n" +
-"	  CASE  WHEN ol.v_colores IS NULL THEN o.v_colores  ELSE ol.v_colores  END as VC, \n" +
-"          CASE  WHEN ol.v_binocular IS NULL THEN o.v_binocular  ELSE ol.v_binocular  END as VB, \n" +
-"          CASE  WHEN ol.r_pupilares IS NULL THEN o.r_pupilares  ELSE ol.r_pupilares  END as RP, o.e_oculares\n" +
-"     FROM oftalmologia as o\n" +
-"     left JOIN oftalmologia_lo as ol on (o.n_orden=ol.n_orden)\n" +
-"     WHERE o.n_orden ='"+txtNorden.getText().toString()+"'";
+        String sql = "SELECT n.n_orden, CASE WHEN oft.txtcercasincorregirod is not null THEN oft.txtcercasincorregirod else o.v_cerca_s_od end as v_cerca_s_od,\n" +
+"       CASE WHEN oft.txtcercasincorregiroi is not null THEN oft.txtcercasincorregiroi else o.v_cerca_s_oi end as v_cerca_s_oi,\n" +
+"       CASE WHEN oft.txtcercacorregidaod is not null THEN oft.txtcercacorregidaod \n" +
+"	    WHEN ol.v_cerca_c_od IS NULL THEN o.v_cerca_c_od\n" +
+"            else ol.v_cerca_c_od end as ODCC,\n" +
+"       CASE WHEN oft.txtcercacorregidaoi is not null THEN oft.txtcercacorregidaoi \n" +
+"	    WHEN ol.v_cerca_c_oi IS NULL THEN o.v_cerca_c_oi\n" +
+"            else ol.v_cerca_c_oi end as OICC,\n" +
+"       CASE WHEN oft.txtlejossincorregirod is not null THEN oft.txtlejossincorregirod else o.v_lejos_s_od end as v_lejos_s_od,\n" +
+"       CASE WHEN oft.txtlejossincorregiroi is not null THEN oft.txtlejossincorregiroi else o.v_lejos_s_oi end as v_lejos_s_oi,\n" +
+"       CASE WHEN oft.txtlejoscorregidaod is not null THEN oft.txtlejoscorregidaod \n" +
+"            WHEN ol.v_lejos_c_od IS NULL THEN o.v_lejos_c_od  ELSE ol.v_lejos_c_od  END as ODLC, \n" +
+"       CASE WHEN oft.txtlejoscorregidaoi is not null THEN oft.txtlejoscorregidaoi \n" +
+"            WHEN ol.v_lejos_c_oi IS NULL THEN o.v_lejos_c_oi  ELSE ol.v_lejos_c_oi  END as OILC,\n" +
+"         \n" +
+"       CASE  WHEN oft.rbtecishihara_normal='TRUE' THEN 'NORMAL'\n" +
+"             WHEN oft.rbtecishihara_anormal='TRUE'THEN 'ANORMAL'\n" +
+"             WHEN ol.v_colores IS NULL THEN o.v_colores  \n" +
+"             ELSE ol.v_colores  END as VC,\n" +
+"      CASE  WHEN oft.txtbinocularsincorregir IS not NULL THEN oft.txtbinocularsincorregir  \n" +
+"	    WHEN ol.v_binocular IS NULL THEN o.v_binocular  \n" +
+"            ELSE ol.v_binocular  END as VB,\n" +
+"      CASE  WHEN oft.txtrp IS not NULL THEN oft.txtrp\n" +
+"	    WHEN ol.r_pupilares IS NULL THEN o.r_pupilares\n" +
+"            ELSE ol.r_pupilares  END as RP,\n" +
+"      CASE  WHEN oft.txtdiagnostico IS not NULL THEN oft.txtdiagnostico  else o.e_oculares end as e_oculares\n" +
+"    FROM n_orden_ocupacional as n\n" +
+"     left JOIN oftalmologia as o on (n.n_orden=o.n_orden)\n" +
+"     left JOIN oftalmologia_lo as ol on (n.n_orden=ol.n_orden)\n" +
+"     left JOIN oftalmologia2021 as oft on (n.n_orden=oft.n_orden)" +
+"     WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
          oConn1.FnBoolQueryExecute(sql);      
              try {
                     if (oConn1.setResult.next()) {                        
@@ -1536,7 +1462,7 @@ private void Limpiar(){
         strSqlStmt="UPDATE certificado_aptitud_medico_resumen \n" +
                 "   SET fecha='"+Fecha.getDate()+"', nom_medico='"+txtCertifica.getText().toString()+"', "
                 + "chkapto='"+chkApto.isSelected()+"', chkapto_restriccion='"+chkRestriccion.isSelected()+"', \n" +
-                "       chkno_apto='"+chkNoApto.isSelected()+"',"
+                "  chkno_apto='"+chkNoApto.isSelected()+"',"
                 + " horasalida='"+lblHora.getText().toString()+"', fecha_hasta='"+FechaHasta.getDate()+"', txtexamenes='"+atxtConclusiones.getText().toString()+"'" 
                 +" WHERE n_orden='" + sCodigo + "'";
          

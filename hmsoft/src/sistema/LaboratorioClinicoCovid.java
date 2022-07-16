@@ -282,6 +282,23 @@ String sed="";
         jCheckBox3 = new javax.swing.JCheckBox();
         cboMarca4 = new javax.swing.JComboBox();
         btnMarca4 = new javax.swing.JLabel();
+        chkTos1 = new javax.swing.JCheckBox();
+        chkDolorG1 = new javax.swing.JCheckBox();
+        chkCongestionN1 = new javax.swing.JCheckBox();
+        chkDificultadR1 = new javax.swing.JCheckBox();
+        chkFiebre1 = new javax.swing.JCheckBox();
+        chkMalestar1 = new javax.swing.JCheckBox();
+        chkPerdidaOlf2 = new javax.swing.JCheckBox();
+        chkExpctoracion1 = new javax.swing.JCheckBox();
+        chkDolor1 = new javax.swing.JCheckBox();
+        chkIrritaibilidad1 = new javax.swing.JCheckBox();
+        chkCefalea1 = new javax.swing.JCheckBox();
+        chkNauseas1 = new javax.swing.JCheckBox();
+        chkDiarrea1 = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSintomaCualiAnti = new javax.swing.JTextArea();
+        jLabel125 = new javax.swing.JLabel();
+        FechaSintomas = new com.toedter.calendar.JDateChooser();
         btnGrabarIn4 = new javax.swing.JButton();
         btnLimpiarIn4 = new javax.swing.JButton();
         jLabel118 = new javax.swing.JLabel();
@@ -2043,33 +2060,164 @@ String sed="";
             }
         });
 
+        chkTos1.setText("Tos");
+        chkTos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTos1ActionPerformed(evt);
+            }
+        });
+
+        chkDolorG1.setText("Dolor de garganta");
+        chkDolorG1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDolorG1ActionPerformed(evt);
+            }
+        });
+
+        chkCongestionN1.setText("Congestión Nasal");
+        chkCongestionN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkCongestionN1ActionPerformed(evt);
+            }
+        });
+
+        chkDificultadR1.setText("Dificultad respiratoria");
+        chkDificultadR1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDificultadR1ActionPerformed(evt);
+            }
+        });
+
+        chkFiebre1.setText("Fiebre/ Escalofrio");
+        chkFiebre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkFiebre1ActionPerformed(evt);
+            }
+        });
+
+        chkMalestar1.setText("Malestar general");
+        chkMalestar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMalestar1ActionPerformed(evt);
+            }
+        });
+
+        chkPerdidaOlf2.setText("Perdida olfato o gusto");
+        chkPerdidaOlf2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPerdidaOlf2ActionPerformed(evt);
+            }
+        });
+
+        chkExpctoracion1.setText("Expectoración");
+        chkExpctoracion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkExpctoracion1ActionPerformed(evt);
+            }
+        });
+
+        chkDolor1.setText("Dolor");
+        chkDolor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDolor1ActionPerformed(evt);
+            }
+        });
+
+        chkIrritaibilidad1.setText("Irritabilidad / confusión");
+        chkIrritaibilidad1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkIrritaibilidad1ActionPerformed(evt);
+            }
+        });
+
+        chkCefalea1.setText("Cefalea");
+        chkCefalea1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkCefalea1ActionPerformed(evt);
+            }
+        });
+
+        chkNauseas1.setText("Nauseas / vómitos");
+        chkNauseas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkNauseas1ActionPerformed(evt);
+            }
+        });
+
+        chkDiarrea1.setText("Diarrea");
+        chkDiarrea1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDiarrea1ActionPerformed(evt);
+            }
+        });
+
+        txtSintomaCualiAnti.setColumns(20);
+        txtSintomaCualiAnti.setRows(5);
+        jScrollPane1.setViewportView(txtSintomaCualiAnti);
+
+        jLabel125.setText("Fecha Sintomas :");
+
+        FechaSintomas.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                FechaSintomasPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
         jPanel26Layout.setHorizontalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel117)
+                    .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox3)
-                            .addComponent(jCheckBox2)))
+                        .addComponent(cboMarca4, 0, 324, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMarca4)
+                        .addGap(126, 126, 126))
                     .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel117)
-                            .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(125, 125, 125))))
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel26Layout.createSequentialGroup()
                         .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel26Layout.createSequentialGroup()
-                                .addComponent(cboMarca4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkDificultadR1)
+                                    .addComponent(chkCongestionN1)
+                                    .addComponent(chkTos1)
+                                    .addComponent(chkDolorG1)
+                                    .addComponent(chkFiebre1)
+                                    .addComponent(chkMalestar1))
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkDiarrea1)
+                                    .addComponent(chkExpctoracion1)
+                                    .addComponent(chkDolor1)
+                                    .addComponent(chkCefalea1)
+                                    .addComponent(chkNauseas1)
+                                    .addComponent(chkIrritaibilidad1)))
+                            .addComponent(chkPerdidaOlf2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(jPanel26Layout.createSequentialGroup()
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox3)
+                            .addComponent(jCheckBox2)
+                            .addGroup(jPanel26Layout.createSequentialGroup()
+                                .addComponent(jLabel125)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnMarca4)
-                                .addGap(1, 1, 1))
-                            .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125))
+                                .addComponent(FechaSintomas, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(137, 137, 137))))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2077,24 +2225,55 @@ String sed="";
                 .addContainerGap()
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel117)
-                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(cboMarca4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMarca4)))
+                    .addComponent(btnMarca4)
+                    .addComponent(cboMarca4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
+                        .addGap(26, 26, 26))
                     .addGroup(jPanel26Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jCheckBox2)
                         .addGap(18, 18, 18)
                         .addComponent(jCheckBox3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel125)
+                            .addComponent(FechaSintomas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel26Layout.createSequentialGroup()
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkTos1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkDiarrea1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkDolorG1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkNauseas1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkCongestionN1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkCefalea1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkDificultadR1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkIrritaibilidad1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkFiebre1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkDolor1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkMalestar1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkExpctoracion1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkPerdidaOlf2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         btnGrabarIn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
@@ -2149,12 +2328,12 @@ String sed="";
                                         .addComponent(jCheckBox1)))
                                 .addGap(16, 16, 16))))
                     .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(83, 83, 83)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGrabarIn4)
                             .addComponent(btnLimpiarIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(99, Short.MAX_VALUE))))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2179,7 +2358,7 @@ String sed="";
                         .addGap(43, 43, 43)
                         .addComponent(btnLimpiarIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("P. Cual Antig", jPanel20);
@@ -2195,7 +2374,7 @@ String sed="";
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtLaboratorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 667, Short.MAX_VALUE)
+            .addComponent(jtLaboratorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
         );
 
         pack();
@@ -2416,7 +2595,6 @@ negarcheks();
 
     private void btnLimpiarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarIn4ActionPerformed
         limpiar4();
-         limpiar4();
     }//GEN-LAST:event_btnLimpiarIn4ActionPerformed
 
     private void btnGrabarIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarIn4ActionPerformed
@@ -2430,24 +2608,21 @@ negarcheks();
 
         }
         else{
-            if(!txtNordenIn4.getText().isEmpty()){
+            if (!txtNordenIn4.getText().isEmpty()) {
                 try {
-                    if(validarIn4()){
-                        if(GrabarIn4()){
-                            if(sed.contains("Huancayo"))
-                            { printerIn12(Integer.valueOf(txtNordenIn4.getText().toString())); 
-                             limpiar4();
-                            }   
-                            else
-                            {
-                            if(jCheckBox1.isSelected())    
-                            { imprimirIn5();
-                             limpiar4();
-                            }
-                            else
-                            {     imprimirIn4(); 
-                            limpiar4();
-                            }
+                    if (validarIn4()) {
+                        if (GrabarIn4()) {
+                            if (sed.contains("Huancayo")) {
+                                printerIn12(Integer.valueOf(txtNordenIn4.getText().toString()));
+                                limpiar4();
+                            } else {
+                                if (jCheckBox1.isSelected()) {
+                                    imprimirIn5();
+                                    limpiar4();
+                                } else {
+                                    imprimirIn4();
+                                    limpiar4();
+                                }
                             }
                         }
                     }
@@ -2459,10 +2634,11 @@ negarcheks();
     }//GEN-LAST:event_btnGrabarIn4ActionPerformed
 
     private void btnMarca4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMarca4MouseClicked
- MostrarAddMarca();
+       MostrarAddMarca();
     }//GEN-LAST:event_btnMarca4MouseClicked
 
     private void cboMarca4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarca4ActionPerformed
+       
         if(cboMarca4.getSelectedItem().toString().contains("SARS-COV-2 ANTIGEN RAPID TEST KIT"))
         {
         jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
@@ -2562,13 +2738,13 @@ negarcheks();
                             + "Sensibilidad  : 96.49% \n"
                             + "Especificidad : 99.25%");
         }
-          if(cboMarca4.getSelectedItem().toString().contains("MEDOMICS/LFIA"))
+          if(cboMarca4.getSelectedItem().toString().contains("VAZYME"))
         {
          jTextAreaIgm3.setText("Metodo: Inmunocromatografía\n"
-                            + "Sensibilidad  : 97.73% \n"
-                            + "Especificidad : 99.51%");
+                            + "Sensibilidad  : 97.57% \n"
+                            + "Especificidad : 99.29%");
         }
-        
+            
           
     }//GEN-LAST:event_cboMarca4ActionPerformed
 
@@ -2601,17 +2777,16 @@ negarcheks();
     private void btnImprimir4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir4ActionPerformed
         CargarSedes2(txtImprimirIn4.getText().toString().trim());
         if(!txtImprimirIn4.getText().isEmpty()){
-                     if(sed.contains("Huancayo"))
+            if(sed.contains("Huancayo"))
                  printIn12(Integer.valueOf(txtImprimirIn4.getText().toString())); 
-            else
-                     {
-            if(jCheckBox1.isSelected())
-                            printIn5(Integer.valueOf(txtImprimirIn4.getText()));
-                            else
-                            {   
-                            printIn4(Integer.valueOf(txtImprimirIn4.getText()));
-                            limpiar4();
-                            }}
+        else{
+            if (jCheckBox1.isSelected()) {
+                printIn5(Integer.valueOf(txtImprimirIn4.getText()));
+            } else {
+                printIn4(Integer.valueOf(txtImprimirIn4.getText()));
+                limpiar4();
+            }
+        }
         }
     }//GEN-LAST:event_btnImprimir4ActionPerformed
 
@@ -2629,11 +2804,12 @@ negarcheks();
             String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
             + " ct.fecha_examen,ct.chkigm_reactivo, ct.chkigm_noreactivo, \n" +
             "                   ct.chkigg_reactivo, ct.chkigg_noreactivo, ct.chkinvalido, "
-            + "ct.cbomarca, ct.txtvrigm,ct.txtvrigg,n.tipoprueba,ct.valorigm,ct.valorigg,ct.medico " +
+            + "ct.cbomarca, ct.txtvrigm,ct.txtvrigg,n.tipoprueba,ct.valorigm,ct.valorigg,ct.medico,ct.txtobservaciones,ct.fecha_sintomas " +
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE  n.n_orden ="+txtNordenIn4.getText();
+            "               WHERE n.nom_examen like '%PRUEBA CUALITATIVA ANTIGENOS%' and  n.n_orden ="+txtNordenIn4.getText();
+            
             oConn1.FnBoolQueryExecute(Sql);
             try {
                 if (oConn1.setResult.next()) {
@@ -2648,11 +2824,11 @@ negarcheks();
                     jTextField18.setText(oConn1.setResult.getString("medico"));
                     jCheckBox2.setSelected(oConn1.setResult.getBoolean("chkigm_reactivo"));
                     jCheckBox3.setSelected(oConn1.setResult.getBoolean("chkigg_reactivo"));
-
-                    //  jTextField9.setText(oConn.setResult.getString("valorigg"));
+                    txtSintomaCualiAnti.setText(oConn1.setResult.getString("txtobservaciones"));
+                    FechaSintomas.setDate(oConn1.setResult.getDate("fecha_sintomas"));
 
                 }else{
-                //    oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
+                    oFunc.SubSistemaMensajeError("Verificar si existe el registro, prueba es:PRUEBA CUALITATIVA ANTIGENO");
                 }
                 oConn1.sqlStmt.close();
                 oConn1.setResult.close();
@@ -2684,7 +2860,7 @@ negarcheks();
                         pasar=(oConn1.setResult.getString("tipoprueba"));
                         txtEdadIn4.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
 
-                        //System.out.println(pasar);
+                        System.out.println(pasar);
                         if(pasar.equals("PC")) habilitarPc();
                         else
                         negarPc();
@@ -2702,7 +2878,7 @@ negarcheks();
                 } catch (SQLException ex) {
                     oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
             }else{
-                oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
+                oFunc.SubSistemaMensajeError("N° orden registrado");
             }
         }
     }//GEN-LAST:event_txtNordenIn4ActionPerformed
@@ -3188,7 +3364,7 @@ limpiar2();
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.n_orden ='"+txtNordenIn1.getText() +"'";
+            "               WHERE ct.n_orden ='"+txtNordenIn1.getText() +"'";
             oConn1.FnBoolQueryExecute(Sql);
             try {
                 if (oConn1.setResult.next()) {
@@ -3347,7 +3523,7 @@ limpiar2();
             "               FROM datos_paciente AS d \n" +
             "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
             "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.n_orden ="+txtNordenIn.getText();
+            "               WHERE ct.n_orden ="+txtNordenIn.getText();
             oConn1.FnBoolQueryExecute(Sql);
             try {   
                 if (oConn1.setResult.next()) {
@@ -3791,6 +3967,115 @@ limpiar2();
         cerrarVentana();
         //oConn.SubConnectionClose();
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void chkPerdidaOlf2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerdidaOlf2ActionPerformed
+        // TODO add your handling code here:
+        if(chkPerdidaOlf2.isSelected()){
+            txtSintomaCualiAnti.append("- Pérdida de olfato o gusto \n");
+        }
+        
+    }//GEN-LAST:event_chkPerdidaOlf2ActionPerformed
+
+    private void chkTos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTos1ActionPerformed
+        // TODO add your handling code here:
+        if(chkTos1.isSelected()){
+            txtSintomaCualiAnti.append("- Tos \n");
+        }
+        
+        
+    }//GEN-LAST:event_chkTos1ActionPerformed
+
+    private void chkDolorG1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDolorG1ActionPerformed
+        // TODO add your handling code here:
+         if(chkDolorG1.isSelected()){
+            txtSintomaCualiAnti.append("- Dolor de garganta \n");
+        }
+        
+        
+    }//GEN-LAST:event_chkDolorG1ActionPerformed
+
+    private void chkCongestionN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCongestionN1ActionPerformed
+        // TODO add your handling code here:
+        if(chkCongestionN1.isSelected()){
+            txtSintomaCualiAnti.append("- Congestión nasal \n");
+        }
+        
+    }//GEN-LAST:event_chkCongestionN1ActionPerformed
+
+    private void chkDificultadR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDificultadR1ActionPerformed
+        // TODO add your handling code here:
+        if(chkDificultadR1.isSelected()){
+            txtSintomaCualiAnti.append("- Dificultad respiratoria\n");
+        }
+        
+    }//GEN-LAST:event_chkDificultadR1ActionPerformed
+
+    private void chkFiebre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFiebre1ActionPerformed
+        // TODO add your handling code here:
+        if(chkFiebre1.isSelected()){
+            txtSintomaCualiAnti.append("- Fiebre/Escalofrio\n");
+        }
+    }//GEN-LAST:event_chkFiebre1ActionPerformed
+
+    private void chkMalestar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMalestar1ActionPerformed
+        // TODO add your handling code here:
+        if(chkMalestar1.isSelected()){
+            txtSintomaCualiAnti.append("- Malestar general\n");
+        }
+        
+    }//GEN-LAST:event_chkMalestar1ActionPerformed
+
+    private void chkNauseas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNauseas1ActionPerformed
+        // TODO add your handling code here:
+        if(chkNauseas1.isSelected()){
+            txtSintomaCualiAnti.append("- Nauseas / vómitos \n");
+        }
+        
+    }//GEN-LAST:event_chkNauseas1ActionPerformed
+
+    private void chkDiarrea1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDiarrea1ActionPerformed
+        // TODO add your handling code here:
+        if(chkDiarrea1.isSelected()){
+            txtSintomaCualiAnti.append("- Diarrea \n");
+        }
+        
+    }//GEN-LAST:event_chkDiarrea1ActionPerformed
+
+    private void chkCefalea1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCefalea1ActionPerformed
+        // TODO add your handling code here:
+        if(chkCefalea1.isSelected()){
+            txtSintomaCualiAnti.append("- Cefalea \n");
+        }
+        
+    }//GEN-LAST:event_chkCefalea1ActionPerformed
+
+    private void chkIrritaibilidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIrritaibilidad1ActionPerformed
+        // TODO add your handling code here:
+        if(chkIrritaibilidad1.isSelected()){
+            txtSintomaCualiAnti.append("- Irritabilidad / confusión \n");
+        }
+        
+    }//GEN-LAST:event_chkIrritaibilidad1ActionPerformed
+
+    private void chkDolor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDolor1ActionPerformed
+        // TODO add your handling code here:
+        if(chkDolor1.isSelected()){
+            txtSintomaCualiAnti.append("- Dolor \n");
+        }
+        
+    }//GEN-LAST:event_chkDolor1ActionPerformed
+
+    private void chkExpctoracion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkExpctoracion1ActionPerformed
+        // TODO add your handling code here:
+        if(chkExpctoracion1.isSelected()){
+            txtSintomaCualiAnti.append("- Expectoración \n");
+        }
+        
+    }//GEN-LAST:event_chkExpctoracion1ActionPerformed
+
+    private void FechaSintomasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaSintomasPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FechaSintomasPropertyChange
 public void negarcheks(){
  chkTos.setEnabled(false);
         chkDolorG.setEnabled(false);
@@ -3885,7 +4170,7 @@ public void  habilitarPc(){
     jTextField13.setText("");
       cboMarca3.setSelectedItem(null);
     }
-       public void limpiar4(){
+    public void limpiar4(){
     txtNordenIn4.setText("");
         txtNordenIn4.setEditable(true);
   cboMarca4.setSelectedItem(null);
@@ -3895,22 +4180,32 @@ public void  habilitarPc(){
     txtEdadIn4.setText("");
     jCheckBox2.setSelected(false);
     jCheckBox3.setSelected(false);
+    chkTos1.setSelected(false);
+    chkDolorG1.setSelected(false);
+    chkCongestionN1.setSelected(false);
+    chkDificultadR1.setSelected(false);
+    chkFiebre1.setSelected(false);
+    chkMalestar1.setSelected(false);
+    chkPerdidaOlf2.setSelected(false);
+    chkDiarrea1.setSelected(false);
+    chkNauseas1.setSelected(false);
+    chkCefalea1.setSelected(false);
+    chkIrritaibilidad1.setSelected(false);
+    chkDolor1.setSelected(false);
+    chkExpctoracion1.setSelected(false);
+    txtSintomaCualiAnti.setText(null);
+    FechaSintomas.setDate(null);
+    
     }
-
     void btgroup(){
      btGrupo.clearSelection();
        // btTipoEx.clearSelection();
         btFactor.clearSelection();
 //        btRpr.clearSelection();
     }
-  
- 
-
-
     public void MostrarAddMarca() {
         addMarca = new AddMarcaCovid1(this, true);
         addMarca.setVisible(true);
-
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaExIn;
@@ -3919,6 +4214,7 @@ public void  habilitarPc(){
     private com.toedter.calendar.JDateChooser FechaExIn3;
     private com.toedter.calendar.JDateChooser FechaExIn4;
     private com.toedter.calendar.JDateChooser FechaHotel;
+    private com.toedter.calendar.JDateChooser FechaSintomas;
     private javax.swing.ButtonGroup bMarihuana;
     private javax.swing.ButtonGroup bgIgg;
     private javax.swing.ButtonGroup bgIgm;
@@ -3960,13 +4256,21 @@ public void  habilitarPc(){
     private javax.swing.JComboBox cboMarca4;
     private javax.swing.JCheckBox chkAsintomatico;
     private javax.swing.JCheckBox chkCefalea;
+    private javax.swing.JCheckBox chkCefalea1;
     private javax.swing.JCheckBox chkCongestionN;
+    private javax.swing.JCheckBox chkCongestionN1;
     private javax.swing.JCheckBox chkDiarrea;
+    private javax.swing.JCheckBox chkDiarrea1;
     private javax.swing.JCheckBox chkDificultadR;
+    private javax.swing.JCheckBox chkDificultadR1;
     private javax.swing.JCheckBox chkDolor;
+    private javax.swing.JCheckBox chkDolor1;
     private javax.swing.JCheckBox chkDolorG;
+    private javax.swing.JCheckBox chkDolorG1;
     private javax.swing.JCheckBox chkExpctoracion;
+    private javax.swing.JCheckBox chkExpctoracion1;
     private javax.swing.JCheckBox chkFiebre;
+    private javax.swing.JCheckBox chkFiebre1;
     private javax.swing.JCheckBox chkIggNoReactivo;
     private javax.swing.JCheckBox chkIggNoReactivo1;
     private javax.swing.JCheckBox chkIggReactivo;
@@ -3978,11 +4282,16 @@ public void  habilitarPc(){
     private javax.swing.JCheckBox chkInvalido;
     private javax.swing.JCheckBox chkInvalido1;
     private javax.swing.JCheckBox chkIrritaibilidad;
+    private javax.swing.JCheckBox chkIrritaibilidad1;
     private javax.swing.JCheckBox chkMalestar;
+    private javax.swing.JCheckBox chkMalestar1;
     private javax.swing.JCheckBox chkNauseas;
+    private javax.swing.JCheckBox chkNauseas1;
     private javax.swing.JCheckBox chkPerdidaOlf1;
+    private javax.swing.JCheckBox chkPerdidaOlf2;
     private javax.swing.JCheckBox chkSintomatico;
     private javax.swing.JCheckBox chkTos;
+    private javax.swing.JCheckBox chkTos1;
     private javax.swing.ButtonGroup gCocaina;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -4012,6 +4321,7 @@ public void  habilitarPc(){
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
+    private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
@@ -4058,6 +4368,7 @@ public void  habilitarPc(){
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
@@ -4116,6 +4427,7 @@ public void  habilitarPc(){
     private javax.swing.JTextField txtNordenIn3;
     private javax.swing.JTextField txtNordenIn4;
     private javax.swing.JTextField txtSintoma;
+    private javax.swing.JTextArea txtSintomaCualiAnti;
     private javax.swing.JTextArea txtVRIgg;
     private javax.swing.JTextArea txtVRIgm;
     // End of variables declaration//GEN-END:variables
@@ -4612,17 +4924,26 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
       
         private boolean GrabarIn4() throws SQLException{
         boolean bResult = false;
+        String Query;
+                
         String strSqlStmt ="INSERT INTO examen_inmunologico(\n" +
-"            n_orden, dni_pa, fecha_examen,chkigm_reactivo, \n" +
-"            chkigg_reactivo,cbomarca,txtvrigm,medico)";       
-            strSqlStmt+= "values('"+ txtNordenIn4.getText()+"','"+txtDniIn4.getText().toString()+"','"+FechaExIn4.getDate()+
+"            n_orden,dni_pa ,fecha_examen ,chkigm_reactivo, \n" +
+"            chkigg_reactivo,cbomarca,txtvrigm,medico,txtobservaciones ";    
+            Query= " values('"+ txtNordenIn4.getText()+"','"+txtDniIn4.getText()+"','"+FechaExIn4.getDate()+
                     "','"+jCheckBox2.isSelected()+ 
                     "','"+jCheckBox3.isSelected()+  
                     "','"+cboMarca4.getSelectedItem()+ 
                     "','"+jTextAreaIgm3.getText()+ 
-                    "','"+jTextField18.getText()+"')";
-//        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)){
+                    "','"+jTextField18.getText()+ 
+                    "','"+txtSintomaCualiAnti.getText();
+                    if (((JTextField)FechaSintomas.getDateEditor().getUiComponent()).getText().trim().length()> 1) {
+                        strSqlStmt += ",fecha_sintomas";
+                        Query += "','" + FechaSintomas.getDate() + "'";
+                    }else{
+                       Query += "'"; 
+                    }
+        oFunc.SubSistemaMensajeError(strSqlStmt+Query);
+             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
 //                   oConn.setResult.next();
                     oFunc.SubSistemaMensajeInformacion("Examen Registrada");
                     
@@ -4776,8 +5097,15 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     + "      chkigg_reactivo='"+jCheckBox3.isSelected()+"',"
                     + "      cbomarca='"+cboMarca4.getSelectedItem()+"', \n" 
                     + "      txtvrigm='"+jTextAreaIgm3.getText()+"', \n" 
-                  +  "        medico='"+jTextField18.getText()+
-                    "' WHERE n_orden='"+sCodigo+"';";
+                    + "      medico='"+jTextField18.getText()+"', \n" 
+                    + "      txtobservaciones='"+txtSintomaCualiAnti.getText()+"'";
+                    if (((JTextField)FechaSintomas.getDateEditor().getUiComponent()).getText().trim().length()> 1 ){
+                        strSqlStmt+=", fecha_sintomas='"+FechaSintomas.getDate()+"'";
+                    }else{
+                        strSqlStmt+=" ";
+                    }
+                   
+                    strSqlStmt+=" WHERE n_orden='"+sCodigo+"';";
                  System.out.println(strSqlStmt);
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
             if (oConn1.FnBoolQueryExecuteUpdate(strSqlStmt)) {
@@ -4789,8 +5117,7 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                          {
                 if(jCheckBox1.isSelected())
                             imprimirIn5();
-                            else
-                            {     
+                            else{     
                             imprimirIn4(); 
                             limpiar4();
                             }
@@ -5130,42 +5457,39 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                     Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
                 }
  } 
-                  private void printIn4(Integer cod){
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("Prueba Cualitativa de antigenos");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }      
-                        private void printIn5(Integer cod){
+    private void printIn4(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigeno.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("Prueba Cualitativa de antigenos");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    private void printIn5(Integer cod) {
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigenono.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("Prueba Cualitativa de antigenos");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }  
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigenono.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("Prueba Cualitativa de antigenos");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
                            private void printIn12(Integer cod){
 
                 Map parameters = new HashMap(); 

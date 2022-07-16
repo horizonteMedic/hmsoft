@@ -1661,7 +1661,7 @@ void limpiar2(){
                     oFunc.SubSistemaMensajeInformacion("Se Registro Correctamente");
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

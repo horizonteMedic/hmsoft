@@ -5313,6 +5313,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                         chkFiebreAmarilla.setSelected(oConn.setResult.getBoolean("fiebreamarilla"));
                         //----
                        oPu.fecha(FechaFicha);
+                       cargarAnalisisB();
                     } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
                     }
@@ -5514,10 +5515,10 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                                 txtObservacionesFichaMedica.append("-SOBREPESO:DIETA HIPOCALORICA Y EJERCICIOS." + '\n');
                             } else if (imc >= 30 && imc < 35) {
                                 txtIMC.setForeground(Color.red);
-                                txtObservacionesFichaMedica.append("-OBESIDAD I.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                txtObservacionesFichaMedica.append("-OBESIDAD I.NO HACER TRABAJOS SOBRE 1.8 M.S.N. PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
                             } else if (imc >= 35 && imc < 40) {
                                 txtIMC.setForeground(Color.red);
-                                txtObservacionesFichaMedica.append("-OBESIDAD II.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
+                                txtObservacionesFichaMedica.append("-OBESIDAD II.NO HACER TRABAJOS SOBRE 1.8 M.S.N. PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
                             } //else {
 //                                txtObservacionesFichaMedica.append("-OBESIDAD III.NO HACER TRABAJO 1.8 M.N PISO.DIETA HIPOCALORICA Y EJERCICIOS" + '\n');
 //                            } 
@@ -5576,7 +5577,7 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                         txtLejosCorregidaOI.setText(oConn.setResult.getString("v_lejos_c_oi"));
                         txtVisionColores.setText(oConn.setResult.getString("v_colores"));
                         txtBinocular.setText(oConn.setResult.getString("v_binocular"));
-//                        oFunc.SubSistemaMensajeError(oConn.setResult.getString("e_oculares"));
+//                      oFunc.SubSistemaMensajeError(oConn.setResult.getString("e_oculares"));
                         if (oConn.setResult.getString("e_oculares") != null  ) {
                             txtEnfermedadesOculares.setText(oConn.setResult.getString("e_oculares"));
                         }else{
@@ -5595,9 +5596,9 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
                             }
                         }
                         if("PTERIGION BILATERAL".equals(txtEnfermedadesOculares1.getText().toString())){
-                            txtObservacionesFichaMedica.append("- PTERIGION BILATERAL:EVALUACION X OFTALMOLOGIA." + '\n');
+                            txtObservacionesFichaMedica.append("- PTERIGION BILATERAL:EVALUACION POR OFTALMOLOGIA." + '\n');
                         }else if(!"NINGUNA".equals(txtEnfermedadesOculares1.getText().toString()) && !txtEnfermedadesOculares1.getText().isEmpty()){
-                                txtObservacionesFichaMedica.append(txtEnfermedadesOculares1.getText().toString().concat(":EVALUACION X OFTALMOLOGIA.") + '\n');
+                                txtObservacionesFichaMedica.append(txtEnfermedadesOculares1.getText().toString().concat(":EVALUACION POR OFTALMOLOGIA.") + '\n');
                         }
                         if(!"NINGUNA".equals(txtVisionColores.getText().toString())&& !"NORMAL".equals(txtVisionColores.getText().toString())){
                                 txtObservacionesFichaMedica.append("- "+txtVisionColores.getText().toString() + '\n');
@@ -6987,33 +6988,43 @@ public static int calcularEdad(String fecha) {
                       txtHDLColesterol.setText(oConn.setResult.getString("txthdlcolesterol"));
                       txtVLDLColesterol.setText(oConn.setResult.getString("txtvldlcolesterol"));
                       txtTrigliseridos.setText(oConn.setResult.getString("txttrigliseridos"));
-                      float ct=Float.parseFloat(txtColesterol.getText().toString());
-                      float ldl=Float.parseFloat(txtLDLColesterol.getText().toString());
-                      float hdl=Float.parseFloat(txtHDLColesterol.getText().toString());
-                      float vldl=Float.parseFloat(txtVLDLColesterol.getText().toString());
-                      float trigli=Float.parseFloat(txtTrigliseridos.getText().toString());
-                     if (ct> 200) {
-                         txtObservacionesFichaMedica.append("- HIPERCOLESTEROLEMIA.");
-                          txtColesterol.setForeground(Color.red);
-                     }
-                     if (trigli>150) {
-                         txtObservacionesFichaMedica.append("- HIPERTRIGLICERIDEMIA." );
-                         txtTrigliseridos.setForeground(Color.red);
-                     }
-                     if (ldl> 129) {
-                           txtLDLColesterol.setForeground(Color.red);
-                          
-                     }
-                     if (hdl<40 || hdl>60) {
-                         txtHDLColesterol.setForeground(Color.red);
-                     }
-                     if (vldl> 30) {
-                          txtVLDLColesterol.setForeground(Color.red);
-                     }
-                     if(ct>200 || trigli>150 || ldl>129 || (hdl<40 || hdl>60) || vldl>30){
-                         txtObservacionesFichaMedica.append("DIETA HIPOCALORICA Y EJERCICIOS. \n ");
-                     }
-                 } else {
+                      float ct, ldl, hdl, vldl, trigli;
+                      if (!txtColesterol.getText().equals("-")) {
+                          ct = Float.parseFloat(txtColesterol.getText().toString());
+                          if (ct > 200) {
+                              txtObservacionesFichaMedica.append("- HIPERCOLESTEROLEMIA.DIETA HIPOCALORICA Y EJERCICIOS. \n ");
+                              txtColesterol.setForeground(Color.red);
+                          }
+                      }
+                      if (!txtLDLColesterol.getText().equals("-")) {
+                          ldl = Float.parseFloat(txtLDLColesterol.getText().toString());
+                          if (ldl > 129) {
+                              txtLDLColesterol.setForeground(Color.red);
+                          }
+                      }
+                      if (!txtHDLColesterol.getText().equals("-")) {
+                          hdl = Float.parseFloat(txtHDLColesterol.getText().toString());
+                          if (hdl < 40 || hdl > 60) {
+                              txtHDLColesterol.setForeground(Color.red);
+                          }
+                      }
+                      if (!txtVLDLColesterol.getText().equals("-")) {
+                          vldl = Float.parseFloat(txtVLDLColesterol.getText().toString());
+                          if (vldl > 30) {
+                              txtVLDLColesterol.setForeground(Color.red);
+                          }
+                      }
+                      if (!txtTrigliseridos.getText().equals("-")) {
+                          trigli = Float.parseFloat(txtTrigliseridos.getText().toString());
+                          if (trigli > 150) {
+                              txtObservacionesFichaMedica.append("- HIPERTRIGLICERIDEMIA.DIETA HIPOCALORICA Y EJERCICIOS. \n ");
+                              txtTrigliseridos.setForeground(Color.red);
+                          }
+                      }
+//                      if (ct > 200 || trigli > 150 || ldl > 129 || (hdl < 40 || hdl > 60) || vldl > 30) {
+//                          txtObservacionesFichaMedica.append("DIETA HIPOCALORICA Y EJERCICIOS. \n ");
+//                      }
+                  } else {
                      oFunc.SubSistemaMensajeInformacion("No hay registro de analisis quimicos");
                  }
                      oConn.setResult.close();
