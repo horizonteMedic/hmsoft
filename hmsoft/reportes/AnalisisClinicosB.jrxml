@@ -1,29 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="InformePsicologico" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="34f29275-9a97-4616-8769-751ede5d0000">
-	<property name="ireport.zoom" value="1.5"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Oftalmologia" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71526cbc-3606-4c8f-b2c9-3925601047bf">
+	<property name="ireport.zoom" value="1.1269722013523664"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="106"/>
-	<style name="table">
-		<box>
-			<pen lineWidth="1.0" lineColor="#333333"/>
-		</box>
-	</style>
-	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#333333"/>
-		</box>
-	</style>
-	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#333333"/>
-		</box>
-	</style>
-	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#333333"/>
-		</box>
-	</style>
-	<style name="Crosstab Data Text" hAlign="Center"/>
+	<property name="ireport.y" value="0"/>
 	<style name="miestilo">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[new Boolean($F{color}==1)]]></conditionExpression>
@@ -240,203 +219,272 @@
 			</style>
 		</conditionalStyle>
 	</style>
-	<subDataset name="Table Dataset 1" uuid="0deb2eff-8ea0-4518-9f3a-3582c179afc5"/>
-	<parameter name="Norden" class="java.lang.Integer"/>
+	<parameter name="Norden" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT d.cod_pa,d.nombres_pa||' '||d.apellidos_pa as nombres,
-d.fecha_nac,obtener_edad(d.fecha_nac,t.f_ticket) as edad,tc.p_cod,tc.p_descripcion,
-concat(d.n_hcl,' - ',d.cod_pa)as codh,t.nom_medico,la.*
-FROM datos_paciente_asistencial as d
-inner join ticket as t on (d.cod_pa=t.cod_pa)
-inner join ticket_contenido as tc on (tc.n_ticket=t.n_ticket)
-inner join laboratorio_asistencial la on (la.la_nticket=t.n_ticket)
-where t.n_ticket=$P{Norden}]]>
+		<![CDATA[SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa
+,n.n_orden,n.razon_empresa,n.razon_contrata,n.cargo_de,d.nivel_est_pa,n.nom_examen,
+obtener_edad(d.fecha_nacimiento_pa,date(NOW())):: text as fec_nac, mc.*,color,
+(case when n.cod_sede=1 then 'TRUJILLO'
+              WHEN n.cod_sede=2 then 'Huamachuco'
+              WHEN n.cod_sede=4 then 'Trujillo'
+              WHEN n.cod_sede=3 then 'Huancayo'
+        end ) as SEDE
+                       FROM datos_paciente AS d
+                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)
+                            INNER JOIN ac_bioquimica2022 AS mc ON (mc.n_orden = n.n_orden) where n.n_orden=  $P{Norden}]]>
 	</queryString>
 	<field name="cod_pa" class="java.lang.Integer"/>
-	<field name="nombres" class="java.lang.String"/>
-	<field name="fecha_nac" class="java.sql.Date"/>
-	<field name="edad" class="java.lang.Integer"/>
-	<field name="p_cod" class="java.lang.String"/>
-	<field name="p_descripcion" class="java.lang.String"/>
-	<field name="codh" class="java.lang.String"/>
-	<field name="nom_medico" class="java.lang.String"/>
-	<field name="la_nticket" class="java.lang.Integer"/>
-	<field name="la_fecha" class="java.sql.Date"/>
-	<field name="la_responsable" class="java.lang.String"/>
-	<field name="la_obsgeneral" class="java.lang.String"/>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="fecha_nacimiento_pa" class="java.sql.Date"/>
+	<field name="n_orden" class="java.lang.Integer"/>
+	<field name="razon_empresa" class="java.lang.String"/>
+	<field name="razon_contrata" class="java.lang.String"/>
+	<field name="cargo_de" class="java.lang.String"/>
+	<field name="nivel_est_pa" class="java.lang.String"/>
+	<field name="nom_examen" class="java.lang.String"/>
+	<field name="fec_nac" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="txtprueba" class="java.lang.String"/>
+	<field name="txtmuestra" class="java.lang.String"/>
+	<field name="txtresultado" class="java.lang.String"/>
+	<field name="txtvaloresn" class="java.lang.String"/>
+	<field name="color" class="java.lang.Integer"/>
+	<field name="sede" class="java.lang.String"/>
 	<title>
-		<band height="87" splitType="Stretch">
+		<band height="62" splitType="Stretch">
 			<image>
-				<reportElement uuid="b0cd0ace-4ca1-42f5-aeb5-ac05ecb2041f" x="0" y="0" width="224" height="87"/>
+				<reportElement uuid="35ac554b-e0c3-4915-b049-dae53c07b691" x="0" y="-19" width="224" height="81"/>
 				<imageExpression><![CDATA["C:\\reportes\\Logo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement uuid="5f564673-70ba-417d-9f2e-d536e49e01d6" x="297" y="22" width="213" height="15"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Jr. Leoncio Prado N° 786 - Huamachuco]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="de8fca2f-252f-4487-b80a-5ccf8b1af78e" x="297" y="34" width="213" height="15"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Telefono :  044-348070 /  990094744]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="297" y="45" width="213" height="15"/>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="262" y="35" width="213" height="15"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Guillermo Prescott N°127 Urb. Sto. Dominguito - Trujillo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="297" y="56" width="258" height="15"/>
+				<reportElement uuid="5f564673-70ba-417d-9f2e-d536e49e01d6" x="262" y="12" width="213" height="15"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Email: admision@horizontemedic.com / web: www.horizontemedic.com]]></text>
+				<text><![CDATA[Jr. Leoncio Prado N° 786 - Huamachuco]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="262" y="47" width="293" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Email: admision.trujillo@horizontemedic.com / web: www.horizontemedic.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="de8fca2f-252f-4487-b80a-5ccf8b1af78e" x="262" y="24" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Telefono :  044-348070 / 969603777]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement uuid="daaee33e-0281-4049-8858-56d5acd50cd9" style="miestilo" x="555" y="-19" width="5" height="70" forecolor="#FFFFFF"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="28f11644-7723-4635-bd9c-55e9864dd3fe" style="miestilo" mode="Transparent" x="511" y="-9" width="39" height="31"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{color}.equals(1)?"A":$F{color}.equals(2)?"B":
+$F{color}.equals(3)?"C":$F{color}.equals(4)?"D":
+$F{color}.equals(5)?"E":$F{color}.equals(6)?"F":
+$F{color}.equals(7)?"G":$F{color}.equals(8)?"H":
+$F{color}.equals(9)?"I":$F{color}.equals(10)?"J":
+$F{color}.equals(11)?"K":$F{color}.equals(12)?"L":
+$F{color}.equals(13)?"LL":$F{color}.equals(14)?"M":
+$F{color}.equals(15)?"N":$F{color}.equals(16)?"Ñ":
+$F{color}.equals(17)?"O":$F{color}.equals(18)?"P":
+$F{color}.equals(19)?"Q":$F{color}.equals(20)?"R":
+$F{color}.equals(21)?"S":$F{color}.equals(22)?"T":
+$F{color}.equals(23)?"U":$F{color}.equals(24)?"V":
+$F{color}.equals(25)?"W":$F{color}.equals(26)?"X":
+$F{color}.equals(27)?"Y":$F{color}.equals(28)?"Z":
+$F{color}.equals(29)?"CH":$F{color}.equals(30)?"AB":
+$F{color}.equals(31)?"AC":$F{color}.equals(32)?"AD":
+$F{color}.equals(33)?"AE":$F{color}.equals(34)?"AF":
+$F{color}.equals(35)?"AG":$F{color}.equals(36)?"AH":
+$F{color}.equals(37)?"AI":$F{color}.equals(38)?"AJ":
+$F{color}.equals(39)?"AK":$F{color}.equals(40)?"AL":
+$F{color}.equals(41)?"AM":$F{color}.equals(42)?"AN":
+$F{color}.equals(43)?"AÑ":$F{color}.equals(44)?"AO":
+$F{color}.equals(45)?"AP":$F{color}.equals(46)?"AQ":
+$F{color}.equals(47)?"AR":$F{color}.equals(48)?"AS":
+$F{color}.equals(49)?"AT":$F{color}.equals(50)?"AU":" "]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="40" splitType="Stretch">
-			<textField>
-				<reportElement uuid="8edb9d6a-b67a-4f19-9e14-72cfa1de5c68" x="406" y="18" width="116" height="19"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{codh}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="2b202bd3-674b-47ec-bd0c-6086fd7bf21c" x="402" y="5" width="76" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA["  00"+$F{la_nticket}]]></textFieldExpression>
-			</textField>
+		<band height="41" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="4bdb50f8-ee6a-44d4-9453-a82c20203953" x="335" y="5" width="67" height="13"/>
-				<textElement textAlignment="Right">
-					<font size="8"/>
+				<reportElement uuid="f2c34bd0-dd39-41fc-ae84-29505bf81b14" x="331" y="6" width="73" height="18"/>
+				<textElement>
+					<font size="12"/>
 				</textElement>
-				<text><![CDATA[N° Ticket :]]></text>
+				<text><![CDATA[Nro Orden :]]></text>
 			</staticText>
-			<staticText>
-				<reportElement uuid="88bc2379-4125-4241-be83-44875d68644d" x="353" y="21" width="49" height="13"/>
-				<textElement textAlignment="Right">
-					<font size="8"/>
+			<textField>
+				<reportElement uuid="a9c64020-5aa1-4695-aa85-c6137106ac03" x="419" y="6" width="80" height="23"/>
+				<textElement>
+					<font size="16" isBold="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[N° de HCL :]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{n_orden}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="122" splitType="Stretch">
-			<textField isBlankWhenNull="true">
-				<reportElement uuid="074868e0-6551-4fc3-bf53-4ef16f7ad65e" x="156" y="13" width="250" height="14"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[": "+$F{nombres}]]></textFieldExpression>
-			</textField>
+		<band height="96" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="cf05c3f8-72c0-4aad-afc3-f60bf3f47574" x="41" y="13" width="115" height="14"/>
-				<textElement>
-					<font fontName="SansSerif" size="9" isBold="true"/>
+				<reportElement uuid="21d85894-151e-46db-80d3-a06bdf5eeb27" x="62" y="0" width="138" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[NOMBRES ]]></text>
+				<text><![CDATA[Apellidos y Nombres :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="1408506e-6f43-4275-ba0b-6fc725bc2038" x="156" y="29" width="34" height="14"/>
-				<textElement>
-					<font size="8"/>
+				<reportElement uuid="6883fa94-c1d6-4511-9e70-4fb6d036fb91" x="207" y="0" width="343" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[": "+$F{edad}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="cf05c3f8-72c0-4aad-afc3-f60bf3f47574" x="41" y="29" width="115" height="14"/>
-				<textElement>
-					<font fontName="SansSerif" size="9" isBold="true"/>
+				<reportElement uuid="845e98bc-ae4e-4db9-a6f7-5fa7dd1aa3fd" x="97" y="23" width="103" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[EDAD]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="68bcc47a-a740-4d04-be21-3ff9d092b406" x="190" y="29" width="85" height="14"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[AÑOS]]></text>
+				<text><![CDATA[Edad :]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="804753a2-be28-4aa7-ba38-32cf24d3041f" x="156" y="45" width="250" height="14"/>
-				<textElement>
-					<font size="8"/>
+				<reportElement uuid="4d7a8d23-10ec-4a12-bfd3-85508a8ad8f3" x="207" y="23" width="333" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[": "+$F{nom_medico}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{fec_nac}.concat( " AÑOS" )]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="e30d58b8-de65-49fd-903e-52804eaece95" x="41" y="45" width="115" height="14"/>
-				<textElement>
-					<font fontName="SansSerif" size="9" isBold="true"/>
+				<reportElement uuid="5e31764c-a578-4b03-96c0-c65171e3474a" x="148" y="47" width="52" height="17"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[MÉDICO]]></text>
+				<text><![CDATA[DNI:]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement uuid="a01c3c3c-6fd3-48e0-aaae-f9de7d0f981b" x="156" y="62" width="250" height="14"/>
-				<textElement>
-					<font size="8"/>
+			<staticText>
+				<reportElement uuid="d4353443-b62d-4efb-bf2e-99d6b860389a" x="148" y="71" width="52" height="17"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[": "+$F{la_fecha}]]></textFieldExpression>
+				<text><![CDATA[Fecha :]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement uuid="85b2506b-589b-4b06-9bf0-3a2421f74706" x="207" y="71" width="116" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement uuid="849e5adb-ffaa-421c-9164-41d20745bdbe" x="41" y="62" width="115" height="14"/>
-				<textElement>
-					<font fontName="SansSerif" size="9" isBold="true"/>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="cbac62e0-9ffe-461b-848d-b1d2d51e2dd1" x="207" y="47" width="124" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
 				</textElement>
-				<text><![CDATA[FECHA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9987bdd0-9a43-4b93-9342-e91b4611409e" x="41" y="87" width="183" height="29"/>
-				<textElement>
-					<font size="17" isBold="true"/>
-				</textElement>
-				<text><![CDATA[HEMOGRAMA]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{cod_pa}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="50">
-			<subreport>
-				<reportElement uuid="c34751e3-d5d3-4528-a2d6-2468591549bd" x="40" y="0" width="515" height="50"/>
-				<subreportParameter name="Norden">
-					<subreportParameterExpression><![CDATA[$F{p_cod}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:\\reportes\\Laboratorio_A_subreport.jasper"]]></subreportExpression>
-			</subreport>
-		</band>
-		<band height="62">
-			<textField isBlankWhenNull="true">
-				<reportElement uuid="1fae5152-dc38-42a1-b82e-dc9cccc89369" x="40" y="0" width="446" height="59"/>
-				<textElement>
-					<font size="8"/>
+		<band height="569" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="99c1d023-49aa-4052-ac9e-886bab6c38bb" x="0" y="16" width="550" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="13" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{la_obsgeneral}]]></textFieldExpression>
+				<text><![CDATA[BIOQUIMICA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="66dc568a-1ca1-445b-82bd-73b1860bc4f2" x="46" y="95" width="86" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUESTRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0bd75ecc-d9e2-4fae-b378-9c4f844eed9e" x="46" y="140" width="120" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRUEBA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e9171c1d-94fa-4ddd-8fc6-733991ae4901" x="262" y="171" width="116" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtresultado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="907c3a0a-9361-42d4-aa93-cf90ce56773d" x="262" y="140" width="120" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESULTADO]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="d6a642cb-3d3c-48f0-aa0b-39650cfdedfd" x="387" y="172" width="153" height="41"/>
+				<textElement verticalAlignment="Top">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtvaloresn}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="20671891-7edd-4002-9fbe-fea60020154f" x="387" y="140" width="154" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VALORES NORMALES]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="54e4d4a8-6da0-452f-b732-1c95762f8c33" x="132" y="95" width="209" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtmuestra}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="750e2abb-adb0-44bb-9108-53f5c099cffa" x="46" y="171" width="204" height="21"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtprueba}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="a1b01c78-15dc-4ddb-8440-5a9ea39e0611" x="46" y="162" width="494" height="1"/>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement uuid="c7568195-2ba8-4921-8ae9-41ede80f4900" x="387" y="294" width="136" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="a03d7c51-def2-4482-8dce-51c7d7cb7981" x="293" y="294" width="93" height="20"/>
+				<textElement textAlignment="Right">
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sede}+', ']]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="6" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
-	<pageFooter>
-		<band splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band splitType="Stretch"/>
-	</summary>
 </jasperReport>

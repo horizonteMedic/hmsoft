@@ -272,6 +272,7 @@ String sed="";
         txtImprimirIn4 = new javax.swing.JTextField();
         btnImprimir4 = new javax.swing.JButton();
         jTextField14 = new javax.swing.JTextField();
+        chkMarsa = new javax.swing.JCheckBox();
         jPanel26 = new javax.swing.JPanel();
         jLabel117 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
@@ -1931,6 +1932,8 @@ String sed="";
         jTextField14.setForeground(new java.awt.Color(0, 0, 51));
         jTextField14.setText("Imprimir");
 
+        chkMarsa.setText("MARSA");
+
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
@@ -1964,7 +1967,9 @@ String sed="";
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                        .addComponent(txtImprimirIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtImprimirIn4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkMarsa))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnImprimir4)
                         .addContainerGap())
@@ -1995,7 +2000,10 @@ String sed="";
                             .addComponent(txtDniIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel122)
                             .addComponent(txtEdadIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtImprimirIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel25Layout.createSequentialGroup()
+                        .addComponent(txtImprimirIn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkMarsa))
                     .addComponent(btnImprimir4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -4285,6 +4293,7 @@ public void  habilitarPc(){
     private javax.swing.JCheckBox chkIrritaibilidad1;
     private javax.swing.JCheckBox chkMalestar;
     private javax.swing.JCheckBox chkMalestar1;
+    private javax.swing.JCheckBox chkMarsa;
     private javax.swing.JCheckBox chkNauseas;
     private javax.swing.JCheckBox chkNauseas1;
     private javax.swing.JCheckBox chkPerdidaOlf1;
@@ -5462,7 +5471,12 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
         try {
-            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigeno.jasper";
+            String direccionReporte;
+            if (chkMarsa.isSelected()) {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigenoMarsa.jasper";
+            } else {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigeno.jasper";
+            }
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
             JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -5490,24 +5504,28 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
             Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-                           private void printIn12(Integer cod){
+    private void printIn12(Integer cod) {
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno3213.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("Prueba Cualitativa de antigenos");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }  
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte;
+            if (chkMarsa.isSelected()) {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigenoMarsah.jasper";
+            } else {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigeno3213.jasper";
+            }
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("Prueba Cualitativa de antigenos");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(LaboratorioClinicoCovid.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
          private void printerIn2(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
@@ -5572,8 +5590,13 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
                     try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno.jasper";
+                {                    
+                    String direccionReporte;
+                    if(chkMarsa.isSelected())
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigenoMarsa.jasper";
+                    else{
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno.jasper";
+                    }
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     
@@ -5588,7 +5611,13 @@ public static void addTextAndSelectToTextFieldToRest(JTextField textField, Strin
                 parameters.put("Norden",cod);      
                     try 
                 {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno3213.jasper";
+                    String direccionReporte ;
+                    if(chkMarsa.isSelected())
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigenoMarsah.jasper";
+                    else{
+                         direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno3213.jasper";   
+                            }
+                    
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     
