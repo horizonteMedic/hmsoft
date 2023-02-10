@@ -135,6 +135,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
        Coprocultivo cop22;
        Parasitologia para22;
        ConsentimientoPanel5D cp5d;
+       FichaDatosPersonales  fdp;
       javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
         javax.swing.ImageIcon oNo = null;
         String ipa="",seded="";
@@ -466,6 +467,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         mCoprocultivo = new javax.swing.JMenuItem();
         mParasitologia = new javax.swing.JMenuItem();
         mConsentimientoPanel5D = new javax.swing.JMenuItem();
+        mConsentimientoPanel5D1 = new javax.swing.JMenuItem();
 
         Reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
         Reporte.setText("Reporte");
@@ -2416,6 +2418,16 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         jMNuevosFormatos.add(mConsentimientoPanel5D);
+
+        mConsentimientoPanel5D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mConsentimientoPanel5D1.setText("12. Ficha Datos Personales");
+        mConsentimientoPanel5D1.setActionCommand("Cert. Conducción de Vehiculos");
+        mConsentimientoPanel5D1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mConsentimientoPanel5D1ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mConsentimientoPanel5D1);
 
         MenuOcupacional.add(jMNuevosFormatos);
 
@@ -4497,11 +4509,28 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             cp5d.show();
             //fn.setVisible(true);
         }else{
-            el2021.moveToFront();
+            cp5d.moveToFront();
 
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_mConsentimientoPanel5DActionPerformed
+
+    private void mConsentimientoPanel5D1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConsentimientoPanel5D1ActionPerformed
+        // TODO add your handling code here:
+         if(estacerrado(fdp)){
+            fdp =new FichaDatosPersonales();
+            Desktop.add(fdp);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            fdp.setFrameIcon(ticon);
+            fdp.setLocation(centradoXY(fdp));
+            fdp.show();
+            //fn.setVisible(true);
+        }else{
+            fdp.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mConsentimientoPanel5D1ActionPerformed
 @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -4713,6 +4742,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mConsentimientoInformadoCovid;
     private javax.swing.JMenuItem mConsentimientoInformadoCovid1;
     private javax.swing.JMenuItem mConsentimientoPanel5D;
+    private javax.swing.JMenuItem mConsentimientoPanel5D1;
     private javax.swing.JMenuItem mConstanciaAltaEpidemiologica;
     private javax.swing.JMenuItem mConstanciaAltaMarsa;
     private javax.swing.JMenuItem mConstanciaAltaMarsa1;

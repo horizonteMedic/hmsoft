@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Aptitud_medico_ocupacional" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71f0cb19-4d7c-4b7f-83de-2554e68b75e1">
 	<property name="ireport.zoom" value="1.3995221406291998"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="128"/>
+	<property name="ireport.y" value="176"/>
 	<style name="miestilo">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[new Boolean($F{color}==1)]]></conditionExpression>
@@ -226,8 +226,8 @@
 		<![CDATA[SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,d.sexo_pa,d.cod_pa,d.ocupacion_pa,
                 n.razon_empresa,n.razon_contrata ,n.n_orden,n.nom_examen, n.cargo_de, txtobservacionesfm  , c.fecha, obtener_edad(d.fecha_nacimiento_pa,c.fecha)as edad,c.chkapto,c.chkapto_restriccion,c.chkno_apto,c.atxtrestricciones,c.nom_medico,
 c.txtrecomendaciones,c.txtconclusiones,n.color,n.cod_clinica,
-(case when n.cod_sede=1 then CONCAT(n.n_orden,'-T') 
-when n.cod_sede=4 then CONCAT(n.n_orden,'-TP') 
+(case when n.cod_sede=1 then CONCAT(n.n_orden,'-T')
+when n.cod_sede=4 then CONCAT(n.n_orden,'-TP')
  else CONCAT(n.n_orden,'-H') END ) as numero
                 FROM datos_paciente AS d
                 INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)
@@ -505,14 +505,14 @@ $F{color}.equals(49)?"AT":$F{color}.equals(50)?"AU":" "]]></textFieldExpression>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="ae12efd8-8d94-4a32-ae3a-f6711c4ea617" x="79" y="65" width="188" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="6" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{razon_empresa}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="21b88010-8cc5-4805-9281-8210dfd48b1d" x="338" y="65" width="216" height="20"/>
 				<textElement verticalAlignment="Middle">
-					<font size="8" isBold="true"/>
+					<font size="5" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{razon_contrata}]]></textFieldExpression>
 			</textField>

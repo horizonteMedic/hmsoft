@@ -1617,11 +1617,7 @@ private void Limpiar(){
                  } catch (JRException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                 
- 
  }
-  
-  
    private void printer(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      

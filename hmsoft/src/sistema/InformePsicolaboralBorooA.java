@@ -39,7 +39,7 @@ import org.jdom.Parent;
  *
  * @author admin
  */
-public final class InformePsicolaboral extends javax.swing.JInternalFrame {
+public final class InformePsicolaboralBorooA extends javax.swing.JInternalFrame {
 
     clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
@@ -47,7 +47,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
    String[]aintelectual = new String[]{};
     DefaultTableModel model;
 
-   public InformePsicolaboral(){
+   public InformePsicolaboralBorooA(){
       initComponents();
       //new ajTextArea.autocompleterText(atxtIntelectual, "razon_empresa", "empresas");
   
@@ -109,43 +109,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         chkNoApto = new javax.swing.JCheckBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jPanel29 = new javax.swing.JPanel();
-        jLabel88 = new javax.swing.JLabel();
-        chkR1 = new javax.swing.JCheckBox();
-        chkR2 = new javax.swing.JCheckBox();
-        chkR3 = new javax.swing.JCheckBox();
-        chkR4 = new javax.swing.JCheckBox();
-        chkR5 = new javax.swing.JCheckBox();
-        chkM1 = new javax.swing.JCheckBox();
-        chkM2 = new javax.swing.JCheckBox();
-        chkM3 = new javax.swing.JCheckBox();
-        chkM4 = new javax.swing.JCheckBox();
-        chkM5 = new javax.swing.JCheckBox();
-        jLabel95 = new javax.swing.JLabel();
-        jLabel96 = new javax.swing.JLabel();
-        chkAC1 = new javax.swing.JCheckBox();
-        chkAC2 = new javax.swing.JCheckBox();
-        chkAC3 = new javax.swing.JCheckBox();
-        chkAC4 = new javax.swing.JCheckBox();
-        chkAC5 = new javax.swing.JCheckBox();
-        jLabel97 = new javax.swing.JLabel();
-        chkCVM1 = new javax.swing.JCheckBox();
-        chkCVM2 = new javax.swing.JCheckBox();
-        chkCVM3 = new javax.swing.JCheckBox();
-        chkCVM4 = new javax.swing.JCheckBox();
-        chkCVM5 = new javax.swing.JCheckBox();
-        jLabel98 = new javax.swing.JLabel();
-        chkOE1 = new javax.swing.JCheckBox();
-        chkOE2 = new javax.swing.JCheckBox();
-        chkOE3 = new javax.swing.JCheckBox();
-        chkOE4 = new javax.swing.JCheckBox();
-        chkOE5 = new javax.swing.JCheckBox();
-        jLabel100 = new javax.swing.JLabel();
-        chkCV1 = new javax.swing.JCheckBox();
-        chkCV2 = new javax.swing.JCheckBox();
-        chkCV3 = new javax.swing.JCheckBox();
-        chkCV4 = new javax.swing.JCheckBox();
-        chkCV5 = new javax.swing.JCheckBox();
         jPanel30 = new javax.swing.JPanel();
         jLabel90 = new javax.swing.JLabel();
         chkEE1 = new javax.swing.JCheckBox();
@@ -171,28 +134,13 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         chkAsert3 = new javax.swing.JCheckBox();
         chkAsert4 = new javax.swing.JCheckBox();
         chkAsert5 = new javax.swing.JCheckBox();
-        jLabel107 = new javax.swing.JLabel();
-        chkAnsiedadE1 = new javax.swing.JCheckBox();
-        chkAnsiedadE2 = new javax.swing.JCheckBox();
-        chkAnsiedadE3 = new javax.swing.JCheckBox();
-        chkAnsiedadE4 = new javax.swing.JCheckBox();
-        chkAnsiedadE5 = new javax.swing.JCheckBox();
-        jLabel108 = new javax.swing.JLabel();
-        chkAnsiedadR1 = new javax.swing.JCheckBox();
-        chkAnsiedadR2 = new javax.swing.JCheckBox();
-        chkAnsiedadR3 = new javax.swing.JCheckBox();
-        chkAnsiedadR4 = new javax.swing.JCheckBox();
-        chkAnsiedadR5 = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
         jLabel89 = new javax.swing.JLabel();
-        chkCSBajo = new javax.swing.JCheckBox();
-        chkCSPromedio = new javax.swing.JCheckBox();
-        chkCSAlto = new javax.swing.JCheckBox();
         jLabel99 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
         txtNivelAlerta = new javax.swing.JTextField();
-        txtSomnolencia = new javax.swing.JTextField();
+        txtConsecuencia = new javax.swing.JTextField();
+        txtHostigamiento = new javax.swing.JTextField();
         jPanel32 = new javax.swing.JPanel();
         jLabel91 = new javax.swing.JLabel();
         chkApsico_CI1 = new javax.swing.JCheckBox();
@@ -236,15 +184,12 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         chkApsico_CP3 = new javax.swing.JCheckBox();
         chkApsico_CP4 = new javax.swing.JCheckBox();
         chkApsico_CP5 = new javax.swing.JCheckBox();
-        jPanel33 = new javax.swing.JPanel();
         jLabel93 = new javax.swing.JLabel();
         chkApsico_M1 = new javax.swing.JCheckBox();
         chkApsico_M2 = new javax.swing.JCheckBox();
         chkApsico_M3 = new javax.swing.JCheckBox();
         chkApsico_M4 = new javax.swing.JCheckBox();
         chkApsico_M5 = new javax.swing.JCheckBox();
-        jLabel94 = new javax.swing.JLabel();
-        txtEstresLaboral = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Informe Psicolaboral");
@@ -419,7 +364,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Conclusión"));
 
         bgConclusion.add(chkApto);
-        chkApto.setText("APTO");
+        chkApto.setText("CUMPLE CON EL PERFIL");
         chkApto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAptoActionPerformed(evt);
@@ -427,7 +372,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         });
 
         bgConclusion.add(chkNoApto);
-        chkNoApto.setText("NO APTO");
+        chkNoApto.setText("NO CUMPLE CON EL PERFIL ");
         chkNoApto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkNoAptoActionPerformed(evt);
@@ -440,420 +385,18 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(chkApto)
-                .addGap(18, 18, 18)
-                .addComponent(chkNoApto)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkApto)
+                    .addComponent(chkNoApto))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkApto)
-                    .addComponent(chkNoApto))
-                .addGap(5, 5, 5))
-        );
-
-        jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTO INTELECTUAL:"));
-
-        jLabel88.setText("1- Razonamiento y resolución de problemas:");
-
-        bgR.add(chkR1);
-        chkR1.setText("I");
-        chkR1.setToolTipText("");
-        chkR1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkR1ActionPerformed(evt);
-            }
-        });
-
-        bgR.add(chkR2);
-        chkR2.setText("NPI");
-        chkR2.setToolTipText("");
-        chkR2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkR2ActionPerformed(evt);
-            }
-        });
-
-        bgR.add(chkR3);
-        chkR3.setText("NP");
-        chkR3.setToolTipText("");
-        chkR3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkR3ActionPerformed(evt);
-            }
-        });
-
-        bgR.add(chkR4);
-        chkR4.setText("NPS");
-        chkR4.setToolTipText("");
-        chkR4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkR4ActionPerformed(evt);
-            }
-        });
-
-        bgR.add(chkR5);
-        chkR5.setText("S");
-        chkR5.setToolTipText("");
-        chkR5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkR5ActionPerformed(evt);
-            }
-        });
-
-        bgM.add(chkM1);
-        chkM1.setText("I");
-        chkM1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkM1ActionPerformed(evt);
-            }
-        });
-
-        bgM.add(chkM2);
-        chkM2.setText("NPI");
-        chkM2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkM2ActionPerformed(evt);
-            }
-        });
-
-        bgM.add(chkM3);
-        chkM3.setText("NP");
-        chkM3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkM3ActionPerformed(evt);
-            }
-        });
-
-        bgM.add(chkM4);
-        chkM4.setText("NPS");
-        chkM4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkM4ActionPerformed(evt);
-            }
-        });
-
-        bgM.add(chkM5);
-        chkM5.setText("S");
-        chkM5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkM5ActionPerformed(evt);
-            }
-        });
-
-        jLabel95.setText("2- Memoria");
-
-        jLabel96.setText("3- Atención y concentración");
-
-        bgAC.add(chkAC1);
-        chkAC1.setText("I");
-        chkAC1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAC1ActionPerformed(evt);
-            }
-        });
-
-        bgAC.add(chkAC2);
-        chkAC2.setText("NPI");
-        chkAC2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAC2ActionPerformed(evt);
-            }
-        });
-
-        bgAC.add(chkAC3);
-        chkAC3.setText("NP");
-        chkAC3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAC3ActionPerformed(evt);
-            }
-        });
-
-        bgAC.add(chkAC4);
-        chkAC4.setText("NPS");
-        chkAC4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAC4ActionPerformed(evt);
-            }
-        });
-
-        bgAC.add(chkAC5);
-        chkAC5.setText("S");
-        chkAC5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAC5ActionPerformed(evt);
-            }
-        });
-
-        jLabel97.setText("4- Coordinación viso-motora");
-
-        bgCVM.add(chkCVM1);
-        chkCVM1.setText("I");
-        chkCVM1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCVM1ActionPerformed(evt);
-            }
-        });
-
-        bgCVM.add(chkCVM2);
-        chkCVM2.setText("NPI");
-        chkCVM2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCVM2ActionPerformed(evt);
-            }
-        });
-
-        bgCVM.add(chkCVM3);
-        chkCVM3.setText("NP");
-        chkCVM3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCVM3ActionPerformed(evt);
-            }
-        });
-
-        bgCVM.add(chkCVM4);
-        chkCVM4.setText("NPS");
-        chkCVM4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCVM4ActionPerformed(evt);
-            }
-        });
-
-        bgCVM.add(chkCVM5);
-        chkCVM5.setText("S");
-        chkCVM5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCVM5ActionPerformed(evt);
-            }
-        });
-
-        jLabel98.setText("5- Orientación espacial");
-
-        bgOE.add(chkOE1);
-        chkOE1.setText("I");
-        chkOE1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOE1ActionPerformed(evt);
-            }
-        });
-
-        bgOE.add(chkOE2);
-        chkOE2.setText("NPI");
-        chkOE2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOE2ActionPerformed(evt);
-            }
-        });
-
-        bgOE.add(chkOE3);
-        chkOE3.setText("NP");
-        chkOE3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOE3ActionPerformed(evt);
-            }
-        });
-
-        bgOE.add(chkOE4);
-        chkOE4.setText("NPS");
-        chkOE4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOE4ActionPerformed(evt);
-            }
-        });
-
-        bgOE.add(chkOE5);
-        chkOE5.setText("S");
-        chkOE5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkOE5ActionPerformed(evt);
-            }
-        });
-
-        jLabel100.setText("6- Comprensión verbal");
-
-        bgCV.add(chkCV1);
-        chkCV1.setText("I");
-        chkCV1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCV1ActionPerformed(evt);
-            }
-        });
-
-        bgCV.add(chkCV2);
-        chkCV2.setText("NPI");
-        chkCV2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCV2ActionPerformed(evt);
-            }
-        });
-
-        bgCV.add(chkCV3);
-        chkCV3.setText("NP");
-        chkCV3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCV3ActionPerformed(evt);
-            }
-        });
-
-        bgCV.add(chkCV4);
-        chkCV4.setText("NPS");
-        chkCV4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCV4ActionPerformed(evt);
-            }
-        });
-
-        bgCV.add(chkCV5);
-        chkCV5.setText("S");
-        chkCV5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCV5ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
-        jPanel29.setLayout(jPanel29Layout);
-        jPanel29Layout.setHorizontalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(chkR1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkR2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(chkR3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkR4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkR5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(chkM1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkM2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkM3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkM4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkM5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(chkAC1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAC2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAC3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAC4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAC5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(chkCVM1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCVM2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCVM3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCVM4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCVM5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(chkOE1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkOE2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkOE3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkOE4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkOE5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel29Layout.createSequentialGroup()
-                        .addComponent(chkCV1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCV2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCV3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCV4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkCV5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel29Layout.setVerticalGroup(
-            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel29Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel88)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkR1)
-                        .addComponent(chkR2))
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkR3)
-                        .addComponent(chkR4)
-                        .addComponent(chkR5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel95)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkM1)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkM2)
-                        .addComponent(chkM3)
-                        .addComponent(chkM4)
-                        .addComponent(chkM5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel96)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkAC1)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkAC2)
-                        .addComponent(chkAC3)
-                        .addComponent(chkAC4)
-                        .addComponent(chkAC5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel97)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkCVM1)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkCVM2)
-                        .addComponent(chkCVM3)
-                        .addComponent(chkCVM4)
-                        .addComponent(chkCVM5)))
-                .addGap(5, 5, 5)
-                .addComponent(jLabel98)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkOE1)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkOE2)
-                        .addComponent(chkOE3)
-                        .addComponent(chkOE4)
-                        .addComponent(chkOE5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel100)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkCV1)
-                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkCV2)
-                        .addComponent(chkCV3)
-                        .addComponent(chkCV4)
-                        .addComponent(chkCV5)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addComponent(chkApto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chkNoApto))
         );
 
         jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS PERSONALIDAD"));
@@ -1031,90 +574,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel107.setText("5- Ansiedad ESTADO");
-
-        bgAP5.add(chkAnsiedadE1);
-        chkAnsiedadE1.setText("B");
-        chkAnsiedadE1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadE1ActionPerformed(evt);
-            }
-        });
-
-        bgAP5.add(chkAnsiedadE2);
-        chkAnsiedadE2.setText("NPB");
-        chkAnsiedadE2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadE2ActionPerformed(evt);
-            }
-        });
-
-        bgAP5.add(chkAnsiedadE3);
-        chkAnsiedadE3.setText("NP");
-        chkAnsiedadE3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadE3ActionPerformed(evt);
-            }
-        });
-
-        bgAP5.add(chkAnsiedadE4);
-        chkAnsiedadE4.setText("NPA");
-        chkAnsiedadE4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadE4ActionPerformed(evt);
-            }
-        });
-
-        bgAP5.add(chkAnsiedadE5);
-        chkAnsiedadE5.setText("A");
-        chkAnsiedadE5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadE5ActionPerformed(evt);
-            }
-        });
-
-        jLabel108.setText("6- Ansiedad RASGO");
-
-        bgAP6.add(chkAnsiedadR1);
-        chkAnsiedadR1.setText("B");
-        chkAnsiedadR1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadR1ActionPerformed(evt);
-            }
-        });
-
-        bgAP6.add(chkAnsiedadR2);
-        chkAnsiedadR2.setText("NPB");
-        chkAnsiedadR2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadR2ActionPerformed(evt);
-            }
-        });
-
-        bgAP6.add(chkAnsiedadR3);
-        chkAnsiedadR3.setText("NP");
-        chkAnsiedadR3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadR3ActionPerformed(evt);
-            }
-        });
-
-        bgAP6.add(chkAnsiedadR4);
-        chkAnsiedadR4.setText("NPA");
-        chkAnsiedadR4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadR4ActionPerformed(evt);
-            }
-        });
-
-        bgAP6.add(chkAnsiedadR5);
-        chkAnsiedadR5.setText("A");
-        chkAnsiedadR5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkAnsiedadR5ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
         jPanel30Layout.setHorizontalGroup(
@@ -1165,29 +624,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkAsert5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel30Layout.createSequentialGroup()
-                        .addComponent(chkAnsiedadE1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadE2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadE3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadE4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadE5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel30Layout.createSequentialGroup()
-                        .addComponent(chkAnsiedadR1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadR2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadR3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadR4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkAnsiedadR5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel30Layout.setVerticalGroup(
@@ -1233,85 +670,16 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         .addComponent(chkAsert3)
                         .addComponent(chkAsert4)
                         .addComponent(chkAsert5)))
-                .addGap(5, 5, 5)
-                .addComponent(jLabel107)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkAnsiedadE1)
-                    .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkAnsiedadE2)
-                        .addComponent(chkAnsiedadE3)
-                        .addComponent(chkAnsiedadE4)
-                        .addComponent(chkAnsiedadE5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel108)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkAnsiedadR1)
-                    .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkAnsiedadR2)
-                        .addComponent(chkAnsiedadR3)
-                        .addComponent(chkAnsiedadR4)
-                        .addComponent(chkAnsiedadR5)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 42, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("CRITERIOS PSICOLÓGICOS I", jPanel2);
 
         jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS CONDUCTUALES"));
 
-        jLabel89.setText("1- Calidad de sueño/ Estrés");
+        jLabel89.setText("2- Tipo de hostigamiento sexual ");
 
-        bgAC1.add(chkCSBajo);
-        chkCSBajo.setText("BAJO");
-        chkCSBajo.setToolTipText("");
-        chkCSBajo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCSBajoActionPerformed(evt);
-            }
-        });
+        jLabel99.setText("1- Nivel de alerta ante el riego");
 
-        bgAC1.add(chkCSPromedio);
-        chkCSPromedio.setText("PROMEDIO");
-        chkCSPromedio.setToolTipText("");
-        chkCSPromedio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCSPromedioActionPerformed(evt);
-            }
-        });
-
-        bgAC1.add(chkCSAlto);
-        chkCSAlto.setText("ALTO");
-        chkCSAlto.setToolTipText("");
-        chkCSAlto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkCSAltoActionPerformed(evt);
-            }
-        });
-
-        jLabel99.setText("2- Nivel de alerta ante el riego");
-
-        jLabel102.setText("3- Somnolencia");
+        jLabel102.setText("3- Tipo de consecuencia encontrada");
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -1319,43 +687,34 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtNivelAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createSequentialGroup()
-                            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createSequentialGroup()
-                                    .addComponent(chkCSBajo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(chkCSPromedio)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(chkCSAlto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel99, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel102, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel89, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(50, 50, 50))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConsecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(20, Short.MAX_VALUE))
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNivelAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtHostigamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel89)
+                .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkCSBajo)
-                    .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chkCSPromedio)
-                        .addComponent(chkCSAlto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel99)
-                .addGap(1, 1, 1)
                 .addComponent(txtNivelAlerta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel89)
+                .addGap(1, 1, 1)
+                .addComponent(txtHostigamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel102)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConsecuencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1665,6 +1024,53 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel93.setText("8- Motivación ");
+
+        bgAPSI8.add(chkApsico_M1);
+        chkApsico_M1.setText("PD");
+        chkApsico_M1.setToolTipText("");
+        chkApsico_M1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkApsico_M1ActionPerformed(evt);
+            }
+        });
+
+        bgAPSI8.add(chkApsico_M2);
+        chkApsico_M2.setText("NM");
+        chkApsico_M2.setToolTipText("");
+        chkApsico_M2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkApsico_M2ActionPerformed(evt);
+            }
+        });
+
+        bgAPSI8.add(chkApsico_M3);
+        chkApsico_M3.setText("A");
+        chkApsico_M3.setToolTipText("");
+        chkApsico_M3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkApsico_M3ActionPerformed(evt);
+            }
+        });
+
+        bgAPSI8.add(chkApsico_M4);
+        chkApsico_M4.setText("D");
+        chkApsico_M4.setToolTipText("");
+        chkApsico_M4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkApsico_M4ActionPerformed(evt);
+            }
+        });
+
+        bgAPSI8.add(chkApsico_M5);
+        chkApsico_M5.setText("E");
+        chkApsico_M5.setToolTipText("");
+        chkApsico_M5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkApsico_M5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
         jPanel32Layout.setHorizontalGroup(
@@ -1748,13 +1154,24 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         .addComponent(chkApsico_CP4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkApsico_CP5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(chkApsico_M1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkApsico_M2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkApsico_M3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkApsico_M4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkApsico_M5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel91)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1794,7 +1211,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         .addComponent(chkApsico_OCM3)
                         .addComponent(chkApsico_OCM4)
                         .addComponent(chkApsico_OCM5)))
-                .addGap(5, 5, 5)
+                .addGap(2, 2, 2)
                 .addComponent(jLabel112)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1824,132 +1241,44 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         .addComponent(chkApsico_CP3)
                         .addComponent(chkApsico_CP4)
                         .addComponent(chkApsico_CP5)))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
-
-        jPanel33.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS PSICOLABORALES"));
-
-        jLabel93.setText("8- Motivación ");
-
-        bgAPSI8.add(chkApsico_M1);
-        chkApsico_M1.setText("PD");
-        chkApsico_M1.setToolTipText("");
-        chkApsico_M1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkApsico_M1ActionPerformed(evt);
-            }
-        });
-
-        bgAPSI8.add(chkApsico_M2);
-        chkApsico_M2.setText("NM");
-        chkApsico_M2.setToolTipText("");
-        chkApsico_M2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkApsico_M2ActionPerformed(evt);
-            }
-        });
-
-        bgAPSI8.add(chkApsico_M3);
-        chkApsico_M3.setText("A");
-        chkApsico_M3.setToolTipText("");
-        chkApsico_M3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkApsico_M3ActionPerformed(evt);
-            }
-        });
-
-        bgAPSI8.add(chkApsico_M4);
-        chkApsico_M4.setText("D");
-        chkApsico_M4.setToolTipText("");
-        chkApsico_M4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkApsico_M4ActionPerformed(evt);
-            }
-        });
-
-        bgAPSI8.add(chkApsico_M5);
-        chkApsico_M5.setText("E");
-        chkApsico_M5.setToolTipText("");
-        chkApsico_M5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkApsico_M5ActionPerformed(evt);
-            }
-        });
-
-        jLabel94.setText("9- Estrés laboral ");
-
-        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
-        jPanel33.setLayout(jPanel33Layout);
-        jPanel33Layout.setHorizontalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel33Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel33Layout.createSequentialGroup()
-                            .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(101, 101, 101))
-                        .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel33Layout.createSequentialGroup()
-                                .addComponent(chkApsico_M1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkApsico_M2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkApsico_M3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkApsico_M4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkApsico_M5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txtEstresLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-        jPanel33Layout.setVerticalGroup(
-            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel33Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jLabel93)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, 0)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkApsico_M1)
-                    .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(chkApsico_M2)
                         .addComponent(chkApsico_M3)
                         .addComponent(chkApsico_M4)
-                        .addComponent(chkApsico_M5)))
-                .addGap(2, 2, 2)
-                .addComponent(jLabel94)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEstresLaboral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(chkApsico_M5))))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 55, Short.MAX_VALUE))
+                .addGap(0, 56, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("CRITERIOS PSICOLÓGICOS II", jPanel3);
+        jTabbedPane1.addTab("CRITERIOS PSICOLÓGICOS I", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2003,7 +1332,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jTabbedPane1)
@@ -2088,7 +1417,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         bgAP6.clearSelection();
         bgAC1.clearSelection();
         txtNivelAlerta.setText("");
-        txtSomnolencia.setText("");
+        txtHostigamiento.setText("");
         bgAPSI1.clearSelection();
         bgAPSI2.clearSelection();
         bgAPSI3.clearSelection();
@@ -2097,7 +1426,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         bgAPSI6.clearSelection();
         bgAPSI7.clearSelection();
         bgAPSI8.clearSelection();
-        txtEstresLaboral.setText("");
+        txtConsecuencia.setText("");
         bgConclusion.clearSelection();
         
     }
@@ -2105,37 +1434,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
             String sCodigo=txtNorden.getText();
             String strSqlStmt;
             strSqlStmt="UPDATE  informe_psicolaboral\n" +
-                    " SET fecha='"+FechaEx.getDate()+"',"
-                    + "      chkr1='"+chkR1.isSelected()+"', \n" 
-                    + "      chkr2='"+chkR2.isSelected()+"', \n" 
-                    + "      chkr3='"+chkR3.isSelected()+"',"+
-                    "        chkr4='"+chkR4.isSelected()+"',"+
-                    "        chkr5='"+chkR5.isSelected()+"',"+
-                    "        chkm1='"+chkM1.isSelected()+"',"+
-                    "        chkm2='"+chkM2.isSelected()+"',"+
-                    "        chkm3='"+chkM3.isSelected()+"',"+
-                    "        chkm4='"+chkM4.isSelected()+"',"+
-                    "        chkm5='"+chkM5.isSelected()+"',"+
-                    "        chkac1='"+chkAC1.isSelected()+"',"+
-                    "        chkac2='"+chkAC2.isSelected()+"',"+
-                    "        chkac3='"+chkAC3.isSelected()+"',"+
-                    "        chkac4='"+chkAC4.isSelected()+"',"+
-                    "        chkac5='"+chkAC5.isSelected()+"',"+
-                    "        chkcvm1='"+chkCVM1.isSelected()+"',"+
-                    "        chkcvm2='"+chkCVM2.isSelected()+"',"+
-                    "        chkcvm3='"+chkCVM3.isSelected()+"',"+
-                    "        chkcvm4='"+chkCVM4.isSelected()+"',"+
-                    "        chkcvm5='"+chkCVM5.isSelected()+"',"+
-                    "        chkoe1='"+chkOE1.isSelected()+"',"+
-                    "        chkoe2='"+chkOE2.isSelected()+"',"+
-                    "        chkoe3='"+chkOE3.isSelected()+"',"+
-                    "        chkoe4='"+chkOE4.isSelected()+"',"+
-                    "        chkoe5='"+chkOE5.isSelected()+"',"+
-                    "        chkcv1='"+chkCV1.isSelected()+"',"+
-                    "        chkcv2='"+chkCV2.isSelected()+"',"+
-                    "        chkcv3='"+chkCV3.isSelected()+"',"+
-                    "        chkcv4='"+chkCV4.isSelected()+"',"+
-                   "         chkcv5='"+chkCV5.isSelected()+"',"+
+                    " SET fecha='"+FechaEx.getDate()+"',"+
                    "        chkee1='"+chkEE1.isSelected()+"',"+
                    "        chkee2='"+chkEE2.isSelected()+"',"+
                    "        chkee3='"+chkEE3.isSelected()+"',"+
@@ -2156,21 +1455,8 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                     "        chkasert3='"+chkAsert3.isSelected()+"',"+
                     "        chkasert4='"+chkAsert4.isSelected()+"',"+
                     "        chkasert5='"+chkAsert5.isSelected()+"',"+
-                    "        chkansiedade1='"+chkAnsiedadE1.isSelected()+"',"+
-                    "        chkansiedade2='"+chkAnsiedadE2.isSelected()+"',"+
-                    "        chkansiedade3='"+chkAnsiedadE3.isSelected()+"',"+
-                    "        chkansiedade4='"+chkAnsiedadE4.isSelected()+"',"+
-                   "         chkansiedade5='"+chkAnsiedadE5.isSelected()+"',"+
-                   "         chkansiedadr1='"+chkAnsiedadR1.isSelected()+"',"+
-                   "         chkansiedadr2='"+chkAnsiedadR2.isSelected()+"',"+
-                   "         chkansiedadr3='"+chkAnsiedadR3.isSelected()+"',"+
-                    "        chkansiedadr4='"+chkAnsiedadR4.isSelected()+"', \n" +
-                    "        chkansiedadr5='"+chkAnsiedadR5.isSelected()+"', \n" +
-                    "        chkcsbajo='"+chkCSBajo.isSelected()+"',"+
-                    "        chkcspromedio='"+chkCSPromedio.isSelected()+"',"+
-                    "        chkcsalto='"+chkCSAlto.isSelected()+"',"+
                     "        txtnivelalerta='"+txtNivelAlerta.getText()+"',"+
-                    "        txtsomnolencia='"+txtSomnolencia.getText()+"',"+
+                    "        txtsomnolencia='"+txtHostigamiento.getText()+"',"+
                     "        chkapsico_ci1='"+chkApsico_CI1.isSelected()+"',"+
                     "        chkapsico_ci2='"+chkApsico_CI2.isSelected()+"',"+
                     "        chkapsico_ci3='"+chkApsico_CI3.isSelected()+"',"+
@@ -2211,7 +1497,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                    "        chkapsico_m3='"+chkApsico_M3.isSelected()+"',"+
                    "        chkapsico_m4='"+chkApsico_M4.isSelected()+"',"+
                    "        chkapsico_m5='"+chkApsico_M5.isSelected()+"',"+ 
-                   "        txtestreslaboral='"+txtEstresLaboral.getText()+"',"+
+                   "        txtestreslaboral='"+txtConsecuencia.getText()+"',"+
                    "        txtobservaciones='"+txtObservaciones.getText()+"',"+
                    "        txtrecomendaciones='"+txtRecomendaciones.getText()+"',"+
                    "        apto='"+chkApto.isSelected()+"',"+
@@ -2225,7 +1511,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                 try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(InformePsicolaboral.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(InformePsicolaboralBorooA.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
@@ -2235,16 +1521,10 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
     private boolean Grabar() throws SQLException{
         boolean bResult = false;
         String strSqlStmt ="INSERT INTO informe_psicolaboral(\n" +
-"            n_orden, fecha, chkr1, chkr2, chkr3, chkr4, chkr5, chkm1, chkm2, \n" +
-"            chkm3, chkm4, chkm5, chkac1, chkac2, chkac3, chkac4, chkac5, \n" +
-"            chkcvm1, chkcvm2, chkcvm3, chkcvm4, chkcvm5, chkoe1, chkoe2, \n" +
-"            chkoe3, chkoe4, chkoe5, chkcv1, chkcv2, chkcv3, chkcv4, chkcv5, \n" +
-"            chkee1, chkee2, chkee3, chkee4, chkee5, chktf1, chktf2, chktf3, \n" +
+"            n_orden, fecha, chkee1, chkee2, chkee3, chkee4, chkee5, chktf1, chktf2, chktf3, \n" +
 "            chktf4, chktf5, chkautoes1, chkautoes2, chkautoes3, chkautoes4, \n" +
 "            chkautoes5, chkasert1, chkasert2, chkasert3, chkasert4, chkasert5, \n" +
-"            chkansiedade1, chkansiedade2, chkansiedade3, chkansiedade4, chkansiedade5, \n" +
-"            chkansiedadr1, chkansiedadr2, chkansiedadr3, chkansiedadr4, chkansiedadr5, \n" +
-"            chkcsbajo, chkcspromedio, chkcsalto, txtnivelalerta, txtsomnolencia, \n" +
+"            txtnivelalerta, txtsomnolencia, \n" +
 "            chkapsico_ci1, chkapsico_ci2, chkapsico_ci3, chkapsico_ci4, chkapsico_ci5, \n" +
 "            chkapsico_ac1, chkapsico_ac2, chkapsico_ac3, chkapsico_ac4, chkapsico_ac5, \n" +
 "            chkapsico_tec1, chkapsico_tec2, chkapsico_tec3, chkapsico_tec4, \n" +
@@ -2257,36 +1537,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
 "            txtrecomendaciones, apto, noapto)";       
             strSqlStmt+= " values("+ txtNorden.getText()+",'"+
                     FechaEx.getDate()+ "','"+
-                    chkR1.isSelected()+"','"+
-                    chkR2.isSelected()+"','"+
-                    chkR3.isSelected()+"','"+
-                    chkR4.isSelected()+"','"+
-                    chkR5.isSelected()+"','"+
-                    chkM1.isSelected()+"','"+
-                    chkM2.isSelected()+"','"+
-                    chkM3.isSelected()+"','"+
-                    chkM4.isSelected()+"','"+
-                    chkM5.isSelected()+"','"+
-                    chkAC1.isSelected()+"','"+
-                    chkAC2.isSelected()+"','"+
-                    chkAC3.isSelected()+"','"+
-                    chkAC4.isSelected()+"','"+
-                    chkAC5.isSelected()+"','"+
-                    chkCVM1.isSelected()+"','"+
-                    chkCVM2.isSelected()+"','"+
-                    chkCVM3.isSelected()+"','"+
-                    chkCVM4.isSelected()+"','"+
-                    chkCVM5.isSelected()+"','"+
-                    chkOE1.isSelected()+"','"+
-                    chkOE2.isSelected()+"','"+
-                    chkOE3.isSelected()+"','"+
-                    chkOE4.isSelected()+"','"+
-                    chkOE5.isSelected()+"','"+
-                    chkCV1.isSelected()+"','"+
-                    chkCV2.isSelected()+"','"+
-                    chkCV3.isSelected()+"','"+
-                    chkCV4.isSelected()+"','"+
-                    chkCV5.isSelected()+"','"+
                     chkEE1.isSelected()+"','"+
                     chkEE2.isSelected()+"','"+    
                     chkEE3.isSelected()+"','"+
@@ -2307,21 +1557,8 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                     chkAsert3.isSelected()+"','"+
                     chkAsert4.isSelected()+"','"+    
                     chkAsert5.isSelected()+"','"+
-                    chkAnsiedadE1.isSelected()+"','"+
-                    chkAnsiedadE2.isSelected()+"','"+    
-                    chkAnsiedadE3.isSelected()+"','"+
-                    chkAnsiedadE4.isSelected()+"','"+    
-                    chkAnsiedadE5.isSelected()+"','"+
-                    chkAnsiedadR1.isSelected()+"','"+
-                    chkAnsiedadR2.isSelected()+"','"+    
-                    chkAnsiedadR3.isSelected()+"','"+
-                    chkAnsiedadR4.isSelected()+"','"+    
-                    chkAnsiedadR5.isSelected()+"','"+
-                    chkCSBajo.isSelected()+"','"+
-                    chkCSPromedio.isSelected()+"','"+    
-                    chkCSAlto.isSelected()+"','"+
                     txtNivelAlerta.getText()+"','"+
-                    txtSomnolencia.getText()+"','"+
+                    txtHostigamiento.getText()+"','"+
                     chkApsico_CI1.isSelected()+"','"+
                     chkApsico_CI2.isSelected()+"','"+    
                     chkApsico_CI3.isSelected()+"','"+
@@ -2362,7 +1599,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                     chkApsico_M3.isSelected()+"','"+
                     chkApsico_M4.isSelected()+"','"+    
                     chkApsico_M5.isSelected()+"','"+  
-                    txtEstresLaboral.getText()+"','"+
+                    txtConsecuencia.getText()+"','"+
                     txtObservaciones.getText()+"','"+
                     txtRecomendaciones.getText()+"','"+
                     chkApto.isSelected()+"','"+          
@@ -2385,7 +1622,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                 parameters.put("Norden",cod);      
                     try 
                 {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Informe_Psicolaboral.jasper";
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Informe_PsicolaboralBorooA.jasper";
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     
@@ -2402,7 +1639,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                 
                   try 
                 {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Informe_Psicolaboral.jasper";
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Informe_PsicolaboralBorooA.jasper";
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -2439,11 +1676,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) +" AÑOS" );
                         txtExamen.setText(oConn.setResult.getString("nom_examen"));
-                        if(txtExamen.getText().equals("PRE-OCUPACIONAL")){
-                            txtEstresLaboral.setEnabled(false);
-                        }else{
-                            txtEstresLaboral.setEnabled(true);
-                        }
                         oPe.fecha(FechaEx);
                         //   oPe.fecha(FechaHotel);
 
@@ -2468,16 +1700,10 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         JDateChooser FechaNacimiento = new com.toedter.calendar.JDateChooser();
         if(!txtNorden.getText().isEmpty()){
             String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,n.nom_examen,"
-                    + "fecha, chkr1, chkr2, chkr3, chkr4, chkr5, chkm1, chkm2, \n" +
-"       chkm3, chkm4, chkm5, chkac1, chkac2, chkac3, chkac4, chkac5, \n" +
-"       chkcvm1, chkcvm2, chkcvm3, chkcvm4, chkcvm5, chkoe1, chkoe2, \n" +
-"       chkoe3, chkoe4, chkoe5, chkcv1, chkcv2, chkcv3, chkcv4, chkcv5, \n" +
-"       chkee1, chkee2, chkee3, chkee4, chkee5, chktf1, chktf2, chktf3, \n" +
+                    + "fecha, chkee1, chkee2, chkee3, chkee4, chkee5, chktf1, chktf2, chktf3, \n" +
 "       chktf4, chktf5, chkautoes1, chkautoes2, chkautoes3, chkautoes4, \n" +
 "       chkautoes5, chkasert1, chkasert2, chkasert3, chkasert4, chkasert5, \n" +
-"       chkansiedade1, chkansiedade2, chkansiedade3, chkansiedade4, chkansiedade5, \n" +
-"       chkansiedadr1, chkansiedadr2, chkansiedadr3, chkansiedadr4, chkansiedadr5, \n" +
-"       chkcsbajo, chkcspromedio, chkcsalto, txtnivelalerta, txtsomnolencia, \n" +
+"       txtnivelalerta, txtsomnolencia, \n" +
 "       chkapsico_ci1, chkapsico_ci2, chkapsico_ci3, chkapsico_ci4, chkapsico_ci5, \n" +
 "       chkapsico_ac1, chkapsico_ac2, chkapsico_ac3, chkapsico_ac4, chkapsico_ac5, \n" +
 "       chkapsico_tec1, chkapsico_tec2, chkapsico_tec3, chkapsico_tec4, \n" +
@@ -2500,42 +1726,8 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                     FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
                     txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar()))+" AÑOS" );
                     txtExamen.setText(oConn.setResult.getString("nom_examen"));
-                    if(txtExamen.getText().equals("PRE-OCUPACIONAL")){
-                        txtEstresLaboral.setEnabled(false);
-                    }else{
-                        txtEstresLaboral.setEnabled(true);
-                    }
+                   
                     FechaEx.setDate(oConn.setResult.getDate("fecha"));
-                    chkR1.setSelected(oConn.setResult.getBoolean("chkr1"));
-                    chkR2.setSelected(oConn.setResult.getBoolean("chkr2"));
-                    chkR3.setSelected(oConn.setResult.getBoolean("chkr3"));
-                    chkR4.setSelected(oConn.setResult.getBoolean("chkr4"));
-                    chkR5.setSelected(oConn.setResult.getBoolean("chkr5"));
-                    chkM1.setSelected(oConn.setResult.getBoolean("chkm1"));
-                    chkM2.setSelected(oConn.setResult.getBoolean("chkm2"));
-                    chkM3.setSelected(oConn.setResult.getBoolean("chkm3"));
-                    chkM4.setSelected(oConn.setResult.getBoolean("chkm4"));
-                    chkM5.setSelected(oConn.setResult.getBoolean("chkm5"));                    
-                    chkAC1.setSelected(oConn.setResult.getBoolean("chkac1"));
-                    chkAC2.setSelected(oConn.setResult.getBoolean("chkac2"));
-                    chkAC3.setSelected(oConn.setResult.getBoolean("chkac3"));
-                    chkAC4.setSelected(oConn.setResult.getBoolean("chkac4"));
-                    chkAC5.setSelected(oConn.setResult.getBoolean("chkac5"));
-                    chkCVM1.setSelected(oConn.setResult.getBoolean("chkcvm1"));
-                    chkCVM2.setSelected(oConn.setResult.getBoolean("chkcvm2"));
-                    chkCVM3.setSelected(oConn.setResult.getBoolean("chkcvm3"));
-                    chkCVM4.setSelected(oConn.setResult.getBoolean("chkcvm4"));
-                    chkCVM5.setSelected(oConn.setResult.getBoolean("chkcvm5"));
-                    chkOE1.setSelected(oConn.setResult.getBoolean("chkoe1"));
-                    chkOE2.setSelected(oConn.setResult.getBoolean("chkoe2"));
-                    chkOE3.setSelected(oConn.setResult.getBoolean("chkoe3"));
-                    chkOE4.setSelected(oConn.setResult.getBoolean("chkoe4"));
-                    chkOE5.setSelected(oConn.setResult.getBoolean("chkoe5"));
-                    chkCV1.setSelected(oConn.setResult.getBoolean("chkcv1"));
-                    chkCV2.setSelected(oConn.setResult.getBoolean("chkcv2"));
-                    chkCV3.setSelected(oConn.setResult.getBoolean("chkcv3"));
-                    chkCV4.setSelected(oConn.setResult.getBoolean("chkcv4"));
-                    chkCV5.setSelected(oConn.setResult.getBoolean("chkcv5"));
                     chkEE1.setSelected(oConn.setResult.getBoolean("chkee1"));
                     chkEE2.setSelected(oConn.setResult.getBoolean("chkee2"));
                     chkEE3.setSelected(oConn.setResult.getBoolean("chkee3"));
@@ -2556,21 +1748,9 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                     chkAsert3.setSelected(oConn.setResult.getBoolean("chkasert3"));
                     chkAsert4.setSelected(oConn.setResult.getBoolean("chkasert4"));
                     chkAsert5.setSelected(oConn.setResult.getBoolean("chkasert5"));
-                    chkAnsiedadE1.setSelected(oConn.setResult.getBoolean("chkansiedade1"));
-                    chkAnsiedadE2.setSelected(oConn.setResult.getBoolean("chkansiedade2"));
-                    chkAnsiedadE3.setSelected(oConn.setResult.getBoolean("chkansiedade3"));
-                    chkAnsiedadE4.setSelected(oConn.setResult.getBoolean("chkansiedade4"));
-                    chkAnsiedadE5.setSelected(oConn.setResult.getBoolean("chkansiedade5"));
-                    chkAnsiedadR1.setSelected(oConn.setResult.getBoolean("chkansiedadr1"));
-                    chkAnsiedadR2.setSelected(oConn.setResult.getBoolean("chkansiedadr2"));
-                    chkAnsiedadR3.setSelected(oConn.setResult.getBoolean("chkansiedadr3"));
-                    chkAnsiedadR4.setSelected(oConn.setResult.getBoolean("chkansiedadr4"));
-                    chkAnsiedadR5.setSelected(oConn.setResult.getBoolean("chkansiedadr5"));
-                    chkCSBajo.setSelected(oConn.setResult.getBoolean("chkcsbajo"));
-                    chkCSBajo.setSelected(oConn.setResult.getBoolean("chkcspromedio"));
-                    chkCSAlto.setSelected(oConn.setResult.getBoolean("chkcsalto"));
+                   
                     txtNivelAlerta.setText(oConn.setResult.getString("txtnivelalerta"));
-                    txtSomnolencia.setText(oConn.setResult.getString("txtsomnolencia"));   
+                    txtHostigamiento.setText(oConn.setResult.getString("txtsomnolencia"));   
                     
                     chkApsico_CI1.setSelected(oConn.setResult.getBoolean("chkapsico_ci1"));
                     chkApsico_CI2.setSelected(oConn.setResult.getBoolean("chkapsico_ci2"));
@@ -2612,7 +1792,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                     chkApsico_M3.setSelected(oConn.setResult.getBoolean("chkapsico_m3"));
                     chkApsico_M4.setSelected(oConn.setResult.getBoolean("chkapsico_m4"));
                     chkApsico_M5.setSelected(oConn.setResult.getBoolean("chkapsico_m5"));
-                    txtEstresLaboral.setText(oConn.setResult.getString("txtestreslaboral"));
+                    txtConsecuencia.setText(oConn.setResult.getString("txtestreslaboral"));
                     txtObservaciones.setText(oConn.setResult.getString("txtobservaciones"));
                     txtRecomendaciones.setText(oConn.setResult.getString("txtrecomendaciones"));
                     chkApto.setSelected(oConn.setResult.getBoolean("apto"));
@@ -2624,7 +1804,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                 }
                 oConn.setResult.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("Informe Psicolaboral:" + ex.getMessage().toString());}
+                oFunc.SubSistemaMensajeInformacion("Informe Psicolaboral Anual:" + ex.getMessage().toString());}
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -2641,106 +1821,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         print (Integer.parseInt(txtImprimir.getText()));
     }//GEN-LAST:event_btnImprimir5ActionPerformed
-
-    private void chkR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkR1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkR1ActionPerformed
-
-    private void chkR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkR2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkR2ActionPerformed
-
-    private void chkR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkR3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkR3ActionPerformed
-
-    private void chkR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkR4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkR4ActionPerformed
-
-    private void chkR5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkR5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkR5ActionPerformed
-
-    private void chkM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkM1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkM1ActionPerformed
-
-    private void chkM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkM2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkM2ActionPerformed
-
-    private void chkM3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkM3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkM3ActionPerformed
-
-    private void chkM4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkM4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkM4ActionPerformed
-
-    private void chkM5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkM5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkM5ActionPerformed
-
-    private void chkAC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAC1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAC1ActionPerformed
-
-    private void chkAC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAC2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAC2ActionPerformed
-
-    private void chkAC3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAC3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAC3ActionPerformed
-
-    private void chkAC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAC4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAC4ActionPerformed
-
-    private void chkAC5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAC5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAC5ActionPerformed
-
-    private void chkCVM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCVM1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCVM1ActionPerformed
-
-    private void chkCVM2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCVM2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCVM2ActionPerformed
-
-    private void chkCVM3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCVM3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCVM3ActionPerformed
-
-    private void chkCVM4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCVM4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCVM4ActionPerformed
-
-    private void chkCVM5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCVM5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCVM5ActionPerformed
-
-    private void chkOE1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOE1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkOE1ActionPerformed
-
-    private void chkOE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOE2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkOE2ActionPerformed
-
-    private void chkOE3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOE3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkOE3ActionPerformed
-
-    private void chkOE4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOE4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkOE4ActionPerformed
-
-    private void chkOE5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOE5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkOE5ActionPerformed
 
     private void chkNoAptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNoAptoActionPerformed
         // TODO add your handling code here:
@@ -2766,7 +1846,7 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
                         }
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(InformePsicolaboral.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(InformePsicolaboralBorooA.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -2776,26 +1856,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    private void chkCV1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCV1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCV1ActionPerformed
-
-    private void chkCV2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCV2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCV2ActionPerformed
-
-    private void chkCV3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCV3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCV3ActionPerformed
-
-    private void chkCV4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCV4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCV4ActionPerformed
-
-    private void chkCV5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCV5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCV5ActionPerformed
 
     private void chkEE1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkEE1ActionPerformed
         // TODO add your handling code here:
@@ -2876,58 +1936,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
     private void chkAsert5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAsert5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkAsert5ActionPerformed
-
-    private void chkAnsiedadE1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadE1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadE1ActionPerformed
-
-    private void chkAnsiedadE2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadE2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadE2ActionPerformed
-
-    private void chkAnsiedadE3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadE3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadE3ActionPerformed
-
-    private void chkAnsiedadE4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadE4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadE4ActionPerformed
-
-    private void chkAnsiedadE5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadE5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadE5ActionPerformed
-
-    private void chkAnsiedadR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadR1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadR1ActionPerformed
-
-    private void chkAnsiedadR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadR2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadR2ActionPerformed
-
-    private void chkAnsiedadR3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadR3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadR3ActionPerformed
-
-    private void chkAnsiedadR4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadR4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadR4ActionPerformed
-
-    private void chkAnsiedadR5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAnsiedadR5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkAnsiedadR5ActionPerformed
-
-    private void chkCSAltoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCSAltoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCSAltoActionPerformed
-
-    private void chkCSPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCSPromedioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCSPromedioActionPerformed
-
-    private void chkCSBajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCSBajoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkCSBajoActionPerformed
 
     private void chkApsico_CI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkApsico_CI1ActionPerformed
         // TODO add your handling code here:
@@ -3117,21 +2125,6 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnImprimir5;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JCheckBox chkAC1;
-    private javax.swing.JCheckBox chkAC2;
-    private javax.swing.JCheckBox chkAC3;
-    private javax.swing.JCheckBox chkAC4;
-    private javax.swing.JCheckBox chkAC5;
-    private javax.swing.JCheckBox chkAnsiedadE1;
-    private javax.swing.JCheckBox chkAnsiedadE2;
-    private javax.swing.JCheckBox chkAnsiedadE3;
-    private javax.swing.JCheckBox chkAnsiedadE4;
-    private javax.swing.JCheckBox chkAnsiedadE5;
-    private javax.swing.JCheckBox chkAnsiedadR1;
-    private javax.swing.JCheckBox chkAnsiedadR2;
-    private javax.swing.JCheckBox chkAnsiedadR3;
-    private javax.swing.JCheckBox chkAnsiedadR4;
-    private javax.swing.JCheckBox chkAnsiedadR5;
     private javax.swing.JCheckBox chkApsico_AC1;
     private javax.swing.JCheckBox chkApsico_AC2;
     private javax.swing.JCheckBox chkApsico_AC3;
@@ -3183,52 +2176,21 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chkAutoes3;
     private javax.swing.JCheckBox chkAutoes4;
     private javax.swing.JCheckBox chkAutoes5;
-    private javax.swing.JCheckBox chkCSAlto;
-    private javax.swing.JCheckBox chkCSBajo;
-    private javax.swing.JCheckBox chkCSPromedio;
-    private javax.swing.JCheckBox chkCV1;
-    private javax.swing.JCheckBox chkCV2;
-    private javax.swing.JCheckBox chkCV3;
-    private javax.swing.JCheckBox chkCV4;
-    private javax.swing.JCheckBox chkCV5;
-    private javax.swing.JCheckBox chkCVM1;
-    private javax.swing.JCheckBox chkCVM2;
-    private javax.swing.JCheckBox chkCVM3;
-    private javax.swing.JCheckBox chkCVM4;
-    private javax.swing.JCheckBox chkCVM5;
     private javax.swing.JCheckBox chkEE1;
     private javax.swing.JCheckBox chkEE2;
     private javax.swing.JCheckBox chkEE3;
     private javax.swing.JCheckBox chkEE4;
     private javax.swing.JCheckBox chkEE5;
-    private javax.swing.JCheckBox chkM1;
-    private javax.swing.JCheckBox chkM2;
-    private javax.swing.JCheckBox chkM3;
-    private javax.swing.JCheckBox chkM4;
-    private javax.swing.JCheckBox chkM5;
     private javax.swing.JCheckBox chkNoApto;
-    private javax.swing.JCheckBox chkOE1;
-    private javax.swing.JCheckBox chkOE2;
-    private javax.swing.JCheckBox chkOE3;
-    private javax.swing.JCheckBox chkOE4;
-    private javax.swing.JCheckBox chkOE5;
-    private javax.swing.JCheckBox chkR1;
-    private javax.swing.JCheckBox chkR2;
-    private javax.swing.JCheckBox chkR3;
-    private javax.swing.JCheckBox chkR4;
-    private javax.swing.JCheckBox chkR5;
     private javax.swing.JCheckBox chkTF1;
     private javax.swing.JCheckBox chkTF2;
     private javax.swing.JCheckBox chkTF3;
     private javax.swing.JCheckBox chkTF4;
     private javax.swing.JCheckBox chkTF5;
-    private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
@@ -3242,42 +2204,33 @@ public final class InformePsicolaboral extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
-    private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
-    private javax.swing.JLabel jLabel94;
-    private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
-    private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel28;
-    private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField txtConsecuencia;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtEstresLaboral;
     private javax.swing.JTextField txtExamen;
+    private javax.swing.JTextField txtHostigamiento;
     private javax.swing.JTextField txtImprimir;
     private javax.swing.JTextField txtNivelAlerta;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNorden;
     private javax.swing.JTextArea txtObservaciones;
     private javax.swing.JTextArea txtRecomendaciones;
-    private javax.swing.JTextField txtSomnolencia;
     // End of variables declaration//GEN-END:variables
 
 public int calcularEdad(Calendar fechaNac){

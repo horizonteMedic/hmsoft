@@ -583,7 +583,7 @@ public boolean RucExiste(){
         String sCodigo;
         String sConsulta;
         DefaultTableModel tblDatos = (DefaultTableModel) tbEmpresas.getModel();
-        sCodigo = tblDatos.getValueAt(tbEmpresas.getSelectedRow(), 0).toString();
+        sCodigo = tblDatos.getValueAt(tbEmpresas.getSelectedRow(), 1).toString();
         sConsulta = "select * from contratas where ruc_contrata ='" + sCodigo + "'";
         if (oConn.FnBoolQueryExecute(sConsulta)) {
             try {
@@ -786,9 +786,9 @@ public void AgregarEmpresa(){
              }
  }
 final void sbCargarDatosEmpresa(String valor){
-    String [] titulos={"RUC","Raz. Social","Dirección"};
-    String [] registros = new String[3];
-    String sql="select ruc_contrata, razon_contrata, direccion_contrata from contratas where CONCAT(ruc_contrata,' ',razon_contrata) LIKE '%"+valor+"%'";
+    String [] titulos={"ID","RUC","Raz. Social","Dirección"};
+    String [] registros = new String[4];
+    String sql="select id_contrata,ruc_contrata, razon_contrata, direccion_contrata from contratas where CONCAT(ruc_contrata,' ',razon_contrata) LIKE '%"+valor+"%'";
       model = new DefaultTableModel(null,titulos);       
     if (oConn.FnBoolQueryExecute(sql))
         {
@@ -796,9 +796,10 @@ final void sbCargarDatosEmpresa(String valor){
                 
                 while (oConn.setResult.next())
                 {
-                    registros[0]= oConn.setResult.getString("ruc_contrata");
-                    registros[1]= oConn.setResult.getString("razon_contrata");
-                    registros[2]= oConn.setResult.getString("direccion_contrata");
+                    registros[0]= oConn.setResult.getString("id_contrata");
+                    registros[1]= oConn.setResult.getString("ruc_contrata");
+                    registros[2]= oConn.setResult.getString("razon_contrata");
+                    registros[3]= oConn.setResult.getString("direccion_contrata");
                      model.addRow(registros);
                 }
                  
@@ -823,6 +824,7 @@ private void sbTablaEmpresa        ()
         DefaultTableModel modelo = new DefaultTableModel();      
                 
         // Añadimos columnas al modelo de datos
+        modelo.addColumn("ID");
         modelo.addColumn("RUC");
         modelo.addColumn("Raz. Social");
         modelo.addColumn("Dirección");
@@ -832,6 +834,7 @@ private void sbTablaEmpresa        ()
         tbEmpresas.setModel(modelo);
         
         // Directamente
+        tbEmpresas.getColumn("ID").setWidth(3);  
         tbEmpresas.getColumn("RUC").setWidth(3);     
         tbEmpresas.getColumn("Raz. Social").setWidth(140);
         tbEmpresas.getColumn("Raz. Social").setPreferredWidth(140);
@@ -851,6 +854,7 @@ private void sbTablaEmpresa        ()
         tbEmpresas.getColumnModel().getColumn(0).setCellRenderer(cellAlinear);
         tbEmpresas.getColumnModel().getColumn(1).setCellRenderer(cellAlinear);
         tbEmpresas.getColumnModel().getColumn(2).setCellRenderer(cellAlinear);
+        tbEmpresas.getColumnModel().getColumn(3).setCellRenderer(cellAlinear);
         // Color de los Encabezados
         //jtTicket.getTableHeader().setBackground(Color.lightGray);
         //jtTicket.getTableHeader().setForeground(Color.blue);

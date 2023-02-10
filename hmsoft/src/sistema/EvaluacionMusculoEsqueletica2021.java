@@ -3288,6 +3288,7 @@ public void imp(){
     imprimir1(Integer.valueOf(txtNorden.getText()));
 //        imprimir2(Integer.valueOf(txtNorden.getText()));
     
+
 }  
 private void ReImp(){
 if(!txtImp.getText().isEmpty()){

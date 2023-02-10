@@ -51,7 +51,7 @@ public final class Ingreso extends javax.swing.JFrame {
        
         FileInputStream in = null;
         try {
-            in = new FileInputStream("pierola.properties");
+            in = new FileInputStream("trujillo.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,7 +72,6 @@ public final class Ingreso extends javax.swing.JFrame {
         {
           JOptionPane.showMessageDialog(null,"No se logro la conexion al Host");
           System.exit(0);
-          
         }
         else
         {
@@ -81,10 +80,8 @@ public final class Ingreso extends javax.swing.JFrame {
             fecha();
             CargarUsuarios();
             CargarSedes();
-            
         }
-    
-     AutoCompleteDecorator.decorate(this.cboUsuarios);
+        AutoCompleteDecorator.decorate(this.cboUsuarios);
     }
     @Override
     public Image getIconImage() {

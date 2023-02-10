@@ -95,6 +95,10 @@ public class Ocupacional extends javax.swing.JFrame {
        InformePsicologicoAdeco ipa;
        CertificadoFisicoMental cfm;
        LaboratorioClinicoAsistencial lab_asist;
+       InformePsicolaboralBoroo ipb;
+       InformePsicolaboralBorooA ipba;
+       InformeRiesgoPsicosocial irp;
+       InformeBurnout ib;
     
     public Ocupacional() {
             getRootPane().setWindowDecorationStyle(JRootPane.NONE);
@@ -274,8 +278,15 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         btnInformePsicolaboral = new javax.swing.JMenuItem();
         btnInformePsicologicoA = new javax.swing.JMenuItem();
         btnInformePsicologicoA1 = new javax.swing.JMenuItem();
+        FrmBorooPsicologia = new javax.swing.JMenu();
+        mInformePsicolaboral = new javax.swing.JMenuItem();
+        mInformePsicolaboralA = new javax.swing.JMenuItem();
+        mInformePsicosocial = new javax.swing.JMenuItem();
+        mInformePsicosocial1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMNuevosFormatos = new javax.swing.JMenu();
         mEvaluaciónMuscoloEsqueletico2021 = new javax.swing.JMenuItem();
         mCuestionarioCalidadSueño = new javax.swing.JMenuItem();
@@ -284,8 +295,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         mEvaluacionOftalmologica = new javax.swing.JMenuItem();
         mCertificadoManipuladores = new javax.swing.JMenuItem();
         mExamenesLaboratorio2021 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
 
         Observados.setText("Observados");
         Observados.addActionListener(new java.awt.event.ActionListener() {
@@ -1145,6 +1154,48 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu5.add(btnInformePsicologicoA1);
 
+        FrmBorooPsicologia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        FrmBorooPsicologia.setText("BOROO");
+        FrmBorooPsicologia.setActionCommand("Laboratorio Clinico");
+
+        mInformePsicolaboral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chek.gif"))); // NOI18N
+        mInformePsicolaboral.setText("Informe Psicolaboral");
+        mInformePsicolaboral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mInformePsicolaboralActionPerformed(evt);
+            }
+        });
+        FrmBorooPsicologia.add(mInformePsicolaboral);
+
+        mInformePsicolaboralA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chek.gif"))); // NOI18N
+        mInformePsicolaboralA.setText("Informe Psicolaboral Anual");
+        mInformePsicolaboralA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mInformePsicolaboralAActionPerformed(evt);
+            }
+        });
+        FrmBorooPsicologia.add(mInformePsicolaboralA);
+
+        mInformePsicosocial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chek.gif"))); // NOI18N
+        mInformePsicosocial.setText("Informe Riesgo Psicosocial");
+        mInformePsicosocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mInformePsicosocialActionPerformed(evt);
+            }
+        });
+        FrmBorooPsicologia.add(mInformePsicosocial);
+
+        mInformePsicosocial1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/chek.gif"))); // NOI18N
+        mInformePsicosocial1.setText("Informe Burnout");
+        mInformePsicosocial1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mInformePsicosocial1ActionPerformed(evt);
+            }
+        });
+        FrmBorooPsicologia.add(mInformePsicosocial1);
+
+        jMenu5.add(FrmBorooPsicologia);
+
         MenuOcupacional.add(jMenu5);
 
         jMenu2.setText("LABORATORIO COVID");
@@ -1158,6 +1209,18 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenu2.add(jMenuItem3);
 
         MenuOcupacional.add(jMenu2);
+
+        jMenu6.setText("LABORATORIO ASISTENCIAL");
+
+        jMenuItem4.setText("LABORATORIO ASISTENCIAL");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem4);
+
+        MenuOcupacional.add(jMenu6);
 
         jMNuevosFormatos.setText("Formatos");
 
@@ -1232,18 +1295,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMNuevosFormatos.add(mExamenesLaboratorio2021);
 
         MenuOcupacional.add(jMNuevosFormatos);
-
-        jMenu6.setText("LABORATORIO ASISTENCIAL");
-
-        jMenuItem4.setText("LABORATORIO ASISTENCIAL");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem4);
-
-        MenuOcupacional.add(jMenu6);
 
         setJMenuBar(MenuOcupacional);
 
@@ -2302,7 +2353,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
     private void mTestFatigaSomnolenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mTestFatigaSomnolenciaActionPerformed
         // TODO add your handling code here:
-
         if(estacerrado(tfs2021)){
             tfs2021 =new TestFatigaSomnolencia();
             btnCertificadoFisicoM.add(tfs2021);
@@ -2313,7 +2363,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //fn.setVisible(true);
         }else{
             tfs2021.moveToFront();
-
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_mTestFatigaSomnolenciaActionPerformed
@@ -2330,7 +2379,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //fn.setVisible(true);
         }else{
             audio2021.moveToFront();
-
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_mFichaAudiometrica2021ActionPerformed
@@ -2347,7 +2395,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //fn.setVisible(true);
         }else{
             evof2021.moveToFront();
-
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_mEvaluacionOftalmologicaActionPerformed
@@ -2364,7 +2411,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //fn.setVisible(true);
         }else{
             cmb.moveToFront();
-
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_mCertificadoManipuladoresActionPerformed
@@ -2381,7 +2427,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //fn.setVisible(true);
         }else{
             el2021.moveToFront();
-
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_mExamenesLaboratorio2021ActionPerformed
@@ -2398,7 +2443,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //fn.setVisible(true);
         }else{
             ipa.moveToFront();
-
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_btnInformePsicologicoAActionPerformed
@@ -2415,7 +2459,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //fn.setVisible(true);
         }else{
             cfm.moveToFront();
-
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_btnInformePsicologicoA1ActionPerformed
@@ -2428,7 +2471,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
             lab_asist.setFrameIcon(ticon);
             lab_asist.setLocation(centradoXY(lab_asist));
-
             lab_asist.show();
             //fn.setVisible(true);
         } else {
@@ -2436,8 +2478,71 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
-
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void mInformePsicolaboralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInformePsicolaboralActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(ipb)) {
+            ipb = new InformePsicolaboralBoroo();
+            btnCertificadoFisicoM.add(ipb);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ipb.setFrameIcon(ticon);
+            ipb.setLocation(centradoXY(ipb));
+            ipb.show();
+            //fn.setVisible(true);
+        } else {
+            ipb.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mInformePsicolaboralActionPerformed
+
+    private void mInformePsicolaboralAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInformePsicolaboralAActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(ipba)) {
+            ipba = new InformePsicolaboralBorooA();
+            btnCertificadoFisicoM.add(ipba);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ipba.setFrameIcon(ticon);
+            ipba.setLocation(centradoXY(ipba));
+            ipba.show();
+            //fn.setVisible(true);
+        } else {
+            ipba.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mInformePsicolaboralAActionPerformed
+
+    private void mInformePsicosocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInformePsicosocialActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(irp)) {
+            irp = new InformeRiesgoPsicosocial();
+            btnCertificadoFisicoM.add(irp);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            irp.setFrameIcon(ticon);
+            irp.setLocation(centradoXY(irp));
+            irp.show();
+            //fn.setVisible(true);
+        } else {
+            irp.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mInformePsicosocialActionPerformed
+
+    private void mInformePsicosocial1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInformePsicosocial1ActionPerformed
+        // TODO add your handling code here:
+        if (estacerrado(ib)) {
+            ib = new InformeBurnout();
+            btnCertificadoFisicoM.add(ib);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ib.setFrameIcon(ticon);
+            ib.setLocation(centradoXY(ib));
+            ib.show();
+            //fn.setVisible(true);
+        } else {
+            ib.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mInformePsicosocial1ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -2499,6 +2604,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem CuestionarioNordico;
     private javax.swing.JMenuItem ExamenesAdicionales;
     private javax.swing.JMenuItem FichaSaS;
+    private javax.swing.JMenu FrmBorooPsicologia;
     private javax.swing.JMenu FrmVarios;
     private javax.swing.JMenuItem FuncionRespiratoria;
     private javax.swing.JPopupMenu HclMenu;
@@ -2583,6 +2689,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mExamenesLaboratorio2021;
     private javax.swing.JMenuItem mFichaAudiometrica2021;
     private javax.swing.JMenuItem mFichaRetiro;
+    private javax.swing.JMenuItem mInformePsicolaboral;
+    private javax.swing.JMenuItem mInformePsicolaboralA;
+    private javax.swing.JMenuItem mInformePsicosocial;
+    private javax.swing.JMenuItem mInformePsicosocial1;
     private javax.swing.JMenuItem mPsicosensometria;
     private javax.swing.JMenuItem mTestFatigaSomnolencia;
     private javax.swing.JMenuItem mUsoRespiradores;
