@@ -98,7 +98,7 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
         jLabel11 = new javax.swing.JLabel();
         txtQRS = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtQTC = new javax.swing.JTextField();
+        txtQT = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtOndaP = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -187,14 +187,13 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
         btnEditar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         txtSt = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        txtSaors = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         atxtObservacionesAltura1 = new javax.swing.JScrollPane();
         txtConclusiones = new javax.swing.JTextArea();
-        jLabel28 = new javax.swing.JLabel();
-        atxtObservacionesAltura2 = new javax.swing.JScrollPane();
-        txtAntecedentesCardiologicos = new javax.swing.JTextArea();
+        jLabel22 = new javax.swing.JLabel();
+        txtOndaT = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        txtEje = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -274,14 +273,14 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
 
         jLabel12.setText("Q.T. :");
 
-        txtQTC.setText("N/E");
-        txtQTC.addActionListener(new java.awt.event.ActionListener() {
+        txtQT.setText("N/E");
+        txtQT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQTCActionPerformed(evt);
+                txtQTActionPerformed(evt);
             }
         });
 
-        jLabel13.setText("Onda P");
+        jLabel13.setText("Onda P:");
 
         txtOndaP.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtOndaP.addActionListener(new java.awt.event.ActionListener() {
@@ -881,7 +880,7 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt84, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt73, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         btnLimpiarGrafico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
@@ -937,7 +936,7 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(btnLimpiarGrafico)
@@ -1055,25 +1054,28 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
             }
         });
 
-        jLabel26.setText("SAORS :");
-
-        txtSaors.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSaorsActionPerformed(evt);
-            }
-        });
-
         jLabel27.setText("Conclusiones :");
 
         txtConclusiones.setColumns(20);
         txtConclusiones.setRows(2);
         atxtObservacionesAltura1.setViewportView(txtConclusiones);
 
-        jLabel28.setText("Antecenetes Cardiologicos :");
+        jLabel22.setText("Onda T:");
 
-        txtAntecedentesCardiologicos.setColumns(20);
-        txtAntecedentesCardiologicos.setRows(2);
-        atxtObservacionesAltura2.setViewportView(txtAntecedentesCardiologicos);
+        txtOndaT.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtOndaT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtOndaTActionPerformed(evt);
+            }
+        });
+
+        jLabel29.setText("Eje :");
+
+        txtEje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEjeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1156,77 +1158,79 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel16)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel15)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(chkEAnual))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(chkEMeses)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(10, 10, 10)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel6)
-                                                .addComponent(jLabel5)
-                                                .addComponent(jLabel16)
-                                                .addComponent(jLabel10)
-                                                .addComponent(jLabel8)
-                                                .addComponent(jLabel15)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addContainerGap()
-                                            .addComponent(chkEAnual))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addContainerGap()
-                                            .addComponent(chkEMeses)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(chkExCardiologo)))
-                                .addGap(4, 4, 4))
+                                .addContainerGap()
+                                .addComponent(chkExCardiologo))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(jLabel28))
+                                .addGap(56, 56, 56)
+                                .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel19))
+                            .addComponent(txtEmpresa, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtContratista, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel19))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtRitmo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(jLabel9)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(txtFC, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel23)
-                                        .addGap(49, 49, 49)
-                                        .addComponent(jLabel11)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(txtQRS, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtEmpresa, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtContratista, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtSt, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel26)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtSaors, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(txtPR, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(txtPR, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(jLabel12)
-                                                .addGap(10, 10, 10)
-                                                .addComponent(txtQTC, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jLabel13)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(txtOndaP)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                                .addComponent(jLabel11)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txtRitmo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jLabel9)
+                                                .addGap(6, 6, 6)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txtFC, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                            .addComponent(txtQRS))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(67, 67, 67)
+                                                .addComponent(jLabel13))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(27, 27, 27)
+                                                .addComponent(jLabel23)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel29)))
+                                        .addGap(4, 4, 4))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtSt, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel12)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtQT, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                                        .addComponent(jLabel22)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEje, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                                    .addComponent(txtOndaP)
+                                    .addComponent(txtOndaT)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(atxtObservacionesAltura2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(atxtObservacionesAltura))
+                                .addComponent(atxtObservacionesAltura)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1280,39 +1284,38 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                     .addComponent(chkPR, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkQRS, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkQTC, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
                     .addComponent(txtRitmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel23))
-                    .addComponent(txtQRS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel11))))
+                    .addComponent(jLabel9)
+                    .addComponent(txtFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel29)
+                    .addComponent(txtEje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtQTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtOndaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(txtQRS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtOndaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))))
+                        .addComponent(jLabel10)))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(txtSaors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(7, 7, 7)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel12)
+                    .addComponent(txtQT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtOndaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkNormal, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkFisiologica, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1321,10 +1324,6 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
                     .addComponent(chkCardiacoI, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkCardiacoD, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel28)
-                    .addComponent(atxtObservacionesAltura2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14)
                     .addComponent(atxtObservacionesAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1392,23 +1391,23 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
     }//GEN-LAST:event_txtRitmoActionPerformed
 
     private void txtFCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFCActionPerformed
-        txtQRS.requestFocus();
+        txtEje.requestFocus();
     }//GEN-LAST:event_txtFCActionPerformed
 
     private void txtQRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQRSActionPerformed
-        txtPR.requestFocus();
+        txtOndaP.requestFocus();
     }//GEN-LAST:event_txtQRSActionPerformed
 
     private void txtPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPRActionPerformed
-       txtQTC.requestFocus();
+       txtQRS.requestFocus();
     }//GEN-LAST:event_txtPRActionPerformed
 
-    private void txtQTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQTCActionPerformed
-        txtOndaP.requestFocus();
-    }//GEN-LAST:event_txtQTCActionPerformed
+    private void txtQTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQTActionPerformed
+        txtOndaT.requestFocus();
+    }//GEN-LAST:event_txtQTActionPerformed
 
     private void txtOndaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOndaPActionPerformed
-       txtObservaciones.requestFocus();
+       txtSt.requestFocus();
     }//GEN-LAST:event_txtOndaPActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -1480,7 +1479,7 @@ dispose();
 
     private void chkQTCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkQTCActionPerformed
         if(chkQTC.isSelected()){
-       txtQTC.setText("N/E");}
+       txtQT.setText("N/E");}
     }//GEN-LAST:event_chkQTCActionPerformed
 
     private void chkQRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkQRSActionPerformed
@@ -1813,12 +1812,12 @@ dispose();
         if(!txtNorden.getText().isEmpty()){
             String Sql="SELECT d.nombres_pa||' '||d.apellidos_pa as nombrecompleto, "
                     + "d.fecha_nacimiento_pa, n.razon_empresa,n.razon_contrata, "
-                    +"e.fecha_informe, e.ritmo, e.p_r, e.f_c, e.q_t_c, e.q_r_s, \n" +
-                    "e.eje, e.hallazgo, e.conclusion,e.recomendaciones "
+                    +"e.fecha_informe, e.ritmo, e.f_c, e.eje, e.onda_p, e.p_r, \n" +
+"            e.q_r_s, e.s_t, e.onda_t, e.q_t, e.observacion, e.conclusion, e.recomendaciones, e.edad_elec "
                     + "FROM datos_paciente as d "
                     + "inner join n_orden_ocupacional as n on(d.cod_pa  = n.cod_pa) "
-                    + "inner join informe_electrocardiograma as e on(n.n_orden  = e.n_orden) "
-                    + "WHERE e.n_orden='"+txtNorden.getText().toString()+"'";
+                    + "inner join informe_electrocardiograma_poderosa as e on(n.n_orden  = e.n_orden) "
+                    + "WHERE e.n_orden='"+txtNorden.getText()+"'";
              oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -1830,19 +1829,17 @@ dispose();
                         txtEdad.setText(String.valueOf(calcularEdad(FechaNacimiento.getCalendar())) );
                         FechaExamen.setDate(oConn.setResult.getDate("fecha_informe"));
                         txtRitmo.setText(oConn.setResult.getString("ritmo"));
-                        txtPR.setText(oConn.setResult.getString("p_r"));
                         txtFC.setText(oConn.setResult.getString("f_c"));
-                        txtQTC.setText(oConn.setResult.getString("q_t_c"));
+                        txtEje.setText(oConn.setResult.getString("eje"));
+                        txtOndaP.setText(oConn.setResult.getString("onda_p"));
+                        txtPR.setText(oConn.setResult.getString("p_r"));
                         txtQRS.setText(oConn.setResult.getString("q_r_s"));
-                        txtOndaP.setText(oConn.setResult.getString("eje"));
-                        txtObservaciones.setText(oConn.setResult.getString("hallazgo"));  
+                        txtSt.setText(oConn.setResult.getString("s_t"));
+                        txtOndaT.setText(oConn.setResult.getString("onda_t"));
+                        txtQT.setText(oConn.setResult.getString("q_t"));
+                        txtObservaciones.setText(oConn.setResult.getString("observacion"));  
                         txtConclusiones.setText(oConn.setResult.getString("conclusion"));
                         txtRecomendaciones.setText(oConn.setResult.getString("recomendaciones"));
-//                        txtSt.setText(oConn.setResult.getString("s_t"));
-//                        txtSaors.setText(oConn.setResult.getString("saors"));
-//                        txtAntecedentesCardiologicos.setText(oConn.setResult.getString("txtantecardiologicos"));
-                        
-                        
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
@@ -1854,22 +1851,29 @@ dispose();
 
     private void txtStActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStActionPerformed
         // TODO add your handling code here:
+        txtQT.requestFocus();
     }//GEN-LAST:event_txtStActionPerformed
-
-    private void txtSaorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSaorsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSaorsActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();// TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void txtOndaTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOndaTActionPerformed
+        // TODO add your handling code here:
+        txtObservaciones.requestFocus();
+    }//GEN-LAST:event_txtOndaTActionPerformed
+
+    private void txtEjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEjeActionPerformed
+        // TODO add your handling code here:
+        txtPR.requestFocus();
+    }//GEN-LAST:event_txtEjeActionPerformed
     public boolean OrdenExiste()
     {
         boolean bResultado=false;
 
         String sQuery;
 
-        sQuery  = "Select n_orden from informe_electrocardiograma Where n_orden="+txtNorden.getText().toString();
+        sQuery  = "Select n_orden from informe_electrocardiograma_poderosa Where n_orden="+txtNorden.getText().toString();
         
         //Ejecuta el Query
         oConn.FnBoolQueryExecute(sQuery);
@@ -1921,7 +1925,6 @@ dispose();
     private com.toedter.calendar.JDateChooser FechaNacimiento;
     private javax.swing.JScrollPane atxtObservacionesAltura;
     private javax.swing.JScrollPane atxtObservacionesAltura1;
-    private javax.swing.JScrollPane atxtObservacionesAltura2;
     private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
@@ -1953,12 +1956,12 @@ dispose();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2012,24 +2015,24 @@ dispose();
     private javax.swing.JTextField txt86;
     private javax.swing.JTextField txt87;
     private javax.swing.JTextField txt88;
-    private javax.swing.JTextArea txtAntecedentesCardiologicos;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtBuscarCod;
     private javax.swing.JTextArea txtConclusiones;
     private javax.swing.JTextField txtContratista;
     private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEje;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextField txtFC;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtNorden;
     private javax.swing.JTextArea txtObservaciones;
     private javax.swing.JTextField txtOndaP;
+    private javax.swing.JTextField txtOndaT;
     private javax.swing.JTextField txtPR;
     private javax.swing.JTextField txtQRS;
-    private javax.swing.JTextField txtQTC;
+    private javax.swing.JTextField txtQT;
     private javax.swing.JTextArea txtRecomendaciones;
     private javax.swing.JTextField txtRitmo;
-    private javax.swing.JTextField txtSaors;
     private javax.swing.JTextField txtSt;
     // End of variables declaration//GEN-END:variables
 private void limpiar(){
@@ -2046,12 +2049,11 @@ private void limpiar(){
     txtFC.setText(null);
     txtPR.setText(null);
     txtQRS.setText(null);
-    txtQTC.setText(null);
+    txtQT.setText(null);
     txtOndaP.setText(null);
     txtSt.setText(null);
-    txtSaors.setText(null);
-    txtObservaciones.setText(null);
-    txtAntecedentesCardiologicos.setText(null);
+    txtEje.setText(null);
+    txtOndaT.setText(null);
     txtObservaciones.setText(null);
     txtConclusiones.setText(null);
     txtRecomendaciones.setText(null);
@@ -2105,12 +2107,12 @@ private void print(Integer cod){
                  try 
                 {
                     String master = System.getProperty("user.dir") +
-                                "/reportes/InformeElectrocardiogramaPoderosa.jasper";
+                                "/reportes/InformeElectrocardiograma2023.jasper";
             
             System.out.println("master" + master);
             if (master == null) 
             {                
-                System.out.println("No encuentro el archivo del reporte InformePsicologico.");
+                System.out.println("No encuentro el archivo del reporte .");
                 //System.exit(2);
             } 
             JasperReport masterReport = null;
@@ -2141,18 +2143,16 @@ void sbCargarDatosElectro(String valor){
     String [] registros = new String[4];
       String sql="";
       if(!txtBuscarCod.getText().isEmpty()){
-          sql="Select datos_paciente.nombres_pa||''|| datos_paciente.apellidos_pa AS nombres, n_orden_ocupacional.n_orden, "
-              + "informe_electrocardiograma.fecha_informe, informe_electrocardiograma.cod_elec From datos_paciente "
-                + "inner join n_orden_ocupacional "
-              + "ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa)"
-                + "inner join informe_electrocardiograma ON (n_orden_ocupacional.n_orden = informe_electrocardiograma.n_orden)"
-                + "where informe_electrocardiograma.n_orden='"+txtBuscarCod.getText().toString()+"'";   
+          sql="Select d.nombres_pa||''|| d.apellidos_pa AS nombres, n.n_orden, "
+              + "e.fecha_informe, e.cod_elecp From datos_paciente as d "
+                + "inner join n_orden_ocupacional as n ON (n.cod_pa = n.cod_pa)"
+                + "inner join informe_electrocardiograma_poderosa as e ON (n.n_orden = e.n_orden)"
+                + "where e.n_orden='"+txtBuscarCod.getText()+"'";   
       }else{
-        sql="Select datos_paciente.nombres_pa||''|| datos_paciente.apellidos_pa AS nombres, n_orden_ocupacional.n_orden, "
-              + "informe_electrocardiograma.fecha_informe, informe_electrocardiograma.cod_elec From datos_paciente "
-                + "inner join n_orden_ocupacional "
-              + "ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa)"
-                + "inner join informe_electrocardiograma ON (n_orden_ocupacional.n_orden = informe_electrocardiograma.n_orden)"
+        sql="Select d.nombres_pa||''|| d.apellidos_pa AS nombres, n.n_orden, "
+              + "e.fecha_informe, e.cod_elecp From datos_paciente as d "
+                + "inner join n_orden_ocupacional as n ON (d.cod_pa = n.cod_pa)"
+                + "inner join informe_electrocardiograma_poderosa as e ON (n.n_orden = e.n_orden)"
                 + "where CONCAT(nombres_pa,' ',apellidos_pa)  LIKE '%"+valor+"%'";       
       }  
        model = new DefaultTableModel(null,titulos);
@@ -2165,7 +2165,7 @@ void sbCargarDatosElectro(String valor){
                 while (oConn.setResult.next())
                 {
                                      
-                    registros[0]= oConn.setResult.getString("cod_elec");
+                    registros[0]= oConn.setResult.getString("cod_elecp");
                     registros[1]= oConn.setResult.getString("n_orden");
                     registros[2]= oConn.setResult.getString("nombres");
                     registros[3]= formato.format(oConn.setResult.getDate("fecha_informe"));
@@ -2232,12 +2232,12 @@ private void reporte(Integer cod){
                  try 
                 {
                     String master = System.getProperty("user.dir") +
-                                "/reportes/InformeElectrocardiogramaPoderosa.jasper";
+                                "/reportes/InformeElectrocardiograma2023.jasper";
             
             System.out.println("master" + master);
             if (master == null) 
             {                
-                System.out.println("No encuentro el archivo del reporte InformePsicologico.");
+                System.out.println("No encuentro el archivo del reporte Informe.");
                 //System.exit(2);
             } 
             JasperReport masterReport = null;
@@ -2283,22 +2283,22 @@ public void cerrarVentana(){
      if(!txtNorden.getText().isEmpty()){
           if(!OrdenExiste()){
             if (validar()){
-        String Sql ="INSERT INTO informe_electrocardiograma(n_orden, fecha_informe, ritmo, p_r, f_c, q_t_c, q_r_s,"
-               + "eje, hallazgo,conclusion, recomendaciones, edad_elec)";
+        String Sql ="INSERT INTO informe_electrocardiograma_poderosa(n_orden, fecha_informe, ritmo, f_c, eje, onda_p, p_r, \n" +
+"            q_r_s, s_t, onda_t, q_t, observacion, conclusion, recomendaciones, edad_elec)";
          Sql+="Values('"+txtNorden.getText()+"','"+FechaExamen.getDate()+"','"
-                     +txtRitmo.getText().toString()+ "','"
+                     +txtRitmo.getText()+ "','"
+                     +txtFC.getText().concat(" x min") +"','"
+                     +txtEje.getText().concat("°") +"','"
+                     +txtOndaP.getText() +"','"
                      +txtPR.getText()+ "','"
-                     +txtFC.getText().toString().concat(" x min") +"','"
-                     +txtQTC.getText().toString()+"','"
-                     +txtQRS.getText().toString()+"','"
-                     +txtOndaP.getText().toString().concat("°") +"','"
-                     +txtObservaciones.getText().toString()+"','"
-                     +txtConclusiones.getText().toString()+"','"
-                     +txtRecomendaciones.getText().toString()+"','"
-                     +txtEdad.getText().toString()+"')";
-//                     + txtSt.getText().toString()+"','"
-//                     + txtSaors.getText().toString()+"','"
-//                     + txtAntecedentesCardiologicos.getText().toString()+"')";
+                     +txtQRS.getText()+"','"
+                     +txtSt.getText()+"','"
+                     +txtOndaT.getText()+"','"
+                     +txtQT.getText()+"','"
+                     +txtObservaciones.getText()+"','"
+                     +txtConclusiones.getText()+"','"
+                     +txtRecomendaciones.getText()+"','"
+                     +txtEdad.getText()+"')";
                   oFunc.SubSistemaMensajeInformacion(Sql);
                       if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                         sbCargarDatosElectro("");  
@@ -2328,15 +2328,22 @@ public void cerrarVentana(){
 public void Actualizar(){
     String sCodigo=txtNorden.getText();
         String strSqlStmt;
-        strSqlStmt="UPDATE informe_electrocardiograma\n" +
-                "   SET fecha_informe='"+FechaExamen.getDate()+"', ritmo='"+txtRitmo.getText().toString()+"', p_r='"+txtPR.getText().toString()+"',"
-                + " f_c='"+txtFC.getText().toString()+"',q_t_c='"+txtQTC.getText().toString()+"', q_r_s='"+txtQRS.getText().toString()+"', "
-                + "eje='"+txtOndaP.getText().toString()+"', hallazgo='"+txtObservaciones.getText().toString()+"', conclusion='"+txtObservaciones.getText().toString()+"',"
-                + "recomendaciones='"+txtRecomendaciones.getText().toString()+"',"
-                + "edad_elec='"+txtEdad.getText().toString()+"'\n"+
-//                + "_t ='"+txtSt.getText().toString()+"',saors ='"+txtSaors.getText().toString()+"', "
-//                + "txtantecardiologicos='"+txtAntecedentesCardiologicos.getText().toString()+"'\n" +
-                " WHERE n_orden='" + sCodigo + "'";
+        strSqlStmt="UPDATE informe_electrocardiograma_poderosa\n" +
+                "   SET fecha_informe='"+FechaExamen.getDate()+"', "
+                + "ritmo='"+txtRitmo.getText()+"',"
+                + " f_c='"+txtFC.getText()+"',"
+                + "eje='"+txtOndaP.getText()+"',"
+                + "onda_p='"+txtPR.getText()+"',"    
+                + "p_r='"+txtPR.getText()+"',"
+                + "q_r_s='"+txtQRS.getText()+"', "
+                + "s_t='"+txtQT.getText()+"', "
+                + "onda_t='"+txtQT.getText()+"', "
+                + "q_t='"+txtQT.getText()+"', "
+                + "observacion='"+txtObservaciones.getText()+"', "
+                + "conclusion='"+txtObservaciones.getText()+"',"
+                + "recomendaciones='"+txtRecomendaciones.getText()+"',"
+                + "edad_elec='"+txtEdad.getText()+"'\n"+
+            " WHERE n_orden='" + sCodigo + "'";
              limpiar();
              txtNorden.setEnabled(true);
              txtNorden.requestFocus();

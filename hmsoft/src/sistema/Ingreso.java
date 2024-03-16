@@ -51,7 +51,7 @@ public final class Ingreso extends javax.swing.JFrame {
        
         FileInputStream in = null;
         try {
-            in = new FileInputStream("trujillo.properties");
+            in = new FileInputStream("campañas.properties");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -467,7 +467,7 @@ int key = evt.getKeyCode();
                                     || "MPAZ".equals(user) || "MMARIÑOS".equals(user) || "JCARDENAS".equals(user)
                                     || "HCERNA".equals(user) || "JCERQUIN".equals(user) || "JCORDOVAP".equals(user)
                                     || "JCORDOVA".equals(user) || "KGUEVARA".equals(user) || "lobo".equals(user) || "MGAMBOA".equals(user)
-                                    || "KCANTARO".equals(user)) {
+                                    || "KCANTARO".equals(user)|| "JBRINGAS".equals(user)||"PQUISPE".equals(user)) {
                                 Ocupacional1 s = new Ocupacional1();
                                 s.setVisible(true);
 

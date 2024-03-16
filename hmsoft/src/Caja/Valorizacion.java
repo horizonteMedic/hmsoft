@@ -2519,7 +2519,7 @@ public void sbServicioAgrega(){
         
     }
   
-       private boolean oFacturaContenido(){
+    private boolean oFacturaContenido(){
         // Para los resultados
         boolean bResult = false;
         

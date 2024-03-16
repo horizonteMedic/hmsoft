@@ -2224,7 +2224,7 @@ private void limpiar() {
                     if (oConn.setResult.next()) {
                         txtNombres.setText(oConn.setResult.getString("nombres_pa"));
                         txtApellidos.setText(oConn.setResult.getString("apellidos_pa"));
-                        txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
+                        txtEmpresa.setText(oConn.setResult.getString("razon_contrata"));
                         FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
 //                        txtContratista.setText(oConn.setResult.getString("razon_contrata"));
                         txtDni.setText(oConn.setResult.getString("cod_pa"));

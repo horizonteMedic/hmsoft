@@ -199,7 +199,7 @@ public class Bioquimica extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnLimpiar)
                                 .addGap(33, 33, 33)
                                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -502,8 +502,8 @@ public class Bioquimica extends javax.swing.JInternalFrame {
         txtNombres.setText("");
         txtEdad.setText("");
         FechaEx.setDate(null);
-        txtPrueba.setText("");
-        txtMuestra.setText("");
+        txtPrueba.setText("ACIDO URICO SERICO");
+        txtMuestra.setText("SUERO (en ayunas)");
         txtResultado.setText("");
         txtNorden.requestFocus();
         

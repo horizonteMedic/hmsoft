@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import sistema.Contabilidad;
 import static sistema.Ocupacional1.lasede;
 
 
@@ -108,6 +109,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jButton25 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         btncerrar_caja = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
@@ -366,6 +368,23 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         jToolBar2.add(jButton27);
+
+        jButton29.setForeground(new java.awt.Color(102, 102, 102));
+        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/protocolos+.png"))); // NOI18N
+        jButton29.setMnemonic(KeyEvent.VK_F6);
+        jButton29.setText("CONTABILIDAD");
+        jButton29.setToolTipText("F6 (Recoger Análisis Clinicos)");
+        jButton29.setFocusable(false);
+        jButton29.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton29.setMaximumSize(new java.awt.Dimension(80, 72));
+        jButton29.setMinimumSize(new java.awt.Dimension(65, 72));
+        jButton29.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(jButton29);
 
         jButton24.setForeground(new java.awt.Color(102, 102, 102));
         jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/excelImporte.png"))); // NOI18N
@@ -751,14 +770,34 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         }//GEN-LAST:event_jButton27ActionPerformed
 
     private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
-String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
-        if(entradaUsuario.equals("87654321"))
-        {
-        ReporteCaja pro= new ReporteCaja();
-        pro.setVisible(true);
-        }
-        else 
+        String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
+        if (entradaUsuario.equals("87654321")) {
+            ReporteCaja pro = new ReporteCaja();
+            pro.setVisible(true);
+        } else
           JOptionPane.showMessageDialog(null, "LA CALVE NO COINCIDE");    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        // TODO add your handling code here:
+         String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
+        if (entradaUsuario.equals("123456")) {
+            Contabilidad r = new Contabilidad();
+            if (estacerrado(r)) {
+                Admision.Desktop.add(r);
+                ImageIcon ricon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+                r.setFrameIcon(ricon);
+                // r.setLocation(centradoXY(r));
+                r.show();
+            } else {
+                r.moveToFront();
+                //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+            }
+        } else
+            JOptionPane.showMessageDialog(null, "LA CALVE INCORRECTA");
+        
+           
+       
+    }//GEN-LAST:event_jButton29ActionPerformed
 
 @Override
      public Image getIconImage() {
@@ -807,6 +846,7 @@ String entradaUsuario = JOptionPane.showInputDialog("Introduzca la clave:");
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

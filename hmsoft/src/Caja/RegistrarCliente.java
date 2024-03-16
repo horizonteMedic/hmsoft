@@ -559,7 +559,6 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtObserv2 = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
         cboFormaPago = new javax.swing.JComboBox();
-        txtNumColor = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         chkAltaFist = new javax.swing.JCheckBox();
         chkAltaPsicosen = new javax.swing.JCheckBox();
@@ -574,6 +573,8 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jComboBoxProtocolos = new javax.swing.JComboBox<>();
         btnAddOcupacion3 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        txtNOperacion = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         txtNombresAlta = new javax.swing.JTextField();
@@ -613,6 +614,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jCheckBox11 = new javax.swing.JCheckBox();
         chkimport = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
+        txtNumColor = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -1621,6 +1623,21 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jLabel53.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel53.setText("Protocolo :");
 
+        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel54.setText("N° Operación");
+
+        txtNOperacion.setEnabled(false);
+        txtNOperacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNOperacionActionPerformed(evt);
+            }
+        });
+        txtNOperacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNOperacionKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpOcupacionalLayout = new javax.swing.GroupLayout(jpOcupacional);
         jpOcupacional.setLayout(jpOcupacionalLayout);
         jpOcupacionalLayout.setHorizontalGroup(
@@ -1653,41 +1670,6 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpOcupacionalLayout.createSequentialGroup()
                         .addComponent(cboExplotacion, 0, 294, Short.MAX_VALUE)
                         .addGap(30, 30, 30))
-                    .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                        .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                                .addComponent(txtFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNumColor, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                                .addComponent(chkAltaFist)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkAltaPsicosen)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkAltaTestAltura)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkAltaTrabCal))
-                            .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                                .addComponent(chkAltaVisualCom)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkAltaManipAlimen))
-                            .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                                .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtPrecioAdicional, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
-                                .addGap(1, 1, 1)
-                                .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                                        .addComponent(chkPrecio)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel50)
-                                        .addGap(2, 2, 2)
-                                        .addComponent(cboFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(2, 2, 2)
-                                        .addComponent(cboAutorizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpOcupacionalLayout.createSequentialGroup()
                         .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cboExamenMedico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1708,7 +1690,45 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                             .addComponent(txtObserv1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAddOcupacion3)
-                        .addContainerGap())))
+                        .addContainerGap())
+                    .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                        .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                .addComponent(txtFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNOperacion))
+                            .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                    .addComponent(chkAltaFist)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chkAltaPsicosen)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chkAltaTestAltura)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chkAltaTrabCal))
+                                .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                    .addComponent(chkAltaVisualCom)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chkAltaManipAlimen))
+                                .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                    .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtPrecioAdicional, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                                    .addGap(1, 1, 1)
+                                    .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                            .addComponent(chkPrecio)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel50)
+                                            .addGap(2, 2, 2)
+                                            .addComponent(cboFormaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                            .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(2, 2, 2)
+                                            .addComponent(cboAutorizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jpOcupacionalLayout.setVerticalGroup(
             jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1769,8 +1789,10 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(txtFechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumColor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                    .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel54)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel46)
                     .addComponent(txtObserv1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1783,7 +1805,8 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBoxProtocolos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel53))
-                    .addComponent(btnAddOcupacion3)))
+                    .addComponent(btnAddOcupacion3))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jPanel6.add(jpOcupacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 430, 360));
@@ -2143,6 +2166,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             }
         });
         jPanel6.add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+        jPanel6.add(txtNumColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 42, 24));
 
         jtRegistroGeneral.addTab("Aperturar Examenes Pre - Ocupacionales", jPanel6);
 
@@ -2911,6 +2935,30 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         }
 
     }
+    public void agregarcontabilidad(String numero) {
+        try {
+            String sConsulta;
+            sConsulta = "select spagregarconta(" + numero + ");";
+            if (oConn1.FnBoolQueryExecute(sConsulta)) {
+                try {
+                    // Verifica resultados
+                    while (oConn1.setResult.next()) {
+
+                        // Obtiene los datos de la Consulta
+                    }
+
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex);
+                    Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     private void cboMineralExpPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboMineralExpPopupMenuWillBecomeInvisible
         if (cboMineralExp.getSelectedIndex() <= -1) {
             oFunc.SubSistemaMensajeError("Ingrese / Seleccione Mineral Explotado");
@@ -2939,19 +2987,15 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         bgFS.clearSelection();
         btGS.clearSelection();
         txtDniAlta.requestFocus();
-        
     }
-
     public void insertarRegistros() {
         operacion = 1;
         if (ValidarAlta()) {
             try {
-
                 String Sql = "INSERT INTO n_orden_ocupacional(cod_pa, razon_empresa, razon_contrata,"
                         + " nom_ex, altura_po,mineral_po, fecha_apertura_po,nom_examen,precio_po,cargo_de,n_medico,n_hora,area_o,"
                         + "tipo_pago,n_fisttest,n_psicosen,n_testaltura,color,gruposan,grupofactorsan,cod_clinica,visual_compl,"
-                        + "trab_calientes,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel,protocolo,precio_adic,autoriza)";//
-
+                        + "trab_calientes,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel,protocolo,precio_adic,autoriza,n_operacion)";//
                 Sql += " Values ('" + txtDniAlta.getText().toString() + "','"
                         + cboEmpresa.getSelectedItem().toString() + "','"
                         + cboContrata.getSelectedItem().toString() + "','";
@@ -2993,11 +3037,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         + jComboBoxProtocolos.getSelectedItem().toString() + "','"
                         + txtPrecioAdicional.getText().toString() + "','";
                         if(jCheckBox12.isSelected()){
-                           Sql+="";
+                           Sql+=""+ "','";
                         } else{
-                            Sql+= cboAutorizacion.getSelectedItem().toString();
+                            Sql+= cboAutorizacion.getSelectedItem().toString()+ "','";
                         }      
-                        
+                        Sql+=txtNOperacion.getText();
                         Sql+= "') RETURNING n_orden;";
                 //oFunc.SubSistemaMensajeError(Sql);
                 System.out.println(Sql);
@@ -3008,6 +3052,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         txtNorden1.setText(num);
                         oFunc.SubSistemaMensajeInformacion("Alta Correctamente\nSu numero de Orden es :** " + num + " **");
                         agregarAltaEpidemiologica(num);
+                        agregarcontabilidad(num);
                         if (jComboBoxProtocolos.getSelectedItem().toString().contains("N/A")) {
                             operacion = 0;
                         } else {
@@ -3020,7 +3065,6 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         txtDniAlta.setEditable(true);
                         txtDniAlta.requestFocus();
                         sbCargarOcupacional("");
-
                     } catch (SQLException ex) {
                         Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -3038,6 +3082,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     }
     private void btnGuardarAperturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAperturarActionPerformed
         insertarRegistros();
+        
     }//GEN-LAST:event_btnGuardarAperturarActionPerformed
     private boolean imprimir() {
         boolean im = false;
@@ -3074,7 +3119,6 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             if (oConn1.sqlStmt != null) {
                 oConn1.sqlStmt.close();
             }
-
             // if (oConn1.oConnection != null) 
             //
             //  oConn1.oConnection.close();
@@ -3345,7 +3389,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                 + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                 + "n.visual_compl,n.trab_calientes,manip_alimentos,txtobserv1,txtobserv2,"
-                + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.precio_adic,n.autoriza "
+                + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.precio_adic,n.autoriza,n_operacion "
                 + "FROM n_orden_ocupacional AS n  "
                 + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                 + "WHERE n.cod_pa = " + cod + agregarConsulta + " order by n_orden desc limit 1;";
@@ -3393,7 +3437,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 txtObserv2.setText(oConn1.setResult.getString("txtobserv2"));
                 txtPrecioAdicional.setText(oConn1.setResult.getString("precio_adic"));
                 cboAutorizacion.setSelectedItem(oConn1.setResult.getString("autoriza"));
-
+                txtNOperacion.setText(oConn1.setResult.getString("n_operacion"));
                 if (nomsede.equals("Trujillo")) {
                     jLabel44.setText(txtNorden.getText() + " - T");
                 } else {
@@ -3444,7 +3488,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                     + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                     + "n.visual_compl,n.trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,"
-                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,n.precio_adic,n.autoriza "
+                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,n.precio_adic,n.autoriza,n_operacion "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                     + "WHERE n.n_orden = " + cod + agregarConsulta;
@@ -3500,6 +3544,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     } else {
                         jLabel44.setText(txtNorden.getText() + " - H");
                     }
+                    txtNOperacion.setText(oConn1.setResult.getString("n_operacion"));
                     txtDniAlta.setEditable(false);
                     hBotones(true);
 
@@ -3537,6 +3582,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtObserv2.setEnabled(true);
         txtPrecioAdicional.setEnabled(true);
         cboAutorizacion.setEnabled(true);
+        txtNOperacion.setEnabled(true);
         jComboBoxProtocolos.setEnabled(true);
         //cboSedeClinica.setEnabled(true);
         txtFechaAlta.setEnabled(true);
@@ -3572,9 +3618,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         + "nombrehotel='" + jComboBoxHotel.getSelectedItem().toString() + "', "
                         + "protocolo='" + jComboBoxProtocolos.getSelectedItem().toString() + "',"
                         + "precio_adic='" + txtPrecioAdicional.getText() + "', "
-                        + "autoriza='" + cboAutorizacion.getSelectedItem().toString() + "'";
-
-                //        sCodigo = txtNorden.getText();
+                        + "autoriza='" + cboAutorizacion.getSelectedItem().toString() + "',"
+                        + "n_operacion='" + txtNOperacion.getText() + "'";
+//                        sCodigo = txtNorden.getText();
                 sCodigo = tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString();
                 strSqlStmt += " Where n_orden = " + sCodigo + "";
                 num = txtNorden.getText();
@@ -3625,7 +3671,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                     + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                     + "visual_compl,trab_calientes,manip_alimentos,txtobserv1,txtobserv2,"
-                    + "n.color,n.gruposan,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,n.precio_adic,n.autoriza "
+                    + "n.color,n.gruposan,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,n.precio_adic,n.autoriza, n_operacion "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                     + "WHERE n.n_orden = " + cod + agregarConsulta;
@@ -3667,6 +3713,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     jComboBoxProtocolos.setSelectedItem(oConn1.setResult.getString("protocolo"));
                     txtPrecioAdicional.setText(oConn1.setResult.getString("precio_adic"));
                     cboAutorizacion.setSelectedItem(oConn1.setResult.getString("autoriza"));
+                    txtNOperacion.setText(oConn1.setResult.getString("n_operacion"));
                     if (nomsede.equals("Trujillo")) {
                         jLabel44.setText(txtNorden.getText() + " - T");
                     } else {
@@ -4299,8 +4346,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 
                 if (cboFormaPago.getSelectedIndex() <= -1) {
 
-                } else {
+                }else if(cboFormaPago.getSelectedIndex() == 2) {
+                    txtNOperacion.requestFocusInWindow();
+                    txtNOperacion.setEnabled(true);
+                }else {
                     cboAutorizacion.requestFocusInWindow();
+                    
                 }
 
             }
@@ -4497,6 +4548,15 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             cboAutorizacion.setEnabled(true);
         }
     }//GEN-LAST:event_jCheckBox12ActionPerformed
+
+    private void txtNOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNOperacionActionPerformed
+        // TODO add your handling code here:
+        cboAutorizacion.requestFocusInWindow();
+    }//GEN-LAST:event_txtNOperacionActionPerformed
+
+    private void txtNOperacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNOperacionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNOperacionKeyTyped
     private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -5167,6 +5227,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -5210,6 +5271,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtHora;
     private javax.swing.JTextField txtLugarNacimiento;
     private javax.swing.JTextField txtMedico;
+    private javax.swing.JTextField txtNOperacion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombresAlta;
     private javax.swing.JLabel txtNorden;
@@ -5829,6 +5891,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         // cboSedeClinica.setEnabled(false);  
         cboEmpresa.setEnabled(false);
         cboContrata.setEnabled(false);
+        txtNOperacion.setEnabled(false);
     }
 
     public void AltaHabilitar() {
@@ -5867,6 +5930,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jComboBoxProtocolos.setEnabled(true);
         txtPrecioAdicional.setEnabled(true);
         cboAutorizacion.setEnabled(true);
+        
     }
 
     public void AltaLimpiar() {
@@ -5907,6 +5971,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jComboBoxProtocolos.setSelectedIndex(0);
         cboAutorizacion.setSelectedIndex(0);
         jCheckBox12.setSelected(false);
+        txtNOperacion.setText(null);
     }
 
     private void CargarNorden() {
@@ -6032,4 +6097,5 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jCheckBox9.setSelected(false);
         jCheckBox10.setSelected(false);
     }
+ 
 }

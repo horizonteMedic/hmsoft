@@ -136,6 +136,11 @@ public class Ocupacional1 extends javax.swing.JFrame {
        Parasitologia para22;
        ConsentimientoPanel5D cp5d;
        FichaDatosPersonales  fdp;
+       Anexo16A_Boro ab;
+       PerfilHepatico ph;
+       ResultadosPanel5D rp5;
+       InformeExamenMedicoAdeco ima;
+       Audiometria2023 a23;
       javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
         javax.swing.ImageIcon oNo = null;
         String ipa="",seded="";
@@ -467,7 +472,12 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         mCoprocultivo = new javax.swing.JMenuItem();
         mParasitologia = new javax.swing.JMenuItem();
         mConsentimientoPanel5D = new javax.swing.JMenuItem();
-        mConsentimientoPanel5D1 = new javax.swing.JMenuItem();
+        mFichaDatosPersonales = new javax.swing.JMenuItem();
+        mAnexo16A = new javax.swing.JMenuItem();
+        mPerfilHepatico = new javax.swing.JMenuItem();
+        mResultadosPanel5D = new javax.swing.JMenuItem();
+        mInformeAdeco = new javax.swing.JMenuItem();
+        mAudiometria2023 = new javax.swing.JMenuItem();
 
         Reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
         Reporte.setText("Reporte");
@@ -2419,15 +2429,65 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMNuevosFormatos.add(mConsentimientoPanel5D);
 
-        mConsentimientoPanel5D1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
-        mConsentimientoPanel5D1.setText("12. Ficha Datos Personales");
-        mConsentimientoPanel5D1.setActionCommand("Cert. Conducción de Vehiculos");
-        mConsentimientoPanel5D1.addActionListener(new java.awt.event.ActionListener() {
+        mFichaDatosPersonales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mFichaDatosPersonales.setText("12. Ficha Datos Personales");
+        mFichaDatosPersonales.setActionCommand("Cert. Conducción de Vehiculos");
+        mFichaDatosPersonales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mConsentimientoPanel5D1ActionPerformed(evt);
+                mFichaDatosPersonalesActionPerformed(evt);
             }
         });
-        jMNuevosFormatos.add(mConsentimientoPanel5D1);
+        jMNuevosFormatos.add(mFichaDatosPersonales);
+
+        mAnexo16A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mAnexo16A.setText("13. Anexo 16 A");
+        mAnexo16A.setActionCommand("Cert. Conducción de Vehiculos");
+        mAnexo16A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mAnexo16AActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mAnexo16A);
+
+        mPerfilHepatico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mPerfilHepatico.setText("14. Perfil Hepatico");
+        mPerfilHepatico.setActionCommand("Cert. Conducción de Vehiculos");
+        mPerfilHepatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mPerfilHepaticoActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mPerfilHepatico);
+
+        mResultadosPanel5D.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mResultadosPanel5D.setText("15. ResultadosPanel5D");
+        mResultadosPanel5D.setActionCommand("Cert. Conducción de Vehiculos");
+        mResultadosPanel5D.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mResultadosPanel5DActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mResultadosPanel5D);
+
+        mInformeAdeco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mInformeAdeco.setText("16.Informe Adeco");
+        mInformeAdeco.setActionCommand("Cert. Conducción de Vehiculos");
+        mInformeAdeco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mInformeAdecoActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mInformeAdeco);
+
+        mAudiometria2023.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mAudiometria2023.setText("17-Audiometria2023");
+        mAudiometria2023.setActionCommand("Cert. Conducción de Vehiculos");
+        mAudiometria2023.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mAudiometria2023ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mAudiometria2023);
 
         MenuOcupacional.add(jMNuevosFormatos);
 
@@ -4515,7 +4575,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         }
     }//GEN-LAST:event_mConsentimientoPanel5DActionPerformed
 
-    private void mConsentimientoPanel5D1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mConsentimientoPanel5D1ActionPerformed
+    private void mFichaDatosPersonalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mFichaDatosPersonalesActionPerformed
         // TODO add your handling code here:
          if(estacerrado(fdp)){
             fdp =new FichaDatosPersonales();
@@ -4530,7 +4590,90 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
-    }//GEN-LAST:event_mConsentimientoPanel5D1ActionPerformed
+    }//GEN-LAST:event_mFichaDatosPersonalesActionPerformed
+
+    private void mAnexo16AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAnexo16AActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(ab)){
+            ab =new Anexo16A_Boro();
+            Desktop.add(ab);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ab.setFrameIcon(ticon);
+            ab.setLocation(centradoXY(ab));
+            ab.show();
+            //fn.setVisible(true);
+        }else{
+            ab.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mAnexo16AActionPerformed
+
+    private void mPerfilHepaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mPerfilHepaticoActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(ph)){
+            ph =new PerfilHepatico();
+            Desktop.add(ph);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ph.setFrameIcon(ticon);
+            ph.setLocation(centradoXY(ph));
+            ph.show();
+            //fn.setVisible(true);
+        }else{
+            ph.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mPerfilHepaticoActionPerformed
+
+    private void mResultadosPanel5DActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mResultadosPanel5DActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(rp5)){
+            rp5 =new ResultadosPanel5D();
+            Desktop.add(rp5);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            rp5.setFrameIcon(ticon);
+            rp5.setLocation(centradoXY(rp5));
+            rp5.show();
+            //fn.setVisible(true);
+        }else{
+            ph.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mResultadosPanel5DActionPerformed
+
+    private void mInformeAdecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mInformeAdecoActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(ima)){
+            ima =new InformeExamenMedicoAdeco();
+            Desktop.add(ima);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ima.setFrameIcon(ticon);
+            ima.setLocation(centradoXY(ima));
+            ima.show();
+            //fn.setVisible(true);
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mInformeAdecoActionPerformed
+
+    private void mAudiometria2023ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAudiometria2023ActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(a23)){
+            a23 =new Audiometria2023();
+            Desktop.add(a23);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            a23.setFrameIcon(ticon);
+            a23.setLocation(centradoXY(a23));
+            a23.show();
+            //fn.setVisible(true);
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mAudiometria2023ActionPerformed
 @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -4724,11 +4867,13 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JLabel lblUsoRespirador;
     private javax.swing.JLabel lblUsoRespirador1;
     private javax.swing.JLabel lblUsuarioCaja;
+    private javax.swing.JMenuItem mAnexo16A;
     private javax.swing.JMenuItem mApnea;
     private javax.swing.JMenuItem mApnea1;
     private javax.swing.JMenuItem mAptitudMedico;
     private javax.swing.JMenuItem mAptitudMedico1;
     private javax.swing.JMenuItem mAptitudMedicoOcup11;
+    private javax.swing.JMenuItem mAudiometria2023;
     private javax.swing.JMenu mBarrick;
     private javax.swing.JMenu mBarrick1;
     private javax.swing.JMenuItem mBioquimica;
@@ -4742,7 +4887,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mConsentimientoInformadoCovid;
     private javax.swing.JMenuItem mConsentimientoInformadoCovid1;
     private javax.swing.JMenuItem mConsentimientoPanel5D;
-    private javax.swing.JMenuItem mConsentimientoPanel5D1;
     private javax.swing.JMenuItem mConstanciaAltaEpidemiologica;
     private javax.swing.JMenuItem mConstanciaAltaMarsa;
     private javax.swing.JMenuItem mConstanciaAltaMarsa1;
@@ -4773,6 +4917,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mFichaAptitudTramitarLicencia;
     private javax.swing.JMenuItem mFichaAptitudTramitarLicencia1;
     private javax.swing.JMenuItem mFichaAudiometrica2021;
+    private javax.swing.JMenuItem mFichaDatosPersonales;
     private javax.swing.JMenuItem mFichaMedica1;
     private javax.swing.JMenuItem mFichaMedicaMarsa;
     private javax.swing.JMenuItem mFichaMedicaMarsa1;
@@ -4783,9 +4928,12 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem mFichasintomatologica;
     private javax.swing.JMenuItem mHojaReferencia;
     private javax.swing.JMenuItem mIndicacionesMedicas;
+    private javax.swing.JMenuItem mInformeAdeco;
     private javax.swing.JMenuItem mInformeElectrocardiogramaP;
     private javax.swing.JMenuItem mParasitologia;
+    private javax.swing.JMenuItem mPerfilHepatico;
     private javax.swing.JMenuItem mRegistroPrueba;
+    private javax.swing.JMenuItem mResultadosPanel5D;
     private javax.swing.JMenuItem mResultadosPruebaRapida;
     private javax.swing.JMenuItem mTestFatigaSomnolencia;
     private javax.swing.JMenuItem mUsoRespiradores;

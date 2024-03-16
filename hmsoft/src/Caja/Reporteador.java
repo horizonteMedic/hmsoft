@@ -1048,6 +1048,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
         jButton7 = new javax.swing.JButton();
         chkEfectivo = new javax.swing.JCheckBox();
         chkCredito = new javax.swing.JCheckBox();
+        btnRepDiario1 = new javax.swing.JButton();
+        btnRepDiario2 = new javax.swing.JButton();
+        btnRepDiario3 = new javax.swing.JButton();
+        btnRepDiario4 = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -1368,44 +1372,47 @@ public class Reporteador extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(chk1)
-                        .addGap(2, 2, 2)
-                        .addComponent(chk9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chk10))
-                    .addComponent(chk14))
+                .addGap(0, 0, 0)
+                .addComponent(chk1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(chk14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(chk13)
-                        .addGap(18, 18, 18)
-                        .addComponent(chk15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chk16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chk17))
+                        .addGap(31, 31, 31)
+                        .addComponent(chk15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(chk9)
+                        .addGap(2, 2, 2)
+                        .addComponent(chk10)
+                        .addGap(18, 18, 18)
                         .addComponent(chk11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(chk12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(chk2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(chk3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(chk4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(7, 7, 7)
                         .addComponent(chk5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(10, 10, 10)
                         .addComponent(chk6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(chk7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chk8)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                        .addComponent(chk8))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(chk16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chk17)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1417,19 +1424,20 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     .addComponent(chk4)
                     .addComponent(chk5)
                     .addComponent(chk6)
-                    .addComponent(chk7)
                     .addComponent(chk8)
                     .addComponent(chk9)
                     .addComponent(chk10)
                     .addComponent(chk11)
-                    .addComponent(chk12))
+                    .addComponent(chk12)
+                    .addComponent(chk7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chk13)
                     .addComponent(chk14)
+                    .addComponent(chk13)
                     .addComponent(chk15)
                     .addComponent(chk16)
-                    .addComponent(chk17)))
+                    .addComponent(chk17))
+                .addContainerGap())
         );
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora.png"))); // NOI18N
@@ -1496,7 +1504,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 .addComponent(btnRepDiario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRepSemanal)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         chkRepVisualCompl.setText("VISUAL-COMPLEMENTARIO");
@@ -1649,101 +1657,142 @@ public class Reporteador extends javax.swing.JInternalFrame {
         buttonGroup1.add(chkCredito);
         chkCredito.setText("V.CREDITO");
 
+        btnRepDiario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        btnRepDiario1.setText("CONSOL. PODEROSA ");
+        btnRepDiario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepDiario1ActionPerformed(evt);
+            }
+        });
+
+        btnRepDiario2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        btnRepDiario2.setText("OHLA ASIST");
+        btnRepDiario2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepDiario2ActionPerformed(evt);
+            }
+        });
+
+        btnRepDiario3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        btnRepDiario3.setText("PACIFICO");
+        btnRepDiario3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepDiario3ActionPerformed(evt);
+            }
+        });
+
+        btnRepDiario4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        btnRepDiario4.setText("ALTURA PODEROSA");
+        btnRepDiario4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepDiario4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(lblNservicio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkEfectivo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkCredito)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(jButton1))
+                            .addComponent(jCheckBox2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(225, 225, 225)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton6))
+                            .addComponent(jButton7))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMostrar1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBoxAntigeno)
+                                    .addComponent(jCheckBox1))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2))))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTabbedPane1)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(chkRepTestAltura)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkRepPsicosen)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkRepVisualCompl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkRepTrabCal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkRepCovid1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkRepCovid2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkRepManipAlimen))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(2, 2, 2)
-                                                .addComponent(lblNservicio)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chkEfectivo)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chkCredito)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(21, 21, 21)
-                                                .addComponent(jButton1))
-                                            .addComponent(jCheckBox2))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(225, 225, 225)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(btnMostrar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jCheckBoxAntigeno)
-                                                    .addComponent(jCheckBox1))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jButton4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jButton6))
-                                            .addComponent(jButton7))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pgExportar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnImprimir, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(pgExportar, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnImprimir))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExportarExel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton3))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(chkRepTestAltura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkRepPsicosen)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnExportarExel)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
-                .addContainerGap())
+                        .addComponent(chkRepVisualCompl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkRepTrabCal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkRepCovid1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chkRepCovid2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkRepManipAlimen)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(74, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRepDiario3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnRepDiario1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(btnRepDiario4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                                .addComponent(btnRepDiario2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1752,7 +1801,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1765,29 +1814,30 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jCheckBox2)
                                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                                .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton1)
                                     .addComponent(jButton7))))
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jCheckBoxAntigeno)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(5, 5, 5)
                                 .addComponent(jCheckBox1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnMostrar1)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkRepTestAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkRepPsicosen, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkRepVisualCompl, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkRepTrabCal, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkRepCovid1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkRepCovid2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chkRepManipAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addComponent(btnMostrar1))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(11, 11, 11)
+                        .addComponent(btnRepDiario1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRepDiario4)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnRepDiario2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRepDiario3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 150, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1805,27 +1855,30 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6))
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chkRepTestAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkRepPsicosen, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkRepVisualCompl, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkRepTrabCal, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkRepCovid1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkRepCovid2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkRepManipAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnExportarExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
                         .addComponent(btnImprimir)
-                        .addGap(2, 2, 2)
-                        .addComponent(pgExportar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pgExportar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnExportarExel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -2685,6 +2738,385 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private void jCheckBoxAntigenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAntigenoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxAntigenoActionPerformed
+
+    private void btnRepDiario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepDiario1ActionPerformed
+        // TODO add your handling code here:
+        try {
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden AS N°, d.apellidos_pa||' '||d.nombres_pa AS NOMBRES,\n" +
+"       d.cod_pa AS DNI_CARNETEXT,\n" +
+"       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
+"       n.razon_contrata,\n" +
+"       n.nom_examen AS TIPODEEMO,\n" +
+"       n.cargo_de AS PUESTO,d.provincia_pa,d.departamento_pa,\n" +
+"       fecha_apertura_po AS FECHAEVALUACION, \n" +
+"       CASE WHEN ca.fecha is not null THEN ca.fecha\n" +
+"            WHEN ama.fecha is not null THEN ama.fecha END as FECHAAPTITUD,\n" +
+"       CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"	     WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ama.n_orden IS NULL AND ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
+"              END as CONDICION,\n" +
+"	CASE WHEN ca.atxtrestricciones IS NOT NULL THEN ca.atxtrestricciones\n" +
+"	     WHEN ama.atxtrestricciones IS NOT NULL THEN ama.atxtrestricciones\n" +
+"             ELSE 'NO REGISTRO APTITUD'END AS RESTRICCIONESAPTITUD,\n" +
+"        CASE WHEN n.razon_empresa !='' THEN 'HORIZONTE MEDIC' END  AS ESTABLECIMIENTO,\n" +
+"	CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
+"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
+"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
+"	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS Grupoyfactor,\n" +
+"	CASE WHEN a.txtobservacionesfm IS NOT NULL THEN 'N/A' END AS observaciones,  \n" +
+"        CASE WHEN ba.chkapto = 'TRUE' THEN 'APTO'\n" +
+"             WHEN ba.chkno_apto = 'TRUE' THEN 'NO APTO'\n" +
+"             WHEN ba.n_orden is null  THEN 'AUN NO HAY REGISTRO EN ALTURA'\n" +
+"             END AS APTITUD_TRAB_ALTURA_MINERIA " +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN oftalmologia2021 AS ol1 ON (ol1.n_orden = n.n_orden)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join aptitud_medico_ocupacional_agro as ama ON (ama.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"left join aptitud_altura_poderosa as ba ON (ba.n_orden=n.n_orden)   \n" +
+"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
+"WHERE n.razon_empresa ='COMPAÑIA MINERA PODEROSA S.A.' ";
+
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                System.out.println("la consulta aplicada es:"+vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_btnRepDiario1ActionPerformed
+
+    private void btnRepDiario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepDiario2ActionPerformed
+        // TODO add your handling code here:
+        try {
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden AS N°,fecha_apertura_po AS FECHAEVALUACION,  \n" +
+"       n.razon_empresa AS EMPRESA,n.razon_contrata,\n" +
+"       d.apellidos_pa||' '||d.nombres_pa AS NOMBRES,\n" +
+"       d.cod_pa AS DNI_CARNETEXT,\n" +
+"       n.cargo_de AS PUESTO,\n" +
+"       CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
+"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
+"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
+"	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS Grupoyfactor,\n" +
+"       n.nom_examen AS TIPODEEMO,\n" +
+"       CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"	     WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ca.chkevaluado = 'TRUE' THEN 'Evaluado'\n" +
+"             WHEN ca.chkconobservacion = 'TRUE' THEN 'Con Observaciones'\n" +
+"             WHEN ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
+"              END as RESULTADO\n" +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n" +
+"left join aptitud_medico_ocupacional11 as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                
+                
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                System.out.println("la consulta aplicada es:"+vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_btnRepDiario2ActionPerformed
+
+    private void btnRepDiario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepDiario3ActionPerformed
+        // TODO add your handling code here:
+       try {
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden AS N°,fecha_apertura_po AS FECHAEVALUACION,\n" +
+"CASE WHEN n.razon_empresa !='' THEN 'HORIZONTE MEDIC' END  AS LUGAREXAMEN,\n" +
+" e.ruc_empresa, co.ruc_contrata, n.razon_contrata, \n" +
+" d.apellidos_pa, d.nombres_pa AS NOMBRES,d.fecha_nacimiento_pa,\n" +
+" CASE WHEN n.n_orden is not null THEN 'DNI' END  AS TIPODOC,\n" +
+"       d.cod_pa AS DNI_CARNETEXT,\n" +
+"	CASE WHEN d.sexo_pa='F' THEN 'FEMENINO' ELSE 'MASCULINO' END AS SEXO,\n" +
+"       CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
+"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
+"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
+"	     WHEN lc.chkab = 'TRUE' THEN 'AB'  END AS GRUPOSANGUINEO,\n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN 'POSITIVO' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN 'NEGATIVO' END AS FACVTORRH,\n" +
+"	n.cargo_de AS PUESTO,\n" +
+"	n.area_o, n.nom_examen AS TIPODEEMO,fecha_apertura_po AS FECHAEXAMEN,\n" +
+"       CASE WHEN ca.fecha is not null THEN a.fecha\n" +
+"            WHEN ama.fecha is not null THEN ama.fecha END as FECHAAPTITUD,\n" +
+"            \n" +
+"       CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"	     WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ama.n_orden IS NULL AND ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
+"              END as APTITUD,\n" +
+"	CASE WHEN a.txtobservacionesfm IS NULL THEN ' ' ELSE ' ' END AS OBSERVACIONES\n" +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join aptitud_medico_ocupacional_agro as ama ON (ama.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"left join b_certificado_altura as ba ON (ba.n_orden=n.n_orden)   \n" +
+"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
+"left join empresas  as e ON (e.razon_empresa=n.razon_empresa)   \n" +
+"left join contratas  as co ON (co.razon_contrata=n.razon_contrata)   ";
+                if(cboContratas.getSelectedItem().toString().length()>2)
+                    contrata=cboContratas.getSelectedItem().toString();
+                else
+                    contrata="";
+                if(cboEmpresas.getSelectedItem().toString().length()>2)
+                    empresa=cboEmpresas.getSelectedItem().toString();
+                else
+                    empresa="";
+                vSql +="WHERE upper(n.razon_contrata) like upper('%"+contrata+"%') ";
+                vSql += " AND upper(n.razon_empresa) like upper('%"+empresa+"%')";
+                
+                
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                System.out.println("la consulta aplicada es:"+vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+    }//GEN-LAST:event_btnRepDiario3ActionPerformed
+
+    private void btnRepDiario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepDiario4ActionPerformed
+        // TODO add your handling code here:
+        try {
+                // TODO add your handling code here:
+                model = new DefaultTableModel(){
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return false;
+                    }};
+                String vSql="SELECT n.n_orden AS N°, d.apellidos_pa||' '||d.nombres_pa AS NOMBRES,\n" +
+"       d.cod_pa AS DNI_CARNETEXT,\n" +
+"       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
+"       n.razon_contrata,\n" +
+"       n.nom_examen AS TIPODEEMO,\n" +
+"       n.cargo_de AS PUESTO,d.provincia_pa,d.departamento_pa,\n" +
+"       fecha_apertura_po AS FECHAEVALUACION, \n" +
+"       CASE WHEN ca.fecha is not null THEN ca.fecha\n" +
+"            WHEN ama.fecha is not null THEN ama.fecha END as FECHAAPTITUD,\n" +
+"       CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
+"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"	     WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ama.n_orden IS NULL AND ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
+"              END as CONDICION,\n" +
+"	CASE WHEN ca.atxtrestricciones IS NOT NULL THEN ca.atxtrestricciones\n" +
+"	     WHEN ama.atxtrestricciones IS NOT NULL THEN ama.atxtrestricciones\n" +
+"             ELSE 'NO REGISTRO APTITUD'END AS RESTRICCIONESAPTITUD,\n" +
+"        CASE WHEN n.razon_empresa !='' THEN 'HORIZONTE MEDIC' END  AS ESTABLECIMIENTO,\n" +
+"	CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
+"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
+"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
+"	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS Grupoyfactor,\n" +
+"	CASE WHEN a.txtobservacionesfm IS NOT NULL THEN 'N/A' END AS observaciones,  \n" +
+"        CASE WHEN ba.chkapto = 'TRUE' THEN 'APTO'\n" +
+"             WHEN ba.chkno_apto = 'TRUE' THEN 'NO APTO'\n" +
+"             WHEN ba.n_orden is null  THEN 'AUN NO HAY REGISTRO EN ALTURA'\n" +
+"             END AS APTITUD_TRAB_ALTURA_MINERIA\n" +
+"FROM datos_paciente AS d\n" +
+"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
+"LEFT JOIN oftalmologia2021 AS ol1 ON (ol1.n_orden = n.n_orden)\n" +
+"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
+"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
+"left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join aptitud_medico_ocupacional_agro as ama ON (ama.n_orden=n.n_orden)\n" +
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"left join aptitud_altura_poderosa as ba ON (ba.n_orden=n.n_orden)   \n" +
+"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
+"WHERE n.razon_empresa ='COMPAÑIA MINERA PODEROSA S.A.' AND n.n_testaltura='TRUE' ";
+
+                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
+                }
+                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
+                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
+                }
+                
+                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                System.out.println("la consulta aplicada es:"+vSql);
+                if (oConn.FnBoolQueryExecute(vSql)) {
+                    try {
+                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                        int CantidaColumnas = rsmt.getColumnCount();
+                        for (int i = 1; i <= CantidaColumnas; i++) {
+                            model.addColumn(rsmt.getColumnLabel(i));
+                        }
+                        while (oConn.setResult.next()) {
+                            Object[] Fila = new Object[CantidaColumnas];
+                            for (int i = 0; i < CantidaColumnas; i++) {
+                                Fila[i] = oConn.setResult.getObject(i + 1);
+                            }
+                            model.addRow(Fila);
+                        }
+                        
+                        tbReporte = autoResizeColWidth(tbReporte, model);
+                        
+                        tbReporte.setModel(model);
+                        
+                        oConn.setResult.close();
+                    } catch (SQLException ex) {
+                        oFunc.SubSistemaMensajeError(ex.toString());
+                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_btnRepDiario4ActionPerformed
 public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -2820,6 +3252,10 @@ marcador=1;
     private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnMostrar1;
     private javax.swing.JButton btnRepDiario;
+    private javax.swing.JButton btnRepDiario1;
+    private javax.swing.JButton btnRepDiario2;
+    private javax.swing.JButton btnRepDiario3;
+    private javax.swing.JButton btnRepDiario4;
     private javax.swing.JButton btnRepSemanal;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cboContratas;

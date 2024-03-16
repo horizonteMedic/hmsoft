@@ -2275,20 +2275,20 @@ int seleccion = JOptionPane.showOptionDialog(
     }
     private void Editar(){
         if(!txtNorden.getText().isEmpty()){
-       String Sql="SELECT d.nombres_pa||' '||d.apellidos_pa as nombre ,d.sexo_pa,\n" +
-            "       n.razon_empresa,n.razon_contrata,\n" +
-            "       o.fecha_od, o.edad_od, o.lbl_18, o.lbl_17, o.lbl_16, o.lbl_15, \n" +
-            "       o.lbl_14, o.lbl_13, o.lbl_12, o.lbl_11, o.lbl_21, o.lbl_22, o.lbl_23, o.lbl_24, \n" +
-            "       o.lbl_25, o.lbl_26, o.lbl_27, o.lbl_28, o.lbl_31, o.lbl_32, o.lbl_33, o.lbl_34, \n" +
-            "       o.lbl_35, o.lbl_36, o.lbl_37, o.lbl_38, o.lbl_41, o.lbl_42, o.lbl_43, o.lbl_44, \n" +
-            "       o.lbl_45, o.lbl_46, o.lbl_47, o.lbl_48, o.txtpiezasmalestado, o.txtausentes, \n" +
-            "       o.txtcariadasoturar, o.txtporextraer, o.txtfracturada, o.txtobturacionesefectuadas, \n" +
-            "       o.txtpuentes, o.txtpprmetalicas, o.txtppracrilicas, o.txtptotal, o.txtnormales, \n" +
-            "       o.txtcoronas, o.txtobservaciones\n" +
-            "  FROM datos_paciente AS d \n" +
-            "  INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
-            "  INNER JOIN odontograma AS o ON (o.n_orden = n.n_orden) 	\n" +
-            "  WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
+           String Sql="SELECT d.nombres_pa||' '||d.apellidos_pa as nombre ,d.sexo_pa,\n" +
+                "       n.razon_empresa,n.razon_contrata,\n" +
+                "       o.fecha_od, o.edad_od, o.lbl_18, o.lbl_17, o.lbl_16, o.lbl_15, \n" +
+                "       o.lbl_14, o.lbl_13, o.lbl_12, o.lbl_11, o.lbl_21, o.lbl_22, o.lbl_23, o.lbl_24, \n" +
+                "       o.lbl_25, o.lbl_26, o.lbl_27, o.lbl_28, o.lbl_31, o.lbl_32, o.lbl_33, o.lbl_34, \n" +
+                "       o.lbl_35, o.lbl_36, o.lbl_37, o.lbl_38, o.lbl_41, o.lbl_42, o.lbl_43, o.lbl_44, \n" +
+                "       o.lbl_45, o.lbl_46, o.lbl_47, o.lbl_48, o.txtpiezasmalestado, o.txtausentes, \n" +
+                "       o.txtcariadasoturar, o.txtporextraer, o.txtfracturada, o.txtobturacionesefectuadas, \n" +
+                "       o.txtpuentes, o.txtpprmetalicas, o.txtppracrilicas, o.txtptotal, o.txtnormales, \n" +
+                "       o.txtcoronas, o.txtobservaciones\n" +
+                "  FROM datos_paciente AS d \n" +
+                "  INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
+                "  INNER JOIN odontograma AS o ON (o.n_orden = n.n_orden) 	\n" +
+                "  WHERE n.n_orden ='"+txtNorden.getText().toString() +"'";
          oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
@@ -2330,6 +2330,19 @@ int seleccion = JOptionPane.showOptionDialog(
                         String l46=oConn.setResult.getString("lbl_46");
                         String l47=oConn.setResult.getString("lbl_47");
                         String l48=oConn.setResult.getString("lbl_48");
+                        txtDientesmalEstado.setText(oConn.setResult.getString("txtpiezasmalestado"));
+                        txtAusente.setText(oConn.setResult.getString("txtausentes"));
+                        txtCariada.setText(oConn.setResult.getString("txtcariadasoturar"));
+                        txtExtraer.setText(oConn.setResult.getString("txtporextraer"));
+                        txtFracturadas.setText(oConn.setResult.getString("txtfracturada"));
+                        txtObturacionEfectuada.setText(oConn.setResult.getString("txtobturacionesefectuadas"));
+                        txtPuente.setText(oConn.setResult.getString("txtpuentes"));
+                        txtMetalica.setText(oConn.setResult.getString("txtpprmetalicas"));
+                        txtAcrilica.setText(oConn.setResult.getString("txtppracrilicas"));
+                        txtTotal.setText(oConn.setResult.getString("txtptotal"));
+                        txtNormal.setText(oConn.setResult.getString("txtnormales"));
+                        txtCorona.setText(oConn.setResult.getString("txtcoronas"));
+                        txtObservaciones.setText(oConn.setResult.getString("txtobservaciones"));
                         if(l18!= null){
                             lbl18.setIcon(new javax.swing.ImageIcon(getClass().getResource(l18.substring(31, l18.length()))));
                         }
@@ -2426,21 +2439,7 @@ int seleccion = JOptionPane.showOptionDialog(
                         if(l48!= null){
                             lbl48.setIcon(new javax.swing.ImageIcon(getClass().getResource(l48.substring(31, l48.length()))));
                         }
-                        
-                         
-                        txtDientesmalEstado.setText(oConn.setResult.getString("txtpiezasmalestado"));
-                        txtAusente.setText(oConn.setResult.getString("txtausentes"));
-                        txtCariada.setText(oConn.setResult.getString("txtcariadasoturar"));
-                        txtExtraer.setText(oConn.setResult.getString("txtporextraer"));
-                        txtFracturadas.setText(oConn.setResult.getString("txtfracturada"));
-                        txtObturacionEfectuada.setText(oConn.setResult.getString("txtobturacionesefectuadas"));
-                        txtPuente.setText(oConn.setResult.getString("txtpuentes"));
-                        txtMetalica.setText(oConn.setResult.getString("txtpprmetalicas"));
-                        txtAcrilica.setText(oConn.setResult.getString("txtppracrilicas"));
-                        txtTotal.setText(oConn.setResult.getString("txtptotal"));
-                        txtNormal.setText(oConn.setResult.getString("txtnormales"));
-                        txtCorona.setText(oConn.setResult.getString("txtcoronas"));
-                        txtObservaciones.setText(oConn.setResult.getString("txtobservaciones"));
+                       
                         oConn.setResult.close();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");

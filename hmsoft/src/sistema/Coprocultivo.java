@@ -399,6 +399,7 @@ public class Coprocultivo extends javax.swing.JInternalFrame {
 
         atxtObservaciones.setColumns(20);
         atxtObservaciones.setRows(5);
+        atxtObservaciones.setText("No se aisló Echerichia");
         atxtObservaciones.setBorder(javax.swing.BorderFactory.createTitledBorder("Observaciones:"));
         jScrollPane1.setViewportView(atxtObservaciones);
 
