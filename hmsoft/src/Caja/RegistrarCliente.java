@@ -163,7 +163,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         //txtContrata.setVisible(false);
 
     }
-
+    
     public void autorizarCertificado() {
 
         TrustManager[] trustAllCerts = new TrustManager[]{
@@ -509,6 +509,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtApellidos = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
+        txtProvincia = new javax.swing.JTextField();
+        txtDistrito = new javax.swing.JTextField();
+        txtCaserio = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         txtHistorial = new javax.swing.JTextField();
@@ -575,6 +578,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         txtNOperacion = new javax.swing.JTextField();
+        chkAltaHerrMan = new javax.swing.JCheckBox();
+        chkAltaRXCLumba = new javax.swing.JCheckBox();
+        chkAltaRXCDorso = new javax.swing.JCheckBox();
+        chkAltaRXCLumbo = new javax.swing.JCheckBox();
+        chkAltaPlomoS = new javax.swing.JCheckBox();
+        chkAltaMercO = new javax.swing.JCheckBox();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         txtNombresAlta = new javax.swing.JTextField();
@@ -863,63 +872,75 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        txtProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProvinciaActionPerformed(evt);
+            }
+        });
+
+        txtDistrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDistritoActionPerformed(evt);
+            }
+        });
+
+        txtCaserio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCaserioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel2))
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(16, 16, 16))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel2))
-                                        .addGap(18, 18, 18))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel25)
-                                        .addGap(24, 24, 24)))))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboCaserio, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtLugarNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                    .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                    .addComponent(cboDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDni)
-                                    .addComponent(txtNombre)
-                                    .addComponent(txtApellidos))
-                                .addGap(28, 28, 28)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(FechaNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboSexo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDni, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtApellidos, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(cboCaserio, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
+                                            .addComponent(cboDistrito, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
+                                            .addComponent(cboProvincia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtProvincia)
+                                            .addComponent(txtDistrito)
+                                            .addComponent(txtCaserio)))
+                                    .addComponent(cboDepartamento, javax.swing.GroupLayout.Alignment.LEADING, 0, 251, Short.MAX_VALUE)
+                                    .addComponent(txtLugarNacimiento, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(5, 5, 5)
                                 .addComponent(ckbSinDni)
-                                .addGap(108, 108, 108)
+                                .addGap(1, 1, 1)
                                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cboNivelEstudio, 0, 155, Short.MAX_VALUE)
-                                    .addComponent(cboProfesion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cboEstadoCivil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cboEstadoCivil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboNivelEstudio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboProfesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAddOcupacion))))
+                                .addComponent(btnAddOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(jLabel8))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel26))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addComponent(jLabel7))
@@ -932,11 +953,6 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                             .addComponent(jLabel20))
                         .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel10)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -953,32 +969,38 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel5)
                                 .addGap(4, 4, 4)
                                 .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel27))))
+                            .addComponent(jLabel27)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel10))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel35)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel1)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel14)
-                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel20)
-                            .addComponent(ckbSinDni)
-                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addGap(34, 34, 34)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(jLabel1)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(jLabel14)
+                                .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(jLabel20)
+                                .addComponent(ckbSinDni)
+                                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel35))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
@@ -1001,9 +1023,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(cboProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(btnAddOcupacion))
+                    .addComponent(btnAddOcupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboProfesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1018,22 +1040,31 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jLabel24))
                     .addComponent(cboDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cboProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel25)))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel26))
-                    .addComponent(cboDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDistrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addComponent(jLabel27))
-                    .addComponent(cboCaserio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboCaserio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCaserio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtTelefonoCasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1131,11 +1162,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(47, 47, 47)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel34)
                             .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1151,13 +1182,13 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                             .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(136, 136, 136)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(94, 94, 94)
+                .addGap(873, 873, 873)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1351,7 +1382,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jLabel29.setText("Mineral Exp. :");
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel30.setText("Exa. Médico :");
+        jLabel30.setText("Tipo Examen :");
 
         cboExamenMedico.setEditable(true);
         cboExamenMedico.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1532,8 +1563,19 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel22.setText("Exa. Adicional :");
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel22MousePressed(evt);
+            }
+        });
 
         chkAltaFist.setText("FIST-TEST");
+        chkAltaFist.setToolTipText("FIST-TEST");
+        chkAltaFist.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                chkAltaFistMousePressed(evt);
+            }
+        });
         chkAltaFist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAltaFistActionPerformed(evt);
@@ -1541,6 +1583,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         });
 
         chkAltaPsicosen.setText("PSICOSEN");
+        chkAltaPsicosen.setToolTipText("PSICOSENSOMETRIA");
         chkAltaPsicosen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAltaPsicosenActionPerformed(evt);
@@ -1548,13 +1591,15 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         });
 
         chkAltaTestAltura.setText("T. ALTURA");
+        chkAltaTestAltura.setToolTipText("TEST ALTURA");
         chkAltaTestAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAltaTestAlturaActionPerformed(evt);
             }
         });
 
-        chkAltaTrabCal.setText("T-CAL");
+        chkAltaTrabCal.setText("T. CAL");
+        chkAltaTrabCal.setToolTipText("TRABAJOS EN CALIENTE");
         chkAltaTrabCal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAltaTrabCalActionPerformed(evt);
@@ -1562,13 +1607,15 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         });
 
         chkAltaVisualCom.setText("VIS. COMPL");
+        chkAltaVisualCom.setToolTipText("VISUAL COMPLEMENTARIO");
         chkAltaVisualCom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAltaVisualComActionPerformed(evt);
             }
         });
 
-        chkAltaManipAlimen.setText("MANIP.ALIM.");
+        chkAltaManipAlimen.setText("M.ALIM.");
+        chkAltaManipAlimen.setToolTipText("MANIPULADOR DE ALIMENTOS");
         chkAltaManipAlimen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkAltaManipAlimenActionPerformed(evt);
@@ -1638,6 +1685,54 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        chkAltaHerrMan.setText("H.MAN");
+        chkAltaHerrMan.setToolTipText("HERRAMIENTAS MANUALES");
+        chkAltaHerrMan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAltaHerrManActionPerformed(evt);
+            }
+        });
+
+        chkAltaRXCLumba.setText("RX.C.LUMBA");
+        chkAltaRXCLumba.setToolTipText("RX COLUMNA LUMBAR F y L ");
+        chkAltaRXCLumba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAltaRXCLumbaActionPerformed(evt);
+            }
+        });
+
+        chkAltaRXCDorso.setText("RX.C.DORSO");
+        chkAltaRXCDorso.setToolTipText("RX COLUMNA DORSOLUMBAR F y L");
+        chkAltaRXCDorso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAltaRXCDorsoActionPerformed(evt);
+            }
+        });
+
+        chkAltaRXCLumbo.setText("RX.C.LUMBO");
+        chkAltaRXCLumbo.setToolTipText("RX COLUMNA  LUMBOSACRA F y L ");
+        chkAltaRXCLumbo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAltaRXCLumboActionPerformed(evt);
+            }
+        });
+
+        chkAltaPlomoS.setText("PLOMO S.");
+        chkAltaPlomoS.setToolTipText("PLOMO EN SANGRE");
+        chkAltaPlomoS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAltaPlomoSActionPerformed(evt);
+            }
+        });
+
+        chkAltaMercO.setText("MER.O");
+        chkAltaMercO.setToolTipText("MERCURIO EN ORINA");
+        chkAltaMercO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAltaMercOActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpOcupacionalLayout = new javax.swing.GroupLayout(jpOcupacional);
         jpOcupacional.setLayout(jpOcupacionalLayout);
         jpOcupacionalLayout.setHorizontalGroup(
@@ -1649,33 +1744,39 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                             .addGroup(jpOcupacionalLayout.createSequentialGroup()
                                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel42)
-                                    .addComponent(jLabel30)
                                     .addComponent(jLabel21)
                                     .addComponent(jLabel29)
                                     .addComponent(jLabel28)
                                     .addComponent(jLabel19)
                                     .addComponent(jLabel22)
                                     .addComponent(jLabel46)
-                                    .addComponent(jLabel47))
+                                    .addComponent(jLabel47)
+                                    .addComponent(jLabel30))
                                 .addGap(2, 2, 2))
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addComponent(jLabel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(2, 2, 2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpOcupacionalLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel53)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkAltaRXCLumba)
+                            .addComponent(chkAltaRXCLumbo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpOcupacionalLayout.createSequentialGroup()
-                        .addComponent(cboExplotacion, 0, 294, Short.MAX_VALUE)
+                        .addComponent(cboExplotacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(30, 30, 30))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpOcupacionalLayout.createSequentialGroup()
                         .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cboExamenMedico, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cboMineralExp, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboAltura, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
-                            .addComponent(cboArea, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                            .addComponent(cboAltura, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboArea, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCargoDesempenar, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(3, 3, 3)
                         .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1709,10 +1810,6 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(chkAltaTrabCal))
                                 .addGroup(jpOcupacionalLayout.createSequentialGroup()
-                                    .addComponent(chkAltaVisualCom)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(chkAltaManipAlimen))
-                                .addGroup(jpOcupacionalLayout.createSequentialGroup()
                                     .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(txtPrecioAdicional, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
@@ -1727,7 +1824,20 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                                         .addGroup(jpOcupacionalLayout.createSequentialGroup()
                                             .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(2, 2, 2)
-                                            .addComponent(cboAutorizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(cboAutorizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                    .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(chkAltaVisualCom)
+                                        .addComponent(chkAltaPlomoS))
+                                    .addGap(0, 0, 0)
+                                    .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(chkAltaMercO)
+                                        .addGroup(jpOcupacionalLayout.createSequentialGroup()
+                                            .addComponent(chkAltaManipAlimen)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(chkAltaHerrMan)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(chkAltaRXCDorso))))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jpOcupacionalLayout.setVerticalGroup(
@@ -1746,18 +1856,25 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cboExamenMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel30))
-                .addGap(5, 5, 5)
+                .addGap(2, 2, 2)
                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(chkAltaFist, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkAltaPsicosen, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkAltaTestAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chkAltaTrabCal, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkAltaVisualCom, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkAltaManipAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                    .addComponent(chkAltaManipAlimen, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkAltaHerrMan, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkAltaRXCDorso, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkAltaRXCLumbo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkAltaRXCLumba, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkAltaPlomoS, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkAltaMercO, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpOcupacionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cboExplotacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
@@ -1806,10 +1923,10 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         .addComponent(jComboBoxProtocolos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel53))
                     .addComponent(btnAddOcupacion3))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        jPanel6.add(jpOcupacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 430, 360));
+        jPanel6.add(jpOcupacional, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 207, 430, 390));
 
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel31.setText("DNI :");
@@ -2321,7 +2438,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(675, Short.MAX_VALUE))
+                .addContainerGap(1196, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2349,7 +2466,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                cboProvincia.requestFocus();
+                txtProvincia.requestFocus();
             }
         });
     }//GEN-LAST:event_cboDepartamentoActionPerformed
@@ -2529,8 +2646,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     txtDireccion.setText(oConn1.setResult.getString("direccion_pa"));
                     cboDepartamento.setSelectedItem(oConn1.setResult.getString("departamento_pa"));
                     cboProvincia.setSelectedItem(oConn1.setResult.getString("provincia_pa"));
+                    txtProvincia.setText(oConn1.setResult.getString("provincia_pa"));
                     cboDistrito.setSelectedItem(oConn1.setResult.getString("distrito_pa"));
+                    txtDistrito.setText(oConn1.setResult.getString("distrito_pa"));
                     cboCaserio.setSelectedItem(oConn1.setResult.getString("caserio_pa"));
+                    txtCaserio.setText(oConn1.setResult.getString("caserio_pa"));
                     txtTelefonoCasa.setText(oConn1.setResult.getString("tel_casa_pa"));
                     txtCelular.setText(oConn1.setResult.getString("cel_pa"));
                     txtHistorial.setText(oConn1.setResult.getString("historial_pa"));
@@ -2633,17 +2753,17 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     strSqlStmt += ",departamento_pa";
                     Query += ",'" + cboDepartamento.getSelectedItem().toString() + "'";
                 }
-                if (cboProvincia.getSelectedIndex() >= 0) {
+                if (txtProvincia.getText().trim().length() > 1) {
                     strSqlStmt += ",provincia_pa";
-                    Query += ",'" + cboProvincia.getSelectedItem().toString() + "'";
+                    Query += ",'" + txtProvincia.getText() + "'";
                 }
-//                if (cboDistrito.getSelectedIndex() >= 0) {
-                strSqlStmt += ",distrito_pa";
-                Query += ",'" + cboDistrito.getSelectedItem().toString() + "'";
-//                }
-                if (cboCaserio.getSelectedIndex() >= 0) {
+                if (txtDistrito.getText().trim().length() > 1) {
+                    strSqlStmt += ",distrito_pa";
+                    Query += ",'" + txtDistrito.getText() + "'";
+                }
+                if (txtCaserio.getText().trim().length() > 1) {
                     strSqlStmt += ",caserio_pa";
-                    Query += ",'" + cboCaserio.getSelectedItem().toString() + "'";
+                    Query += ",'" + txtCaserio.getText()+ "'";
                 }
                 if (txtTelefonoCasa.getText().trim().length() > 1) {
                     strSqlStmt += ",tel_casa_pa";
@@ -2995,7 +3115,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 String Sql = "INSERT INTO n_orden_ocupacional(cod_pa, razon_empresa, razon_contrata,"
                         + " nom_ex, altura_po,mineral_po, fecha_apertura_po,nom_examen,precio_po,cargo_de,n_medico,n_hora,area_o,"
                         + "tipo_pago,n_fisttest,n_psicosen,n_testaltura,color,gruposan,grupofactorsan,cod_clinica,visual_compl,"
-                        + "trab_calientes,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel,protocolo,precio_adic,autoriza,n_operacion)";//
+                        + "trab_calientes,manip_alimentos,txtobserv1,txtobserv2,tipoPrueba,cod_sede,nombrehotel,protocolo,"
+                        + "precio_adic,autoriza,n_operacion, herra_manuales, \n" 
+                        + "       rxc_dorso_lumbar, rxc_lumbar, rxc_lumbosacra, rxc_plomos, mercurioo)";//
                 Sql += " Values ('" + txtDniAlta.getText().toString() + "','"
                         + cboEmpresa.getSelectedItem().toString() + "','"
                         + cboContrata.getSelectedItem().toString() + "','";
@@ -3041,7 +3163,13 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         } else{
                             Sql+= cboAutorizacion.getSelectedItem().toString()+ "','";
                         }      
-                        Sql+=txtNOperacion.getText();
+                        Sql+= txtNOperacion.getText() + "','" 
+                              + chkAltaHerrMan.isSelected() + "','" 
+                              + chkAltaRXCDorso.isSelected() + "','" 
+                              + chkAltaRXCLumba.isSelected() + "','" 
+                              + chkAltaRXCLumbo.isSelected() + "','" 
+                              + chkAltaPlomoS.isSelected() + "','" 
+                              +chkAltaMercO.isSelected() ;
                         Sql+= "') RETURNING n_orden;";
                 //oFunc.SubSistemaMensajeError(Sql);
                 System.out.println(Sql);
@@ -3344,6 +3472,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         txtGS.setText("null");
                     }
                     AltaHabilitar();
+                    
                     CargarNorden();
 
                     NumColor();
@@ -3389,7 +3518,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                 + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                 + "n.visual_compl,n.trab_calientes,manip_alimentos,txtobserv1,txtobserv2,"
-                + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.precio_adic,n.autoriza,n_operacion "
+                + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,"
+                + "n.precio_adic,n.autoriza,n_operacion, n.herra_manuales, \n" +
+"                      n.rxc_dorso_lumbar,  n.rxc_lumbar,  n.rxc_lumbosacra,  n.rxc_plomos,  n.mercurioo  "
                 + "FROM n_orden_ocupacional AS n  "
                 + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                 + "WHERE n.cod_pa = " + cod + agregarConsulta + " order by n_orden desc limit 1;";
@@ -3438,6 +3569,13 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 txtPrecioAdicional.setText(oConn1.setResult.getString("precio_adic"));
                 cboAutorizacion.setSelectedItem(oConn1.setResult.getString("autoriza"));
                 txtNOperacion.setText(oConn1.setResult.getString("n_operacion"));
+                chkAltaHerrMan.setSelected(oConn1.setResult.getBoolean("herra_manuales"));
+                    chkAltaRXCDorso.setSelected(oConn1.setResult.getBoolean("rxc_dorso_lumbar"));
+                    chkAltaRXCLumba.setSelected(oConn1.setResult.getBoolean("rxc_lumbar"));
+                    chkAltaRXCLumbo.setSelected(oConn1.setResult.getBoolean("rxc_lumbosacra"));
+                    chkAltaPlomoS.setSelected(oConn1.setResult.getBoolean("rxc_plomos"));
+                    chkAltaMercO.setSelected(oConn1.setResult.getBoolean("mercurioo"));
+                
                 if (nomsede.equals("Trujillo")) {
                     jLabel44.setText(txtNorden.getText() + " - T");
                 } else {
@@ -3488,7 +3626,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                     + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                     + "n.visual_compl,n.trab_calientes,chkcovid1,chkcovid2,manip_alimentos,txtobserv1,txtobserv2,"
-                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,n.precio_adic,n.autoriza,n_operacion "
+                    + "n.gruposan,n.color,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,"
+                    + "n.precio_adic,n.autoriza,n_operacion, n.herra_manuales, \n" +
+"                      n.rxc_dorso_lumbar,  n.rxc_lumbar,  n.rxc_lumbosacra,  n.rxc_plomos,  n.mercurioo "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                     + "WHERE n.n_orden = " + cod + agregarConsulta;
@@ -3545,6 +3685,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         jLabel44.setText(txtNorden.getText() + " - H");
                     }
                     txtNOperacion.setText(oConn1.setResult.getString("n_operacion"));
+                    chkAltaHerrMan.setSelected(oConn1.setResult.getBoolean("herra_manuales"));
+                    chkAltaRXCDorso.setSelected(oConn1.setResult.getBoolean("rxc_dorso_lumbar"));
+                    chkAltaRXCLumba.setSelected(oConn1.setResult.getBoolean("rxc_lumbar"));
+                    chkAltaRXCLumbo.setSelected(oConn1.setResult.getBoolean("rxc_lumbosacra"));
+                    chkAltaPlomoS.setSelected(oConn1.setResult.getBoolean("rxc_plomos"));
+                    chkAltaMercO.setSelected(oConn1.setResult.getBoolean("mercurioo"));
                     txtDniAlta.setEditable(false);
                     hBotones(true);
 
@@ -3578,6 +3724,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 //        chkAltaCovid1.setEnabled(true);
 //        chkAltaCovid2.setEnabled(true);
         chkAltaManipAlimen.setEnabled(true);
+        chkAltaHerrMan.setEnabled(true);
+        chkAltaRXCDorso.setEnabled(true);
+        chkAltaRXCLumba.setEnabled(true);
+        chkAltaRXCLumbo.setEnabled(true);
+        chkAltaPlomoS.setEnabled(true);
+        chkAltaMercO.setEnabled(true);
         txtObserv1.setEnabled(true);
         txtObserv2.setEnabled(true);
         txtPrecioAdicional.setEnabled(true);
@@ -3619,7 +3771,13 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                         + "protocolo='" + jComboBoxProtocolos.getSelectedItem().toString() + "',"
                         + "precio_adic='" + txtPrecioAdicional.getText() + "', "
                         + "autoriza='" + cboAutorizacion.getSelectedItem().toString() + "',"
-                        + "n_operacion='" + txtNOperacion.getText() + "'";
+                        + "n_operacion='" + txtNOperacion.getText()  + "',"
+                         + "herra_manuales='" + chkAltaHerrMan.isSelected()  + "',"
+                         + "rxc_dorso_lumbar='" + chkAltaRXCDorso.isSelected()  + "',"
+                         + "rxc_lumbar='" + chkAltaRXCLumba.isSelected()  + "',"
+                         + "rxc_lumbosacra='" + chkAltaRXCLumbo.isSelected()  + "',"
+                         + "rxc_plomos='" + chkAltaPlomoS.isSelected()  + "',"
+                        + "mercurioo='" + chkAltaMercO.isSelected() + "'";
 //                        sCodigo = txtNorden.getText();
                 sCodigo = tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString();
                 strSqlStmt += " Where n_orden = " + sCodigo + "";
@@ -3661,6 +3819,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 
     private void chkAltaFistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAltaFistActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_chkAltaFistActionPerformed
 
     private void tbOcupacionalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbOcupacionalKeyReleased
@@ -3671,7 +3830,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     + "n.mineral_po, n.fecha_apertura_po, n.precio_po, n.estado_ex, n.nom_examen, "
                     + "n.cargo_de, n.area_o, n.n_medico, n_hora,n.tipo_pago,n.n_fisttest,n.n_psicosen,n.n_testaltura,"
                     + "visual_compl,trab_calientes,manip_alimentos,txtobserv1,txtobserv2,"
-                    + "n.color,n.gruposan,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,n.precio_adic,n.autoriza, n_operacion "
+                    + "n.color,n.gruposan,n.grupofactorsan,n.cod_clinica,n.tipoprueba,n.nombrehotel,n.protocolo,"
+                    + "n.precio_adic,n.autoriza, n_operacion, n.herra_manuales, \n" +
+"                      n.rxc_dorso_lumbar,  n.rxc_lumbar,  n.rxc_lumbosacra,  n.rxc_plomos,  n.mercurioo "
                     + "FROM n_orden_ocupacional AS n  "
                     + "INNER JOIN datos_paciente AS d ON(n.cod_pa = d.cod_pa) "
                     + "WHERE n.n_orden = " + cod + agregarConsulta;
@@ -3701,7 +3862,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     chkAltaTestAltura.setSelected(oConn1.setResult.getBoolean("n_testaltura"));
                     chkAltaVisualCom.setSelected(oConn1.setResult.getBoolean("visual_compl"));
                     chkAltaTrabCal.setSelected(oConn1.setResult.getBoolean("trab_calientes"));
-//                    chkAltaCovid1.setSelected(oConn1.setResult.getBoolean("chkcovid1"));
+//                    chkAltaCovid1.setSelected(oConn1.sementos"));tResult.getBoolean("chkcovid1"));
 //                    chkAltaCovid2.setSelected(oConn1.setResult.getBoolean("chkcovid2"));
                     chkAltaManipAlimen.setSelected(oConn1.setResult.getBoolean("manip_alimentos"));
                     txtNumColor.setText(oConn1.setResult.getString("color"));
@@ -3714,6 +3875,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     txtPrecioAdicional.setText(oConn1.setResult.getString("precio_adic"));
                     cboAutorizacion.setSelectedItem(oConn1.setResult.getString("autoriza"));
                     txtNOperacion.setText(oConn1.setResult.getString("n_operacion"));
+                    chkAltaHerrMan.setSelected(oConn1.setResult.getBoolean("herra_manuales"));
+                    chkAltaRXCDorso.setSelected(oConn1.setResult.getBoolean("rxc_dorso_lumbar"));
+                    chkAltaRXCLumba.setSelected(oConn1.setResult.getBoolean("rxc_lumbar"));
+                    chkAltaRXCLumbo.setSelected(oConn1.setResult.getBoolean("rxc_lumbosacra"));
+                    chkAltaPlomoS.setSelected(oConn1.setResult.getBoolean("rxc_plomos"));
+                    chkAltaMercO.setSelected(oConn1.setResult.getBoolean("mercurioo"));
                     if (nomsede.equals("Trujillo")) {
                         jLabel44.setText(txtNorden.getText() + " - T");
                     } else {
@@ -4557,6 +4724,55 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private void txtNOperacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNOperacionKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNOperacionKeyTyped
+
+    private void txtProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProvinciaActionPerformed
+        // TODO add your handling code here:
+        txtDistrito.requestFocus();
+    }//GEN-LAST:event_txtProvinciaActionPerformed
+
+    private void txtDistritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDistritoActionPerformed
+        // TODO add your handling code here:
+        txtCaserio.requestFocus();
+    }//GEN-LAST:event_txtDistritoActionPerformed
+
+    private void txtCaserioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCaserioActionPerformed
+        // TODO add your handling code here:
+        txtCelular.requestFocus();
+    }//GEN-LAST:event_txtCaserioActionPerformed
+
+    private void chkAltaHerrManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAltaHerrManActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAltaHerrManActionPerformed
+
+    private void chkAltaRXCLumbaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAltaRXCLumbaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAltaRXCLumbaActionPerformed
+
+    private void chkAltaRXCDorsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAltaRXCDorsoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAltaRXCDorsoActionPerformed
+
+    private void chkAltaRXCLumboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAltaRXCLumboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAltaRXCLumboActionPerformed
+
+    private void chkAltaPlomoSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAltaPlomoSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAltaPlomoSActionPerformed
+
+    private void chkAltaMercOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAltaMercOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAltaMercOActionPerformed
+
+    private void chkAltaFistMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chkAltaFistMousePressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_chkAltaFistMousePressed
+
+    private void jLabel22MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MousePressed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jLabel22MousePressed
     private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -4575,19 +4791,14 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
                 //viewer.setAlwaysOnTop(true);
                 //viewer.setVisible(true);
-            } else if ("ANUAL".equals(c) || "PRE-OCUPACIONAL".equals(c) || "RETIRO".equals(c) || "REUBICACION".equals(c)) {
+            } else if ("ANUAL".equals(c) || "PRE-OCUPACIONAL".equals(c) || "RETIRO".equals(c) || "REUBICACION".equals(c)|| "REINCORPORACION".equals(c)) {
 
-                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamen.jasper";
+               String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamen1.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
                 JasperPrintManager.printReport(myPrint, true);
-
-                //JasperViewer viewer = new JasperViewer(myPrint, false);
-                //viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
-                //viewer.setAlwaysOnTop(true);
-                //viewer.setVisible(true);
             }
-
+            
             if ("TEST-ALTURA".equals(c) && !chkAltaPsicosen.isSelected() && "LA ARENA S.A.".equals(empresa)) {
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "TestAltura.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4672,7 +4883,32 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 JasperPrintManager.printReport(myPrint, true);
 
             }
+            if (c.contains("RAYOS X")) {
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "RayosX.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
 
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+
+                viewer.setTitle("Hoja de Ruta de Laboratorio Clinico");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                JasperPrintManager.printReport(myPrint, true);
+
+            }
+            if (c.contains("ECOGRAFIAS") ) {
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ECOGRAFIA.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+
+                viewer.setTitle("Hoja de Ruta de Laboratorio Clinico");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                JasperPrintManager.printReport(myPrint, true);
+
+            }
             if ("FACTORES DE RIESGO".equals(c)) {
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "factoresRiesgo.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
@@ -4748,9 +4984,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 viewer.setTitle("Hoja de Ruta EXAMENES OCUPACIONALES");
                 //viewer.setAlwaysOnTop(true);
                 viewer.setVisible(true);
-            } else if ("ANUAL".equals(c) || "PRE-OCUPACIONAL".equals(c) || "RETIRO".equals(c) || "REUBICACION".equals(c)) {
+            } else if ("ANUAL".equals(c) || "PRE-OCUPACIONAL".equals(c) || "RETIRO".equals(c) || "REUBICACION".equals(c)|| "REINCORPORACION".equals(c)) {
 
-                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamen.jasper";
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ReporteExamen1.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
                 JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -4840,6 +5076,32 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             }
             if (c.contains("LABORATORIO CLINICO") || c.equals("CONSULTA MEDICA")) {
                 String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "labClinico.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+
+                viewer.setTitle("Hoja de Ruta de Laboratorio Clinico");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                JasperPrintManager.printReport(myPrint, true);
+
+            }
+            if (c.contains("RAYOS X")) {
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "RayosX.jasper";
+                JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+                JasperViewer viewer = new JasperViewer(myPrint, false);
+
+                viewer.setTitle("Hoja de Ruta de Laboratorio Clinico");
+                // viewer.setAlwaysOnTop(true);
+                viewer.setVisible(true);
+                JasperPrintManager.printReport(myPrint, true);
+
+            }
+            if (c.contains("ECOGRAFIAS") ) {
+                String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ECOGRAFIA.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
 
@@ -4946,9 +5208,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     + "',estado_civil_pa = '" + cboEstadoCivil.getSelectedItem().toString()
                     + "',direccion_pa = '" + txtDireccion.getText()
                     + "',departamento_pa = '" + cboDepartamento.getSelectedItem().toString()
-                    + "',provincia_pa = '" + cboProvincia.getSelectedItem().toString()
-                    + "',distrito_pa = '" + cboDistrito.getSelectedItem().toString()
-                    + "',caserio_pa = '" + cboCaserio.getSelectedItem()
+                    + "',provincia_pa = '" + txtProvincia.getText()
+                    + "',distrito_pa = '" + txtDistrito.getText()
+                    + "',caserio_pa = '" + txtCaserio.getText()
                     + "',tel_casa_pa = '" + txtTelefonoCasa.getText()
                     + //"',tel_trabajo_pa = '"+txtTelefonoTrabajo.getText()+
                     "',cel_pa = '" + txtCelular.getText();
@@ -5155,8 +5417,14 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox cboSexo;
     private javax.swing.JComboBox cboTipoExamen;
     private javax.swing.JCheckBox chkAltaFist;
+    private javax.swing.JCheckBox chkAltaHerrMan;
     private javax.swing.JCheckBox chkAltaManipAlimen;
+    private javax.swing.JCheckBox chkAltaMercO;
+    private javax.swing.JCheckBox chkAltaPlomoS;
     private javax.swing.JCheckBox chkAltaPsicosen;
+    private javax.swing.JCheckBox chkAltaRXCDorso;
+    private javax.swing.JCheckBox chkAltaRXCLumba;
+    private javax.swing.JCheckBox chkAltaRXCLumbo;
     private javax.swing.JCheckBox chkAltaTestAltura;
     private javax.swing.JCheckBox chkAltaTrabCal;
     private javax.swing.JCheckBox chkAltaVisualCom;
@@ -5255,9 +5523,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBuscarCod;
     private javax.swing.JTextField txtBuscarNombre;
     private javax.swing.JTextField txtCargoDesempenar;
+    private javax.swing.JTextField txtCaserio;
     private javax.swing.JTextField txtCelular;
     private javax.swing.JTextField txtContrata;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtDistrito;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtDniAlta;
     private javax.swing.JTextField txtEmail;
@@ -5281,6 +5551,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtObserv2;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtPrecioAdicional;
+    private javax.swing.JTextField txtProvincia;
     private javax.swing.JTextField txtTelefonoCasa;
     // End of variables declaration//GEN-END:variables
     public void fecha() {
@@ -5467,7 +5738,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         } else if (cboDepartamento.getEditor().getItem().toString().isEmpty()) {
             oFunc.SubSistemaMensajeError("Ingrese Departamento");
             bResultado = false;
-        } else if (cboDistrito.getEditor().getItem().toString().isEmpty()) {
+        } else if (txtDistrito.getText().trim().isEmpty()) {
             oFunc.SubSistemaMensajeError("Ingrese Distrito");
             bResultado = false;
         } else if (txtTelefonoCasa.getText().isEmpty() && txtCelular.getText().isEmpty()) {
@@ -5524,12 +5795,15 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtCelular.setEnabled(false);
         cboSexo.setEnabled(false);
         cboProvincia.setEnabled(false);
+        txtProvincia.setEnabled(false);
         cboProfesion.setEnabled(false);
         cboNivelEstudio.setEnabled(false);
         cboEstadoCivil.setEnabled(false);
         cboDistrito.setEnabled(false);
+        txtDistrito.setEnabled(false);
         cboDepartamento.setEnabled(false);
         cboCaserio.setEnabled(false);
+        txtCaserio.setEnabled(false);
         btnAddOcupacion.setVisible(false);
         FechaNacimiento.setEnabled(false);
         txtGrupoSan.setEnabled(false);
@@ -5550,12 +5824,15 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtCelular.setText("");
         cboSexo.setSelectedIndex(-1);
         cboProvincia.setSelectedIndex(-1);
+        txtProvincia.setText(null);
         cboProfesion.setSelectedIndex(-1);
         cboNivelEstudio.setSelectedIndex(-1);
         cboEstadoCivil.setSelectedIndex(-1);
         cboDistrito.setSelectedIndex(-1);
+        txtDistrito.setText(null);
         cboDepartamento.setSelectedIndex(-1);
         cboCaserio.setSelectedIndex(-1);
+        txtCaserio.setText(null);
         FechaNacimiento.setDate(null);
         txtHistorial.setText("");
     }
@@ -5573,12 +5850,15 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtCelular.setEnabled(true);
         cboSexo.setEnabled(true);
         cboProvincia.setEnabled(true);
+        txtProvincia.setEnabled(true);
         cboProfesion.setEnabled(true);
         cboNivelEstudio.setEnabled(true);
         cboEstadoCivil.setEnabled(true);
         cboDistrito.setEnabled(true);
+        txtDistrito.setEnabled(true);
         cboDepartamento.setEnabled(true);
         cboCaserio.setEnabled(true);
+        txtCaserio.setEnabled(true);
         btnAddOcupacion.setVisible(true);
         FechaNacimiento.setEnabled(true);
         txtGrupoSan.setEnabled(true);
@@ -5886,6 +6166,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 //        chkAltaCovid1.setEnabled(false);
 //        chkAltaCovid2.setEnabled(false);
         chkAltaManipAlimen.setEnabled(false);
+        chkAltaHerrMan.setEnabled(false);
+        chkAltaRXCDorso.setEnabled(false);
+        chkAltaRXCLumba.setEnabled(false);
+        chkAltaRXCLumbo.setEnabled(false);
+        chkAltaPlomoS.setEnabled(false);
+        chkAltaMercO.setEnabled(false);
         txtPrecioAdicional.setEnabled(false);
         cboAutorizacion.setEnabled(false);
         // cboSedeClinica.setEnabled(false);  
@@ -5922,6 +6208,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 //        chkAltaCovid1.setEnabled(true);
 //        chkAltaCovid2.setEnabled(true);
         chkAltaManipAlimen.setEnabled(true);
+        chkAltaHerrMan.setEnabled(true);
+        chkAltaRXCDorso.setEnabled(true);
+        chkAltaRXCLumba.setEnabled(true);
+        chkAltaRXCLumbo.setEnabled(true);
+        chkAltaPlomoS.setEnabled(true);
+        chkAltaMercO.setEnabled(true);
         txtGrupoSan.setEnabled(true);
         txtFactorSan.setEnabled(true);
 //        cboSedeClinica.setEnabled(true);
@@ -5964,6 +6256,12 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 //        chkAltaCovid1.setEnabled(false);
 //        chkAltaCovid2.setEnabled(false);
         chkAltaManipAlimen.setEnabled(false);
+        chkAltaHerrMan.setEnabled(false);
+        chkAltaRXCDorso.setEnabled(false);
+        chkAltaRXCLumba.setEnabled(false);
+        chkAltaRXCLumbo.setEnabled(false);
+        chkAltaPlomoS.setEnabled(false);
+        chkAltaMercO.setEnabled(false);
         txtGrupoSan.setText(null);
         txtFactorSan.setText(null);
         txtObserv1.setText(null);

@@ -50,6 +50,33 @@ public class Parasitologia extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        buttonGroup6 = new javax.swing.ButtonGroup();
+        buttonGroup7 = new javax.swing.ButtonGroup();
+        buttonGroup8 = new javax.swing.ButtonGroup();
+        buttonGroup9 = new javax.swing.ButtonGroup();
+        buttonGroup10 = new javax.swing.ButtonGroup();
+        buttonGroup11 = new javax.swing.ButtonGroup();
+        buttonGroup12 = new javax.swing.ButtonGroup();
+        buttonGroup13 = new javax.swing.ButtonGroup();
+        buttonGroup14 = new javax.swing.ButtonGroup();
+        buttonGroup15 = new javax.swing.ButtonGroup();
+        buttonGroup16 = new javax.swing.ButtonGroup();
+        buttonGroup17 = new javax.swing.ButtonGroup();
+        buttonGroup18 = new javax.swing.ButtonGroup();
+        buttonGroup19 = new javax.swing.ButtonGroup();
+        buttonGroup20 = new javax.swing.ButtonGroup();
+        buttonGroup21 = new javax.swing.ButtonGroup();
+        buttonGroup22 = new javax.swing.ButtonGroup();
+        buttonGroup23 = new javax.swing.ButtonGroup();
+        buttonGroup24 = new javax.swing.ButtonGroup();
+        buttonGroup25 = new javax.swing.ButtonGroup();
+        buttonGroup26 = new javax.swing.ButtonGroup();
+        buttonGroup27 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         txtNorden = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
@@ -75,6 +102,22 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         txtSangreVisible = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         txtRestosAlimenticios = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        txtGrasa = new javax.swing.JTextField();
+        chkMarron = new javax.swing.JCheckBox();
+        chkMostaza = new javax.swing.JCheckBox();
+        chkVerdusco = new javax.swing.JCheckBox();
+        chkSolido = new javax.swing.JCheckBox();
+        chkSemisol = new javax.swing.JCheckBox();
+        chkDiarreico = new javax.swing.JCheckBox();
+        chMausente = new javax.swing.JCheckBox();
+        chkMpresente = new javax.swing.JCheckBox();
+        chGausente = new javax.swing.JCheckBox();
+        chkGpresente = new javax.swing.JCheckBox();
+        chSausente = new javax.swing.JCheckBox();
+        chkSpresente = new javax.swing.JCheckBox();
+        chRausente = new javax.swing.JCheckBox();
+        chkRpresente = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         txtLeucocitos = new javax.swing.JTextField();
@@ -82,6 +125,12 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         txtHematies = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         txtLugol = new javax.swing.JTextField();
+        chkLNoObs = new javax.swing.JCheckBox();
+        chkLcampo = new javax.swing.JCheckBox();
+        chkHNoObs = new javax.swing.JCheckBox();
+        chkHcampo = new javax.swing.JCheckBox();
+        chkUausente = new javax.swing.JCheckBox();
+        chkpresente = new javax.swing.JCheckBox();
         jPanel11 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         txtColor1 = new javax.swing.JTextField();
@@ -93,6 +142,22 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         txtSangreVisible1 = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         txtRestosAlimenticios1 = new javax.swing.JTextField();
+        txtGrasa1 = new javax.swing.JTextField();
+        jLabel50 = new javax.swing.JLabel();
+        chkMarron1 = new javax.swing.JCheckBox();
+        chkMostaza1 = new javax.swing.JCheckBox();
+        chkVerdusco1 = new javax.swing.JCheckBox();
+        chkSolido1 = new javax.swing.JCheckBox();
+        chkSemisol1 = new javax.swing.JCheckBox();
+        chkDiarreico1 = new javax.swing.JCheckBox();
+        chMausente1 = new javax.swing.JCheckBox();
+        chkMpresente1 = new javax.swing.JCheckBox();
+        chGausente1 = new javax.swing.JCheckBox();
+        chkGpresente1 = new javax.swing.JCheckBox();
+        chSausente1 = new javax.swing.JCheckBox();
+        chkSpresente1 = new javax.swing.JCheckBox();
+        chRausente1 = new javax.swing.JCheckBox();
+        chkRpresente1 = new javax.swing.JCheckBox();
         jPanel12 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         txtColor2 = new javax.swing.JTextField();
@@ -104,6 +169,22 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         txtSangreVisible2 = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         txtRestosAlimenticios2 = new javax.swing.JTextField();
+        txtGrasa2 = new javax.swing.JTextField();
+        jLabel51 = new javax.swing.JLabel();
+        chkMarron2 = new javax.swing.JCheckBox();
+        chkMostaza2 = new javax.swing.JCheckBox();
+        chkVerdusco2 = new javax.swing.JCheckBox();
+        chkSolido2 = new javax.swing.JCheckBox();
+        chkSemisol2 = new javax.swing.JCheckBox();
+        chkDiarreico2 = new javax.swing.JCheckBox();
+        chMausente2 = new javax.swing.JCheckBox();
+        chkMpresente2 = new javax.swing.JCheckBox();
+        chGausente2 = new javax.swing.JCheckBox();
+        chkGpresente2 = new javax.swing.JCheckBox();
+        chSausente2 = new javax.swing.JCheckBox();
+        chkSpresente2 = new javax.swing.JCheckBox();
+        chRausente2 = new javax.swing.JCheckBox();
+        chkRpresente2 = new javax.swing.JCheckBox();
         jPanel13 = new javax.swing.JPanel();
         jLabel43 = new javax.swing.JLabel();
         txtLeucocitos1 = new javax.swing.JTextField();
@@ -111,6 +192,12 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         txtHematies1 = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
         txtLugol1 = new javax.swing.JTextField();
+        chkLNoObs1 = new javax.swing.JCheckBox();
+        chkLcampo1 = new javax.swing.JCheckBox();
+        chkHNoObs1 = new javax.swing.JCheckBox();
+        chkHcampo1 = new javax.swing.JCheckBox();
+        chkUausente1 = new javax.swing.JCheckBox();
+        chkUpresente1 = new javax.swing.JCheckBox();
         jPanel14 = new javax.swing.JPanel();
         jLabel46 = new javax.swing.JLabel();
         txtLeucocitos2 = new javax.swing.JTextField();
@@ -118,6 +205,13 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         txtHematies2 = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
         txtLugol2 = new javax.swing.JTextField();
+        chkLNoObs2 = new javax.swing.JCheckBox();
+        chkLcampo2 = new javax.swing.JCheckBox();
+        chkHNoObs2 = new javax.swing.JCheckBox();
+        chkHcampo2 = new javax.swing.JCheckBox();
+        chkUausente2 = new javax.swing.JCheckBox();
+        chkUpresente2 = new javax.swing.JCheckBox();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setClosable(true);
         setTitle("PARASITOLOGIA");
@@ -217,6 +311,120 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 
         jLabel30.setText("Restos Alimenticios :");
 
+        jLabel49.setText("Grasa :");
+
+        buttonGroup1.add(chkMarron);
+        chkMarron.setText("MARRON");
+        chkMarron.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMarronActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(chkMostaza);
+        chkMostaza.setText("MOSTAZA");
+        chkMostaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMostazaActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(chkVerdusco);
+        chkVerdusco.setText("VERDOSO");
+        chkVerdusco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkVerduscoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(chkSolido);
+        chkSolido.setText("SOLIDO");
+        chkSolido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSolidoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(chkSemisol);
+        chkSemisol.setText("SEMISOLIDO");
+        chkSemisol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSemisolActionPerformed(evt);
+            }
+        });
+
+        buttonGroup2.add(chkDiarreico);
+        chkDiarreico.setText("DIARREICO");
+        chkDiarreico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDiarreicoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup3.add(chMausente);
+        chMausente.setText("AUSENTE");
+        chMausente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chMausenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup3.add(chkMpresente);
+        chkMpresente.setText("PRESENTE");
+        chkMpresente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMpresenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup4.add(chGausente);
+        chGausente.setText("AUSENTE");
+        chGausente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chGausenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup4.add(chkGpresente);
+        chkGpresente.setText("PRESENTE");
+        chkGpresente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkGpresenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup5.add(chSausente);
+        chSausente.setText("AUSENTE");
+        chSausente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chSausenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup5.add(chkSpresente);
+        chkSpresente.setText("PRESENTE");
+        chkSpresente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSpresenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup6.add(chRausente);
+        chRausente.setText("AUSENTE");
+        chRausente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chRausenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup6.add(chkRpresente);
+        chkRpresente.setText("PRESENTE");
+        chkRpresente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRpresenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -224,48 +432,113 @@ public class Parasitologia extends javax.swing.JInternalFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtAspecto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                            .addComponent(txtColor, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtMocoFecal)
-                    .addComponent(txtSangreVisible)
-                    .addComponent(txtRestosAlimenticios))
-                .addContainerGap())
+                        .addGap(24, 24, 24)
+                        .addComponent(chkMarron)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkMostaza)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkVerdusco))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(chkSolido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkSemisol)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkDiarreico))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMocoFecal)
+                            .addComponent(txtSangreVisible)
+                            .addComponent(txtRestosAlimenticios)
+                            .addComponent(txtGrasa)
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(chRausente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkRpresente))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(chSausente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkSpresente))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(chGausente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkGpresente))
+                                    .addGroup(jPanel9Layout.createSequentialGroup()
+                                        .addComponent(chMausente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkMpresente)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtAspecto)
+                            .addComponent(txtColor))
+                        .addContainerGap())))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkMarron, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkMostaza, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkVerdusco, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(txtAspecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkSolido, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSemisol, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkDiarreico, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(txtMocoFecal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chMausente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkMpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49)
+                    .addComponent(txtGrasa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chGausente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkGpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(txtSangreVisible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chSausente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(txtRestosAlimenticios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chRausente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkRpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EXAMEN MICROSCOPICO I", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 153))); // NOI18N
@@ -280,24 +553,93 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 
         jLabel32.setText("Hematíes :");
 
-        jLabel33.setText("Lugol :");
+        jLabel33.setText("Inv. Parasitos :");
+
+        buttonGroup7.add(chkLNoObs);
+        chkLNoObs.setText("No se observan");
+        chkLNoObs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLNoObsActionPerformed(evt);
+            }
+        });
+
+        buttonGroup7.add(chkLcampo);
+        chkLcampo.setText("___x campo");
+        chkLcampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLcampoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup8.add(chkHNoObs);
+        chkHNoObs.setText("No se observan");
+        chkHNoObs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHNoObsActionPerformed(evt);
+            }
+        });
+
+        buttonGroup8.add(chkHcampo);
+        chkHcampo.setText("___x campo");
+        chkHcampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHcampoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup9.add(chkUausente);
+        chkUausente.setText("AUSENTE");
+        chkUausente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkUausenteActionPerformed(evt);
+            }
+        });
+
+        buttonGroup9.add(chkpresente);
+        chkpresente.setText("PRESENTE");
+        chkpresente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkpresenteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtHematies, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(txtLeucocitos, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLugol))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel10Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtHematies, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtLeucocitos, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLugol))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(chkUausente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkpresente))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(chkHNoObs)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkHcampo))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(chkLNoObs)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkLcampo)))))
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,13 +650,25 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                     .addComponent(txtLeucocitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkLNoObs, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkLcampo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
                     .addComponent(txtHematies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkHNoObs, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkHcampo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(txtLugol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtLugol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkUausente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkpresente, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MUESTRA: HECES II", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 153))); // NOI18N
@@ -335,6 +689,120 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 
         jLabel37.setText("Restos Alimenticios :");
 
+        jLabel50.setText("Grasa :");
+
+        buttonGroup10.add(chkMarron1);
+        chkMarron1.setText("MARRON");
+        chkMarron1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMarron1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup10.add(chkMostaza1);
+        chkMostaza1.setText("MOSTAZA");
+        chkMostaza1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMostaza1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup10.add(chkVerdusco1);
+        chkVerdusco1.setText("VERDOSO");
+        chkVerdusco1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkVerdusco1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup11.add(chkSolido1);
+        chkSolido1.setText("SOLIDO");
+        chkSolido1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSolido1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup11.add(chkSemisol1);
+        chkSemisol1.setText("SEMISOLIDO");
+        chkSemisol1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSemisol1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup11.add(chkDiarreico1);
+        chkDiarreico1.setText("DIARREICO");
+        chkDiarreico1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDiarreico1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup12.add(chMausente1);
+        chMausente1.setText("AUSENTE");
+        chMausente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chMausente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup12.add(chkMpresente1);
+        chkMpresente1.setText("PRESENTE");
+        chkMpresente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMpresente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup14.add(chGausente1);
+        chGausente1.setText("AUSENTE");
+        chGausente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chGausente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup14.add(chkGpresente1);
+        chkGpresente1.setText("PRESENTE");
+        chkGpresente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkGpresente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup15.add(chSausente1);
+        chSausente1.setText("AUSENTE");
+        chSausente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chSausente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup15.add(chkSpresente1);
+        chkSpresente1.setText("PRESENTE");
+        chkSpresente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSpresente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup16.add(chRausente1);
+        chRausente1.setText("AUSENTE");
+        chRausente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chRausente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup16.add(chkRpresente1);
+        chkRpresente1.setText("PRESENTE");
+        chkRpresente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRpresente1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -342,22 +810,61 @@ public class Parasitologia extends javax.swing.JInternalFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                        .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                                .addComponent(chkSolido1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkSemisol1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkDiarreico1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                                .addComponent(chkMarron1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkMostaza1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkVerdusco1))))
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtAspecto1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                            .addComponent(txtColor1, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtMocoFecal1)
-                    .addComponent(txtSangreVisible1)
-                    .addComponent(txtRestosAlimenticios1))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                                        .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtGrasa1)
+                            .addComponent(txtMocoFecal1)
+                            .addComponent(txtSangreVisible1)
+                            .addComponent(txtRestosAlimenticios1)
+                            .addComponent(txtAspecto1)
+                            .addComponent(txtColor1)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(chRausente1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkRpresente1))
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(chSausente1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkSpresente1))
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(chGausente1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkGpresente1))
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(chMausente1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkMpresente1)))
+                                .addGap(0, 2, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -367,23 +874,53 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(txtColor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkMarron1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkMostaza1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkVerdusco1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
                     .addComponent(txtAspecto1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkSolido1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSemisol1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkDiarreico1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(txtMocoFecal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chMausente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkMpresente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel50)
+                    .addComponent(txtGrasa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chGausente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkGpresente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(txtSangreVisible1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chSausente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSpresente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
                     .addComponent(txtRestosAlimenticios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chRausente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkRpresente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MUESTRA: HECES III", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 153))); // NOI18N
@@ -404,29 +941,190 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 
         jLabel42.setText("Restos Alimenticios :");
 
+        jLabel51.setText("Grasa :");
+
+        buttonGroup20.add(chkMarron2);
+        chkMarron2.setText("MARRON");
+        chkMarron2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMarron2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup20.add(chkMostaza2);
+        chkMostaza2.setText("MOSTAZA");
+        chkMostaza2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMostaza2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup20.add(chkVerdusco2);
+        chkVerdusco2.setText("VERDOSO");
+        chkVerdusco2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkVerdusco2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup21.add(chkSolido2);
+        chkSolido2.setText("SOLIDO");
+        chkSolido2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSolido2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup21.add(chkSemisol2);
+        chkSemisol2.setText("SEMISOLIDO");
+        chkSemisol2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSemisol2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup21.add(chkDiarreico2);
+        chkDiarreico2.setText("DIARREICO");
+        chkDiarreico2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkDiarreico2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup22.add(chMausente2);
+        chMausente2.setText("AUSENTE");
+        chMausente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chMausente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup22.add(chkMpresente2);
+        chkMpresente2.setText("PRESENTE");
+        chkMpresente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMpresente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup23.add(chGausente2);
+        chGausente2.setText("AUSENTE");
+        chGausente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chGausente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup23.add(chkGpresente2);
+        chkGpresente2.setText("PRESENTE");
+        chkGpresente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkGpresente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup24.add(chSausente2);
+        chSausente2.setText("AUSENTE");
+        chSausente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chSausente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup24.add(chkSpresente2);
+        chkSpresente2.setText("PRESENTE");
+        chkSpresente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSpresente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup25.add(chRausente2);
+        chRausente2.setText("AUSENTE");
+        chRausente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chRausente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup25.add(chkRpresente2);
+        chkRpresente2.setText("PRESENTE");
+        chkRpresente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRpresente2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                        .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtAspecto2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                            .addComponent(txtColor2, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtMocoFecal2)
-                    .addComponent(txtSangreVisible2)
-                    .addComponent(txtRestosAlimenticios2))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(chkMarron2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkMostaza2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkVerdusco2))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(chkSolido2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkSemisol2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkDiarreico2))))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+                                        .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(32, 32, 32))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMocoFecal2)
+                            .addComponent(txtGrasa2)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txtSangreVisible2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel12Layout.createSequentialGroup()
+                                        .addComponent(chSausente2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkSpresente2))
+                                    .addGroup(jPanel12Layout.createSequentialGroup()
+                                        .addComponent(chGausente2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkGpresente2))
+                                    .addGroup(jPanel12Layout.createSequentialGroup()
+                                        .addComponent(chMausente2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkMpresente2)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(chRausente2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkRpresente2)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(txtRestosAlimenticios2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAspecto2)
+                            .addComponent(txtColor2))))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -438,21 +1136,50 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                     .addComponent(txtColor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkMarron2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkMostaza2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkVerdusco2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(txtAspecto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkSolido2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSemisol2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkDiarreico2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(txtMocoFecal2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chMausente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkMpresente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel51)
+                    .addComponent(txtGrasa2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chGausente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkGpresente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
                     .addComponent(txtSangreVisible2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chSausente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSpresente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
                     .addComponent(txtRestosAlimenticios2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chRausente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkRpresente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EXAMEN MICROSCOPICO II", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 153))); // NOI18N
@@ -467,40 +1194,124 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 
         jLabel44.setText("Hematíes :");
 
-        jLabel45.setText("Lugol :");
+        jLabel45.setText("Inv. Parasitos:");
+
+        buttonGroup17.add(chkLNoObs1);
+        chkLNoObs1.setText("No se observan");
+        chkLNoObs1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLNoObs1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup17.add(chkLcampo1);
+        chkLcampo1.setText("___x campo");
+        chkLcampo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLcampo1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup18.add(chkHNoObs1);
+        chkHNoObs1.setText("No se observan");
+        chkHNoObs1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHNoObs1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup18.add(chkHcampo1);
+        chkHcampo1.setText("___x campo");
+        chkHcampo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHcampo1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup19.add(chkUausente1);
+        chkUausente1.setText("AUSENTE");
+        chkUausente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkUausente1ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup19.add(chkUpresente1);
+        chkUpresente1.setText("PRESENTE");
+        chkUpresente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkUpresente1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel43, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtHematies1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(txtLeucocitos1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLugol1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(chkLNoObs1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkLcampo1))
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel13Layout.createSequentialGroup()
+                            .addComponent(jLabel44)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtHematies1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel13Layout.createSequentialGroup()
+                            .addGap(65, 65, 65)
+                            .addComponent(txtLeucocitos1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel13Layout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel13Layout.createSequentialGroup()
+                                    .addComponent(chkHNoObs1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chkHcampo1))
+                                .addGroup(jPanel13Layout.createSequentialGroup()
+                                    .addComponent(chkUausente1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(chkUpresente1))
+                                .addComponent(txtLugol1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel43)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel43))
                     .addComponent(txtLeucocitos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel44)
-                    .addComponent(txtHematies1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkLNoObs1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkLcampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHematies1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel44)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel45)
+                    .addComponent(chkHNoObs1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkHcampo1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel45))
                     .addComponent(txtLugol1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkUausente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkUpresente1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -516,42 +1327,135 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 
         jLabel47.setText("Hematíes :");
 
-        jLabel48.setText("Lugol :");
+        jLabel48.setText("Inv. Parasitos :");
+
+        buttonGroup26.add(chkLNoObs2);
+        chkLNoObs2.setText("No se observan");
+        chkLNoObs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLNoObs2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup26.add(chkLcampo2);
+        chkLcampo2.setText("___x campo");
+        chkLcampo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkLcampo2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup27.add(chkHNoObs2);
+        chkHNoObs2.setText("No se observan");
+        chkHNoObs2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHNoObs2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup27.add(chkHcampo2);
+        chkHcampo2.setText("___x campo");
+        chkHcampo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkHcampo2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup13.add(chkUausente2);
+        chkUausente2.setText("AUSENTE");
+        chkUausente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkUausente2ActionPerformed(evt);
+            }
+        });
+
+        buttonGroup13.add(chkUpresente2);
+        chkUpresente2.setText("PRESENTE");
+        chkUpresente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkUpresente2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtHematies2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addComponent(txtLeucocitos2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLugol2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(155, 192, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(chkLNoObs2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkLcampo2))
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtLeucocitos2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLugol2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel14Layout.createSequentialGroup()
+                                        .addComponent(chkHNoObs2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkHcampo2))
+                                    .addComponent(txtHematies2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                        .addComponent(chkUausente2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkUpresente2)
+                        .addGap(26, 26, 26))))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(1, 1, 1)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLeucocitos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel46)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel46)
-                    .addComponent(txtLeucocitos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkLNoObs2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkLcampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtHematies2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel47)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel47)
-                    .addComponent(txtHematies2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                    .addComponent(chkHNoObs2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkHcampo2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLugol2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel48)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel48)
-                    .addComponent(txtLugol2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(chkUausente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkUpresente2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        jCheckBox1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jCheckBox1.setForeground(new java.awt.Color(255, 0, 0));
+        jCheckBox1.setText("COPROPARISITOLOGICO");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -569,22 +1473,22 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
@@ -592,14 +1496,16 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FechaEx, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(FechaEx, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBox1)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,27 +1524,24 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1))
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLimpiar)
-                            .addComponent(jButton1))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLimpiar)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
 
         pack();
@@ -704,6 +1607,9 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                     txtLeucocitos2.setText(oConn.setResult.getString("txtleucocitos2"));
                     txtHematies2.setText(oConn.setResult.getString("txthematies2"));
                     txtLugol2.setText(oConn.setResult.getString("txtlugol2"));
+                    txtGrasa.setText(oConn.setResult.getString("txtgrasa"));
+                    txtGrasa1.setText(oConn.setResult.getString("txtgrasa1"));
+                    txtGrasa2.setText(oConn.setResult.getString("txtgrasa2"));
                 }else{
                     oFunc.SubSistemaMensajeError("N° orden no registrado");
                 }
@@ -790,13 +1696,569 @@ public class Parasitologia extends javax.swing.JInternalFrame {
     private void txtLeucocitos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLeucocitos2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLeucocitos2ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        if (jCheckBox1.isSelected()) {
+            txtAspecto1.setEnabled(false);
+            txtColor1.setEnabled(false);
+            txtMocoFecal1.setEnabled(false);
+            txtSangreVisible1.setEnabled(false);
+            txtRestosAlimenticios1.setEnabled(false);
+            txtLeucocitos1.setEnabled(false);
+            txtHematies1.setEnabled(false);
+            txtLugol1.setEnabled(false);
+            txtAspecto2.setEnabled(false);
+            txtColor2.setEnabled(false);
+            txtMocoFecal2.setEnabled(false);
+            txtSangreVisible2.setEnabled(false);
+            txtRestosAlimenticios2.setEnabled(false);
+            txtLeucocitos2.setEnabled(false);
+            txtHematies2.setEnabled(false);
+            txtLugol2.setEnabled(false);
+            txtGrasa1.setEditable(false);
+            txtGrasa2.setEditable(false);
+           
+        }else{
+            txtAspecto1.setEnabled(true);
+            txtColor1.setEnabled(true);
+            txtMocoFecal1.setEnabled(true);
+            txtSangreVisible1.setEnabled(true);
+            txtRestosAlimenticios1.setEnabled(true);
+            txtLeucocitos1.setEnabled(true);
+            txtHematies1.setEnabled(true);
+            txtLugol1.setEnabled(true);
+            txtAspecto2.setEnabled(true);
+            txtColor2.setEnabled(true);
+            txtMocoFecal2.setEnabled(true);
+            txtSangreVisible2.setEnabled(true);
+            txtRestosAlimenticios2.setEnabled(true);
+            txtLeucocitos2.setEnabled(true);
+            txtHematies2.setEnabled(true);
+            txtLugol2.setEnabled(true);
+            txtGrasa.setEditable(true);
+            txtGrasa1.setEditable(true);
+            txtGrasa2.setEditable(true);
+        }
+            
+        
+        
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void chkMarronActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMarronActionPerformed
+        // TODO add your handling code here:
+        if(chkMarron.isSelected()){
+            txtColor.setText("Marron");
+        }
+    }//GEN-LAST:event_chkMarronActionPerformed
+
+    private void chkMostazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostazaActionPerformed
+        // TODO add your handling code here:
+        if(chkMostaza.isSelected()){
+            txtColor.setText("Mostaza");
+        }
+    }//GEN-LAST:event_chkMostazaActionPerformed
+
+    private void chkVerduscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkVerduscoActionPerformed
+        // TODO add your handling code here:
+        if(chkVerdusco.isSelected()){
+            txtColor.setText("Verdoso");
+        }
+    }//GEN-LAST:event_chkVerduscoActionPerformed
+
+    private void chkMarron1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMarron1ActionPerformed
+        // TODO add your handling code here:
+        if(chkMarron1.isSelected()){
+            txtColor1.setText("Marron");
+        }
+    }//GEN-LAST:event_chkMarron1ActionPerformed
+
+    private void chkMostaza1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostaza1ActionPerformed
+        // TODO add your handling code here:
+        if(chkMostaza1.isSelected()){
+            txtColor1.setText("Mostaza");
+        }
+    }//GEN-LAST:event_chkMostaza1ActionPerformed
+
+    private void chkVerdusco1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkVerdusco1ActionPerformed
+        // TODO add your handling code here:
+         if(chkVerdusco1.isSelected()){
+            txtColor1.setText("Verdoso");
+        }
+    }//GEN-LAST:event_chkVerdusco1ActionPerformed
+
+    private void chkSolidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSolidoActionPerformed
+        // TODO add your handling code here:
+        if(chkSolido.isSelected()){
+            txtAspecto.setText("Solido");
+        }
+    }//GEN-LAST:event_chkSolidoActionPerformed
+
+    private void chkSemisolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSemisolActionPerformed
+        // TODO add your handling code here:
+        if(chkSemisol.isSelected()){
+            txtAspecto.setText("Semi Solido");
+        }
+    }//GEN-LAST:event_chkSemisolActionPerformed
+
+    private void chkDiarreicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDiarreicoActionPerformed
+        // TODO add your handling code here:
+        if(chkDiarreico.isSelected()){
+            txtAspecto.setText("Diarreico");
+        }
+    }//GEN-LAST:event_chkDiarreicoActionPerformed
+
+    private void chMausenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chMausenteActionPerformed
+        // TODO add your handling code here:
+        if(chMausente.isSelected()){
+            txtMocoFecal.setText("Ausente");
+        }
+    }//GEN-LAST:event_chMausenteActionPerformed
+
+    private void chkMpresenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMpresenteActionPerformed
+        // TODO add your handling code here:
+        if(chkMpresente.isSelected()){
+            txtMocoFecal.setText("Presente");
+        }
+    }//GEN-LAST:event_chkMpresenteActionPerformed
+
+    private void chGausenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chGausenteActionPerformed
+        // TODO add your handling code here:
+        if(chGausente.isSelected()){
+            txtGrasa.setText("Ausente");
+        }
+    }//GEN-LAST:event_chGausenteActionPerformed
+
+    private void chkGpresenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkGpresenteActionPerformed
+        // TODO add your handling code here:
+        if(chkGpresente.isSelected()){
+            txtGrasa.setText("Presente");
+        }
+    }//GEN-LAST:event_chkGpresenteActionPerformed
+
+    private void chSausenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSausenteActionPerformed
+        // TODO add your handling code here:
+        if(chSausente.isSelected()){
+            txtSangreVisible.setText("Ausente");
+        }
+    }//GEN-LAST:event_chSausenteActionPerformed
+
+    private void chkSpresenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSpresenteActionPerformed
+        // TODO add your handling code here:
+         if(chkSpresente.isSelected()){
+            txtSangreVisible.setText("Presente");
+        }
+    }//GEN-LAST:event_chkSpresenteActionPerformed
+
+    private void chRausenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chRausenteActionPerformed
+        // TODO add your handling code here:
+        if(chRausente.isSelected()){
+            txtRestosAlimenticios.setText("Ausente");
+        }
+    }//GEN-LAST:event_chRausenteActionPerformed
+
+    private void chkRpresenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRpresenteActionPerformed
+        // TODO add your handling code here:
+        if(chkRpresente.isSelected()){
+            txtRestosAlimenticios.setText("Presente");
+        }
+    }//GEN-LAST:event_chkRpresenteActionPerformed
+
+    private void chkLNoObsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLNoObsActionPerformed
+        // TODO add your handling code here:
+        if(chkLNoObs.isSelected()){
+            txtLeucocitos.setText("No se observan");
+        }
+    }//GEN-LAST:event_chkLNoObsActionPerformed
+
+    private void chkLcampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLcampoActionPerformed
+        // TODO add your handling code here:
+        if(chkLcampo.isSelected()){
+            txtLeucocitos.setText("___ x campo");
+        }
+    }//GEN-LAST:event_chkLcampoActionPerformed
+
+    private void chkHNoObsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHNoObsActionPerformed
+        // TODO add your handling code here:
+         if(chkHNoObs.isSelected()){
+            txtHematies.setText("No se observan");
+        }
+    }//GEN-LAST:event_chkHNoObsActionPerformed
+
+    private void chkHcampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHcampoActionPerformed
+        // TODO add your handling code here:
+        if(chkHcampo.isSelected()){
+            txtHematies.setText("___ x campo");
+        }
+    }//GEN-LAST:event_chkHcampoActionPerformed
+
+    private void chkUausenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUausenteActionPerformed
+        // TODO add your handling code here:
+        if(chkUausente.isSelected()){
+            txtLugol.setText("Ausente");
+        }
+    }//GEN-LAST:event_chkUausenteActionPerformed
+
+    private void chkpresenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkpresenteActionPerformed
+        // TODO add your handling code here:
+        if(chkpresente.isSelected()){
+            txtLugol.setText("Presente");
+        }
+    }//GEN-LAST:event_chkpresenteActionPerformed
+
+    private void chkSolido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSolido1ActionPerformed
+        // TODO add your handling code here:
+        if(chkSolido1.isSelected()){
+            txtAspecto1.setText("Solido");
+        }
+    }//GEN-LAST:event_chkSolido1ActionPerformed
+
+    private void chkSemisol1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSemisol1ActionPerformed
+        // TODO add your handling code here:
+         if(chkSemisol1.isSelected()){
+            txtAspecto1.setText("Semi Solido");
+        }
+    }//GEN-LAST:event_chkSemisol1ActionPerformed
+
+    private void chkDiarreico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDiarreico1ActionPerformed
+        // TODO add your handling code here:
+         if(chkDiarreico1.isSelected()){
+            txtAspecto1.setText("Diarreico");
+        }
+    }//GEN-LAST:event_chkDiarreico1ActionPerformed
+
+    private void chMausente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chMausente1ActionPerformed
+        // TODO add your handling code here:
+         if(chMausente1.isSelected()){
+            txtMocoFecal1.setText("Ausente");
+        }
+    }//GEN-LAST:event_chMausente1ActionPerformed
+
+    private void chkMpresente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMpresente1ActionPerformed
+        // TODO add your handling code here:
+         if(chkMpresente1.isSelected()){
+            txtMocoFecal1.setText("Presente");
+        }
+    }//GEN-LAST:event_chkMpresente1ActionPerformed
+
+    private void chGausente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chGausente1ActionPerformed
+        // TODO add your handling code here:
+        if(chGausente1.isSelected()){
+            txtGrasa1.setText("Ausente");
+        }
+    }//GEN-LAST:event_chGausente1ActionPerformed
+
+    private void chkGpresente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkGpresente1ActionPerformed
+        // TODO add your handling code here:
+        if(chkGpresente1.isSelected()){
+            txtGrasa1.setText("Presente");
+        }
+    }//GEN-LAST:event_chkGpresente1ActionPerformed
+
+    private void chSausente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSausente1ActionPerformed
+        // TODO add your handling code here:
+        if(chSausente1.isSelected()){
+            txtSangreVisible1.setText("Ausente");
+        }
+    }//GEN-LAST:event_chSausente1ActionPerformed
+
+    private void chkSpresente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSpresente1ActionPerformed
+        // TODO add your handling code here:
+        if(chkSpresente1.isSelected()){
+            txtSangreVisible1.setText("Presente");
+        }
+    }//GEN-LAST:event_chkSpresente1ActionPerformed
+
+    private void chRausente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chRausente1ActionPerformed
+        // TODO add your handling code here:
+        if(chRausente1.isSelected()){
+            txtRestosAlimenticios1.setText("Ausente");
+        }
+    }//GEN-LAST:event_chRausente1ActionPerformed
+
+    private void chkRpresente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRpresente1ActionPerformed
+        // TODO add your handling code here:
+        if(chkRpresente1.isSelected()){
+            txtRestosAlimenticios1.setText("Presente");
+        }
+    }//GEN-LAST:event_chkRpresente1ActionPerformed
+
+    private void chkLNoObs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLNoObs1ActionPerformed
+        // TODO add your handling code here:
+        if(chkLNoObs1.isSelected()){
+            txtLeucocitos1.setText("No se observan");
+        }
+    }//GEN-LAST:event_chkLNoObs1ActionPerformed
+
+    private void chkLcampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLcampo1ActionPerformed
+        // TODO add your handling code here:
+        if(chkLcampo1.isSelected()){
+            txtLeucocitos1.setText("___ x campo");
+        }
+    }//GEN-LAST:event_chkLcampo1ActionPerformed
+
+    private void chkHNoObs1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHNoObs1ActionPerformed
+        // TODO add your handling code here:
+        if(chkHNoObs1.isSelected()){
+            txtHematies1.setText("No se observan");
+        }
+    }//GEN-LAST:event_chkHNoObs1ActionPerformed
+
+    private void chkHcampo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHcampo1ActionPerformed
+        // TODO add your handling code here:
+        if(chkHcampo1.isSelected()){
+            txtHematies1.setText("___ x campo");
+        }
+    }//GEN-LAST:event_chkHcampo1ActionPerformed
+
+    private void chkUausente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUausente1ActionPerformed
+        // TODO add your handling code here:
+        if(chkUausente1.isSelected()){
+            txtLugol1.setText("Ausente");
+        }
+    }//GEN-LAST:event_chkUausente1ActionPerformed
+
+    private void chkUpresente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUpresente1ActionPerformed
+        // TODO add your handling code here:
+        if(chkUpresente1.isSelected()){
+            txtLugol1.setText("Presente");
+        }
+    }//GEN-LAST:event_chkUpresente1ActionPerformed
+
+    private void chkMarron2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMarron2ActionPerformed
+        // TODO add your handling code here:
+        if(chkMarron2.isSelected()){
+            txtColor2.setText("Marron");
+        }
+    }//GEN-LAST:event_chkMarron2ActionPerformed
+
+    private void chkMostaza2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostaza2ActionPerformed
+        // TODO add your handling code here:
+        if(chkMostaza2.isSelected()){
+            txtColor2.setText("Mostaza");
+        }
+    }//GEN-LAST:event_chkMostaza2ActionPerformed
+
+    private void chkVerdusco2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkVerdusco2ActionPerformed
+        // TODO add your handling code here:
+        if(chkVerdusco2.isSelected()){
+            txtColor2.setText("Verdoso");
+        }
+    }//GEN-LAST:event_chkVerdusco2ActionPerformed
+
+    private void chkSolido2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSolido2ActionPerformed
+        // TODO add your handling code here:
+        if(chkSolido2.isSelected()){
+            txtAspecto2.setText("Solido");
+        }
+    }//GEN-LAST:event_chkSolido2ActionPerformed
+
+    private void chkSemisol2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSemisol2ActionPerformed
+        // TODO add your handling code here:
+        if(chkSemisol2.isSelected()){
+            txtAspecto2.setText("Semi Solido");
+        }
+    }//GEN-LAST:event_chkSemisol2ActionPerformed
+
+    private void chkDiarreico2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkDiarreico2ActionPerformed
+        // TODO add your handling code here:
+        if(chkDiarreico2.isSelected()){
+            txtAspecto2.setText("Diarreico");
+        }
+    }//GEN-LAST:event_chkDiarreico2ActionPerformed
+
+    private void chMausente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chMausente2ActionPerformed
+        // TODO add your handling code here:
+        if(chMausente2.isSelected()){
+            txtMocoFecal2.setText("Ausente");
+        }
+    }//GEN-LAST:event_chMausente2ActionPerformed
+
+    private void chkMpresente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMpresente2ActionPerformed
+        // TODO add your handling code here:
+         if(chkMpresente2.isSelected()){
+            txtMocoFecal2.setText("Presente");
+        }
+    }//GEN-LAST:event_chkMpresente2ActionPerformed
+
+    private void chGausente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chGausente2ActionPerformed
+        // TODO add your handling code here:
+         if(chGausente2.isSelected()){
+            txtGrasa2.setText("Ausente");
+        }
+    }//GEN-LAST:event_chGausente2ActionPerformed
+
+    private void chkGpresente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkGpresente2ActionPerformed
+        // TODO add your handling code here:
+         if(chkGpresente2.isSelected()){
+            txtGrasa2.setText("Presente");
+        }
+    }//GEN-LAST:event_chkGpresente2ActionPerformed
+
+    private void chSausente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chSausente2ActionPerformed
+        // TODO add your handling code here:
+         if(chSausente2.isSelected()){
+            txtSangreVisible2.setText("Ausente");
+        }
+    }//GEN-LAST:event_chSausente2ActionPerformed
+
+    private void chkSpresente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSpresente2ActionPerformed
+        // TODO add your handling code here:
+         if(chkSpresente2.isSelected()){
+            txtSangreVisible2.setText("Presente");
+        }
+    }//GEN-LAST:event_chkSpresente2ActionPerformed
+
+    private void chRausente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chRausente2ActionPerformed
+        // TODO add your handling code here:
+         if(chRausente2.isSelected()){
+            txtRestosAlimenticios2.setText("Ausente");
+        }
+    }//GEN-LAST:event_chRausente2ActionPerformed
+
+    private void chkRpresente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRpresente2ActionPerformed
+        // TODO add your handling code here:
+         if(chkRpresente2.isSelected()){
+            txtRestosAlimenticios2.setText("Presente");
+        }
+    }//GEN-LAST:event_chkRpresente2ActionPerformed
+
+    private void chkLNoObs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLNoObs2ActionPerformed
+        // TODO add your handling code here:
+         if(chkLNoObs2.isSelected()){
+            txtLeucocitos2.setText("No se Observan");
+        }
+    }//GEN-LAST:event_chkLNoObs2ActionPerformed
+
+    private void chkLcampo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLcampo2ActionPerformed
+        // TODO add your handling code here:
+        if(chkLcampo2.isSelected()){
+            txtLeucocitos2.setText("___ x campo");
+        }
+    }//GEN-LAST:event_chkLcampo2ActionPerformed
+
+    private void chkHNoObs2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHNoObs2ActionPerformed
+        // TODO add your handling code here:
+        if(chkHNoObs2.isSelected()){
+            txtHematies2.setText("No se Observan");
+        }
+    }//GEN-LAST:event_chkHNoObs2ActionPerformed
+
+    private void chkHcampo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkHcampo2ActionPerformed
+        // TODO add your handling code here:
+        if(chkHcampo2.isSelected()){
+            txtHematies2.setText("___ x campo");
+        }
+    }//GEN-LAST:event_chkHcampo2ActionPerformed
+
+    private void chkUausente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUausente2ActionPerformed
+        // TODO add your handling code here:
+        if(chkUausente2.isSelected()){
+            txtLugol2.setText("Ausente");
+        }
+    }//GEN-LAST:event_chkUausente2ActionPerformed
+
+    private void chkUpresente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkUpresente2ActionPerformed
+        // TODO add your handling code here:
+        if(chkUpresente2.isSelected()){
+            txtLugol2.setText("Presente");
+        }
+    }//GEN-LAST:event_chkUpresente2ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaEx;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnImprimir1;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup10;
+    private javax.swing.ButtonGroup buttonGroup11;
+    private javax.swing.ButtonGroup buttonGroup12;
+    private javax.swing.ButtonGroup buttonGroup13;
+    private javax.swing.ButtonGroup buttonGroup14;
+    private javax.swing.ButtonGroup buttonGroup15;
+    private javax.swing.ButtonGroup buttonGroup16;
+    private javax.swing.ButtonGroup buttonGroup17;
+    private javax.swing.ButtonGroup buttonGroup18;
+    private javax.swing.ButtonGroup buttonGroup19;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup20;
+    private javax.swing.ButtonGroup buttonGroup21;
+    private javax.swing.ButtonGroup buttonGroup22;
+    private javax.swing.ButtonGroup buttonGroup23;
+    private javax.swing.ButtonGroup buttonGroup24;
+    private javax.swing.ButtonGroup buttonGroup25;
+    private javax.swing.ButtonGroup buttonGroup26;
+    private javax.swing.ButtonGroup buttonGroup27;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.ButtonGroup buttonGroup6;
+    private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.ButtonGroup buttonGroup8;
+    private javax.swing.ButtonGroup buttonGroup9;
+    private javax.swing.JCheckBox chGausente;
+    private javax.swing.JCheckBox chGausente1;
+    private javax.swing.JCheckBox chGausente2;
+    private javax.swing.JCheckBox chMausente;
+    private javax.swing.JCheckBox chMausente1;
+    private javax.swing.JCheckBox chMausente2;
+    private javax.swing.JCheckBox chRausente;
+    private javax.swing.JCheckBox chRausente1;
+    private javax.swing.JCheckBox chRausente2;
+    private javax.swing.JCheckBox chSausente;
+    private javax.swing.JCheckBox chSausente1;
+    private javax.swing.JCheckBox chSausente2;
+    private javax.swing.JCheckBox chkDiarreico;
+    private javax.swing.JCheckBox chkDiarreico1;
+    private javax.swing.JCheckBox chkDiarreico2;
+    private javax.swing.JCheckBox chkGpresente;
+    private javax.swing.JCheckBox chkGpresente1;
+    private javax.swing.JCheckBox chkGpresente2;
+    private javax.swing.JCheckBox chkHNoObs;
+    private javax.swing.JCheckBox chkHNoObs1;
+    private javax.swing.JCheckBox chkHNoObs2;
+    private javax.swing.JCheckBox chkHcampo;
+    private javax.swing.JCheckBox chkHcampo1;
+    private javax.swing.JCheckBox chkHcampo2;
+    private javax.swing.JCheckBox chkLNoObs;
+    private javax.swing.JCheckBox chkLNoObs1;
+    private javax.swing.JCheckBox chkLNoObs2;
+    private javax.swing.JCheckBox chkLcampo;
+    private javax.swing.JCheckBox chkLcampo1;
+    private javax.swing.JCheckBox chkLcampo2;
+    private javax.swing.JCheckBox chkMarron;
+    private javax.swing.JCheckBox chkMarron1;
+    private javax.swing.JCheckBox chkMarron2;
+    private javax.swing.JCheckBox chkMostaza;
+    private javax.swing.JCheckBox chkMostaza1;
+    private javax.swing.JCheckBox chkMostaza2;
+    private javax.swing.JCheckBox chkMpresente;
+    private javax.swing.JCheckBox chkMpresente1;
+    private javax.swing.JCheckBox chkMpresente2;
+    private javax.swing.JCheckBox chkRpresente;
+    private javax.swing.JCheckBox chkRpresente1;
+    private javax.swing.JCheckBox chkRpresente2;
+    private javax.swing.JCheckBox chkSemisol;
+    private javax.swing.JCheckBox chkSemisol1;
+    private javax.swing.JCheckBox chkSemisol2;
+    private javax.swing.JCheckBox chkSolido;
+    private javax.swing.JCheckBox chkSolido1;
+    private javax.swing.JCheckBox chkSolido2;
+    private javax.swing.JCheckBox chkSpresente;
+    private javax.swing.JCheckBox chkSpresente1;
+    private javax.swing.JCheckBox chkSpresente2;
+    private javax.swing.JCheckBox chkUausente;
+    private javax.swing.JCheckBox chkUausente1;
+    private javax.swing.JCheckBox chkUausente2;
+    private javax.swing.JCheckBox chkUpresente1;
+    private javax.swing.JCheckBox chkUpresente2;
+    private javax.swing.JCheckBox chkVerdusco;
+    private javax.swing.JCheckBox chkVerdusco1;
+    private javax.swing.JCheckBox chkVerdusco2;
+    private javax.swing.JCheckBox chkpresente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel2;
@@ -825,6 +2287,9 @@ public class Parasitologia extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -839,6 +2304,9 @@ public class Parasitologia extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtColor1;
     private javax.swing.JTextField txtColor2;
     private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtGrasa;
+    private javax.swing.JTextField txtGrasa1;
+    private javax.swing.JTextField txtGrasa2;
     private javax.swing.JTextField txtHematies;
     private javax.swing.JTextField txtHematies1;
     private javax.swing.JTextField txtHematies2;
@@ -894,7 +2362,7 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 "            txtrestosa, txtleucocitos, txthematies, txtlugol, txtcolor1, \n" +
 "            txtaspecto1, txtmoco_fecal1, txtsangrev1, txtrestosa1, txtleucocitos1, \n" +
 "            txthematies1, txtlugol1, txtcolor2, txtaspecto2, txtmoco_fecal2, \n" +
-"            txtsangrev2, txtrestosa2, txtleucocitos2, txthematies2, txtlugol2)";
+"            txtsangrev2, txtrestosa2, txtleucocitos2, txthematies2, txtlugol2,txtgrasa,txtgrasa1,txtgrasa2)";
         strSqlStmt += " values(" + txtNorden.getText() + ",'"
                 + FechaEx.getDate() + "','"
                 + txtColor.getText() + "','"
@@ -920,7 +2388,10 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                 + txtRestosAlimenticios2.getText() + "','"
                 + txtLeucocitos2.getText() + "','"
                 + txtHematies2.getText() + "','"
-                + txtLugol2.getText() + "'"
+                + txtLugol2.getText() + "','"
+                + txtGrasa.getText() + "','"
+                + txtGrasa1.getText() + "','"
+                + txtGrasa2.getText() + "'"
                 + " ) ";
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
 //                   oConn.setResult.next();
@@ -959,7 +2430,10 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                 + "       txtrestosa2='" + txtRestosAlimenticios2.getText() + "',"
                 + "       txtleucocitos2='" + txtLeucocitos2.getText() + "',"
                 + "       txthematies2='" + txtHematies2.getText() + "',"
-                + "       txtlugol2='" + txtLugol2.getText() + "'"
+                + "       txtlugol2='" + txtLugol2.getText() + "',"
+                + "       txtgrasa='" + txtGrasa.getText() + "',"
+                + "       txtgrasa1='" + txtGrasa1.getText() + "',"
+                + "       txtgrasa2='" + txtGrasa2.getText() + "'"
                 + "   WHERE n_orden=" + sCodigo + ";";
         //  System.out.println(strSqlStmt);
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
@@ -1005,6 +2479,36 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         txtLeucocitos2.setText("");
         txtHematies2.setText("");
         txtLugol2.setText("");
+        txtGrasa.setText("");
+        txtGrasa1.setText("");
+        txtGrasa2.setText("");
+        buttonGroup1.clearSelection();
+        buttonGroup2.clearSelection();
+        buttonGroup3.clearSelection();
+        buttonGroup4.clearSelection();
+        buttonGroup5.clearSelection();
+        buttonGroup6.clearSelection();
+        buttonGroup7.clearSelection();
+        buttonGroup8.clearSelection();
+        buttonGroup9.clearSelection();
+        buttonGroup10.clearSelection();
+        buttonGroup11.clearSelection();
+        buttonGroup12.clearSelection();
+        buttonGroup13.clearSelection();
+        buttonGroup14.clearSelection();
+        buttonGroup15.clearSelection();
+        buttonGroup16.clearSelection();
+        buttonGroup17.clearSelection();
+        buttonGroup18.clearSelection();
+        buttonGroup19.clearSelection();
+        buttonGroup20.clearSelection();
+        buttonGroup21.clearSelection();
+        buttonGroup22.clearSelection();
+        buttonGroup23.clearSelection();
+        buttonGroup24.clearSelection();
+        buttonGroup25.clearSelection();
+        buttonGroup26.clearSelection();
+        buttonGroup27.clearSelection();
         txtNorden.requestFocus();
         
     }
@@ -1040,8 +2544,13 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         parameters.put("Norden", cod);
         String direccionReporte;
         try {
+            if(jCheckBox1.isSelected()){
+                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico.jasper";
+            }else{
+                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
+            }
+                    
             
-            direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
             
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
@@ -1059,7 +2568,12 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         parameters.put("Norden", cod);
         String direccionReporte;
         try {
-            direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
+            if(jCheckBox1.isSelected()){
+                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico.jasper";
+            }else{
+                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
+            }
+            
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
             JasperViewer viewer = new JasperViewer(myPrint, false);

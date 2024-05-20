@@ -130,6 +130,8 @@
                                                   <Component id="txtGFSPrevio" max="32767" attributes="0"/>
                                                   <Component id="txtGrupoFacLab" alignment="0" max="32767" attributes="0"/>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="chkNAHema" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -140,7 +142,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -186,6 +188,7 @@
                                   <Component id="txtEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtGrupoFacLab" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkNAHema" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
@@ -200,7 +203,7 @@
                               <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                      <EmptySpace pref="97" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1307,6 +1310,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkRetiroActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JCheckBox" name="chkNAHema">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="N/A"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkNAHemaActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel6">
@@ -1325,14 +1336,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jPanel12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="btnLimpiar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnGrabar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -1363,7 +1371,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSeparator3" alignment="0" pref="663" max="32767" attributes="0"/>
+                  <Component id="jSeparator3" alignment="0" pref="621" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -1629,44 +1637,57 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel56" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel55" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel52" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel51" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel56" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel55" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel52" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel51" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jLabel79" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="txtLeucocitosEQ" min="-2" pref="106" max="-2" attributes="0"/>
+                                  <Component id="txtAcAscorbico" min="-2" pref="106" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtSangreEQ" min="-2" pref="106" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtCetonasEQ" min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="txtProteinasEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="txtNitritosEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="txtLeucocitosEQ" min="-2" pref="106" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtSangreEQ" min="-2" pref="106" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtCetonasEQ" min="-2" pref="106" max="-2" attributes="0"/>
+                                              <Component id="txtProteinasEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                              <Component id="txtNitritosEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel57" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel54" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel53" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtGlucosaEQ" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
+                                              <Component id="txtUrobilinogenoEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                              <Component id="txtBilirubinaEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel57" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel54" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel53" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtGlucosaEQ" alignment="1" min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="txtUrobilinogenoEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Component id="txtBilirubinaEQ" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace pref="34" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1700,7 +1721,12 @@
                               <Component id="jLabel58" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtSangreEQ" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel79" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtAcAscorbico" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1786,8 +1812,8 @@
                     <Property name="text" type="java.lang.String" value="NEGATIVO"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLeucocitosEQActionPerformed"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtLeucocitosEQFocusGained"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLeucocitosEQActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtGlucosaEQ">
@@ -1816,6 +1842,20 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSangreEQActionPerformed"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtSangreEQFocusGained"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel79">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ac.Asc&#xf3;rbico :"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtAcAscorbico">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="NEGATIVO"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtAcAscorbicoFocusGained"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAcAscorbicoActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1964,7 +2004,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel76">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Bacter&#xed;as :"/>
+                    <Property name="text" type="java.lang.String" value="GRAM S/C :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtBacteriasSU">
@@ -1974,7 +2014,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel77">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Pus :"/>
+                    <Property name="text" type="java.lang.String" value="Bacter&#xed;as :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPusSU">
@@ -2040,6 +2080,7 @@
                                   <Component id="chkNAM" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2097,7 +2138,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="gCocaina"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="React."/>
+                    <Property name="text" type="java.lang.String" value="Pos."/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkReactivoCActionPerformed"/>
@@ -2108,7 +2149,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="gCocaina"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="No React."/>
+                    <Property name="text" type="java.lang.String" value="Neg."/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkNoReactivoCActionPerformed"/>
@@ -2130,7 +2171,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="bMarihuana"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="No React."/>
+                    <Property name="text" type="java.lang.String" value="Neg."/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkNoReactivoMActionPerformed"/>
@@ -2141,7 +2182,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="bMarihuana"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="React."/>
+                    <Property name="text" type="java.lang.String" value="Pos."/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkReactivoMActionPerformed"/>
@@ -2232,7 +2273,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator4" min="-2" pref="2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtImp" pref="192" max="32767" attributes="0"/>
+                          <Component id="txtImp" pref="201" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnPrint" min="-2" pref="24" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
+<Form version="1.2" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.ButtonGroup" name="bgTipo">
     </Component>
@@ -67,11 +67,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" pref="537" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jPanel3" min="-2" pref="453" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtFecha" min="-2" pref="88" max="-2" attributes="0"/>
@@ -90,15 +90,15 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" pref="28" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="jButton2" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="873" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="208" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -195,74 +195,63 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel24" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="1" attributes="0">
-                                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel24" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
                                               <Component id="FechaNacimiento" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
-                                              <Component id="cboCaserio" alignment="0" min="-2" pref="234" max="-2" attributes="0"/>
-                                              <Component id="cboDistrito" alignment="0" min="-2" pref="234" max="-2" attributes="0"/>
-                                              <Component id="cboProvincia" alignment="0" min="-2" pref="234" max="-2" attributes="0"/>
-                                              <Component id="txtLugarNacimiento" alignment="0" pref="251" max="32767" attributes="0"/>
                                               <Component id="cboSexo" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                                              <Component id="txtEmail" alignment="0" pref="251" max="32767" attributes="0"/>
-                                              <Component id="cboDepartamento" alignment="0" min="-2" pref="234" max="-2" attributes="0"/>
+                                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtDni" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtNombre" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtApellidos" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="cboCaserio" alignment="0" pref="0" max="32767" attributes="0"/>
+                                                      <Component id="cboDistrito" alignment="0" pref="0" max="32767" attributes="0"/>
+                                                      <Component id="cboProvincia" alignment="0" min="-2" pref="4" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="txtProvincia" max="32767" attributes="0"/>
+                                                      <Component id="txtDistrito" max="32767" attributes="0"/>
+                                                      <Component id="txtCaserio" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="cboDepartamento" alignment="0" pref="251" max="32767" attributes="0"/>
+                                              <Component id="txtLugarNacimiento" alignment="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                           <Component id="ckbSinDni" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                           <Component id="jLabel35" min="-2" pref="52" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txtDireccion" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="cboNivelEstudio" pref="155" max="32767" attributes="0"/>
-                                              <Component id="cboProfesion" max="32767" attributes="0"/>
-                                              <Component id="cboEstadoCivil" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="cboEstadoCivil" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                                              <Component id="cboNivelEstudio" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                              <Component id="cboProfesion" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnAddOcupacion" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnAddOcupacion" min="-2" pref="18" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="81" pref="81" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
-                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
@@ -279,13 +268,6 @@
                                   </Group>
                                   <Component id="jLabel14" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
@@ -307,6 +289,17 @@
                                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -315,32 +308,30 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="2" attributes="0">
-                                      <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtNombre" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="2" attributes="0">
+                                          <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNombre" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="2" attributes="0">
+                                          <Component id="jLabel14" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtApellidos" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="2" attributes="0">
-                                      <Component id="jLabel14" alignment="2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtApellidos" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="2" attributes="0">
+                                          <Component id="jLabel20" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ckbSinDni" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtDni" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="2" attributes="0">
-                                      <Component id="jLabel20" alignment="2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ckbSinDni" alignment="2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtDni" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
@@ -369,11 +360,11 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="cboProfesion" alignment="2" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnAddOcupacion" alignment="2" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAddOcupacion" alignment="2" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="cboProfesion" alignment="2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cboEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -391,18 +382,29 @@
                               </Group>
                               <Component id="cboDepartamento" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="cboProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cboProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtProvincia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                                   <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="cboDistrito" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cboDistrito" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDistrito" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -410,7 +412,10 @@
                                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                                   <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="cboCaserio" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cboCaserio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCaserio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
@@ -738,6 +743,21 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDniActionPerformed"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDniKeyTyped"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtProvincia">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProvinciaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtDistrito">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDistritoActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtCaserio">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCaserioActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1072,7 +1092,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="207" width="430" height="360"/>
+                  <AbsoluteConstraints x="0" y="207" width="430" height="390"/>
                 </Constraint>
               </Constraints>
 
@@ -1086,7 +1106,6 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel42" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel30" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel29" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel28" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -1094,12 +1113,13 @@
                                               <Component id="jLabel22" alignment="1" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel47" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel30" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel9" alignment="1" max="32767" attributes="0"/>
                                       <Component id="jLabel43" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jLabel51" alignment="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel51" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               </Group>
@@ -1108,18 +1128,26 @@
                                   <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="chkAltaRXCLumba" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chkAltaRXCLumbo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="cboExplotacion" pref="294" max="32767" attributes="0"/>
+                                  <Component id="cboExplotacion" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="cboExamenMedico" alignment="0" max="32767" attributes="0"/>
                                       <Component id="cboMineralExp" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cboAltura" alignment="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="cboArea" alignment="0" pref="0" max="32767" attributes="0"/>
+                                      <Component id="cboAltura" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cboArea" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtCargoDesempenar" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -1140,7 +1168,7 @@
                                   <Component id="btnAddOcupacion3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="txtFechaAlta" min="-2" pref="129" max="-2" attributes="0"/>
@@ -1160,11 +1188,6 @@
                                               <Component id="chkAltaTrabCal" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="chkAltaVisualCom" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="chkAltaManipAlimen" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                   <Component id="txtPrecioAdicional" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="txtPrecio" alignment="0" pref="92" max="32767" attributes="0"/>
@@ -1182,6 +1205,23 @@
                                                       <Component id="jLabel52" min="-2" pref="81" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                                       <Component id="cboAutorizacion" min="-2" pref="126" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="chkAltaVisualCom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="chkAltaPlomoS" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="chkAltaMercO" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="chkAltaManipAlimen" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="chkAltaHerrMan" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="chkAltaRXCDorso" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -1212,7 +1252,7 @@
                               <Component id="cboExamenMedico" alignment="2" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel30" alignment="2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="chkAltaFist" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
@@ -1220,12 +1260,20 @@
                               <Component id="chkAltaTestAltura" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="chkAltaTrabCal" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="chkAltaVisualCom" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="chkAltaManipAlimen" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="chkAltaHerrMan" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="chkAltaRXCDorso" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="chkAltaRXCLumbo" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="chkAltaRXCLumba" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="chkAltaPlomoS" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="chkAltaMercO" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="2" attributes="0">
                               <Component id="cboExplotacion" alignment="2" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel21" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -1287,7 +1335,7 @@
                               </Group>
                               <Component id="btnAddOcupacion3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                          <EmptySpace pref="49" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1322,7 +1370,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="11" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Exa. M&#xe9;dico :"/>
+                    <Property name="text" type="java.lang.String" value="Tipo Examen :"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboExamenMedico">
@@ -1534,18 +1582,24 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Exa. Adicional :"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel22MousePressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="chkAltaFist">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="FIST-TEST"/>
+                    <Property name="toolTipText" type="java.lang.String" value="FIST-TEST"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chkAltaFistMousePressed"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaFistActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="chkAltaPsicosen">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="PSICOSEN"/>
+                    <Property name="toolTipText" type="java.lang.String" value="PSICOSENSOMETRIA"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaPsicosenActionPerformed"/>
@@ -1554,6 +1608,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkAltaTestAltura">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="T. ALTURA"/>
+                    <Property name="toolTipText" type="java.lang.String" value="TEST ALTURA"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaTestAlturaActionPerformed"/>
@@ -1561,7 +1616,8 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="chkAltaTrabCal">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="T-CAL"/>
+                    <Property name="text" type="java.lang.String" value="T. CAL"/>
+                    <Property name="toolTipText" type="java.lang.String" value="TRABAJOS EN CALIENTE"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaTrabCalActionPerformed"/>
@@ -1570,6 +1626,7 @@
                 <Component class="javax.swing.JCheckBox" name="chkAltaVisualCom">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="VIS. COMPL"/>
+                    <Property name="toolTipText" type="java.lang.String" value="VISUAL COMPLEMENTARIO"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaVisualComActionPerformed"/>
@@ -1577,7 +1634,8 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="chkAltaManipAlimen">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="MANIP.ALIM."/>
+                    <Property name="text" type="java.lang.String" value="M.ALIM."/>
+                    <Property name="toolTipText" type="java.lang.String" value="MANIPULADOR DE ALIMENTOS"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaManipAlimenActionPerformed"/>
@@ -1678,6 +1736,60 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNOperacionActionPerformed"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNOperacionKeyTyped"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkAltaHerrMan">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="H.MAN"/>
+                    <Property name="toolTipText" type="java.lang.String" value="HERRAMIENTAS MANUALES"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaHerrManActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkAltaRXCLumba">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="RX.C.LUMBA"/>
+                    <Property name="toolTipText" type="java.lang.String" value="RX COLUMNA LUMBAR F y L "/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaRXCLumbaActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkAltaRXCDorso">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="RX.C.DORSO"/>
+                    <Property name="toolTipText" type="java.lang.String" value="RX COLUMNA DORSOLUMBAR F y L"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaRXCDorsoActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkAltaRXCLumbo">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="RX.C.LUMBO"/>
+                    <Property name="toolTipText" type="java.lang.String" value="RX COLUMNA  LUMBOSACRA F y L "/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaRXCLumboActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkAltaPlomoS">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="PLOMO S."/>
+                    <Property name="toolTipText" type="java.lang.String" value="PLOMO EN SANGRE"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaPlomoSActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="chkAltaMercO">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="MER.O"/>
+                    <Property name="toolTipText" type="java.lang.String" value="MERCURIO EN ORINA"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkAltaMercOActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -2327,7 +2439,7 @@
                               <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="675" max="32767" attributes="0"/>
+                      <EmptySpace pref="1196" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

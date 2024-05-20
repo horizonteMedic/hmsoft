@@ -198,7 +198,7 @@
     <Component class="javax.swing.JTextField" name="txtPrueba">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="text" type="java.lang.String" value="ACIDO URICO SERICO"/>
+        <Property name="text" type="java.lang.String" value="&#xc1;CIDO &#xda;RICO S&#xc9;RICO"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPruebaActionPerformed"/>
@@ -207,7 +207,7 @@
     <Component class="javax.swing.JTextField" name="txtMuestra">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
-        <Property name="text" type="java.lang.String" value="SUERO (en ayunas)"/>
+        <Property name="text" type="java.lang.String" value="SUERO"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMuestraActionPerformed"/>

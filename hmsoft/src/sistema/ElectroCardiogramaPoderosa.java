@@ -2145,7 +2145,7 @@ void sbCargarDatosElectro(String valor){
       if(!txtBuscarCod.getText().isEmpty()){
           sql="Select d.nombres_pa||''|| d.apellidos_pa AS nombres, n.n_orden, "
               + "e.fecha_informe, e.cod_elecp From datos_paciente as d "
-                + "inner join n_orden_ocupacional as n ON (n.cod_pa = n.cod_pa)"
+                + "inner join n_orden_ocupacional as n ON (n.cod_pa = d.cod_pa)"
                 + "inner join informe_electrocardiograma_poderosa as e ON (n.n_orden = e.n_orden)"
                 + "where e.n_orden='"+txtBuscarCod.getText()+"'";   
       }else{

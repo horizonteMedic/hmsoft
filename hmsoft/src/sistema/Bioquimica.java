@@ -106,7 +106,7 @@ public class Bioquimica extends javax.swing.JInternalFrame {
         jLabel4.setText("Edad: ");
 
         txtPrueba.setEditable(false);
-        txtPrueba.setText("ACIDO URICO SERICO");
+        txtPrueba.setText("ÁCIDO ÚRICO SÉRICO");
         txtPrueba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPruebaActionPerformed(evt);
@@ -114,7 +114,7 @@ public class Bioquimica extends javax.swing.JInternalFrame {
         });
 
         txtMuestra.setEditable(false);
-        txtMuestra.setText("SUERO (en ayunas)");
+        txtMuestra.setText("SUERO");
         txtMuestra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMuestraActionPerformed(evt);
@@ -502,8 +502,8 @@ public class Bioquimica extends javax.swing.JInternalFrame {
         txtNombres.setText("");
         txtEdad.setText("");
         FechaEx.setDate(null);
-        txtPrueba.setText("ACIDO URICO SERICO");
-        txtMuestra.setText("SUERO (en ayunas)");
+        txtPrueba.setText("ÁCIDO ÚRICO SÉRICO");
+        txtMuestra.setText("SUERO");
         txtResultado.setText("");
         txtNorden.requestFocus();
         

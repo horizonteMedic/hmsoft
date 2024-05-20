@@ -40,38 +40,41 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  * @author Richard
  */
 public final class LaboratorioClinico extends javax.swing.JInternalFrame {
-clsConnection oConn = new clsConnection();
-   clsFunciones  oFunc = new clsFunciones();
-    String[]responsable = new String[]{};
-    String cualitativo="";
+
+    clsConnection oConn = new clsConnection();
+    clsFunciones oFunc = new clsFunciones();
+    String[] responsable = new String[]{};
+    String cualitativo = "";
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     public static AddMarcaCovid addMarca;
-   float valorigm,valorigg;
+    float valorigm, valorigg;
     DefaultTableModel model;
-   String pasar="df",doctor;
-   int valor=1;
+    String pasar = "df", doctor;
+    int valor = 1;
+
     public LaboratorioClinico() {
         initComponents();
-       // jPanel14.setVisible(false);
+        // jPanel14.setVisible(false);
         jtLaboratorio.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/biology0.png")));
         jtLaboratorio.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/biology1.png")));
         Limpiar();
-       negarPc();
+        negarPc();
         responsable = getRowsToVector("select nombre_user||' '||apellido_user as responsable FROM usuarios");
         CargarMarcaCovid();
         cboMarca.setSelectedIndex(-1);
         timer.start();
-         txtSintoma.setEnabled(false);
-                            // chkInvalido1.setSelected(false);
-                             txtColorEF.setVisible(false);
-                             txtAspectoEF.setVisible(false);
-                             aspectoorina();
-                             colororina();
-                            // jTextAreaIgg2.setVisible(false);
-                                   AutoCompleteDecorator.decorate(this.jComboAsp);
-                                   AutoCompleteDecorator.decorate(this.jComboBoxColor);
+        txtSintoma.setEnabled(false);
+        // chkInvalido1.setSelected(false);
+        txtColorEF.setVisible(false);
+        txtAspectoEF.setVisible(false);
+        aspectoorina();
+        colororina();
+        // jTextAreaIgg2.setVisible(false);
+        AutoCompleteDecorator.decorate(this.jComboAsp);
+        AutoCompleteDecorator.decorate(this.jComboBoxColor);
 
-    } 
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -191,6 +194,7 @@ clsConnection oConn = new clsConnection();
         txtGFSPrevio = new javax.swing.JTextField();
         txtGrupoFacLab = new javax.swing.JTextField();
         chkRetiro = new javax.swing.JCheckBox();
+        chkNAHema = new javax.swing.JCheckBox();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
@@ -225,6 +229,8 @@ clsConnection oConn = new clsConnection();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
         txtSangreEQ = new javax.swing.JTextField();
+        jLabel79 = new javax.swing.JLabel();
+        txtAcAscorbico = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
@@ -721,7 +727,7 @@ clsConnection oConn = new clsConnection();
                     .addComponent(jLabel32)
                     .addComponent(jLabel33)
                     .addComponent(jLabel34))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -860,7 +866,7 @@ clsConnection oConn = new clsConnection();
                     .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtGlucosaBio, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(txtGlucosaBio)
                     .addComponent(txtCreatininaBio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1092,6 +1098,13 @@ clsConnection oConn = new clsConnection();
             }
         });
 
+        chkNAHema.setText("N/A");
+        chkNAHema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkNAHemaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1139,14 +1152,16 @@ clsConnection oConn = new clsConnection();
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel47, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtGFSPrevio)
-                                            .addComponent(txtGrupoFacLab))))
+                                            .addComponent(txtGrupoFacLab))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chkNAHema)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 48, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1182,7 +1197,8 @@ clsConnection oConn = new clsConnection();
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel43)
-                            .addComponent(txtGrupoFacLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtGrupoFacLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chkNAHema))
                         .addGap(2, 2, 2)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
@@ -1193,7 +1209,7 @@ clsConnection oConn = new clsConnection();
                         .addComponent(jtTriaje, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(jLabel41)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         jtLaboratorio.addTab("Hematología - Bioquímica SI-EO", jPanel1);
@@ -1397,7 +1413,7 @@ clsConnection oConn = new clsConnection();
                     .addComponent(jLabel46)
                     .addComponent(txtDensidadEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPhEF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Exámen Quimico"));
@@ -1475,14 +1491,14 @@ clsConnection oConn = new clsConnection();
         jLabel56.setText("Leucocitos :");
 
         txtLeucocitosEQ.setText("NEGATIVO");
-        txtLeucocitosEQ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLeucocitosEQActionPerformed(evt);
-            }
-        });
         txtLeucocitosEQ.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtLeucocitosEQFocusGained(evt);
+            }
+        });
+        txtLeucocitosEQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLeucocitosEQActionPerformed(evt);
             }
         });
 
@@ -1514,41 +1530,63 @@ clsConnection oConn = new clsConnection();
             }
         });
 
+        jLabel79.setText("Ac.Ascórbico :");
+
+        txtAcAscorbico.setText("NEGATIVO");
+        txtAcAscorbico.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAcAscorbicoFocusGained(evt);
+            }
+        });
+        txtAcAscorbico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAcAscorbicoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel52, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jLabel79))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(txtLeucocitosEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel58)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSangreEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtAcAscorbico, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCetonasEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtProteinasEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNitritosEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel57, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel54, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtGlucosaEQ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUrobilinogenoEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBilirubinaEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addComponent(txtLeucocitosEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel58)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSangreEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel9Layout.createSequentialGroup()
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCetonasEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtProteinasEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNitritosEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel57, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel54, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel53, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtGlucosaEQ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUrobilinogenoEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBilirubinaEQ, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(34, Short.MAX_VALUE))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1576,7 +1614,11 @@ clsConnection oConn = new clsConnection();
                     .addComponent(txtLeucocitosEQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel58)
                     .addComponent(txtSangreEQ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel79)
+                    .addComponent(txtAcAscorbico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sedimento Unitario"));
@@ -1621,7 +1663,7 @@ clsConnection oConn = new clsConnection();
             }
         });
 
-        jLabel76.setText("Bacterías :");
+        jLabel76.setText("GRAM S/C :");
 
         txtBacteriasSU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1629,7 +1671,7 @@ clsConnection oConn = new clsConnection();
             }
         });
 
-        jLabel77.setText("Pus :");
+        jLabel77.setText("Bacterías :");
 
         txtPusSU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1728,7 +1770,7 @@ clsConnection oConn = new clsConnection();
         });
 
         gCocaina.add(chkReactivoC);
-        chkReactivoC.setText("React.");
+        chkReactivoC.setText("Pos.");
         chkReactivoC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkReactivoCActionPerformed(evt);
@@ -1736,7 +1778,7 @@ clsConnection oConn = new clsConnection();
         });
 
         gCocaina.add(chkNoReactivoC);
-        chkNoReactivoC.setText("No React.");
+        chkNoReactivoC.setText("Neg.");
         chkNoReactivoC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkNoReactivoCActionPerformed(evt);
@@ -1752,7 +1794,7 @@ clsConnection oConn = new clsConnection();
         });
 
         bMarihuana.add(chkNoReactivoM);
-        chkNoReactivoM.setText("No React.");
+        chkNoReactivoM.setText("Neg.");
         chkNoReactivoM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkNoReactivoMActionPerformed(evt);
@@ -1760,7 +1802,7 @@ clsConnection oConn = new clsConnection();
         });
 
         bMarihuana.add(chkReactivoM);
-        chkReactivoM.setText("React.");
+        chkReactivoM.setText("Pos.");
         chkReactivoM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkReactivoMActionPerformed(evt);
@@ -1801,7 +1843,8 @@ clsConnection oConn = new clsConnection();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chkNoReactivoM)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(chkNAM))))
+                        .addComponent(chkNAM)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1888,7 +1931,7 @@ clsConnection oConn = new clsConnection();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addComponent(txtImp, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4))
@@ -1922,13 +1965,11 @@ clsConnection oConn = new clsConnection();
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(btnLimpiar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnGrabar)))
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1949,11 +1990,11 @@ clsConnection oConn = new clsConnection();
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
@@ -2473,163 +2514,150 @@ clsConnection oConn = new clsConnection();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void colororina(){
-      String sQuery;        
+private void colororina() {
+        String sQuery;
         // Prepara el Query
-        sQuery ="select nombreColor from colorOrina";
-        
-        if (oConn.FnBoolQueryExecute(sQuery))
-        {
-            try 
-            {
+        sQuery = "select nombreColor from colorOrina";
+
+        if (oConn.FnBoolQueryExecute(sQuery)) {
+            try {
                 // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     jComboBoxColor.addItem(oConn.setResult.getString ("nombreColor"));
-                     
-                 }
-                 
-                 // Cierra Resultados
-                 oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
+                while (oConn.setResult.next()) {
+                    // Obtiene los datos de la Consulta
+                    jComboBoxColor.addItem(oConn.setResult.getString("nombreColor"));
+
+                }
+
+                // Cierra Resultados
+                oConn.setResult.close();
+            } catch (SQLException ex) {
                 //JOptionPane.showMessageDialorootPane,ex);
                 oFunc.SubSistemaMensajeInformacion(ex.toString());
                 Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         // selecciona
         jComboBoxColor.setSelectedItem(0);
         //cboSede.setSelectedIndex(1);
 
+    }
 
-}
-private void aspectoorina(){
-      String sQuery;        
+    private void aspectoorina() {
+        String sQuery;
         // Prepara el Query
-        sQuery ="select nombre from aspectoOrina";
-        
-        if (oConn.FnBoolQueryExecute(sQuery))
-        {
-            try 
-            {
+        sQuery = "select nombre from aspectoOrina";
+
+        if (oConn.FnBoolQueryExecute(sQuery)) {
+            try {
                 // Verifica resultados
-                 while (oConn.setResult.next())
-                 {                     
-                     // Obtiene los datos de la Consulta
-                     jComboAsp.addItem(oConn.setResult.getString ("nombre"));
-                     
-                 }
-                 
-                 // Cierra Resultados
+                while (oConn.setResult.next()) {
+                    // Obtiene los datos de la Consulta
+                    jComboAsp.addItem(oConn.setResult.getString("nombre"));
+
+                }
+
+                // Cierra Resultados
                 oConn.setResult.close();
-            } 
-            catch (SQLException ex) 
-            {
+            } catch (SQLException ex) {
                 //JOptionPane.showMessageDialorootPane,ex);
                 oFunc.SubSistemaMensajeInformacion(ex.toString());
                 Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         // selecciona
         jComboAsp.setSelectedItem(0);
         //cboSede.setSelectedIndex(1);
 
-
-}
-    public void agregarSimtocasPc(){
-      if(OrdenExiste1()){  
-            Actualizar();
-         }else{
-              if(!txtNordenIn.getText().isEmpty()){
-            try {
-              
-                if(Grabar()){
-                  //  imprimir();
-                    limpiar();
-                }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(ConstanciaSaludMarsa.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           }
-         }
     }
-    
-    private boolean Grabar() throws SQLException{
-        boolean bResult = false;
-              
-       String strSqlStmt ="INSERT INTO constancia_salud_marsa(\n" +
-"            n_orden, fecha_examen, hora_examen, txtmuestra, chk_asintomatico, \n" +
-"            chk_sintomatico, txtresultados, chks1, chks2, chks3, chks4, chks5, \n" +
-"            chks6, chks7, chks8, chks9, chks10, chks11, chks12, chks13)";       
-            strSqlStmt+= "values ('"+ txtNordenIn.getText().toString()+"',"
-                    + "'"+ FechaHotel.getDate()+"',"
-                    + "'"+ lblHora.getText()+"',"
-                    + "'MUESTRA PC',"
-                    + "'"+ chkAsintomatico.isSelected()+"',"
-                    + "'"+ chkSintomatico.isSelected()+"',"
-                    + "'"+txtSintoma.getText()+"',"
-                    +"'"+chkTos.isSelected()+ "',"
-                    +"'"+chkDolorG.isSelected()+ "',"
-                    +"'"+chkCongestionN.isSelected()+ "',"
-                    + "'"+chkDificultadR.isSelected()+ "',"
-                    + "'"+chkFiebre.isSelected()+ "',"
-                    + "'"+chkMalestar.isSelected()+ "',"
-                    + "'"+chkDiarrea.isSelected()+ "',"
-                    + "'"+chkNauseas.isSelected()+ "',"
-                    + "'"+chkCefalea.isSelected()+ "',"
-                    + "'"+chkIrritaibilidad.isSelected()+ "',"
-                    + "'"+chkDolor.isSelected()+ "',"
-                    + "'"+chkExpctoracion.isSelected()+ "',"
-                    + "'"+chkPerdidaOlf1.isSelected()+"' )";
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-                
-//                   oConn.setResult.next();
-            
-                   bResult = true;
-                       oFunc.SubSistemaMensajeInformacion("Orden Registrada");
-                       oConn.sqlStmt.close();
-               }
-              
-              
-                return bResult;       
+
+    public void agregarSimtocasPc() {
+        if (OrdenExiste1()) {
+            Actualizar();
+        } else {
+            if (!txtNordenIn.getText().isEmpty()) {
+                try {
+
+                    if (Grabar()) {
+                        //  imprimir();
+                        limpiar();
+                    }
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConstanciaSaludMarsa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
-    
-    
-      private void Actualizar(){
-        String sCodigo=txtNordenIn.getText();
+    }
+
+    private boolean Grabar() throws SQLException {
+        boolean bResult = false;
+
+        String strSqlStmt = "INSERT INTO constancia_salud_marsa(\n"
+                + "            n_orden, fecha_examen, hora_examen, txtmuestra, chk_asintomatico, \n"
+                + "            chk_sintomatico, txtresultados, chks1, chks2, chks3, chks4, chks5, \n"
+                + "            chks6, chks7, chks8, chks9, chks10, chks11, chks12, chks13)";
+        strSqlStmt += "values ('" + txtNordenIn.getText().toString() + "',"
+                + "'" + FechaHotel.getDate() + "',"
+                + "'" + lblHora.getText() + "',"
+                + "'MUESTRA PC',"
+                + "'" + chkAsintomatico.isSelected() + "',"
+                + "'" + chkSintomatico.isSelected() + "',"
+                + "'" + txtSintoma.getText() + "',"
+                + "'" + chkTos.isSelected() + "',"
+                + "'" + chkDolorG.isSelected() + "',"
+                + "'" + chkCongestionN.isSelected() + "',"
+                + "'" + chkDificultadR.isSelected() + "',"
+                + "'" + chkFiebre.isSelected() + "',"
+                + "'" + chkMalestar.isSelected() + "',"
+                + "'" + chkDiarrea.isSelected() + "',"
+                + "'" + chkNauseas.isSelected() + "',"
+                + "'" + chkCefalea.isSelected() + "',"
+                + "'" + chkIrritaibilidad.isSelected() + "',"
+                + "'" + chkDolor.isSelected() + "',"
+                + "'" + chkExpctoracion.isSelected() + "',"
+                + "'" + chkPerdidaOlf1.isSelected() + "' )";
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+
+//                   oConn.setResult.next();
+            bResult = true;
+            oFunc.SubSistemaMensajeInformacion("Orden Registrada");
+            oConn.sqlStmt.close();
+        }
+
+        return bResult;
+    }
+
+    private void Actualizar() {
+        String sCodigo = txtNordenIn.getText();
         String strSqlStmt;
-        strSqlStmt="UPDATE constancia_salud_marsa\n" +
-                    "   SET  fecha_examen='"+FechaHotel.getDate()+"',"
-                +"hora_examen='"+lblHora.getText()+"',"
-                +"txtmuestra='MUESTRA PC',"
-                +"chk_asintomatico='"+chkAsintomatico.isSelected()+"',"
-                +"chk_sintomatico='"+chkSintomatico.isSelected()+"',"
-                + "txtresultados='"+txtSintoma.getText()+"'" ;
-              strSqlStmt+= ", chks1='"+chkTos.isSelected()+"'"
-                        + ", chks2='"+chkDolorG.isSelected()+"'"
-                        + ", chks3='"+chkCongestionN.isSelected()+"'"
-                        + ", chks4='"+chkDificultadR.isSelected()+"'"
-                        + ", chks5='"+chkFiebre.isSelected()+"'"
-                        + ", chks6='"+chkMalestar.isSelected()+"'"
-                        + ", chks7='"+chkDiarrea.isSelected()+"'"
-                        + ", chks8='"+chkNauseas.isSelected()+"'"
-                        + ", chks9='"+chkCefalea.isSelected()+"'"
-                        + ", chks10='"+chkIrritaibilidad.isSelected()+"'"
-                        + ", chks11='"+chkDolor.isSelected()+"'"
-                        + ", chks12='"+chkExpctoracion.isSelected()+"'"
-                        + ", chks13='"+chkPerdidaOlf1.isSelected()+"'"+
-                " WHERE n_orden='" + sCodigo + "'";
-            
+        strSqlStmt = "UPDATE constancia_salud_marsa\n"
+                + "   SET  fecha_examen='" + FechaHotel.getDate() + "',"
+                + "hora_examen='" + lblHora.getText() + "',"
+                + "txtmuestra='MUESTRA PC',"
+                + "chk_asintomatico='" + chkAsintomatico.isSelected() + "',"
+                + "chk_sintomatico='" + chkSintomatico.isSelected() + "',"
+                + "txtresultados='" + txtSintoma.getText() + "'";
+        strSqlStmt += ", chks1='" + chkTos.isSelected() + "'"
+                + ", chks2='" + chkDolorG.isSelected() + "'"
+                + ", chks3='" + chkCongestionN.isSelected() + "'"
+                + ", chks4='" + chkDificultadR.isSelected() + "'"
+                + ", chks5='" + chkFiebre.isSelected() + "'"
+                + ", chks6='" + chkMalestar.isSelected() + "'"
+                + ", chks7='" + chkDiarrea.isSelected() + "'"
+                + ", chks8='" + chkNauseas.isSelected() + "'"
+                + ", chks9='" + chkCefalea.isSelected() + "'"
+                + ", chks10='" + chkIrritaibilidad.isSelected() + "'"
+                + ", chks11='" + chkDolor.isSelected() + "'"
+                + ", chks12='" + chkExpctoracion.isSelected() + "'"
+                + ", chks13='" + chkPerdidaOlf1.isSelected() + "'"
+                + " WHERE n_orden='" + sCodigo + "'";
+
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-          //  imprimir();
+            //  imprimir();
             limpiar();
             try {
                 oConn.sqlStmt.close();
@@ -2639,13 +2667,14 @@ private void aspectoorina(){
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
-        
-    }
-    private void limpiar(){
 
-chkAsintomatico.setSelected(true);
-txtSintoma.setText(null);
-chkTos.setSelected(false);
+    }
+
+    private void limpiar() {
+
+        chkAsintomatico.setSelected(true);
+        txtSintoma.setText(null);
+        chkTos.setSelected(false);
         chkDolorG.setSelected(false);
         chkCongestionN.setSelected(false);
         chkDificultadR.setSelected(false);
@@ -2658,68 +2687,66 @@ chkTos.setSelected(false);
         chkDolor.setSelected(false);
         chkExpctoracion.setSelected(false);
         chkPerdidaOlf1.setSelected(false);
-chkSintomatico.setSelected(false);
-negarcheks();
-}
-    
-   public boolean OrdenExiste1()
-    {
-        boolean bResultado=false;
-        if(!txtNordenIn.getText().isEmpty()){
-        String sQuery;
+        chkSintomatico.setSelected(false);
+        negarcheks();
+    }
 
-        sQuery  = "Select n_orden from constancia_salud_marsa Where n_orden ="+txtNordenIn.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
-        try {
-            if (oConn.setResult.next())
-            {
-                bResultado = true;
+    public boolean OrdenExiste1() {
+        boolean bResultado = false;
+        if (!txtNordenIn.getText().isEmpty()) {
+            String sQuery;
+
+            sQuery = "Select n_orden from constancia_salud_marsa Where n_orden =" + txtNordenIn.getText().toString();
+            oConn.FnBoolQueryExecute(sQuery);
+            try {
+                if (oConn.setResult.next()) {
+                    bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
+                }
+                oConn.setResult.close();
+
+            } catch (SQLException ex) {
+
             }
-            oConn.setResult.close();
-            
-        } catch (SQLException ex) {
-         
         }
-        }       
         return bResultado;
-        } 
+    }
     private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-      if(!txtNorden.getText().isEmpty()){
-         if(! OrdenExiste()){
-          String Sql="SELECT n_orden_ocupacional.razon_empresa,n_orden_ocupacional.razon_contrata,d.nombres_pa||' '||d.apellidos_pa as nombres,n_orden_ocupacional.cod_pa,"
-                  + " n_orden_ocupacional.nom_examen,n_orden_ocupacional.grupofactorsan ";
-              Sql+="FROM n_orden_ocupacional INNER JOIN datos_paciente as d ON (n_orden_ocupacional.cod_pa = d.cod_pa) WHERE n_orden_ocupacional.n_orden ='"+txtNorden.getText().toString()+ "'";
-              
-              oConn.FnBoolQueryExecute(Sql);
+        if (!txtNorden.getText().isEmpty()) {
+            if (!OrdenExiste()) {
+                String Sql = "SELECT n_orden_ocupacional.razon_empresa,n_orden_ocupacional.razon_contrata,d.nombres_pa||' '||d.apellidos_pa as nombres,n_orden_ocupacional.cod_pa,"
+                        + " n_orden_ocupacional.nom_examen,n_orden_ocupacional.grupofactorsan ";
+                Sql += "FROM n_orden_ocupacional INNER JOIN datos_paciente as d ON (n_orden_ocupacional.cod_pa = d.cod_pa) WHERE n_orden_ocupacional.n_orden ='" + txtNorden.getText().toString() + "'";
+
+                oConn.FnBoolQueryExecute(Sql);
                 try {
                     if (oConn.setResult.next()) {
                         txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
                         txtcontrata.setText(oConn.setResult.getString("razon_contrata"));
-                         txtNombres.setText(oConn.setResult.getString("nombres"));
-                         String s=oConn.setResult.getString("cod_pa");
-                         String exa=oConn.setResult.getString("nom_examen");
-                         txtGFSPrevio.setText(oConn.setResult.getString("grupofactorsan"));
-                         txtDni.setText(s);
-                         oPe.fecha(FechaExamen);
-                         txtResponsable.requestFocus();  
-                         sbCargarDatosTipoSangre(s);
-                         if("RETIRO".equals(exa)){
-                             txtGlucosaBio.setText("N/A");
-                             txtCreatininaBio.setText("N/A");
-                         }
-                             
-                       }else{
+                        txtNombres.setText(oConn.setResult.getString("nombres"));
+                        String s = oConn.setResult.getString("cod_pa");
+                        String exa = oConn.setResult.getString("nom_examen");
+                        txtGFSPrevio.setText(oConn.setResult.getString("grupofactorsan"));
+                        txtDni.setText(s);
+                        oPe.fecha(FechaExamen);
+                        txtResponsable.requestFocus();
+                        sbCargarDatosTipoSangre(s);
+                        if ("RETIRO".equals(exa)) {
+                            txtGlucosaBio.setText("N/A");
+                            txtCreatininaBio.setText("N/A");
+                        }
+
+                    } else {
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de nuevo");
                     }
                     oConn.setResult.close();
-            } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Laboratorio Clinico:" + ex.getMessage().toString());
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeInformacion("Laboratorio Clinico:" + ex.getMessage().toString());
+                }
+
+            }
         }
-      
-      }
-      }     
     }//GEN-LAST:event_txtNordenActionPerformed
 
     private void txtNordenKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNordenKeyTyped
@@ -2731,24 +2758,27 @@ negarcheks();
     }//GEN-LAST:event_txtResponsableActionPerformed
 
     private void txtResponsableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtResponsableKeyReleased
-       if (evt.getKeyCode()==112) // F1 = 112
+        if (evt.getKeyCode() == 112) // F1 = 112
         {
-             //MostrarAgregarEmpresa();
-                 }
-       if(!(evt.getKeyCode()>=65 && evt.getKeyCode()<=90 || evt.getKeyCode()>=96 && evt.getKeyCode()<=105 || evt.getKeyCode() == KeyEvent.VK_ENTER ))
+            //MostrarAgregarEmpresa();
+        }
+        if (!(evt.getKeyCode() >= 65 && evt.getKeyCode() <= 90 || evt.getKeyCode() >= 96 && evt.getKeyCode() <= 105 || evt.getKeyCode() == KeyEvent.VK_ENTER)) {
             return;
-        if(txtResponsable.getText().isEmpty())
+        }
+        if (txtResponsable.getText().isEmpty()) {
             return;
-        if(responsable.length ==0)
+        }
+        if (responsable.length == 0) {
             return;
+        }
         addTextAndSelectToTextFieldToRest(txtResponsable, getTextoApartirVector(txtResponsable.getText(), responsable));
     }//GEN-LAST:event_txtResponsableKeyReleased
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-Limpiar();
-btgroup();
-jtLaboratorio.setSelectedIndex(0);
-txtNorden.requestFocus();
+        Limpiar();
+        btgroup();
+        jtLaboratorio.setSelectedIndex(0);
+        txtNorden.requestFocus();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
@@ -2759,96 +2789,93 @@ txtNorden.requestFocus();
         } else {
             Agregar();
         }
-        
+
     }//GEN-LAST:event_btnGrabarActionPerformed
 
     private void chkFichaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFichaMedicaActionPerformed
-        if(chkFichaMedica.isSelected()==true){
-               Limpiar();
-        txtNorden.setEditable(true);
-        txtNrecibo.setText(null);
-        txtNrecibo.setEditable(false);
-        txtNorden.requestFocus();
+        if (chkFichaMedica.isSelected() == true) {
+            Limpiar();
+            txtNorden.setEditable(true);
+            txtNrecibo.setText(null);
+            txtNrecibo.setEditable(false);
+            txtNorden.requestFocus();
         }
     }//GEN-LAST:event_chkFichaMedicaActionPerformed
 
     private void chkParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkParticularActionPerformed
-           if(chkParticular.isSelected()== true){
-              Limpiar();
-        txtNorden.setEditable(false);
-         txtNorden.setText(null);
-        txtNrecibo.setEditable(true);
-         txtNrecibo.requestFocus();
+        if (chkParticular.isSelected() == true) {
+            Limpiar();
+            txtNorden.setEditable(false);
+            txtNorden.setText(null);
+            txtNrecibo.setEditable(true);
+            txtNrecibo.requestFocus();
         }
     }//GEN-LAST:event_chkParticularActionPerformed
 
     private void chkConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkConsultasActionPerformed
-         if(chkConsultas.isSelected()==true){
+        if (chkConsultas.isSelected() == true) {
             Limpiar();
-        txtNorden.setEditable(false);
-         txtNorden.setText(null);
-        txtNrecibo.setEditable(true);
-         txtNrecibo.requestFocus();
+            txtNorden.setEditable(false);
+            txtNorden.setText(null);
+            txtNrecibo.setEditable(true);
+            txtNrecibo.requestFocus();
         }
     }//GEN-LAST:event_chkConsultasActionPerformed
 
     private void chkReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkReciboActionPerformed
-        if(chkRecibo.isSelected()==true){
-            
-        txtImp.setEditable(true);
-        txtImp.setText(null);
-      
+        if (chkRecibo.isSelected() == true) {
+
+            txtImp.setEditable(true);
+            txtImp.setText(null);
+
         }
     }//GEN-LAST:event_chkReciboActionPerformed
 
     private void chkOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOrdenActionPerformed
-       if(chkOrden.isSelected()==true){    
-        txtImp.setEditable(true);
-        txtImp.setText(null);
-      
+        if (chkOrden.isSelected() == true) {
+            txtImp.setEditable(true);
+            txtImp.setText(null);
+
         }
     }//GEN-LAST:event_chkOrdenActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-     ReImp();     
+        ReImp();
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void txtHemoglobinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHemoglobinaActionPerformed
-       if(!txtNorden.getText().isEmpty()){
-           String sql="SELECT dp.sexo_pa FROM datos_paciente as dp " 
-                +"inner join n_orden_ocupacional AS n ON(dp.cod_pa = n.cod_pa) "
-                + "where n.n_orden="+txtNorden.getText().toString()+"";
-        oConn.FnBoolQueryExecute(sql);
-        String sexo;
-    try {
-        if (oConn.setResult.next())
-            {
-        sexo = oConn.setResult.getString("sexo_pa");
-         float hemoglobina=Float.parseFloat(txtHemoglobina.getText().toString());
-               if ("M".equals(sexo)) {
-                   if(hemoglobina < 14 || hemoglobina > 20){
-                  //     System.out.println("entro a pintar de rojo:"+txtHemoglobina.getText().toString());
-                        txtHemoglobina.setForeground(Color.red);
+        if (!txtNorden.getText().isEmpty()) {
+            String sql = "SELECT dp.sexo_pa FROM datos_paciente as dp "
+                    + "inner join n_orden_ocupacional AS n ON(dp.cod_pa = n.cod_pa) "
+                    + "where n.n_orden=" + txtNorden.getText().toString() + "";
+            oConn.FnBoolQueryExecute(sql);
+            String sexo;
+            try {
+                if (oConn.setResult.next()) {
+                    sexo = oConn.setResult.getString("sexo_pa");
+                    float hemoglobina = Float.parseFloat(txtHemoglobina.getText().toString());
+                    if ("M".equals(sexo)) {
+                        if (hemoglobina < 14 || hemoglobina > 20) {
+                            //     System.out.println("entro a pintar de rojo:"+txtHemoglobina.getText().toString());
+                            txtHemoglobina.setForeground(Color.red);
+                        } else {
+                            txtHemoglobina.setForeground(Color.BLACK);
+                        }
                     }
-                   else{
-                       txtHemoglobina.setForeground(Color.BLACK);
-                   }
-               }
-               if ("F".equals(sexo)) {
-                    if(hemoglobina < 13.5 || hemoglobina > 20){
-                         txtHemoglobina.setForeground(Color.red);
+                    if ("F".equals(sexo)) {
+                        if (hemoglobina < 13.5 || hemoglobina > 20) {
+                            txtHemoglobina.setForeground(Color.red);
+                        } else {
+                            txtHemoglobina.setForeground(Color.BLACK);
+                        }
                     }
-                    else{
-                       txtHemoglobina.setForeground(Color.BLACK);
-                   }
-               }
+                }
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeError("ERROR EN CONSULTA");
             }
-        oConn.setResult.close();
-    } catch (SQLException ex) {
-        oFunc.SubSistemaMensajeError("ERROR EN CONSULTA");
-    }
-       }
-              
+        }
+
         txtHematocrito.requestFocus();
     }//GEN-LAST:event_txtHemoglobinaActionPerformed
 
@@ -2865,7 +2892,7 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtLeucocitosEmatologiaActionPerformed
 
     private void txtHematiesEmatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHematiesEmatologiaActionPerformed
-       txtPlaquetas.requestFocus();
+        txtPlaquetas.requestFocus();
     }//GEN-LAST:event_txtHematiesEmatologiaActionPerformed
 
     private void txtNeutrofilosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNeutrofilosActionPerformed
@@ -2873,7 +2900,7 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtNeutrofilosActionPerformed
 
     private void txtAbastonadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAbastonadosActionPerformed
-       txtsegmentadosEmatologia.requestFocus();
+        txtsegmentadosEmatologia.requestFocus();
     }//GEN-LAST:event_txtAbastonadosActionPerformed
 
     private void txtsegmentadosEmatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsegmentadosEmatologiaActionPerformed
@@ -2885,11 +2912,11 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtmonocitosEmatologiaActionPerformed
 
     private void txtEosinofiosEmatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEosinofiosEmatologiaActionPerformed
-       txtbasofilosEmatologia.requestFocus();
+        txtbasofilosEmatologia.requestFocus();
     }//GEN-LAST:event_txtEosinofiosEmatologiaActionPerformed
 
     private void txtbasofilosEmatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbasofilosEmatologiaActionPerformed
-       txtLinfocitosEmatologia.requestFocus();
+        txtLinfocitosEmatologia.requestFocus();
     }//GEN-LAST:event_txtbasofilosEmatologiaActionPerformed
 
     private void txtLinfocitosEmatologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLinfocitosEmatologiaActionPerformed
@@ -2897,35 +2924,35 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtLinfocitosEmatologiaActionPerformed
 
     private void txtGlucosaBioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGlucosaBioActionPerformed
-        if(!txtGlucosaBio.getText().isEmpty()){
-             float glucosa = Float.parseFloat(txtGlucosaBio.getText().toString());
+        if (!txtGlucosaBio.getText().isEmpty()) {
+            float glucosa = Float.parseFloat(txtGlucosaBio.getText().toString());
             if (glucosa >= 110 || glucosa < 70) {
                 txtGlucosaBio.setForeground(Color.red);
             } else {
                 txtGlucosaBio.setForeground(Color.black);
             }
         }
-       
+
         txtCreatininaBio.requestFocus();
     }//GEN-LAST:event_txtGlucosaBioActionPerformed
 
     private void txtCreatininaBioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreatininaBioActionPerformed
-        if(txtCreatininaBio.getText().isEmpty()){
-           float cretinina=Float.parseFloat(txtCreatininaBio.getText().toString());
-               if(cretinina>=1.4 || cretinina<0.8){
-                   txtCreatininaBio.setForeground(Color.red);
-               }else{
-                   txtCreatininaBio.setForeground(Color.black);
-               }
-        
+        if (txtCreatininaBio.getText().isEmpty()) {
+            float cretinina = Float.parseFloat(txtCreatininaBio.getText().toString());
+            if (cretinina >= 1.4 || cretinina < 0.8) {
+                txtCreatininaBio.setForeground(Color.red);
+            } else {
+                txtCreatininaBio.setForeground(Color.black);
+            }
+
         }
-        txtVIH.requestFocus(); 
-       
+        txtVIH.requestFocus();
+
     }//GEN-LAST:event_txtCreatininaBioActionPerformed
 
     private void txtVIHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVIHActionPerformed
         jtLaboratorio.setSelectedIndex(1);
-       txtColorEF.requestFocus();
+        txtColorEF.requestFocus();
     }//GEN-LAST:event_txtVIHActionPerformed
 
     private void txtDensidadEFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDensidadEFActionPerformed
@@ -2937,7 +2964,7 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtAspectoEFActionPerformed
 
     private void txtPhEFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhEFActionPerformed
-       txtNitritosEQ.requestFocus();
+        txtNitritosEQ.requestFocus();
     }//GEN-LAST:event_txtPhEFActionPerformed
 
     private void txtColorEFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColorEFActionPerformed
@@ -2981,7 +3008,7 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtLeucocitosSUActionPerformed
 
     private void txtCelEpitelialesSUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCelEpitelialesSUActionPerformed
-       txtCilindiosSU.requestFocus();
+        txtCilindiosSU.requestFocus();
     }//GEN-LAST:event_txtCelEpitelialesSUActionPerformed
 
     private void txtCilindiosSUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCilindiosSUActionPerformed
@@ -3025,7 +3052,7 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtProteinasEQFocusGained
 
     private void txtCetonasEQFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCetonasEQFocusGained
-       txtCetonasEQ.selectAll();
+        txtCetonasEQ.selectAll();
     }//GEN-LAST:event_txtCetonasEQFocusGained
 
     private void txtLeucocitosEQFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLeucocitosEQFocusGained
@@ -3049,7 +3076,7 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_txtSangreEQFocusGained
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
-         txtNorden.requestFocus();
+        txtNorden.requestFocus();
     }//GEN-LAST:event_formInternalFrameActivated
 
     private void btnObservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObservacionesActionPerformed
@@ -3057,92 +3084,96 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_btnObservacionesActionPerformed
 
     private void chkIncoloroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIncoloroActionPerformed
-       if(chkIncoloro.isSelected()){
+        if (chkIncoloro.isSelected()) {
             txtColorEF.setText("INCOLORO");
-       }
+        }
     }//GEN-LAST:event_chkIncoloroActionPerformed
 
     private void chkMedicamentosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMedicamentosaActionPerformed
-      if(chkMedicamentosa.isSelected()){
-            txtColorEF.setText("MEDICAMENTOSA");}
+        if (chkMedicamentosa.isSelected()) {
+            txtColorEF.setText("MEDICAMENTOSA");
+        }
     }//GEN-LAST:event_chkMedicamentosaActionPerformed
 
     private void chkTransparenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTransparenteActionPerformed
-        if(chkTransparente.isSelected()){
-            txtAspectoEF.setText("TRANSPARENTE");}
-    
+        if (chkTransparente.isSelected()) {
+            txtAspectoEF.setText("TRANSPARENTE");
+        }
+
     }//GEN-LAST:event_chkTransparenteActionPerformed
 
     private void chkLigTurbioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkLigTurbioActionPerformed
-         if(chkLigTurbio.isSelected()){
-            txtAspectoEF.setText("TURBIO");}
+        if (chkLigTurbio.isSelected()) {
+            txtAspectoEF.setText("TURBIO");
+        }
     }//GEN-LAST:event_chkLigTurbioActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-     if(!txtNorden.getText().isEmpty()){
-        chkPositivo.setSelected(false);
-        chkNegativo.setSelected(false);
-        jCheckBox1.setSelected(false);
-        jCheckVposi.setSelected(false);
-        jCheckNe.setSelected(false);
-        jCheckNA.setSelected(false);
+        if (!txtNorden.getText().isEmpty()) {
+            chkPositivo.setSelected(false);
+            chkNegativo.setSelected(false);
+            jCheckBox1.setSelected(false);
+            jCheckVposi.setSelected(false);
+            jCheckNe.setSelected(false);
+            jCheckNA.setSelected(false);
 
-         Editar();
-         sbCargarDatosTipoSangre(txtDni.getText());
-        }else {oFunc.SubSistemaMensajeError("No hay datos en anexo 7c o orden no existe");}
+            Editar();
+            sbCargarDatosTipoSangre(txtDni.getText());
+        } else {
+            oFunc.SubSistemaMensajeError("No hay datos en anexo 7c o orden no existe");
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void chkReactivoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkReactivoCActionPerformed
-         if(chkReactivoC.isSelected()){
-            txtCocaina.setText("REACTIVO");
-         }
+        if (chkReactivoC.isSelected()) {
+            txtCocaina.setText("POSITIVO");
+        }
     }//GEN-LAST:event_chkReactivoCActionPerformed
 
     private void chkNoReactivoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNoReactivoCActionPerformed
-         if(chkNoReactivoC.isSelected()){
-            txtCocaina.setText("NO REACTIVO");
-         }
+        if (chkNoReactivoC.isSelected()) {
+            txtCocaina.setText("NEGATIVO");
+        }
     }//GEN-LAST:event_chkNoReactivoCActionPerformed
 
     private void chkNACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNACActionPerformed
-        if(chkNAC.isSelected()){
+        if (chkNAC.isSelected()) {
             txtCocaina.setText("N/A");
-         }
+        }
     }//GEN-LAST:event_chkNACActionPerformed
 
     private void chkReactivoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkReactivoMActionPerformed
-         if(chkReactivoM.isSelected()){
-            txtmarihuana.setText("REACTIVO");
-         }
+        if (chkReactivoM.isSelected()) {
+            txtmarihuana.setText("POSITIVO");
+        }
     }//GEN-LAST:event_chkReactivoMActionPerformed
 
     private void chkNoReactivoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNoReactivoMActionPerformed
-        if(chkNoReactivoM.isSelected()){
-            txtmarihuana.setText("NO REACTIVO");
-         }
+        if (chkNoReactivoM.isSelected()) {
+            txtmarihuana.setText("NEGATIVO");
+        }
     }//GEN-LAST:event_chkNoReactivoMActionPerformed
 
     private void chkNAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNAMActionPerformed
-        if(chkNAM.isSelected()){
+        if (chkNAM.isSelected()) {
             txtmarihuana.setText("N/A");
-         }
+        }
     }//GEN-LAST:event_chkNAMActionPerformed
 
     private void txtHemoglobinaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHemoglobinaKeyTyped
-         
+
     }//GEN-LAST:event_txtHemoglobinaKeyTyped
 
     private void tblabclinicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblabclinicoMouseClicked
-        if (evt.getClickCount() == 2)
-        {
-            Integer cod  = Integer.valueOf( tblabclinico.getValueAt(tblabclinico.getSelectedRow(),0).toString());
+        if (evt.getClickCount() == 2) {
+            Integer cod = Integer.valueOf(tblabclinico.getValueAt(tblabclinico.getSelectedRow(), 0).toString());
             oPe.print(cod, "Triaje.jasper", "Ficha Triaje");
 
         }
     }//GEN-LAST:event_tblabclinicoMouseClicked
 
     private void btnLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiar1ActionPerformed
-         Limpiar();
+        Limpiar();
         btgroup();
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
 
@@ -3163,25 +3194,25 @@ txtNorden.requestFocus();
     }//GEN-LAST:event_chkABActionPerformed
 
     private void rbRHpositivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRHpositivoActionPerformed
-        txtGrupoFacLab.setText(txtGrupoFacLab.getText().toString()+"+");
-      /*  if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
+        txtGrupoFacLab.setText(txtGrupoFacLab.getText().toString() + "+");
+        /*  if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
             oFunc.SubSistemaMensajeError("Grupo Sanguinio incongruente por favotr revisar");
         }*/
     }//GEN-LAST:event_rbRHpositivoActionPerformed
 
     private void rbRHnegativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRHnegativoActionPerformed
-        txtGrupoFacLab.setText(txtGrupoFacLab.getText().toString()+"-");
-/*        if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
+        txtGrupoFacLab.setText(txtGrupoFacLab.getText().toString() + "-");
+        /*        if(txtGrupoFacLab.getText() == null ? txtGFSPrevio.getText() == null : !txtGrupoFacLab.getText().equals(txtGFSPrevio.getText())){
             oFunc.SubSistemaMensajeError("Grupo Sanguinio incongruente por favotr revisar");
         }*/
     }//GEN-LAST:event_rbRHnegativoActionPerformed
 
     private void chkRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkRetiroActionPerformed
-        
+
     }//GEN-LAST:event_chkRetiroActionPerformed
 
     private void chkNoAplicaExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNoAplicaExamenActionPerformed
-         txtColorEF.setText("N/A");
+        txtColorEF.setText("N/A");
         txtDensidadEF.setText("N/A");
         txtAspectoEF.setText("N/A");
         txtPhEF.setText("N/A");
@@ -3203,16 +3234,17 @@ txtNorden.requestFocus();
         txtOtrosSu.setText("N/A");
         txtCocaina.setText("N/A");
         txtmarihuana.setText("N/A");
+        txtAcAscorbico.setText("N/A");
     }//GEN-LAST:event_chkNoAplicaExamenActionPerformed
 
     private void chkNACreatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNACreatActionPerformed
-        if(chkNACreat.isSelected()){
+        if (chkNACreat.isSelected()) {
             txtCreatininaBio.setText("N/A");
         }
     }//GEN-LAST:event_chkNACreatActionPerformed
 
     private void chkNAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNAGActionPerformed
-        if(chkNAG.isSelected()){
+        if (chkNAG.isSelected()) {
             txtGlucosaBio.setText("N/A");
         }
     }//GEN-LAST:event_chkNAGActionPerformed
@@ -3224,7 +3256,7 @@ txtNorden.requestFocus();
     private void chkIgmReactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIgmReactivoActionPerformed
         // TODO add your handling code here:
         bgInvalido.clearSelection();
-        
+
     }//GEN-LAST:event_chkIgmReactivoActionPerformed
 
     private void chkIgmNoReactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkIgmNoReactivoActionPerformed
@@ -3241,8 +3273,8 @@ txtNorden.requestFocus();
         // TODO add your handling code here:
         bgInvalido.clearSelection();
     }//GEN-LAST:event_chkIggReactivoActionPerformed
-public void negarcheks(){
- chkTos.setEnabled(false);
+    public void negarcheks() {
+        chkTos.setEnabled(false);
         chkDolorG.setEnabled(false);
         chkCongestionN.setEnabled(false);
         chkDificultadR.setEnabled(false);
@@ -3256,69 +3288,60 @@ public void negarcheks(){
         chkExpctoracion.setEnabled(false);
         chkPerdidaOlf1.setEnabled(false);
         txtSintoma.setEnabled(false);
-}
+    }
     private void btnGrabarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarInActionPerformed
-      //  System.out.println("el valor es: "+!pasar.equals("PC"));  
+        //  System.out.println("el valor es: "+!pasar.equals("PC"));  
         //System.out.println("el valor de pc: "+pasar);  
-        if(pasar.isEmpty())
-          {
-           pasar="P20";
-          }
-          if(pasar.equals("PC")) 
-          {
-            
-              soloPc();  
-               if(valor==2)
-              
-                 if(OrdenExisteIn())
-                 {   
+        if (pasar.isEmpty()) {
+            pasar = "P20";
+        }
+        if (pasar.equals("PC")) {
+
+            soloPc();
+            if (valor == 2) {
+                if (OrdenExisteIn()) {
                     ActualizarIn();
                     LimpiarIn();
-           
-                 }       
-                 else{
-                        if(!txtNordenIn.getText().isEmpty()){
-                            try {
-                                if(validarIn()){
-                                    if(GrabarIn()){
-                                        imprimirIn();
-                                        LimpiarIn();
-                                    }
-                                }
-                            } catch (SQLException ex) {
-                                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
-                              }
-                        }
-                }
-          } 
-         
-          else 
-          {
-          
-               if(OrdenExisteIn()){   
-                    ActualizarIn();
-                    LimpiarIn();
-           
-               } 
-               else{
-                    if(!txtNordenIn.getText().isEmpty()){
+
+                } else {
+                    if (!txtNordenIn.getText().isEmpty()) {
                         try {
-                            if(validarIn()){
-                                if(GrabarIn()){
+                            if (validarIn()) {
+                                if (GrabarIn()) {
                                     imprimirIn();
                                     LimpiarIn();
                                 }
                             }
                         } catch (SQLException ex) {
                             Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
-                          }
-                     }
-               }
-          
-          
-          }
-          limpiar();
-          valor=1;
+                        }
+                    }
+                }
+            }
+        } else {
+
+            if (OrdenExisteIn()) {
+                ActualizarIn();
+                LimpiarIn();
+
+            } else {
+                if (!txtNordenIn.getText().isEmpty()) {
+                    try {
+                        if (validarIn()) {
+                            if (GrabarIn()) {
+                                imprimirIn();
+                                LimpiarIn();
+                            }
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+
+        }
+        limpiar();
+        valor = 1;
 
     }//GEN-LAST:event_btnGrabarInActionPerformed
 
@@ -3330,78 +3353,81 @@ public void negarcheks(){
     public static com.toedter.calendar.JDateChooser FechaNacimiento;
     private void txtNordenInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenInActionPerformed
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
-        if(!txtNordenIn.getText().isEmpty()){
-            if(!OrdenExisteIn()){     
-              String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
-                 + "d.sexo_pa,n.tipoprueba "
-                 + "FROM datos_paciente AS d "
-                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
-                 + "WHERE n.n_orden ='"+txtNordenIn.getText() +"'";
-               oConn.FnBoolQueryExecute(Sql);
-                  try {
-                      if (oConn.setResult.next()) {
-                          txtNombresIn.setText(oConn.setResult.getString("nombre"));
-                          txtDniIn.setText(oConn.setResult.getString("cod_pa"));
-                          FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                          pasar=(oConn.setResult.getString("tipoprueba"));
-                          txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                     
-                          //System.out.println(pasar);
-                         if(pasar.equals("PC")) habilitarPc();
-                         else 
-                             negarPc();
-                            //soloPc(pasar);
-                          txtNordenIn.setEditable(false);
-                       // FechaHoy.requestFocusInWindow();
-                          oPe.fecha(FechaExIn);
-                           oPe.fecha(FechaHotel);
-                          
-                         }else{
-                          oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");       
-                      }
+        if (!txtNordenIn.getText().isEmpty()) {
+            if (!OrdenExisteIn()) {
+                String Sql = "SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
+                        + "d.sexo_pa,n.tipoprueba "
+                        + "FROM datos_paciente AS d "
+                        + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) "
+                        + "WHERE n.n_orden ='" + txtNordenIn.getText() + "'";
+                oConn.FnBoolQueryExecute(Sql);
+                try {
+                    if (oConn.setResult.next()) {
+                        txtNombresIn.setText(oConn.setResult.getString("nombre"));
+                        txtDniIn.setText(oConn.setResult.getString("cod_pa"));
+                        FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
+                        pasar = (oConn.setResult.getString("tipoprueba"));
+                        txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
+
+                        //System.out.println(pasar);
+                        if (pasar.equals("PC")) {
+                            habilitarPc();
+                        } else {
+                            negarPc();
+                        }
+                        //soloPc(pasar);
+                        txtNordenIn.setEditable(false);
+                        // FechaHoy.requestFocusInWindow();
+                        oPe.fecha(FechaExIn);
+                        oPe.fecha(FechaHotel);
+
+                    } else {
+                        oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios(Alta en Ex-Ocupacionales)");
+                    }
                     oConn.setResult.close();
-              } catch (SQLException ex) {
-              oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());}
-            }else{
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeInformacion("Inmunologia:" + ex.getMessage().toString());
+                }
+            } else {
                 oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
             }
-        } 
+        }
     }//GEN-LAST:event_txtNordenInActionPerformed
-public void  negarPc(){
-    jTextFieldSaturacion.setEnabled(false);
-    FechaHotel.setEnabled(false);
-    chkAsintomatico.setEnabled(false);
-    chkSintomatico.setEnabled(false);
-    //jButton1.setEnabled(false);
-}
-public void  habilitarPc(){
-    jTextFieldSaturacion.setEnabled(true);
-    FechaHotel.setEnabled(true);
-    chkAsintomatico.setEnabled(true);
-    chkSintomatico.setEnabled(true);
+    public void negarPc() {
+        jTextFieldSaturacion.setEnabled(false);
+        FechaHotel.setEnabled(false);
+        chkAsintomatico.setEnabled(false);
+        chkSintomatico.setEnabled(false);
+        //jButton1.setEnabled(false);
+    }
 
-    
-    //jButton1.setEnabled(true);
-}
+    public void habilitarPc() {
+        jTextFieldSaturacion.setEnabled(true);
+        FechaHotel.setEnabled(true);
+        chkAsintomatico.setEnabled(true);
+        chkSintomatico.setEnabled(true);
 
-    public  void soloPc(){
-      // System.out.println(pasar);
-      
-    if(!jTextFieldSaturacion.getText().isEmpty()){
-      
-            String sql2="SELECT spFuncionLLenadoPc("+txtNordenIn.getText()+",'"+FechaHotel.getDate()+"','"
-                    +jTextFieldSaturacion.getText() +"');";
-            valor=2;
+        //jButton1.setEnabled(true);
+    }
+
+    public void soloPc() {
+        // System.out.println(pasar);
+
+        if (!jTextFieldSaturacion.getText().isEmpty()) {
+
+            String sql2 = "SELECT spFuncionLLenadoPc(" + txtNordenIn.getText() + ",'" + FechaHotel.getDate() + "','"
+                    + jTextFieldSaturacion.getText() + "');";
+            valor = 2;
             negarPc();
             jTextFieldSaturacion.setText("");
-          //  System.out.println(sql2);
-        oConn.FnBoolQueryExecute(sql2);
-        
-          agregarSimtocasPc();
+            //  System.out.println(sql2);
+            oConn.FnBoolQueryExecute(sql2);
+
+            agregarSimtocasPc();
+        } else {
+            JOptionPane.showMessageDialog(null, "LLENAR CO2 ", "Sistema MEDSOFT", JOptionPane.ERROR_MESSAGE);
         }
-else
-            JOptionPane.showMessageDialog(null, "LLENAR CO2 ","Sistema MEDSOFT",JOptionPane.ERROR_MESSAGE);
-        
+
         try {
             oConn.setResult.close();
         } catch (SQLException ex) {
@@ -3414,22 +3440,22 @@ else
 
     private void btnEditarInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarInActionPerformed
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
-        if(!txtNordenIn.getText().isEmpty()){
-            String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
-            + " ct.fecha_examen,ct.chkigm_reactivo, ct.chkigm_noreactivo, \n" +
-            "                   ct.chkigg_reactivo, ct.chkigg_noreactivo, ct.chkinvalido, "
-                    + "ct.cbomarca, ct.txtvrigm,ct.txtvrigg,n.tipoprueba " +
-            "               FROM datos_paciente AS d \n" +
-            "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n" +
-            "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n" +
-            "               WHERE n.n_orden ='"+txtNordenIn.getText() +"'";
+        if (!txtNordenIn.getText().isEmpty()) {
+            String Sql = "SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa ,"
+                    + " ct.fecha_examen,ct.chkigm_reactivo, ct.chkigm_noreactivo, \n"
+                    + "                   ct.chkigg_reactivo, ct.chkigg_noreactivo, ct.chkinvalido, "
+                    + "ct.cbomarca, ct.txtvrigm,ct.txtvrigg,n.tipoprueba "
+                    + "               FROM datos_paciente AS d \n"
+                    + "               INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa) \n"
+                    + "               INNER JOIN examen_inmunologico AS ct ON (ct.n_orden = n.n_orden) \n"
+                    + "               WHERE n.n_orden ='" + txtNordenIn.getText() + "'";
             oConn.FnBoolQueryExecute(Sql);
             try {
                 if (oConn.setResult.next()) {
                     txtNombresIn.setText(oConn.setResult.getString("nombre"));
                     txtDniIn.setText(oConn.setResult.getString("cod_pa"));
                     FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                    txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
+                    txtEdadIn.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())));
                     FechaExIn.setDate(oConn.setResult.getDate("fecha_examen"));
                     chkIgmReactivo.setSelected(oConn.setResult.getBoolean("chkigm_reactivo"));
                     chkIgmNoReactivo.setSelected(oConn.setResult.getBoolean("chkigm_noreactivo"));
@@ -3439,22 +3465,26 @@ else
                     cboMarca.setSelectedItem(oConn.setResult.getString("cbomarca"));
                     txtVRIgm.setText(oConn.setResult.getString("txtvrigm"));
                     txtVRIgg.setText(oConn.setResult.getString("txtvrigg"));
-                    pasar=(oConn.setResult.getString("tipoprueba"));
+                    pasar = (oConn.setResult.getString("tipoprueba"));
                     FechaHotel.setDate(oConn.setResult.getDate("fecha_examen"));
-                      if(pasar.equals("PC")) habilitarPc();
-                      else negarPc();
-                    
-                }else{
+                    if (pasar.equals("PC")) {
+                        habilitarPc();
+                    } else {
+                        negarPc();
+                    }
+
+                } else {
                     oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
                 }
                 oConn.setResult.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());}
+                oFunc.SubSistemaMensajeInformacion("Ficha inmunologica:" + ex.getMessage().toString());
+            }
         }
     }//GEN-LAST:event_btnEditarInActionPerformed
 
     private void FechaExInPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaExInPropertyChange
-        
+
     }//GEN-LAST:event_FechaExInPropertyChange
 
     private void txtImprimirInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirInActionPerformed
@@ -3462,7 +3492,7 @@ else
     }//GEN-LAST:event_txtImprimirInActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        if(!txtImprimirIn.getText().isEmpty()){
+        if (!txtImprimirIn.getText().isEmpty()) {
             printIn(Integer.valueOf(txtImprimirIn.getText()));
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
@@ -3478,18 +3508,16 @@ else
     }//GEN-LAST:event_cboMarcaPopupMenuWillBecomeInvisible
 
     private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed
-      
-        
+
         cboMarca.getEditor().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-  
-       //      System.out.println("EL INDICE ES" + cboMarca.getSelectedIndex() );
-            
+
+                //      System.out.println("EL INDICE ES" + cboMarca.getSelectedIndex() );
                 if (cboMarca.getSelectedIndex() <= -1) {
-                    
-                } 
-                if(cboMarca.getSelectedIndex()==0){
+
+                }
+                if (cboMarca.getSelectedIndex() == 0) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad relativa: 98.8% \n"
@@ -3497,7 +3525,7 @@ else
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "Sensabilidad relativa: 93.7% \n"
                             + "Especificidad relativa : 99.1 %");
-                }else if(cboMarca.getSelectedIndex()==1){
+                } else if (cboMarca.getSelectedIndex() == 1) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad relativa: 95.7% \n"
@@ -3505,7 +3533,7 @@ else
                     txtVRIgm.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensibilidad relativa: 95.7% \n"
                             + "Especificidad relativa : 96.7% \n");
-                }else if(cboMarca.getSelectedIndex()==2){
+                } else if (cboMarca.getSelectedIndex() == 2) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad: 94% \n"
@@ -3513,11 +3541,11 @@ else
                             + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.6% \n"
                             + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 94% \n"
+                            + "Sensabilidad: 94% \n"
                             + "Especificidad: 100% \n"
                             + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.6% \n"
                             + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
-                }else if(cboMarca.getSelectedIndex()==3){
+                } else if (cboMarca.getSelectedIndex() == 3) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad: 84% \n"
@@ -3525,19 +3553,19 @@ else
                             + "Sensibilidad clínica del kit: 98.67% \n"
                             + "Especificidad clínica del kit: 91.11 %");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensibilidad: 97.33% \n"
+                            + "Sensibilidad: 97.33% \n"
                             + "Especificidad: 93.33% \n"
                             + "Sensibilidad clínica del kit: 97.6% \n"
                             + "Especificidad clínica del kit: 100 %");
-                }else if(cboMarca.getSelectedIndex()==4){
+                } else if (cboMarca.getSelectedIndex() == 4) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad: 91.45% \n"
                             + "Especificidad: 97%");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 91.45%\n"
+                            + "Sensabilidad: 91.45%\n"
                             + "Especificidad: 97% \n");
-                }else if(cboMarca.getSelectedIndex()==5){
+                } else if (cboMarca.getSelectedIndex() == 5) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad Relativa: 93.75% \n"
@@ -3545,63 +3573,59 @@ else
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad Relativa: 93.75% \n"
                             + "Especificidad Relativa: 96.4%");
-                }else if(cboMarca.getSelectedIndex()==6){
+                } else if (cboMarca.getSelectedIndex() == 6) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad: 96% \n"
                             + "Especificidad: 100%");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 92%\n"
+                            + "Sensabilidad: 92%\n"
                             + "Especificidad: 100% \n");
-                }
-                    else if(cboMarca.getSelectedIndex()==7){
+                } else if (cboMarca.getSelectedIndex() == 7) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 92% \n"
                             + "     ESPECIFICIDAD: 100 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +   "IGG- SENSIBILIDAD: 96% \n"
+                            + "IGG- SENSIBILIDAD: 96% \n"
                             + "     ESPECIFICIDAD: 100 %");
                 }
-                  if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
+                if (cboMarca.getSelectedItem() == "RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE") {
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 95.60% \n"
                             + "     ESPECIFICIDAD: 96.00 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 95.60% \n"
-                            +"      ESPECIFICIDAD: 96.00 %");
-                }     else if(cboMarca.getSelectedIndex()==8){
-                    
-                     //if(cboMarca.getSelectedItem().toString().equals("BIOHIT HealthCare  SARS-CoV-2 IgM/igG ANTIBODY TEST KIT"))
-                   
-                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                            + "IGG-  SENSIBILIDAD: 95.60% \n"
+                            + "      ESPECIFICIDAD: 96.00 %");
+                } else if (cboMarca.getSelectedIndex() == 8) {
+
+                    //if(cboMarca.getSelectedItem().toString().equals("BIOHIT HealthCare  SARS-CoV-2 IgM/igG ANTIBODY TEST KIT"))
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 97.5% \n"
                             + "     ESPECIFICIDAD: 99.5 %");
-                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 97.5% \n"
-                            +"      ESPECIFICIDAD: 100 %");
-                     
-                }
-                 else if(cboMarca.getSelectedIndex()==9){
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                            + "IGG-  SENSIBILIDAD: 97.5% \n"
+                            + "      ESPECIFICIDAD: 100 %");
+
+                } else if (cboMarca.getSelectedIndex() == 9) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
-                        
+
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 93.75% \n"
                             + "     ESPECIFICIDAD: 96.40 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 93.75% \n"
-                            +"      ESPECIFICIDAD: 96.40 %");
-                } 
-                else if(cboMarca.getSelectedIndex()==10){
+                            + "IGG-  SENSIBILIDAD: 93.75% \n"
+                            + "      ESPECIFICIDAD: 96.40 %");
+                } else if (cboMarca.getSelectedIndex() == 10) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
-                        
+
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 95.60% \n"
                             + "     ESPECIFICIDAD: 96.00 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 95.60% \n"
-                            +"      ESPECIFICIDAD: 96.00 %");
-                }  
+                            + "IGG-  SENSIBILIDAD: 95.60% \n"
+                            + "      ESPECIFICIDAD: 96.00 %");
+                }
             }
         });
     }//GEN-LAST:event_cboMarcaActionPerformed
@@ -3617,9 +3641,9 @@ else
             public void actionPerformed(ActionEvent e) {
 
                 if (cboMarca.getSelectedIndex() <= -1) {
-                    
-                } 
-                if(cboMarca.getSelectedIndex()==0){
+
+                }
+                if (cboMarca.getSelectedIndex() == 0) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensibilidad relativa: 98.8% \n"
@@ -3627,7 +3651,7 @@ else
                     txtVRIgm.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensabilidad relativa: 93.7% \n"
                             + "Especificidad relativa : 99.1 %");
-                }else if(cboMarca.getSelectedIndex()==1){
+                } else if (cboMarca.getSelectedIndex() == 1) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensibilidad relativa: 95.7% \n"
@@ -3635,7 +3659,7 @@ else
                     txtVRIgm.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensibilidad relativa: 95.7% \n"
                             + "Especificidad relativa : 96.7% \n");
-                }else if(cboMarca.getSelectedIndex()==2){
+                } else if (cboMarca.getSelectedIndex() == 2) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensibilidad: 94% \n"
@@ -3643,11 +3667,11 @@ else
                             + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.6% \n"
                             + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
                     txtVRIgm.setText("Metodo: Inmunocromatogragía\n"
-                           + "Sensabilidad: 94% \n"
+                            + "Sensabilidad: 94% \n"
                             + "Especificidad: 100% \n"
                             + "Sensibilidad del dispositivo de prueba IgM/IgG: 97.6% \n"
                             + "Especificidad del dispositivo de prueba IgM/IgG: 100 %");
-                }else if(cboMarca.getSelectedIndex()==3){
+                } else if (cboMarca.getSelectedIndex() == 3) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensibilidad: 84% \n"
@@ -3655,76 +3679,71 @@ else
                             + "Sensibilidad clínica del kit: 98.67% \n"
                             + "Especificidad clínica del kit: 91.11 %");
                     txtVRIgm.setText("Metodo: Inmunocromatogragía\n"
-                           + "Sensibilidad: 97.33% \n"
+                            + "Sensibilidad: 97.33% \n"
                             + "Especificidad: 93.33% \n"
                             + "Sensibilidad clínica del kit: 97.6% \n"
                             + "Especificidad clínica del kit: 100 %");
-                }else if(cboMarca.getSelectedIndex()==4){
+                } else if (cboMarca.getSelectedIndex() == 4) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatogragía\n"
                             + "Sensibilidad: 91.45% \n"
                             + "Especificidad: 97%");
                     txtVRIgm.setText("Metodo: Inmunocromatogragía\n"
-                           + "Sensabilidad: 91.45%\n"
+                            + "Sensabilidad: 91.45%\n"
                             + "Especificidad: 97% \n");
-                }else if(cboMarca.getSelectedIndex()==5){
+                } else if (cboMarca.getSelectedIndex() == 5) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
-                 txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad Relativa: 93.75% \n"
                             + "Especificidad Relativa: 96.4%");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad Relativa: 93.75% \n"
                             + "Especificidad Relativa: 96.4%");
-                }else if(cboMarca.getSelectedIndex()==6){
+                } else if (cboMarca.getSelectedIndex() == 6) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
                             + "Sensibilidad: 96% \n"
                             + "Especificidad: 100%");
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
-                           + "Sensabilidad: 92%\n"
+                            + "Sensabilidad: 92%\n"
                             + "Especificidad: 100% \n");
-                }
-                         else if(cboMarca.getSelectedIndex()==7){
+                } else if (cboMarca.getSelectedIndex() == 7) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 92% \n"
                             + "     ESPECIFICIDAD: 100 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +   "IGG- SENSIBILIDAD: 96% \n"
+                            + "IGG- SENSIBILIDAD: 96% \n"
                             + "     ESPECIFICIDAD: 100 %");
-                }
-          else if(cboMarca.getSelectedIndex()==8){
-                    
-                   //  if(cboMarca.getSelectedItem().toString().equals("BIOHIT HealthCare  SARS-CoV-2 IgM/igG ANTIBODY TEST KIT"))
-                   
-                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
+                } else if (cboMarca.getSelectedIndex() == 8) {
+
+                    //  if(cboMarca.getSelectedItem().toString().equals("BIOHIT HealthCare  SARS-CoV-2 IgM/igG ANTIBODY TEST KIT"))
+                    txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 97.5% \n"
                             + "     ESPECIFICIDAD: 99.5 %");
-                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 97.5% \n"
-                            +"      ESPECIFICIDAD: 100 %");
-                     
-                }
-                 else if(cboMarca.getSelectedIndex()==9){
+                    txtVRIgg.setText("Metodo: Inmunocromatografía\n"
+                            + "IGG-  SENSIBILIDAD: 97.5% \n"
+                            + "      ESPECIFICIDAD: 100 %");
+
+                } else if (cboMarca.getSelectedIndex() == 9) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
-                        
+
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 93.75% \n"
                             + "     ESPECIFICIDAD: 96.40 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 93.75% \n"
-                            +"      ESPECIFICIDAD: 96.40 %");
-                } 
-                else if(cboMarca.getSelectedIndex()==10){
+                            + "IGG-  SENSIBILIDAD: 93.75% \n"
+                            + "      ESPECIFICIDAD: 96.40 %");
+                } else if (cboMarca.getSelectedIndex() == 10) {
 //                if(cboMarca.getSelectedItem()=="RAPID RESPONSE COVID-19 IGM/IGG TEST CASSETTE"){
-                        
+
                     txtVRIgm.setText("Metodo: Inmunocromatografía\n"
                             + "IGM- SENSIBILIDAD: 95.60% \n"
                             + "     ESPECIFICIDAD: 96.00 %");
                     txtVRIgg.setText("Metodo: Inmunocromatografía\n"
-                          +  "IGG-  SENSIBILIDAD: 95.60% \n"
-                            +"      ESPECIFICIDAD: 96.00 %");
-                } 
+                            + "IGG-  SENSIBILIDAD: 95.60% \n"
+                            + "      ESPECIFICIDAD: 96.00 %");
+                }
 
             }
         });
@@ -3733,7 +3752,7 @@ else
     private void FechaHotelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaHotelPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_FechaHotelPropertyChange
- Timer timer = new Timer(1000, new ActionListener() {
+    Timer timer = new Timer(1000, new ActionListener() {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -3745,13 +3764,13 @@ else
             lblHora.setText(GestorTime.getFfechaSystem());
         }
     });
- 
- 
- 
+
+
     private void chkAsintomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAsintomaticoActionPerformed
         // TODO add your handling code here:
-        if(chkAsintomatico.isSelected())
-        chkSintomatico.setSelected(false);
+        if (chkAsintomatico.isSelected()) {
+            chkSintomatico.setSelected(false);
+        }
         chkTos.setEnabled(false);
         chkDolorG.setEnabled(false);
         chkCongestionN.setEnabled(false);
@@ -3770,8 +3789,9 @@ else
 
     private void chkSintomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSintomaticoActionPerformed
         // TODO add your handling code here:
-         if( chkSintomatico.isSelected())
-       chkAsintomatico.setSelected(false);
+        if (chkSintomatico.isSelected()) {
+            chkAsintomatico.setSelected(false);
+        }
         chkTos.setEnabled(true);
         chkDolorG.setEnabled(true);
         chkCongestionN.setEnabled(true);
@@ -3791,25 +3811,23 @@ else
     private void chkPerdidaOlf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPerdidaOlf1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkPerdidaOlf1ActionPerformed
-    
+
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-       if(jCheckBox1.isSelected())
-       {
-         txtRPR.setText("N/A");
-       chkNegativo.setSelected(false);
-       chkPositivo.setSelected(false);
-       }
-               
+        if (jCheckBox1.isSelected()) {
+            txtRPR.setText("N/A");
+            chkNegativo.setSelected(false);
+            chkPositivo.setSelected(false);
+        }
+
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
- if(jCheckBox1.isSelected())
-       {
-       //System.out.println("entro al click");
-       chkNegativo.setSelected(false);
-       //chkPositivo.setSelected(false);
-       chkPositivo.setSelected(false);
-       }
+        if (jCheckBox1.isSelected()) {
+            //System.out.println("entro al click");
+            chkNegativo.setSelected(false);
+            //chkPositivo.setSelected(false);
+            chkPositivo.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBox1MouseClicked
 
     private void txtRPRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRPRActionPerformed
@@ -3817,38 +3835,33 @@ else
     }//GEN-LAST:event_txtRPRActionPerformed
 
     private void chkPositivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPositivoActionPerformed
-        if(chkPositivo.isSelected())
-       {
-       txtRPR.setText("POSITIVO");
-       }
+        if (chkPositivo.isSelected()) {
+            txtRPR.setText("POSITIVO");
+        }
     }//GEN-LAST:event_chkPositivoActionPerformed
 
     private void chkNegativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNegativoActionPerformed
-          if(chkNegativo.isSelected())
-       {
-       txtRPR.setText("NEGATIVO");
-       }
+        if (chkNegativo.isSelected()) {
+            txtRPR.setText("NEGATIVO");
+        }
     }//GEN-LAST:event_chkNegativoActionPerformed
 
     private void jCheckVposiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckVposiActionPerformed
-          if(jCheckVposi.isSelected())
-       {
-       txtVIH.setText("POSITIVO");
-       }
+        if (jCheckVposi.isSelected()) {
+            txtVIH.setText("POSITIVO");
+        }
     }//GEN-LAST:event_jCheckVposiActionPerformed
 
     private void jCheckNeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckNeActionPerformed
-          if(jCheckNe.isSelected())
-       {
-       txtVIH.setText("NEGATIVO");
-       }
+        if (jCheckNe.isSelected()) {
+            txtVIH.setText("NEGATIVO");
+        }
     }//GEN-LAST:event_jCheckNeActionPerformed
 
     private void jCheckNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckNAActionPerformed
-           if(jCheckNA.isSelected())
-       {
-       txtVIH.setText("N/A");
-       }
+        if (jCheckNA.isSelected()) {
+            txtVIH.setText("N/A");
+        }
     }//GEN-LAST:event_jCheckNAActionPerformed
 
     private void jComboBoxColorPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBoxColorPopupMenuWillBecomeInvisible
@@ -3898,8 +3911,49 @@ else
     private void jComboAspKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboAspKeyPressed
 
     }//GEN-LAST:event_jComboAspKeyPressed
-   
-    private void Limpiar(){
+
+    private void chkNAHemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNAHemaActionPerformed
+        // TODO add your handling code here:
+        if (chkNAHema.isSelected()) {
+            txtLeucocitosEmatologia.setText("N/A");
+            txtHemoglobina.setText("N/A");
+            txtHematocrito.setText("N/A");
+            txtVSG.setText("N/A");
+            txtHematiesEmatologia.setText("N/A");
+            txtPlaquetas.setText("N/A");
+            txtNeutrofilos.setText("N/A");
+            txtAbastonados.setText("N/A");
+            txtsegmentadosEmatologia.setText("N/A");
+            txtmonocitosEmatologia.setText("N/A");
+            txtEosinofiosEmatologia.setText("N/A");
+            txtbasofilosEmatologia.setText("N/A");
+            txtLinfocitosEmatologia.setText("N/A");
+        } else {
+            txtLeucocitosEmatologia.setText(null);
+            txtHemoglobina.setText(null);
+            txtHematocrito.setText(null);
+            txtVSG.setText(null);
+            txtPlaquetas.setText(null);
+            txtHematiesEmatologia.setText(null);
+            txtNeutrofilos.setText(null);
+            txtAbastonados.setText(null);
+            txtsegmentadosEmatologia.setText(null);
+            txtmonocitosEmatologia.setText(null);
+            txtEosinofiosEmatologia.setText(null);
+            txtbasofilosEmatologia.setText(null);
+            txtLinfocitosEmatologia.setText(null);
+        }
+    }//GEN-LAST:event_chkNAHemaActionPerformed
+
+    private void txtAcAscorbicoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAcAscorbicoFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAcAscorbicoFocusGained
+
+    private void txtAcAscorbicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcAscorbicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAcAscorbicoActionPerformed
+
+    private void Limpiar() {
         FechaExamen.setDate(null);
         txtNrecibo.setEditable(false);
         txtNorden.setText(null);
@@ -3922,6 +3976,7 @@ else
         txtLinfocitosEmatologia.setText(null);
         txtGlucosaBio.setText(null);
         txtCreatininaBio.setText(null);
+        txtPlaquetas.setText(null);
         txtVIH.setText("N/A");
         txtColorEF.setText("AMARILLO");
         txtDensidadEF.setText(null);
@@ -3935,6 +3990,7 @@ else
         txtBilirubinaEQ.setText("NEGATIVO");
         txtGlucosaEQ.setText("NEGATIVO");
         txtSangreEQ.setText("NEGATIVO");
+        txtAcAscorbico.setText("NEGATIVO");
         txtLeucocitosSU.setText(null);
         txtCelEpitelialesSU.setText("ESCASAS");
         txtCilindiosSU.setText("NO SE OBSERVAN");
@@ -3957,63 +4013,64 @@ else
         txtGFSPrevio.setText(null);
         txtGrupoFacLab.setText(null);
         txtNorden.requestFocus();
-        
     }
-    void btgroup(){
-     btGrupo.clearSelection();
-       // btTipoEx.clearSelection();
+
+    void btgroup() {
+        btGrupo.clearSelection();
+        // btTipoEx.clearSelection();
         btFactor.clearSelection();
 //        btRpr.clearSelection();
     }
-    public void  laboratorio(){
-       if(!txtGlucosaBio.getText().isEmpty()&& 
-               !txtHemoglobina.getText().isEmpty() && !txtCreatininaBio.getText().isEmpty()){
-        String sql="SELECT dp.sexo_pa FROM datos_paciente as dp " 
-                +"inner join n_orden_ocupacional AS n ON(dp.cod_pa = n.cod_pa) "
-                + "where n.n_orden='"+txtNorden.getText().toString()+"'";
-        oConn.FnBoolQueryExecute(sql);
-        try {
-            if (oConn.setResult.next())
-            {
-               String sexo=oConn.setResult.getString("sexo_pa");
-               float cretinina=Float.parseFloat(txtCreatininaBio.getText().toString());
-               float glucosa=Float.parseFloat(txtGlucosaBio.getText().toString());
-               float hemoglobina=Float.parseFloat(txtHemoglobina.getText().toString());
-               
-               if(cretinina>=1.4){
-                   txtObservacionesLB.append("- Creatinina: Hipercreatinemia"+'\n');
-               }else if(cretinina<1.4 && cretinina>=0.8){
-                   txtObservacionesLB.append("- Creatinina: Normal"+'\n');
-               }
-               if(glucosa>=110){
-                   txtObservacionesLB.append("- Glucosa: Hiperglicemio"+'\n');
-               }else if(glucosa>=70 && glucosa<110){
-                   txtObservacionesLB.append("- Glucosa: Normal"+'\n');
-               }
-               if ("M".equals(sexo)) {
-                    if (hemoglobina >= 14 && hemoglobina <= 20) {
-                        txtObservacionesLB.append("- Hemoglobina: Normal" + '\n');
-                    } else if(hemoglobina < 14 || hemoglobina > 20){
-                        txtObservacionesLB.append("- Hemoglobina: Anormal" + '\n');
+
+    public void laboratorio() {
+        if (!txtGlucosaBio.getText().isEmpty()
+                && !txtHemoglobina.getText().isEmpty() && !txtCreatininaBio.getText().isEmpty()) {
+            String sql = "SELECT dp.sexo_pa FROM datos_paciente as dp "
+                    + "inner join n_orden_ocupacional AS n ON(dp.cod_pa = n.cod_pa) "
+                    + "where n.n_orden='" + txtNorden.getText().toString() + "'";
+            oConn.FnBoolQueryExecute(sql);
+            try {
+                if (oConn.setResult.next()) {
+                    String sexo = oConn.setResult.getString("sexo_pa");
+                    float cretinina = Float.parseFloat(txtCreatininaBio.getText().toString());
+                    float glucosa = Float.parseFloat(txtGlucosaBio.getText().toString());
+                    float hemoglobina = Float.parseFloat(txtHemoglobina.getText().toString());
+
+                    if (cretinina >= 1.4) {
+                        txtObservacionesLB.append("- Creatinina: Hipercreatinemia" + '\n');
+                    } else if (cretinina < 1.4 && cretinina >= 0.8) {
+                        txtObservacionesLB.append("- Creatinina: Normal" + '\n');
                     }
-               }
-               if ("F".equals(sexo)) {
-                    if (hemoglobina >= 13.5 && hemoglobina <= 20) {
-                        txtObservacionesLB.append("- Hemoglobina: Normal" + '\n');
-                    } else if(hemoglobina < 13.5 || hemoglobina > 20){
-                        txtObservacionesLB.append("- Hemoglobina: Anormal" + '\n');
+                    if (glucosa >= 110) {
+                        txtObservacionesLB.append("- Glucosa: Hiperglicemio" + '\n');
+                    } else if (glucosa >= 70 && glucosa < 110) {
+                        txtObservacionesLB.append("- Glucosa: Normal" + '\n');
                     }
-               }
+                    if ("M".equals(sexo)) {
+                        if (hemoglobina >= 14 && hemoglobina <= 20) {
+                            txtObservacionesLB.append("- Hemoglobina: Normal" + '\n');
+                        } else if (hemoglobina < 14 || hemoglobina > 20) {
+                            txtObservacionesLB.append("- Hemoglobina: Anormal" + '\n');
+                        }
+                    }
+                    if ("F".equals(sexo)) {
+                        if (hemoglobina >= 13.5 && hemoglobina <= 20) {
+                            txtObservacionesLB.append("- Hemoglobina: Normal" + '\n');
+                        } else if (hemoglobina < 13.5 || hemoglobina > 20) {
+                            txtObservacionesLB.append("- Hemoglobina: Anormal" + '\n');
+                        }
+                    }
+                }
+                oConn.setResult.close();
+            } catch (SQLException ex) {
+                oFunc.SubSistemaMensajeError("No existe registros del cliente");
             }
-            oConn.setResult.close();
-        } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeError("No existe registros del cliente");
-       }
-       }else {
-           oFunc.SubSistemaMensajeInformacion("Debe ingresar Hemoglobina-Creatinina-Glucosa");
-       }
-       
+        } else {
+            oFunc.SubSistemaMensajeInformacion("Debe ingresar Hemoglobina-Creatinina-Glucosa");
+        }
+
     }
+
     public boolean OrdenExiste() {
         boolean bResultado = false;
         String sQuery = "Select * from lab_clinico Where n_orden=" + txtNorden.getText().toString();
@@ -4085,6 +4142,7 @@ else
         }
 
     }
+
     public void MostrarAddMarca() {
         addMarca = new AddMarcaCovid(this, true);
         addMarca.setVisible(true);
@@ -4142,6 +4200,7 @@ else
     private javax.swing.JCheckBox chkNAC;
     private javax.swing.JCheckBox chkNACreat;
     private javax.swing.JCheckBox chkNAG;
+    private javax.swing.JCheckBox chkNAHema;
     private javax.swing.JCheckBox chkNAM;
     private javax.swing.JCheckBox chkNauseas;
     private javax.swing.JCheckBox chkNegativo;
@@ -4243,6 +4302,7 @@ else
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
@@ -4278,6 +4338,7 @@ else
     private javax.swing.JRadioButton rbRHpositivo;
     private javax.swing.JTable tblabclinico;
     private javax.swing.JTextField txtAbastonados;
+    private javax.swing.JTextField txtAcAscorbico;
     private javax.swing.JTextField txtAspectoEF;
     private javax.swing.JTextField txtBacteriasSU;
     private javax.swing.JTextField txtBilirubinaEQ;
@@ -4336,375 +4397,511 @@ else
     private javax.swing.JTextField txtmonocitosEmatologia;
     private javax.swing.JTextField txtsegmentadosEmatologia;
     // End of variables declaration//GEN-END:variables
- public String[]getRowsToVector(String sql)
-    {
-        String[]veDats;
+ public String[] getRowsToVector(String sql) {
+        String[] veDats;
         //clsConnection oConn = new clsConnection();
-        try
-        {
+        try {
             //oConn.FnBoolConnectionOpen(strConnector, strHost,strUser,strPassword);
             oConn.FnBoolQueryExecute(sql);
 
             ArrayList lista = new ArrayList();
-            while (oConn.setResult.next())
-            {
+            while (oConn.setResult.next()) {
                 lista.add(oConn.setResult.getString(1));
             }
             veDats = new String[lista.size()];
-            for (int i = 0; i < lista.size(); i++)
-            {
-                veDats[i]=lista.get(i).toString();
+            for (int i = 0; i < lista.size(); i++) {
+                veDats[i] = lista.get(i).toString();
             }
-            
+
             oConn.setResult.close();
-        } catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error");
-            
+
             return null;
         }
         return veDats;
     }
-public static int getPosicionVectorBuscar(String datoBuscar, String[]empresas)
-{
-  try{
-      for(int i =0;1 < empresas.length; i++){
-        if(datoBuscar.equals(empresas[i].substring(0, datoBuscar.length())))
-            return i;
-      }
-              
-     
-  }catch(Exception e){
-  
-  }
-  return -1;
-}
-public static String getTextoApartirVector(String datoBuscar, String[]vector)
-{
-    int nroPosicion = getPosicionVectorBuscar(datoBuscar, vector);
-    if(nroPosicion == -1){
-        return datoBuscar;
-    }
-    return vector[nroPosicion];
-}
-public static void addTextAndSelectToTextFieldToRest(JTextField textField, String newDato)
-{
-    String datoBuscado ="";
-    int nroActual = textField.getText().length();
-    datoBuscado = newDato.substring(nroActual, newDato.length());
-    if(newDato.isEmpty() || datoBuscado.isEmpty())
-        return;
-    try {
-        textField.getDocument().insertString(textField.getCaretPosition(), datoBuscado, null);
-    }catch(Exception e){
-    }
-    textField.select(nroActual, textField.getText().length());
 
-}
-public void Editar(){
+    public static int getPosicionVectorBuscar(String datoBuscar, String[] empresas) {
+        try {
+            for (int i = 0; 1 < empresas.length; i++) {
+                if (datoBuscar.equals(empresas[i].substring(0, datoBuscar.length()))) {
+                    return i;
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
+        return -1;
+    }
+
+    public static String getTextoApartirVector(String datoBuscar, String[] vector) {
+        int nroPosicion = getPosicionVectorBuscar(datoBuscar, vector);
+        if (nroPosicion == -1) {
+            return datoBuscar;
+        }
+        return vector[nroPosicion];
+    }
+
+    public static void addTextAndSelectToTextFieldToRest(JTextField textField, String newDato) {
+        String datoBuscado = "";
+        int nroActual = textField.getText().length();
+        datoBuscado = newDato.substring(nroActual, newDato.length());
+        if (newDato.isEmpty() || datoBuscado.isEmpty()) {
+            return;
+        }
+        try {
+            textField.getDocument().insertString(textField.getCaretPosition(), datoBuscado, null);
+        } catch (Exception e) {
+        }
+        textField.select(nroActual, textField.getText().length());
+
+    }
+
+    public void Editar() {
 //    if(txtNorden.getText().isEmpty()){
 //         if(OrdenExiste()){
-          String Sql="SELECT n.razon_empresa,n.razon_contrata,dp.nombres_pa||' '||dp.apellidos_pa as nombres,n.cod_pa,n.grupofactorsan,lc.cod_labclinico,\n" +
-                    "lc.tipo_servicio, lc.num_ticket, lc.fecha_lab, lc.chko, lc.chka, lc.chkb, lc.chkab, lc.rbrhpositivo, lc.rbrhnegativo,\n" +
-                    "lc.txthemoglobina, lc.txthematocrito, lc.txtvsg, lc.txtleucocitosematologia, lc.txthematiesematologia, lc.txtneutrofilos, \n" +
-                    "lc.txtabastonados, lc.txtsegmentadosematologia, lc.txtmonocitosematologia,lc.txteosinofiosematologia,\n" +
-                    "lc.txtbasofilosematologia, lc.txtlinfocitosematologia, lc.txtglucosabio, lc.txtcreatininabio, lc.chkpositivo, lc.chknegativo, \n" +
-                    "lc.txtvih, lc.txtcoloref, lc.txtdensidadef, lc.txtaspectoef, lc.txtphef, lc.txtnitritoseq, lc.txtproteinaseq, lc.txtcetonaseq,\n" +
-                    "lc.txtleucocitoseq, lc.txturobilinogenoeq, lc.txtbilirubinaeq, lc.txtglucosaeq, lc.txtsangreeq, lc.txtleucocitossu, \n" +
-                    "lc.txtcelepitelialessu, lc.txtcilindiossu, lc.txtbacteriassu, lc.txthematiessu, lc.txtcristalessu, lc.txtpussu, lc.txtotrossu,\n" +
-                    "lc.txtcocaina, lc.txtmarihuana, lc.txtobservacioneslb, lc.res_lab, lc.txtplaquetas\n" +
-                    "FROM n_orden_ocupacional as n \n" +
-                    "INNER JOIN datos_paciente as dp ON (n.cod_pa = dp.cod_pa)\n" +
-                    "INNER JOIN lab_clinico as lc ON (n.n_orden = lc.n_orden) \n" +
-                    "WHERE n.n_orden ="+txtNorden.getText().toString()+"" ;
-              
-              oConn.FnBoolQueryExecute(Sql);
-                try {
-                    if (oConn.setResult.next()) {
-                        txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
-                        txtcontrata.setText(oConn.setResult.getString("razon_contrata"));
-                        txtNombres.setText(oConn.setResult.getString("nombres"));
-                        txtDni.setText(oConn.setResult.getString("cod_pa"));
-                        txtGFSPrevio.setText(oConn.setResult.getString("grupofactorsan"));
-                        FechaExamen.setDate(oConn.setResult.getDate("fecha_lab"));
-                         chkO.setSelected(oConn.setResult.getBoolean("chko"));
-                         chkA.setSelected(oConn.setResult.getBoolean("chka"));
-                         chkB.setSelected(oConn.setResult.getBoolean("chkb"));
-                         rbRHpositivo.setSelected(oConn.setResult.getBoolean("rbrhpositivo"));
-                         rbRHnegativo.setSelected(oConn.setResult.getBoolean("rbrhnegativo"));
-                         txtHemoglobina.setText(oConn.setResult.getString("txthemoglobina"));
-                         txtHematocrito.setText(oConn.setResult.getString("txthematocrito"));
-                         txtVSG.setText(oConn.setResult.getString("txtvsg"));
-                         txtLeucocitosEmatologia.setText(oConn.setResult.getString("txtleucocitosematologia"));
-                         txtHematiesEmatologia.setText(oConn.setResult.getString("txthematiesematologia"));
-                         txtNeutrofilos.setText(oConn.setResult.getString("txtneutrofilos"));
-                         txtsegmentadosEmatologia.setText(oConn.setResult.getString("txtsegmentadosematologia"));
-                         txtAbastonados.setText(oConn.setResult.getString("txtabastonados"));
-                         txtmonocitosEmatologia.setText(oConn.setResult.getString("txtmonocitosematologia"));
-                         txtEosinofiosEmatologia.setText(oConn.setResult.getString("txteosinofiosematologia"));
-                         txtbasofilosEmatologia.setText(oConn.setResult.getString("txtbasofilosematologia"));
-                         txtLinfocitosEmatologia.setText(oConn.setResult.getString("txtlinfocitosematologia"));
-                         txtGlucosaBio.setText(oConn.setResult.getString("txtglucosabio"));
-                         txtCreatininaBio.setText(oConn.setResult.getString("txtcreatininabio"));
-                         chkPositivo.setSelected(oConn.setResult.getBoolean("chkpositivo"));
-                         chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
-                         txtVIH.setText(oConn.setResult.getString("txtvih"));
-                          jComboBoxColor.setSelectedItem(oConn.setResult.getString("txtcoloref"));
-                        // txtColorEF.setText(oConn.setResult.getString("txtcoloref"));
-                         jComboAsp.setSelectedItem(oConn.setResult.getString("txtaspectoef"));
-    
-                         txtAspectoEF.setText(oConn.setResult.getString("txtaspectoef"));
-                         txtDensidadEF.setText(oConn.setResult.getString("txtdensidadef"));
-                         txtPhEF.setText(oConn.setResult.getString("txtphef"));
-                         txtNitritosEQ.setText(oConn.setResult.getString("txtnitritoseq"));
-                         txtProteinasEQ.setText(oConn.setResult.getString("txtproteinaseq"));
-                         txtLeucocitosEQ.setText(oConn.setResult.getString("txtleucocitoseq"));
-                         txtCetonasEQ.setText(oConn.setResult.getString("txtcetonaseq"));
-                         txtUrobilinogenoEQ.setText(oConn.setResult.getString("txturobilinogenoeq"));
-                         txtBilirubinaEQ.setText(oConn.setResult.getString("txtbilirubinaeq"));
-                         txtGlucosaEQ.setText(oConn.setResult.getString("txtglucosaeq"));
-                         txtSangreEQ.setText(oConn.setResult.getString("txtsangreeq"));
-                         txtLeucocitosSU.setText(oConn.setResult.getString("txtleucocitossu"));
-                         txtCelEpitelialesSU.setText(oConn.setResult.getString("txtcelepitelialessu"));
-                         txtCilindiosSU.setText(oConn.setResult.getString("txtcilindiossu"));
-                         txtBacteriasSU.setText(oConn.setResult.getString("txtbacteriassu"));
-                         txtHematiesSU.setText(oConn.setResult.getString("txthematiessu"));
-                         txtCristalesSU.setText(oConn.setResult.getString("txtcristalessu"));
-                         txtPusSU.setText(oConn.setResult.getString("txtpussu"));
-                         txtOtrosSu.setText(oConn.setResult.getString("txtotrossu"));
-                         txtCocaina.setText(oConn.setResult.getString("txtcocaina"));
-                         txtmarihuana.setText(oConn.setResult.getString("txtmarihuana"));
-                         txtObservacionesLB.setText(oConn.setResult.getString("txtobservacioneslb"));
-                         txtResponsable.setText(oConn.setResult.getString("res_lab"));
-                         txtPlaquetas.setText(oConn.setResult.getString("txtplaquetas"));
-                       }else{
-                        oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de nuevo");
-                    }
-                    oConn.setResult.close();
-            } catch (SQLException ex) {
+        String Sql = "SELECT n.razon_empresa,n.razon_contrata,dp.nombres_pa||' '||dp.apellidos_pa as nombres,n.cod_pa,n.grupofactorsan,lc.cod_labclinico,\n"
+                + "lc.tipo_servicio, lc.num_ticket, lc.fecha_lab, lc.chko, lc.chka, lc.chkb, lc.chkab, lc.rbrhpositivo, lc.rbrhnegativo,\n"
+                + "lc.txthemoglobina, lc.txthematocrito, lc.txtvsg, lc.txtleucocitosematologia, lc.txthematiesematologia, lc.txtneutrofilos, \n"
+                + "lc.txtabastonados, lc.txtsegmentadosematologia, lc.txtmonocitosematologia,lc.txteosinofiosematologia,\n"
+                + "lc.txtbasofilosematologia, lc.txtlinfocitosematologia, lc.txtglucosabio, lc.txtcreatininabio, lc.chkpositivo, lc.chknegativo, \n"
+                + "lc.txtvih, lc.txtcoloref, lc.txtdensidadef, lc.txtaspectoef, lc.txtphef, lc.txtnitritoseq, lc.txtproteinaseq, lc.txtcetonaseq,\n"
+                + "lc.txtleucocitoseq, lc.txturobilinogenoeq, lc.txtbilirubinaeq, lc.txtglucosaeq, lc.txtsangreeq, lc.txtleucocitossu, \n"
+                + "lc.txtcelepitelialessu, lc.txtcilindiossu, lc.txtbacteriassu, lc.txthematiessu, lc.txtcristalessu, lc.txtpussu, lc.txtotrossu,\n"
+                + "lc.txtcocaina, lc.txtmarihuana, lc.txtobservacioneslb, lc.res_lab, lc.txtplaquetas, txtac_ascorbico \n"
+                + "FROM n_orden_ocupacional as n \n"
+                + "INNER JOIN datos_paciente as dp ON (n.cod_pa = dp.cod_pa)\n"
+                + "INNER JOIN lab_clinico as lc ON (n.n_orden = lc.n_orden) \n"
+                + "WHERE n.n_orden =" + txtNorden.getText().toString() + "";
+
+        oConn.FnBoolQueryExecute(Sql);
+        try {
+            if (oConn.setResult.next()) {
+                txtEmpresa.setText(oConn.setResult.getString("razon_empresa"));
+                txtcontrata.setText(oConn.setResult.getString("razon_contrata"));
+                txtNombres.setText(oConn.setResult.getString("nombres"));
+                txtDni.setText(oConn.setResult.getString("cod_pa"));
+                txtGFSPrevio.setText(oConn.setResult.getString("grupofactorsan"));
+                FechaExamen.setDate(oConn.setResult.getDate("fecha_lab"));
+                chkO.setSelected(oConn.setResult.getBoolean("chko"));
+                chkA.setSelected(oConn.setResult.getBoolean("chka"));
+                chkB.setSelected(oConn.setResult.getBoolean("chkb"));
+                chkAB.setSelected(oConn.setResult.getBoolean("chkab"));
+                rbRHpositivo.setSelected(oConn.setResult.getBoolean("rbrhpositivo"));
+                rbRHnegativo.setSelected(oConn.setResult.getBoolean("rbrhnegativo"));
+                txtHemoglobina.setText(oConn.setResult.getString("txthemoglobina"));
+                txtHematocrito.setText(oConn.setResult.getString("txthematocrito"));
+                txtVSG.setText(oConn.setResult.getString("txtvsg"));
+                txtLeucocitosEmatologia.setText(oConn.setResult.getString("txtleucocitosematologia"));
+                txtHematiesEmatologia.setText(oConn.setResult.getString("txthematiesematologia"));
+                txtNeutrofilos.setText(oConn.setResult.getString("txtneutrofilos"));
+                txtsegmentadosEmatologia.setText(oConn.setResult.getString("txtsegmentadosematologia"));
+                txtAbastonados.setText(oConn.setResult.getString("txtabastonados"));
+                txtmonocitosEmatologia.setText(oConn.setResult.getString("txtmonocitosematologia"));
+                txtEosinofiosEmatologia.setText(oConn.setResult.getString("txteosinofiosematologia"));
+                txtbasofilosEmatologia.setText(oConn.setResult.getString("txtbasofilosematologia"));
+                txtLinfocitosEmatologia.setText(oConn.setResult.getString("txtlinfocitosematologia"));
+                txtGlucosaBio.setText(oConn.setResult.getString("txtglucosabio"));
+                txtCreatininaBio.setText(oConn.setResult.getString("txtcreatininabio"));
+                chkPositivo.setSelected(oConn.setResult.getBoolean("chkpositivo"));
+                chkNegativo.setSelected(oConn.setResult.getBoolean("chknegativo"));
+                txtVIH.setText(oConn.setResult.getString("txtvih"));
+                jComboBoxColor.setSelectedItem(oConn.setResult.getString("txtcoloref"));
+                // txtColorEF.setText(oConn.setResult.getString("txtcoloref"));
+                jComboAsp.setSelectedItem(oConn.setResult.getString("txtaspectoef"));
+                txtAspectoEF.setText(oConn.setResult.getString("txtaspectoef"));
+                txtDensidadEF.setText(oConn.setResult.getString("txtdensidadef"));
+                txtPhEF.setText(oConn.setResult.getString("txtphef"));
+                txtNitritosEQ.setText(oConn.setResult.getString("txtnitritoseq"));
+                txtProteinasEQ.setText(oConn.setResult.getString("txtproteinaseq"));
+                txtLeucocitosEQ.setText(oConn.setResult.getString("txtleucocitoseq"));
+                txtCetonasEQ.setText(oConn.setResult.getString("txtcetonaseq"));
+                txtUrobilinogenoEQ.setText(oConn.setResult.getString("txturobilinogenoeq"));
+                txtBilirubinaEQ.setText(oConn.setResult.getString("txtbilirubinaeq"));
+                txtGlucosaEQ.setText(oConn.setResult.getString("txtglucosaeq"));
+                txtSangreEQ.setText(oConn.setResult.getString("txtsangreeq"));
+                txtLeucocitosSU.setText(oConn.setResult.getString("txtleucocitossu"));
+                txtCelEpitelialesSU.setText(oConn.setResult.getString("txtcelepitelialessu"));
+                txtCilindiosSU.setText(oConn.setResult.getString("txtcilindiossu"));
+                txtBacteriasSU.setText(oConn.setResult.getString("txtbacteriassu"));
+                txtHematiesSU.setText(oConn.setResult.getString("txthematiessu"));
+                txtCristalesSU.setText(oConn.setResult.getString("txtcristalessu"));
+                txtPusSU.setText(oConn.setResult.getString("txtpussu"));
+                txtOtrosSu.setText(oConn.setResult.getString("txtotrossu"));
+                txtCocaina.setText(oConn.setResult.getString("txtcocaina"));
+                txtmarihuana.setText(oConn.setResult.getString("txtmarihuana"));
+                txtObservacionesLB.setText(oConn.setResult.getString("txtobservacioneslb"));
+                txtResponsable.setText(oConn.setResult.getString("res_lab"));
+                txtPlaquetas.setText(oConn.setResult.getString("txtplaquetas"));
+                txtAcAscorbico.setText(oConn.setResult.getString("txtac_ascorbico"));   
+            } else {
+                oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de nuevo");
+            }
+            oConn.setResult.close();
+        } catch (SQLException ex) {
             oFunc.SubSistemaMensajeInformacion("Laboratorio Clinico:" + ex.getMessage().toString());
         }
-      
 //      }
 //   }     
-}
-public void Agregar(){
-     if(!OrdenExiste()){
-         if(validar()){
-            String strSqlStmt;
-            String s;
-             String Query ;
-             strSqlStmt="INSERT INTO lab_clinico(";
-            Query="Values('";
-              if(chkConsultas.isSelected()== true){
-                  s ="CONSULTA";
-                  strSqlStmt += "tipo_servicio";
-                  strSqlStmt += ",num_ticket";
-                  Query += s + "'";
-                  Query += ",'" +txtNrecibo.getText().toString() + "'";
-              }
-              if(chkParticular.isSelected()== true){
-                  s ="PARTICULAR";
-                  strSqlStmt += "tipo_servicio";
-                  strSqlStmt += ",num_ticket";
-                  Query += s + "'";
-                  Query += ",'" +txtNrecibo.getText().toString() + "'";
-              }
-              if(chkFichaMedica.isSelected()== true){
-                  s ="OCUPACIONAL";
-                  strSqlStmt += "tipo_servicio";
-                  strSqlStmt += ",n_orden";
-                  Query += s + "'";
-                   Query += ",'" +txtNorden.getText().toString() + "'";
-              }
-              //oFunc.SubSistemaMensajeInformacion(Query);
-              if (txtResponsable.getText().trim().length()>= 1 ){strSqlStmt += ",res_lab";Query += ",'"+txtResponsable.getText().toString()+ "'";}
-              if (((JTextField)FechaExamen.getDateEditor().getUiComponent()).getText().trim().length()> 1 ){strSqlStmt+= ",fecha_lab";Query+= ",'"+FechaExamen.getDate().toString()+ "'";}
-             strSqlStmt += ",chko";
-             Query += ",'"+chkO.isSelected()+ "'";
-              strSqlStmt += ",chka";
-             Query += ",'"+chkA.isSelected()+ "'";
-              strSqlStmt += ",chkb";
-             Query += ",'"+chkB.isSelected()+ "'";
-              strSqlStmt += ",chkab";
-             Query += ",'"+chkAB.isSelected()+ "'";
-           //if(rbRHpositivo.isSelected()== true){
-             strSqlStmt += ",rbrhpositivo";
-             Query += ",'"+rbRHpositivo.isSelected()+ "'";   
-           //}
-           //if(rbRHnegativo.isSelected()== true){
-             strSqlStmt += ",rbrhnegativo";
-             Query += ",'"+rbRHnegativo.isSelected()+ "'";
-           //}
-              if (txtHemoglobina.getText().trim().length()>= 1 ){strSqlStmt += ",txthemoglobina";Query += ",'"+txtHemoglobina.getText().toString()+ "'";}
-              if (txtHematocrito.getText().trim().length()>= 1 ){strSqlStmt += ",txthematocrito";Query += ",'"+txtHematocrito.getText().toString()+ "'";}
-              if (txtVSG.getText().trim().length()>= 1 ){strSqlStmt += ",txtvsg";Query += ",'"+ txtVSG.getText().toString()+ "'";}
-              if (txtLeucocitosEmatologia.getText().trim().length()>= 1 ){strSqlStmt += ",txtleucocitosematologia";Query += ",'"+txtLeucocitosEmatologia.getText().toString()+ "'";}
-              if (txtHematiesEmatologia.getText().trim().length()>= 1 ){strSqlStmt += ",txthematiesematologia";Query += ",'"+txtHematiesEmatologia.getText().toString()+ "'";}
-              if (txtNeutrofilos.getText().trim().length()>= 1 ){strSqlStmt += ",txtneutrofilos";Query += ",'"+txtNeutrofilos.getText().toString()+ "'";}
-              if (txtAbastonados.getText().trim().length()>= 1 ){strSqlStmt += ",txtabastonados";Query += ",'"+txtAbastonados.getText().toString()+ "'";}
-              if (txtsegmentadosEmatologia.getText().trim().length()>= 1 ){strSqlStmt += ",txtsegmentadosematologia";Query += ",'"+txtsegmentadosEmatologia.getText().toString()+ "'";}
-              if (txtmonocitosEmatologia.getText().trim().length()>= 1 ){strSqlStmt += ",txtmonocitosematologia";Query += ",'"+txtmonocitosEmatologia.getText().toString()+ "'";}
-              if (txtEosinofiosEmatologia.getText().trim().length()>= 1 ){strSqlStmt += ",txteosinofiosematologia";Query += ",'"+txtEosinofiosEmatologia.getText().toString()+ "'";}
-              if (txtbasofilosEmatologia.getText().trim().length()>= 1 ){strSqlStmt += ",txtbasofilosematologia";Query += ",'"+txtbasofilosEmatologia.getText().toString()+ "'";}
-              if (txtLinfocitosEmatologia.getText().trim().length()>= 1 ){strSqlStmt += ",txtlinfocitosematologia";Query += ",'"+txtLinfocitosEmatologia.getText().toString()+ "'";}
-              if (txtGlucosaBio.getText().trim().length()>= 1 ){strSqlStmt += ",txtglucosabio";Query += ",'"+txtGlucosaBio.getText().toString()+ "'";}
-              if (txtCreatininaBio.getText().trim().length()>= 1 ){strSqlStmt += ",txtcreatininabio";Query += ",'"+txtCreatininaBio.getText().toString()+ "'";}
-              strSqlStmt += ",chkpositivo";
-              Query += ",'"+chkPositivo.isSelected()+ "'";
-              strSqlStmt += ",chknegativo";
-              Query += ",'"+chkNegativo.isSelected()+ "'";
-              if (txtVIH.getText().trim().length()>= 1 ){strSqlStmt += ",txtvih";Query += ",'"+txtVIH.getText().toString()+ "'";}
-              if (jComboBoxColor.getSelectedItem().toString().trim().length()>= 1 ){strSqlStmt += ",txtcoloref";Query += ",'"+jComboBoxColor.getSelectedItem().toString()+ "'";}
-              if (txtDensidadEF.getText().trim().length()>= 1 ){strSqlStmt += ",txtdensidadef";Query += ",'"+txtDensidadEF.getText().toString()+ "'";}
-              if (jComboAsp.getSelectedItem().toString().trim().length()>= 1 ){strSqlStmt += ",txtaspectoef";Query += ",'"+jComboAsp.getSelectedItem().toString()+ "'";}
-              if (txtPhEF.getText().trim().length()>= 1 ){strSqlStmt += ",txtphef";Query += ",'"+txtPhEF.getText().toString()+ "'";}
-              if (txtNitritosEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtnitritoseq";Query += ",'"+txtNitritosEQ.getText().toString()+ "'";}
-              if (txtProteinasEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtproteinaseq";Query += ",'"+txtProteinasEQ.getText().toString()+ "'";}
-              if (txtCetonasEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtcetonaseq";Query += ",'"+txtCetonasEQ.getText().toString()+ "'";}
-              if (txtLeucocitosEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtleucocitoseq";Query += ",'"+txtLeucocitosEQ.getText().toString()+ "'";}
-              if (txtUrobilinogenoEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txturobilinogenoeq";Query += ",'"+txtUrobilinogenoEQ.getText().toString()+ "'";}
-              if (txtBilirubinaEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtbilirubinaeq";Query += ",'"+txtBilirubinaEQ.getText().toString()+ "'";}
-              if (txtGlucosaEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtglucosaeq";Query += ",'"+txtGlucosaEQ.getText().toString()+ "'";}
-              if (txtSangreEQ.getText().trim().length()>= 1 ){strSqlStmt += ",txtsangreeq";Query += ",'"+txtSangreEQ.getText().toString()+ "'";}
-              if (txtLeucocitosSU.getText().trim().length()>= 1 ){strSqlStmt += ",txtleucocitossu";Query += ",'"+txtLeucocitosSU.getText().toString()+ "'";}
-              if (txtCelEpitelialesSU.getText().trim().length()>= 1 ){strSqlStmt += ",txtcelepitelialessu";Query += ",'"+txtCelEpitelialesSU.getText().toString()+ "'";}
-              if (txtCilindiosSU.getText().trim().length()>= 1 ){strSqlStmt += ",txtcilindiossu";Query += ",'"+txtCilindiosSU.getText().toString()+ "'";}
-              if (txtBacteriasSU.getText().trim().length()>= 1 ){strSqlStmt += ",txtbacteriassu";Query += ",'"+txtBacteriasSU.getText().toString()+ "'";}
-              if (txtHematiesSU.getText().trim().length()>= 1 ){strSqlStmt += ",txthematiessu";Query += ",'"+txtHematiesSU.getText().toString()+ "'";}
-              if (txtCristalesSU.getText().trim().length()>= 1 ){strSqlStmt += ",txtcristalessu";Query += ",'"+txtCristalesSU.getText().toString()+ "'";}
-              if (txtPusSU.getText().trim().length()>= 1 ){strSqlStmt += ",txtpussu";Query += ",'"+txtPusSU.getText().toString()+ "'";}
-              if (txtOtrosSu.getText().trim().length()>= 1 ){strSqlStmt += ",txtotrossu";Query += ",'"+txtOtrosSu.getText().toString()+ "'";}
-              if (txtCocaina.getText().trim().length()>= 1 ){strSqlStmt += ",txtcocaina";Query += ",'"+txtCocaina.getText().toString()+ "'";}
-              if (txtmarihuana.getText().trim().length()>= 1 ){strSqlStmt += ",txtmarihuana";Query += ",'"+txtmarihuana.getText().toString()+ "'";}
-              if (txtObservacionesLB.getText().trim().length()>= 1 ){strSqlStmt += ",txtobservacioneslb";Query += ",'"+txtObservacionesLB.getText().toString()+ "'";}
-              if (txtPlaquetas.getText().trim().length()>= 1 ){strSqlStmt += ",txtplaquetas";Query += ",'"+txtPlaquetas.getText().toString()+ "'";}
-              try {
-                  if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
-             oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-             imprimir();
-             Limpiar();
-             btgroup();
-                   jtLaboratorio.setSelectedIndex(0);
-                   oConn.sqlStmt.close();
-              }else{
-                   oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
-             
-              }
-                
-             } catch (Exception e) {
-             }
-              
- }
-     }
- }
+    }
 
-public void actualizar(){
-    String sql="update lab_clinico set fecha_lab='"+FechaExamen.getDate().toString()+
-        "',chko='"+chkO.isSelected()+
-        "',chka='"+chkA.isSelected()+
-        "',chkb='"+chkB.isSelected()+
-        "',chkab='"+chkAB.isSelected()+
-        "',rbrhpositivo='"+rbRHpositivo.isSelected()+
-        "',rbrhnegativo='"+rbRHnegativo.isSelected()+
-        "',txthemoglobina='"+txtHemoglobina.getText().toString()+
-        "',txthematocrito='"+txtHematocrito.getText().toString()+
-        "',txtvsg='"+txtVSG.getText().toString()+
-        "',txtleucocitosematologia='"+txtLeucocitosEmatologia.getText().toString()+
-        "',txthematiesematologia='"+txtHematiesEmatologia.getText().toString()+
-        "',txtneutrofilos='"+txtNeutrofilos.getText().toString()+
-        "',txtsegmentadosematologia='"+txtsegmentadosEmatologia.getText().toString()+
-        "',txtabastonados='"+txtAbastonados.getText().toString()+
-        "',txtmonocitosematologia='"+txtmonocitosEmatologia.getText().toString()+
-        "',txteosinofiosematologia='"+txtEosinofiosEmatologia.getText().toString()+
-        "',txtbasofilosematologia='"+txtbasofilosEmatologia.getText().toString()+
-        "',txtlinfocitosematologia='"+txtLinfocitosEmatologia.getText().toString()+
-        "',txtglucosabio='"+txtGlucosaBio.getText().toString()+
-        "',txtcreatininabio='"+txtCreatininaBio.getText().toString()+
-        "',chkpositivo='"+chkPositivo.isSelected()+
-        "',chknegativo='"+chkNegativo.isSelected()+
-        "',txtvih='"+txtVIH.getText().toString()+
-        "',txtcoloref='"+jComboBoxColor.getSelectedItem().toString()+
-        "',txtaspectoef='"+jComboAsp.getSelectedItem().toString()+
-        "',txtdensidadef='"+txtDensidadEF.getText().toString()+
-        "',txtphef='"+txtPhEF.getText().toString()+
-        "',txtnitritoseq='"+txtNitritosEQ.getText().toString()+
-        "',txtproteinaseq='"+txtProteinasEQ.getText().toString()+
-        "',txtleucocitoseq='"+txtLeucocitosEQ.getText().toString()+
-        "',txtcetonaseq='"+txtCetonasEQ.getText().toString()+
-        "',txturobilinogenoeq='"+txtUrobilinogenoEQ.getText().toString()+
-        "',txtbilirubinaeq='"+txtBilirubinaEQ.getText().toString()+
-        "',txtglucosaeq='"+txtGlucosaEQ.getText().toString()+
-        "',txtsangreeq='"+txtSangreEQ.getText().toString()+
-        "',txtleucocitossu='"+txtLeucocitosSU.getText().toString()+
-        "',txtcelepitelialessu='"+txtCelEpitelialesSU.getText().toString()+
-        "',txtcilindiossu='"+txtCilindiosSU.getText().toString()+
-        "',txtbacteriassu='"+txtBacteriasSU.getText().toString()+
-        "',txthematiessu='"+txtHematiesSU.getText().toString()+
-        "',txtcristalessu='"+txtCristalesSU.getText().toString()+
-        "',txtpussu='"+txtPusSU.getText().toString()+
-        "',txtotrossu='"+txtOtrosSu.getText().toString()+
-        "',txtcocaina='"+txtCocaina.getText().toString()+
-        "',txtmarihuana='"+txtmarihuana.getText().toString()+
-        "',txtobservacioneslb='"+txtObservacionesLB.getText().toString()+
-        "',res_lab='"+txtResponsable.getText().toString()+
-        "',txtplaquetas='"+txtPlaquetas.getText().toString()+
-        "' where n_orden="+txtNorden.getText().toString(); 
-  //  System.out.println("SQL:"+sql);
-    if (oConn.FnBoolQueryExecuteUpdate(sql)) {
-            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-        try {
-            oConn.sqlStmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+    public void Agregar() {
+        if (!OrdenExiste()) {
+            if (validar()) {
+                String strSqlStmt;
+                String s;
+                String Query;
+                strSqlStmt = "INSERT INTO lab_clinico(";
+                Query = "Values('";
+                if (chkConsultas.isSelected() == true) {
+                    s = "CONSULTA";
+                    strSqlStmt += "tipo_servicio";
+                    strSqlStmt += ",num_ticket";
+                    Query += s + "'";
+                    Query += ",'" + txtNrecibo.getText().toString() + "'";
+                }
+                if (chkParticular.isSelected() == true) {
+                    s = "PARTICULAR";
+                    strSqlStmt += "tipo_servicio";
+                    strSqlStmt += ",num_ticket";
+                    Query += s + "'";
+                    Query += ",'" + txtNrecibo.getText().toString() + "'";
+                }
+                if (chkFichaMedica.isSelected() == true) {
+                    s = "OCUPACIONAL";
+                    strSqlStmt += "tipo_servicio";
+                    strSqlStmt += ",n_orden";
+                    Query += s + "'";
+                    Query += ",'" + txtNorden.getText().toString() + "'";
+                }
+                //oFunc.SubSistemaMensajeInformacion(Query);
+                if (txtResponsable.getText().trim().length() >= 1) {
+                    strSqlStmt += ",res_lab";
+                    Query += ",'" + txtResponsable.getText().toString() + "'";
+                }
+                if (((JTextField) FechaExamen.getDateEditor().getUiComponent()).getText().trim().length() > 1) {
+                    strSqlStmt += ",fecha_lab";
+                    Query += ",'" + FechaExamen.getDate().toString() + "'";
+                }
+                strSqlStmt += ",chko";
+                Query += ",'" + chkO.isSelected() + "'";
+                strSqlStmt += ",chka";
+                Query += ",'" + chkA.isSelected() + "'";
+                strSqlStmt += ",chkb";
+                Query += ",'" + chkB.isSelected() + "'";
+                strSqlStmt += ",chkab";
+                Query += ",'" + chkAB.isSelected() + "'";
+                //if(rbRHpositivo.isSelected()== true){
+                strSqlStmt += ",rbrhpositivo";
+                Query += ",'" + rbRHpositivo.isSelected() + "'";
+                //}
+                //if(rbRHnegativo.isSelected()== true){
+                strSqlStmt += ",rbrhnegativo";
+                Query += ",'" + rbRHnegativo.isSelected() + "'";
+                //}
+                if (txtHemoglobina.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txthemoglobina";
+                    Query += ",'" + txtHemoglobina.getText().toString() + "'";
+                }
+                if (txtHematocrito.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txthematocrito";
+                    Query += ",'" + txtHematocrito.getText().toString() + "'";
+                }
+                if (txtVSG.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtvsg";
+                    Query += ",'" + txtVSG.getText().toString() + "'";
+                }
+                if (txtLeucocitosEmatologia.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtleucocitosematologia";
+                    Query += ",'" + txtLeucocitosEmatologia.getText().toString() + "'";
+                }
+                if (txtHematiesEmatologia.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txthematiesematologia";
+                    Query += ",'" + txtHematiesEmatologia.getText().toString() + "'";
+                }
+                if (txtNeutrofilos.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtneutrofilos";
+                    Query += ",'" + txtNeutrofilos.getText().toString() + "'";
+                }
+                if (txtAbastonados.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtabastonados";
+                    Query += ",'" + txtAbastonados.getText().toString() + "'";
+                }
+                if (txtsegmentadosEmatologia.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtsegmentadosematologia";
+                    Query += ",'" + txtsegmentadosEmatologia.getText().toString() + "'";
+                }
+                if (txtmonocitosEmatologia.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtmonocitosematologia";
+                    Query += ",'" + txtmonocitosEmatologia.getText().toString() + "'";
+                }
+                if (txtEosinofiosEmatologia.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txteosinofiosematologia";
+                    Query += ",'" + txtEosinofiosEmatologia.getText().toString() + "'";
+                }
+                if (txtbasofilosEmatologia.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtbasofilosematologia";
+                    Query += ",'" + txtbasofilosEmatologia.getText().toString() + "'";
+                }
+                if (txtLinfocitosEmatologia.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtlinfocitosematologia";
+                    Query += ",'" + txtLinfocitosEmatologia.getText().toString() + "'";
+                }
+                if (txtGlucosaBio.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtglucosabio";
+                    Query += ",'" + txtGlucosaBio.getText().toString() + "'";
+                }
+                if (txtCreatininaBio.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtcreatininabio";
+                    Query += ",'" + txtCreatininaBio.getText().toString() + "'";
+                }
+                strSqlStmt += ",chkpositivo";
+                Query += ",'" + chkPositivo.isSelected() + "'";
+                strSqlStmt += ",chknegativo";
+                Query += ",'" + chkNegativo.isSelected() + "'";
+                if (txtVIH.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtvih";
+                    Query += ",'" + txtVIH.getText().toString() + "'";
+                }
+                if (jComboBoxColor.getSelectedItem().toString().trim().length() >= 1) {
+                    strSqlStmt += ",txtcoloref";
+                    Query += ",'" + jComboBoxColor.getSelectedItem().toString() + "'";
+                }
+                if (txtDensidadEF.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtdensidadef";
+                    Query += ",'" + txtDensidadEF.getText().toString() + "'";
+                }
+                if (jComboAsp.getSelectedItem().toString().trim().length() >= 1) {
+                    strSqlStmt += ",txtaspectoef";
+                    Query += ",'" + jComboAsp.getSelectedItem().toString() + "'";
+                }
+                if (txtPhEF.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtphef";
+                    Query += ",'" + txtPhEF.getText().toString() + "'";
+                }
+                if (txtNitritosEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtnitritoseq";
+                    Query += ",'" + txtNitritosEQ.getText().toString() + "'";
+                }
+                if (txtProteinasEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtproteinaseq";
+                    Query += ",'" + txtProteinasEQ.getText().toString() + "'";
+                }
+                if (txtCetonasEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtcetonaseq";
+                    Query += ",'" + txtCetonasEQ.getText().toString() + "'";
+                }
+                if (txtLeucocitosEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtleucocitoseq";
+                    Query += ",'" + txtLeucocitosEQ.getText().toString() + "'";
+                }
+                if (txtUrobilinogenoEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txturobilinogenoeq";
+                    Query += ",'" + txtUrobilinogenoEQ.getText().toString() + "'";
+                }
+                if (txtBilirubinaEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtbilirubinaeq";
+                    Query += ",'" + txtBilirubinaEQ.getText().toString() + "'";
+                }
+                if (txtGlucosaEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtglucosaeq";
+                    Query += ",'" + txtGlucosaEQ.getText().toString() + "'";
+                }
+                if (txtSangreEQ.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtsangreeq";
+                    Query += ",'" + txtSangreEQ.getText().toString() + "'";
+                }
+                if (txtLeucocitosSU.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtleucocitossu";
+                    Query += ",'" + txtLeucocitosSU.getText().toString() + "'";
+                }
+                if (txtCelEpitelialesSU.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtcelepitelialessu";
+                    Query += ",'" + txtCelEpitelialesSU.getText().toString() + "'";
+                }
+                if (txtCilindiosSU.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtcilindiossu";
+                    Query += ",'" + txtCilindiosSU.getText().toString() + "'";
+                }
+                if (txtBacteriasSU.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtbacteriassu";
+                    Query += ",'" + txtBacteriasSU.getText().toString() + "'";
+                }
+                if (txtHematiesSU.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txthematiessu";
+                    Query += ",'" + txtHematiesSU.getText().toString() + "'";
+                }
+                if (txtCristalesSU.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtcristalessu";
+                    Query += ",'" + txtCristalesSU.getText().toString() + "'";
+                }
+                if (txtPusSU.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtpussu";
+                    Query += ",'" + txtPusSU.getText().toString() + "'";
+                }
+                if (txtOtrosSu.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtotrossu";
+                    Query += ",'" + txtOtrosSu.getText().toString() + "'";
+                }
+                if (txtCocaina.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtcocaina";
+                    Query += ",'" + txtCocaina.getText().toString() + "'";
+                }
+                if (txtmarihuana.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtmarihuana";
+                    Query += ",'" + txtmarihuana.getText().toString() + "'";
+                }
+                if (txtObservacionesLB.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtobservacioneslb";
+                    Query += ",'" + txtObservacionesLB.getText().toString() + "'";
+                }
+                if (txtPlaquetas.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtplaquetas";
+                    Query += ",'" + txtPlaquetas.getText().toString() + "'";
+                }
+                if (txtAcAscorbico.getText().trim().length() >= 1) {
+                    strSqlStmt += ",txtac_ascorbico";
+                    Query += ",'" + txtAcAscorbico.getText().toString() + "'";
+                }
+                try {
+                    if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))) {
+                        oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
+                        imprimir();
+                        Limpiar();
+                        btgroup();
+                        jtLaboratorio.setSelectedIndex(0);
+                        oConn.sqlStmt.close();
+                    } else {
+                        oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+                    }
+                } catch (Exception e) {
+                }
+            }
         }
+    }
+
+    public void actualizar() {
+        String sql = "update lab_clinico set fecha_lab='" + FechaExamen.getDate().toString()
+                + "',chko='" + chkO.isSelected()
+                + "',chka='" + chkA.isSelected()
+                + "',chkb='" + chkB.isSelected()
+                + "',chkab='" + chkAB.isSelected()
+                + "',rbrhpositivo='" + rbRHpositivo.isSelected()
+                + "',rbrhnegativo='" + rbRHnegativo.isSelected()
+                + "',txthemoglobina='" + txtHemoglobina.getText().toString()
+                + "',txthematocrito='" + txtHematocrito.getText().toString()
+                + "',txtvsg='" + txtVSG.getText().toString()
+                + "',txtleucocitosematologia='" + txtLeucocitosEmatologia.getText().toString()
+                + "',txthematiesematologia='" + txtHematiesEmatologia.getText().toString()
+                + "',txtneutrofilos='" + txtNeutrofilos.getText().toString()
+                + "',txtsegmentadosematologia='" + txtsegmentadosEmatologia.getText().toString()
+                + "',txtabastonados='" + txtAbastonados.getText().toString()
+                + "',txtmonocitosematologia='" + txtmonocitosEmatologia.getText().toString()
+                + "',txteosinofiosematologia='" + txtEosinofiosEmatologia.getText().toString()
+                + "',txtbasofilosematologia='" + txtbasofilosEmatologia.getText().toString()
+                + "',txtlinfocitosematologia='" + txtLinfocitosEmatologia.getText().toString()
+                + "',txtglucosabio='" + txtGlucosaBio.getText().toString()
+                + "',txtcreatininabio='" + txtCreatininaBio.getText().toString()
+                + "',chkpositivo='" + chkPositivo.isSelected()
+                + "',chknegativo='" + chkNegativo.isSelected()
+                + "',txtvih='" + txtVIH.getText().toString()
+                + "',txtcoloref='" + jComboBoxColor.getSelectedItem().toString()
+                + "',txtaspectoef='" + jComboAsp.getSelectedItem().toString()
+                + "',txtdensidadef='" + txtDensidadEF.getText().toString()
+                + "',txtphef='" + txtPhEF.getText().toString()
+                + "',txtnitritoseq='" + txtNitritosEQ.getText().toString()
+                + "',txtproteinaseq='" + txtProteinasEQ.getText().toString()
+                + "',txtleucocitoseq='" + txtLeucocitosEQ.getText().toString()
+                + "',txtcetonaseq='" + txtCetonasEQ.getText().toString()
+                + "',txturobilinogenoeq='" + txtUrobilinogenoEQ.getText().toString()
+                + "',txtbilirubinaeq='" + txtBilirubinaEQ.getText().toString()
+                + "',txtglucosaeq='" + txtGlucosaEQ.getText().toString()
+                + "',txtsangreeq='" + txtSangreEQ.getText().toString()
+                + "',txtleucocitossu='" + txtLeucocitosSU.getText().toString()
+                + "',txtcelepitelialessu='" + txtCelEpitelialesSU.getText().toString()
+                + "',txtcilindiossu='" + txtCilindiosSU.getText().toString()
+                + "',txtbacteriassu='" + txtBacteriasSU.getText().toString()
+                + "',txthematiessu='" + txtHematiesSU.getText().toString()
+                + "',txtcristalessu='" + txtCristalesSU.getText().toString()
+                + "',txtpussu='" + txtPusSU.getText().toString()
+                + "',txtotrossu='" + txtOtrosSu.getText().toString()
+                + "',txtcocaina='" + txtCocaina.getText().toString()
+                + "',txtmarihuana='" + txtmarihuana.getText().toString()
+                + "',txtobservacioneslb='" + txtObservacionesLB.getText().toString()
+                + "',res_lab='" + txtResponsable.getText().toString()
+                + "',txtplaquetas='" + txtPlaquetas.getText().toString()
+                + "',txtac_ascorbico='" + txtAcAscorbico.getText().toString()
+                + "' where n_orden=" + txtNorden.getText().toString();
+        //  System.out.println("SQL:"+sql);
+        if (oConn.FnBoolQueryExecuteUpdate(sql)) {
+            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
 
-}
-private boolean validar(){
-boolean bResultado=true;
-if(chkRetiro.isSelected()){
-    if (((JTextField)FechaExamen.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-        {oFunc.SubSistemaMensajeError("Ingrese Fecha de Examen");bResultado = false;}
-    if(btTipoEx.isSelected(null)){bResultado = false;}
-    
-}else{
-    if (((JTextField)FechaExamen.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-        {oFunc.SubSistemaMensajeError("Ingrese Fecha de Examen");bResultado = false;}    
-    if(btGrupo.isSelected(null)){oFunc.SubSistemaMensajeError("Grupo");bResultado = false;}  
-    if(btFactor.isSelected(null)){oFunc.SubSistemaMensajeError("Factor");bResultado = false;}
-    if(btTipoEx.isSelected(null)){bResultado = false;}
-    //if(btRpr.isSelected(null)){oFunc.SubSistemaMensajeError("RPR");bResultado = false;}
-}
-
-return bResultado;
-   
-}
-private void imprimir(){
-int seleccion = JOptionPane.showOptionDialog(
-    this, // Componente padre
-    "¿Desea Imprimir ?", //Mensaje
-    "Seleccione una opción", // Título
-    JOptionPane.YES_NO_CANCEL_OPTION,
-    JOptionPane.QUESTION_MESSAGE,
-    null,    // null para icono por defecto.
-    new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
-    "Si");
-    if (seleccion != -1)
-    {
-   if((seleccion + 1)==1)
-   {
-      printer(Integer.valueOf(txtNorden.getText()));
-   }
-   else
-   {
-      // PRESIONO NO
-     }
     }
 
-}
+    private boolean validar() {
+        boolean bResultado = true;
+        if (chkRetiro.isSelected()) {
+            if (((JTextField) FechaExamen.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
+                oFunc.SubSistemaMensajeError("Ingrese Fecha de Examen");
+                bResultado = false;
+            }
+            if (btTipoEx.isSelected(null)) {
+                bResultado = false;
+            }
+
+        } else {
+            if (((JTextField) FechaExamen.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
+                oFunc.SubSistemaMensajeError("Ingrese Fecha de Examen");
+                bResultado = false;
+            }
+            if (btGrupo.isSelected(null)) {
+                oFunc.SubSistemaMensajeError("Grupo");
+                bResultado = false;
+            }
+            if (btFactor.isSelected(null)) {
+                oFunc.SubSistemaMensajeError("Factor");
+                bResultado = false;
+            }
+            if (btTipoEx.isSelected(null)) {
+                bResultado = false;
+            }
+            //if(btRpr.isSelected(null)){oFunc.SubSistemaMensajeError("RPR");bResultado = false;}
+        }
+
+        return bResultado;
+
+    }
+
+    private void imprimir() {
+        int seleccion = JOptionPane.showOptionDialog(
+                this, // Componente padre
+                "¿Desea Imprimir ?", //Mensaje
+                "Seleccione una opción", // Título
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[]{"Si", "No"}, // null para YES, NO y CANCEL
+                "Si");
+        if (seleccion != -1) {
+            if ((seleccion + 1) == 1) {
+                printer(Integer.valueOf(txtNorden.getText()));
+            } else {
+                // PRESIONO NO
+            }
+        }
+
+    }
+
     private void printer(Integer cod) {
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
@@ -4736,8 +4933,9 @@ int seleccion = JOptionPane.showOptionDialog(
         }
 
     }
+
     private void print(Integer cod) {
-  //Integer n;
+        //Integer n;
         //n = Integer.parseInt(txtNorden.getText());
         //Pasamos parametros al reporte Jasper. 
         Map parameters = new HashMap();
@@ -4760,25 +4958,25 @@ int seleccion = JOptionPane.showOptionDialog(
             }
             // Genera el reporte usando el objeto JasperReport e indicando la conexion
             JasperPrint myPrint = JasperFillManager.fillReport(masterReport, parameters, clsConnection.oConnection);
-                    //JasperPrint myPrint = JasperFillManager.fillReport(myReport, null,new JREmptyDataSource());
+            //JasperPrint myPrint = JasperFillManager.fillReport(myReport, null,new JREmptyDataSource());
             // Visualiza el Reporte
             JasperViewer.viewReport(myPrint, false);
         } catch (JRException ex) {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     //----------------------------
     void sbCargarDatosTipoSangre(String valor) {
         String[] titulos = {"Fecha", "Grupo Sanguíneo", "Factor Rh"};
         String[] registros = new String[3];
         String sql = "";
-            sql = "SELECT l.fecha_lab,l.chko ,l.chka ,l.chkb ,l.chkab,\n" +
-                "  l.rbrhpositivo ,l.rbrhnegativo FROM datos_paciente as dp  \n" +
-                "  inner join n_orden_ocupacional AS n ON(dp.cod_pa = n.cod_pa) \n" +
-                "  inner join lab_clinico as l on(n.n_orden=l.n_orden)\n" +
-                "  where n.cod_pa="+valor;
-           model = new DefaultTableModel(null, titulos) {
+        sql = "SELECT l.fecha_lab,l.chko ,l.chka ,l.chkb ,l.chkab,\n"
+                + "  l.rbrhpositivo ,l.rbrhnegativo FROM datos_paciente as dp  \n"
+                + "  inner join n_orden_ocupacional AS n ON(dp.cod_pa = n.cod_pa) \n"
+                + "  inner join lab_clinico as l on(n.n_orden=l.n_orden)\n"
+                + "  where n.cod_pa=" + valor;
+        model = new DefaultTableModel(null, titulos) {
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return false;
@@ -4790,32 +4988,32 @@ int seleccion = JOptionPane.showOptionDialog(
             try {
                 while (oConn.setResult.next()) {
                     registros[0] = formato.format(oConn.setResult.getDate("fecha_lab"));
-                    String c1=oConn.setResult.getString("chko");
+                    String c1 = oConn.setResult.getString("chko");
                     String c2 = oConn.setResult.getString("chka");
                     String c3 = oConn.setResult.getString("chkb");
                     String c4 = oConn.setResult.getString("chkab");
-                    if("t".equals(c1)){
-                        c1="O";
+                    if ("t".equals(c1)) {
+                        c1 = "O";
                         registros[1] = c1;
-                    }else if("t".equals(c2)){
-                        c2="A";
+                    } else if ("t".equals(c2)) {
+                        c2 = "A";
                         registros[1] = c2;
-                    }else if("t".equals(c3)){
-                        c3="B";
+                    } else if ("t".equals(c3)) {
+                        c3 = "B";
                         registros[1] = c3;
-                    }else if("t".equals(c4)){
-                        c4="AB";
+                    } else if ("t".equals(c4)) {
+                        c4 = "AB";
                         registros[1] = c4;
                     } else {
                         registros[1] = "";
                     }
-                    String posi= oConn.setResult.getString("rbrhpositivo");
-                    String nega  = oConn.setResult.getString("rbrhnegativo");
-                    if("t".equals(posi)){
-                        posi="+";
+                    String posi = oConn.setResult.getString("rbrhpositivo");
+                    String nega = oConn.setResult.getString("rbrhnegativo");
+                    if ("t".equals(posi)) {
+                        posi = "+";
                         registros[2] = posi;
-                    }else if("t".equals(nega)){
-                        nega="-";
+                    } else if ("t".equals(nega)) {
+                        nega = "-";
                         registros[2] = nega;
                     } else {
                         registros[2] = "";
@@ -4836,23 +5034,24 @@ int seleccion = JOptionPane.showOptionDialog(
                 Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-}
+    }
+
     public class MyCellRenderer extends DefaultTableCellRenderer {
 
-    @Override
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        boolean valid = String.valueOf(table.getValueAt(row, 1)).equals("");
-        
-        component.setBackground(valid ? Color.white : Color.yellow);
-        
-        component.setForeground(valid ? Color.white : Color.red);
-        return component;
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            boolean valid = String.valueOf(table.getValueAt(row, 1)).equals("");
+
+            component.setBackground(valid ? Color.white : Color.yellow);
+
+            component.setForeground(valid ? Color.white : Color.red);
+            return component;
+        }
     }
-}
-    private void sbTablalaboratorio()
-    {
-               
+
+    private void sbTablalaboratorio() {
+
 //        tblabclinico.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         // Alinear a la derecha las cantidades y precios
         DefaultTableCellRenderer cellAlinear = new DefaultTableCellRenderer();
@@ -4870,318 +5069,312 @@ int seleccion = JOptionPane.showOptionDialog(
         // Color de los Encabezados
         //jtTicket.getTableHeader().setBackground(Color.lightGray);
         //jtTicket.getTableHeader().setForeground(Color.blue);
-        
-        tblabclinico.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 11)); 
+
+        tblabclinico.getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 11));
         // Remueve la Columna de la Vista
         //jtTicket.removeColumn(jtTicket.getColumnModel().getColumn(4));
-                
+
     }
 //ficha inmonologica
-    public boolean OrdenExisteIn()
-    {
-        boolean bResultado=false;
-        if(!txtNordenIn.getText().isEmpty()){
-        String sQuery;
-        sQuery  = "Select n_orden from examen_inmunologico Where n_orden ="+txtNordenIn.getText().toString();
-        oConn.FnBoolQueryExecute(sQuery);
-        try {
-            if (oConn.setResult.next())
-            {
-                bResultado = true;
+
+    public boolean OrdenExisteIn() {
+        boolean bResultado = false;
+        if (!txtNordenIn.getText().isEmpty()) {
+            String sQuery;
+            sQuery = "Select n_orden from examen_inmunologico Where n_orden =" + txtNordenIn.getText().toString();
+            oConn.FnBoolQueryExecute(sQuery);
+            try {
+                if (oConn.setResult.next()) {
+                    bResultado = true;
 //             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
 //             txtNorden.setText(null);
-            }
-            oConn.setResult.close();
-        } catch (SQLException ex) {
-        }
-        }       
-      
-        return bResultado;
-     }  
-    
-   
-    private boolean validarIn(){
-        boolean bResultado=true;
-
-            if (((JTextField)FechaExIn.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-                {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
-
-           return bResultado;
-}
-
-     private boolean GrabarIn() throws SQLException{
-        boolean bResult = false;
-        String strSqlStmt ="INSERT INTO examen_inmunologico(\n" +
-"            n_orden, dni_pa, fecha_examen,chkigm_reactivo, chkigm_noreactivo, \n" +
-"            chkigg_reactivo, chkigg_noreactivo, chkinvalido,cbomarca,txtvrigm,txtvrigg)";       
-            strSqlStmt+= "values('"+ txtNordenIn.getText()+"','"+txtDniIn.getText().toString()+"','"+FechaExIn.getDate()+
-                    "','"+chkIgmReactivo.isSelected()+  "','"+chkIgmNoReactivo.isSelected()+
-                    "','"+chkIggReactivo.isSelected()+  
-                    "','"+chkIggNoReactivo.isSelected()+ 
-                    "','"+chkInvalido.isSelected()+ 
-                    "','"+cboMarca.getSelectedItem()+ 
-                    "','"+txtVRIgm.getText()+ 
-                    "','"+txtVRIgg.getText()+"')";
-//        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-//                   oConn.setResult.next();
-                    oFunc.SubSistemaMensajeInformacion("Examen Registrada");
-                    
-                   bResult = true;
-                   oConn.sqlStmt.close();
-               }
-                return bResult;       
-        }
-     
-  
-    public void ActualizarIn(){
-            String sCodigo=txtNordenIn.getText();
-            String strSqlStmt;
-
-            strSqlStmt="UPDATE examen_inmunologico\n" +
-                    " SET fecha_examen='"+FechaExIn.getDate()+"',"
-                    + "      chkigm_reactivo='"+chkIgmReactivo.isSelected()+"', \n" 
-                    + "      chkigm_noreactivo='"+chkIgmNoReactivo.isSelected()+"',"
-                    + "      chkigg_reactivo='"+chkIggReactivo.isSelected()+"',"
-                    + "      chkigg_noreactivo='"+chkIggNoReactivo.isSelected()+"', \n" 
-                    + "      chkinvalido='"+chkInvalido.isSelected()+"', \n" 
-                    + "      cbomarca='"+cboMarca.getSelectedItem()+"', \n" 
-                    + "      txtvrigm='"+txtVRIgm.getText()+"', \n" 
-                    + "      txtvrigg='"+txtVRIgg.getText()+"'"+
-                    " WHERE n_orden='"+sCodigo+"';";
-            //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
-                oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-                imprimirIn();
-                Limpiar();
-                try {
-                    oConn.sqlStmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+                oConn.setResult.close();
+            } catch (SQLException ex) {
             }
-    }    
-    
-  
-    private void LimpiarIn(){
+        }
+
+        return bResultado;
+    }
+
+    private boolean validarIn() {
+        boolean bResultado = true;
+
+        if (((JTextField) FechaExIn.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
+            oFunc.SubSistemaMensajeError("Ingrese Fecha ");
+            bResultado = false;
+        }
+
+        return bResultado;
+    }
+
+    private boolean GrabarIn() throws SQLException {
+        boolean bResult = false;
+        String strSqlStmt = "INSERT INTO examen_inmunologico(\n"
+                + "            n_orden, dni_pa, fecha_examen,chkigm_reactivo, chkigm_noreactivo, \n"
+                + "            chkigg_reactivo, chkigg_noreactivo, chkinvalido,cbomarca,txtvrigm,txtvrigg)";
+        strSqlStmt += "values('" + txtNordenIn.getText() + "','" + txtDniIn.getText().toString() + "','" + FechaExIn.getDate()
+                + "','" + chkIgmReactivo.isSelected() + "','" + chkIgmNoReactivo.isSelected()
+                + "','" + chkIggReactivo.isSelected()
+                + "','" + chkIggNoReactivo.isSelected()
+                + "','" + chkInvalido.isSelected()
+                + "','" + cboMarca.getSelectedItem()
+                + "','" + txtVRIgm.getText()
+                + "','" + txtVRIgg.getText() + "')";
+//        oFunc.SubSistemaMensajeError(strSqlStmt);
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+//                   oConn.setResult.next();
+            oFunc.SubSistemaMensajeInformacion("Examen Registrada");
+
+            bResult = true;
+            oConn.sqlStmt.close();
+        }
+        return bResult;
+    }
+
+    public void ActualizarIn() {
+        String sCodigo = txtNordenIn.getText();
+        String strSqlStmt;
+
+        strSqlStmt = "UPDATE examen_inmunologico\n"
+                + " SET fecha_examen='" + FechaExIn.getDate() + "',"
+                + "      chkigm_reactivo='" + chkIgmReactivo.isSelected() + "', \n"
+                + "      chkigm_noreactivo='" + chkIgmNoReactivo.isSelected() + "',"
+                + "      chkigg_reactivo='" + chkIggReactivo.isSelected() + "',"
+                + "      chkigg_noreactivo='" + chkIggNoReactivo.isSelected() + "', \n"
+                + "      chkinvalido='" + chkInvalido.isSelected() + "', \n"
+                + "      cbomarca='" + cboMarca.getSelectedItem() + "', \n"
+                + "      txtvrigm='" + txtVRIgm.getText() + "', \n"
+                + "      txtvrigg='" + txtVRIgg.getText() + "'"
+                + " WHERE n_orden='" + sCodigo + "';";
+        //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            imprimirIn();
+            Limpiar();
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
+        }
+    }
+
+    private void LimpiarIn() {
         txtNordenIn.setText(null);
         txtNombresIn.setText(null);
-    
+
         txtDniIn.setText(null);
         txtEdadIn.setText(null);
         FechaExIn.setDate(null);
-        
+
         bgIgm.clearSelection();
         bgIgg.clearSelection();
         bgInvalido.clearSelection();
         cboMarca.setSelectedItem(null);
         txtVRIgg.setText(null);
         txtVRIgm.setText(null);
-       
+
         txtNordenIn.setEditable(true);
         txtNordenIn.requestFocus();
 
     }
-    private boolean imprimirIn(){
+
+    private boolean imprimirIn() {
         boolean im = false;
         int seleccion = JOptionPane.showOptionDialog(
-            this, // Componente padre
-            "¿Desea Imprimir?", //Mensaje
-            "Seleccione una opción", // Título
-            JOptionPane.YES_NO_CANCEL_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,    // null para icono por defecto.
-            new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
-            "Si");
-            if (seleccion != -1)
-            {
-           if((seleccion + 1)==1)
-           {
-              printerIn(Integer.valueOf(txtNordenIn.getText()));
-               im = true;
-           }
-           else
-           {
-              // PRESIONO NO
-             }
+                this, // Componente padre
+                "¿Desea Imprimir?", //Mensaje
+                "Seleccione una opción", // Título
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[]{"Si", "No"}, // null para YES, NO y CANCEL
+                "Si");
+        if (seleccion != -1) {
+            if ((seleccion + 1) == 1) {
+                printerIn(Integer.valueOf(txtNordenIn.getText()));
+                im = true;
+            } else {
+                // PRESIONO NO
             }
-            return im;
-
         }
- 
-    private void printIn(Integer cod){
+        return im;
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Inmunologia1.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("EXAMEN INMUNOLOGICO");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }
-        private void printIn1(Integer cod){
+    }
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Inmunologia23.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("EXAMEN INMUNOLOGICO23");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }
-               private void printIn2(Integer cod){
+    private void printIn(Integer cod) {
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantianti.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("EXAMEN INMUNOLOGICO23");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }
-         private void printIn3(Integer cod){
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantiantigeno.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("EXAMEN INMUNOLOGICO23");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }         
-                  private void printIn4(Integer cod){
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Inmunologia1.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("EXAMEN INMUNOLOGICO");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("EXAMEN INMUNOLOGICO23");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }      
-         private void printerIn2(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantianti.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    
-                  JasperPrintManager.printReport(jasperPrint,true);
-                  
-                   } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-   }
-         
-          private void printerIn3(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcuantiantigeno.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    
-                  JasperPrintManager.printReport(jasperPrint,true);
-                  
-                   } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-   }
-           private void printerIn4(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"pcualitativaantigeno.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    
-                  JasperPrintManager.printReport(jasperPrint,true);
-                  
-                   } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-   }
-          
- private void printerIn1(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Inmunologia23.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    
-                  JasperPrintManager.printReport(jasperPrint,true);
-                  
-                   } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-   }
-   private void printerIn(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Inmunologia1.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    
-                  JasperPrintManager.printReport(jasperPrint,true);
-                  
-                   } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-   }
-   public void cboAreaOcupacional(String Ocupacion) {
+    private void printIn1(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Inmunologia23.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("EXAMEN INMUNOLOGICO23");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printIn2(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcuantianti.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("EXAMEN INMUNOLOGICO23");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printIn3(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcuantiantigeno.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("EXAMEN INMUNOLOGICO23");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printIn4(Integer cod) {
+
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigeno.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("EXAMEN INMUNOLOGICO23");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printerIn2(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcuantianti.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printerIn3(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcuantiantigeno.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printerIn4(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "pcualitativaantigeno.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printerIn1(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Inmunologia23.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void printerIn(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Inmunologia1.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void cboAreaOcupacional(String Ocupacion) {
         cboMarca.setSelectedItem(Ocupacion);
     }
-   public void CargarMarcaCovid() {
+
+    public void CargarMarcaCovid() {
         cboMarca.removeAllItems();
         String sQuery;
         // Prepara el Query
@@ -5193,9 +5386,9 @@ int seleccion = JOptionPane.showOptionDialog(
                 while (oConn.setResult.next()) {
                     cboMarca.addItem(oConn.setResult.getString("marca_c"));
                     //    cboMarca1.addItem(oConn.setResult.getString("marca_c"));
-                      //  cboMarca2.addItem(oConn.setResult.getString("marca_c"));
-                       // cboMarca3.addItem(oConn.setResult.getString("marca_c"));
-                      //  cboMarca4.addItem(oConn.setResult.getString("marca_c"));
+                    //  cboMarca2.addItem(oConn.setResult.getString("marca_c"));
+                    // cboMarca3.addItem(oConn.setResult.getString("marca_c"));
+                    //  cboMarca4.addItem(oConn.setResult.getString("marca_c"));
                 }
 
                 // Cierra Resultados

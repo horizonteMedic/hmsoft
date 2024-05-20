@@ -1539,10 +1539,15 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
         String vSql = "SELECT n.n_orden AS N°, \n" +
 "	CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
 "             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ca1.chkapto = 'TRUE' THEN 'Apto'\n" +
 "             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca1.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
 "	     WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n" +
 "             WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ca1.chkevaluado = 'TRUE' THEN 'Evaluado'\n" +
+"             WHEN ca1.chkconobservacion = 'TRUE' THEN 'Con observacion'\n" +
 "             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ca1.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
 "             WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
 "             WHEN ama.n_orden IS NULL AND ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
 "              END as CONDICION,\n" +
@@ -1897,6 +1902,7 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
 "left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n" +
 "left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
+"left join aptitud_medico_ocupacional11 as ca1 ON (ca1.n_orden=n.n_orden)\n" +
 "left join aptitud_medico_ocupacional_agro as ama ON (ama.n_orden=n.n_orden)\n" +
 "left join anexo7d as ad ON (ad.n_orden=n.n_orden)\n" +
 "left join anexoc as ac ON (ac.n_orden=n.n_orden)\n" +
@@ -2137,8 +2143,11 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "             ELSE 'NO REGISTRO APTITUD'END AS RECOMENDACIONESAPTITUD, \n" +
 "        CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
 "             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+"             WHEN ap1.chkapto = 'TRUE' THEN 'Apto'\n" +
 "             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"             WHEN ap1.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
 "             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"             WHEN ap1.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
 "             WHEN ca.chkevaluado = 'TRUE' THEN 'Evaluado'\n" +
 "             WHEN ca.chkconobservacion = 'TRUE' THEN 'Con Observaciones'\n" +
 "             WHEN ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
@@ -2179,7 +2188,8 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "Left join oftalmologia2021 as oft ON (oft.n_orden=n.n_orden)\n" +
 "Left join odontograma as odo ON (odo.n_orden=n.n_orden)\n" +
 "Left join perfil_hepatico as ph ON (ph.n_orden=n.n_orden)\n" +
-"Left join antecedentes_patologicos as apa ON (apa.n_orden=n.n_orden)" +
+"Left join antecedentes_patologicos as apa ON (apa.n_orden=n.n_orden)\n" +
+"left join certificado_aptitud_medico_ocupacional as ap1 ON(ap1.n_orden=n.n_orden)" +
 "\n" +
 "WHERE ";
               
@@ -2849,8 +2859,8 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
 "	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
 "	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END GUPOSAN,\n" +
-"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN 'NEGATIVO' \n" +
-"	     WHEN lc.rbrhnegativo = 'TRUE' THEN 'POSITIVO' END AS FACTOR,\n" +
+"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN 'POSITIVO' \n" +
+"	     WHEN lc.rbrhnegativo = 'TRUE' THEN 'NEGATIVO' END AS FACTOR,\n" +
 "	CASE WHEN ap.chk1 = 'TRUE' THEN 'SI' ELSE 'NIEGA' END  AS ALERGIAS,\n" +
 "		\n" +
 "	CASE WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +

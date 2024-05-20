@@ -3993,7 +3993,7 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
 "       FROM datos_paciente AS d\n" +
 "       INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) \n" +
 "       INNER JOIN evaluacion_musculo_esqueletica as e ON (n.n_orden=e.n_orden) " +
-            "       WHERE n.n_orden ='"+txtNorden.getText().toString()+"'";
+"       WHERE e.n_orden ='"+txtNorden.getText().toString()+"'";
             oConn.FnBoolQueryExecute(Sql);
             try {
                 if (oConn.setResult.next()) {
@@ -4308,9 +4308,6 @@ public class EvaluacionMusculoEsqueletica extends javax.swing.JInternalFrame {
                     
                     txtRecomendaciones.setText(oConn.setResult.getString("txtrecomendaciones") );
                      
-                    
-                   
-
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
                 }
@@ -5457,12 +5454,12 @@ private void printer2(Integer cod){
                
               if (!txtRecomendaciones.getText().isEmpty() )
               {Query += ",txtrecomendaciones='"+txtRecomendaciones.getText().toString()+ "'";}
-                                         
+               Query += "WHERE n_orden='"+txtNorden.getText()+ "'";                         
 //             oFunc.SubSistemaMensajeError(strSqlStmt+Query);
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query)){
                  oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
-                  imp();
-                limpiar();   
+                 imp();
+                 limpiar();   
                                    
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");

@@ -76,6 +76,14 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
         lbTipoExamen = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtKOH = new javax.swing.JTextField();
+        chkBnegativo = new javax.swing.JCheckBox();
+        chkBpositivo = new javax.swing.JCheckBox();
+        chkNA = new javax.swing.JCheckBox();
+        chkBnegativo1 = new javax.swing.JCheckBox();
+        chkBpositivo1 = new javax.swing.JCheckBox();
+        chkNA1 = new javax.swing.JCheckBox();
+        chkBnegativo2 = new javax.swing.JCheckBox();
+        chkBnegativo3 = new javax.swing.JCheckBox();
         btnEditar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -244,11 +252,67 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
         });
 
         lbTipoExamen.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbTipoExamen.setText("MUESTRA             ESPUTO");
+        lbTipoExamen.setText("MUESTRA: ESPUTO");
 
         jLabel8.setText("KOH :");
 
         txtKOH.setEnabled(false);
+
+        chkBnegativo.setText("BAAR - NEGATIVO");
+        chkBnegativo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBnegativoActionPerformed(evt);
+            }
+        });
+
+        chkBpositivo.setText("BAAR - POSITIVO");
+        chkBpositivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBpositivoActionPerformed(evt);
+            }
+        });
+
+        chkNA.setText("N/A");
+        chkNA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkNAActionPerformed(evt);
+            }
+        });
+
+        chkBnegativo1.setText("BAAR - NEGATIVO");
+        chkBnegativo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBnegativo1ActionPerformed(evt);
+            }
+        });
+
+        chkBpositivo1.setText("BAAR - POSITIVO");
+        chkBpositivo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBpositivo1ActionPerformed(evt);
+            }
+        });
+
+        chkNA1.setText("N/A");
+        chkNA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkNA1ActionPerformed(evt);
+            }
+        });
+
+        chkBnegativo2.setText("POSITIVO");
+        chkBnegativo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBnegativo2ActionPerformed(evt);
+            }
+        });
+
+        chkBnegativo3.setText("NEGATIVO");
+        chkBnegativo3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkBnegativo3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -258,32 +322,52 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtKOH, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtResultadoM1)
-                                    .addComponent(txtResultadoM2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
-                        .addGap(183, 183, 183))))
+                        .addGap(183, 183, 183))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(214, 214, 214)
+                                .addComponent(chkBnegativo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkBpositivo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkNA))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7))
+                                    .addGap(28, 28, 28)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtResultadoM1)
+                                        .addComponent(txtResultadoM2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtKOH, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(215, 215, 215)
+                                .addComponent(chkBnegativo1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkBpositivo1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(chkNA1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(241, 241, 241)
+                                .addComponent(chkBnegativo2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkBnegativo3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkTipoExamen)
                     .addComponent(lbTipoExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 124, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,15 +383,30 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtResultadoM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(3, 3, 3)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkBnegativo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkBpositivo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkNA, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtResultadoM2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chkBnegativo1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkNA1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chkBpositivo1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtKOH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(txtKOH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkBnegativo2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkBnegativo3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
@@ -341,7 +440,7 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
                                 .addComponent(FechaEx, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGap(0, 15, Short.MAX_VALUE)
                                 .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4)
@@ -475,20 +574,29 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
 
         jLabel15.setText("TIFICO H");
 
+        txtTifico_o.setText("1/40");
         txtTifico_o.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTifico_oActionPerformed(evt);
             }
         });
 
+        txtTifico_h.setText("1/40");
+
         lbTipoExamen1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbTipoExamen1.setText("AGLUTINACIONES EN LÁMINA");
+        lbTipoExamen1.setText("MÉTODO EN LÁMINA PORTAOBJETO");
 
         jLabel16.setText("PARATIFICO A");
+
+        txtParatifico_a.setText("1/40");
+
+        txtParatifico_b.setText("1/40");
 
         jLabel17.setText("PARATIFICO B");
 
         jLabel18.setText("Brucella abortus");
+
+        txtBrucella.setText("1/40");
 
         chkTipoExamen1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         chkTipoExamen1.setText("PRUEBA HEPATITIS ");
@@ -514,7 +622,7 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
                         .addComponent(jLabel19)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 23, Short.MAX_VALUE)
+                        .addGap(0, 26, Short.MAX_VALUE)
                         .addComponent(txtHepatitis, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -632,10 +740,9 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(FechaEx1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(txtNombres1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtEdad1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -961,7 +1068,7 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
                                 .addComponent(FechaEx2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addGap(0, 12, Short.MAX_VALUE)
+                                .addGap(0, 15, Short.MAX_VALUE)
                                 .addComponent(txtNombres2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel22)
@@ -1134,12 +1241,13 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
     private void chkTipoExamenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTipoExamenActionPerformed
         // TODO add your handling code here:
         if(chkTipoExamen.isSelected()){
-            lbTipoExamen.setText("Muestra             Raspado de lecho ungueal");
+            lbTipoExamen.setText("Muestra: Raspado de lecho ungueal");
             txtKOH.setEnabled(true);
+            txtKOH.setText("NEGATIVO");
             txtResultadoM1.setEnabled(false);
             txtResultadoM2.setEnabled(false);
         }else{
-            lbTipoExamen.setText("MUESTRA             ESPUTO");
+            lbTipoExamen.setText("MUESTRA: ESPUTO");
             txtKOH.setEnabled(false);
             txtResultadoM1.setEnabled(true);
             txtResultadoM2.setEnabled(true);
@@ -1468,6 +1576,78 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
     private void txtColor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtColor3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtColor3ActionPerformed
+
+    private void chkBnegativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBnegativoActionPerformed
+        // TODO add your handling code here:
+        if(chkBnegativo.isSelected()){
+            txtResultadoM1.setText("BAAR-NEGATIVO");
+        }else{
+            txtResultadoM1.setText(null);
+        }
+    }//GEN-LAST:event_chkBnegativoActionPerformed
+
+    private void chkBnegativo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBnegativo1ActionPerformed
+        // TODO add your handling code here:
+        if(chkBnegativo1.isSelected()){
+            txtResultadoM2.setText("BAAR-NEGATIVO");
+        }else{
+            txtResultadoM2.setText(null);
+        }
+    }//GEN-LAST:event_chkBnegativo1ActionPerformed
+
+    private void chkBnegativo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBnegativo2ActionPerformed
+        // TODO add your handling code here:
+        if(chkBnegativo.isSelected()){
+            txtKOH.setText("POSITIVO");
+        }else{
+            txtKOH.setText(null);
+        }
+    }//GEN-LAST:event_chkBnegativo2ActionPerformed
+
+    private void chkBnegativo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBnegativo3ActionPerformed
+        // TODO add your handling code here:
+        if(chkBnegativo3.isSelected()){
+            txtKOH.setText("NEGATIVO");
+        }else{
+            txtKOH.setText(null);
+        }
+    }//GEN-LAST:event_chkBnegativo3ActionPerformed
+
+    private void chkBpositivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBpositivoActionPerformed
+            // TODO add your handling code here:
+        if(chkBpositivo.isSelected()){
+            txtResultadoM1.setText("BAAR-POSITIVO");
+        }else{
+            txtResultadoM1.setText(null);
+        }
+    }//GEN-LAST:event_chkBpositivoActionPerformed
+
+    private void chkBpositivo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBpositivo1ActionPerformed
+        // TODO add your handling code here:
+        if(chkBpositivo1.isSelected()){
+            txtResultadoM2.setText("BAAR-POSITIVO");
+        }else{
+            txtResultadoM2.setText(null);
+        }
+    }//GEN-LAST:event_chkBpositivo1ActionPerformed
+
+    private void chkNAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNAActionPerformed
+        // TODO add your handling code here:
+        if(chkNA.isSelected()){
+            txtResultadoM1.setText("N/A");
+        }else{
+            txtResultadoM1.setText(null);
+        }
+    }//GEN-LAST:event_chkNAActionPerformed
+
+    private void chkNA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNA1ActionPerformed
+        // TODO add your handling code here:
+        if(chkNA.isSelected()){
+            txtResultadoM2.setText("N/A");
+        }else{
+            txtResultadoM2.setText(null);
+        }
+    }//GEN-LAST:event_chkNA1ActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser FechaEx;
@@ -1482,6 +1662,14 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnLimpiar1;
     private javax.swing.JButton btnLimpiar2;
+    private javax.swing.JCheckBox chkBnegativo;
+    private javax.swing.JCheckBox chkBnegativo1;
+    private javax.swing.JCheckBox chkBnegativo2;
+    private javax.swing.JCheckBox chkBnegativo3;
+    private javax.swing.JCheckBox chkBpositivo;
+    private javax.swing.JCheckBox chkBpositivo1;
+    private javax.swing.JCheckBox chkNA;
+    private javax.swing.JCheckBox chkNA1;
     private javax.swing.JCheckBox chkTipoExamen;
     private javax.swing.JCheckBox chkTipoExamen1;
     private javax.swing.JButton jButton1;
@@ -1684,7 +1872,7 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
         chkTipoExamen.setSelected(false);
         txtResultadoM1.setText("");
         txtResultadoM2.setText("");
-        lbTipoExamen.setText("MUESTRA             ESPUTO");
+        lbTipoExamen.setText("MUESTRA: ESPUTO");
         txtKOH.setEnabled(false);
         txtResultadoM1.setEnabled(true);
         txtResultadoM2.setEnabled(true);
@@ -1697,18 +1885,18 @@ public class ExamenesLaboratorio2021 extends javax.swing.JInternalFrame {
         txtEdad1.setText("");
         FechaEx1.setDate(null);
         chkTipoExamen1.setSelected(false);
-        lbTipoExamen.setText("AGLUTINACIONES EN LÁMINA");
+        lbTipoExamen.setText("MÉTODO: AGLUTINACIÓN EN LÁMINA PORTAOBJETO");
         txtHepatitis.setEnabled(false);
         txtTifico_o.setEnabled(true);
         txtTifico_h.setEnabled(true);
         txtParatifico_a.setEnabled(true);
         txtParatifico_b.setEnabled(true);
         txtBrucella.setEnabled(true);
-        txtTifico_h.setText("");
-        txtTifico_o.setText("");
-        txtParatifico_a.setText("");
-        txtParatifico_b.setText("");
-        txtBrucella.setText("");
+        txtTifico_h.setText("1/40");
+        txtTifico_o.setText("1/40");
+        txtParatifico_a.setText("1/40");
+        txtParatifico_b.setText("1/40");
+        txtBrucella.setText("1/40");
         txtHepatitis.setText("");
 
     }
