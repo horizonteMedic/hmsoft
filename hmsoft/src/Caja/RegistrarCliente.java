@@ -1,5 +1,6 @@
 package Caja;
 
+import Clases.DisableSSLVerification;
 import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
@@ -42,8 +43,10 @@ import sistema.Ingreso;
 import static sistema.Ingreso.nombresede;
 import sistema.Odontograma;
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -312,7 +315,6 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 
         String query_url = "https://api.reniec.cloud/dni/" + txtDni.getText();
         String codeee = "", json = "";
-
         //   System.out.println("el codigo json es: "+json);
         try {
 //AxisProperties.setProperty("axis.socketSecureFactory","org.apache.axis.components.net.SunFakeTrustSocketFactory");
@@ -624,6 +626,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         chkimport = new javax.swing.JCheckBox();
         jCheckBox12 = new javax.swing.JCheckBox();
         txtNumColor = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -2284,6 +2287,16 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         });
         jPanel6.add(jCheckBox12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
         jPanel6.add(txtNumColor, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 0, 42, 24));
+
+        jButton3.setBackground(new java.awt.Color(0, 0, 204));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setText("SINCRONIZAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 60, -1, -1));
 
         jtRegistroGeneral.addTab("Aperturar Examenes Pre - Ocupacionales", jPanel6);
 
@@ -4436,8 +4449,10 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         if (jCheckBox11.isSelected()) {
             agregarConsulta = "";
             agregarConsulta = " and n.cod_sede=" + codigosede;
+            sbCargarOcupacional("");
         } else {
             agregarConsulta = "";
+            sbCargarOcupacional("");
         }
 
     }//GEN-LAST:event_jCheckBox11ActionPerformed
@@ -4773,6 +4788,16 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_jLabel22MousePressed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+     try {
+             comunirApi();
+             gabrarHistoria();
+    } catch (Exception ex) {
+             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_jButton3ActionPerformed
     private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -5433,6 +5458,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox ckbSinDni;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
@@ -6395,5 +6421,241 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jCheckBox9.setSelected(false);
         jCheckBox10.setSelected(false);
     }
- 
+   public void comunirApi() throws Exception {
+         String p1 = null,p2 = null,p3 = null,
+                 p4 = null,p5 = null,p6 = null,
+                 p7 = null,p8 = null,p9 = null,p10 = null, 
+                 p11 = null,p12 = null,p13 = null,
+                 p14 = null,p15 = null,p16 = null,p17 = null,p18 = null; 
+         try {
+            DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/datosPacienteNP");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+            String Sql;
+                Sql = "SELECT cod_pa, nombres_pa, fecha_nacimiento_pa, sexo_pa, email_pa, lugar_nac_pa, \n"
+                    + "       nivel_est_pa, ocupacion_pa, estado_civil_pa, direccion_pa, departamento_pa, \n"
+                    + "       provincia_pa, distrito_pa, caserio_pa, foto_pa, cod_aleatorio_pa, \n"
+                    + "       historial_pa, tel_casa_pa, tel_trabajo_pa, cel_pa, fecha_registro_pa, \n"
+                    + "       apellidos_pa, hora_registro_pa\n"
+                    + "  FROM datos_paciente\n"
+                    + "  where cod_pa="+txtDniAlta.getText();
+           oConn1.FnBoolQueryExecute(Sql);
+                    if (oConn1.setResult.next()) {
+                         p1 = oConn1.setResult.getString("cod_pa");
+                         p2= oConn1.setResult.getString("nombres_pa");
+                         p3 = oConn1.setResult.getString("fecha_nacimiento_pa");
+                         p4 = oConn1.setResult.getString("sexo_pa");
+                         p5 = oConn1.setResult.getString("email_pa");
+                         p6 = oConn1.setResult.getString("lugar_nac_pa");
+                         p7 = oConn1.setResult.getString("nivel_est_pa");
+                         p8 = oConn1.setResult.getString("ocupacion_pa");
+                         p9 = oConn1.setResult.getString("estado_civil_pa");
+                         p10 = oConn1.setResult.getString("direccion_pa");
+                         p11 = oConn1.setResult.getString("departamento_pa");
+                         p12 = oConn1.setResult.getString("provincia_pa");
+                         p13 = oConn1.setResult.getString("distrito_pa");
+                         p14 = oConn1.setResult.getString("caserio_pa");
+                         p15 = oConn1.setResult.getString("cel_pa");
+                         p16 = oConn1.setResult.getString("fecha_registro_pa");
+                         p17 = oConn1.setResult.getString("apellidos_pa");
+                         p18 = oConn1.setResult.getString("hora_registro_pa");
+            }
+//            System.out.println(Sql);
+            String jsonInputString = "{ \"codPa\":\""+ p1+ "\", "
+                    + "\"nombresPa\":\""+ p2+ "\","
+                    + "\"fechaNaciminetoPa\": \""+ p3+ "\","
+                    + "\"sexoPa\": \""+ p4 + "\","
+                    + "\"emailPa\": \""+ p5 + "\","
+                    + "\"lugarNacPa\": \""+ p6 + "\","
+                    + "\"nivelEstPa\": \""+ p7 + "\","
+                    + "\"ocupacionPa\": \""+ p8+ "\","
+                    + "\"estadoCivilPa\": \""+ p9 + "\","
+                    + "\"direccionPa\": \""+p10 + "\","
+                    + "\"departamentoPa\": \""+ p11 + "\","
+                    + "\"provinciaPa\": \""+ p12 + "\","
+                    + "\"distritoPa\": \""+ p13 + "\","
+                    + "\"caserioPA\": \""+ p14+ "\","
+                    + "\"fotoPa\": null ,"
+                    + "\"codAleatorioPa\": null,"
+                    + "\"telCasaPa\": null,"
+                    + "\"telTrabajoPa\": null,"
+                    + "\"celPa\": \""+ p15 + "\","
+                    + "\"fechaRegistroPa\": \""+ p16+ "\","
+                    + "\"apellidosPa\": \""+ p17 + "\","
+                    + "\"horaRegistroPa\": \""+ p18+ "\","
+                    + "\"tipoDoc\": 1}";
+            System.out.println(jsonInputString);
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                    System.out.println("Response: " + response.toString());
+                   
+               
+            }
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
+   public void gabrarHistoria() throws Exception {
+         Integer cod = Integer.valueOf(tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString());
+       try {
+            DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/historiaClinica");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+            String Sql;
+            Sql = "SELECT n_orden, cod_pa, razon_empresa, razon_contrata, nom_ex, altura_po, \n"
+                    + "       mineral_po, fecha_apertura_po, precio_po, estado_ex, nom_examen, \n"
+                    + "       cargo_de, area_o, n_medico, n_hora, tipo_pago, n_fisttest, n_psicosen, \n"
+                    + "       n_testaltura, color, gruposan, grupofactorsan, cod_clinica, visual_compl, \n"
+                    + "       trab_calientes, chkcovid1, chkcovid2, manip_alimentos, txtobserv1, \n"
+                    + "       txtobserv2, cod_sede, tipo_prueba_covid, tipoprueba, nombrehotel, \n"
+                    + "       protocolo, precio_adic, autoriza, n_operacion, herra_manuales, \n"
+                    + "       rxc_dorso_lumbar, rxc_lumbar, rxc_lumbosacra, rxc_plomos, mercurioo "
+                    + "  FROM n_orden_ocupacional\n"
+                    + "  where n_orden='"+cod+"'";
+            oConn1.FnBoolQueryExecute(Sql);
+            if (oConn1.setResult.next()) {
+                oConn1.setResult.getString("n_orden");
+                oConn1.setResult.getString("cod_pa");
+                oConn1.setResult.getString("razon_empresa");
+                oConn1.setResult.getString("razon_contrata");
+                oConn1.setResult.getString("nom_ex");
+                oConn1.setResult.getString("altura_po");
+                oConn1.setResult.getString("mineral_po");
+                oConn1.setResult.getString("fecha_apertura_po");
+                oConn1.setResult.getString("precio_po");
+                oConn1.setResult.getString("estado_ex");
+                oConn1.setResult.getString("nom_examen");
+                oConn1.setResult.getString("cargo_de");
+                oConn1.setResult.getString("area_o");
+                oConn1.setResult.getString("n_medico");
+                oConn1.setResult.getString("n_hora");
+                oConn1.setResult.getString("tipo_pago");
+                oConn1.setResult.getBoolean("n_fisttest");
+                oConn1.setResult.getBoolean("n_psicosen");
+                oConn1.setResult.getBoolean("n_testaltura");
+                oConn1.setResult.getString("color");
+                oConn1.setResult.getString("gruposan");
+                oConn1.setResult.getString("grupofactorsan");
+                oConn1.setResult.getString("cod_clinica");
+                oConn1.setResult.getBoolean("visual_compl");
+                oConn1.setResult.getBoolean("trab_calientes");
+                oConn1.setResult.getBoolean("chkcovid1");
+                oConn1.setResult.getBoolean("chkcovid2");
+                oConn1.setResult.getBoolean("manip_alimentos");
+                oConn1.setResult.getString("txtobserv1");
+                oConn1.setResult.getString("txtobserv2");
+                oConn1.setResult.getString("cod_sede");
+                oConn1.setResult.getString("tipo_prueba_covid");
+                oConn1.setResult.getString("tipoprueba");
+                oConn1.setResult.getString("nombrehotel");
+                oConn1.setResult.getString("protocolo");
+                oConn1.setResult.getString("precio_adic");
+                oConn1.setResult.getString("autoriza");
+                oConn1.setResult.getString("n_operacion");
+                oConn1.setResult.getBoolean("herra_manuales");
+                oConn1.setResult.getBoolean("rxc_dorso_lumbar");
+                oConn1.setResult.getBoolean("rxc_lumbar");
+                oConn1.setResult.getBoolean("rxc_lumbosacra");
+                oConn1.setResult.getBoolean("rxc_plomos");
+                oConn1.setResult.getBoolean("mercurioo");
+            }
+//            System.out.println(Sql);
+            String jsonInputString = "{\n"
+                    + "   \"n_orden\":" + oConn1.setResult.getString("n_orden") + ",\n"
+                    + "    \"codPa\":" + oConn1.setResult.getString("cod_pa") + ",\n"
+                    + "    \"razonEmpresa\":\"" + oConn1.setResult.getString("razon_empresa") + "\",\n"
+                    + "    \"razonContrata\": \"" + oConn1.setResult.getString("razon_contrata") + "\",\n"
+                    + "    \"nomEx\": \"" + oConn1.setResult.getString("nom_ex") + "\",\n"
+                    + "    \"alturaPo\": \"" + oConn1.setResult.getString("altura_po") + "\",\n"
+                    + "    \"mineralPo\": \"" + oConn1.setResult.getString("mineral_po") + "\",\n"
+                    + "    \"fechaAperturaPo\": \"" + oConn1.setResult.getString("fecha_apertura_po") + "\",\n"
+                    + "    \"precioPo\": \"" + oConn1.setResult.getString("precio_po") + "\",\n"
+                    + "    \"estadoEx\": \"" + oConn1.setResult.getString("estado_ex") + "\",\n"
+                    + "    \"nomExamen\":\"" + oConn1.setResult.getString("nom_examen") + "\",\n"
+                    + "    \"cargoDe\": \"" + oConn1.setResult.getString("cargo_de") + "\",\n"
+                    + "    \"areaO\": \"" + oConn1.setResult.getString("area_o") + "\",\n"
+                    + "    \"n_medico\": \"" + oConn1.setResult.getString("n_medico") + "\",\n"
+                    + "    \"n_hora\": \"" + oConn1.setResult.getString("n_hora") + "\",\n"
+                    + "    \"tipoPago\": \"" + oConn1.setResult.getString("tipo_pago") + "\",\n"
+                    + "    \"n_fisttest\": " + oConn1.setResult.getBoolean("n_fisttest") + ",\n"
+                    + "    \"n_psicosen\": " + oConn1.setResult.getBoolean("n_psicosen") + ",\n"
+                    + "    \"n_testaltura\": " + oConn1.setResult.getBoolean("n_testaltura") + ",\n"
+                    + "    \"color\": " + oConn1.setResult.getString("color") + ",\n"
+                    + "    \"grupoSan\": \"" + oConn1.setResult.getString("gruposan") + "\",\n"
+                    + "    \"grupoFactorSan\": \"" + oConn1.setResult.getString("grupofactorsan") + "\",\n"
+                    + "    \"codClinica\": \"" + oConn1.setResult.getString("cod_clinica") + "\",\n"
+                    + "    \"visualCompl\": " + oConn1.setResult.getBoolean("visual_compl") + ",\n"
+                    + "    \"trabCalientes\": " + oConn1.setResult.getBoolean("trab_calientes") + ",\n"
+                    + "    \"chk_covid1\": " + oConn1.setResult.getBoolean("chkcovid1") + ",\n"
+                    + "    \"chk_covid2\": " + oConn1.setResult.getBoolean("chkcovid2") + ",\n"
+                    + "    \"manipAlimentos\": " + oConn1.setResult.getBoolean("manip_alimentos") + ",\n"
+                    + "    \"textObserv1\": \"" + oConn1.setResult.getString("txtobserv1") + "\",\n"
+                    + "    \"textObserv2\": \"" + oConn1.setResult.getString("txtobserv2") + "\",\n"
+                    + "    \"codSede\": 2,\n"
+                    + "    \"tipoPruebaCovid\": \"" + oConn1.setResult.getString("tipo_prueba_covid") + "\",\n"
+                    + "    \"tipoPrueba\": \"" + oConn1.setResult.getString("tipoprueba") + "\",\n"
+                    + "    \"nombreHotel\": \"" + oConn1.setResult.getString("nombrehotel") + "\",\n"
+                    + "    \"protocolo\": \"" + oConn1.setResult.getString("protocolo") + "\",\n"
+                    + "    \"precioAdic\": \"" + oConn1.setResult.getString("precio_adic") + "\",\n"
+                    + "    \"autoriza\": \"" + oConn1.setResult.getString("autoriza") + "\",\n"
+                    + "    \"n_operacion\": \"" + oConn1.setResult.getString("n_operacion") + "\",\n"
+                    + "    \"herraManuales\": " + oConn1.setResult.getBoolean("herra_manuales") + ",\n"
+                    + "    \"rxcDorsoLumbar\": " + oConn1.setResult.getBoolean("rxc_dorso_lumbar") + ",\n"
+                    + "    \"rxcKLumbar\": " + oConn1.setResult.getBoolean("rxc_lumbar") + ",\n"
+                    + "    \"rxcLumbosacra\": " + oConn1.setResult.getBoolean("rxc_lumbosacra") + ",\n"
+                    + "    \"rxcPlomos\": " + oConn1.setResult.getBoolean("rxc_plomos") + ",\n"
+                    + "    \"mercurioo\": " + oConn1.setResult.getBoolean("mercurioo") + ",\n"
+                    + "    \"referencia\": \"" + oConn1.setResult.getString("n_orden") + "\"\n"
+                    + "\n"
+                    + "}";
+            System.out.println(jsonInputString);
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                    System.out.println("hh: " + response.toString());
+                }
+                System.out.println("Response: " + response.toString());
+                oFunc.SubSistemaMensajeInformacion("Se sincronizo correctamente");
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
 }
