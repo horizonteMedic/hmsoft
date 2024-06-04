@@ -58,6 +58,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         bgLicor = new javax.swing.ButtonGroup();
         bgDrogras = new javax.swing.ButtonGroup();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jtAntecedentes = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -387,6 +388,12 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         txtEnfermedadesOculares = new javax.swing.JTextField();
         jLabel139 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
+        chkDosis1 = new javax.swing.JCheckBox();
+        chkDosis2 = new javax.swing.JCheckBox();
+        chkDosis3 = new javax.swing.JCheckBox();
+        chkDosis4 = new javax.swing.JCheckBox();
+        chkDosis5 = new javax.swing.JCheckBox();
+        chkBivalente = new javax.swing.JCheckBox();
 
         jLabel6.setText("Cod. Cliente:");
 
@@ -473,23 +480,22 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel10)
-                    .addComponent(FechaPatologicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(5, 5, 5))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(jLabel10)
+                        .addComponent(FechaPatologicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel11)
+                                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel2)
+                                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8)
+                                .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
         );
 
@@ -2735,6 +2741,24 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        buttonGroup2.add(chkDosis1);
+        chkDosis1.setText("DOSIS 1");
+
+        buttonGroup2.add(chkDosis2);
+        chkDosis2.setText("DOSIS 2");
+
+        buttonGroup2.add(chkDosis3);
+        chkDosis3.setText("DOSIS 3");
+
+        buttonGroup2.add(chkDosis4);
+        chkDosis4.setText("DOSIS 4");
+
+        buttonGroup2.add(chkDosis5);
+        chkDosis5.setText("DOSIS 5");
+
+        buttonGroup2.add(chkBivalente);
+        chkBivalente.setText("BIVALENTE");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -2742,15 +2766,45 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jtAntecedentes, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chkDosis3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkDosis4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chkDosis1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkDosis2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chkDosis5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkBivalente)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jtAntecedentes)
+            .addComponent(jtAntecedentes, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
+                .addContainerGap()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkDosis1)
+                    .addComponent(chkDosis2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkDosis3)
+                    .addComponent(chkDosis4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chkDosis5)
+                    .addComponent(chkBivalente))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2860,6 +2914,11 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
 
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
         if(OrdenExiste() ){
+            if(OrdenVa()){
+                ActualizarV();
+            }else{
+              AgregarV();  
+            }
             Actualizar();
         }else{
             if(!txtNorden.getText().isEmpty()){
@@ -2869,8 +2928,8 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                         if(GrabarAPInfo()){
                            if(tbQuirurgicos.getRowCount()>0 ){
                                if(GrabarAPDetalle()){
+                                  AgregarV();
                                 imp();  
-                                
                                 limpiar();
                                }
                            }else{
@@ -3054,7 +3113,6 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if(!txtNorden.getText().isEmpty()){
-        
         String Sql="SELECT d.nombres_pa||' '||d.apellidos_pa as nombrecompleto,d.sexo_pa,\n" +
 "       d.fecha_nacimiento_pa, l.txtcocaina,l.txtmarihuana,a.cod_ap, a.fecha_ap, \n" +
 "       a.chk1, a.chk2, a.chk3,a.chk4, a.chk5, a.chk6, a.chk7, a.chk8, a.chk9, a.chk10, a.chk11, a.chk12, a.chk13, \n" +
@@ -3227,6 +3285,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                         muestraVisual();
                         Oftalmologia();
                         detalleantecedentes();
+                        MostrarV();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
@@ -3368,6 +3427,31 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         
             }
     }
+    private void MostrarV(){
+        String Sql = "SELECT txtdosis1, txtdosis2, txtdosis3, txtdosis4, txtdosis5, \n"
+                + "       txtbivalente\n"
+                + "  FROM n_orden_ocupacional n\n"
+                + "  inner join antecedentes_patologicos as a ON(n.n_orden = a.n_orden)\n"
+                + "  inner join vacunas as v ON(n.n_orden = v.n_orden) "
+                + "where n.n_orden='" + txtNorden.getText() + "'";
+        oConn.FnBoolQueryExecute(Sql);
+        try {
+                    if (oConn.setResult.next()) {
+                        chkDosis1.setSelected(oConn.setResult.getBoolean("txtdosis1"));
+                        chkDosis2.setSelected(oConn.setResult.getBoolean("txtdosis2"));
+                        chkDosis3.setSelected(oConn.setResult.getBoolean("txtdosis3"));
+                        chkDosis4.setSelected(oConn.setResult.getBoolean("txtdosis4"));
+                        chkDosis5.setSelected(oConn.setResult.getBoolean("txtdosis5"));
+                        chkBivalente.setSelected(oConn.setResult.getBoolean("txtbivalente"));
+                        }else{
+                            oFunc.SubSistemaMensajeError("No se encuentra registro de vacunas");
+                        }
+                    oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+            oFunc.SubSistemaMensajeInformacion("Antecedentes P." + ex.getMessage().toString());
+        
+            }
+    }
     public boolean OrdenImp() {
 
         boolean bResultado = false;
@@ -3401,12 +3485,36 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
     }
     public boolean OrdenExiste()
     {
+        boolean bResultado=false;
+        if(!txtNorden.getText().isEmpty()){
+        String sQuery;
+        sQuery  = "Select n_orden from antecedentes_patologicos Where n_orden ="+txtNorden.getText().toString();
+        //Ejecuta el Query
+        oConn.FnBoolQueryExecute(sQuery);
+        // Capturo el Error
+        try {
+            // Verifico que haya habido resultados
+            if (oConn.setResult.next())
+            {
+                // Resultado
+                bResultado = true;
+//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+            }
+            // Cierro los Resultados
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+        }
+        }       
+        return bResultado;
+        }
+    public boolean OrdenVa()
+    {
         
         boolean bResultado=false;
         if(!txtNorden.getText().isEmpty()){
         String sQuery;
 
-        sQuery  = "Select n_orden from antecedentes_patologicos Where n_orden ="+txtNorden.getText().toString();
+        sQuery  = "Select n_orden from vacunas Where n_orden ="+txtNorden.getText().toString();
         
         //Ejecuta el Query
         oConn.FnBoolQueryExecute(sQuery);
@@ -3830,6 +3938,7 @@ private boolean ActualizarAPDetalle()
     private javax.swing.JLabel btnNext;
     private javax.swing.JLabel btnQui;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JCheckBox chk1;
     private javax.swing.JCheckBox chk10;
     private javax.swing.JCheckBox chk11;
@@ -3920,12 +4029,18 @@ private boolean ActualizarAPDetalle()
     private javax.swing.JCheckBox chk89;
     private javax.swing.JCheckBox chk9;
     private javax.swing.JCheckBox chk90;
+    private javax.swing.JCheckBox chkBivalente;
     private javax.swing.JCheckBox chkCerveza;
     private javax.swing.JCheckBox chkCigarrillos;
     private javax.swing.JCheckBox chkCovid;
     private javax.swing.JCheckBox chkCovidL;
     private javax.swing.JCheckBox chkCovidM;
     private javax.swing.JCheckBox chkCovidS;
+    private javax.swing.JCheckBox chkDosis1;
+    private javax.swing.JCheckBox chkDosis2;
+    private javax.swing.JCheckBox chkDosis3;
+    private javax.swing.JCheckBox chkDosis4;
+    private javax.swing.JCheckBox chkDosis5;
     private javax.swing.JCheckBox chkDrogas;
     private javax.swing.JCheckBox chkFreDrog;
     private javax.swing.JCheckBox chkLicFrecuencia;
@@ -4340,6 +4455,7 @@ habitos();
 chkCovid.setSelected(false);
 fechaCovid.setDate(null);
 buttonGroup1.clearSelection();
+buttonGroup2.clearSelection();
 }
 public void habitos(){
         txtNcigarrillos.setEditable(false);
@@ -4360,97 +4476,77 @@ txtOperacionQui.setText(null);
 txtdiasHospitalizacionQui.setText(null);
 txtComplicacionesQui.setText(null);
 }
-public void imp(){
-if (imprimir1(Integer.valueOf(txtNorden.getText()))){
-    imprimir2(Integer.valueOf(txtNorden.getText()));
+public void imp() {
+        if (imprimir1(Integer.valueOf(txtNorden.getText()))) {
+            imprimir2(Integer.valueOf(txtNorden.getText()));
+        }
 }
-
-}
-private boolean imprimir1(Integer num){
-    boolean im = false;
-int seleccion = JOptionPane.showOptionDialog(
-    this, // Componente padre
-    "¿Desea Imprimir Hoja 1 de 2 ?", //Mensaje
-    "Seleccione una opción", // Título
-    JOptionPane.YES_NO_CANCEL_OPTION,
-    JOptionPane.QUESTION_MESSAGE,
-    null,    // null para icono por defecto.
-    new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
-    "Si");
-    if (seleccion != -1)
-    {
-   if((seleccion + 1)==1)
-   {
-      printer1(num);
-       im = true;
-   }
-   else
-   {
-      // PRESIONO NO
-     }
+    private boolean imprimir1(Integer num) {
+        boolean im = false;
+        int seleccion = JOptionPane.showOptionDialog(
+                this, // Componente padre
+                "¿Desea Imprimir Hoja 1 de 2 ?", //Mensaje
+                "Seleccione una opción", // Título
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[]{"Si", "No"}, // null para YES, NO y CANCEL
+                "Si");
+        if (seleccion != -1) {
+            if ((seleccion + 1) == 1) {
+                printer1(num);
+                im = true;
+            } else {
+                // PRESIONO NO
+            }
+        }
+        return im;
     }
-    return im;
-
-}
-private void imprimir2(Integer num){
-int seleccion = JOptionPane.showOptionDialog(
-    this, // Componente padre
-    "¿Ingrese la misma hoja para imprimir Reverso - Hoja 2 de 2 ?", //Mensaje
-    "Seleccione una opción", // Título
-    JOptionPane.YES_NO_CANCEL_OPTION,
-    JOptionPane.QUESTION_MESSAGE,
-    null,    // null para icono por defecto.
-    new Object[] { "Si", "No"},    // null para YES, NO y CANCEL
-    "Si");
-    if (seleccion != -1)
-    {
-   if((seleccion + 1)==1)
-   {
-      printer2(num);
-   }
-   else
-   {
-      // PRESIONO NO
-     }
+    private void imprimir2(Integer num) {
+        int seleccion = JOptionPane.showOptionDialog(
+                this, // Componente padre
+                "¿Ingrese la misma hoja para imprimir Reverso - Hoja 2 de 2 ?", //Mensaje
+                "Seleccione una opción", // Título
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, // null para icono por defecto.
+                new Object[]{"Si", "No"}, // null para YES, NO y CANCEL
+                "Si");
+        if (seleccion != -1) {
+            if ((seleccion + 1) == 1) {
+                printer2(num);
+            } else {
+                // PRESIONO NO
+            }
+        }
     }
-
-}
-private void printer1(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                 try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/ficha_antecedente_patologico.jasper";
-            
+    private void printer1(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String master = System.getProperty("user.dir")
+                    + "/reportes/ficha_antecedente_patologico.jasper";
             System.out.println("master" + master);
-            if (master == null) 
-            {                
+            if (master == null) {
                 System.out.println("No encuentro el archivo del ficha antecedente patologico.");
                 //System.exit(2);
-            } 
+            }
             JasperReport masterReport = null;
-            try 
-            {
+            try {
                 masterReport = (JasperReport) JRLoader.loadObject(master);
-            } 
-            catch (JRException e) 
-            {
+            } catch (JRException e) {
                 System.out.println("Error cargando el reporte maestro: " + e.getMessage());
                 System.exit(3);
-            } 
+            }
             //JasperPrint myPrint = JasperFillManager.fillReport(masterReport,parameters,clsConnection.oConnection);
-                           
-              //      JasperViewer.viewReport(myPrint,false);
-            
-            JasperPrint jasperPrint= JasperFillManager.fillReport(masterReport,parameters,clsConnection.oConnection);
-            JasperPrintManager.printReport(jasperPrint,true);
 
-                   } catch (JRException ex) {
-                    Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
-                }
- }
-
+            //      JasperViewer.viewReport(myPrint,false);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(masterReport, parameters, clsConnection.oConnection);
+            JasperPrintManager.printReport(jasperPrint, true);
+        } catch (JRException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 public void cerrarVentana(){
         // JOptionPane.showMessageDialog(null, "probando para cerrar el stament");
         System.out.println("cerro esta ventana");
@@ -4459,12 +4555,9 @@ public void cerrarVentana(){
        } catch (SQLException ex) {
            Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
        }
-  
     this.dispose();
       //  System.exit(0);
-
     }
-
 private void printer2(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
@@ -4502,6 +4595,47 @@ private void printer2(Integer cod){
         
  
  }
+    public void AgregarV() {
+        if (!txtNorden.getText().isEmpty()) {
+            String Sql = "INSERT INTO vacunas(\n"
+                    + "            n_orden, txtdosis1, txtdosis2, txtdosis3, txtdosis4, txtdosis5, \n"
+                    + "            txtbivalente)\n"
+                    + "    VALUES ('" + txtNorden.getText() + "','" + chkDosis1.isSelected()+ "', '" + chkDosis2.isSelected() + "', "
+                    + "'" + chkDosis3.isSelected()+ "','" + chkDosis4.isSelected()+ "','" + chkDosis5.isSelected() + "', '" + chkBivalente.isSelected() + "')";
+//               oFunc.SubSistemaMensajeInformacion(Sql);
+            if (oConn.FnBoolQueryExecuteUpdate(Sql)) {
+                //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
+            } else {
+                oFunc.SubSistemaMensajeError("No se pudo registrar Vacunas");
+            }
+            try {
+                oConn.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+// }else{
+//             oFunc.SubSistemaMensajeError("codigo registrado");}
+        
+    }
 
+    public void ActualizarV() {
+        String strSqlStmt;
+        strSqlStmt = "UPDATE vacunas\n"
+                + "   SET txtdosis1='" + chkDosis1.isSelected() + "', txtdosis2='" + chkDosis2.isSelected() + "', "
+                + "txtdosis3='" + chkDosis3.isSelected() + "', txtdosis4='" + chkDosis4.isSelected() + "', \n"
+                + "       txtdosis5='" + chkDosis5.isSelected() + "', txtbivalente='" + chkBivalente.isSelected() + "'"
+                + " WHERE n_orden='" + txtNorden.getText() + "'";
+        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            txtNorden.requestFocus();
+        } else {
+            oFunc.SubSistemaMensajeError("No se pudo Actualizar VACUNAS");
+        }
+        try {
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

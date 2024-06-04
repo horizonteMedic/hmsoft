@@ -4,18 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Ingreso.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Hepatitis.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Ocupacional.java</file>
+            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/Caja/Reporteador.java</file>
+            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Aptitud_Medico_Ocupacional_Agro.java</file>
             <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Ocupacional1.java</file>
             <file>file:/D:/Horizonte/hmsoft/hmsoft/src/Caja/RegistrarCliente.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Gonadotropina.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/FichaDatosPersonales.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/LPsiconsensometria.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/FichaMedica.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/LaboratorioClinico.java</file>
             <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Interconsulta.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/EvaluacionMusculoEsqueletica.java</file>
-            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/ElectroCardiogramaPoderosa.java</file>
+            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Audiometria.java</file>
         </group>
     </open-files>
 </project-private>

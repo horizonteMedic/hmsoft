@@ -1052,6 +1052,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
         btnRepDiario2 = new javax.swing.JButton();
         btnRepDiario3 = new javax.swing.JButton();
         btnRepDiario4 = new javax.swing.JButton();
+        btnRepDiario5 = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -1689,6 +1690,14 @@ public class Reporteador extends javax.swing.JInternalFrame {
             }
         });
 
+        btnRepDiario5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        btnRepDiario5.setText("MATRIZ SUBCONTR.");
+        btnRepDiario5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRepDiario5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1733,8 +1742,11 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                 .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton6))
-                            .addComponent(jButton7))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton7)
+                                .addGap(27, 27, 27)
+                                .addComponent(btnRepDiario5, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                        .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnMostrar1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
@@ -1782,8 +1794,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(74, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1791,8 +1802,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnRepDiario1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addComponent(btnRepDiario4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                                .addComponent(btnRepDiario2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(btnRepDiario2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1807,8 +1818,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtOrdenServicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(lblNservicio))
-                                    .addComponent(txtRuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtRuc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1817,8 +1827,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
                                 .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton1)
-                                    .addComponent(jButton7))))
-                        .addGap(11, 11, 11)
+                                    .addComponent(jButton7)
+                                    .addComponent(btnRepDiario5))))
+                        .addGap(11, 15, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jCheckBoxAntigeno)
@@ -1868,7 +1879,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnImprimir)
@@ -3026,102 +3037,228 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private void btnRepDiario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepDiario4ActionPerformed
         // TODO add your handling code here:
         try {
-                // TODO add your handling code here:
-                model = new DefaultTableModel(){
-                    @Override
-                    public boolean isCellEditable(int rowIndex, int columnIndex) {
-                        return false;
-                    }};
-                String vSql="SELECT n.n_orden AS N°, d.apellidos_pa||' '||d.nombres_pa AS NOMBRES,\n" +
-"       d.cod_pa AS DNI_CARNETEXT,\n" +
+            // TODO add your handling code here:
+            model = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                }
+            };
+            String vSql = "SELECT n.n_orden AS N°, d.apellidos_pa||' '||d.nombres_pa AS NOMBRES,\n"
+                    + "       d.cod_pa AS DNI_CARNETEXT,\n"
+                    + "       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n"
+                    + "       n.razon_contrata,\n"
+                    + "       n.nom_examen AS TIPODEEMO,\n"
+                    + "       n.cargo_de AS PUESTO,d.provincia_pa,d.departamento_pa,\n"
+                    + "       fecha_apertura_po AS FECHAEVALUACION, \n"
+                    + "       CASE WHEN ca.fecha is not null THEN ca.fecha\n"
+                    + "            WHEN ama.fecha is not null THEN ama.fecha END as FECHAAPTITUD,\n"
+                    + "       CASE WHEN ob.n_orden is not null THEN 'Observado'\n"
+                    + "             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n"
+                    + "             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n"
+                    + "	     WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n"
+                    + "             WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n"
+                    + "             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n"
+                    + "             WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n"
+                    + "             WHEN ama.n_orden IS NULL AND ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n"
+                    + "              END as CONDICION,\n"
+                    + "	CASE WHEN ca.atxtrestricciones IS NOT NULL THEN ca.atxtrestricciones\n"
+                    + "	     WHEN ama.atxtrestricciones IS NOT NULL THEN ama.atxtrestricciones\n"
+                    + "             ELSE 'NO REGISTRO APTITUD'END AS RESTRICCIONESAPTITUD,\n"
+                    + "        CASE WHEN n.razon_empresa !='' THEN 'HORIZONTE MEDIC' END  AS ESTABLECIMIENTO,\n"
+                    + "	CASE WHEN lc.chko = 'TRUE' THEN 'O'\n"
+                    + "	     WHEN lc.chka = 'TRUE' THEN 'A'\n"
+                    + "	     WHEN lc.chkb = 'TRUE' THEN 'B'\n"
+                    + "	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n"
+                    + "	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n"
+                    + "	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS Grupoyfactor,\n"
+                    + "	CASE WHEN a.txtobservacionesfm IS NOT NULL THEN 'N/A' END AS observaciones,  \n"
+                    + "        CASE WHEN ba.chkapto = 'TRUE' THEN 'APTO'\n"
+                    + "             WHEN ba.chkno_apto = 'TRUE' THEN 'NO APTO'\n"
+                    + "             WHEN ba.n_orden is null  THEN 'AUN NO HAY REGISTRO EN ALTURA'\n"
+                    + "             END AS APTITUD_TRAB_ALTURA_MINERIA\n"
+                    + "FROM datos_paciente AS d\n"
+                    + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n"
+                    + "LEFT JOIN oftalmologia2021 AS ol1 ON (ol1.n_orden = n.n_orden)\n"
+                    + "LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n"
+                    + "left join anexo7c as a ON (a.n_orden=n.n_orden)\n"
+                    + "left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n"
+                    + "left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n"
+                    + "left join aptitud_medico_ocupacional_agro as ama ON (ama.n_orden=n.n_orden)\n"
+                    + "left join observaciones as ob ON (ob.n_orden=n.n_orden)\n"
+                    + "left join aptitud_altura_poderosa as ba ON (ba.n_orden=n.n_orden)   \n"
+                    + "left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n"
+                    + "WHERE n.razon_empresa ='COMPAÑIA MINERA PODEROSA S.A.' AND n.n_testaltura='TRUE' ";
+            if (((JTextField) Fdesde.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+                vSql += " AND n.fecha_apertura_po >= '" + Fdesde.getDate().toString() + "'";
+            }
+            if (((JTextField) Fhasta.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+                vSql += " AND n.fecha_apertura_po <= '" + Fhasta.getDate().toString() + "'";
+            }
+            vSql += "  " + agregarConsulta + " order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+            System.out.println("la consulta aplicada es:" + vSql);
+            if (oConn.FnBoolQueryExecute(vSql)) {
+                try {
+                    java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                    int CantidaColumnas = rsmt.getColumnCount();
+                    for (int i = 1; i <= CantidaColumnas; i++) {
+                        model.addColumn(rsmt.getColumnLabel(i));
+                    }
+                    while (oConn.setResult.next()) {
+                        Object[] Fila = new Object[CantidaColumnas];
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                            Fila[i] = oConn.setResult.getObject(i + 1);
+                        }
+                        model.addRow(Fila);
+                    }
+
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+
+                    tbReporte.setModel(model);
+
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRepDiario4ActionPerformed
+
+    private void btnRepDiario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepDiario5ActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            model = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return false;
+                }
+            };
+            String vSql = "SELECT n.n_orden AS N°, fecha_apertura_po as FECHASOLICITUD, d.cod_pa,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES,\n" +
+"       d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
 "       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
-"       n.razon_contrata,\n" +
-"       n.nom_examen AS TIPODEEMO,\n" +
-"       n.cargo_de AS PUESTO,d.provincia_pa,d.departamento_pa,\n" +
-"       fecha_apertura_po AS FECHAEVALUACION, \n" +
-"       CASE WHEN ca.fecha is not null THEN ca.fecha\n" +
-"            WHEN ama.fecha is not null THEN ama.fecha END as FECHAAPTITUD,\n" +
-"       CASE WHEN ob.n_orden is not null THEN 'Observado'\n" +
-"             WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
-"             WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"	     WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n" +
-"             WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
-"             WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
-"             WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
-"             WHEN ama.n_orden IS NULL AND ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
-"              END as CONDICION,\n" +
-"	CASE WHEN ca.atxtrestricciones IS NOT NULL THEN ca.atxtrestricciones\n" +
-"	     WHEN ama.atxtrestricciones IS NOT NULL THEN ama.atxtrestricciones\n" +
+"       n.razon_contrata,  n.cargo_de AS CARGO,\n" +
+"       CASE WHEN n.n_orden is null THEN '' END  as Tipotrabajo,\n" +
+"       CASE WHEN v.txtdosis1 ='TRUE' THEN '1' \n" +
+"	    WHEN v.txtdosis2 ='TRUE' THEN '2'\n" +
+"	    WHEN v.txtdosis3 ='TRUE' THEN '3'\n" +
+"	    WHEN v.txtdosis4 ='TRUE' THEN '4'\n" +
+"	    WHEN v.txtdosis5 ='TRUE' THEN '5'\n" +
+"	    WHEN v.txtbivalente ='true' THEN '6'else '0'\n" +
+"       END  as Carnet,\n" +
+"       CASE WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n" +
+"            WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+"            WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
+"            WHEN ama.n_orden IS NULL THEN 'APTITUD PENDIENTE'\n" +
+"            WHEN fi.n_orden IS NOT NULL THEN 'INTERCONSULTA PENDIENTE'||':'||string_agg (fi.especialidad,'-') \n" + 
+"             END as APTITUD,ama.fecha AS FECHADEEVALUACION,\n" +
+"       CASE WHEN t.peso is null THEN 'INF. NO TOMADA' ELSE t.peso END,\n" +
+"       CASE WHEN t.talla is null THEN 'INF. NO TOMADA' ELSE t.talla END,\n" +
+"       CASE WHEN t.imc is null THEN 'INF. NO TOMADA' ELSE t.imc END,\n" +
+"       CASE WHEN t.imc < '18.5' THEN 'PESO BAJO'\n" +
+"	    WHEN t.imc > '18.4' AND t.imc < '25'  THEN 'NORMAL'\n" +
+"	    WHEN t.imc > '24.9' AND t.imc < '30'  THEN 'SOBREPESO'   \n" +
+"	    WHEN t.imc > '29.9' AND t.imc < '35' THEN 'OBESIDAD I'\n" +
+"	    WHEN t.imc > '34.9' AND t.imc < '40' THEN 'OBESIDAD II'\n" +
+"	    WHEN t.imc > '39.9' THEN 'OBESIDAD'\n" +
+"	    WHEN t.imc is null THEN 'SIN FICHA 7C'\n" +
+"       END  AS dxpeso,\n" +
+"       CASE WHEN lc.txtglucosabio IS NULL THEN 'INF. NO TOMADA' ELSE lc.txtglucosabio END AS Glucosa,     \n" +
+"       CASE WHEN ab.txtcolesterol IS NOT NULL THEN ab.txtcolesterol ELSE 'INF. NO TOMADA'\n" +
+"	     END  AS Colesterol,        \n" +
+"       CASE WHEN ab.txttrigliseridos IS NOT NULL THEN ab.txttrigliseridos ELSE '...'\n" +
+"	     END  AS trigliceridos, 	\n" +
+"	     o.v_lejos_s_od, o.v_lejos_s_oi,\n" +
+"       CASE WHEN o.e_oculares is not null THEN o.e_oculares ELSE '' END ||'.'||\n" +
+"       CASE WHEN o.e_oculares1 is not null THEN o.e_oculares1 ELSE '' END AS DXOFTALMO,\n" +
+"       CASE WHEN au.n_orden is not null THEN au.diagnostico \n" +
+"             WHEN au3.n_orden is not null  THEN au3.txtdiag_od ||' '|| au3.txtdiag_od \n" +
+"             WHEN au1.chkdnormal='TRUE' THEN 'NORMAL'\n" +
+"             WHEN au1.chkdtaleveod='TRUE' THEN 'Trauma Acústico Leve OD'\n" +
+"             WHEN au1.chkdtaavanzadood='TRUE' THEN 'Trauma Acústico Avanzado OD'\n" +
+"             WHEN au1.chkdhrleveod='TRUE' THEN 'Hipoacusia Inducida por Ruido, Leve OD'\n" +
+"             WHEN au1.chkdhrmoderadood='TRUE' THEN 'Hipoacusia Inducida por Ruido, Moderada OD'\n" +
+"             WHEN au1.chkdhravanzadaod='TRUE' THEN 'Hipoacusia Inducida por Ruido, Avanzada  OD'\n" +
+"             ELSE '.' END ||''|| \n" +
+"	CASE WHEN au1.chkdtaleveoi='TRUE' THEN 'Trauma Acústico Leve OI'\n" +
+"             WHEN au1.chkdtaavanzadooi='TRUE' THEN 'Trauma Acústico Avanzado OI'\n" +
+"             WHEN au1.chkdhrleveoi='TRUE' THEN 'Hipoacusia Inducida por Ruido, Leve OI'\n" +
+"             WHEN au1.chkdhrmoderadooi='TRUE' THEN 'Hipoacusia Inducida por Ruido, Moderada OI'\n" +
+"             WHEN au1.chkdhravanzadaoi='TRUE' THEN 'Hipoacusia Inducida por Ruido, Avanzada  OI'\n" +
+"             else '.' END DXAUDIO,\n" +
+"        CASE WHEN ama.atxtrestricciones IS NOT NULL THEN ama.atxtrestricciones\n" +
 "             ELSE 'NO REGISTRO APTITUD'END AS RESTRICCIONESAPTITUD,\n" +
-"        CASE WHEN n.razon_empresa !='' THEN 'HORIZONTE MEDIC' END  AS ESTABLECIMIENTO,\n" +
-"	CASE WHEN lc.chko = 'TRUE' THEN 'O'\n" +
-"	     WHEN lc.chka = 'TRUE' THEN 'A'\n" +
-"	     WHEN lc.chkb = 'TRUE' THEN 'B'\n" +
-"	     WHEN lc.chkab = 'TRUE' THEN 'AB' ELSE '.' END ||''|| \n" +
-"	CASE WHEN lc.rbrhpositivo = 'TRUE' THEN '+' \n" +
-"	     WHEN lc.rbrhnegativo = 'TRUE' THEN '-' END AS Grupoyfactor,\n" +
-"	CASE WHEN a.txtobservacionesfm IS NOT NULL THEN 'N/A' END AS observaciones,  \n" +
-"        CASE WHEN ba.chkapto = 'TRUE' THEN 'APTO'\n" +
-"             WHEN ba.chkno_apto = 'TRUE' THEN 'NO APTO'\n" +
-"             WHEN ba.n_orden is null  THEN 'AUN NO HAY REGISTRO EN ALTURA'\n" +
-"             END AS APTITUD_TRAB_ALTURA_MINERIA\n" +
+"        CASE WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END  AS CLINICA,\n" +
+"        CASE WHEN n.n_orden is not null THEN '969603777' END  AS TELEFONO,\n" +
+"        CASE WHEN n.n_orden is null THEN '' END  as FECHAVALIDACION     \n" +
 "FROM datos_paciente AS d\n" +
 "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
-"LEFT JOIN oftalmologia2021 AS ol1 ON (ol1.n_orden = n.n_orden)\n" +
-"LEFT JOIN lab_clinico AS lc ON (lc.n_orden = n.n_orden)  \n" +
-"left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
-"left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n" +
-"left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n.n_orden)\n" +
-"left join aptitud_medico_ocupacional_agro as ama ON (ama.n_orden=n.n_orden)\n" +
-"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
-"left join aptitud_altura_poderosa as ba ON (ba.n_orden=n.n_orden)   \n" +
-"left join certificacion_medica_altura as cma ON (cma.n_orden=n.n_orden)\n" +
-"WHERE n.razon_empresa ='COMPAÑIA MINERA PODEROSA S.A.' AND n.n_testaltura='TRUE' ";
+"LEFT JOIN triaje AS t ON ( n.n_orden=t.n_orden)\n" +
+"LEFT JOIN oftalmologia AS o ON (n.n_orden = o.n_orden)\n" +
+"LEFT JOIN audiometria_po AS au ON (n.n_orden = au.n_orden)\n" +
+"LEFT JOIN audiometria_2021 AS au1 ON (n.n_orden = au1.n_orden)\n" +
+"LEFT JOIN audiometria_2023 AS au3 ON (n.n_orden = au3.n_orden)\n" +
+"LEFT JOIN ficha_audiologica AS fa ON(n.n_orden = fa.n_orden)\n" +
+"LEFT JOIN analisis_bioquimicos AS ab ON(n.n_orden = ab.n_orden)\n" +
+"LEFT JOIN lab_clinico AS lc ON (n.n_orden = lc.n_orden)  \n" +
+"LEFT join anexo7c as a ON (n.n_orden=a.n_orden)\n" +
+"LEFT join anexo_agroindustrial as aa ON (n.n_orden=aa.n_orden)\n" +
+"LEFT join certificado_aptitud_medico_ocupacional as ca ON (n.n_orden=ca.n_orden)\n" +
+"LEFT join aptitud_medico_ocupacional11 as ca1 ON (n.n_orden=ca1.n_orden)\n" +
+"LEFT join aptitud_medico_ocupacional_agro as ama ON (n.n_orden=ama.n_orden)\n" +
+"LEFT join observaciones as ob ON (n.n_orden=ob.n_orden)\n" +
+"left join vacunas as v ON(n.n_orden = v.n_orden)\n" +
+"LEFT join ficha_interconsulta as fi ON (n.n_orden=fi.n_orden)WHERE n.razon_contrata ='RIPCONCIV CONSTRUCCIONES CIVILES CIA LTDA SUCURSAL DEL PERU'";
 
-                if (((JTextField)Fdesde.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-                    vSql +=" AND n.fecha_apertura_po >= '"+Fdesde.getDate().toString()+"'";
-                }
-                if (((JTextField)Fhasta.getDateEditor().getUiComponent()).getText().trim().length()> 2 ) {
-                    vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
-                }
-                
-                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
-                System.out.println("la consulta aplicada es:"+vSql);
-                if (oConn.FnBoolQueryExecute(vSql)) {
-                    try {
-                        java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
-                        int CantidaColumnas = rsmt.getColumnCount();
-                        for (int i = 1; i <= CantidaColumnas; i++) {
-                            model.addColumn(rsmt.getColumnLabel(i));
-                        }
-                        while (oConn.setResult.next()) {
-                            Object[] Fila = new Object[CantidaColumnas];
-                            for (int i = 0; i < CantidaColumnas; i++) {
-                                Fila[i] = oConn.setResult.getObject(i + 1);
-                            }
-                            model.addRow(Fila);
-                        }
-                        
-                        tbReporte = autoResizeColWidth(tbReporte, model);
-                        
-                        tbReporte.setModel(model);
-                        
-                        oConn.setResult.close();
-                    } catch (SQLException ex) {
-                        oFunc.SubSistemaMensajeError(ex.toString());
-                        Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            if (((JTextField) Fdesde.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+                vSql += " AND n.fecha_apertura_po >= '" + Fdesde.getDate().toString() + "'";
             }
-    }//GEN-LAST:event_btnRepDiario4ActionPerformed
-public void generar(JTable table) {
+            if (((JTextField) Fhasta.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
+                vSql += " AND n.fecha_apertura_po <= '" + Fhasta.getDate().toString() + "'";
+            }
+
+            vSql += "  " + agregarConsulta + " group by n.n_orden, ama.n_orden, nombres, FECHANACIMIENTO,edad,ama.chkapto, ama.chkapto_restriccion, ama.chkno_apto, fi.n_orden,\n" +
+"t.peso,t.talla, t.imc, lc.txtglucosabio, ab.txtcolesterol, ab.txttrigliseridos, o.v_lejos_s_od, o.v_lejos_s_oi, o.e_oculares, o.e_oculares1,\n" +
+"au.n_orden, au.diagnostico, au3.n_orden, au3.txtdiag_od, DXAUDIO,d.cod_pa,carnet\n" +
+"order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+            System.out.println("la consulta aplicada es:" + vSql);
+            if (oConn.FnBoolQueryExecute(vSql)) {
+                try {
+                    java.sql.ResultSetMetaData rsmt = oConn.setResult.getMetaData();
+                    int CantidaColumnas = rsmt.getColumnCount();
+                    for (int i = 1; i <= CantidaColumnas; i++) {
+                        model.addColumn(rsmt.getColumnLabel(i));
+                    }
+                    while (oConn.setResult.next()) {
+                        Object[] Fila = new Object[CantidaColumnas];
+                        for (int i = 0; i < CantidaColumnas; i++) {
+                            Fila[i] = oConn.setResult.getObject(i + 1);
+                        }
+                        model.addRow(Fila);
+                    }
+                    tbReporte = autoResizeColWidth(tbReporte, model);
+                    tbReporte.setModel(model);
+
+                    oConn.setResult.close();
+                } catch (SQLException ex) {
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                    Logger.getLogger(Audiometria.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnRepDiario5ActionPerformed
+    public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
-           //  HSSFRow trow = hoja.createRow((short) 0);
-         // createTituloCell(libro, trow, 0, CellStyle.ALIGN_CENTER,CellStyle.VERTICAL_CENTER, "Titulo del Excel");
+        //  HSSFRow trow = hoja.createRow((short) 0);
+        // createTituloCell(libro, trow, 0, CellStyle.ALIGN_CENTER,CellStyle.VERTICAL_CENTER, "Titulo del Excel");
 
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivo de exel", "xls");
@@ -3135,97 +3272,93 @@ public void generar(JTable table) {
             ///////////////////////
             HSSFFont fuente = libro.createFont();
             HSSFFont fuente2 = libro.createFont();
-fuente.setFontHeightInPoints((short)8);         
-fuente.setFontName(HSSFFont.FONT_ARIAL);
-fuente.setColor(IndexedColors.WHITE.getIndex());
-fuente.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+            fuente.setFontHeightInPoints((short) 8);
+            fuente.setFontName(HSSFFont.FONT_ARIAL);
+            fuente.setColor(IndexedColors.WHITE.getIndex());
+            fuente.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
 ///////////
-fuente2.setFontHeightInPoints((short)7);         
-fuente2.setFontName(HSSFFont.FONT_ARIAL);
-fuente2.setColor(IndexedColors.BLACK.getIndex());
+            fuente2.setFontHeightInPoints((short) 7);
+            fuente2.setFontName(HSSFFont.FONT_ARIAL);
+            fuente2.setColor(IndexedColors.BLACK.getIndex());
 
 ///////////////////
-HSSFCellStyle estiloCelda = libro.createCellStyle();
-HSSFCellStyle estiloCelda2 = libro.createCellStyle();
+            HSSFCellStyle estiloCelda = libro.createCellStyle();
+            HSSFCellStyle estiloCelda2 = libro.createCellStyle();
 
-estiloCelda.setWrapText(true);
-estiloCelda.setAlignment(HSSFCellStyle. ALIGN_CENTER);
-estiloCelda.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
-estiloCelda.setFont(fuente);
+            estiloCelda.setWrapText(true);
+            estiloCelda.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+            estiloCelda.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+            estiloCelda.setFont(fuente);
 /////////////////////
-estiloCelda2.setWrapText(true);
-estiloCelda2.setAlignment(HSSFCellStyle. ALIGN_LEFT);
-estiloCelda2.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
-estiloCelda2.setFont(fuente2);
+            estiloCelda2.setWrapText(true);
+            estiloCelda2.setAlignment(HSSFCellStyle.ALIGN_LEFT);
+            estiloCelda2.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+            estiloCelda2.setFont(fuente2);
 //////////////////
 // También, podemos establecer bordes...
-estiloCelda.setBorderBottom(HSSFCellStyle.BORDER_THIN);
-estiloCelda.setBottomBorderColor((short)8);
-estiloCelda.setBorderLeft(HSSFCellStyle.BORDER_THIN);
-estiloCelda.setLeftBorderColor((short)8);
-estiloCelda.setBorderRight(HSSFCellStyle.BORDER_THIN);
-estiloCelda.setRightBorderColor((short)8);
-estiloCelda.setBorderTop(HSSFCellStyle.BORDER_THIN);
-estiloCelda.setTopBorderColor((short)8);
+            estiloCelda.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+            estiloCelda.setBottomBorderColor((short) 8);
+            estiloCelda.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+            estiloCelda.setLeftBorderColor((short) 8);
+            estiloCelda.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            estiloCelda.setRightBorderColor((short) 8);
+            estiloCelda.setBorderTop(HSSFCellStyle.BORDER_THIN);
+            estiloCelda.setTopBorderColor((short) 8);
 //////////
-estiloCelda2.setBorderBottom(HSSFCellStyle.BORDER_THIN);
-estiloCelda2.setBottomBorderColor((short)8);
-estiloCelda2.setBorderLeft(HSSFCellStyle.BORDER_THIN);
-estiloCelda2.setLeftBorderColor((short)8);
-estiloCelda2.setBorderRight(HSSFCellStyle.BORDER_THIN);
-estiloCelda2.setRightBorderColor((short)8);
-estiloCelda2.setBorderTop(HSSFCellStyle.BORDER_THIN);
-estiloCelda2.setTopBorderColor((short)8);
+            estiloCelda2.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+            estiloCelda2.setBottomBorderColor((short) 8);
+            estiloCelda2.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+            estiloCelda2.setLeftBorderColor((short) 8);
+            estiloCelda2.setBorderRight(HSSFCellStyle.BORDER_THIN);
+            estiloCelda2.setRightBorderColor((short) 8);
+            estiloCelda2.setBorderTop(HSSFCellStyle.BORDER_THIN);
+            estiloCelda2.setTopBorderColor((short) 8);
 ///////////////////////
-estiloCelda.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
-estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+            estiloCelda.setFillForegroundColor(IndexedColors.DARK_BLUE.getIndex());
+            estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
 ///////////////////////////////
-        // oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getColumnCount()));
-            //   oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getRowCount()));
-            
-            for (int i = 0; i < table.getRowCount() ; i++) {
-                
-               if (i == 0) {
-                   HSSFRow fila = hoja.createRow(i);
-                 for (int j = 0; j < table.getColumnCount() ; j++) {
-                     
+            // oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getColumnCount()));
+            //   oFunc.SubSistemaMensajeInformacion(String.valueOf(table.getRowCount()));     
+            for (int i = 0; i < table.getRowCount(); i++) {
+                if (i == 0) {
+                    HSSFRow fila = hoja.createRow(i);
+                    for (int j = 0; j < table.getColumnCount(); j++) {
+
                         HSSFCell celda = fila.createCell(j);
                         celda.setCellValue(new HSSFRichTextString(table.getColumnModel().getColumn(j).getHeaderValue().toString().toUpperCase()));
-                       celda.setCellStyle(estiloCelda);
-                   if(marcador==1){
-                       HSSFCell celda12 = fila.createCell(12);
-                        celda12.setCellValue(new HSSFRichTextString("SEDE:".toUpperCase()));
-                       celda12.setCellStyle(estiloCelda2);
-                     HSSFCell celda13 = fila.createCell(13);
-                        celda13.setCellValue(new HSSFRichTextString(nomsede.toUpperCase()));
-                       celda13.setCellStyle(estiloCelda2);
-                       marcador=3;
-                   }
-                    if(verificador==1){
-                       HSSFCell celda12 = fila.createCell(12);
-                        celda12.setCellValue(new HSSFRichTextString("agrupado por:".toUpperCase()));
-                       celda12.setCellStyle(estiloCelda2);
-                     HSSFCell celda13 = fila.createCell(13);
-                        celda13.setCellValue(new HSSFRichTextString(tipofecha.toUpperCase()));
-                       celda13.setCellStyle(estiloCelda2);
-                       verificador=3;
-                   }
-                   
-                   }
-              } //else {
-                    HSSFRow fila = hoja.createRow(i+1);
-                    for (int j = 0; j < table.getColumnCount() ; j++) {
-                        HSSFCell celda = fila.createCell(j);
-                         
-                        if (table.getValueAt(i, j) != null) {
-                           
-                            celda.setCellValue(new HSSFRichTextString(table.getValueAt(i, j).toString()));
-                            hoja.autoSizeColumn(j);
-                            celda.setCellStyle(estiloCelda2); 
-                   // }
-                 }      
-                
-               }
+                        celda.setCellStyle(estiloCelda);
+                        if (marcador == 1) {
+                            HSSFCell celda12 = fila.createCell(12);
+                            celda12.setCellValue(new HSSFRichTextString("SEDE:".toUpperCase()));
+                            celda12.setCellStyle(estiloCelda2);
+                            HSSFCell celda13 = fila.createCell(13);
+                            celda13.setCellValue(new HSSFRichTextString(nomsede.toUpperCase()));
+                            celda13.setCellStyle(estiloCelda2);
+                            marcador = 3;
+                        }
+                        if (verificador == 1) {
+                            HSSFCell celda12 = fila.createCell(12);
+                            celda12.setCellValue(new HSSFRichTextString("agrupado por:".toUpperCase()));
+                            celda12.setCellStyle(estiloCelda2);
+                            HSSFCell celda13 = fila.createCell(13);
+                            celda13.setCellValue(new HSSFRichTextString(tipofecha.toUpperCase()));
+                            celda13.setCellStyle(estiloCelda2);
+                            verificador = 3;
+                        }
+                    }
+                } //else {
+                HSSFRow fila = hoja.createRow(i + 1);
+                for (int j = 0; j < table.getColumnCount(); j++) {
+                    HSSFCell celda = fila.createCell(j);
+
+                    if (table.getValueAt(i, j) != null) {
+
+                        celda.setCellValue(new HSSFRichTextString(table.getValueAt(i, j).toString()));
+                        hoja.autoSizeColumn(j);
+                        celda.setCellStyle(estiloCelda2);
+                        // }
+                    }
+                }
                 try {
                     try (FileOutputStream elFichero = new FileOutputStream(file)) {
                         libro.write(elFichero);
@@ -3233,10 +3366,10 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                 } catch (IOException e) {
                 }
             }
-          oFunc.SubSistemaMensajeInformacion("REPORTE COMPLETO");
- }
-marcador=1;
-}
+            oFunc.SubSistemaMensajeInformacion("REPORTE COMPLETO");
+        }
+        marcador = 1;
+    }
 
 
 
@@ -3256,6 +3389,7 @@ marcador=1;
     private javax.swing.JButton btnRepDiario2;
     private javax.swing.JButton btnRepDiario3;
     private javax.swing.JButton btnRepDiario4;
+    private javax.swing.JButton btnRepDiario5;
     private javax.swing.JButton btnRepSemanal;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox cboContratas;
