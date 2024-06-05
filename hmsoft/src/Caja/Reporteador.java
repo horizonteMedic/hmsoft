@@ -3138,23 +3138,17 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     return false;
                 }
             };
-            String vSql = "SELECT n.n_orden AS N°, fecha_apertura_po as FECHASOLICITUD, d.cod_pa,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES,\n" +
+            String vSql = "SELECT n.n_orden AS N°, fecha_apertura_po as FECHASOLICITUD,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES, d.cod_pa,\n" +
 "       d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
 "       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
 "       n.razon_contrata,  n.cargo_de AS CARGO,\n" +
 "       CASE WHEN n.n_orden is null THEN '' END  as Tipotrabajo,\n" +
-"       CASE WHEN v.txtdosis1 ='TRUE' THEN '1' \n" +
-"	    WHEN v.txtdosis2 ='TRUE' THEN '2'\n" +
-"	    WHEN v.txtdosis3 ='TRUE' THEN '3'\n" +
-"	    WHEN v.txtdosis4 ='TRUE' THEN '4'\n" +
-"	    WHEN v.txtdosis5 ='TRUE' THEN '5'\n" +
-"	    WHEN v.txtbivalente ='true' THEN '6'else '0'\n" +
-"       END  as Carnet,\n" +
+"       v.txtdosis as carnet,\n" +
 "       CASE WHEN ama.chkapto = 'TRUE' THEN 'Apto'\n" +
 "            WHEN ama.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
 "            WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
-"            WHEN ama.n_orden IS NULL THEN 'APTITUD PENDIENTE'\n" +
 "            WHEN fi.n_orden IS NOT NULL THEN 'INTERCONSULTA PENDIENTE'||':'||string_agg (fi.especialidad,'-') \n" + 
+"            WHEN ama.n_orden IS NULL THEN 'APTITUD PENDIENTE'\n" +
 "             END as APTITUD,ama.fecha AS FECHADEEVALUACION,\n" +
 "       CASE WHEN t.peso is null THEN 'INF. NO TOMADA' ELSE t.peso END,\n" +
 "       CASE WHEN t.talla is null THEN 'INF. NO TOMADA' ELSE t.talla END,\n" +
@@ -3172,7 +3166,6 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "	     END  AS Colesterol,        \n" +
 "       CASE WHEN ab.txttrigliseridos IS NOT NULL THEN ab.txttrigliseridos ELSE '...'\n" +
 "	     END  AS trigliceridos, 	\n" +
-"	     o.v_lejos_s_od, o.v_lejos_s_oi,\n" +
 "       CASE WHEN o.e_oculares is not null THEN o.e_oculares ELSE '' END ||'.'||\n" +
 "       CASE WHEN o.e_oculares1 is not null THEN o.e_oculares1 ELSE '' END AS DXOFTALMO,\n" +
 "       CASE WHEN au.n_orden is not null THEN au.diagnostico \n" +
@@ -3211,7 +3204,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "LEFT join aptitud_medico_ocupacional11 as ca1 ON (n.n_orden=ca1.n_orden)\n" +
 "LEFT join aptitud_medico_ocupacional_agro as ama ON (n.n_orden=ama.n_orden)\n" +
 "LEFT join observaciones as ob ON (n.n_orden=ob.n_orden)\n" +
-"left join vacunas as v ON(n.n_orden = v.n_orden)\n" +
+"left join antecedentes_patologicos as v ON(n.n_orden = v.n_orden)\n" +
 "LEFT join ficha_interconsulta as fi ON (n.n_orden=fi.n_orden)WHERE n.razon_contrata ='RIPCONCIV CONSTRUCCIONES CIVILES CIA LTDA SUCURSAL DEL PERU'";
 
             if (((JTextField) Fdesde.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
@@ -3223,7 +3216,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 
             vSql += "  " + agregarConsulta + " group by n.n_orden, ama.n_orden, nombres, FECHANACIMIENTO,edad,ama.chkapto, ama.chkapto_restriccion, ama.chkno_apto, fi.n_orden,\n" +
 "t.peso,t.talla, t.imc, lc.txtglucosabio, ab.txtcolesterol, ab.txttrigliseridos, o.v_lejos_s_od, o.v_lejos_s_oi, o.e_oculares, o.e_oculares1,\n" +
-"au.n_orden, au.diagnostico, au3.n_orden, au3.txtdiag_od, DXAUDIO,d.cod_pa,carnet\n" +
+"au.n_orden, au.diagnostico, au3.n_orden, au3.txtdiag_od, DXAUDIO,d.cod_pa,v.txtdosis\n" +
 "order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
             System.out.println("la consulta aplicada es:" + vSql);
             if (oConn.FnBoolQueryExecute(vSql)) {

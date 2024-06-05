@@ -388,12 +388,8 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         txtEnfermedadesOculares = new javax.swing.JTextField();
         jLabel139 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
-        chkDosis1 = new javax.swing.JCheckBox();
-        chkDosis2 = new javax.swing.JCheckBox();
-        chkDosis3 = new javax.swing.JCheckBox();
-        chkDosis4 = new javax.swing.JCheckBox();
-        chkDosis5 = new javax.swing.JCheckBox();
-        chkBivalente = new javax.swing.JCheckBox();
+        txtDosis = new javax.swing.JTextField();
+        jLabel144 = new javax.swing.JLabel();
 
         jLabel6.setText("Cod. Cliente:");
 
@@ -2741,23 +2737,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        buttonGroup2.add(chkDosis1);
-        chkDosis1.setText("DOSIS 1");
-
-        buttonGroup2.add(chkDosis2);
-        chkDosis2.setText("DOSIS 2");
-
-        buttonGroup2.add(chkDosis3);
-        chkDosis3.setText("DOSIS 3");
-
-        buttonGroup2.add(chkDosis4);
-        chkDosis4.setText("DOSIS 4");
-
-        buttonGroup2.add(chkDosis5);
-        chkDosis5.setText("DOSIS 5");
-
-        buttonGroup2.add(chkBivalente);
-        chkBivalente.setText("BIVALENTE");
+        jLabel144.setText("Dosiss de vacunas:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2768,23 +2748,12 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 16, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chkDosis3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkDosis4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chkDosis1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkDosis2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chkDosis5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(chkBivalente)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel144)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtDosis, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -2794,17 +2763,9 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkDosis1)
-                    .addComponent(chkDosis2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkDosis3)
-                    .addComponent(chkDosis4))
+                .addComponent(jLabel144)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkDosis5)
-                    .addComponent(chkBivalente))
+                .addComponent(txtDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2914,11 +2875,6 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
 
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
         if(OrdenExiste() ){
-            if(OrdenVa()){
-                ActualizarV();
-            }else{
-              AgregarV();  
-            }
             Actualizar();
         }else{
             if(!txtNorden.getText().isEmpty()){
@@ -2928,7 +2884,6 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                         if(GrabarAPInfo()){
                            if(tbQuirurgicos.getRowCount()>0 ){
                                if(GrabarAPDetalle()){
-                                  AgregarV();
                                 imp();  
                                 limpiar();
                                }
@@ -3130,7 +3085,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
 "       a.txtvhijosvivos, a.txtvhijosfallecidos, a.txtvnabortosparejas, a.txtdiniciomestruacion, \n" +
 "       a.txtdiniciovidasexual, a.txtdnumparejassexactualidad, a.txtdhijosvivos, \n" +
 "       a.txtdhijosfallecidos, a.txtdnumerosdeabortos, a.txtdcausas,a.txtotrosap,a.txtotros1ap,"
-        + "a.chkcovid, a.fechacovid, a.chkcovidl, a.chkcovidm, a.chkcovids \n" +
+        + "a.chkcovid, a.fechacovid, a.chkcovidl, a.chkcovidm, a.chkcovids, a.txtdosis \n" +
 "       from datos_paciente as d , n_orden_ocupacional as n  \n" +
 "       inner JOIN antecedentes_patologicos AS a ON(n.n_orden = a.n_orden)" +
         "LEFT JOIN lab_clinico AS l ON(n.n_orden = l.n_orden)\n" +
@@ -3282,10 +3237,10 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                         chkCovidL.setSelected(oConn.setResult.getBoolean("chkcovidl"));
                         chkCovidM.setSelected(oConn.setResult.getBoolean("chkcovidm"));
                         chkCovidS.setSelected(oConn.setResult.getBoolean("chkcovids"));
+                        txtDosis.setText(oConn.setResult.getString("txtdosis"));
                         muestraVisual();
                         Oftalmologia();
                         detalleantecedentes();
-                        MostrarV();
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                     }
@@ -3427,31 +3382,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         
             }
     }
-    private void MostrarV(){
-        String Sql = "SELECT txtdosis1, txtdosis2, txtdosis3, txtdosis4, txtdosis5, \n"
-                + "       txtbivalente\n"
-                + "  FROM n_orden_ocupacional n\n"
-                + "  inner join antecedentes_patologicos as a ON(n.n_orden = a.n_orden)\n"
-                + "  inner join vacunas as v ON(n.n_orden = v.n_orden) "
-                + "where n.n_orden='" + txtNorden.getText() + "'";
-        oConn.FnBoolQueryExecute(Sql);
-        try {
-                    if (oConn.setResult.next()) {
-                        chkDosis1.setSelected(oConn.setResult.getBoolean("txtdosis1"));
-                        chkDosis2.setSelected(oConn.setResult.getBoolean("txtdosis2"));
-                        chkDosis3.setSelected(oConn.setResult.getBoolean("txtdosis3"));
-                        chkDosis4.setSelected(oConn.setResult.getBoolean("txtdosis4"));
-                        chkDosis5.setSelected(oConn.setResult.getBoolean("txtdosis5"));
-                        chkBivalente.setSelected(oConn.setResult.getBoolean("txtbivalente"));
-                        }else{
-                            oFunc.SubSistemaMensajeError("No se encuentra registro de vacunas");
-                        }
-                    oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Antecedentes P." + ex.getMessage().toString());
-        
-            }
-    }
+   
     public boolean OrdenImp() {
 
         boolean bResultado = false;
@@ -3507,41 +3438,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         }       
         return bResultado;
         }
-    public boolean OrdenVa()
-    {
-        
-        boolean bResultado=false;
-        if(!txtNorden.getText().isEmpty()){
-        String sQuery;
-
-        sQuery  = "Select n_orden from vacunas Where n_orden ="+txtNorden.getText().toString();
-        
-        //Ejecuta el Query
-        oConn.FnBoolQueryExecute(sQuery);
-        
-        // Capturo el Error
-        try {
-            
-            // Verifico que haya habido resultados
-            if (oConn.setResult.next())
-            {
-                // Resultado
-                bResultado = true;
-//             oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
-             
-            }
-            
-            // Cierro los Resultados
-            oConn.sqlStmt.close();
-            
-        } catch (SQLException ex) {
-         
-        }
-        }       
-        return bResultado;
-        
     
-        }
 private boolean GrabarAPInfo() throws SQLException{
         boolean bResult = false;
         
@@ -3657,8 +3554,10 @@ private boolean GrabarAPInfo() throws SQLException{
                     Query+= "'"+chkCovidM.isSelected()+"',";
                     strSqlStmt +=  "chkcovidS,";
                     Query+= "'"+chkCovidS.isSelected()+"',";
-             strSqlStmt +=  "chk90)";
-             Query+= "'"+chk90.isSelected()+"') RETURNING cod_ap;";
+             strSqlStmt +=  "chk90,";
+             Query+= "'"+chk90.isSelected()+"',";
+             strSqlStmt +=  "txtdosis)";
+             Query+= "'"+txtDosis.getText()+"') RETURNING cod_ap;";
                                    
    
                if (oConn.FnBoolQueryExecute(strSqlStmt + Query)){
@@ -3782,8 +3681,10 @@ private boolean ActualizarAPInfo()throws SQLException{
                     }
                      Query+= "chkcovidl='"+chkCovidL.isSelected()+"',"
                              + "chkcovidm='"+chkCovidM.isSelected()+"',"
-                             + "chkcovids='"+chkCovidS.isSelected()+"',";
-             Query+= "chk90='"+chk90.isSelected()+"' where n_orden='"+txtNorden.getText()+"' RETURNING cod_ap;";
+                             + "chkcovids='"+chkCovidS.isSelected()+"',"
+                             + "chk90='"+chk90.isSelected()+"',";
+             Query+= "txtdosis='"+txtDosis.getText()+"'";
+                     Query+= " where n_orden='"+txtNorden.getText()+"' RETURNING cod_ap;";
 //             oFunc.SubSistemaMensajeError(strSqlStmt+Query);
                if (oConn.FnBoolQueryExecute(strSqlStmt + Query)){
                  bResult = true;
@@ -4029,18 +3930,12 @@ private boolean ActualizarAPDetalle()
     private javax.swing.JCheckBox chk89;
     private javax.swing.JCheckBox chk9;
     private javax.swing.JCheckBox chk90;
-    private javax.swing.JCheckBox chkBivalente;
     private javax.swing.JCheckBox chkCerveza;
     private javax.swing.JCheckBox chkCigarrillos;
     private javax.swing.JCheckBox chkCovid;
     private javax.swing.JCheckBox chkCovidL;
     private javax.swing.JCheckBox chkCovidM;
     private javax.swing.JCheckBox chkCovidS;
-    private javax.swing.JCheckBox chkDosis1;
-    private javax.swing.JCheckBox chkDosis2;
-    private javax.swing.JCheckBox chkDosis3;
-    private javax.swing.JCheckBox chkDosis4;
-    private javax.swing.JCheckBox chkDosis5;
     private javax.swing.JCheckBox chkDrogas;
     private javax.swing.JCheckBox chkFreDrog;
     private javax.swing.JCheckBox chkLicFrecuencia;
@@ -4098,6 +3993,7 @@ private boolean ActualizarAPDetalle()
     private javax.swing.JLabel jLabel141;
     private javax.swing.JLabel jLabel142;
     private javax.swing.JLabel jLabel143;
+    private javax.swing.JLabel jLabel144;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -4237,6 +4133,7 @@ private boolean ActualizarAPDetalle()
     private javax.swing.JTextField txtDinicioVidaSexual;
     private javax.swing.JTextField txtDnumParejasSexActualidad;
     private javax.swing.JTextField txtDnumerosdeAbortos;
+    private javax.swing.JTextField txtDosis;
     private javax.swing.JTextField txtDrogasFrecuencia;
     private javax.swing.JTextField txtDrogasTipo;
     private javax.swing.JTextField txtEdad;
@@ -4455,7 +4352,7 @@ habitos();
 chkCovid.setSelected(false);
 fechaCovid.setDate(null);
 buttonGroup1.clearSelection();
-buttonGroup2.clearSelection();
+txtDosis.setText(null);
 }
 public void habitos(){
         txtNcigarrillos.setEditable(false);
@@ -4595,47 +4492,7 @@ private void printer2(Integer cod){
         
  
  }
-    public void AgregarV() {
-        if (!txtNorden.getText().isEmpty()) {
-            String Sql = "INSERT INTO vacunas(\n"
-                    + "            n_orden, txtdosis1, txtdosis2, txtdosis3, txtdosis4, txtdosis5, \n"
-                    + "            txtbivalente)\n"
-                    + "    VALUES ('" + txtNorden.getText() + "','" + chkDosis1.isSelected()+ "', '" + chkDosis2.isSelected() + "', "
-                    + "'" + chkDosis3.isSelected()+ "','" + chkDosis4.isSelected()+ "','" + chkDosis5.isSelected() + "', '" + chkBivalente.isSelected() + "')";
-//               oFunc.SubSistemaMensajeInformacion(Sql);
-            if (oConn.FnBoolQueryExecuteUpdate(Sql)) {
-                //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo registrar Vacunas");
-            }
-            try {
-                oConn.sqlStmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-// }else{
-//             oFunc.SubSistemaMensajeError("codigo registrado");}
-        
-    }
-
-    public void ActualizarV() {
-        String strSqlStmt;
-        strSqlStmt = "UPDATE vacunas\n"
-                + "   SET txtdosis1='" + chkDosis1.isSelected() + "', txtdosis2='" + chkDosis2.isSelected() + "', "
-                + "txtdosis3='" + chkDosis3.isSelected() + "', txtdosis4='" + chkDosis4.isSelected() + "', \n"
-                + "       txtdosis5='" + chkDosis5.isSelected() + "', txtbivalente='" + chkBivalente.isSelected() + "'"
-                + " WHERE n_orden='" + txtNorden.getText() + "'";
-        if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
-            txtNorden.requestFocus();
-        } else {
-            oFunc.SubSistemaMensajeError("No se pudo Actualizar VACUNAS");
-        }
-        try {
-            oConn.sqlStmt.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Interconsulta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
+   
 
 }
