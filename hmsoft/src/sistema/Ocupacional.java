@@ -13,12 +13,14 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
+import static sistema.Ocupacional1.Desktop;
 
 
 //import org.jvnet.substance.SubstanceLookAndFeel;
@@ -64,11 +66,15 @@ public class Ocupacional extends javax.swing.JFrame {
     RadiografiaTorax rtpa;
     DetecciondeSAS fs;
     CuestionarioNordico cn;
-    CuestionarioAudiometría ca;
+    CuestionarioAudiometria ca;
     FuncionRespiratoriaABS fn;
     ExamenRadiograficoSanguineo er;
     Eliminar Exc;
     InformePsicologicoPoderosa ipp;
+    PsicologiaCuestionarioCalidadSueno ccs;
+    PsicologiaInformeAdicionaldeFobias piaf; 
+    PsicologiaAversionRiesgo par;
+    PsicoTrastorPersonalidad ptp;
     FichaPsicologica_Anexo03 fpa;
     ExamenSuficienciaEspaciosConfinados esec;
     InformePsicolaboral ipsico;
@@ -85,7 +91,7 @@ public class Ocupacional extends javax.swing.JFrame {
         javax.swing.ImageIcon oNo = null;
     //nuevos formatos
        EvaluacionMusculoEsqueletica2021 eme2021;
-       CuestionarioCalidadSueño ccs2021;
+       CuestionarioCalidadSueno ccs2021;
        TestFatigaSomnolencia tfs2021;
        Audiometria2021 audio2021;
        EvaluacionOftalmologica evof2021;
@@ -124,6 +130,7 @@ public class Ocupacional extends javax.swing.JFrame {
        LAnexo16a la16;
        LPsiconsensometria lps;
        Gonadotropina gh;
+    private Icon ticon;
     
     public Ocupacional() {
             getRootPane().setWindowDecorationStyle(JRootPane.NONE);
@@ -248,6 +255,8 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         frmConalvias = new javax.swing.JMenuItem();
         HclMenu = new javax.swing.JPopupMenu();
         btnHCLPS = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         barraPrincipal = new javax.swing.JToolBar();
         jToolBar2 = new javax.swing.JToolBar();
@@ -345,6 +354,15 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         bLAnexo16a = new javax.swing.JMenuItem();
         bLPsicosensometria = new javax.swing.JMenuItem();
         bLGonadotropina = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
 
         Observados.setText("Observados");
         Observados.addActionListener(new java.awt.event.ActionListener() {
@@ -549,6 +567,10 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         HclMenu.add(btnHCLPS);
 
+        jMenuItem5.setText("jMenuItem5");
+
+        jMenuItem7.setText("jMenuItem7");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistemes de Gestión \"MEDSOFT\"");
         setIconImage(getIconImage());
@@ -556,13 +578,11 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         setResizable(false);
 
         barraPrincipal.setBorder(null);
-        barraPrincipal.setFloatable(false);
         barraPrincipal.setRollover(true);
         barraPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         barraPrincipal.setPreferredSize(new java.awt.Dimension(1219, 52));
 
         jToolBar2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jToolBar2.setFloatable(false);
         jToolBar2.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar2.setToolTipText("");
 
@@ -925,7 +945,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
+            .addComponent(barraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1424, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1574,6 +1594,54 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         FrmAnalisisClinicos2024.add(bLGonadotropina);
 
         MenuOcupacional.add(FrmAnalisisClinicos2024);
+
+        jMenu7.setText("Reportes Psicologia");
+
+        jMenuItem6.setText("Cuestionario Calidad de Sueño");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem6);
+
+        jMenuItem8.setText("Informe Adicional de Fobias");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem8);
+
+        jMenuItem9.setText("Informe Aversion Riesgo");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem9);
+
+        jMenuItem10.setText("Informe de Test Salamanca");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem10);
+
+        jMenuItem11.setText("Informe para Conductores ");
+        jMenu7.add(jMenuItem11);
+
+        jMenuItem12.setText("informe Trabajos de Alto Riesgo");
+        jMenu7.add(jMenuItem12);
+
+        jMenuItem13.setText("Informe Trabajos Especificos");
+        jMenu7.add(jMenuItem13);
+
+        jMenuItem14.setText("Informe Cuestionario Berlin");
+        jMenu7.add(jMenuItem14);
+
+        MenuOcupacional.add(jMenu7);
 
         setJMenuBar(MenuOcupacional);
 
@@ -2438,7 +2506,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
     private void btnCuestionarioAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuestionarioAudioActionPerformed
          if(estacerrado(ca)){ 
-             ca = new CuestionarioAudiometría();
+             ca = new CuestionarioAudiometria();
           Ocupacional.btnCertificadoFisicoM.add(ca);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -2729,7 +2797,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mCuestionarioCalidadSueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCuestionarioCalidadSueñoActionPerformed
         // TODO add your handling code here:
         if(estacerrado(ccs2021)){
-            ccs2021 =new CuestionarioCalidadSueño();
+            ccs2021 =new CuestionarioCalidadSueno();
             btnCertificadoFisicoM.add(ccs2021);
             ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
             ccs2021.setFrameIcon(ticon);
@@ -3200,6 +3268,66 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_bLGonadotropinaActionPerformed
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        if(estacerrado(ccs)){
+            ccs =new PsicologiaCuestionarioCalidadSueno();
+            btnCertificadoFisicoM.add(ccs);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ccs.setFrameIcon(ticon);
+            ccs.setLocation(centradoXY(ccs));
+            ccs.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        } 
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    if(estacerrado(piaf)){
+            piaf =new PsicologiaInformeAdicionaldeFobias();
+            btnCertificadoFisicoM.add(piaf);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            piaf.setFrameIcon(ticon);
+            piaf.setLocation(centradoXY(piaf));
+            piaf.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        } 
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        if(estacerrado(par)){
+            par =new PsicologiaAversionRiesgo();
+            btnCertificadoFisicoM.add(par);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            par.setFrameIcon(ticon);
+            par.setLocation(centradoXY(par));
+            par.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        } 
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        if(estacerrado(ptp)){
+            ptp =new PsicoTrastorPersonalidad();
+            btnCertificadoFisicoM.add(ptp);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ptp.setFrameIcon(ticon);
+            ptp.setLocation(centradoXY(ptp));
+            ptp.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -3335,10 +3463,21 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

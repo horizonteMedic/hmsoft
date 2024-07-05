@@ -239,6 +239,11 @@ public final class Ingreso extends javax.swing.JFrame {
         btIngreso.add(chkAdmision);
         chkAdmision.setText("Admisión");
         chkAdmision.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        chkAdmision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAdmisionActionPerformed(evt);
+            }
+        });
         getContentPane().add(chkAdmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 57, -1, -1));
 
         btIngreso.add(chkFarmacia);
@@ -363,6 +368,10 @@ enter(evt);
     private void chkFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFarmaciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkFarmaciaActionPerformed
+
+    private void chkAdmisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAdmisionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAdmisionActionPerformed
     public static void main(String args[]) {
              new Ingreso().setVisible(true);
     }

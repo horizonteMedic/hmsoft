@@ -57,7 +57,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel123" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Component id="btnObsv" max="32767" attributes="0"/>
+                      <Component id="btnObsv" pref="148" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -892,7 +892,6 @@
                                   </Group>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
                                           <Component id="chkSctr" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                           <Component id="chkOtros1" min="-2" max="-2" attributes="0"/>
@@ -2311,7 +2310,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtMalEstado" pref="83" max="32767" attributes="0"/>
+                              <Component id="txtMalEstado" pref="81" max="32767" attributes="0"/>
                               <Component id="txtFaltan" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -4475,7 +4474,7 @@
                                                       <Component id="lblFichaAPatologicos" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="0" pref="184" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel155" min="-2" max="-2" attributes="0"/>

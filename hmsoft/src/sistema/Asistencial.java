@@ -65,7 +65,7 @@ public class Asistencial extends javax.swing.JFrame {
     AnexoC an7c;
     ConsentimientoDosajeMC cmc;
     InformeAudiometria ia;
-    CuestionarioAudiometría ca;
+    CuestionarioAudiometria ca;
     A_CertificacionMedicaTrabajoAltura cmta;
     B_Certificacion_Trabajo_Altura b_ceral;
     B_Uso_Respiradores b_uso;
@@ -124,7 +124,7 @@ public class Asistencial extends javax.swing.JFrame {
     EvaluacionMusculoEsqueletica eme;
     //nuevos formatos
     EvaluacionMusculoEsqueletica2021 eme2021;
-    CuestionarioCalidadSueño ccs2021;
+    CuestionarioCalidadSueno ccs2021;
     TestFatigaSomnolencia tfs2021;
     Audiometria2021 audio2021;
     EvaluacionOftalmologica evof2021;
@@ -2299,7 +2299,7 @@ public class Asistencial extends javax.swing.JFrame {
 
     private void CuestionarioAudiometriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuestionarioAudiometriaActionPerformed
         if(estacerrado(ca)){ 
-             ca = new CuestionarioAudiometría();
+             ca = new CuestionarioAudiometria();
           Asistencial.Desktop.add(ca);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -3027,7 +3027,7 @@ public class Asistencial extends javax.swing.JFrame {
     private void mCuestionarioCalidadSueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCuestionarioCalidadSueñoActionPerformed
         // TODO add your handling code here:
          if(estacerrado(ccs2021)){  
-           ccs2021 =new CuestionarioCalidadSueño();
+           ccs2021 =new CuestionarioCalidadSueno();
            Desktop.add(ccs2021);          
            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
            ccs2021.setFrameIcon(ticon);

@@ -771,6 +771,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         cboDepartamento.setEditable(true);
         cboDepartamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AMAZONAS", "CAJAMARCA", "TUMBES", "LORETO", "PIURA", "LAMBAYEQUE", "SAN MARTIN", "LA LIBERTAD", "UCAYALI", "ANCASH", "HUANUCO", "PASCO", "JUNIN", "LIMA", "HUANCAVELICA", "AYACUCHO", "ICA", "AREQUIPA", "MOQUEGUA", "MADRE DE DIOS", "CUSCO", "APURIMAC", "PUNO", "TACNA" }));
         cboDepartamento.setSelectedIndex(-1);
+        cboDepartamento.setToolTipText("");
         cboDepartamento.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboDepartamentoItemStateChanged(evt);

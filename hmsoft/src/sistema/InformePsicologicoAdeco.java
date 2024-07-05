@@ -809,7 +809,9 @@ public final class InformePsicologicoAdeco extends javax.swing.JInternalFrame {
 "            n_orden, fecha, nombre_examen, txtescala, txtsomnolencia, txttestfatiga, \n" +
 "            txtfortalezaso, txtamenazasd, txtoservaciones, txtrecomendacion, \n" +
 "            adpto, noadpto)" ;
-                    Sql+="Values('"+txtNorden.getText()+"','"+FechaEntrevista.getDate()+"','"
+                    Sql+="Values('"
+                    +txtNorden.getText()+"','"
+                    +FechaEntrevista.getDate()+"','"
                     +cboExamen.getSelectedItem()+ "','"
                     +txtEscala.getText()+ "','"
                     +txtSomnolencia.getText()+"','"

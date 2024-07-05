@@ -60,7 +60,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
     AnexoC an7c;
     ConsentimientoDosajeMC cmc;
     InformeAudiometria ia;
-    CuestionarioAudiometría ca;
+    CuestionarioAudiometria ca;
     A_CertificacionMedicaTrabajoAltura cmta;
     B_Certificacion_Trabajo_Altura b_ceral;
     B_Uso_Respiradores b_uso;
@@ -70,6 +70,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
     RadiografiaTorax rtpa;
     DetecciondeSAS fs;
     CuestionarioNordico cn;
+    InformeRadiografia ir;
     FuncionRespiratoriaABS fn;
     ExamenRadiograficoSanguineo er;
     FichaAgroindustriales frm_agro;
@@ -119,7 +120,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
        EvaluacionMusculoEsqueletica eme;
        //nuevos formatos
        EvaluacionMusculoEsqueletica2021 eme2021;
-       CuestionarioCalidadSueño ccs2021;
+       CuestionarioCalidadSueno ccs2021;
        TestFatigaSomnolencia tfs2021;
        Audiometria2021 audio2021;
        EvaluacionOftalmologica evof2021;
@@ -492,6 +493,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         bHepatitis = new javax.swing.JMenuItem();
         bCoproparasitologico = new javax.swing.JMenuItem();
         bHematologia = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
 
         Reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
         Reporte.setText("Reporte");
@@ -801,13 +803,11 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         setResizable(false);
 
         barraPrincipal.setBorder(null);
-        barraPrincipal.setFloatable(false);
         barraPrincipal.setRollover(true);
         barraPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         barraPrincipal.setPreferredSize(new java.awt.Dimension(1219, 52));
 
         jToolBar2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jToolBar2.setFloatable(false);
         jToolBar2.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar2.setToolTipText("");
 
@@ -2573,6 +2573,15 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
         jMNuevosFormatos.add(FrmAnalisisClinicos2024);
 
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        jMenuItem11.setText("19.Informe Radiografia");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(jMenuItem11);
+
         MenuOcupacional.add(jMNuevosFormatos);
 
         setJMenuBar(MenuOcupacional);
@@ -3577,7 +3586,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
     private void CuestionarioAudiometriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CuestionarioAudiometriaActionPerformed
         if(estacerrado(ca)){ 
-             ca = new CuestionarioAudiometría();
+             ca = new CuestionarioAudiometria();
           Ocupacional1.Desktop.add(ca);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
@@ -4559,7 +4568,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private void mCuestionarioCalidadSueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCuestionarioCalidadSueñoActionPerformed
         // TODO add your handling code here:
         if(estacerrado(ccs2021)){
-            ccs2021 =new CuestionarioCalidadSueño();
+            ccs2021 =new CuestionarioCalidadSueno();
             Desktop.add(ccs2021);
             ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
             ccs2021.setFrameIcon(ticon);
@@ -4870,6 +4879,23 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_bHematologiaActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // Esta para editar el contexto  y agregar en la parte sup 
+        if(estacerrado(ir)){
+            ir =new InformeRadiografia();
+            Desktop.add(ir);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            ir.setFrameIcon(ticon);
+            ir.setLocation(centradoXY(ir));
+            ir.show();
+            //fn.setVisible(true);
+        }else{
+            ph.moveToFront();
+
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -5005,6 +5031,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
