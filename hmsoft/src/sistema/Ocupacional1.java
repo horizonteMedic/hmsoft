@@ -76,6 +76,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
     FichaAgroindustriales frm_agro;
     LaboratorioClinicoCovid lab;
     Eliminar Exc;
+    Auditoria audit;
     B_Certificacion_conduccion b_cercon;
     B_OIT b_oit;
     Frm_conalvias frm_conal;  
@@ -405,6 +406,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         btnConfiguracion = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         btnEliminarEx = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         mFAgroindustrial = new javax.swing.JMenu();
         mFichaAnexo2 = new javax.swing.JMenuItem();
         mFichaAptitudAnexo2 = new javax.swing.JMenuItem();
@@ -1785,6 +1787,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         btnconfiguracionsistema.add(btnEliminarEx);
+
+        jMenuItem12.setText("Auditoria");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        btnconfiguracionsistema.add(jMenuItem12);
 
         MenuOcupacional.add(btnconfiguracionsistema);
 
@@ -4896,6 +4906,24 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+                if(estacerrado(audit)){  
+          audit =new Auditoria();
+          Desktop.add(audit);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+        // audit.setFrameIcon(ticon);
+      audit.setLocation(centradoXY(audit));
+
+          audit.show();
+          //fn.setVisible(true);
+       }
+             else{
+            ph.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -5032,6 +5060,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

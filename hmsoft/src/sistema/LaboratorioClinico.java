@@ -328,6 +328,7 @@ public final class LaboratorioClinico extends javax.swing.JInternalFrame {
         jLabel74 = new javax.swing.JLabel();
 
         setClosable(true);
+        setIconifiable(true);
         setTitle("Laboratorio Clinico");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -689,7 +690,7 @@ public final class LaboratorioClinico extends javax.swing.JInternalFrame {
                                     .addComponent(txtVSG, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtHematocrito, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtHemoglobina, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbRHpositivo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+                                    .addComponent(rbRHpositivo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)

@@ -6930,7 +6930,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
 "     ca.observaciones as certialtura,au.chkdnormal, \n" +
 "       au.chkdtaleveod, au.chkdtaleveoi, au.chkdtaavanzadood, au.chkdtaavanzadooi, \n" +
 "       au.chkdhrleveod, au.chkdhrleveoi, au.chkdhrmoderadood, au.chkdhrmoderadooi, \n" +
-"       au.chkdhravanzadaod, au.chkdhravanzadaoi, au.chkotrashipoacusias, au.txtotrashipoacusias\n" +
+"       au.chkdhravanzadaod, au.chkdhravanzadaoi, au.chkotrashipoacusias, au.txtotrashipoacusias, \n" +
 "ra.info_general,ra.conclu\n" +
 "FROM datos_paciente AS d \n" +
 "INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa) \n" +
