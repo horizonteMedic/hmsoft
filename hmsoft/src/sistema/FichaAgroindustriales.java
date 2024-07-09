@@ -969,6 +969,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
 
         txtPuestoActual.setBackground(new java.awt.Color(153, 204, 255));
         txtPuestoActual.setText("N/A");
+        txtPuestoActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuestoActualActionPerformed(evt);
+            }
+        });
 
         jLabel23.setText("Tiempo :");
 
@@ -2322,6 +2327,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 txtEctoscopiaFocusGained(evt);
             }
         });
+        txtEctoscopia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEctoscopiaActionPerformed(evt);
+            }
+        });
 
         jLabel86.setText("Ectoscopía :");
 
@@ -2745,6 +2755,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         txtAparatoDigestivo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtAparatoDigestivoFocusGained(evt);
+            }
+        });
+        txtAparatoDigestivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAparatoDigestivoActionPerformed(evt);
             }
         });
 
@@ -4649,6 +4664,18 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         cerrarVentana();
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void txtPuestoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPuestoActualActionPerformed
+
+    private void txtEctoscopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEctoscopiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEctoscopiaActionPerformed
+
+    private void txtAparatoDigestivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAparatoDigestivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAparatoDigestivoActionPerformed
     private void Busca() {
         if (!txtEOrden.getText().isEmpty()) {
            String sql="Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'"; if (OrdenExiste()) {

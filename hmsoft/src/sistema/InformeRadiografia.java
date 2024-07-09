@@ -536,6 +536,7 @@ public final class InformeRadiografia extends javax.swing.JInternalFrame {
 
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Algunos Registros necesarios");
+                        
                     }
                     oConn.setResult.close();
                 } catch (SQLException ex) {
