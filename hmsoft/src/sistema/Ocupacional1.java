@@ -151,7 +151,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
        Hepatitis hep;
       javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
         javax.swing.ImageIcon oNo = null;
-        String ipa="",seded="";
+        String ipa="",seded="", reverser="";
         public static String lasede="";
     public Ocupacional1() {
           
@@ -1247,19 +1247,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_END);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1348, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
-
         Desktop.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         Desktop.setComponentPopupMenu(Menu);
 
@@ -1692,7 +1679,24 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         Desktop.add(jPanel4);
         jPanel4.setBounds(0, 0, 130, 490);
 
-        getContentPane().add(Desktop, java.awt.BorderLayout.LINE_END);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 1324, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
 
         MenuOcupacional.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -4897,7 +4901,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             ir.show();
             //fn.setVisible(true);
         }else{
-            ir.moveToFront();
+            ph.moveToFront();
 
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
