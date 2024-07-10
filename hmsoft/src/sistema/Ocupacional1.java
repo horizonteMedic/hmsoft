@@ -4897,8 +4897,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             ir.show();
             //fn.setVisible(true);
         }else{
-            ir.moveToFront();
-
+            ph.moveToFront();
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_jMenuItem11ActionPerformed

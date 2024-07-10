@@ -2506,14 +2506,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
     private void btnCuestionarioAudioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuestionarioAudioActionPerformed
          if(estacerrado(ca)){ 
-             ca = new CuestionarioAudiometria();
+            ca = new CuestionarioAudiometria();
           Ocupacional.btnCertificadoFisicoM.add(ca);
           
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
          ca.setFrameIcon(ticon);
-          ca.setLocation(centradoXY(ca));
+         ca.setLocation(centradoXY(ca));
 
-           ca.show();
+         ca.show();
          // cmc.setVisible(true);
        }
              else{
