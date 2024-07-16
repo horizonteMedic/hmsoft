@@ -73,7 +73,7 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         jLabel1 = new javax.swing.JLabel();
         txtnombresyapellidos = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        Fechaevaluacion = new com.toedter.calendar.JDateChooser();
+        FechaEvaluacion = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -345,7 +345,7 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Fechaevaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -387,7 +387,7 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                         .addComponent(jLabel4)
                         .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3))
-                    .addComponent(Fechaevaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -431,7 +431,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         jLabel37.setText("<HTML>4.¿Cuántas horas calcula que habrá dormido verdaderamente cada noche durante el último mes? </HTML>");
 
         criterio_2_1.setBackground(new java.awt.Color(153, 204, 255));
-        bgP3.add(criterio_2_1);
         criterio_2_1.setText("Menos de 15 min");
         criterio_2_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -440,7 +439,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_2_2.setBackground(new java.awt.Color(153, 204, 255));
-        bgP3.add(criterio_2_2);
         criterio_2_2.setText("Entre 16 y 30 min.");
         criterio_2_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -449,7 +447,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_2_3.setBackground(new java.awt.Color(153, 204, 255));
-        bgP3.add(criterio_2_3);
         criterio_2_3.setText("Entre 31 y 60 min.");
         criterio_2_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -458,7 +455,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_2_4.setBackground(new java.awt.Color(153, 204, 255));
-        bgP3.add(criterio_2_4);
         criterio_2_4.setText("Más de  60 min.");
         criterio_2_4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -472,30 +468,34 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(criterio_1))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addComponent(criterio_2_1)
+                                .addGap(18, 18, 18)
+                                .addComponent(criterio_2_2)
+                                .addGap(18, 18, 18)
+                                .addComponent(criterio_2_3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(criterio_2_4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(criterio_3)
-                            .addComponent(criterio_4)))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(criterio_1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel15Layout.createSequentialGroup()
-                            .addComponent(criterio_2_1)
-                            .addGap(18, 18, 18)
-                            .addComponent(criterio_2_2)
-                            .addGap(18, 18, 18)
-                            .addComponent(criterio_2_3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(criterio_2_4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addComponent(criterio_4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(criterio_3))))
+                .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -580,13 +580,13 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(71, 71, 71)
                 .addComponent(btnAgregar)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(btLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -598,7 +598,7 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btLimpiar)
                             .addComponent(btnAgregar))))
-                .addContainerGap())
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -618,8 +618,8 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                 .addContainerGap()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         Tabla.addTab("Examen parte I", jPanel3);
@@ -1124,7 +1124,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         jLabel108.setText("<HTML>8. Si se despierta en la noche, ¿Cuántas veces lo hace en promedio?</HTML>");
 
         criterio_8_1.setBackground(new java.awt.Color(153, 204, 255));
-        bgP13.add(criterio_8_1);
         criterio_8_1.setText("1 vez por noche");
         criterio_8_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1133,7 +1132,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_8_3.setBackground(new java.awt.Color(153, 204, 255));
-        bgP13.add(criterio_8_3);
         criterio_8_3.setText("3 veces por noche");
         criterio_8_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1142,7 +1140,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_8_4.setBackground(new java.awt.Color(153, 204, 255));
-        bgP13.add(criterio_8_4);
         criterio_8_4.setText("> 3 veces por noche");
         criterio_8_4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1151,7 +1148,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_8_2.setBackground(new java.awt.Color(153, 204, 255));
-        bgP13.add(criterio_8_2);
         criterio_8_2.setText("2 veces por noche");
         criterio_8_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1163,7 +1159,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         jLabel123.setText("<HTML>9. Durante el último mes, ¿Cuál cree que es la calidad de su sueño en general?</HTML>");
 
         criterio_9_1.setBackground(new java.awt.Color(153, 204, 255));
-        bgP14.add(criterio_9_1);
         criterio_9_1.setText("Muy Buena");
         criterio_9_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1172,7 +1167,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_9_2.setBackground(new java.awt.Color(153, 204, 255));
-        bgP14.add(criterio_9_2);
         criterio_9_2.setText("Buena");
         criterio_9_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1181,7 +1175,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_9_3.setBackground(new java.awt.Color(153, 204, 255));
-        bgP14.add(criterio_9_3);
         criterio_9_3.setText("Mala ");
         criterio_9_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1190,7 +1183,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_9_4.setBackground(new java.awt.Color(153, 204, 255));
-        bgP14.add(criterio_9_4);
         criterio_9_4.setText("Muy  Mala");
         criterio_9_4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1202,7 +1194,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         jLabel125.setText("<HTML>10. Durante el último mes, ¿Su estado de ánimo le ha dificultado hacer alguna actividad?</HTML>");
 
         criterio_10_1.setBackground(new java.awt.Color(153, 204, 255));
-        bgP15.add(criterio_10_1);
         criterio_10_1.setText("No");
         criterio_10_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1211,7 +1202,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_10_2.setBackground(new java.awt.Color(153, 204, 255));
-        bgP15.add(criterio_10_2);
         criterio_10_2.setText("Si, algo ");
         criterio_10_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1220,7 +1210,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_10_3.setBackground(new java.awt.Color(153, 204, 255));
-        bgP15.add(criterio_10_3);
         criterio_10_3.setText("Si,  regular ");
         criterio_10_3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1229,7 +1218,6 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         });
 
         criterio_10_4.setBackground(new java.awt.Color(153, 204, 255));
-        bgP15.add(criterio_10_4);
         criterio_10_4.setText("Si, mucho");
         criterio_10_4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1339,62 +1327,64 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(criterio_6_1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(criterio_6_2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(criterio_6_3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(criterio_6_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel21Layout.createSequentialGroup()
+                                        .addComponent(criterio_8_1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(criterio_8_2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(criterio_8_3))
+                                    .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(63, 63, 63)
+                                .addComponent(criterio_8_4))
+                            .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
+                                    .addComponent(criterio_10_1)
+                                    .addGap(81, 81, 81)
+                                    .addComponent(criterio_10_2)
+                                    .addGap(106, 106, 106)
+                                    .addComponent(criterio_10_3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(criterio_10_4))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
+                                    .addComponent(criterio_9_1)
+                                    .addGap(40, 40, 40)
+                                    .addComponent(criterio_9_2)
+                                    .addGap(109, 109, 109)
+                                    .addComponent(criterio_9_3)
+                                    .addGap(130, 130, 130)
+                                    .addComponent(criterio_9_4)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel21Layout.createSequentialGroup()
                                         .addComponent(criterio_11_1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(69, 69, 69)
                                         .addComponent(criterio_11_2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(criterio_11_3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(criterio_11_4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(criterio_11_4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel21Layout.createSequentialGroup()
-                                        .addComponent(criterio_10_1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(criterio_10_2)
+                                        .addComponent(criterio_7_1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(criterio_10_3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(criterio_10_4))
-                                    .addGroup(jPanel21Layout.createSequentialGroup()
-                                        .addComponent(criterio_9_1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(criterio_9_2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(criterio_9_3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(criterio_9_4))
-                                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel21Layout.createSequentialGroup()
-                                        .addComponent(criterio_8_1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(criterio_8_2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(criterio_8_3)
+                                        .addComponent(criterio_7_2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(criterio_8_4))
-                                    .addGroup(jPanel21Layout.createSequentialGroup()
-                                        .addComponent(criterio_6_1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(criterio_7_3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(criterio_6_2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(criterio_6_3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(criterio_6_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                                .addComponent(criterio_7_1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(criterio_7_2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(criterio_7_3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(criterio_7_4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(criterio_7_4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(26, 26, 26)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel21Layout.createSequentialGroup()
@@ -1434,35 +1424,31 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                 .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(criterio_9_3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(criterio_9_1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(criterio_9_2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(criterio_9_2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(criterio_9_3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(criterio_9_1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(criterio_9_4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(criterio_10_3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(criterio_10_1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(criterio_10_2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(criterio_10_4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(criterio_10_4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(criterio_10_3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(criterio_11_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(criterio_11_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(criterio_11_1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(criterio_11_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(criterio_11_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(criterio_11_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(criterio_11_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(criterio_11_1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -1470,14 +1456,14 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 403, Short.MAX_VALUE)
+                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1528,7 +1514,7 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
       if(!txtNorden.getText().isEmpty()){
             FechaNacimiento = new com.toedter.calendar.JDateChooser();
             String Sql="select d.nombres_pa||' '||d.apellidos_pa AS nombre, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
-                + "n.cargo_de ,n.razon_empresa,n.nom_examen,c.*"
+                + "n.cargo_de ,n.razon_empresa,n.fecha_apertura_po,c.*"
                 +"FROM datos_paciente AS d  \n" 
                 +"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) \n" 
                 +"INNER JOIN calidad_sueño as c ON (n.n_orden=c.n_orden) " 
@@ -1543,10 +1529,11 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                         txtgradodeinstruccion.setText(oConn.setResult.getString("nivel_est_pa"));
                         txtempresa.setText(oConn.setResult.getString("razon_empresa"));
                         txtcargo.setText(oConn.setResult.getString("cargo_de"));
-                        txtNorden.setEditable(false);
-                        Fechaevaluacion.requestFocusInWindow();
+                        //txtNorden.setEditable(false);
+                        FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                        FechaEvaluacion.setEnabled(false);
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                        oPe.fecha(Fechaevaluacion);                 
+                        //oPe.fecha(FechaEvaluacion);                 
                         criterio_1.setText(oConn.setResult.getString("criterio_1"));
                         criterio_2_1.setSelected(oConn.setResult.getBoolean("criterio_2_1"));
                         criterio_2_2.setSelected(oConn.setResult.getBoolean("criterio_2_2"));
@@ -1646,7 +1633,7 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
             if(!oPe.nOrden(txtNorden, "calidad_sueño"))  {
                 FechaNacimiento = new com.toedter.calendar.JDateChooser();
                 String Sql="select d.nombres_pa||' '||d.apellidos_pa AS nombre, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
-                + "n.cargo_de ,n.razon_empresa,n.nom_examen from datos_paciente AS d "
+                + "n.cargo_de ,n.razon_empresa,n.fecha_apertura_po from datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) WHERE n.n_orden ='"+txtNorden.getText().toString()+"'";
                 oConn.FnBoolQueryExecute(Sql);
                 try {
@@ -1658,9 +1645,9 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                         txtempresa.setText(oConn.setResult.getString("razon_empresa"));
                         txtcargo.setText(oConn.setResult.getString("cargo_de"));
                         txtNorden.setEditable(false);
-                        Fechaevaluacion.requestFocusInWindow();
+                        FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                         txtEdad.setText(String.valueOf(oFunc.calcularEdad(FechaNacimiento.getCalendar())) );
-                        oPe.fecha(Fechaevaluacion);
+                        FechaEvaluacion.setEnabled(false);
                         chk();
                     }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional");
@@ -1694,7 +1681,12 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
     }//GEN-LAST:event_criterio_1ActionPerformed
 
     private void criterio_2_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criterio_2_4ActionPerformed
-        // TODO add your handling code here:
+        if (criterio_2_4.isSelected())
+            {
+            criterio_2_3.setSelected(false);
+            criterio_2_2.setSelected(false);
+            criterio_2_1.setSelected(false);
+            }
     }//GEN-LAST:event_criterio_2_4ActionPerformed
 
     private void criterio_5d_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criterio_5d_2ActionPerformed
@@ -1856,20 +1848,30 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
     }//GEN-LAST:event_criterio_6_2ActionPerformed
 
     private void criterio_2_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criterio_2_1ActionPerformed
-        if(criterio_2_1.isSelected())
-        System.out.println("el valor de mi boton : " + criterio_2_1.isSelected());
-        else
-            System.out.println("el valor de mi boton : " + criterio_2_1.isSelected());
-        
-        
+        if (criterio_2_1.isSelected())
+            {
+            criterio_2_3.setSelected(false);
+            criterio_2_2.setSelected(false);
+            criterio_2_4.setSelected(false);
+            }
     }//GEN-LAST:event_criterio_2_1ActionPerformed
 
     private void criterio_2_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criterio_2_3ActionPerformed
-        // TODO add your handling code here:
+        if (criterio_2_3.isSelected())
+            {
+            criterio_2_1.setSelected(false);
+            criterio_2_2.setSelected(false);
+            criterio_2_4.setSelected(false);
+            }
     }//GEN-LAST:event_criterio_2_3ActionPerformed
 
     private void criterio_2_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criterio_2_2ActionPerformed
-        // TODO add your handling code here:
+        if (criterio_2_2.isSelected())
+            {
+            criterio_2_3.setSelected(false);
+            criterio_2_1.setSelected(false);
+            criterio_2_4.setSelected(false);
+            }
     }//GEN-LAST:event_criterio_2_2ActionPerformed
 
     private void criterio_5a2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criterio_5a2ActionPerformed
@@ -2416,12 +2418,12 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
                     }
                 }
         }
-        }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
-        txtNorden.requestFocus();}
+        }else{oFunc.SubSistemaMensajeError("Ingrese Información Faltante");}
+        txtNorden.requestFocus();
     }    
        private boolean validar(){
         boolean bResultado=true;
-    if (((JTextField)Fechaevaluacion.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
+    if (((JTextField)FechaEvaluacion.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
         {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
     
     
@@ -2513,7 +2515,8 @@ private void printer1(Integer cod){
         txtEdad.setText(null);
         txtempresa.setText(null);
         txtcargo.setText(null);
-        Fechaevaluacion.setDate(null);
+        txtgradodeinstruccion.setText(null);
+        FechaEvaluacion.setDate(null);
         criterio_1.setText(null);
         criterio_2_1.setSelected(false);
         criterio_2_2.setSelected(false);
@@ -2585,7 +2588,7 @@ private void printer1(Integer cod){
         criterio_11_2.setSelected (false);
         criterio_11_3.setSelected (false);
         criterio_11_4.setSelected (false);
-           
+        txtImp.setText(null);   
         //Regresamos el Foco a N orden
         
         txtNorden.setEditable(true);
@@ -2598,6 +2601,7 @@ private void printer1(Integer cod){
        
        criterio_1.setText("hs");
        criterio_4.setText("hs");
+       criterio_3.setText("hs");
               
 //       rbCVDesviacion_no.setSelected(true);
 //       rbCVTest_neg.setSelected(true);
@@ -2745,7 +2749,7 @@ private void printer1(Integer cod){
   
    }     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser Fechaevaluacion;
+    private com.toedter.calendar.JDateChooser FechaEvaluacion;
     private javax.swing.JTabbedPane Tabla;
     private javax.swing.ButtonGroup bgP10A;
     private javax.swing.ButtonGroup bgP10B;

@@ -69,7 +69,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
         apellidos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         edad = new javax.swing.JTextField();
-        fechaevaluacion = new com.toedter.calendar.JDateChooser();
+        FechaEvaluacion = new com.toedter.calendar.JDateChooser();
         jLabel23 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         grado_estudio = new javax.swing.JTextField();
@@ -100,14 +100,14 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
         analisis_foda_amenaz_debili = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        IMPRIMIR = new javax.swing.JTextField();
+        imprimir = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         perf_cumple = new javax.swing.JRadioButton();
         perf_no_cumple = new javax.swing.JRadioButton();
 
         setClosable(true);
-        setTitle("Informe Psicológico");
+        setTitle("INFORME PARA TRABAJOS EN ESPECIFICOS");
 
         jPanel5.setForeground(new java.awt.Color(102, 102, 0));
 
@@ -138,9 +138,9 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
 
         edad.setEditable(false);
 
-        fechaevaluacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        FechaEvaluacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                fechaevaluacionPropertyChange(evt);
+                FechaEvaluacionPropertyChange(evt);
             }
         });
 
@@ -172,8 +172,8 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(grado_estudio, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(grado_estudio)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -188,7 +188,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
@@ -199,7 +199,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fechaevaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
@@ -212,7 +212,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                         .addComponent(n_orden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(Editar)
                         .addComponent(jLabel23))
-                    .addComponent(fechaevaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +254,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,8 +371,8 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(criterio_Nivel_alert_riesgo, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                    .addComponent(criterio_Nivel_psicomotrocidad))
+                    .addComponent(criterio_Nivel_alert_riesgo, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                    .addComponent(criterio_Nivel_psicomotrocidad, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
@@ -386,7 +386,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
                     .addComponent(criterio_Nivel_psicomotrocidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ANÁLISIS FODA ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 102))); // NOI18N
@@ -416,13 +416,13 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(analisis_foda_forta_oport)
+                    .addComponent(analisis_foda_forta_oport, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(analisis_foda_amenaz_debili))
+                    .addComponent(analisis_foda_amenaz_debili, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -431,12 +431,12 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel18)
                 .addGap(5, 5, 5)
-                .addComponent(analisis_foda_forta_oport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(analisis_foda_forta_oport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel19)
                 .addGap(5, 5, 5)
-                .addComponent(analisis_foda_amenaz_debili, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(analisis_foda_amenaz_debili, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -445,9 +445,9 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("IMPRIMIR"));
 
-        IMPRIMIR.addActionListener(new java.awt.event.ActionListener() {
+        imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IMPRIMIRActionPerformed(evt);
+                imprimirActionPerformed(evt);
             }
         });
 
@@ -463,7 +463,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(IMPRIMIR, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 16, Short.MAX_VALUE))
@@ -476,7 +476,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(IMPRIMIR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -511,7 +511,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(perf_cumple)
                     .addComponent(perf_no_cumple))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -519,39 +519,36 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel25)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnAgregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizar)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnLimpiar)
+                        .addGap(187, 187, 187))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnActualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimpiar)
-                                .addGap(182, 182, 182))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 45, Short.MAX_VALUE))))
+                                .addGap(30, 30, 30))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane8))))
+                        .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -560,32 +557,33 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(8, 8, 8)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnActualizar)
                     .addComponent(btnLimpiar))
-                .addContainerGap())
+                .addGap(17, 17, 17))
         );
 
-        jTabbedPane1.addTab("Informe", jPanel5);
+        jTabbedPane1.addTab("Informe ", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -612,10 +610,10 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
      public boolean OrdenImp() {
 
         boolean bResultado = false;
-        if (!IMPRIMIR.getText().isEmpty()) {
+        if (!imprimir.getText().isEmpty()) {
             String sQuery;
 
-            sQuery = "Select n_orden from Especificos Where n_orden =" + IMPRIMIR.getText();
+            sQuery = "Select n_orden from Especificos Where n_orden =" + imprimir.getText();
 
             //Ejecuta el Query
             oConn.FnBoolQueryExecute(sQuery);
@@ -637,7 +635,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
             }
         }
         return bResultado;
-    } 
+    } private com.toedter.calendar.JDateChooser FechaNacimiento;
     private void recomendacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_recomendacionesKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_recomendacionesKeyReleased
@@ -655,22 +653,23 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        if(!n_orden.getText().isEmpty()){
         String sCodigo=n_orden.getText();
         String strSqlStmt;
         strSqlStmt="UPDATE Especificos\n" ;
         strSqlStmt += "   SET  "
-                + "fechaevaluacion='"+fechaevaluacion.getDate()+"', "                
+                               
                 + "criterio_Nivel_alert_riesgo='"+criterio_Nivel_alert_riesgo.getText()+"', "
                 + "criterio_Nivel_psicomotrocidad='"+criterio_Nivel_psicomotrocidad.getText()+"', "
-                + "txtfortalezaso='"+analisis_foda_forta_oport.getText()+"', "
-                + "analisis_foda_forta_oport='"+analisis_foda_amenaz_debili.getText()+"', "
+                + "analisis_foda_forta_oport='"+analisis_foda_forta_oport.getText()+"', "
+                + "analisis_foda_amenaz_debili='"+analisis_foda_amenaz_debili.getText()+"', "
                 + "observaciones='"+observaciones.getText()+"',"
                 + "recomendaciones='"+recomendaciones.getText()+"', "
                 + "perf_cumple='"+perf_cumple.isSelected()+"', "
                 + "perf_no_cumple='"+perf_no_cumple.isSelected()+"' "
                 
                 + " WHERE n_orden='" + sCodigo + "'";
-
+                System.out.println(strSqlStmt);
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
@@ -686,6 +685,9 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+        }
+        else 
+            oFunc.SubSistemaMensajeError("Debe ingresar un codigo para actualizar");
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -693,11 +695,10 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
             if(!OrdenExiste()){
                 if (validar()){
                     String Sql ="INSERT INTO Especificos(\n" +
-"            n_orden, criterio_Nivel_alert_riesgo, criterio_Nivel_psicomotrocidad, analisis_foda_forta_oport, analisis_foda_amenaz_debili, observaciones, \n" +
-"            recomendaciones, perf_cumple, perf_no_cumple,  \n" +
-"            adpto, noadpto)" ;
-                    Sql+="Values('"+n_orden.getText()+"','"+fechaevaluacion.getDate()+"','"
-                    
+                    "n_orden, criterio_Nivel_alert_riesgo, criterio_Nivel_psicomotrocidad, analisis_foda_forta_oport, analisis_foda_amenaz_debili, observaciones, \n" +
+                    "recomendaciones, perf_cumple, perf_no_cumple)" ;
+                    Sql+="Values('"
+                    +n_orden.getText()+"','"                    
                     +criterio_Nivel_alert_riesgo.getText()+ "','"
                     +criterio_Nivel_psicomotrocidad.getText()+"','"                    
                     +analisis_foda_forta_oport.getText()+"','"
@@ -755,15 +756,15 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 empresa.setText(oConn.setResult.getString("razon_empresa"));
                 cargo.setText(oConn.setResult.getString("cargo_de"));
                 edad.setText(oConn.setResult.getString("edad"));
-                fechaevaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                 criterio_Nivel_alert_riesgo.setText(oConn.setResult.getString("criterio_Nivel_alert_riesgo"));
                 criterio_Nivel_psicomotrocidad.setText(oConn.setResult.getString("criterio_Nivel_psicomotrocidad"));             
                 analisis_foda_forta_oport.setText(oConn.setResult.getString("analisis_foda_forta_oport"));
                 analisis_foda_amenaz_debili.setText(oConn.setResult.getString("analisis_foda_amenaz_debili"));
                 observaciones.setText(oConn.setResult.getString("observaciones"));
                 recomendaciones.setText(oConn.setResult.getString("recomendaciones"));
-                perf_cumple.setSelected(oConn.setResult.getBoolean("Conclusiones_apto"));
-                perf_no_cumple.setSelected(oConn.setResult.getBoolean("conclusiones_no_apto"));
+                perf_cumple.setSelected(oConn.setResult.getBoolean("perf_cumple"));
+                perf_no_cumple.setSelected(oConn.setResult.getBoolean("perf_no_cumple"));
                 btnAgregar.setEnabled(false);
                 
 
@@ -779,14 +780,14 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
             oFunc.SubSistemaMensajeError("debes ingresar un codigo");
     }//GEN-LAST:event_EditarActionPerformed
 
-    private void fechaevaluacionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_fechaevaluacionPropertyChange
-        fechaevaluacion.requestFocus();
-    }//GEN-LAST:event_fechaevaluacionPropertyChange
+    private void FechaEvaluacionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaEvaluacionPropertyChange
+        FechaEvaluacion.requestFocus();
+    }//GEN-LAST:event_FechaEvaluacionPropertyChange
 
     private void n_ordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_ordenActionPerformed
         if(!n_orden.getText().isEmpty()){
             if(!oPe.nOrden(n_orden, "Especificos"))  {
-                fechaevaluacion = new com.toedter.calendar.JDateChooser();
+                FechaNacimiento = new com.toedter.calendar.JDateChooser();
                 String Sql="select d.nombres_pa,d.apellidos_pa , d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
                 + "n.cargo_de ,n.razon_empresa, EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad, n.fecha_apertura_po from datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) WHERE n.n_orden ='"+n_orden.getText()+"'";
@@ -799,31 +800,32 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                     cargo.setText(oConn.setResult.getString("cargo_de"));
                     empresa.setText(oConn.setResult.getString("razon_empresa"));
                     edad.setText(oConn.setResult.getString("edad"));
-                    n_orden.setEnabled(false);
+                    //n_orden.setEnabled(false);
                     perf_cumple.setSelected(true);
                     
-                    fechaevaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                    
+                    FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
                 oConn.setResult.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("fobias:" + ex.getMessage());
+                oFunc.SubSistemaMensajeInformacion("informe de Especificos:" + ex.getMessage());
             }
         }
             else
-                oFunc.SubSistemaMensajeInformacion("Ya existe este registro en fobias ");
+                oFunc.SubSistemaMensajeInformacion("Ya existe este registro ");
       }
     }//GEN-LAST:event_n_ordenActionPerformed
 
-    private void IMPRIMIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IMPRIMIRActionPerformed
+    private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IMPRIMIRActionPerformed
+    }//GEN-LAST:event_imprimirActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
         if(OrdenImp()){
-           print (Integer.valueOf(IMPRIMIR.getText()));
+           print (Integer.valueOf(imprimir.getText()));
         }else{
            oFunc.SubSistemaMensajeError("Codigo no existe"); 
         }
@@ -846,6 +848,8 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_analisis_foda_forta_oportActionPerformed
 
     private void analisis_foda_amenaz_debiliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analisis_foda_amenaz_debiliActionPerformed
+
+
         // TODO add your handling code here:
         analisis_foda_amenaz_debili.requestFocus();
     }//GEN-LAST:event_analisis_foda_amenaz_debiliActionPerformed
@@ -860,7 +864,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Editar;
-    private javax.swing.JTextField IMPRIMIR;
+    private com.toedter.calendar.JDateChooser FechaEvaluacion;
     private javax.swing.JTextField analisis_foda_amenaz_debili;
     private javax.swing.JTextField analisis_foda_forta_oport;
     private javax.swing.JTextField apellidos;
@@ -874,8 +878,8 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
     private javax.swing.JTextField criterio_Nivel_psicomotrocidad;
     private javax.swing.JTextField edad;
     private javax.swing.JTextField empresa;
-    private com.toedter.calendar.JDateChooser fechaevaluacion;
     private javax.swing.JTextField grado_estudio;
+    private javax.swing.JTextField imprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -922,9 +926,12 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
         analisis_foda_amenaz_debili.setText(null);
         observaciones.setText(null);
         recomendaciones.setText(null);
-        fechaevaluacion.setDate(null);        
+        FechaEvaluacion.setDate(null);
+        bgAprobo.clearSelection();
+        imprimir.setText(null);        
         n_orden.setEnabled(true);
         n_orden.requestFocus();
+        btnAgregar.setEnabled(true);
     }
 
 public int calcularEdad(Calendar fechaNac){
@@ -948,7 +955,7 @@ public int calcularEdad(Calendar fechaNac){
 }
 private boolean validar(){
 boolean bResultado=true;
-if (((JTextField)fechaevaluacion.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
+if (((JTextField)FechaEvaluacion.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
         {oFunc.SubSistemaMensajeError("Ingrese Fecha de Entrevista");bResultado = false;}
     if(n_orden.getText().isEmpty()){bResultado = false;}
     if(edad.getText().isEmpty()){bResultado = false;}
@@ -997,8 +1004,9 @@ public boolean OrdenExiste()
                 try 
                 {
                     String master = System.getProperty("user.dir") +
-                                "/reportes/agregarEspecificos.jasper";
-            
+                                "/reportes/TRABAJOS_EN_ESPECIFICO.jasper";
+                         
+
             System.out.println("master" + master);
             if (master == null) 
             {                
@@ -1012,7 +1020,7 @@ public boolean OrdenExiste()
                 masterReport = (JasperReport) JRLoader.loadObject(master);
             } 
             catch (JRException e) 
-            {
+            {                            
                 System.out.println("Error cargando el reporte maestro: " + e.getMessage());
                 System.exit(3);
             }        
@@ -1030,6 +1038,8 @@ public boolean OrdenExiste()
 
                 } catch (JRException ex) {
                     Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                         
+
                 }
         
  
@@ -1065,11 +1075,11 @@ private void printer(Integer cod) {
         parameters.put("n_orden", cod);
         try {
             String master = System.getProperty("user.dir")
-                    + "/reportes/agregarinforme.jasper";
+                    + "/reportes/TRABAJOS_EN_ESPECIFICO.jasper";
 
             System.out.println("master" + master);
             if (master == null) {
-                System.out.println("No encuentro el archivo del ficha psicologica.");
+                System.out.println("No encuentro el archivo del ficha psicologicaespecificos.");
                 //System.exit(2);
             }
             JasperReport masterReport = null;

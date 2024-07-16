@@ -46,6 +46,7 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
    String[]aintelectual = new String[]{};
     DefaultTableModel model;
+    private JDateChooser FechaNacimiento;
 
    public PsicoTrastorPersonalidad(){
       initComponents();
@@ -121,36 +122,33 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
         grup_a_esquizotipico_bajo = new javax.swing.JCheckBox();
         grup_a_esquizotipico_medio = new javax.swing.JCheckBox();
         grup_a_esquizotipico_alto = new javax.swing.JCheckBox();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jPanel31 = new javax.swing.JPanel();
-        jLabel89 = new javax.swing.JLabel();
-        jLabel99 = new javax.swing.JLabel();
-        jLabel102 = new javax.swing.JLabel();
-        grup_c_anancastico_bajo = new javax.swing.JCheckBox();
-        grup_c_anancastico_medio = new javax.swing.JCheckBox();
-        grup_c_anancastico_alto = new javax.swing.JCheckBox();
-        grup_c_dependiente_bajo = new javax.swing.JCheckBox();
-        grup_c_dependiente_medio = new javax.swing.JCheckBox();
-        grup_c_dependiente_alto = new javax.swing.JCheckBox();
-        grup_c_ansioso_medio = new javax.swing.JCheckBox();
-        grup_c_ansioso_alto = new javax.swing.JCheckBox();
-        grup_c_ansioso_bajo = new javax.swing.JCheckBox();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel32 = new javax.swing.JPanel();
         jLabel91 = new javax.swing.JLabel();
         grup_b_histrionico_bajo = new javax.swing.JCheckBox();
         grup_b_histrionico_medio = new javax.swing.JCheckBox();
         grup_b_histrionico_alto = new javax.swing.JCheckBox();
+        jLabel109 = new javax.swing.JLabel();
         grup_b_antisocial_bajo = new javax.swing.JCheckBox();
         grup_b_antisocial_medio = new javax.swing.JCheckBox();
         grup_b_antisocial_alto = new javax.swing.JCheckBox();
-        jLabel109 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
         grup_b_narcicista_bajo = new javax.swing.JCheckBox();
         grup_b_narcicista_medio = new javax.swing.JCheckBox();
         grup_b_narcicista_alto = new javax.swing.JCheckBox();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel99 = new javax.swing.JLabel();
+        grup_c_anancastico_bajo = new javax.swing.JCheckBox();
+        grup_c_anancastico_medio = new javax.swing.JCheckBox();
+        grup_c_anancastico_alto = new javax.swing.JCheckBox();
+        jLabel89 = new javax.swing.JLabel();
+        grup_c_dependiente_bajo = new javax.swing.JCheckBox();
+        grup_c_dependiente_medio = new javax.swing.JCheckBox();
+        grup_c_dependiente_alto = new javax.swing.JCheckBox();
+        jLabel102 = new javax.swing.JLabel();
+        grup_c_ansioso_bajo = new javax.swing.JCheckBox();
+        grup_c_ansioso_medio = new javax.swing.JCheckBox();
+        grup_c_ansioso_alto = new javax.swing.JCheckBox();
+        jPanel33 = new javax.swing.JPanel();
         jLabel111 = new javax.swing.JLabel();
         grup_b_inesta_emoci_subtip_impul_bajo = new javax.swing.JCheckBox();
         grup_b_inesta_emoci_subtip_impul_medio = new javax.swing.JCheckBox();
@@ -159,18 +157,16 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
         grup_b_emoci_subtip_lim_bajo = new javax.swing.JCheckBox();
         grup_b_emoci_subtip_lim_medio = new javax.swing.JCheckBox();
         grup_b_emoci_subtip_lim_alto = new javax.swing.JCheckBox();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel121 = new javax.swing.JLabel();
-        jScrollPane15 = new javax.swing.JScrollPane();
-        analisis_resulta = new javax.swing.JTextArea();
         jLabel123 = new javax.swing.JLabel();
         jScrollPane16 = new javax.swing.JScrollPane();
         recomendacion = new javax.swing.JTextArea();
         jLabel126 = new javax.swing.JLabel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        analisis_resulta = new javax.swing.JTextArea();
+        jLabel121 = new javax.swing.JLabel();
 
         setClosable(true);
-        setTitle("Informe Psicolaboral");
+        setTitle("INFORME DE EVALUACIÓN PSICOLÓGICA DE TRASTORNOS DE PERSONALIDAD");
 
         jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -227,37 +223,40 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel28Layout.createSequentialGroup()
-                        .addComponent(jLabel120)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel125)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(grado_estudios, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel124)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel28Layout.createSequentialGroup()
                         .addComponent(jLabel118)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(empresa))
                     .addGroup(jPanel28Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel116)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(n_orden, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel117)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaevaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addComponent(jLabel120)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel125)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(grado_estudios, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel124)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel28Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jLabel116)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(n_orden, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnEditar)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel117)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fechaevaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,16 +309,18 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imprimir1)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(imprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imprimir1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addComponent(imprimir1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jLabel122.setText("RECOMENDACIONES");
@@ -348,7 +349,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
 
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Conclusión"));
 
-        bgConclusion.add(perf_cumple);
         perf_cumple.setText("CUMPLE CON EL PERFIL");
         perf_cumple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,7 +356,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgConclusion.add(perf_no_cumple);
         perf_no_cumple.setText("NO CUMPLE CON EL PERFIL ");
         perf_no_cumple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,11 +383,10 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                 .addComponent(perf_no_cumple))
         );
 
-        jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS INTELECTUALES"));
+        jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder("GRUPO A"));
 
         jLabel90.setText("1-PARANOIDE");
 
-        bgEE.add(grup_a_paranoide_bajo);
         grup_a_paranoide_bajo.setText("Bajo");
         grup_a_paranoide_bajo.setToolTipText("");
         grup_a_paranoide_bajo.addActionListener(new java.awt.event.ActionListener() {
@@ -397,7 +395,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgEE.add(grup_a_paranoide_medio);
         grup_a_paranoide_medio.setText("Medio");
         grup_a_paranoide_medio.setToolTipText("");
         grup_a_paranoide_medio.addActionListener(new java.awt.event.ActionListener() {
@@ -406,7 +403,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgEE.add(grup_a_paranoide_alto);
         grup_a_paranoide_alto.setText("Alto");
         grup_a_paranoide_alto.setToolTipText("");
         grup_a_paranoide_alto.addActionListener(new java.awt.event.ActionListener() {
@@ -415,7 +411,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgTF.add(grup_a_esquizoide_bajo);
         grup_a_esquizoide_bajo.setText("Bajo");
         grup_a_esquizoide_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -423,7 +418,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgTF.add(grup_a_esquizoide_medio);
         grup_a_esquizoide_medio.setText("Medio");
         grup_a_esquizoide_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -431,7 +425,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgTF.add(grup_a_esquizoide_alto);
         grup_a_esquizoide_alto.setText("Alto");
         grup_a_esquizoide_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -443,7 +436,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
 
         jLabel103.setText("3- ESQUIZOTÍPICO");
 
-        bgAUTOESTIMA.add(grup_a_esquizotipico_bajo);
         grup_a_esquizotipico_bajo.setText("Bajo");
         grup_a_esquizotipico_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -451,7 +443,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAUTOESTIMA.add(grup_a_esquizotipico_medio);
         grup_a_esquizotipico_medio.setText("Medio");
         grup_a_esquizotipico_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -459,15 +450,12 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAUTOESTIMA.add(grup_a_esquizotipico_alto);
         grup_a_esquizotipico_alto.setText("Alto");
         grup_a_esquizotipico_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 grup_a_esquizotipico_altoActionPerformed(evt);
             }
         });
-
-        jLabel2.setText("GRUPO A");
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -476,48 +464,44 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel30Layout.createSequentialGroup()
-                        .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel30Layout.createSequentialGroup()
-                                    .addComponent(grup_a_esquizotipico_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(grup_a_esquizotipico_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(grup_a_esquizotipico_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel30Layout.createSequentialGroup()
+                            .addComponent(grup_a_esquizotipico_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(27, 27, 27)
+                            .addComponent(grup_a_esquizotipico_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(grup_a_esquizotipico_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel30Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel30Layout.createSequentialGroup()
                                     .addComponent(grup_a_esquizoide_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(grup_a_esquizoide_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(grup_a_esquizoide_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel30Layout.createSequentialGroup()
                                     .addComponent(grup_a_paranoide_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(grup_a_paranoide_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(31, 31, 31)
-                                    .addComponent(grup_a_paranoide_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(18, Short.MAX_VALUE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(grup_a_paranoide_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addComponent(jLabel90)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(grup_a_paranoide_bajo)
                     .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(grup_a_paranoide_medio)
-                        .addComponent(grup_a_paranoide_alto)))
+                        .addComponent(grup_a_paranoide_alto))
+                    .addComponent(grup_a_paranoide_bajo, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel101)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -533,17 +517,146 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                     .addComponent(grup_a_esquizotipico_bajo)
                     .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(grup_a_esquizotipico_alto)
-                        .addComponent(grup_a_esquizotipico_medio)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(grup_a_esquizotipico_medio))))
         );
 
         jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder("GRUPO B"));
 
-        jLabel89.setText("2- DEPENDIENTE");
+        jLabel91.setText("1- HISTRIÓNICO");
+
+        grup_b_histrionico_bajo.setText("Bajo");
+        grup_b_histrionico_bajo.setToolTipText("");
+        grup_b_histrionico_bajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_histrionico_bajoActionPerformed(evt);
+            }
+        });
+
+        grup_b_histrionico_medio.setText("Medio");
+        grup_b_histrionico_medio.setToolTipText("");
+        grup_b_histrionico_medio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_histrionico_medioActionPerformed(evt);
+            }
+        });
+
+        grup_b_histrionico_alto.setText("Alto");
+        grup_b_histrionico_alto.setToolTipText("");
+        grup_b_histrionico_alto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_histrionico_altoActionPerformed(evt);
+            }
+        });
+
+        jLabel109.setText("2- ANTISOCIAL");
+
+        grup_b_antisocial_bajo.setText("Bajo");
+        grup_b_antisocial_bajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_antisocial_bajoActionPerformed(evt);
+            }
+        });
+
+        grup_b_antisocial_medio.setText("Medio");
+        grup_b_antisocial_medio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_antisocial_medioActionPerformed(evt);
+            }
+        });
+
+        grup_b_antisocial_alto.setText("Alto");
+        grup_b_antisocial_alto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_antisocial_altoActionPerformed(evt);
+            }
+        });
+
+        jLabel110.setText("3- NARCICISTA");
+
+        grup_b_narcicista_bajo.setText("Bajo");
+        grup_b_narcicista_bajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_narcicista_bajoActionPerformed(evt);
+            }
+        });
+
+        grup_b_narcicista_medio.setText("Medio");
+        grup_b_narcicista_medio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_narcicista_medioActionPerformed(evt);
+            }
+        });
+
+        grup_b_narcicista_alto.setText("Alto");
+        grup_b_narcicista_alto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_b_narcicista_altoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
+        jPanel31.setLayout(jPanel31Layout);
+        jPanel31Layout.setHorizontalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel31Layout.createSequentialGroup()
+                        .addComponent(grup_b_histrionico_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(grup_b_histrionico_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(grup_b_histrionico_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
+                        .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel31Layout.createSequentialGroup()
+                                .addComponent(grup_b_narcicista_bajo)
+                                .addGap(31, 31, 31)
+                                .addComponent(grup_b_narcicista_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(grup_b_narcicista_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel31Layout.createSequentialGroup()
+                                .addComponent(grup_b_antisocial_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(grup_b_antisocial_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(grup_b_antisocial_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24))))
+        );
+        jPanel31Layout.setVerticalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel91)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(grup_b_histrionico_bajo)
+                    .addComponent(grup_b_histrionico_medio)
+                    .addComponent(grup_b_histrionico_alto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel109)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(grup_b_antisocial_bajo)
+                    .addComponent(grup_b_antisocial_medio)
+                    .addComponent(grup_b_antisocial_alto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel110)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(grup_b_narcicista_bajo)
+                    .addComponent(grup_b_narcicista_medio)
+                    .addComponent(grup_b_narcicista_alto))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel32.setBorder(javax.swing.BorderFactory.createTitledBorder("GRUPO C"));
 
         jLabel99.setText("1- ANANCÁSTICO");
-
-        jLabel102.setText("3- ANSIOSO");
 
         grup_c_anancastico_bajo.setText("Bajo");
         grup_c_anancastico_bajo.addActionListener(new java.awt.event.ActionListener() {
@@ -566,6 +679,8 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel89.setText("2- DEPENDIENTE");
+
         grup_c_dependiente_bajo.setText("Bajo");
         grup_c_dependiente_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -587,6 +702,15 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel102.setText("3- ANSIOSO");
+
+        grup_c_ansioso_bajo.setText("Bajo");
+        grup_c_ansioso_bajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grup_c_ansioso_bajoActionPerformed(evt);
+            }
+        });
+
         grup_c_ansioso_medio.setText("Medio");
         grup_c_ansioso_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -601,167 +725,68 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        grup_c_ansioso_bajo.setText("Bajo");
-        grup_c_ansioso_bajo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_c_ansioso_bajoActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("GRUPO C");
-
-        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
-        jPanel31.setLayout(jPanel31Layout);
-        jPanel31Layout.setHorizontalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel31Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(grup_c_ansioso_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_c_ansioso_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_c_ansioso_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel89, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel31Layout.createSequentialGroup()
-                            .addGap(15, 15, 15)
-                            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel31Layout.createSequentialGroup()
-                                    .addComponent(grup_c_ansioso_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(grup_c_ansioso_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(grup_c_ansioso_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel31Layout.createSequentialGroup()
-                                    .addComponent(grup_c_dependiente_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(grup_c_dependiente_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(grup_c_dependiente_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel31Layout.createSequentialGroup()
-                                    .addComponent(grup_c_anancastico_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(grup_c_anancastico_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(grup_c_anancastico_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(grup_c_dependiente_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_c_dependiente_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_c_dependiente_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel32Layout.createSequentialGroup()
+                        .addComponent(grup_c_anancastico_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_c_anancastico_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_c_anancastico_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(325, 325, 325))
         );
-        jPanel31Layout.setVerticalGroup(
-            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel31Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(5, 5, 5)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(grup_c_anancastico_bajo)
                     .addComponent(grup_c_anancastico_medio)
                     .addComponent(grup_c_anancastico_alto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel89)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(grup_c_dependiente_bajo)
                     .addComponent(grup_c_dependiente_medio)
                     .addComponent(grup_c_dependiente_alto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel102)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(grup_c_ansioso_bajo)
                     .addComponent(grup_c_ansioso_medio)
                     .addComponent(grup_c_ansioso_alto))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel32.setBorder(javax.swing.BorderFactory.createTitledBorder("GRUPO B"));
+        jPanel33.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel91.setText("1- HISTRIÓNICO");
+        jLabel111.setText("<HTML>4- T. INESTABILIDAD EMOCIONAL SUBTIPO IMPULSIVO <HTML>");
+        jLabel111.setToolTipText("");
 
-        bgAPSI1.add(grup_b_histrionico_bajo);
-        grup_b_histrionico_bajo.setText("Bajo");
-        grup_b_histrionico_bajo.setToolTipText("");
-        grup_b_histrionico_bajo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_histrionico_bajoActionPerformed(evt);
-            }
-        });
-
-        bgAPSI1.add(grup_b_histrionico_medio);
-        grup_b_histrionico_medio.setText("Medio");
-        grup_b_histrionico_medio.setToolTipText("");
-        grup_b_histrionico_medio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_histrionico_medioActionPerformed(evt);
-            }
-        });
-
-        bgAPSI1.add(grup_b_histrionico_alto);
-        grup_b_histrionico_alto.setText("Alto");
-        grup_b_histrionico_alto.setToolTipText("");
-        grup_b_histrionico_alto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_histrionico_altoActionPerformed(evt);
-            }
-        });
-
-        bgAPSI2.add(grup_b_antisocial_bajo);
-        grup_b_antisocial_bajo.setText("Bajo");
-        grup_b_antisocial_bajo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_antisocial_bajoActionPerformed(evt);
-            }
-        });
-
-        bgAPSI2.add(grup_b_antisocial_medio);
-        grup_b_antisocial_medio.setText("Medio");
-        grup_b_antisocial_medio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_antisocial_medioActionPerformed(evt);
-            }
-        });
-
-        bgAPSI2.add(grup_b_antisocial_alto);
-        grup_b_antisocial_alto.setText("Alto");
-        grup_b_antisocial_alto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_antisocial_altoActionPerformed(evt);
-            }
-        });
-
-        jLabel109.setText("2- ANTISOCIAL");
-
-        jLabel110.setText("3- NARCICISTA");
-
-        bgAPSI3.add(grup_b_narcicista_bajo);
-        grup_b_narcicista_bajo.setText("Bajo");
-        grup_b_narcicista_bajo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_narcicista_bajoActionPerformed(evt);
-            }
-        });
-
-        bgAPSI3.add(grup_b_narcicista_medio);
-        grup_b_narcicista_medio.setText("Medio");
-        grup_b_narcicista_medio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_narcicista_medioActionPerformed(evt);
-            }
-        });
-
-        bgAPSI3.add(grup_b_narcicista_alto);
-        grup_b_narcicista_alto.setText("Alto");
-        grup_b_narcicista_alto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grup_b_narcicista_altoActionPerformed(evt);
-            }
-        });
-
-        jLabel111.setText("4- T. INESTABILIDAD EMOCIONAL SUBTIPO IMPULSIVO   ");
-
-        bgAPSI4.add(grup_b_inesta_emoci_subtip_impul_bajo);
         grup_b_inesta_emoci_subtip_impul_bajo.setText("Bajo");
         grup_b_inesta_emoci_subtip_impul_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -769,7 +794,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI4.add(grup_b_inesta_emoci_subtip_impul_medio);
         grup_b_inesta_emoci_subtip_impul_medio.setText("Medio");
         grup_b_inesta_emoci_subtip_impul_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -777,7 +801,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI4.add(grup_b_inesta_emoci_subtip_impul_alto);
         grup_b_inesta_emoci_subtip_impul_alto.setText("Alto");
         grup_b_inesta_emoci_subtip_impul_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -785,9 +808,8 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel112.setText("5- T. INTESTABILIDAD EMOCIONAL SUBTIPO LÍMITE ");
+        jLabel112.setText("<HTML>5- T. INTESTABILIDAD EMOCIONAL SUBTIPO LÍMITE<HTML> ");
 
-        bgAPSI5.add(grup_b_emoci_subtip_lim_bajo);
         grup_b_emoci_subtip_lim_bajo.setText("Bajo");
         grup_b_emoci_subtip_lim_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -795,7 +817,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI5.add(grup_b_emoci_subtip_lim_medio);
         grup_b_emoci_subtip_lim_medio.setText("Medio");
         grup_b_emoci_subtip_lim_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -803,7 +824,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI5.add(grup_b_emoci_subtip_lim_alto);
         grup_b_emoci_subtip_lim_alto.setText("Alto");
         grup_b_emoci_subtip_lim_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -811,150 +831,78 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setText("GRUPO B");
-
-        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
-        jPanel32.setLayout(jPanel32Layout);
-        jPanel32Layout.setHorizontalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel32Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel32Layout.createSequentialGroup()
-                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel32Layout.createSequentialGroup()
-                                .addComponent(grup_b_emoci_subtip_lim_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(grup_b_emoci_subtip_lim_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(grup_b_emoci_subtip_lim_alto))
-                            .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel112, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jLabel111))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel32Layout.createSequentialGroup()
-                        .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel32Layout.createSequentialGroup()
-                                .addComponent(grup_b_antisocial_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(grup_b_antisocial_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(grup_b_antisocial_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel32Layout.createSequentialGroup()
-                                    .addComponent(grup_b_histrionico_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(grup_b_histrionico_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(grup_b_histrionico_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(25, 25, 25))
-                                .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel32Layout.createSequentialGroup()
-                                .addComponent(grup_b_inesta_emoci_subtip_impul_bajo)
-                                .addGap(45, 45, 45)
-                                .addComponent(grup_b_inesta_emoci_subtip_impul_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(grup_b_inesta_emoci_subtip_impul_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel32Layout.createSequentialGroup()
-                                .addComponent(grup_b_narcicista_bajo)
-                                .addGap(41, 41, 41)
-                                .addComponent(grup_b_narcicista_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(grup_b_narcicista_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel33Layout.createSequentialGroup()
+                        .addComponent(grup_b_emoci_subtip_lim_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(grup_b_emoci_subtip_lim_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_b_emoci_subtip_lim_alto))
+                    .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel33Layout.createSequentialGroup()
+                        .addComponent(grup_b_inesta_emoci_subtip_impul_bajo)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_b_inesta_emoci_subtip_impul_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(grup_b_inesta_emoci_subtip_impul_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel32Layout.setVerticalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel91)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(grup_b_histrionico_bajo)
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(grup_b_histrionico_medio)
-                        .addComponent(grup_b_histrionico_alto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel109)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(grup_b_antisocial_bajo)
-                    .addComponent(grup_b_antisocial_medio)
-                    .addComponent(grup_b_antisocial_alto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel110)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(grup_b_narcicista_bajo)
-                    .addComponent(grup_b_narcicista_medio)
-                    .addComponent(grup_b_narcicista_alto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel111)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(grup_b_inesta_emoci_subtip_impul_bajo)
                     .addComponent(grup_b_inesta_emoci_subtip_impul_medio)
                     .addComponent(grup_b_inesta_emoci_subtip_impul_alto))
-                .addGap(2, 2, 2)
-                .addComponent(jLabel112)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(grup_b_emoci_subtip_lim_bajo)
-                    .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(grup_b_emoci_subtip_lim_medio)
-                        .addComponent(grup_b_emoci_subtip_lim_alto)))
-                .addGap(30, 30, 30))
+                    .addComponent(grup_b_emoci_subtip_lim_medio)
+                    .addComponent(grup_b_emoci_subtip_lim_alto))
+                .addGap(38, 38, 38))
         );
-
-        jLabel121.setText("ANALISIS Y RESULTADOS");
-
-        analisis_resulta.setColumns(20);
-        analisis_resulta.setRows(5);
-        jScrollPane15.setViewportView(analisis_resulta);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel121)
-                            .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                        .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(7, 7, 7))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel121)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(84, 84, 84))
         );
 
         jPanel30.getAccessibleContext().setAccessibleName("");
@@ -970,6 +918,12 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
 
         jLabel126.setText("PARANOIDE :");
 
+        analisis_resulta.setColumns(20);
+        analisis_resulta.setRows(5);
+        jScrollPane15.setViewportView(analisis_resulta);
+
+        jLabel121.setText("ANALISIS Y RESULTADOS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -982,21 +936,25 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 604, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel122)
-                            .addComponent(jLabel123)
-                            .addComponent(jLabel126)
-                            .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Actualizar)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(limpiar))
-                                .addComponent(jScrollPane14, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                                    .addComponent(jLabel122)
+                                    .addComponent(jLabel123)
+                                    .addComponent(jLabel126)
+                                    .addComponent(jLabel121)
+                                    .addComponent(jScrollPane15)
+                                    .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane14)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(Actualizar)
+                                .addGap(18, 18, 18)
+                                .addComponent(limpiar)))))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1008,15 +966,16 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1)
-                        .addGap(17, 17, 17))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addComponent(jLabel121)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel122)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1024,12 +983,13 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel126)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Actualizar)
-                            .addComponent(limpiar))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(limpiar)))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1132,204 +1092,181 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
         recomendacion.setText("");  
         perf_cumple.setSelected(false);  
         perf_no_cumple.setSelected(false); 
-        interpretacion_parainoide.setText("");                  
+        interpretacion_parainoide.setText(""); 
+        imprimir.setText("");
     }
     
     // boton actualizar 
     public void Actualizar(){
-            String sCodigo=n_orden.getText();
+           String sCodigo=n_orden.getText();
+       if(!n_orden.getText().isEmpty()){
+                if(validar()){
             String strSqlStmt;
-            strSqlStmt="UPDATE  trastornos_personalidad\n" +
-                    " SET "+
+             String Query ;
+            strSqlStmt="UPDATE trastornos_personalidad ";
+            Query="SET "; 
                     //GRUPO A
-                   "        grup_a_paranoide_bajo='"+grup_a_paranoide_bajo.isSelected()+"',"+
-                   "        grup_a_paranoide_medio='"+grup_a_paranoide_medio.isSelected()+"',"+
-                   "        grup_a_paranoide_alto='"+grup_a_paranoide_alto.isSelected()+"',"+
+                Query += " grup_a_paranoide_bajo='"+grup_a_paranoide_bajo.isSelected()+"'";
+                Query += " ,grup_a_paranoide_medio='"+grup_a_paranoide_medio.isSelected()+"'";
+                Query += " ,grup_a_paranoide_alto='"+grup_a_paranoide_alto.isSelected()+"'";
                     
-                    "        grup_a_esquizoide_bajo='"+grup_a_esquizoide_bajo.isSelected()+"',"+
-                    "        grup_a_esquizoide_medio='"+grup_a_esquizoide_medio.isSelected()+"',"+
-                    "        grup_a_esquizoide_alto='"+grup_a_esquizoide_alto.isSelected()+"',"+
+                Query += ",grup_a_esquizoide_bajo='"+grup_a_esquizoide_bajo.isSelected()+"'";
+                Query += ",grup_a_esquizoide_medio='"+grup_a_esquizoide_medio.isSelected()+"'";
+                Query += ",grup_a_esquizoide_alto='"+grup_a_esquizoide_alto.isSelected()+"'";
                
-                    "        grup_a_esquizotipico_bajo='"+grup_a_esquizotipico_bajo.isSelected()+"',"+
-                    "        grup_a_esquizotipico_medio='"+grup_a_esquizotipico_medio.isSelected()+"',"+
-                    "        grup_a_esquizotipico_alto='"+grup_a_esquizotipico_alto.isSelected()+"',"+
+                Query += ",grup_a_esquizotipico_bajo='"+grup_a_esquizotipico_bajo.isSelected()+"'";
+                Query += ",grup_a_esquizotipico_medio='"+grup_a_esquizotipico_medio.isSelected()+"'";
+                Query += ",grup_a_esquizotipico_alto='"+grup_a_esquizotipico_alto.isSelected()+"'";
                     // GRUPO B
-                    "        grup_b_histrionico_bajo='"+grup_b_histrionico_bajo.isSelected()+"',"+
-                    "        grup_b_histrionico_medio='"+grup_b_histrionico_medio.isSelected()+"',"+
-                    "        grup_b_histrionico_alto='"+grup_b_histrionico_alto.isSelected()+"',"+
+                Query += ",grup_b_histrionico_bajo='"+grup_b_histrionico_bajo.isSelected()+"'";
+                Query += ",grup_b_histrionico_medio='"+grup_b_histrionico_medio.isSelected()+"'";
+                Query += ",grup_b_histrionico_alto='"+grup_b_histrionico_alto.isSelected()+"'";
                     
-                    "        grup_b_antisocial_bajo='"+grup_b_antisocial_bajo.isSelected()+"',"+
-                    "        grup_b_antisocial_medio='"+grup_b_antisocial_medio.isSelected()+"',"+
-                    "        grup_b_antisocial_alto='"+grup_b_antisocial_alto.isSelected()+"',"+
+                Query += ",grup_b_antisocial_bajo='"+grup_b_antisocial_bajo.isSelected()+"'";
+                Query += ",grup_b_antisocial_medio='"+grup_b_antisocial_medio.isSelected()+"'";
+                Query += ",grup_b_antisocial_alto='"+grup_b_antisocial_alto.isSelected()+"'";
                     
-                    "        grup_b_narcicista_bajo='"+grup_b_narcicista_bajo.isSelected()+"',"+
-                    "        grup_b_narcicista_medio='"+grup_b_narcicista_medio.isSelected()+"',"+
-                    "        grup_b_narcicista_alto='"+grup_b_narcicista_alto.isSelected()+"',"+
+                Query += ",grup_b_narcicista_bajo='"+grup_b_narcicista_bajo.isSelected()+"'";
+                Query += ",grup_b_narcicista_medio='"+grup_b_narcicista_medio.isSelected()+"'";
+                Query += ",grup_b_narcicista_alto='"+grup_b_narcicista_alto.isSelected()+"'";
                     
-                    "        grup_b_inesta_emoci_subtip_impul_bajo='"+grup_b_inesta_emoci_subtip_impul_bajo.isSelected()+"',"+
-                    "        grup_b_inesta_emoci_subtip_impul_medio='"+grup_b_inesta_emoci_subtip_impul_medio.isSelected()+"',"+
-                    "        grup_b_inesta_emoci_subtip_impul_alto='"+grup_b_inesta_emoci_subtip_impul_alto.isSelected()+"',"+
+                Query += ",grup_b_inesta_emoci_subtip_impul_bajo='"+grup_b_inesta_emoci_subtip_impul_bajo.isSelected()+"'";
+                Query += ",grup_b_inesta_emoci_subtip_impul_medio='"+grup_b_inesta_emoci_subtip_impul_medio.isSelected()+"'";
+                Query += ",grup_b_inesta_emoci_subtip_impul_alto='"+grup_b_inesta_emoci_subtip_impul_alto.isSelected()+"'";
                    
-                    "        grup_b_emoci_subtip_lim_bajo='"+grup_b_emoci_subtip_lim_bajo.isSelected()+"',"+
-                    "        grup_b_emoci_subtip_lim_medio='"+grup_b_emoci_subtip_lim_medio.isSelected()+"',"+
-                    "        grup_b_emoci_subtip_lim_alto='"+grup_b_emoci_subtip_lim_alto.isSelected()+"',"+
+                Query += ",grup_b_emoci_subtip_lim_bajo='"+grup_b_emoci_subtip_lim_bajo.isSelected()+"'";
+                Query += ",grup_b_emoci_subtip_lim_medio='"+grup_b_emoci_subtip_lim_medio.isSelected()+"'";
+                Query += ",grup_b_emoci_subtip_lim_alto='"+grup_b_emoci_subtip_lim_alto.isSelected()+"'";
                    
                     //GROP C
-                    "        grup_c_anancastico_bajo='"+grup_c_anancastico_bajo.isSelected()+"',"+
-                    "        grup_c_anancastico_medio='"+grup_c_anancastico_medio.isSelected()+"',"+
-                    "        grup_c_anancastico_alto='"+grup_c_anancastico_alto.isSelected()+"',"+
+                Query += ",grup_c_anancastico_bajo='"+grup_c_anancastico_bajo.isSelected()+"'";
+                Query += ",grup_c_anancastico_medio='"+grup_c_anancastico_medio.isSelected()+"'";
+                Query += ",grup_c_anancastico_alto='"+grup_c_anancastico_alto.isSelected()+"'";
                     
-                    "        grup_c_dependiente_bajo='"+grup_c_dependiente_bajo.isSelected()+"',"+
-                    "        grup_c_dependiente_medio='"+grup_c_dependiente_medio.isSelected()+"',"+
-                    "        grup_c_dependiente_alto='"+grup_c_dependiente_alto.isSelected()+"',"+
+                Query += ",grup_c_dependiente_bajo='"+grup_c_dependiente_bajo.isSelected()+"'";
+                Query += ",grup_c_dependiente_medio='"+grup_c_dependiente_medio.isSelected()+"'";
+                Query += ",grup_c_dependiente_alto='"+grup_c_dependiente_alto.isSelected()+"'";
                     
-                    "        grup_c_ansioso_bajo='"+grup_c_ansioso_bajo.isSelected()+"',"+
-                    "        grup_c_ansioso_medio='"+grup_c_ansioso_medio.isSelected()+"',"+
-                    "        grup_c_ansioso_alto='"+grup_c_ansioso_alto.isSelected()+"',"+                   
+                Query += ",grup_c_ansioso_bajo='"+grup_c_ansioso_bajo.isSelected()+"'";
+                Query += ",grup_c_ansioso_medio='"+grup_c_ansioso_medio.isSelected()+"'";
+                Query += ",grup_c_ansioso_alto='"+grup_c_ansioso_alto.isSelected()+"'";                  
                     // PART TEXT
-                    "        analisis_resulta='"+analisis_resulta.getText()+"',"+
-                    "        recomendacion='"+recomendacion.getText()+"',"+
-                    "        perf_cumple='"+perf_cumple.isSelected()+"',"+
-                    "        perf_no_cumple='"+perf_no_cumple.isSelected()+"'"+                    
-                    "        interpretacion_parainoide='"+interpretacion_parainoide.getText()+"',"+                   
-                    " WHERE n_orden="+sCodigo+";";
-               //  System.out.println(strSqlStmt);
+                Query += ",analisis_resulta='"+analisis_resulta.getText()+"'";
+                Query += ",recomendacion='"+recomendacion.getText()+"'";
+                Query += ",perf_cumple='"+perf_cumple.isSelected()+"'";
+                Query += ",perf_no_cumple='"+perf_no_cumple.isSelected()+"'";                   
+                Query += ",interpretacion_parainoide='"+interpretacion_parainoide.getText()+"'";                   
+                
+                Query += " WHERE n_orden='"+ sCodigo +"'";
+              System.out.println("El comando es :" + strSqlStmt + Query );
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
-                oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
+            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query )) {
+                oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                 imprimir();
+                limpiar();
+            }else{
+             oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
+               }
                 try {
                     oConn.sqlStmt.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(PsicoTrastorPersonalidad.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else {
-                oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
-            }
+            } 
+       
+    }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
+        n_orden.requestFocus();}
+       
     }
     
-    private boolean Grabar() throws SQLException{
-        boolean bResult = false;
-        String strSqlStmt ="INSERT INTO trastornos_personalidad(\n" +
-        " n_orden,\n" +
-        "  grup_a_paranoide_bajo,\n" + 
-        "  grup_a_paranoide_medio,\n" +
-        "  grup_a_paranoide_alto,\n" +
+    private void Grabar() {
+        if(!n_orden.getText().isEmpty()){
+                 if(!oPe.nOrden(n_orden, "trastornos_personalidad")){
+                if(validar()){
+            String strSqlStmt;
+            String Query ;       
+            strSqlStmt ="INSERT INTO trastornos_personalidad(";
+            Query="Values(";
+                if (!n_orden.getText().isEmpty() )
+                {strSqlStmt += "n_orden";Query += n_orden.getText();}
+                strSqlStmt += ",grup_a_paranoide_bajo" ; Query += ",'"+ grup_a_paranoide_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_a_paranoide_medio" ; Query += ",'"+ grup_a_paranoide_medio.isSelected()+"'";
+                strSqlStmt += ",grup_a_paranoide_alto" ; Query += ",'"+ grup_a_paranoide_alto.isSelected()+"'";
                 
-        "  grup_a_esquizoide_bajo,\n" +
-        "  grup_a_esquizoide_medio,\n" +
-        "  grup_a_esquizoide_alto,\n" +
+                strSqlStmt += ",grup_a_esquizoide_bajo" ; Query += ",'"+ grup_a_esquizoide_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_a_esquizoide_medio" ; Query += ",'"+ grup_a_esquizoide_medio.isSelected()+"'";
+                strSqlStmt += ",grup_a_esquizoide_alto" ; Query += ",'"+ grup_a_esquizoide_alto.isSelected()+"'";
                 
-        "  grup_a_esquizotipico_bajo,\n" +
-        "  grup_a_esquizotipico_medio,\n" +
-        "  grup_a_esquizotipico_alto,\n" +
+                strSqlStmt += ",grup_a_esquizotipico_bajo" ; Query += ",'"+ grup_a_esquizotipico_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_a_esquizotipico_medio" ; Query += ",'"+ grup_a_esquizotipico_medio.isSelected()+"'";
+                strSqlStmt += ",grup_a_esquizotipico_alto" ; Query += ",'"+ grup_a_esquizotipico_alto.isSelected()+"'";
                 
-        "  grup_b_histrionico_bajo,\n" +
-        "  grup_b_histrionico_medio,\n" +
-        "  grup_b_histrionico_alto,\n" +
+                strSqlStmt += ",grup_b_histrionico_bajo" ; Query += ",'"+ grup_b_histrionico_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_b_histrionico_medio" ; Query += ",'"+ grup_b_histrionico_medio.isSelected()+"'";
+                strSqlStmt += ",grup_b_histrionico_alto" ; Query += ",'"+ grup_b_histrionico_alto.isSelected()+"'";
                 
-        "  grup_b_antisocial_bajo,\n" +
-        "  grup_b_antisocial_medio,\n" +
-        "  grup_b_antisocial_alto,\n" +
+                strSqlStmt += ",grup_b_antisocial_bajo" ; Query += ",'"+ grup_b_antisocial_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_b_antisocial_medio" ; Query += ",'"+ grup_b_antisocial_medio.isSelected()+"'";
+                strSqlStmt += ",grup_b_antisocial_alto" ; Query += ",'"+ grup_b_antisocial_alto.isSelected()+"'";
                 
-        "  grup_b_narcicista_bajo,\n" +
-        "  grup_b_narcicista_medio,\n" +
-        "  grup_b_narcicista_alto,\n" +
+                strSqlStmt += ",grup_b_narcicista_bajo" ; Query += ",'"+ grup_b_narcicista_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_b_narcicista_medio" ; Query += ",'"+ grup_b_narcicista_medio.isSelected()+"'";
+                strSqlStmt += ",grup_b_narcicista_alto" ; Query += ",'"+ grup_b_narcicista_alto.isSelected()+"'";
                 
-        "  grup_b_inesta_emoci_subtip_impul_bajo,\n" +
-        "  grup_b_inesta_emoci_subtip_impul_medio,\n" +
-        "  grup_b_inesta_emoci_subtip_impul_alto,\n" +
+                strSqlStmt += ",grup_b_inesta_emoci_subtip_impul_bajo" ; Query += ",'"+ grup_b_inesta_emoci_subtip_impul_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_b_inesta_emoci_subtip_impul_medio" ; Query += ",'"+ grup_b_inesta_emoci_subtip_impul_medio.isSelected()+"'";
+                strSqlStmt += ",grup_b_inesta_emoci_subtip_impul_alto" ; Query += ",'"+ grup_b_inesta_emoci_subtip_impul_alto.isSelected()+"'";
                 
-        "  grup_b_emoci_subtip_lim_bajo,\n" +
-        "  grup_b_emoci_subtip_lim_medio,\n" +
-        "  grup_b_emoci_subtip_lim_alto,\n" +
+                strSqlStmt += ",grup_b_emoci_subtip_lim_bajo" ; Query += ",'"+ grup_b_emoci_subtip_lim_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_b_emoci_subtip_lim_medio" ; Query += ",'"+ grup_b_emoci_subtip_lim_medio.isSelected()+"'";
+                strSqlStmt += ",grup_b_emoci_subtip_lim_alto" ; Query += ",'"+ grup_b_emoci_subtip_lim_alto.isSelected()+"'";
                 
-        "  grup_c_anancastico_bajo,\n" +
-        "  grup_c_anancastico_medio,\n" +
-        "  grup_c_anancastico_alto,\n" +
+                strSqlStmt += ",grup_c_anancastico_bajo" ; Query += ",'"+ grup_c_anancastico_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_c_anancastico_medio" ; Query += ",'"+ grup_c_anancastico_medio.isSelected()+"'";
+                strSqlStmt += ",grup_c_anancastico_alto" ; Query += ",'"+ grup_c_anancastico_alto.isSelected()+"'";
                 
-        "  grup_c_dependiente_bajo,\n" +
-        "  grup_c_dependiente_medio,\n" +
-        "  grup_c_dependiente_alto,\n" +
+                strSqlStmt += ",grup_c_dependiente_bajo" ; Query += ",'"+ grup_c_dependiente_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_c_dependiente_medio" ; Query += ",'"+ grup_c_dependiente_medio.isSelected()+"'";
+                strSqlStmt += ",grup_c_dependiente_alto" ; Query += ",'"+ grup_c_dependiente_alto.isSelected()+"'";
                 
-        "  grup_c_ansioso_bajo,\n" +
-        "  grup_c_ansioso_medio,\n" +
-        "  grup_c_ansioso_alto,\n" +
+                strSqlStmt += ",grup_c_ansioso_bajo" ; Query += ",'"+ grup_c_ansioso_bajo.isSelected()+"'";
+                strSqlStmt += ",grup_c_ansioso_medio" ; Query += ",'"+ grup_c_ansioso_medio.isSelected()+"'";
+                strSqlStmt += ",grup_c_ansioso_alto" ; Query += ",'"+ grup_c_ansioso_alto.isSelected()+"'";
                 
-        "  analisis_resulta,\n" +
-        "  recomendacion,\n" +
-        "  perf_cumple,\n" +
-        "  perf_no_cumple,\n" +
-        "  interpretacion_parainoide)";       
-       strSqlStmt+= " values("+ n_orden.getText()+",'"+
-                    fechaevaluacion.getDate()+ "','"+
-                    grup_a_paranoide_bajo.isSelected()+"','"+
-                    grup_a_paranoide_medio.isSelected()+"','"+
-                    grup_a_paranoide_alto.isSelected()+"','"+
-               
-                    grup_a_esquizoide_bajo.isSelected()+"','"+
-                    grup_a_esquizoide_medio.isSelected()+"','"+
-                    grup_a_esquizoide_alto.isSelected()+"','"+
-               
-                    grup_a_esquizotipico_bajo.isSelected()+"','"+
-                    grup_a_esquizotipico_medio.isSelected()+"','"+
-                    grup_a_esquizotipico_alto.isSelected()+"','"+
-               
-                    grup_b_histrionico_bajo.isSelected()+"','"+
-                    grup_b_histrionico_medio.isSelected()+"','"+
-                    grup_b_histrionico_alto.isSelected()+"','"+
-               
-                    grup_b_antisocial_bajo.isSelected()+"','"+
-                    grup_b_antisocial_medio.isSelected()+"','"+
-                    grup_b_antisocial_alto.isSelected()+"','"+
-               
-                    grup_b_narcicista_bajo.isSelected()+"','"+               
-                    grup_b_narcicista_medio.isSelected()+"','"+
-                    grup_b_narcicista_alto.isSelected()+"','"+
-               
-                    grup_b_inesta_emoci_subtip_impul_bajo.isSelected()+"','"+
-                    grup_b_inesta_emoci_subtip_impul_medio.isSelected()+"','"+
-                    grup_b_inesta_emoci_subtip_impul_alto.isSelected()+"','"+
-               
-                    grup_b_emoci_subtip_lim_bajo.isSelected()+"','"+
-                    grup_b_emoci_subtip_lim_medio.isSelected()+"','"+
-                    grup_b_emoci_subtip_lim_alto.isSelected()+"','"+
-               
-                    grup_c_anancastico_bajo.isSelected()+"','"+
-                    grup_c_anancastico_medio.isSelected()+"','"+
-                    grup_c_anancastico_alto.isSelected()+"','"+
-               
-                    grup_c_dependiente_bajo.isSelected()+"','"+
-                    grup_c_dependiente_medio.isSelected()+"','"+
-                    grup_c_dependiente_alto.isSelected()+"','"+
-               
-                    grup_c_ansioso_bajo.isSelected()+"','"+
-                    grup_c_ansioso_medio.isSelected()+"','"+
-                    grup_c_ansioso_alto.isSelected()+"','"+
-                    
-                    analisis_resulta.getText()+"','"+
-                    interpretacion_parainoide.getText()+"','"+
-                    perf_cumple.isSelected()+"','"+          
-                    perf_no_cumple.isSelected()+"'"+  
-                    " ) ";
-                    System.out.println(strSqlStmt);
-//        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
+                strSqlStmt += ",analisis_resulta" ; Query += ",'"+ analisis_resulta.getText()+"'";
+                strSqlStmt += ",recomendacion" ; Query += ",'"+ recomendacion.getText()+"'";
+                strSqlStmt += ",perf_cumple" ; Query += ",'"+ perf_cumple.isSelected()+"'";
+                strSqlStmt += ",perf_no_cumple" ; Query += ",'"+ perf_no_cumple.isSelected()+"'";
+                strSqlStmt += ",interpretacion_parainoide" ; Query += ",'"+ interpretacion_parainoide.getText()+"'";
+                
+                System.out.println("el comando es: " + strSqlStmt.concat(") ") + Query.concat(")"));
+//        
+             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
 //                   oConn.setResult.next();
                    oFunc.SubSistemaMensajeInformacion("Examen Registrado exitosamente");
-                    
-                   bResult = true;
+                    imprimir();
+                    limpiar();                   
+               }else {oFunc.SubSistemaMensajeError("No se pudo registrar ");
+                 }
+                 try 
+                 {
                    oConn.sqlStmt.close();
-               }
-                return bResult;       
-        }
-    
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
+                    }  
+                    }
+        
+                }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
+                 n_orden.requestFocus();}
+            }
+    } 
+       
        private void printer(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("n_orden",cod);      
                     try 
                 {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"agregar informe.jasper";
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_TEST_SALAMANCA.jasper";
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     
@@ -1346,11 +1283,11 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                 
                   try 
                 {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"agregarinforme.jasper";
+                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_TEST_SALAMANCA.jasper";
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("FORMATO DE PSICOLOGIA");
+                    viewer.setTitle("INFORME  TRASTORNOS DE PERSONALIDAD: ");
                    // viewer.setAlwaysOnTop(true);
                     viewer.setVisible(true);
                  } catch (JRException ex) {
@@ -1369,8 +1306,8 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
         // boton codigo con Enter
         if(!n_orden.getText().isEmpty()){
             if(!oPe.nOrden(n_orden, "trastornos_personalidad"))  {
-                JDateChooser fechaevaluacion = new com.toedter.calendar.JDateChooser();
-                String Sql="select d.nombres_pa||' '||d.apellidos_pa as nombres, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
+                FechaNacimiento = new com.toedter.calendar.JDateChooser();
+                String Sql="select n.n_orden, d.nombres_pa||' '||d.apellidos_pa as nombres, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
                 + "n.cargo_de ,n.razon_empresa, EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad, n.fecha_apertura_po from datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) WHERE n.n_orden ='"+n_orden.getText()+"'";
                 oConn.FnBoolQueryExecute(Sql);
@@ -1381,15 +1318,21 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                     cargo.setText(oConn.setResult.getString("cargo_de"));
                     empresa.setText(oConn.setResult.getString("razon_empresa"));
                     edad.setText(oConn.setResult.getString("edad"));
-                    n_orden.setEnabled(false);
+                    
                     perf_cumple.setSelected(true);                  
                     fechaevaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                    fechaevaluacion.setEnabled(false);
+                    nombres.setEnabled(false);
+                    edad.setEnabled(false);                    
+                    grado_estudios.setEnabled(false);
+                    empresa.setEnabled(false);
+                    cargo.setEnabled(false);
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
                 oConn.setResult.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("Informe Psicologico:" + ex.getMessage());
+                oFunc.SubSistemaMensajeInformacion("Informe Psicologico Test Salamanca :" + ex.getMessage());
             }
         }else
                 oFunc.SubSistemaMensajeInformacion("Ya existe este registro en Test Salamanca ");
@@ -1403,18 +1346,18 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         //boton Editar
         if(!n_orden.getText().isEmpty()){
-            String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombres , d.fecha_nacimiento_pa,EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad,"                                   
-                    +"d.nivel_est_pa, n.cargo_de ,n.razon_empresa,n.fecha_apertura_po,ar.*"
+            String Sql="SELECT n.n_orden, d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombres , d.fecha_nacimiento_pa,EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad,"                                   
+                    +"d.nivel_est_pa, n.cargo_de ,n.razon_empresa,n.fecha_apertura_po,tp.*"
                     +"  FROM datos_paciente AS d \n" 
                     +"  INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" 
-                    +"  INNER JOIN trastornos_personalidad AS ar ON (ar.n_orden = n.n_orden)\n" 
+                    +"  INNER JOIN trastornos_personalidad AS tp ON (tp.n_orden = n.n_orden)\n" 
                     +"  WHERE   n.n_orden ="+n_orden.getText()+";";
             System.out.println(Sql);
             oConn.FnBoolQueryExecute(Sql);
             try {
                 if (oConn.setResult.next()) {
                     nombres.setText(oConn.setResult.getString("nombres"));
-                    //edad.setText(String.valueOf(oFunc.calcularEdad(fecha_nacimiento_pa.getCalendar()))+"edad" ); // fecha_nacimiento_pa se tendria que cambiar ?
+                   
                     edad.setText(oConn.setResult.getString("edad"));
                     cargo.setText(oConn.setResult.getString("cargo_de"));
                     empresa.setText(oConn.setResult.getString("razon_empresa"));
@@ -1470,11 +1413,19 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
                     perf_cumple.setSelected(oConn.setResult.getBoolean("perf_cumple"));
                     perf_no_cumple.setSelected(oConn.setResult.getBoolean("perf_no_cumple"));
                     interpretacion_parainoide.setText(oConn.setResult.getString("interpretacion_parainoide"));
-
+                       
+                    
+                    nombres.setEnabled(false);
+                    edad.setEnabled(false);
+                    fechaevaluacion.setEnabled(false);
+                    grado_estudios.setEnabled(false);
+                    empresa.setEnabled(false);
+                    cargo.setEnabled(false);
+                    
                     
                     //jTextField9.setText(oConn.setResult.getString("valorigg"));
                 }else{
-                oFunc.SubSistemaMensajeError("N° orden no resgistrado");
+                oFunc.SubSistemaMensajeError("No se encuentra Registrado");
             }
             oConn.setResult.close();
         } catch (SQLException ex) {
@@ -1502,33 +1453,27 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_imprimir1ActionPerformed
 
     private void perf_no_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perf_no_cumpleActionPerformed
-        // TODO add your handling code here:
+        if (perf_no_cumple.isSelected())
+        {
+        perf_cumple.setSelected(false);                
+        }
     }//GEN-LAST:event_perf_no_cumpleActionPerformed
 
     private void perf_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perf_cumpleActionPerformed
-        // TODO add your handling code here:
+        if (perf_cumple.isSelected())
+        {
+        perf_no_cumple.setSelected(false);                
+        }
     }//GEN-LAST:event_perf_cumpleActionPerformed
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
         // TODO add your handling code here:
-        if(OrdenExiste()){
-             Actualizar();
-             limpiar();
-        }
-        else{
-            if(!n_orden.getText().isEmpty()){
-                try {
-                    if(validar()){
-                        if(Grabar()){
-                            imprimir();
-                            limpiar();
-                        }
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(PsicoTrastorPersonalidad.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        if(oPe.nOrden(n_orden, "trastornos_personalidad"))  {
+        Actualizar();
+       }else{
+        Grabar();
+       }    
+         
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
@@ -1537,135 +1482,267 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void grup_a_paranoide_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_paranoide_bajoActionPerformed
-        // TODO add your handling code here:
+       if (grup_a_paranoide_bajo.isSelected())
+        {
+        grup_a_paranoide_alto.setSelected(false);
+        grup_a_paranoide_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_paranoide_bajoActionPerformed
 
     private void grup_a_paranoide_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_paranoide_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_paranoide_medio.isSelected())
+        {
+        grup_a_paranoide_alto.setSelected(false);
+        grup_a_paranoide_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_paranoide_medioActionPerformed
 
     private void grup_a_paranoide_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_paranoide_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_paranoide_alto.isSelected())
+        {
+        grup_a_paranoide_medio.setSelected(false);
+        grup_a_paranoide_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_paranoide_altoActionPerformed
 
     private void grup_a_esquizoide_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_esquizoide_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_esquizoide_bajo.isSelected())
+        {
+        grup_a_esquizoide_medio.setSelected(false);
+        grup_a_esquizoide_alto.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_esquizoide_bajoActionPerformed
 
     private void grup_a_esquizoide_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_esquizoide_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_esquizoide_medio.isSelected())
+        {
+        grup_a_esquizoide_bajo.setSelected(false);
+        grup_a_esquizoide_alto.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_esquizoide_medioActionPerformed
 
     private void grup_a_esquizoide_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_esquizoide_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_esquizoide_alto.isSelected())
+        {
+        grup_a_esquizoide_bajo.setSelected(false);
+        grup_a_esquizoide_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_esquizoide_altoActionPerformed
 
     private void grup_a_esquizotipico_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_esquizotipico_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_esquizotipico_bajo.isSelected())
+        {
+        grup_a_esquizotipico_alto.setSelected(false);
+        grup_a_esquizotipico_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_esquizotipico_bajoActionPerformed
 
     private void grup_a_esquizotipico_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_esquizotipico_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_esquizotipico_medio.isSelected())
+        {
+        grup_a_esquizotipico_bajo.setSelected(false);
+        grup_a_esquizotipico_alto.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_esquizotipico_medioActionPerformed
 
     private void grup_a_esquizotipico_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_a_esquizotipico_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_a_esquizotipico_alto.isSelected())
+        {
+        grup_a_esquizotipico_bajo.setSelected(false);
+        grup_a_esquizotipico_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_a_esquizotipico_altoActionPerformed
 
     private void grup_c_anancastico_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_anancastico_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_anancastico_bajo.isSelected())
+        {
+        grup_c_anancastico_medio.setSelected(false);
+        grup_c_anancastico_alto.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_anancastico_bajoActionPerformed
 
     private void grup_c_anancastico_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_anancastico_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_anancastico_medio.isSelected())
+        {
+        grup_c_anancastico_bajo.setSelected(false);
+        grup_c_anancastico_alto.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_anancastico_medioActionPerformed
 
     private void grup_c_anancastico_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_anancastico_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_anancastico_alto.isSelected())
+        {
+        grup_c_anancastico_bajo.setSelected(false);
+        grup_c_anancastico_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_anancastico_altoActionPerformed
 
     private void grup_c_dependiente_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_dependiente_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_dependiente_bajo.isSelected())
+        {
+        grup_c_dependiente_alto.setSelected(false);
+        grup_c_dependiente_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_dependiente_bajoActionPerformed
 
     private void grup_c_dependiente_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_dependiente_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_dependiente_medio.isSelected())
+        {
+        grup_c_dependiente_alto.setSelected(false);
+        grup_c_dependiente_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_dependiente_medioActionPerformed
 
     private void grup_c_dependiente_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_dependiente_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_dependiente_alto.isSelected())
+        {
+        grup_c_dependiente_medio.setSelected(false);
+        grup_c_dependiente_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_dependiente_altoActionPerformed
 
     private void grup_c_ansioso_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_ansioso_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_ansioso_medio.isSelected())
+        {
+        grup_c_ansioso_alto.setSelected(false);
+        grup_c_ansioso_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_ansioso_medioActionPerformed
 
     private void grup_c_ansioso_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_ansioso_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_ansioso_alto.isSelected())
+        {
+        grup_c_ansioso_medio.setSelected(false);
+        grup_c_ansioso_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_ansioso_altoActionPerformed
 
     private void grup_c_ansioso_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_c_ansioso_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_c_ansioso_bajo.isSelected())
+        {
+        grup_c_ansioso_alto.setSelected(false);
+        grup_c_ansioso_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_c_ansioso_bajoActionPerformed
 
     private void grup_b_emoci_subtip_lim_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_emoci_subtip_lim_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_emoci_subtip_lim_alto.isSelected())
+        {
+        grup_b_emoci_subtip_lim_medio.setSelected(false);
+        grup_b_emoci_subtip_lim_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_emoci_subtip_lim_altoActionPerformed
 
     private void grup_b_emoci_subtip_lim_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_emoci_subtip_lim_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_emoci_subtip_lim_medio.isSelected())
+        {
+        grup_b_emoci_subtip_lim_alto.setSelected(false);
+        grup_b_emoci_subtip_lim_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_emoci_subtip_lim_medioActionPerformed
 
     private void grup_b_emoci_subtip_lim_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_emoci_subtip_lim_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_emoci_subtip_lim_bajo.isSelected())
+        {
+        grup_b_emoci_subtip_lim_alto.setSelected(false);
+        grup_b_emoci_subtip_lim_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_emoci_subtip_lim_bajoActionPerformed
 
     private void grup_b_inesta_emoci_subtip_impul_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_inesta_emoci_subtip_impul_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_inesta_emoci_subtip_impul_alto.isSelected())
+        {
+        grup_b_inesta_emoci_subtip_impul_medio.setSelected(false);
+        grup_b_inesta_emoci_subtip_impul_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_inesta_emoci_subtip_impul_altoActionPerformed
 
     private void grup_b_inesta_emoci_subtip_impul_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_inesta_emoci_subtip_impul_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_inesta_emoci_subtip_impul_medio.isSelected())
+        {
+        grup_b_inesta_emoci_subtip_impul_alto.setSelected(false);
+        grup_b_inesta_emoci_subtip_impul_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_inesta_emoci_subtip_impul_medioActionPerformed
 
     private void grup_b_inesta_emoci_subtip_impul_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_inesta_emoci_subtip_impul_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_inesta_emoci_subtip_impul_bajo.isSelected())
+        {
+        grup_b_inesta_emoci_subtip_impul_alto.setSelected(false);
+        grup_b_inesta_emoci_subtip_impul_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_inesta_emoci_subtip_impul_bajoActionPerformed
 
     private void grup_b_narcicista_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_narcicista_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_narcicista_alto.isSelected())
+        {
+        grup_b_narcicista_medio.setSelected(false);
+        grup_b_narcicista_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_narcicista_altoActionPerformed
 
     private void grup_b_narcicista_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_narcicista_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_narcicista_medio.isSelected())
+        {
+        grup_b_narcicista_alto.setSelected(false);
+        grup_b_narcicista_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_narcicista_medioActionPerformed
 
     private void grup_b_narcicista_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_narcicista_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_narcicista_bajo.isSelected())
+        {
+        grup_b_narcicista_alto.setSelected(false);
+        grup_b_narcicista_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_narcicista_bajoActionPerformed
 
     private void grup_b_antisocial_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_antisocial_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_antisocial_alto.isSelected())
+        {
+        grup_b_antisocial_medio.setSelected(false);
+        grup_b_antisocial_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_antisocial_altoActionPerformed
 
     private void grup_b_antisocial_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_antisocial_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_antisocial_medio.isSelected())
+        {
+        grup_b_antisocial_alto.setSelected(false);
+        grup_b_antisocial_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_antisocial_medioActionPerformed
 
     private void grup_b_antisocial_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_antisocial_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_antisocial_bajo.isSelected())
+        {
+        grup_b_antisocial_alto.setSelected(false);
+        grup_b_antisocial_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_antisocial_bajoActionPerformed
 
     private void grup_b_histrionico_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_histrionico_altoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_histrionico_alto.isSelected())
+        {
+        grup_b_histrionico_medio.setSelected(false);
+        grup_b_histrionico_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_histrionico_altoActionPerformed
 
     private void grup_b_histrionico_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_histrionico_medioActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_histrionico_medio.isSelected())
+        {
+        grup_b_histrionico_alto.setSelected(false);
+        grup_b_histrionico_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_histrionico_medioActionPerformed
 
     private void grup_b_histrionico_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grup_b_histrionico_bajoActionPerformed
-        // TODO add your handling code here:
+        if (grup_b_histrionico_bajo.isSelected())
+        {
+        grup_b_histrionico_alto.setSelected(false);
+        grup_b_histrionico_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_grup_b_histrionico_bajoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1753,9 +1830,6 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
@@ -1767,12 +1841,10 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
     private static javax.swing.JPanel jPanel30;
     private static javax.swing.JPanel jPanel31;
     private static transient javax.swing.JPanel jPanel32;
+    private static javax.swing.JPanel jPanel33;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton limpiar;
     private javax.swing.JTextField n_orden;

@@ -45,7 +45,7 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
    String[]aintelectual = new String[]{};
     DefaultTableModel model;
- String a1="",a2="",a3="",a4="",a5="",a6="",a7="",a8="", a9="";
+
    public PsicoInfoConductor() {
       initComponents();
       llenarNombreExamen();
@@ -62,54 +62,55 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtNorden = new javax.swing.JTextField();
+        n_orden = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtNombres = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtApellidos = new javax.swing.JTextField();
+        apellidos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtEdad = new javax.swing.JTextField();
-        FechaEntrevista = new com.toedter.calendar.JDateChooser();
+        edad = new javax.swing.JTextField();
+        FechaEvaluacion = new com.toedter.calendar.JDateChooser();
         jLabel23 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNivelEstudios = new javax.swing.JTextField();
+        grado_estudio = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtCargoDesempenar = new javax.swing.JTextField();
-        txtOcupación = new javax.swing.JTextField();
+        cargo = new javax.swing.JTextField();
+        empresa = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        atxtObservaciones = new javax.swing.JTextArea();
+        observacion = new javax.swing.JTextArea();
         jLabel17 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        atxtRecomendaciones = new javax.swing.JTextArea();
+        recomendacion = new javax.swing.JTextArea();
         jPanel16 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
-        txtEscala = new javax.swing.JTextField();
-        txtSomnolencia = new javax.swing.JTextField();
-        txtIntensiad = new javax.swing.JTextField();
+        crit_atencion = new javax.swing.JTextField();
+        crit_concetracion = new javax.swing.JTextField();
+        crit_segurid_control_conduc = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        txtFortalezasO = new javax.swing.JTextField();
-        txtAmenazasD = new javax.swing.JTextField();
+        anali_foda_forta_oport = new javax.swing.JTextField();
+        anali_foda_amenaz_debili = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        txtImprimir = new javax.swing.JTextField();
+        imprimir = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        rbApto = new javax.swing.JRadioButton();
-        rbNoApto = new javax.swing.JRadioButton();
+        perf_cumple = new javax.swing.JRadioButton();
+        perf_no_cumple = new javax.swing.JRadioButton();
 
         setClosable(true);
-        setTitle("Informe Psicológico");
+        setTitle("INFORME PARA CONDUCTORES");
 
         jPanel5.setForeground(new java.awt.Color(102, 102, 0));
 
@@ -117,41 +118,41 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nro Orden:");
 
-        txtNorden.addActionListener(new java.awt.event.ActionListener() {
+        n_orden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNordenActionPerformed(evt);
+                n_ordenActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Nombres:");
 
-        txtNombres.setEditable(false);
-        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+        nombres.setEditable(false);
+        nombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombresActionPerformed(evt);
+                nombresActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Apellidos:");
 
-        txtApellidos.setEditable(false);
+        apellidos.setEditable(false);
 
         jLabel8.setText("Edad:");
 
-        txtEdad.setEditable(false);
+        edad.setEditable(false);
 
-        FechaEntrevista.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        FechaEvaluacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                FechaEntrevistaPropertyChange(evt);
+                FechaEvaluacionPropertyChange(evt);
             }
         });
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel23.setText("Fecha Entrevista :");
+        jLabel23.setText("Fecha Evaluacion :");
 
-        jLabel2.setText("Grado de Instruccion:");
+        jLabel2.setText("Grado de Estudios:");
 
-        txtNivelEstudios.setEditable(false);
+        grado_estudio.setEditable(false);
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -160,6 +161,8 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 btnEditarActionPerformed(evt);
             }
         });
+
+        jLabel9.setText("años");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -170,22 +173,24 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNivelEstudios, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(grado_estudio, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
-                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -195,13 +200,13 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(n_orden, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FechaEntrevista, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
@@ -211,41 +216,37 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(n_orden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEditar)
                         .addComponent(jLabel23))
-                    .addComponent(FechaEntrevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel4)
-                        .addGap(5, 5, 5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNivelEstudios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(grado_estudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos Laborales"));
 
-        jLabel12.setText("Empresa");
+        jLabel12.setText("Empresa :");
 
-        jLabel13.setText("Cargo");
+        jLabel13.setText("Cargo :");
 
-        txtCargoDesempenar.setEditable(false);
+        cargo.setEditable(false);
 
-        txtOcupación.setEditable(false);
+        empresa.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -255,11 +256,11 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtOcupación, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCargoDesempenar, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -269,30 +270,30 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel13)
-                        .addComponent(txtCargoDesempenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
-                        .addComponent(txtOcupación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2))
         );
 
-        atxtObservaciones.setColumns(20);
-        atxtObservaciones.setRows(5);
-        atxtObservaciones.addFocusListener(new java.awt.event.FocusAdapter() {
+        observacion.setColumns(20);
+        observacion.setRows(5);
+        observacion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                atxtObservacionesFocusGained(evt);
+                observacionFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                atxtObservacionesFocusLost(evt);
+                observacionFocusLost(evt);
             }
         });
-        atxtObservaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+        observacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                atxtObservacionesKeyReleased(evt);
+                observacionKeyReleased(evt);
             }
         });
-        jScrollPane2.setViewportView(atxtObservaciones);
-        atxtObservaciones.getAccessibleContext().setAccessibleName("");
+        jScrollPane2.setViewportView(observacion);
+        observacion.getAccessibleContext().setAccessibleName("");
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 102));
@@ -325,22 +326,22 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
             }
         });
 
-        atxtRecomendaciones.setColumns(20);
-        atxtRecomendaciones.setRows(5);
-        atxtRecomendaciones.addFocusListener(new java.awt.event.FocusAdapter() {
+        recomendacion.setColumns(20);
+        recomendacion.setRows(5);
+        recomendacion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                atxtRecomendacionesFocusGained(evt);
+                recomendacionFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                atxtRecomendacionesFocusLost(evt);
+                recomendacionFocusLost(evt);
             }
         });
-        atxtRecomendaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+        recomendacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                atxtRecomendacionesKeyReleased(evt);
+                recomendacionKeyReleased(evt);
             }
         });
-        jScrollPane8.setViewportView(atxtRecomendaciones);
+        jScrollPane8.setViewportView(recomendacion);
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CRITERIOS PSICOLÓGICOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 102))); // NOI18N
 
@@ -351,23 +352,23 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
         jLabel75.setText("2.- CONCENTRACIÓN ");
 
         jLabel80.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel80.setText("3.- SEGURIDAD Y CONTROL DE CONDUCTA");
+        jLabel80.setText("<HTML> 3.- SEGURIDAD Y CONTROL DE CONDUCTA<HTML> ");
 
-        txtEscala.addActionListener(new java.awt.event.ActionListener() {
+        crit_atencion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEscalaActionPerformed(evt);
+                crit_atencionActionPerformed(evt);
             }
         });
 
-        txtSomnolencia.addActionListener(new java.awt.event.ActionListener() {
+        crit_concetracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSomnolenciaActionPerformed(evt);
+                crit_concetracionActionPerformed(evt);
             }
         });
 
-        txtIntensiad.addActionListener(new java.awt.event.ActionListener() {
+        crit_segurid_control_conduc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIntensiadActionPerformed(evt);
+                crit_segurid_control_conducActionPerformed(evt);
             }
         });
 
@@ -378,14 +379,18 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel80)
-                    .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEscala)
-                    .addComponent(txtSomnolencia)
-                    .addComponent(txtIntensiad, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(crit_segurid_control_conduc, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(crit_atencion, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(crit_concetracion, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
@@ -394,16 +399,16 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                    .addComponent(crit_atencion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
-                    .addComponent(txtSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel80)
-                    .addComponent(txtIntensiad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5))
+                    .addComponent(crit_concetracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crit_segurid_control_conduc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ANÁLISIS FODA ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 102))); // NOI18N
@@ -414,15 +419,15 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel19.setText("Amenazas / Debilidades: ");
 
-        txtFortalezasO.addActionListener(new java.awt.event.ActionListener() {
+        anali_foda_forta_oport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFortalezasOActionPerformed(evt);
+                anali_foda_forta_oportActionPerformed(evt);
             }
         });
 
-        txtAmenazasD.addActionListener(new java.awt.event.ActionListener() {
+        anali_foda_amenaz_debili.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAmenazasDActionPerformed(evt);
+                anali_foda_amenaz_debiliActionPerformed(evt);
             }
         });
 
@@ -433,13 +438,13 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFortalezasO)
+                    .addComponent(anali_foda_forta_oport, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtAmenazasD))
+                    .addComponent(anali_foda_amenaz_debili, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -448,12 +453,12 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel18)
                 .addGap(5, 5, 5)
-                .addComponent(txtFortalezasO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addComponent(anali_foda_forta_oport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
                 .addGap(5, 5, 5)
-                .addComponent(txtAmenazasD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(anali_foda_amenaz_debili, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -462,9 +467,9 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("IMPRIMIR"));
 
-        txtImprimir.addActionListener(new java.awt.event.ActionListener() {
+        imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtImprimirActionPerformed(evt);
+                imprimirActionPerformed(evt);
             }
         });
 
@@ -480,47 +485,48 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(txtImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(btnImprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "CONCLUSIÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        bgAprobo.add(rbApto);
-        rbApto.setText("APTO");
+        bgAprobo.add(perf_cumple);
+        perf_cumple.setText("APTO");
 
-        bgAprobo.add(rbNoApto);
-        rbNoApto.setText("NO APTO");
+        bgAprobo.add(perf_no_cumple);
+        perf_no_cumple.setText("NO APTO");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(rbApto)
+                .addComponent(perf_cumple)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbNoApto)
+                .addComponent(perf_no_cumple)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbApto)
-                    .addComponent(rbNoApto))
+                    .addComponent(perf_cumple)
+                    .addComponent(perf_no_cumple))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -529,39 +535,43 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel25)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(btnAgregar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnActualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimpiar)
-                                .addGap(182, 182, 182))))
+                                .addComponent(btnActualizar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLimpiar)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(107, 107, 107))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 45, Short.MAX_VALUE))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 33, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,24 +580,23 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(8, 8, 8)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel25))
+                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnActualizar)
@@ -622,10 +631,10 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
      public boolean OrdenImp() {
 
         boolean bResultado = false;
-        if (!txtImprimir.getText().isEmpty()) {
+        if (!imprimir.getText().isEmpty()) {
             String sQuery;
 
-            sQuery = "Select n_orden from informe_psicologico_estres Where n_orden =" + txtImprimir.getText();
+            sQuery = "Select n_orden from infor_conductores Where n_orden =" + imprimir.getText();
 
             //Ejecuta el Query
             oConn.FnBoolQueryExecute(sQuery);
@@ -647,49 +656,49 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
             }
         }
         return bResultado;
-    } 
-    private void atxtRecomendacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_atxtRecomendacionesKeyReleased
+    } private com.toedter.calendar.JDateChooser FechaNacimiento;
+    private void recomendacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_recomendacionKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_atxtRecomendacionesKeyReleased
+    }//GEN-LAST:event_recomendacionKeyReleased
 
-    private void atxtRecomendacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtRecomendacionesFocusLost
+    private void recomendacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recomendacionFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_atxtRecomendacionesFocusLost
+    }//GEN-LAST:event_recomendacionFocusLost
 
-    private void atxtRecomendacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtRecomendacionesFocusGained
+    private void recomendacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recomendacionFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_atxtRecomendacionesFocusGained
+    }//GEN-LAST:event_recomendacionFocusGained
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        String sCodigo=txtNorden.getText();
+        if(!n_orden.getText().isEmpty()){
+        String sCodigo=n_orden.getText();
         String strSqlStmt;
-        strSqlStmt="UPDATE informe_psicologico_estres\n" ;
-        strSqlStmt += "   SET  "
-                + "fecha='"+FechaEntrevista.getDate()+"', "
+        strSqlStmt="UPDATE infor_conductores\n" ;
+        strSqlStmt += " SET  "
                 
-                + "txtescala='"+txtEscala.getText()+"', "
-                + "txtsomnolencia='"+txtSomnolencia.getText()+"', "
-                + "txttestfatiga='"+txtIntensiad.getText()+"', "
-                + "txtfortalezaso='"+txtFortalezasO.getText()+"', "
-                + "txtamenazasd='"+txtAmenazasD.getText()+"', "
-                + "txtoservaciones='"+atxtObservaciones.getText()+"',"
-                + "txtrecomendacion='"+atxtRecomendaciones.getText()+"', "
-                + "adpto='"+rbApto.isSelected()+"', "
-                + "noadpto='"+rbNoApto.isSelected()+"' "
+                + "crit_atencion='"+crit_atencion.getText()+"', "
+                + "crit_concetracion='"+crit_concetracion.getText()+"', "
+                + "crit_segurid_control_conduc='"+crit_segurid_control_conduc.getText()+"', "
+                + "anali_foda_forta_oport='"+anali_foda_forta_oport.getText()+"', "
+                + "anali_foda_amenaz_debili='"+anali_foda_amenaz_debili.getText()+"', "
+                + "observacion='"+observacion.getText()+"',"
+                + "recomendacion='"+recomendacion.getText()+"', "
+                + "perf_cumple='"+perf_cumple.isSelected()+"', "
+                + "perf_no_cumple='"+perf_no_cumple.isSelected()+"' "
                 
                 + " WHERE n_orden='" + sCodigo + "'";
-
+                System.out.println(strSqlStmt);
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-            imprimir(Integer.valueOf(txtNorden.getText()));
+            imprimir(Integer.valueOf(n_orden.getText()));
             limpiar();
-            txtNorden.setEnabled(true);
-            txtNorden.requestFocus();
+            n_orden.setEnabled(true);
+            n_orden.requestFocus();
             try {
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
@@ -698,33 +707,41 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+       }
+        else 
+            oFunc.SubSistemaMensajeError("Debe ingresar un codigo para actualizar");
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (!txtNorden.getText().isEmpty()){
+        if (!n_orden.getText().isEmpty()){
             if(!OrdenExiste()){
                 if (validar()){
-                    String Sql ="INSERT INTO informe_psicologico_estres(\n" +
-"            n_orden, fecha, nombre_examen, txtescala, txtsomnolencia, txttestfatiga, \n" +
-"            txtfortalezaso, txtamenazasd, txtoservaciones, txtrecomendacion, \n" +
-"            adpto, noadpto)" ;
-                    Sql+="Values('"+txtNorden.getText()+"','"+FechaEntrevista.getDate()+"','"
-                            
-                    +txtEscala.getText()+ "','"
-                    +txtSomnolencia.getText()+"','"
-                    +txtIntensiad.getText()+"','"
-                    +txtFortalezasO.getText()+"','"
-                    +txtAmenazasD.getText()+"','"
-                    +atxtObservaciones.getText()+"','"
-                    +atxtRecomendaciones.getText()+"','"
-                    +rbApto.isSelected()+"','"
-                    +rbNoApto.isSelected()+"')";
+                    
+                    String Sql ="INSERT INTO infor_conductores(\n" +
+                    " n_orden, crit_atencion ,crit_concetracion, crit_segurid_control_conduc,\n" +     
+                    "  anali_foda_forta_oport,\n" +
+                    "  anali_foda_amenaz_debili ,\n" +
+                    "  observacion,\n" +
+                    "  recomendacion,\n" +
+                    "  perf_cumple,\n" +
+                    "  perf_no_cumple )" ;
+                    Sql+="Values('"
+                    +n_orden.getText()+"','"                                                                          
+                    +crit_atencion.getText()+ "','"
+                    +crit_concetracion.getText()+"','"
+                    +crit_segurid_control_conduc.getText()+"','"
+                    +anali_foda_forta_oport.getText()+"','"
+                    +anali_foda_amenaz_debili.getText()+"','"
+                    +observacion.getText()+"','"
+                    +recomendacion.getText()+"','"
+                    +perf_cumple.isSelected()+"','"
+                    +perf_no_cumple.isSelected()+"')";
                     //oFunc.SubSistemaMensajeInformacion(Sql);
                     if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                         //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                        imprimir(Integer.valueOf(txtNorden.getText()));
-                        txtNorden.setEnabled(true);
-                        txtNorden.requestFocus();
+                        imprimir(Integer.valueOf(n_orden.getText()));
+                        n_orden.setEnabled(true);
+                        n_orden.requestFocus();
                         limpiar();
                         try {
                             oConn.sqlStmt.close();
@@ -738,152 +755,174 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void atxtObservacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_atxtObservacionesKeyReleased
+    private void observacionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_observacionKeyReleased
         
-    }//GEN-LAST:event_atxtObservacionesKeyReleased
+    }//GEN-LAST:event_observacionKeyReleased
 
-    private void atxtObservacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtObservacionesFocusLost
-        atxtObservaciones.setBackground(Color.WHITE);
-    }//GEN-LAST:event_atxtObservacionesFocusLost
+    private void observacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_observacionFocusLost
+        observacion.setBackground(Color.WHITE);
+    }//GEN-LAST:event_observacionFocusLost
 
-    private void atxtObservacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtObservacionesFocusGained
+    private void observacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_observacionFocusGained
 
-    }//GEN-LAST:event_atxtObservacionesFocusGained
+    }//GEN-LAST:event_observacionFocusGained
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        String Sql="select d.nombres_pa,d.apellidos_pa,"
-        + "d.fecha_nacimiento_pa,d.lugar_nac_pa,"
-        + "d.direccion_pa,d.estado_civil_pa,"
-        + "d.nivel_est_pa,d.ocupacion_pa,"
-        + "n.cargo_de,i.fecha, i.nombre_examen, i.txtescala, i.txtsomnolencia, i.txttestfatiga, \n" +
-"       i.txtfortalezaso, i.txtamenazasd, i.txtoservaciones, i.txtrecomendacion, \n" +
-"       i.adpto, i.noadpto "
-        + "From datos_paciente as d "
-        + "inner join n_orden_ocupacional as n on(d.cod_pa = n.cod_pa) "
-        + "inner join informe_psicologico_estres as i on(n.n_orden = i.n_orden) "
-        + "where  n.n_orden ='"+txtNorden.getText()+"'";
-        oConn.FnBoolQueryExecute(Sql);
+       if(!n_orden.getText().isEmpty()){        
+        String Sql="select d.nombres_pa,d.apellidos_pa, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa ,EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad, "
+                +"n.cargo_de ,n.razon_empresa,n.fecha_apertura_po,ic.*"
+                +" FROM datos_paciente AS d\n" 
+                +"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) \n" 
+                +"INNER JOIN infor_conductores as ic ON (n.n_orden=ic.n_orden)" 
+                +"WHERE n.n_orden ='"+n_orden.getText()+"'";
+            System.out.println(Sql);
+            oConn.FnBoolQueryExecute(Sql);
         try {
             if (oConn.setResult.next()) {
-                txtNombres.setText(oConn.setResult.getString("nombres_pa"));
-                txtApellidos.setText(oConn.setResult.getString("apellidos_pa"));
+                nombres.setText(oConn.setResult.getString("nombres_pa"));
+                apellidos.setText(oConn.setResult.getString("apellidos_pa"));
+                grado_estudio.setText(oConn.setResult.getString("nivel_est_pa"));
+                empresa.setText(oConn.setResult.getString("razon_empresa"));
+                cargo.setText(oConn.setResult.getString("cargo_de"));
+                edad.setText(oConn.setResult.getString("edad"));
+                FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                crit_atencion.setText(oConn.setResult.getString("crit_atencion"));
+                crit_concetracion.setText(oConn.setResult.getString("crit_concetracion"));             
+                crit_segurid_control_conduc.setText(oConn.setResult.getString("crit_segurid_control_conduc"));
+                anali_foda_forta_oport.setText(oConn.setResult.getString("anali_foda_forta_oport"));
+                anali_foda_amenaz_debili.setText(oConn.setResult.getString("anali_foda_amenaz_debili"));
+                observacion.setText(oConn.setResult.getString("observacion"));
+                recomendacion.setText(oConn.setResult.getString("recomendacion"));
+                perf_cumple.setSelected(oConn.setResult.getBoolean("perf_cumple"));
+                perf_no_cumple.setSelected(oConn.setResult.getBoolean("perf_no_cumple"));
+                btnAgregar.setEnabled(false);
+                FechaEvaluacion.setEnabled(false);
+                nombres.setEnabled(false);
+                edad.setEnabled(false);                    
+                grado_estudio.setEnabled(false);
+                empresa.setEnabled(false);
+                cargo.setEnabled(false);
+                    
                 
-                txtNivelEstudios.setText(oConn.setResult.getString("nivel_est_pa"));
-                txtOcupación.setText(oConn.setResult.getString("ocupacion_pa"));
-                txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
-                
-                FechaEntrevista.setDate(oConn.setResult.getDate("fecha"));
-                
-                txtEscala.setText(oConn.setResult.getString("txtescala"));
-                txtSomnolencia.setText(oConn.setResult.getString("txtsomnolencia"));
-                txtIntensiad.setText(oConn.setResult.getString("txttestfatiga"));
-                txtFortalezasO.setText(oConn.setResult.getString("txtfortalezaso"));
-                txtAmenazasD.setText(oConn.setResult.getString("txtamenazasd"));
-                atxtObservaciones.setText(oConn.setResult.getString("txtoservaciones"));
-                atxtRecomendaciones.setText(oConn.setResult.getString("txtrecomendacion"));;
-                rbApto.setSelected(oConn.setResult.getBoolean("adpto"));
-                rbNoApto.setSelected(oConn.setResult.getBoolean("noadpto"));
 
             }else{
                 oFunc.SubSistemaMensajeError("No se encuentra Registro");
             }
             oConn.setResult.close();
         } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Informe Psicologico estrés:" + ex.getMessage().toString());
+            oFunc.SubSistemaMensajeInformacion(" informe de conductores :" + ex.getMessage());
         }
+        }
+        else
+            oFunc.SubSistemaMensajeError("debes ingresar un codigo");
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void FechaEntrevistaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaEntrevistaPropertyChange
-        txtNorden.requestFocus();
-    }//GEN-LAST:event_FechaEntrevistaPropertyChange
+    private void FechaEvaluacionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaEvaluacionPropertyChange
+        n_orden.requestFocus();
+    }//GEN-LAST:event_FechaEvaluacionPropertyChange
 
-    private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-        if(!OrdenExiste()){
-            String Sql="select datos_paciente.nombres_pa,datos_paciente.apellidos_pa,"
-            + "datos_paciente.fecha_nacimiento_pa,datos_paciente.lugar_nac_pa,"
-            + "datos_paciente.direccion_pa,datos_paciente.estado_civil_pa,"
-            + "datos_paciente.nivel_est_pa,datos_paciente.ocupacion_pa,"
-            + "n_orden_ocupacional.cargo_de "
-            + "From datos_paciente,n_orden_ocupacional "
-            + "where datos_paciente.cod_pa = n_orden_ocupacional.cod_pa and n_orden_ocupacional.n_orden ='"+txtNorden.getText()+"'";
-            oConn.FnBoolQueryExecute(Sql);
+    private void n_ordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_ordenActionPerformed
+        if(!n_orden.getText().isEmpty()){
+            if(!oPe.nOrden(n_orden, "infor_conductores"))  {
+                FechaNacimiento = new com.toedter.calendar.JDateChooser();
+                String Sql="select d.nombres_pa,d.apellidos_pa , d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
+                + "n.cargo_de ,n.razon_empresa, EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad, n.fecha_apertura_po from datos_paciente AS d "
+                + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) WHERE n.n_orden ='"+n_orden.getText()+"'";
+                oConn.FnBoolQueryExecute(Sql);
             try {
                 if (oConn.setResult.next()) {
-                    txtNombres.setText(oConn.setResult.getString("nombres_pa"));
-                    txtApellidos.setText(oConn.setResult.getString("apellidos_pa"));
+                    nombres.setText(oConn.setResult.getString("nombres_pa"));
+                    apellidos.setText(oConn.setResult.getString("apellidos_pa"));
+                    grado_estudio.setText(oConn.setResult.getString("nivel_est_pa"));
+                    cargo.setText(oConn.setResult.getString("cargo_de"));
+                    empresa.setText(oConn.setResult.getString("razon_empresa"));
+                    edad.setText(oConn.setResult.getString("edad"));
+                    n_orden.setEnabled(false);
+                    perf_cumple.setSelected(true);
+                    FechaEvaluacion.setEnabled(false);
+                    nombres.setEnabled(false);
+                    edad.setEnabled(false);                    
+                    grado_estudio.setEnabled(false);
+                    empresa.setEnabled(false);
+                    cargo.setEnabled(false);
                     
-                    txtNivelEstudios.setText(oConn.setResult.getString("nivel_est_pa"));
-                    txtOcupación.setText(oConn.setResult.getString("ocupacion_pa"));
-                    txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     
-                    txtNorden.setEnabled(false);
-                    oPe.fecha(FechaEntrevista);
-
-                    
-                    txtEscala.requestFocus();
+                    FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
                 oConn.setResult.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("Oftalmologia:" + ex.getMessage().toString());
+                oFunc.SubSistemaMensajeInformacion("informe de conductores:" + ex.getMessage());
             }
         }
-    }//GEN-LAST:event_txtNordenActionPerformed
+            else
+                oFunc.SubSistemaMensajeInformacion("Ya existe este registro ");
+      }
+    }//GEN-LAST:event_n_ordenActionPerformed
 
-    private void txtImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirActionPerformed
+    private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtImprimirActionPerformed
+    }//GEN-LAST:event_imprimirActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
         if(OrdenImp()){
-           print (Integer.valueOf(txtImprimir.getText()));
+           print (Integer.valueOf(imprimir.getText()));
         }else{
            oFunc.SubSistemaMensajeError("Codigo no existe"); 
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
-    private void txtEscalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscalaActionPerformed
+    private void crit_atencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crit_atencionActionPerformed
         // TODO add your handling code here:
-        txtSomnolencia.requestFocus();
-    }//GEN-LAST:event_txtEscalaActionPerformed
+        crit_concetracion.requestFocus();
+    }//GEN-LAST:event_crit_atencionActionPerformed
 
-    private void txtSomnolenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSomnolenciaActionPerformed
+    private void crit_concetracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crit_concetracionActionPerformed
         // TODO add your handling code here:
-        txtIntensiad.requestFocus();
+        crit_segurid_control_conduc.requestFocus();
         
-    }//GEN-LAST:event_txtSomnolenciaActionPerformed
+    }//GEN-LAST:event_crit_concetracionActionPerformed
 
-    private void txtIntensiadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntensiadActionPerformed
+    private void crit_segurid_control_conducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crit_segurid_control_conducActionPerformed
         // TODO add your handling code here:
-        txtFortalezasO.requestFocus();
-    }//GEN-LAST:event_txtIntensiadActionPerformed
+        anali_foda_forta_oport.requestFocus();
+    }//GEN-LAST:event_crit_segurid_control_conducActionPerformed
 
-    private void txtFortalezasOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFortalezasOActionPerformed
+    private void anali_foda_forta_oportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anali_foda_forta_oportActionPerformed
         // TODO add your handling code here:
-        txtAmenazasD.requestFocus();
-    }//GEN-LAST:event_txtFortalezasOActionPerformed
+        anali_foda_amenaz_debili.requestFocus();
+    }//GEN-LAST:event_anali_foda_forta_oportActionPerformed
 
-    private void txtAmenazasDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmenazasDActionPerformed
+    private void anali_foda_amenaz_debiliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anali_foda_amenaz_debiliActionPerformed
         // TODO add your handling code here:
-        atxtObservaciones.requestFocus();
-    }//GEN-LAST:event_txtAmenazasDActionPerformed
+        observacion.requestFocus();
+    }//GEN-LAST:event_anali_foda_amenaz_debiliActionPerformed
 
-    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+    private void nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombresActionPerformed
+    }//GEN-LAST:event_nombresActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser FechaEntrevista;
-    private javax.swing.JTextArea atxtObservaciones;
-    private javax.swing.JTextArea atxtRecomendaciones;
+    private com.toedter.calendar.JDateChooser FechaEvaluacion;
+    private javax.swing.JTextField anali_foda_amenaz_debili;
+    private javax.swing.JTextField anali_foda_forta_oport;
+    private javax.swing.JTextField apellidos;
     private javax.swing.ButtonGroup bgAprobo;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JTextField cargo;
+    private javax.swing.JTextField crit_atencion;
+    private javax.swing.JTextField crit_concetracion;
+    private javax.swing.JTextField crit_segurid_control_conduc;
+    private javax.swing.JTextField edad;
+    private javax.swing.JTextField empresa;
+    private javax.swing.JTextField grado_estudio;
+    private javax.swing.JTextField imprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -899,6 +938,7 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
@@ -910,46 +950,34 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JRadioButton rbApto;
-    private javax.swing.JRadioButton rbNoApto;
-    private javax.swing.JTextField txtAmenazasD;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtCargoDesempenar;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtEscala;
-    private javax.swing.JTextField txtFortalezasO;
-    private javax.swing.JTextField txtImprimir;
-    private javax.swing.JTextField txtIntensiad;
-    private javax.swing.JTextField txtNivelEstudios;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtNorden;
-    private javax.swing.JTextField txtOcupación;
-    private javax.swing.JTextField txtSomnolencia;
+    private javax.swing.JTextField n_orden;
+    private javax.swing.JTextField nombres;
+    private javax.swing.JTextArea observacion;
+    private javax.swing.JRadioButton perf_cumple;
+    private javax.swing.JRadioButton perf_no_cumple;
+    private javax.swing.JTextArea recomendacion;
     // End of variables declaration//GEN-END:variables
     public void limpiar() {
-        txtNorden.setText(null);
-        atxtRecomendaciones.setText("");
-        txtNombres.setText(null);
-        txtApellidos.setText(null);
-        
-        txtEdad.setText(null);
-        
-        txtOcupación.setText(null);
-        txtCargoDesempenar.setText(null);
-        txtNivelEstudios.setText(null);
-        
-        txtEscala.setText(null);
-        txtSomnolencia.setText(null);
-        txtIntensiad.setText(null);
-        txtFortalezasO.setText(null);
-        txtAmenazasD.setText(null);
-        atxtObservaciones.setText(null);
-        atxtRecomendaciones.setText(null);
-        FechaEntrevista.setDate(null);
-        
+        n_orden.setText(null);
+        recomendacion.setText("");
+        nombres.setText(null);
+        apellidos.setText(null);        
+        edad.setText(null);        
+        empresa.setText(null);
+        cargo.setText(null);
+        grado_estudio.setText(null);        
+        crit_atencion.setText(null);
+        crit_concetracion.setText(null);
+        crit_segurid_control_conduc.setText(null);
+        anali_foda_forta_oport.setText(null);
+        anali_foda_amenaz_debili.setText(null);
+        observacion.setText(null);
+        recomendacion.setText(null);
+        FechaEvaluacion.setDate(null);
+        imprimir.setText(null);
         bgAprobo.clearSelection();
-        txtNorden.setEnabled(true);
-        txtNorden.requestFocus();
+        n_orden.setEnabled(true);
+        n_orden.requestFocus();
     }
 
 public int calcularEdad(Calendar fechaNac){
@@ -973,12 +1001,12 @@ public int calcularEdad(Calendar fechaNac){
 }
 private boolean validar(){
 boolean bResultado=true;
-if (((JTextField)FechaEntrevista.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
+if (((JTextField)FechaEvaluacion.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
         {oFunc.SubSistemaMensajeError("Ingrese Fecha de Entrevista");bResultado = false;}
-    if(txtNorden.getText().isEmpty()){bResultado = false;}
-    if(txtEdad.getText().isEmpty()){bResultado = false;}
+    if(n_orden.getText().isEmpty()){bResultado = false;}
+    if(edad.getText().isEmpty()){bResultado = false;}
    
-    if(atxtObservaciones.getText().isEmpty()){bResultado = false;}
+    if(observacion.getText().isEmpty()){bResultado = false;}
     
     if(!bgAprobo.getSelection().isSelected()){
         oFunc.SubSistemaMensajeError("Seleccione si aprobo o no aprobo");
@@ -991,7 +1019,7 @@ public boolean OrdenExiste()
     {
         boolean bResultado=false;
         String sQuery;
-        sQuery  = "Select n_orden from informe_psicologico_estres Where n_orden="+txtNorden.getText();
+        sQuery  = "Select n_orden from infor_conductores Where n_orden="+n_orden.getText();
         oConn.FnBoolQueryExecute(sQuery);
         try {
             if (oConn.setResult.next())
@@ -1016,18 +1044,18 @@ public boolean OrdenExiste()
                 Map parameters = new HashMap(); 
 
                 // Coloco los valores en los parámetros
-                parameters.put("Norden",cod);             
+                parameters.put("n_orden",cod);             
                 
 
                 try 
                 {
                     String master = System.getProperty("user.dir") +
-                                "/reportes/InformePsicologicoAdecoEstres.jasper";
+                                "/reportes/INFORME_PARA_CONDUCTORES_FORMATO.jasper";
             
             System.out.println("master" + master);
             if (master == null) 
             {                
-                System.out.println("No encuentro el archivo del reporte InformePsicologico.");
+                System.out.println("No encuentro el archivo del reporte InformeConductor.");
                 //System.exit(2);
             } 
 
@@ -1087,14 +1115,14 @@ int seleccion = JOptionPane.showOptionDialog(
 
 private void printer(Integer cod) {
         Map parameters = new HashMap();
-        parameters.put("Norden", cod);
+        parameters.put("n_orden", cod);
         try {
             String master = System.getProperty("user.dir")
-                    + "/reportes/InformePsicologicoAdecoEstres.jasper";
+                    + "/reportes/INFORME_PARA_CONDUCTORES_FORMATO.jasper";
 
             System.out.println("master" + master);
             if (master == null) {
-                System.out.println("No encuentro el archivo del ficha psicologica.");
+                System.out.println("No encuentro el archivo del informe de conductor.");
                 //System.exit(2);
             }
             JasperReport masterReport = null;

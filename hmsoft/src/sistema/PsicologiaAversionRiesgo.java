@@ -108,8 +108,8 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
-        conclu_cumple = new javax.swing.JCheckBox();
-        conclu_no_cumple = new javax.swing.JCheckBox();
+        conclusiones_cumple = new javax.swing.JCheckBox();
+        conclusiones_no_cumple = new javax.swing.JCheckBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
@@ -173,7 +173,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         comp_especf_Mot_por_car_alto = new javax.swing.JCheckBox();
 
         setClosable(true);
-        setTitle("Informe Psicolaboral");
+        setTitle("INFORME DE EVALUACIÓN PSICOLÓGICA DE AVERSIÓN AL RIESGO");
 
         jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aptitud"));
 
@@ -364,19 +364,17 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder("Conclusión"));
 
-        bgConclusion.add(conclu_cumple);
-        conclu_cumple.setText("CUMPLE CON EL PERFIL");
-        conclu_cumple.addActionListener(new java.awt.event.ActionListener() {
+        conclusiones_cumple.setText("CUMPLE CON EL PERFIL");
+        conclusiones_cumple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                conclu_cumpleActionPerformed(evt);
+                conclusiones_cumpleActionPerformed(evt);
             }
         });
 
-        bgConclusion.add(conclu_no_cumple);
-        conclu_no_cumple.setText("NO CUMPLE CON EL PERFIL ");
-        conclu_no_cumple.addActionListener(new java.awt.event.ActionListener() {
+        conclusiones_no_cumple.setText("NO CUMPLE CON EL PERFIL ");
+        conclusiones_no_cumple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                conclu_no_cumpleActionPerformed(evt);
+                conclusiones_no_cumpleActionPerformed(evt);
             }
         });
 
@@ -387,24 +385,23 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(conclu_cumple)
-                    .addComponent(conclu_no_cumple))
+                    .addComponent(conclusiones_cumple)
+                    .addComponent(conclusiones_no_cumple))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(conclu_cumple)
+                .addComponent(conclusiones_cumple)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(conclu_no_cumple))
+                .addComponent(conclusiones_no_cumple))
         );
 
         jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS INTELECTUALES"));
 
         jLabel90.setText("1-Practica y Funcional ");
 
-        bgEE.add(asp_Intel_Pract_Func_bajo);
         asp_Intel_Pract_Func_bajo.setText("Bajo");
         asp_Intel_Pract_Func_bajo.setToolTipText("");
         asp_Intel_Pract_Func_bajo.addActionListener(new java.awt.event.ActionListener() {
@@ -413,7 +410,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgEE.add(asp_Intel_Pract_Func_medio);
         asp_Intel_Pract_Func_medio.setText("Medio");
         asp_Intel_Pract_Func_medio.setToolTipText("");
         asp_Intel_Pract_Func_medio.addActionListener(new java.awt.event.ActionListener() {
@@ -422,7 +418,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgEE.add(asp_Intel_Pract_Func_alto);
         asp_Intel_Pract_Func_alto.setText("Alto");
         asp_Intel_Pract_Func_alto.setToolTipText("");
         asp_Intel_Pract_Func_alto.addActionListener(new java.awt.event.ActionListener() {
@@ -431,7 +426,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgTF.add(asp_Intel_Recur_bajo);
         asp_Intel_Recur_bajo.setText("Bajo");
         asp_Intel_Recur_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,7 +433,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgTF.add(asp_Intel_Recur_medio);
         asp_Intel_Recur_medio.setText("Medio");
         asp_Intel_Recur_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -447,7 +440,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgTF.add(asp_Intel_Recur_alto);
         asp_Intel_Recur_alto.setText("Alto");
         asp_Intel_Recur_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -459,7 +451,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jLabel103.setText("3- Capacidad de atención y concentración ");
 
-        bgAUTOESTIMA.add(asp_Intel_atenci_conc_bajo);
         asp_Intel_atenci_conc_bajo.setText("Bajo");
         asp_Intel_atenci_conc_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -467,7 +458,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAUTOESTIMA.add(asp_Intel_atenci_conc_medio);
         asp_Intel_atenci_conc_medio.setText("Medio");
         asp_Intel_atenci_conc_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -475,7 +465,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAUTOESTIMA.add(asp_Intel_atenci_conc_alto);
         asp_Intel_atenci_conc_alto.setText("Alto");
         asp_Intel_atenci_conc_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,7 +484,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                         .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel30Layout.createSequentialGroup()
                             .addComponent(asp_Intel_atenci_conc_bajo, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(27, 27, 27)
+                            .addGap(26, 26, 26)
                             .addComponent(asp_Intel_atenci_conc_medio, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(asp_Intel_atenci_conc_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -512,13 +501,12 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                             .addGap(31, 31, 31)
                             .addComponent(asp_Intel_Pract_Func_alto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel90)
+                .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(asp_Intel_Pract_Func_bajo)
@@ -544,7 +532,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                 .addGap(17, 17, 17))
         );
 
-        jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS CONDUCTUALES"));
+        jPanel31.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS EMOCIONALES"));
 
         jLabel89.setText("2- Flexibilidad en el manejo de las emociones ");
 
@@ -679,11 +667,10 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel32.setBorder(javax.swing.BorderFactory.createTitledBorder("ASPECTOS PSICOLABORALES"));
+        jPanel32.setBorder(javax.swing.BorderFactory.createTitledBorder("COMP. ESP. CONDUCTA SEGURA"));
 
         jLabel91.setText("1- Capacidad de subordinación ");
 
-        bgAPSI1.add(comp_especf_cap_subor_bajo);
         comp_especf_cap_subor_bajo.setText("Bajo");
         comp_especf_cap_subor_bajo.setToolTipText("");
         comp_especf_cap_subor_bajo.addActionListener(new java.awt.event.ActionListener() {
@@ -692,7 +679,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI1.add(comp_especf_cap_subor_medio);
         comp_especf_cap_subor_medio.setText("Medio");
         comp_especf_cap_subor_medio.setToolTipText("");
         comp_especf_cap_subor_medio.addActionListener(new java.awt.event.ActionListener() {
@@ -701,7 +687,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI1.add(comp_especf_cap_subor_alto);
         comp_especf_cap_subor_alto.setText("Alto");
         comp_especf_cap_subor_alto.setToolTipText("");
         comp_especf_cap_subor_alto.addActionListener(new java.awt.event.ActionListener() {
@@ -710,7 +695,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI2.add(comp_especf_Adec_nor_proced_bajo);
         comp_especf_Adec_nor_proced_bajo.setText("Bajo");
         comp_especf_Adec_nor_proced_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -718,7 +702,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI2.add(comp_especf_Adec_nor_proced_medio);
         comp_especf_Adec_nor_proced_medio.setText("Medio");
         comp_especf_Adec_nor_proced_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -726,7 +709,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI2.add(comp_especf_Adec_nor_proced_alto);
         comp_especf_Adec_nor_proced_alto.setText("Alto");
         comp_especf_Adec_nor_proced_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -738,7 +720,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jLabel110.setText("3- Consideración de terceros ");
 
-        bgAPSI3.add(comp_especf_Considera_terceros_bajo);
         comp_especf_Considera_terceros_bajo.setText("Bajo");
         comp_especf_Considera_terceros_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -746,7 +727,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI3.add(comp_especf_Considera_terceros_medio);
         comp_especf_Considera_terceros_medio.setText("Medio");
         comp_especf_Considera_terceros_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -754,7 +734,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI3.add(comp_especf_Considera_terceros_alto);
         comp_especf_Considera_terceros_alto.setText("Alto");
         comp_especf_Considera_terceros_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -764,7 +743,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jLabel111.setText("4- Autonomía para trabajar  ");
 
-        bgAPSI4.add(comp_especf_Autonomia_trabajar_bajo);
         comp_especf_Autonomia_trabajar_bajo.setText("Bajo");
         comp_especf_Autonomia_trabajar_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -772,7 +750,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI4.add(comp_especf_Autonomia_trabajar_medio);
         comp_especf_Autonomia_trabajar_medio.setText("Medio");
         comp_especf_Autonomia_trabajar_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -780,7 +757,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI4.add(comp_especf_Autonomia_trabajar_alto);
         comp_especf_Autonomia_trabajar_alto.setText("Alto");
         comp_especf_Autonomia_trabajar_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -790,7 +766,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jLabel112.setText("5- Proactividad ");
 
-        bgAPSI5.add(comp_especf_proactividad_bajo);
         comp_especf_proactividad_bajo.setText("Bajo");
         comp_especf_proactividad_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -798,7 +773,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI5.add(comp_especf_proactividad_medio);
         comp_especf_proactividad_medio.setText("Medio");
         comp_especf_proactividad_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -806,7 +780,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI5.add(comp_especf_proactividad_alto);
         comp_especf_proactividad_alto.setText("Alto");
         comp_especf_proactividad_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -816,7 +789,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jLabel113.setText("6- Capacidad para trabajar bajo presión ");
 
-        bgAPSI6.add(comp_especf_Cap_trabjo_bajo_presion_bajo);
         comp_especf_Cap_trabjo_bajo_presion_bajo.setText("Bajo");
         comp_especf_Cap_trabjo_bajo_presion_bajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -824,7 +796,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI6.add(comp_especf_Cap_trabjo_bajo_presion_medio);
         comp_especf_Cap_trabjo_bajo_presion_medio.setText("Medio");
         comp_especf_Cap_trabjo_bajo_presion_medio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -832,7 +803,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI6.add(comp_especf_Cap_trabjo_bajo_presion_alto);
         comp_especf_Cap_trabjo_bajo_presion_alto.setText("Alto");
         comp_especf_Cap_trabjo_bajo_presion_alto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -842,7 +812,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jLabel92.setText("7- Capacidad para evaluar riesgos ");
 
-        bgAPSI7.add(comp_especf_Cap_Evaluar_riesgos_bajo);
         comp_especf_Cap_Evaluar_riesgos_bajo.setText("Bajo");
         comp_especf_Cap_Evaluar_riesgos_bajo.setToolTipText("");
         comp_especf_Cap_Evaluar_riesgos_bajo.addActionListener(new java.awt.event.ActionListener() {
@@ -851,7 +820,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI7.add(comp_especf_Cap_Evaluar_riesgos_medio);
         comp_especf_Cap_Evaluar_riesgos_medio.setText("Medio");
         comp_especf_Cap_Evaluar_riesgos_medio.setToolTipText("");
         comp_especf_Cap_Evaluar_riesgos_medio.addActionListener(new java.awt.event.ActionListener() {
@@ -860,7 +828,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI7.add(comp_especf_Cap_Evaluar_riesgos_alto);
         comp_especf_Cap_Evaluar_riesgos_alto.setText("Alto");
         comp_especf_Cap_Evaluar_riesgos_alto.setToolTipText("");
         comp_especf_Cap_Evaluar_riesgos_alto.addActionListener(new java.awt.event.ActionListener() {
@@ -871,7 +838,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
 
         jLabel93.setText("8- Motivación por el cargo ");
 
-        bgAPSI8.add(comp_especf_Mot_por_car_bajo);
         comp_especf_Mot_por_car_bajo.setText("Bajo");
         comp_especf_Mot_por_car_bajo.setToolTipText("");
         comp_especf_Mot_por_car_bajo.addActionListener(new java.awt.event.ActionListener() {
@@ -880,7 +846,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI8.add(comp_especf_Mot_por_car_medio);
         comp_especf_Mot_por_car_medio.setText("Medio");
         comp_especf_Mot_por_car_medio.setToolTipText("");
         comp_especf_Mot_por_car_medio.addActionListener(new java.awt.event.ActionListener() {
@@ -889,7 +854,6 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        bgAPSI8.add(comp_especf_Mot_por_car_alto);
         comp_especf_Mot_por_car_alto.setText("Alto");
         comp_especf_Mot_por_car_alto.setToolTipText("");
         comp_especf_Mot_por_car_alto.addActionListener(new java.awt.event.ActionListener() {
@@ -973,7 +937,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         jPanel32Layout.setVerticalGroup(
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel32Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel91)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1040,9 +1004,9 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1054,7 +1018,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(26, 26, 26)
                         .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1180,7 +1144,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
               // PRESIONO NO
              }
             }
-            return im;
+             return im;
 
         }
     public void limpiar() {
@@ -1190,12 +1154,12 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         empresa.setText(null);
         cargo.setText(null);
         grado_estudio.setText(null);       
-        FechaEvaluacion.setDate(null);
+        FechaEvaluacion.setDate(null);  
        // n_orden.setEnabled(true);
         
         asp_Intel_Pract_Func_bajo.setSelected(false); 
         asp_Intel_Pract_Func_medio.setSelected(false);        
-        asp_Intel_Pract_Func_alto.setSelected(false); 
+        asp_Intel_Pract_Func_alto.setSelected(false);        
         asp_Intel_Recur_bajo.setSelected(false); 
         asp_Intel_Recur_medio.setSelected(false); 
         asp_Intel_Recur_alto.setSelected(false); 
@@ -1237,86 +1201,87 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         comp_especf_Mot_por_car_alto.setSelected(false);
         analisis_resultados.setText(""); 
         recomendaciones.setText(""); 
-        conclu_cumple.setSelected(false); 
-        conclu_no_cumple.setSelected(false);  
+        conclusiones_cumple.setSelected(false); 
+        conclusiones_no_cumple.setSelected(false);
+        imprimir.setText("");
         n_orden.requestFocus();
         
     }
     
     public void Actualizar(){
-            String sCodigo=n_orden.getText();
+       String sCodigo=n_orden.getText();
        if(!n_orden.getText().isEmpty()){
                 if(validar()){
             String strSqlStmt;
              String Query ;
-            strSqlStmt="UPDATE Aversionalriesgo";
-            Query=" SET ";            
-                Query +=    "        asp_Intel_Pract_Func_bajo='"+asp_Intel_Pract_Func_bajo.isSelected()+"',";
-                Query +=    "        asp_Intel_Pract_Func_medio='"+asp_Intel_Pract_Func_medio.isSelected()+"',";
-                Query +=    "        asp_Intel_Pract_Func_alto='"+asp_Intel_Pract_Func_alto.isSelected()+"',";
+            strSqlStmt="UPDATE Aversionalriesgo ";
+            Query="SET ";            
+                Query += "asp_Intel_Pract_Func_bajo='"+asp_Intel_Pract_Func_bajo.isSelected()+ "'";
+                Query += ",asp_Intel_Pract_Func_medio='"+asp_Intel_Pract_Func_medio.isSelected()+ "'";
+                Query += ",asp_Intel_Pract_Func_alto='"+asp_Intel_Pract_Func_alto.isSelected()+ "'";
 
-                Query +=    "        asp_Intel_Recur_bajo='"+asp_Intel_Recur_bajo.isSelected()+"',";
-                Query +=    "        asp_Intel_Recur_medio='"+asp_Intel_Recur_medio.isSelected()+"',";
-                Query +=    "        asp_Intel_Recur_alto='"+asp_Intel_Recur_alto.isSelected()+"',";
+                Query += ",asp_Intel_Recur_bajo='"+asp_Intel_Recur_bajo.isSelected()+ "'";
+                Query += ",asp_Intel_Recur_medio='"+asp_Intel_Recur_medio.isSelected()+ "'";
+                Query += ",asp_Intel_Recur_alto='"+asp_Intel_Recur_alto.isSelected()+ "'";
 
-                Query +=    "        asp_Intel_atenci_conc_bajo='"+asp_Intel_atenci_conc_bajo.isSelected()+"',";
-                Query +=    "        asp_Intel_atenci_conc_medio='"+asp_Intel_atenci_conc_medio.isSelected()+"',";
-                Query +=    "        asp_Intel_atenci_conc_alto='"+asp_Intel_atenci_conc_alto.isSelected()+"',";
+                Query += ",asp_Intel_atenci_conc_bajo='"+asp_Intel_atenci_conc_bajo.isSelected()+ "'";
+                Query += ",asp_Intel_atenci_conc_medio='"+asp_Intel_atenci_conc_medio.isSelected()+ "'";
+                Query += ",asp_Intel_atenci_conc_alto='"+asp_Intel_atenci_conc_alto.isSelected()+ "'";
                 
-                Query +=    "        asp_emoc_estabil_emoc_mad_bajo='"+asp_emoc_estabil_emoc_mad_bajo.isSelected()+"',";
-                Query +=    "        asp_emoc_estabil_emoc_mad_medio='"+asp_emoc_estabil_emoc_mad_medio.isSelected()+"',";
-                Query +=    "        asp_emoc_estabil_emoc_mad_alto='"+asp_emoc_estabil_emoc_mad_alto.isSelected()+"',";
+                Query += ",asp_emoc_estabil_emoc_mad_bajo='"+asp_emoc_estabil_emoc_mad_bajo.isSelected()+ "'";
+                Query += ",asp_emoc_estabil_emoc_mad_medio='"+asp_emoc_estabil_emoc_mad_medio.isSelected()+ "'";
+                Query += ",asp_emoc_estabil_emoc_mad_alto='"+asp_emoc_estabil_emoc_mad_alto.isSelected()+ "'";
                 
-                Query +=    "        asp_Flexib_manj_emoc_bajo='"+asp_Flexib_manj_emoc_bajo.isSelected()+"',";
-                Query +=    "        asp_Flexib_manj_emoc_medio='"+asp_Flexib_manj_emoc_medio.isSelected()+"',";
-                Query +=    "        asp_Flexib_manj_emoc_alto='"+asp_Flexib_manj_emoc_alto.isSelected()+"',";
+                Query += ",asp_Flexib_manj_emoc_bajo='"+asp_Flexib_manj_emoc_bajo.isSelected()+ "'";
+                Query += ",asp_Flexib_manj_emoc_medio='"+asp_Flexib_manj_emoc_medio.isSelected()+ "'";
+                Query += ",asp_Flexib_manj_emoc_alto='"+asp_Flexib_manj_emoc_alto.isSelected()+ "'";
                 
-                Query +=    "        asp_ctrl_impul_bajo='"+asp_ctrl_impul_bajo.isSelected()+"',";
-                Query +=    "        asp_ctrl_impul_medio='"+asp_ctrl_impul_medio.isSelected()+"',";
-                Query +=    "        asp_ctrl_impul_alto='"+asp_ctrl_impul_alto.isSelected()+"',";
+                Query += ",asp_ctrl_impul_bajo='"+asp_ctrl_impul_bajo.isSelected()+ "'";
+                Query += ",asp_ctrl_impul_medio='"+asp_ctrl_impul_medio.isSelected()+ "'";
+                Query += ",asp_ctrl_impul_alto='"+asp_ctrl_impul_alto.isSelected()+ "'";
 
-                Query +=    "        comp_especf_cap_subor_bajo='"+comp_especf_cap_subor_bajo.isSelected()+"',";
-                Query +=    "        comp_especf_cap_subor_medio='"+comp_especf_cap_subor_medio.isSelected()+"',";
-                Query +=    "        comp_especf_cap_subor_alto='"+comp_especf_cap_subor_alto.isSelected()+"',";             
+                Query += ",comp_especf_cap_subor_bajo='"+comp_especf_cap_subor_bajo.isSelected()+ "'";
+                Query += ",comp_especf_cap_subor_medio='"+comp_especf_cap_subor_medio.isSelected()+ "'";
+                Query += ",comp_especf_cap_subor_alto='"+comp_especf_cap_subor_alto.isSelected()+ "'";             
                 
-                Query +=    "        comp_especf_Adec_nor_proced_bajo='"+comp_especf_Adec_nor_proced_bajo.isSelected()+"',";
-                Query +=    "        comp_especf_Adec_nor_proced_medio='"+comp_especf_Adec_nor_proced_medio.isSelected()+"',";
-                Query +=    "        comp_especf_Adec_nor_proced_alto='"+comp_especf_Adec_nor_proced_alto.isSelected()+"',";
+                Query += ",comp_especf_Adec_nor_proced_bajo='"+comp_especf_Adec_nor_proced_bajo.isSelected()+ "'";
+                Query += ",comp_especf_Adec_nor_proced_medio='"+comp_especf_Adec_nor_proced_medio.isSelected()+ "'";
+                Query += ",comp_especf_Adec_nor_proced_alto='"+comp_especf_Adec_nor_proced_alto.isSelected()+ "'";
 
-                Query +=    "        comp_especf_Considera_terceros_bajo='"+comp_especf_Considera_terceros_bajo.isSelected()+"',";
-                Query +=    "        comp_especf_Considera_terceros_medio='"+comp_especf_Considera_terceros_medio.isSelected()+"',";
-                Query +=    "        comp_especf_Considera_terceros_alto='"+comp_especf_Considera_terceros_alto.isSelected()+"',";
+                Query += ",comp_especf_Considera_terceros_bajo='"+comp_especf_Considera_terceros_bajo.isSelected()+ "'";
+                Query += ",comp_especf_Considera_terceros_medio='"+comp_especf_Considera_terceros_medio.isSelected()+ "'";
+                Query += ",comp_especf_Considera_terceros_alto='"+comp_especf_Considera_terceros_alto.isSelected()+ "'";
 
-                Query +=    "        comp_especf_Autonomia_trabajar_bajo='"+comp_especf_Autonomia_trabajar_bajo.isSelected()+"',";
-                Query +=    "        comp_especf_Autonomia_trabajar_medio='"+comp_especf_Autonomia_trabajar_medio.isSelected()+"',";
-                Query +=    "        comp_especf_Autonomia_trabajar_alto='"+comp_especf_Autonomia_trabajar_alto.isSelected()+"',";
+                Query += ",comp_especf_Autonomia_trabajar_bajo='"+comp_especf_Autonomia_trabajar_bajo.isSelected()+ "'";
+                Query += ",comp_especf_Autonomia_trabajar_medio='"+comp_especf_Autonomia_trabajar_medio.isSelected()+ "'";
+                Query += ",comp_especf_Autonomia_trabajar_alto='"+comp_especf_Autonomia_trabajar_alto.isSelected()+ "'";
 
-                Query +=    "        comp_especf_proactividad_bajo='"+comp_especf_proactividad_bajo.isSelected()+"',";
-                Query +=    "        comp_especf_proactividad_medio='"+comp_especf_proactividad_medio.isSelected()+"',";
-                Query +=    "        comp_especf_proactividad_alto='"+comp_especf_proactividad_alto.isSelected()+"',";
+                Query += ",comp_especf_proactividad_bajo='"+comp_especf_proactividad_bajo.isSelected()+ "'";
+                Query += ",comp_especf_proactividad_medio='"+comp_especf_proactividad_medio.isSelected()+ "'";
+                Query += ",comp_especf_proactividad_alto='"+comp_especf_proactividad_alto.isSelected()+ "'";
 
-                Query +=   "        comp_especf_Cap_trabjo_bajo_presion_bajo='"+comp_especf_Cap_trabjo_bajo_presion_bajo.isSelected()+"',";
-                Query +=   "        comp_especf_Cap_trabjo_bajo_presion_medio='"+comp_especf_Cap_trabjo_bajo_presion_medio.isSelected()+"',";
-                Query +=   "        comp_especf_Cap_trabjo_bajo_presion_alto='"+comp_especf_Cap_trabjo_bajo_presion_alto.isSelected()+"',";
+                Query += ",comp_especf_Cap_trabjo_bajo_presion_bajo='"+comp_especf_Cap_trabjo_bajo_presion_bajo.isSelected()+ "'";
+                Query += ",comp_especf_Cap_trabjo_bajo_presion_medio='"+comp_especf_Cap_trabjo_bajo_presion_medio.isSelected()+ "'";
+                Query += ",comp_especf_Cap_trabjo_bajo_presion_alto='"+comp_especf_Cap_trabjo_bajo_presion_alto.isSelected()+ "'";
 
-                Query +=   "        comp_especf_Cap_Evaluar_riesgos_bajo='"+comp_especf_Cap_Evaluar_riesgos_bajo.isSelected()+"',";
-                Query +=   "        comp_especf_Cap_Evaluar_riesgos_medio='"+comp_especf_Cap_Evaluar_riesgos_medio.isSelected()+"',";
-                Query +=   "        comp_especf_Cap_Evaluar_riesgos_alto='"+comp_especf_Cap_Evaluar_riesgos_alto.isSelected()+"',";
+                Query += ",comp_especf_Cap_Evaluar_riesgos_bajo='"+comp_especf_Cap_Evaluar_riesgos_bajo.isSelected()+ "'";
+                Query += ",comp_especf_Cap_Evaluar_riesgos_medio='"+comp_especf_Cap_Evaluar_riesgos_medio.isSelected()+ "'";
+                Query += ",comp_especf_Cap_Evaluar_riesgos_alto='"+comp_especf_Cap_Evaluar_riesgos_alto.isSelected()+ "'";
            
-                Query +=   "        comp_especf_Mot_por_car_bajo='"+comp_especf_Mot_por_car_bajo.isSelected()+"',";
-                Query +=   "        comp_especf_Mot_por_car_medio='"+comp_especf_Mot_por_car_medio.isSelected()+"',";
-                Query +=   "        comp_especf_Mot_por_car_alto='"+comp_especf_Mot_por_car_alto.isSelected()+"',";
+                Query += ",comp_especf_Mot_por_car_bajo='"+comp_especf_Mot_por_car_bajo.isSelected()+ "'";
+                Query += ",comp_especf_Mot_por_car_medio='"+comp_especf_Mot_por_car_medio.isSelected()+ "'";
+                Query += ",comp_especf_Mot_por_car_alto='"+comp_especf_Mot_por_car_alto.isSelected()+ "'";
      
-                Query +=   "        analisis_resultados='"+analisis_resultados.getText()+"',";
-                Query +=   "        recomendaciones='"+recomendaciones.getText()+"',";
-                Query +=   "        conclu_cumple='"+conclu_cumple.isSelected()+"',";
-                Query +=   "        conclu_no_cumple='"+conclu_no_cumple.isSelected()+"'";
+                Query += ",analisis_resultados='"+analisis_resultados.getText()+ "'";
+                Query += ",recomendaciones='"+recomendaciones.getText()+ "'";
+                Query += ",conclusiones_cumple='"+conclusiones_cumple.isSelected()+ "'";
+                Query += ",conclusiones_no_cumple='"+conclusiones_no_cumple.isSelected()+ "'";
                 
-                Query +=   " WHERE n_orden="+sCodigo+";";
+                Query +=   " WHERE n_orden='"+ sCodigo +"'";
                 System.out.println("El comando es :" + strSqlStmt + Query );
             //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
             
-            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
+            if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query )) {
                 oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
                 imprimir();
                 limpiar();
@@ -1337,100 +1302,102 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
    }     
 
     
-    private boolean Grabar() throws SQLException{
-        boolean bResult = false;
-        String strSqlStmt ="INSERT INTO Aversionalriesgo(n_orden,"
-                + "asp_Intel_Pract_Func_bajo, asp_Intel_Pract_Func_medio,  asp_Intel_Pract_Func_alto, "
-                + "asp_Intel_Recur_bajo, asp_Intel_Recur_medio,  asp_Intel_Recur_alto, "
-                + "asp_Intel_atenci_conc_bajo, asp_Intel_atenci_conc_medio,  asp_Intel_atenci_conc_alto ,"
-                + "asp_emoc_estabil_emoc_mad_bajo, asp_emoc_estabil_emoc_mad_medio ,  asp_emoc_estabil_emoc_mad_alto,"
-                + "asp_Flexib_manj_emoc_bajo , asp_Flexib_manj_emoc_medio ,  asp_Flexib_manj_emoc_alto,\n" 
-                + "asp_ctrl_impul_bajo,  asp_ctrl_impul_medio,  asp_ctrl_impul_alto, "
-                + "comp_especf_cap_subor_bajo , comp_especf_cap_subor_medio ,  comp_especf_cap_subor_alto ,\n" 
-                + "comp_especf_Adec_nor_proced_bajo ,  comp_especf_Adec_nor_proced_medio , comp_especf_Adec_nor_proced_alto ,"
-                + "comp_especf_Considera_terceros_bajo ,comp_especf_Considera_terceros_medio ,comp_especf_Considera_terceros_alto ,"
-                + "comp_especf_Autonomia_trabajar_bajo , comp_especf_Autonomia_trabajar_medio ,comp_especf_Autonomia_trabajar_alto ,	"
-                + "comp_especf_proactividad_bajo , comp_especf_proactividad_medio ,  comp_especf_proactividad_alto ,\n" 
-                + "comp_especf_Cap_trabjo_bajo_presion_bajo ,  comp_especf_Cap_trabjo_bajo_presion_medio ,  comp_especf_Cap_trabjo_bajo_presion_alto ,"
-                + "comp_especf_Cap_Evaluar_riesgos_bajo, comp_especf_Cap_Evaluar_riesgos_medio ,  comp_especf_Cap_Evaluar_riesgos_alto ,"
-                + "comp_especf_Mot_por_car_bajo ,  comp_especf_Mot_por_car_medio ,  comp_especf_Mot_por_car_alto ,\n" 
-                + "analisis_resultados, recomendaciones, conclusiones_cumple, conclusiones_no_cumple )\n" ;
-                
-            strSqlStmt+= " values("+ n_orden.getText()+",'"+
+    private void Grabar() {
+        if(!n_orden.getText().isEmpty()){
+                 if(!oPe.nOrden(n_orden, "Aversionalriesgo")){
+                if(validar()){
+            String strSqlStmt;
+            String Query ;       
+            strSqlStmt ="INSERT INTO Aversionalriesgo(";
+            Query="Values(";
+                if (!n_orden.getText().isEmpty() )
+                {strSqlStmt += "n_orden";Query += n_orden.getText();}
+            
+                strSqlStmt += ",asp_Intel_Pract_Func_bajo";Query += ",'"+asp_Intel_Pract_Func_bajo.isSelected()+"'";            
+                strSqlStmt += ",asp_Intel_Pract_Func_medio";Query += ",'"+asp_Intel_Pract_Func_medio.isSelected()+"'";   
+                strSqlStmt += ",asp_Intel_Pract_Func_alto";Query += ",'"+asp_Intel_Pract_Func_alto.isSelected()+"'";
                     
-                    asp_Intel_Pract_Func_bajo.isSelected()+"','"+
-                    asp_Intel_Pract_Func_medio.isSelected()+"','"+    
-                    asp_Intel_Pract_Func_alto.isSelected()+"','"+
+                strSqlStmt += ",asp_Intel_Recur_bajo";Query += ",'"+    asp_Intel_Recur_bajo.isSelected()+"'";
+                strSqlStmt += ",asp_Intel_Recur_medio";Query += ",'"+    asp_Intel_Recur_medio.isSelected()+"'";    
+                strSqlStmt += ",asp_Intel_Recur_alto";Query += ",'"+    asp_Intel_Recur_alto.isSelected()+"'";
                     
-                    asp_Intel_Recur_bajo.isSelected()+"','"+
-                    asp_Intel_Recur_medio.isSelected()+"','"+    
-                    asp_Intel_Recur_alto.isSelected()+"','"+
+                strSqlStmt += ",asp_Intel_atenci_conc_bajo";Query += ",'"+    asp_Intel_atenci_conc_bajo.isSelected()+"'";
+                strSqlStmt += ",asp_Intel_atenci_conc_medio";Query += ",'"+    asp_Intel_atenci_conc_medio.isSelected()+"'";   
+                strSqlStmt += ",asp_Intel_atenci_conc_alto";Query += ",'"+    asp_Intel_atenci_conc_alto.isSelected()+"'";
                     
-                    asp_Intel_atenci_conc_bajo.isSelected()+"','"+
-                    asp_Intel_atenci_conc_medio.isSelected()+"','"+    
-                    asp_Intel_atenci_conc_alto.isSelected()+"','"+
-                    
-                    asp_emoc_estabil_emoc_mad_bajo.isSelected()+"','"+ 
-                    asp_emoc_estabil_emoc_mad_medio.isSelected()+"','"+  
-                    asp_emoc_estabil_emoc_mad_alto.isSelected()+"','"+ 
+                strSqlStmt += ",asp_emoc_estabil_emoc_mad_bajo";Query += ",'"+    asp_emoc_estabil_emoc_mad_bajo.isSelected()+"'"; 
+                strSqlStmt += ",asp_emoc_estabil_emoc_mad_medio";Query += ",'"+    asp_emoc_estabil_emoc_mad_medio.isSelected()+"'";  
+                strSqlStmt += ",asp_emoc_estabil_emoc_mad_alto";Query += ",'"+    asp_emoc_estabil_emoc_mad_alto.isSelected()+"'"; 
 
-                    asp_Flexib_manj_emoc_bajo.isSelected()+"','"+  
-                    asp_Flexib_manj_emoc_medio.isSelected()+"','"+  
-                    asp_Flexib_manj_emoc_alto.isSelected()+"','"+  
+                strSqlStmt += ",asp_Flexib_manj_emoc_bajo";Query += ",'"+    asp_Flexib_manj_emoc_bajo.isSelected()+"'"; 
+                strSqlStmt += ",asp_Flexib_manj_emoc_medio";Query += ",'"+    asp_Flexib_manj_emoc_medio.isSelected()+"'";  
+                strSqlStmt += ",asp_Flexib_manj_emoc_alto";Query += ",'"+    asp_Flexib_manj_emoc_alto.isSelected()+"'";  
 
-                    asp_ctrl_impul_bajo.isSelected()+"','"+  
-                    asp_ctrl_impul_medio.isSelected()+"','"+  
-                    asp_ctrl_impul_alto.isSelected()+"','"+  
+                strSqlStmt += ",asp_ctrl_impul_bajo";Query += ",'"+    asp_ctrl_impul_bajo.isSelected()+"'";  
+                strSqlStmt += ",asp_ctrl_impul_medio";Query += ",'"+    asp_ctrl_impul_medio.isSelected()+"'"; 
+                strSqlStmt += ",asp_ctrl_impul_alto";Query += ",'"+    asp_ctrl_impul_alto.isSelected()+"'"; 
                     
-                    comp_especf_cap_subor_bajo.isSelected()+"','"+
-                    comp_especf_cap_subor_medio.isSelected()+"','"+    
-                    comp_especf_cap_subor_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_cap_subor_bajo";Query += ",'"+    comp_especf_cap_subor_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_cap_subor_medio";Query += ",'"+    comp_especf_cap_subor_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_cap_subor_alto";Query += ",'"+    comp_especf_cap_subor_alto.isSelected()+"'";
                    
-                    comp_especf_Adec_nor_proced_bajo.isSelected()+"','"+
-                    comp_especf_Adec_nor_proced_medio.isSelected()+"','"+    
-                    comp_especf_Adec_nor_proced_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_Adec_nor_proced_bajo";Query += ",'"+    comp_especf_Adec_nor_proced_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_Adec_nor_proced_medio";Query += ",'"+    comp_especf_Adec_nor_proced_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_Adec_nor_proced_alto";Query += ",'"+    comp_especf_Adec_nor_proced_alto.isSelected()+"'";
                     
-                    comp_especf_Considera_terceros_bajo.isSelected()+"','"+
-                    comp_especf_Considera_terceros_medio.isSelected()+"','"+    
-                    comp_especf_Considera_terceros_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_Considera_terceros_bajo";Query += ",'"+    comp_especf_Considera_terceros_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_Considera_terceros_medio";Query += ",'"+    comp_especf_Considera_terceros_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_Considera_terceros_alto";Query += ",'"+    comp_especf_Considera_terceros_alto.isSelected()+"'";
                     
-                    comp_especf_Autonomia_trabajar_bajo.isSelected()+"','"+
-                    comp_especf_Autonomia_trabajar_medio.isSelected()+"','"+    
-                    comp_especf_Autonomia_trabajar_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_Autonomia_trabajar_bajo";Query += ",'"+    comp_especf_Autonomia_trabajar_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_Autonomia_trabajar_medio";Query += ",'"+    comp_especf_Autonomia_trabajar_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_Autonomia_trabajar_alto";Query += ",'"+    comp_especf_Autonomia_trabajar_alto.isSelected()+"'";
                     
-                    comp_especf_proactividad_bajo.isSelected()+"','"+
-                    comp_especf_proactividad_medio.isSelected()+"','"+    
-                    comp_especf_proactividad_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_proactividad_bajo";Query += ",'"+    comp_especf_proactividad_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_proactividad_medio";Query += ",'"+    comp_especf_proactividad_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_proactividad_alto";Query += ",'"+    comp_especf_proactividad_alto.isSelected()+"'";
                     
-                    comp_especf_Cap_trabjo_bajo_presion_bajo.isSelected()+"','"+
-                    comp_especf_Cap_trabjo_bajo_presion_medio.isSelected()+"','"+    
-                    comp_especf_Cap_trabjo_bajo_presion_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_Cap_trabjo_bajo_presion_bajo";Query += ",'"+    comp_especf_Cap_trabjo_bajo_presion_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_Cap_trabjo_bajo_presion_medio";Query += ",'"+    comp_especf_Cap_trabjo_bajo_presion_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_Cap_trabjo_bajo_presion_alto";Query += ",'"+    comp_especf_Cap_trabjo_bajo_presion_alto.isSelected()+"'";
                     
-                    comp_especf_Cap_Evaluar_riesgos_bajo.isSelected()+"','"+
-                    comp_especf_Cap_Evaluar_riesgos_medio.isSelected()+"','"+    
-                    comp_especf_Cap_Evaluar_riesgos_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_Cap_Evaluar_riesgos_bajo";Query += ",'"+    comp_especf_Cap_Evaluar_riesgos_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_Cap_Evaluar_riesgos_medio";Query += ",'"+    comp_especf_Cap_Evaluar_riesgos_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_Cap_Evaluar_riesgos_alto";Query += ",'"+   comp_especf_Cap_Evaluar_riesgos_alto.isSelected()+"'";
                     
-                    comp_especf_Mot_por_car_bajo.isSelected()+"','"+
-                    comp_especf_Mot_por_car_medio.isSelected()+"','"+    
-                    comp_especf_Mot_por_car_alto.isSelected()+"','"+
+                strSqlStmt += ",comp_especf_Mot_por_car_bajo";Query += ",'"+    comp_especf_Mot_por_car_bajo.isSelected()+"'";
+                strSqlStmt += ",comp_especf_Mot_por_car_medio";Query += ",'"+    comp_especf_Mot_por_car_medio.isSelected()+"'";    
+                strSqlStmt += ",comp_especf_Mot_por_car_alto";Query += ",'"+    comp_especf_Mot_por_car_alto.isSelected()+"'";
                     
-                    analisis_resultados.getText()+"','"+
-                    recomendaciones.getText()+"','"+
-                    conclu_cumple.isSelected()+"','"+          
-                    conclu_no_cumple.isSelected()+"'"+  
-                    " ) ";
-            System.out.println(strSqlStmt);
-//        oFunc.SubSistemaMensajeError(strSqlStmt);
-             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-//                   oConn.setResult.next();
-                    oFunc.SubSistemaMensajeInformacion("Examen Registrado Exitosamente");
+                strSqlStmt += ",analisis_resultados";Query += ",'"+    analisis_resultados.getText()+"'";
+                strSqlStmt += ",recomendaciones";Query += ",'"+    recomendaciones.getText()+"'";
+                strSqlStmt += ",conclusiones_cumple";Query += ",'"+    conclusiones_cumple.isSelected()+"'";         
+                strSqlStmt += ",conclusiones_no_cumple";Query += ",'"+    conclusiones_no_cumple.isSelected()+"'";  
                     
-                   bResult = true;
-                   oConn.sqlStmt.close();
-               }
-                return bResult;       
-        }
-    
+                System.out.println("el comando es: " + strSqlStmt.concat(") ") + Query.concat(")"));
+//        
+             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
+//                   
+                oFunc.SubSistemaMensajeInformacion("Examen Registrado Exitosamente");
+                    
+                   imprimir();
+                   limpiar();
+               }else{
+                    oFunc.SubSistemaMensajeError("No se pudo registrar ");
+                       }
+                    try
+                        {
+                        oConn.sqlStmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EvaluacionMusculoEsqueletica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+        
+                }else {  oFunc.SubSistemaMensajeError("Llene los Campos correctamente");
+                 n_orden.requestFocus();}
+            }
+    }
+   
        private void printer(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("n_orden",cod);      
@@ -1477,7 +1444,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         if(!n_orden.getText().isEmpty()){
             if(!oPe.nOrden(n_orden, "Aversionalriesgo"))  {
                 FechaNacimiento = new com.toedter.calendar.JDateChooser();
-                String Sql="select d.nombres_pa||' '||d.apellidos_pa as nombres, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
+                String Sql="select n.n_orden, d.nombres_pa||' '||d.apellidos_pa as nombres, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
                 + "n.cargo_de ,n.razon_empresa, EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad, n.fecha_apertura_po from datos_paciente AS d "
                 + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) WHERE n.n_orden ='"+n_orden.getText()+"'";
                 oConn.FnBoolQueryExecute(Sql);
@@ -1489,9 +1456,10 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                     empresa.setText(oConn.setResult.getString("razon_empresa"));
                     edad.setText(oConn.setResult.getString("edad"));
                     FechaNacimiento.setDate(oConn.setResult.getDate("fecha_nacimiento_pa"));
-                    n_orden.setEnabled(false);
-                    conclu_cumple.setSelected(true);
+                    
+                    conclusiones_cumple.setSelected(true);
                     FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                    FechaEvaluacion.setEnabled(false);
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
@@ -1512,11 +1480,11 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
     private void EDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EDITARActionPerformed
         // TODO add your handling code here:
         if(!n_orden.getText().isEmpty()){
-            String Sql="SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombres, d.fecha_nacimiento_pa,EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad,"                                   
+            String Sql="select n.n_orden, d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombres, d.fecha_nacimiento_pa,EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad,"                                   
                     +"n.cargo_de ,n.razon_empresa,nivel_est_pa,n.fecha_apertura_po,ar.*"
                     +"  FROM datos_paciente AS d \n" 
                     +"  INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" 
-                    +"  INNER JOIN Aversionalriesgo AS ar ON (n.n_orden = n.n_orden)\n" 
+                    +"  INNER JOIN Aversionalriesgo AS ar ON (ar.n_orden = n.n_orden)\n" 
                     +"  WHERE   n.n_orden ="+n_orden.getText()+";";
             System.out.println(Sql);
             oConn.FnBoolQueryExecute(Sql);
@@ -1587,8 +1555,8 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                    
                     analisis_resultados.setText(oConn.setResult.getString("analisis_resultados"));
                     recomendaciones.setText(oConn.setResult.getString("recomendaciones"));
-                    conclu_cumple.setSelected(oConn.setResult.getBoolean("conclusiones_cumple"));
-                    conclu_no_cumple.setSelected(oConn.setResult.getBoolean("conclusiones_no_cumple"));
+                    conclusiones_cumple.setSelected(oConn.setResult.getBoolean("conclusiones_cumple"));
+                    conclusiones_no_cumple.setSelected(oConn.setResult.getBoolean("conclusiones_no_cumple"));
                     
                     nombres.setEnabled(false);
                     edad.setEnabled(false);
@@ -1596,6 +1564,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                     grado_estudio.setEnabled(false);
                     empresa.setEnabled(false);
                     cargo.setEnabled(false);
+                    FechaEvaluacion.setEnabled(false);
                     
                     
                     //jTextField9.setText(oConn.setResult.getString("valorigg"));
@@ -1626,34 +1595,21 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         print (Integer.valueOf(imprimir.getText()));
     }//GEN-LAST:event_btnImprimir5ActionPerformed
 
-    private void conclu_no_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conclu_no_cumpleActionPerformed
+    private void conclusiones_no_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conclusiones_no_cumpleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_conclu_no_cumpleActionPerformed
+    }//GEN-LAST:event_conclusiones_no_cumpleActionPerformed
 
-    private void conclu_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conclu_cumpleActionPerformed
+    private void conclusiones_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conclusiones_cumpleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_conclu_cumpleActionPerformed
+    }//GEN-LAST:event_conclusiones_cumpleActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
-        if(OrdenExiste()){
-             Actualizar();
-             limpiar();
-        }
-        else{
-            if(!n_orden.getText().isEmpty()){
-                try {
-                    if(validar()){
-                        if(Grabar()){
-                            imprimir();
-                            limpiar();
-                        }
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(PsicologiaAversionRiesgo.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+    if(oPe.nOrden(n_orden, "Aversionalriesgo"))  {
+        Actualizar();
+       }else{
+        Grabar();
+       }    
+         
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -1662,39 +1618,75 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void asp_Intel_Pract_Func_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_Pract_Func_bajoActionPerformed
-        // TODO add your handling code here:
+       if (asp_Intel_Pract_Func_bajo.isSelected())
+        {
+        asp_Intel_Pract_Func_alto.setSelected(false);
+        asp_Intel_Pract_Func_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_Pract_Func_bajoActionPerformed
 
     private void asp_Intel_Pract_Func_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_Pract_Func_medioActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_Pract_Func_medio.isSelected())
+        {
+        asp_Intel_Pract_Func_alto.setSelected(false);
+        asp_Intel_Pract_Func_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_Pract_Func_medioActionPerformed
 
     private void asp_Intel_Pract_Func_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_Pract_Func_altoActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_Pract_Func_alto.isSelected())
+        {
+        asp_Intel_Pract_Func_medio.setSelected(false);
+        asp_Intel_Pract_Func_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_Pract_Func_altoActionPerformed
 
     private void asp_Intel_Recur_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_Recur_bajoActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_Recur_bajo.isSelected())
+        {
+        asp_Intel_Recur_alto.setSelected(false);
+        asp_Intel_Recur_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_Recur_bajoActionPerformed
 
     private void asp_Intel_Recur_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_Recur_medioActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_Recur_medio.isSelected())
+        {
+        asp_Intel_Recur_alto.setSelected(false);
+        asp_Intel_Recur_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_Recur_medioActionPerformed
 
     private void asp_Intel_Recur_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_Recur_altoActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_Recur_alto.isSelected())
+        {
+        asp_Intel_Recur_medio.setSelected(false);
+        asp_Intel_Recur_bajo.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_Recur_altoActionPerformed
 
     private void asp_Intel_atenci_conc_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_atenci_conc_bajoActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_atenci_conc_bajo.isSelected())
+        {
+        asp_Intel_atenci_conc_medio.setSelected(false);
+        asp_Intel_atenci_conc_alto.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_atenci_conc_bajoActionPerformed
 
     private void asp_Intel_atenci_conc_medioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_atenci_conc_medioActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_atenci_conc_medio.isSelected())
+        {
+        asp_Intel_atenci_conc_bajo.setSelected(false);
+        asp_Intel_atenci_conc_alto.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_atenci_conc_medioActionPerformed
 
     private void asp_Intel_atenci_conc_altoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_Intel_atenci_conc_altoActionPerformed
-        // TODO add your handling code here:
+        if (asp_Intel_atenci_conc_alto.isSelected())
+        {
+        asp_Intel_atenci_conc_bajo.setSelected(false);
+        asp_Intel_atenci_conc_medio.setSelected(false);        
+        }
     }//GEN-LAST:event_asp_Intel_atenci_conc_altoActionPerformed
 
     private void asp_emoc_estabil_emoc_mad_bajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asp_emoc_estabil_emoc_mad_bajoActionPerformed
@@ -1938,8 +1930,8 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox comp_especf_proactividad_alto;
     private javax.swing.JCheckBox comp_especf_proactividad_bajo;
     private javax.swing.JCheckBox comp_especf_proactividad_medio;
-    private javax.swing.JCheckBox conclu_cumple;
-    private javax.swing.JCheckBox conclu_no_cumple;
+    private javax.swing.JCheckBox conclusiones_cumple;
+    private javax.swing.JCheckBox conclusiones_no_cumple;
     private javax.swing.JTextField edad;
     private javax.swing.JTextField empresa;
     private javax.swing.JTextField grado_estudio;

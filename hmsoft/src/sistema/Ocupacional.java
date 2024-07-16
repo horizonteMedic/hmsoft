@@ -73,6 +73,10 @@ public class Ocupacional extends javax.swing.JFrame {
     InformePsicologicoPoderosa ipp;
     PsicologiaCuestionarioCalidadSueno ccs;
     PsicologiaInformeAdicionaldeFobias piaf; 
+    PsicoInfoConductor pic; 
+    PsicoFactAltoRiesgo pfar;
+    PsicoTrabajoEspecificos pte;
+    PsicoCuestionarioBerlin pcb;
     PsicologiaAversionRiesgo par;
     PsicoTrastorPersonalidad ptp;
     FichaPsicologica_Anexo03 fpa;
@@ -1597,6 +1601,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
 
         jMenu7.setText("Reportes Psicologia");
 
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem6.setText("Cuestionario Calidad de Sueño");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1605,6 +1610,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu7.add(jMenuItem6);
 
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem8.setText("Informe Adicional de Fobias");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1613,6 +1619,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu7.add(jMenuItem8);
 
+        jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem9.setText("Informe Aversion Riesgo");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1621,6 +1628,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu7.add(jMenuItem9);
 
+        jMenuItem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem10.setText("Informe de Test Salamanca");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1629,16 +1637,40 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         });
         jMenu7.add(jMenuItem10);
 
+        jMenuItem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem11.setText("Informe para Conductores ");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem11);
 
+        jMenuItem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem12.setText("informe Trabajos de Alto Riesgo");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem12);
 
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem13.setText("Informe Trabajos Especificos");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem13);
 
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/maletin.png"))); // NOI18N
         jMenuItem14.setText("Informe Cuestionario Berlin");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu7.add(jMenuItem14);
 
         MenuOcupacional.add(jMenu7);
@@ -3328,6 +3360,66 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         }
 // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+       if(estacerrado(pic)){
+            pic =new PsicoInfoConductor();
+            btnCertificadoFisicoM.add(pic);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            pic.setFrameIcon(ticon);
+            pic.setLocation(centradoXY(pic));
+            pic.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        if(estacerrado(pfar)){
+            pfar =new PsicoFactAltoRiesgo();
+            btnCertificadoFisicoM.add(pfar);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            pfar.setFrameIcon(ticon);
+            pfar.setLocation(centradoXY(pfar));
+            pfar.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        if(estacerrado(pte)){
+            pte =new PsicoTrabajoEspecificos();
+            btnCertificadoFisicoM.add(pte);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            pte.setFrameIcon(ticon);
+            pte.setLocation(centradoXY(pte));
+            pte.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        if(estacerrado(pcb)){
+            pcb =new PsicoCuestionarioBerlin();
+            btnCertificadoFisicoM.add(pcb);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            pcb.setFrameIcon(ticon);
+            pcb.setLocation(centradoXY(pcb));
+            pcb.show();
+            //fn.setVisible(true); viviana
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 @Override
      public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
