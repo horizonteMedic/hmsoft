@@ -627,6 +627,8 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         jCheckBox12 = new javax.swing.JCheckBox();
         txtNumColor = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        mensajeRP = new javax.swing.JLabel();
+        fechaRserv = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -2299,6 +2301,14 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         });
         jPanel6.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 60, -1, -1));
 
+        mensajeRP.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        mensajeRP.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel6.add(mensajeRP, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 500, 90, 20));
+
+        fechaRserv.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        fechaRserv.setForeground(new java.awt.Color(255, 51, 0));
+        jPanel6.add(fechaRserv, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 520, 90, 30));
+
         jtRegistroGeneral.addTab("Aperturar Examenes Pre - Ocupacionales", jPanel6);
 
         jLabel45.setText("Nro Orden :");
@@ -3112,6 +3122,8 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private void LimpiarAlta() {
         AltaDesabilitar();
         AltaLimpiar();
+        mensajeRP.setText(null);
+        fechaRserv.setText(null);
         txtDniAlta.setEditable(true);
         hBotones(false);
         txtNumColor.setText(null);
@@ -3518,7 +3530,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 // cargarDatosPaciente();
 
             }
-
+     try {
+             comunirApiConsultaReserva(txtDniAlta.getText());
+    } catch (Exception ex) {
+             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+         }
 //            }
         }
     }//GEN-LAST:event_txtDniAltaActionPerformed
@@ -4316,7 +4332,30 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    public void cargarContratas() {
+        try {
+            cboContrata.removeAllItems();
+            String sQuery;
+            // Prepara el Query
+            sQuery = "SELECT razon_contrata FROM contratas";
+            if (oConn1.FnBoolQueryExecute(sQuery)) {
+                try {
+                    while (oConn1.setResult.next()) {
+                        cboContrata.addItem(oConn1.setResult.getString("razon_contrata"));
+                    }
+                    // Cierra Resultados
+                    oConn1.setResult.close();
+                } catch (SQLException ex) {
+                    //JOptionPane.showMessageDialorootPane,ex);
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                }
+            }
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void CargarTipoExamenes() {
         try {
             String sQuery;
@@ -5457,6 +5496,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chkPrecio;
     private javax.swing.JCheckBox chkimport;
     private javax.swing.JCheckBox ckbSinDni;
+    private javax.swing.JLabel fechaRserv;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -5544,6 +5584,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jtRegistroGeneral;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHora;
+    private javax.swing.JLabel mensajeRP;
     private javax.swing.JTable tbOcupacional;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtApellidosAlta;
@@ -5706,17 +5747,41 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void cargarContratas() {
+    public void cargarEmpresasPorRuc(String ruc) {
+        try {
+            cboEmpresa.removeAllItems();
+            String sQuery;
+            // Prepara el Query
+            sQuery = "SELECT razon_empresa FROM empresas where ruc_empresa='"+ruc+"';";
+            if (oConn1.FnBoolQueryExecute(sQuery)) {
+                try {
+                    while (oConn1.setResult.next()) {
+                        cboEmpresa.setSelectedItem(oConn1.setResult.getString("razon_empresa"));
+                    }
+                    // Cierra Resultados
+                    oConn1.setResult.close();
+                } catch (SQLException ex) {
+                    //JOptionPane.showMessageDialorootPane,ex);
+                    oFunc.SubSistemaMensajeError(ex.toString());
+                }
+            }
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void cargarContratasPorRuc(String ruc) {
         try {
             cboContrata.removeAllItems();
             String sQuery;
             // Prepara el Query
-            sQuery = "SELECT razon_contrata FROM contratas";
+            sQuery = "SELECT razon_contrata FROM contratas where ruc_contrata='"+ruc+"';";
             if (oConn1.FnBoolQueryExecute(sQuery)) {
                 try {
                     while (oConn1.setResult.next()) {
-                        cboContrata.addItem(oConn1.setResult.getString("razon_contrata"));
+                       // System.out.println("el valor de la contrata: "+oConn1.setResult.getString("razon_contrata"));
+                        cboContrata.setSelectedItem(oConn1.setResult.getString("razon_contrata"));
                     }
                     // Cierra Resultados
                     oConn1.setResult.close();
@@ -6514,6 +6579,90 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             System.out.println(e);
         }
     }
+   
+   
+      public void comunirApiConsultaReserva(String dni) throws Exception {
+      
+         try {
+            DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/consultaReserva/"+dni);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                //    System.out.println("Response line: " + responseLine.trim());
+                    response.append(responseLine.trim());
+                }
+                  //  System.out.println("Response: " + response.toString());
+                     JSONObject objectJson = new JSONObject(response.toString());
+                    int id_resp=(int) objectJson.getLong("id_resp");
+                    String rucEmpresa=objectJson.getString("rucEmpresa");
+                    String rucContrata=objectJson.getString("rucContrata");
+                    String cargo=objectJson.getString("cargo").toUpperCase();
+                    String area=objectJson.getString("area").toUpperCase();
+                    String tipoExamen=objectJson.getString("tipoExamen").toUpperCase();
+                    String fechaReserva=objectJson.getString("fechaReserva");
+                   
+                            
+                    if(id_resp == 1)
+                    {
+                        if(rucContrata.contains("null"))
+                            {
+                            cboContrata.setSelectedItem("N/A");
+                            }
+                         else
+                            {
+                            cargarContratasPorRuc(rucContrata);
+                            }
+                         if(rucEmpresa.contains("null"))
+                            {
+                            cboEmpresa.setSelectedItem("N/A");
+                            }
+                         else
+                            {
+                            cargarEmpresasPorRuc(rucEmpresa);
+                            }                   
+                    
+                    txtCargoDesempenar.setText(cargo);
+                    cboArea.setSelectedItem(area);
+                    cboExamenMedico.setSelectedItem(tipoExamen.toUpperCase());
+                    mensajeRP.setText("Fecha R.:");
+                    fechaRserv.setText(fechaReserva);
+                    }
+                    /*
+                    System.out.println("el campo es:"+objectJson.getLong("id_resp"));
+                    
+                    System.out.println("el campo es:"+objectJson.getString("rucEmpresa"));
+                    System.out.println("el campo es:"+objectJson.getString("rucContrata"));
+                    System.out.println("el campo es:"+objectJson.getString("cargo"));
+                    System.out.println("el campo es:"+objectJson.getString("area"));
+                    System.out.println("el campo es:"+objectJson.getString("tipoExamen"));
+                    System.out.println("el campo es:"+objectJson.getString("fechaReserva"));
+                      */
+            }
+
+            oConn1.setResult.close();
+            oConn1.sqlStmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
+   
+   
+   
+   
+   
    public void gabrarHistoria() throws Exception {
          Integer cod = Integer.valueOf(tbOcupacional.getValueAt(tbOcupacional.getSelectedRow(), 0).toString());
        try {
