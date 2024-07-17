@@ -83,6 +83,9 @@ public final class Ingreso extends javax.swing.JFrame {
         }
         AutoCompleteDecorator.decorate(this.cboUsuarios);
     }
+       
+       
+       
     @Override
     public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -170,6 +173,11 @@ public final class Ingreso extends javax.swing.JFrame {
 
         txtFechaLogin.setEditable(false);
         txtFechaLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFechaLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaLoginActionPerformed(evt);
+            }
+        });
         txtFechaLogin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFechaLoginKeyPressed(evt);
@@ -372,6 +380,10 @@ enter(evt);
     private void chkAdmisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAdmisionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkAdmisionActionPerformed
+
+    private void txtFechaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaLoginActionPerformed
     public static void main(String args[]) {
              new Ingreso().setVisible(true);
     }

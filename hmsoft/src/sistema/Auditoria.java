@@ -865,7 +865,7 @@ public boolean OrdenExiste(String orden)
                 btnDosajeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDosaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 20, -1));
+        getContentPane().add(btnDosaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 20, -1));
 
         jLabel139.setText("Ex. Rx Sanguineos :");
         getContentPane().add(jLabel139, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
