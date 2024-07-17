@@ -749,7 +749,7 @@ private void cargarContratas(){
         jLabel14.setText("Contrata :");
 
         contrata.setEditable(true);
-        contrata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        contrata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
         contrata.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -782,7 +782,7 @@ private void cargarContratas(){
         });
 
         empresa.setEditable(true);
-        empresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        empresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
         empresa.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -1626,6 +1626,8 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                      Sql +=" AND n.razon_empresa = '"+empresa.getSelectedItem().toString()+"' AND "+ "n.razon_contrata = '"+contrata.getSelectedItem().toString()+"'";
                 System.out.println("la consulta es:"+Sql);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                           
+
             if (oConn1.FnBoolQueryExecute(Sql)) {
                 try {
                     while (oConn1.setResult.next()) {
