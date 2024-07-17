@@ -104,7 +104,7 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
         conclusion_no_apto = new javax.swing.JRadioButton();
 
         setClosable(true);
-        setTitle("Informe Psicológico");
+        setTitle("INFORME ADICIONAL DE FOBIAS");
 
         jPanel5.setForeground(new java.awt.Color(102, 102, 0));
 
@@ -357,11 +357,11 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(criterio_inteligencia, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                        .addComponent(criterio_inteligencia, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
                     .addGroup(jPanel16Layout.createSequentialGroup()
                         .addComponent(jLabel75)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(criterio_fobias)))
+                        .addComponent(criterio_fobias, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
@@ -405,13 +405,13 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(analisis_foda_forta_oport)
+                    .addComponent(analisis_foda_forta_oport, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(analisis_foda_amenaz_debili))
+                    .addComponent(analisis_foda_amenaz_debili, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -760,6 +760,7 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
                 Conclusion_apto.setSelected(oConn.setResult.getBoolean("Conclusiones_apto"));
                 conclusion_no_apto.setSelected(oConn.setResult.getBoolean("conclusiones_no_apto"));
                 btnAgregar.setEnabled(false);
+                FechaEvaluacion.setEnabled(false);
                 
 
             }else{
@@ -799,6 +800,7 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
                     criterio_inteligencia.requestFocus();
                     
                     FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                    FechaEvaluacion.setEnabled(false);
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
@@ -920,6 +922,7 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
         n_orden.setEnabled(true);
         n_orden.requestFocus();
         btnAgregar.setEnabled(true);
+        imprimir.setText(null);
     }
 
 public int calcularEdad(Calendar fechaNac){
@@ -997,7 +1000,7 @@ public boolean OrdenExiste()
             System.out.println("master" + master);
             if (master == null) 
             {                
-                System.out.println("No encuentro el archivo del reporte InformePsicologico.");
+                System.out.println("No encuentro el archivo del reporte InformeFobias.");
                 //System.exit(2);
             } 
 
@@ -1064,7 +1067,7 @@ private void printer(Integer cod) {
 
             System.out.println("master" + master);
             if (master == null) {
-                System.out.println("No encuentro el archivo del ficha psicologica.");
+                System.out.println("No encuentro el archivo del ficha fobias.");
                 //System.exit(2);
             }
             JasperReport masterReport = null;

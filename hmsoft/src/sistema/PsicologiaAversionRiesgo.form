@@ -49,7 +49,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Informe Psicolaboral"/>
+    <Property name="title" type="java.lang.String" value="INFORME DE EVALUACI&#xd3;N PSICOL&#xd3;GICA DE AVERSI&#xd3;N AL RIESGO"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -468,8 +468,8 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="conclu_cumple" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="conclu_no_cumple" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="conclusiones_cumple" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="conclusiones_no_cumple" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -479,34 +479,28 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="conclu_cumple" min="-2" max="-2" attributes="0"/>
+                  <Component id="conclusiones_cumple" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="conclu_no_cumple" min="-2" max="-2" attributes="0"/>
+                  <Component id="conclusiones_no_cumple" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="conclu_cumple">
+        <Component class="javax.swing.JCheckBox" name="conclusiones_cumple">
           <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgConclusion"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="CUMPLE CON EL PERFIL"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conclu_cumpleActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conclusiones_cumpleActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="conclu_no_cumple">
+        <Component class="javax.swing.JCheckBox" name="conclusiones_no_cumple">
           <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bgConclusion"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="NO CUMPLE CON EL PERFIL "/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conclu_no_cumpleActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conclusiones_no_cumpleActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -528,9 +522,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jPanel31" max="32767" attributes="0"/>
-                          <Component id="jPanel30" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel30" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel32" min="-2" max="-2" attributes="0"/>
@@ -545,7 +539,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel32" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="jPanel30" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
@@ -579,7 +573,7 @@
                                   <Component id="jLabel103" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="asp_Intel_atenci_conc_bajo" min="-2" pref="54" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       <Component id="asp_Intel_atenci_conc_medio" min="-2" pref="67" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="asp_Intel_atenci_conc_alto" min="-2" pref="52" max="-2" attributes="0"/>
@@ -601,15 +595,14 @@
                               </Group>
                               <Component id="jLabel90" alignment="0" min="-2" pref="241" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel90" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel90" min="-2" pref="22" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="asp_Intel_Pract_Func_bajo" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -651,9 +644,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_Pract_Func_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgEE"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -663,9 +653,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_Pract_Func_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgEE"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -675,9 +662,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_Pract_Func_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgEE"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -687,9 +671,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_Recur_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgTF"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                   </Properties>
                   <Events>
@@ -698,9 +679,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_Recur_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgTF"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                   </Properties>
                   <Events>
@@ -709,9 +687,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_Recur_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgTF"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                   </Properties>
                   <Events>
@@ -730,9 +705,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_atenci_conc_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAUTOESTIMA"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                   </Properties>
                   <Events>
@@ -741,9 +713,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_atenci_conc_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAUTOESTIMA"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                   </Properties>
                   <Events>
@@ -752,9 +721,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="asp_Intel_atenci_conc_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAUTOESTIMA"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                   </Properties>
                   <Events>
@@ -766,7 +732,7 @@
             <Container class="javax.swing.JPanel" name="jPanel31">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="javax.swing.BorderFactory.createTitledBorder(&quot;ASPECTOS CONDUCTUALES&quot;)" type="code"/>
+                  <Connection code="javax.swing.BorderFactory.createTitledBorder(&quot;ASPECTOS EMOCIONALES&quot;)" type="code"/>
                 </Property>
               </Properties>
               <AccessibilityProperties>
@@ -944,7 +910,7 @@
             <Container class="javax.swing.JPanel" name="jPanel32">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="javax.swing.BorderFactory.createTitledBorder(&quot;ASPECTOS PSICOLABORALES&quot;)" type="code"/>
+                  <Connection code="javax.swing.BorderFactory.createTitledBorder(&quot;COMP. ESP. CONDUCTA SEGURA&quot;)" type="code"/>
                 </Property>
               </Properties>
 
@@ -1040,7 +1006,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel91" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -1123,9 +1089,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_cap_subor_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI1"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1135,9 +1098,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_cap_subor_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI1"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1147,9 +1107,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_cap_subor_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI1"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1159,9 +1116,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Adec_nor_proced_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI2"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                   </Properties>
                   <Events>
@@ -1170,9 +1124,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Adec_nor_proced_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI2"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                   </Properties>
                   <Events>
@@ -1181,9 +1132,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Adec_nor_proced_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI2"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                   </Properties>
                   <Events>
@@ -1202,9 +1150,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Considera_terceros_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI3"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                   </Properties>
                   <Events>
@@ -1213,9 +1158,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Considera_terceros_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI3"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                   </Properties>
                   <Events>
@@ -1224,9 +1166,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Considera_terceros_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI3"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                   </Properties>
                   <Events>
@@ -1240,9 +1179,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Autonomia_trabajar_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI4"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                   </Properties>
                   <Events>
@@ -1251,9 +1187,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Autonomia_trabajar_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI4"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                   </Properties>
                   <Events>
@@ -1262,9 +1195,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Autonomia_trabajar_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI4"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                   </Properties>
                   <Events>
@@ -1278,9 +1208,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_proactividad_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI5"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                   </Properties>
                   <Events>
@@ -1289,9 +1216,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_proactividad_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI5"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                   </Properties>
                   <Events>
@@ -1300,9 +1224,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_proactividad_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI5"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                   </Properties>
                   <Events>
@@ -1316,9 +1237,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Cap_trabjo_bajo_presion_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI6"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                   </Properties>
                   <Events>
@@ -1327,9 +1245,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Cap_trabjo_bajo_presion_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI6"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                   </Properties>
                   <Events>
@@ -1338,9 +1253,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Cap_trabjo_bajo_presion_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI6"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                   </Properties>
                   <Events>
@@ -1354,9 +1266,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Cap_Evaluar_riesgos_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI7"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1366,9 +1275,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Cap_Evaluar_riesgos_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI7"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1378,9 +1284,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Cap_Evaluar_riesgos_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI7"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1395,9 +1298,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Mot_por_car_bajo">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI8"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Bajo"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1407,9 +1307,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Mot_por_car_medio">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI8"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Medio"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
@@ -1419,9 +1316,6 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="comp_especf_Mot_por_car_alto">
                   <Properties>
-                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                      <ComponentRef name="bgAPSI8"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Alto"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>

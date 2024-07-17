@@ -62,54 +62,54 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtNorden = new javax.swing.JTextField();
+        n_orden = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtNombres = new javax.swing.JTextField();
+        nombres = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtApellidos = new javax.swing.JTextField();
+        apellidos = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtEdad = new javax.swing.JTextField();
-        FechaEntrevista = new com.toedter.calendar.JDateChooser();
+        edad = new javax.swing.JTextField();
+        FechaEvaluacion = new com.toedter.calendar.JDateChooser();
         jLabel23 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNivelEstudios = new javax.swing.JTextField();
+        grado_estudio = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtCargoDesempenar = new javax.swing.JTextField();
-        txtOcupación = new javax.swing.JTextField();
+        cargo = new javax.swing.JTextField();
+        empresa = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        atxtObservaciones = new javax.swing.JTextArea();
+        observaciones = new javax.swing.JTextArea();
         jLabel17 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        atxtRecomendaciones = new javax.swing.JTextArea();
+        recomendaciones = new javax.swing.JTextArea();
         jPanel16 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         jLabel80 = new javax.swing.JLabel();
-        txtEscala = new javax.swing.JTextField();
-        txtSomnolencia = new javax.swing.JTextField();
-        txtIntensiad = new javax.swing.JTextField();
+        crit_temor_riesgo_electrico = new javax.swing.JTextField();
+        crit_temor_alturas_izaje = new javax.swing.JTextField();
+        crit_temor_espac_confi = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        txtFortalezasO = new javax.swing.JTextField();
-        txtAmenazasD = new javax.swing.JTextField();
+        anali_foda_forta_oport = new javax.swing.JTextField();
+        anali_foda_amenaz_debili = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        txtImprimir = new javax.swing.JTextField();
+        imprimir = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        rbApto = new javax.swing.JRadioButton();
-        rbNoApto = new javax.swing.JRadioButton();
+        perf_cumple = new javax.swing.JRadioButton();
+        perf_no_cumple = new javax.swing.JRadioButton();
 
         setClosable(true);
-        setTitle("Informe Psicológico");
+        setTitle("INFORME PARA TRABAJOS DE ALTO RIESGO");
 
         jPanel5.setForeground(new java.awt.Color(102, 102, 0));
 
@@ -117,32 +117,32 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nro Orden:");
 
-        txtNorden.addActionListener(new java.awt.event.ActionListener() {
+        n_orden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNordenActionPerformed(evt);
+                n_ordenActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Nombres:");
 
-        txtNombres.setEditable(false);
-        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+        nombres.setEditable(false);
+        nombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombresActionPerformed(evt);
+                nombresActionPerformed(evt);
             }
         });
 
         jLabel5.setText("Apellidos:");
 
-        txtApellidos.setEditable(false);
+        apellidos.setEditable(false);
 
         jLabel8.setText("Edad:");
 
-        txtEdad.setEditable(false);
+        edad.setEditable(false);
 
-        FechaEntrevista.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        FechaEvaluacion.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                FechaEntrevistaPropertyChange(evt);
+                FechaEvaluacionPropertyChange(evt);
             }
         });
 
@@ -151,7 +151,7 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Grado de Instruccion:");
 
-        txtNivelEstudios.setEditable(false);
+        grado_estudio.setEditable(false);
 
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
         btnEditar.setText("Editar");
@@ -170,38 +170,40 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNivelEstudios, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(grado_estudio, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
-                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FechaEntrevista, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(n_orden, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEditar)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel23)
+                        .addGap(27, 27, 27)
+                        .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 77, Short.MAX_VALUE)))
                 .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
@@ -211,29 +213,28 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtNorden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(n_orden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEditar)
                         .addComponent(jLabel23))
-                    .addComponent(FechaEntrevista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaEvaluacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 4, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(5, 5, 5))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(txtNivelEstudios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(grado_estudio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -243,9 +244,9 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Cargo");
 
-        txtCargoDesempenar.setEditable(false);
+        cargo.setEditable(false);
 
-        txtOcupación.setEditable(false);
+        empresa.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -255,11 +256,11 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtOcupación, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCargoDesempenar, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -269,30 +270,30 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel13)
-                        .addComponent(txtCargoDesempenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12)
-                        .addComponent(txtOcupación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2))
         );
 
-        atxtObservaciones.setColumns(20);
-        atxtObservaciones.setRows(5);
-        atxtObservaciones.addFocusListener(new java.awt.event.FocusAdapter() {
+        observaciones.setColumns(20);
+        observaciones.setRows(5);
+        observaciones.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                atxtObservacionesFocusGained(evt);
+                observacionesFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                atxtObservacionesFocusLost(evt);
+                observacionesFocusLost(evt);
             }
         });
-        atxtObservaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+        observaciones.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                atxtObservacionesKeyReleased(evt);
+                observacionesKeyReleased(evt);
             }
         });
-        jScrollPane2.setViewportView(atxtObservaciones);
-        atxtObservaciones.getAccessibleContext().setAccessibleName("");
+        jScrollPane2.setViewportView(observaciones);
+        observaciones.getAccessibleContext().setAccessibleName("");
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 102));
@@ -325,22 +326,22 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
             }
         });
 
-        atxtRecomendaciones.setColumns(20);
-        atxtRecomendaciones.setRows(5);
-        atxtRecomendaciones.addFocusListener(new java.awt.event.FocusAdapter() {
+        recomendaciones.setColumns(20);
+        recomendaciones.setRows(5);
+        recomendaciones.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                atxtRecomendacionesFocusGained(evt);
+                recomendacionesFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                atxtRecomendacionesFocusLost(evt);
+                recomendacionesFocusLost(evt);
             }
         });
-        atxtRecomendaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+        recomendaciones.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                atxtRecomendacionesKeyReleased(evt);
+                recomendacionesKeyReleased(evt);
             }
         });
-        jScrollPane8.setViewportView(atxtRecomendaciones);
+        jScrollPane8.setViewportView(recomendaciones);
 
         jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CRITERIOS PSICOLÓGICOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 0, 102))); // NOI18N
 
@@ -353,21 +354,21 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         jLabel80.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel80.setText("3.- TEMOR A ESPACIOS CONFINADOS");
 
-        txtEscala.addActionListener(new java.awt.event.ActionListener() {
+        crit_temor_riesgo_electrico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEscalaActionPerformed(evt);
+                crit_temor_riesgo_electricoActionPerformed(evt);
             }
         });
 
-        txtSomnolencia.addActionListener(new java.awt.event.ActionListener() {
+        crit_temor_alturas_izaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSomnolenciaActionPerformed(evt);
+                crit_temor_alturas_izajeActionPerformed(evt);
             }
         });
 
-        txtIntensiad.addActionListener(new java.awt.event.ActionListener() {
+        crit_temor_espac_confi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIntensiadActionPerformed(evt);
+                crit_temor_espac_confiActionPerformed(evt);
             }
         });
 
@@ -383,9 +384,9 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEscala)
-                    .addComponent(txtSomnolencia)
-                    .addComponent(txtIntensiad, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
+                    .addComponent(crit_temor_riesgo_electrico)
+                    .addComponent(crit_temor_alturas_izaje)
+                    .addComponent(crit_temor_espac_confi, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
@@ -394,15 +395,15 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(txtEscala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(crit_temor_riesgo_electrico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
-                    .addComponent(txtSomnolencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(crit_temor_alturas_izaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel80)
-                    .addComponent(txtIntensiad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(crit_temor_espac_confi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
 
@@ -414,15 +415,15 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel19.setText("Amenazas / Debilidades: ");
 
-        txtFortalezasO.addActionListener(new java.awt.event.ActionListener() {
+        anali_foda_forta_oport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFortalezasOActionPerformed(evt);
+                anali_foda_forta_oportActionPerformed(evt);
             }
         });
 
-        txtAmenazasD.addActionListener(new java.awt.event.ActionListener() {
+        anali_foda_amenaz_debili.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAmenazasDActionPerformed(evt);
+                anali_foda_amenaz_debiliActionPerformed(evt);
             }
         });
 
@@ -433,13 +434,13 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFortalezasO)
+                    .addComponent(anali_foda_forta_oport)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtAmenazasD))
+                        .addGap(0, 211, Short.MAX_VALUE))
+                    .addComponent(anali_foda_amenaz_debili))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -448,11 +449,11 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel18)
                 .addGap(5, 5, 5)
-                .addComponent(txtFortalezasO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(anali_foda_forta_oport, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel19)
                 .addGap(5, 5, 5)
-                .addComponent(txtAmenazasD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(anali_foda_amenaz_debili, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -462,9 +463,9 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("IMPRIMIR"));
 
-        txtImprimir.addActionListener(new java.awt.event.ActionListener() {
+        imprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtImprimirActionPerformed(evt);
+                imprimirActionPerformed(evt);
             }
         });
 
@@ -480,7 +481,7 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(txtImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 16, Short.MAX_VALUE))
@@ -493,34 +494,39 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "CONCLUSIÓN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        bgAprobo.add(rbApto);
-        rbApto.setText("APTO");
+        bgAprobo.add(perf_cumple);
+        perf_cumple.setText("APTO");
 
-        bgAprobo.add(rbNoApto);
-        rbNoApto.setText("NO APTO");
+        bgAprobo.add(perf_no_cumple);
+        perf_no_cumple.setText("NO APTO");
+        perf_no_cumple.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                perf_no_cumpleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(rbApto)
+                .addComponent(perf_cumple)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbNoApto)
+                .addComponent(perf_no_cumple)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbApto)
-                    .addComponent(rbNoApto))
+                    .addComponent(perf_cumple)
+                    .addComponent(perf_no_cumple))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -529,39 +535,39 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel25)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(btnAgregar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimpiar)
+                        .addGap(182, 182, 182))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel25)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14))))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnActualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimpiar)
-                                .addGap(182, 182, 182))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 45, Short.MAX_VALUE))))
+                            .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,19 +576,20 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -602,7 +609,7 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 6, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -622,10 +629,10 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
      public boolean OrdenImp() {
 
         boolean bResultado = false;
-        if (!txtImprimir.getText().isEmpty()) {
+        if (!imprimir.getText().isEmpty()) {
             String sQuery;
 
-            sQuery = "Select n_orden from informe_psicologico_estres Where n_orden =" + txtImprimir.getText();
+            sQuery = "Select n_orden from alto_riesgo Where n_orden =" + imprimir.getText();
 
             //Ejecuta el Query
             oConn.FnBoolQueryExecute(sQuery);
@@ -647,89 +654,96 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
             }
         }
         return bResultado;
-    } 
-    private void atxtRecomendacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_atxtRecomendacionesKeyReleased
+    } private com.toedter.calendar.JDateChooser FechaNacimiento;
+    private void recomendacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_recomendacionesKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_atxtRecomendacionesKeyReleased
+    }//GEN-LAST:event_recomendacionesKeyReleased
 
-    private void atxtRecomendacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtRecomendacionesFocusLost
+    private void recomendacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recomendacionesFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_atxtRecomendacionesFocusLost
+    }//GEN-LAST:event_recomendacionesFocusLost
 
-    private void atxtRecomendacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtRecomendacionesFocusGained
+    private void recomendacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recomendacionesFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_atxtRecomendacionesFocusGained
+    }//GEN-LAST:event_recomendacionesFocusGained
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        String sCodigo=txtNorden.getText();
+        if(!n_orden.getText().isEmpty()){
+        String sCodigo=n_orden.getText();
         String strSqlStmt;
-        strSqlStmt="UPDATE informe_psicologico_estres\n" ;
-        strSqlStmt += "   SET  "
-                + "fecha='"+FechaEntrevista.getDate()+"', "
+        strSqlStmt="UPDATE alto_riesgo\n" ;
+        strSqlStmt += " SET  "
                 
-                + "txtescala='"+txtEscala.getText()+"', "
-                + "txtsomnolencia='"+txtSomnolencia.getText()+"', "
-                + "txttestfatiga='"+txtIntensiad.getText()+"', "
-                + "txtfortalezaso='"+txtFortalezasO.getText()+"', "
-                + "txtamenazasd='"+txtAmenazasD.getText()+"', "
-                + "txtoservaciones='"+atxtObservaciones.getText()+"',"
-                + "txtrecomendacion='"+atxtRecomendaciones.getText()+"', "
-                + "adpto='"+rbApto.isSelected()+"', "
-                + "noadpto='"+rbNoApto.isSelected()+"' "
+                + "crit_temor_riesgo_electrico='"+crit_temor_riesgo_electrico.getText()+"', "
+                + "crit_temor_alturas_izaje='"+crit_temor_alturas_izaje.getText()+"', "
+                + "crit_temor_espac_confi='"+crit_temor_espac_confi.getText()+"', "
+                + "anali_foda_forta_oport='"+anali_foda_forta_oport.getText()+"', "
+                + "anali_foda_amenaz_debili='"+anali_foda_amenaz_debili.getText()+"', "
+                + "observaciones='"+observaciones.getText()+"',"
+                + "recomendaciones='"+recomendaciones.getText()+"', "
+                + "perf_cumple='"+perf_cumple.isSelected()+"', "
+                + "perf_no_cumple='"+perf_no_cumple.isSelected()+"' "
                 
                 + " WHERE n_orden='" + sCodigo + "'";
-
+                System.out.println(strSqlStmt);
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-            imprimir(Integer.valueOf(txtNorden.getText()));
+            imprimir(Integer.valueOf(n_orden.getText()));
             limpiar();
-            txtNorden.setEnabled(true);
-            txtNorden.requestFocus();
+            n_orden.setEnabled(true);
+            n_orden.requestFocus();
             try {
                 oConn.sqlStmt.close();
             } catch (SQLException ex) {
-                Logger.getLogger(PsicoFactAltoRiesgo.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(PsicoInfoConductor.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
+       }
+        else 
+            oFunc.SubSistemaMensajeError("Debe ingresar un codigo para actualizar");
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        if (!txtNorden.getText().isEmpty()){
+        if (!n_orden.getText().isEmpty()){
             if(!OrdenExiste()){
                 if (validar()){
-                    String Sql ="INSERT INTO informe_psicologico_estres(\n" +
-"            n_orden, fecha, nombre_examen, txtescala, txtsomnolencia, txttestfatiga, \n" +
-"            txtfortalezaso, txtamenazasd, txtoservaciones, txtrecomendacion, \n" +
-"            adpto, noadpto)" ;
-                    Sql+="Values('"+txtNorden.getText()+"','"+FechaEntrevista.getDate()+"','"
-                    
-                    +txtEscala.getText()+ "','"
-                    +txtSomnolencia.getText()+"','"
-                    +txtIntensiad.getText()+"','"
-                    +txtFortalezasO.getText()+"','"
-                    +txtAmenazasD.getText()+"','"
-                    +atxtObservaciones.getText()+"','"
-                    +atxtRecomendaciones.getText()+"','"
-                    +rbApto.isSelected()+"','"
-                    +rbNoApto.isSelected()+"')";
+                    String Sql ="INSERT INTO alto_riesgo(\n" +
+                    " n_orden, crit_temor_riesgo_electrico ,crit_temor_alturas_izaje, crit_temor_espac_confi,\n" +     
+                    "  anali_foda_forta_oport,\n" +
+                    "  anali_foda_amenaz_debili ,\n" +
+                    "  observaciones,\n" +
+                    "  recomendaciones,\n" +
+                    "  perf_cumple,\n" +
+                    "  perf_no_cumple )" ;
+                    Sql+="Values('"
+                    +n_orden.getText()+"','"                                                                          
+                    +crit_temor_riesgo_electrico.getText()+ "','"
+                    +crit_temor_alturas_izaje.getText()+"','"
+                    +crit_temor_espac_confi.getText()+"','"
+                    +anali_foda_forta_oport.getText()+"','"
+                    +anali_foda_amenaz_debili.getText()+"','"
+                    +observaciones.getText()+"','"
+                    +recomendaciones.getText()+"','"
+                    +perf_cumple.isSelected()+"','"
+                    +perf_no_cumple.isSelected()+"')";
                     //oFunc.SubSistemaMensajeInformacion(Sql);
                     if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                         //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
-                        imprimir(Integer.valueOf(txtNorden.getText()));
-                        txtNorden.setEnabled(true);
-                        txtNorden.requestFocus();
+                        imprimir(Integer.valueOf(n_orden.getText()));
+                        n_orden.setEnabled(true);
+                        n_orden.requestFocus();
                         limpiar();
                         try {
                             oConn.sqlStmt.close();
                         } catch (SQLException ex) {
-                            Logger.getLogger(PsicoFactAltoRiesgo.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(PsicoInfoConductor.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }else{
                         oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");}
@@ -738,152 +752,176 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void atxtObservacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_atxtObservacionesKeyReleased
+    private void observacionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_observacionesKeyReleased
         
-    }//GEN-LAST:event_atxtObservacionesKeyReleased
+    }//GEN-LAST:event_observacionesKeyReleased
 
-    private void atxtObservacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtObservacionesFocusLost
-        atxtObservaciones.setBackground(Color.WHITE);
-    }//GEN-LAST:event_atxtObservacionesFocusLost
+    private void observacionesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_observacionesFocusLost
+        observaciones.setBackground(Color.WHITE);
+    }//GEN-LAST:event_observacionesFocusLost
 
-    private void atxtObservacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtObservacionesFocusGained
+    private void observacionesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_observacionesFocusGained
 
-    }//GEN-LAST:event_atxtObservacionesFocusGained
+    }//GEN-LAST:event_observacionesFocusGained
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        String Sql="select d.nombres_pa,d.apellidos_pa,"
-        + "d.fecha_nacimiento_pa,d.lugar_nac_pa,"
-        + "d.direccion_pa,d.estado_civil_pa,"
-        + "d.nivel_est_pa,d.ocupacion_pa,"
-        + "n.cargo_de,i.fecha, i.nombre_examen, i.txtescala, i.txtsomnolencia, i.txttestfatiga, \n" +
-"       i.txtfortalezaso, i.txtamenazasd, i.txtoservaciones, i.txtrecomendacion, \n" +
-"       i.adpto, i.noadpto "
-        + "From datos_paciente as d "
-        + "inner join n_orden_ocupacional as n on(d.cod_pa = n.cod_pa) "
-        + "inner join informe_psicologico_estres as i on(n.n_orden = i.n_orden) "
-        + "where  n.n_orden ='"+txtNorden.getText()+"'";
-        oConn.FnBoolQueryExecute(Sql);
+       if(!n_orden.getText().isEmpty()){        
+        String Sql="select d.nombres_pa,d.apellidos_pa, d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa ,EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad, "
+                +"n.cargo_de ,n.razon_empresa,n.fecha_apertura_po,ar.*"
+                +" FROM datos_paciente AS d\n" 
+                +"INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) \n" 
+                +"INNER JOIN alto_riesgo as ar ON (n.n_orden=ar.n_orden)" 
+                +"WHERE n.n_orden ='"+n_orden.getText()+"'";
+            System.out.println(Sql);
+            oConn.FnBoolQueryExecute(Sql);
         try {
             if (oConn.setResult.next()) {
-                txtNombres.setText(oConn.setResult.getString("nombres_pa"));
-                txtApellidos.setText(oConn.setResult.getString("apellidos_pa"));
-                
-                txtNivelEstudios.setText(oConn.setResult.getString("nivel_est_pa"));
-                txtOcupación.setText(oConn.setResult.getString("ocupacion_pa"));
-                txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
-            
-                FechaEntrevista.setDate(oConn.setResult.getDate("fecha"));
-                
-                txtEscala.setText(oConn.setResult.getString("txtescala"));
-                txtSomnolencia.setText(oConn.setResult.getString("txtsomnolencia"));
-                txtIntensiad.setText(oConn.setResult.getString("txttestfatiga"));
-                txtFortalezasO.setText(oConn.setResult.getString("txtfortalezaso"));
-                txtAmenazasD.setText(oConn.setResult.getString("txtamenazasd"));
-                atxtObservaciones.setText(oConn.setResult.getString("txtoservaciones"));
-                atxtRecomendaciones.setText(oConn.setResult.getString("txtrecomendacion"));;
-                rbApto.setSelected(oConn.setResult.getBoolean("adpto"));
-                rbNoApto.setSelected(oConn.setResult.getBoolean("noadpto"));
-
+                nombres.setText(oConn.setResult.getString("nombres_pa"));
+                apellidos.setText(oConn.setResult.getString("apellidos_pa"));                
+                grado_estudio.setText(oConn.setResult.getString("nivel_est_pa"));
+                empresa.setText(oConn.setResult.getString("razon_empresa"));
+                cargo.setText(oConn.setResult.getString("cargo_de"));            
+                FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));                
+                crit_temor_riesgo_electrico.setText(oConn.setResult.getString("crit_temor_riesgo_electrico"));
+                crit_temor_alturas_izaje.setText(oConn.setResult.getString("crit_temor_alturas_izaje"));
+                crit_temor_espac_confi.setText(oConn.setResult.getString("crit_temor_espac_confi"));
+                anali_foda_forta_oport.setText(oConn.setResult.getString("anali_foda_forta_oport"));
+                anali_foda_amenaz_debili.setText(oConn.setResult.getString("anali_foda_amenaz_debili"));
+                observaciones.setText(oConn.setResult.getString("observaciones"));
+                recomendaciones.setText(oConn.setResult.getString("recomendaciones"));
+                perf_cumple.setSelected(oConn.setResult.getBoolean("perf_cumple"));
+                perf_no_cumple.setSelected(oConn.setResult.getBoolean("perf_no_cumple"));
+                btnAgregar.setEnabled(false); 
+                FechaEvaluacion.setEnabled(false);
+                nombres.setEnabled(false);
+                edad.setEnabled(false);                    
+                grado_estudio.setEnabled(false);
+                empresa.setEnabled(false);
+                cargo.setEnabled(false);
+                    
             }else{
                 oFunc.SubSistemaMensajeError("No se encuentra Registro");
             }
             oConn.setResult.close();
         } catch (SQLException ex) {
-            oFunc.SubSistemaMensajeInformacion("Informe Psicologico estrés:" + ex.getMessage().toString());
+            oFunc.SubSistemaMensajeInformacion("Informe Psicologico factores de alto riesgo:" + ex.getMessage().toString());
         }
+       }
+       else
+            oFunc.SubSistemaMensajeError("debes ingresar un codigo");
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void FechaEntrevistaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaEntrevistaPropertyChange
-        txtNorden.requestFocus();
-    }//GEN-LAST:event_FechaEntrevistaPropertyChange
+    private void FechaEvaluacionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_FechaEvaluacionPropertyChange
+        n_orden.requestFocus();
+    }//GEN-LAST:event_FechaEvaluacionPropertyChange
 
-    private void txtNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNordenActionPerformed
-        if(!OrdenExiste()){
-            String Sql="select datos_paciente.nombres_pa,datos_paciente.apellidos_pa,"
-            + "datos_paciente.fecha_nacimiento_pa,datos_paciente.lugar_nac_pa,"
-            + "datos_paciente.direccion_pa,datos_paciente.estado_civil_pa,"
-            + "datos_paciente.nivel_est_pa,datos_paciente.ocupacion_pa,"
-            + "n_orden_ocupacional.cargo_de "
-            + "From datos_paciente,n_orden_ocupacional "
-            + "where datos_paciente.cod_pa = n_orden_ocupacional.cod_pa and n_orden_ocupacional.n_orden ='"+txtNorden.getText()+"'";
-            oConn.FnBoolQueryExecute(Sql);
+    private void n_ordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_ordenActionPerformed
+        if(!n_orden.getText().isEmpty()){
+            if(!oPe.nOrden(n_orden, "alto_riesgo"))  {
+                FechaNacimiento = new com.toedter.calendar.JDateChooser();
+                String Sql="select d.nombres_pa,d.apellidos_pa , d.nivel_est_pa, d.cod_pa, d.fecha_nacimiento_pa , "
+                + "n.cargo_de ,n.razon_empresa, EXTRACT(YEAR FROM age(current_date,d.fecha_nacimiento_pa)) AS  edad, n.fecha_apertura_po from datos_paciente AS d "
+                + "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa=n.cod_pa) WHERE n.n_orden ='"+n_orden.getText()+"'";
+                oConn.FnBoolQueryExecute(Sql);
             try {
                 if (oConn.setResult.next()) {
-                    txtNombres.setText(oConn.setResult.getString("nombres_pa"));
-                    txtApellidos.setText(oConn.setResult.getString("apellidos_pa"));
+                    nombres.setText(oConn.setResult.getString("nombres_pa"));
+                    apellidos.setText(oConn.setResult.getString("apellidos_pa"));
+                    grado_estudio.setText(oConn.setResult.getString("nivel_est_pa"));
+                    cargo.setText(oConn.setResult.getString("cargo_de"));
+                    empresa.setText(oConn.setResult.getString("razon_empresa"));
+                    edad.setText(oConn.setResult.getString("edad"));
+                    n_orden.setEnabled(false);
+                    perf_cumple.setSelected(true);
+                    FechaEvaluacion.setEnabled(false);
+                    nombres.setEnabled(false);
+                    edad.setEnabled(false);                    
+                    grado_estudio.setEnabled(false);
+                    empresa.setEnabled(false);
+                    cargo.setEnabled(false);
                     
-                    txtNivelEstudios.setText(oConn.setResult.getString("nivel_est_pa"));
-                    txtOcupación.setText(oConn.setResult.getString("ocupacion_pa"));
-                    txtCargoDesempenar.setText(oConn.setResult.getString("cargo_de"));
                     
-                    txtNorden.setEnabled(false);
-                    oPe.fecha(FechaEntrevista);
-
-                  
-                    txtEscala.requestFocus();
+                    
+                    FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
                 oConn.setResult.close();
             } catch (SQLException ex) {
-                oFunc.SubSistemaMensajeInformacion("Oftalmologia:" + ex.getMessage().toString());
+                oFunc.SubSistemaMensajeInformacion("informe de factores de alto riesgo:" + ex.getMessage());
             }
         }
-    }//GEN-LAST:event_txtNordenActionPerformed
+            else
+                oFunc.SubSistemaMensajeInformacion("Ya existe este registro ");
+      }
+    }//GEN-LAST:event_n_ordenActionPerformed
 
-    private void txtImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirActionPerformed
+    private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtImprimirActionPerformed
+    }//GEN-LAST:event_imprimirActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
         if(OrdenImp()){
-           print (Integer.valueOf(txtImprimir.getText()));
+           print (Integer.valueOf(imprimir.getText()));
         }else{
            oFunc.SubSistemaMensajeError("Codigo no existe"); 
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
-    private void txtEscalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEscalaActionPerformed
+    private void crit_temor_riesgo_electricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crit_temor_riesgo_electricoActionPerformed
         // TODO add your handling code here:
-        txtSomnolencia.requestFocus();
-    }//GEN-LAST:event_txtEscalaActionPerformed
+        crit_temor_alturas_izaje.requestFocus();
+    }//GEN-LAST:event_crit_temor_riesgo_electricoActionPerformed
 
-    private void txtSomnolenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSomnolenciaActionPerformed
+    private void crit_temor_alturas_izajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crit_temor_alturas_izajeActionPerformed
         // TODO add your handling code here:
-        txtIntensiad.requestFocus();
+        crit_temor_espac_confi.requestFocus();
         
-    }//GEN-LAST:event_txtSomnolenciaActionPerformed
+    }//GEN-LAST:event_crit_temor_alturas_izajeActionPerformed
 
-    private void txtIntensiadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIntensiadActionPerformed
+    private void crit_temor_espac_confiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crit_temor_espac_confiActionPerformed
         // TODO add your handling code here:
-        txtFortalezasO.requestFocus();
-    }//GEN-LAST:event_txtIntensiadActionPerformed
+        anali_foda_forta_oport.requestFocus();
+    }//GEN-LAST:event_crit_temor_espac_confiActionPerformed
 
-    private void txtFortalezasOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFortalezasOActionPerformed
+    private void anali_foda_forta_oportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anali_foda_forta_oportActionPerformed
         // TODO add your handling code here:
-        txtAmenazasD.requestFocus();
-    }//GEN-LAST:event_txtFortalezasOActionPerformed
+        anali_foda_amenaz_debili.requestFocus();
+    }//GEN-LAST:event_anali_foda_forta_oportActionPerformed
 
-    private void txtAmenazasDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmenazasDActionPerformed
+    private void anali_foda_amenaz_debiliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anali_foda_amenaz_debiliActionPerformed
         // TODO add your handling code here:
-        atxtObservaciones.requestFocus();
-    }//GEN-LAST:event_txtAmenazasDActionPerformed
+        observaciones.requestFocus();
+    }//GEN-LAST:event_anali_foda_amenaz_debiliActionPerformed
 
-    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+    private void nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombresActionPerformed
+    }//GEN-LAST:event_nombresActionPerformed
+
+    private void perf_no_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_perf_no_cumpleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_perf_no_cumpleActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser FechaEntrevista;
-    private javax.swing.JTextArea atxtObservaciones;
-    private javax.swing.JTextArea atxtRecomendaciones;
+    private com.toedter.calendar.JDateChooser FechaEvaluacion;
+    private javax.swing.JTextField anali_foda_amenaz_debili;
+    private javax.swing.JTextField anali_foda_forta_oport;
+    private javax.swing.JTextField apellidos;
     private javax.swing.ButtonGroup bgAprobo;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JTextField cargo;
+    private javax.swing.JTextField crit_temor_alturas_izaje;
+    private javax.swing.JTextField crit_temor_espac_confi;
+    private javax.swing.JTextField crit_temor_riesgo_electrico;
+    private javax.swing.JTextField edad;
+    private javax.swing.JTextField empresa;
+    private javax.swing.JTextField grado_estudio;
+    private javax.swing.JTextField imprimir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -910,46 +948,34 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JRadioButton rbApto;
-    private javax.swing.JRadioButton rbNoApto;
-    private javax.swing.JTextField txtAmenazasD;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtCargoDesempenar;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtEscala;
-    private javax.swing.JTextField txtFortalezasO;
-    private javax.swing.JTextField txtImprimir;
-    private javax.swing.JTextField txtIntensiad;
-    private javax.swing.JTextField txtNivelEstudios;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtNorden;
-    private javax.swing.JTextField txtOcupación;
-    private javax.swing.JTextField txtSomnolencia;
+    private javax.swing.JTextField n_orden;
+    private javax.swing.JTextField nombres;
+    private javax.swing.JTextArea observaciones;
+    private javax.swing.JRadioButton perf_cumple;
+    private javax.swing.JRadioButton perf_no_cumple;
+    private javax.swing.JTextArea recomendaciones;
     // End of variables declaration//GEN-END:variables
     public void limpiar() {
-        txtNorden.setText(null);
-        atxtRecomendaciones.setText("");
-        txtNombres.setText(null);
-        txtApellidos.setText(null);
-        
-        txtEdad.setText(null);
-        
-        txtOcupación.setText(null);
-        txtCargoDesempenar.setText(null);
-        txtNivelEstudios.setText(null);
-        
-        txtEscala.setText(null);
-        txtSomnolencia.setText(null);
-        txtIntensiad.setText(null);
-        txtFortalezasO.setText(null);
-        txtAmenazasD.setText(null);
-        atxtObservaciones.setText(null);
-        atxtRecomendaciones.setText(null);
-        FechaEntrevista.setDate(null);
-       
+        n_orden.setText(null);
+        recomendaciones.setText("");
+        nombres.setText(null);
+        apellidos.setText(null);      
+        edad.setText(null);        
+        empresa.setText(null);
+        cargo.setText(null);
+        grado_estudio.setText(null);        
+        crit_temor_riesgo_electrico.setText(null);
+        crit_temor_alturas_izaje.setText(null);
+        crit_temor_espac_confi.setText(null);
+        anali_foda_forta_oport.setText(null);
+        anali_foda_amenaz_debili.setText(null);
+        observaciones.setText(null);
+        recomendaciones.setText(null);
+        FechaEvaluacion.setDate(null);       
         bgAprobo.clearSelection();
-        txtNorden.setEnabled(true);
-        txtNorden.requestFocus();
+        n_orden.setEnabled(true);
+        imprimir.setText(null);
+        n_orden.requestFocus();
     }
 
 public int calcularEdad(Calendar fechaNac){
@@ -973,12 +999,12 @@ public int calcularEdad(Calendar fechaNac){
 }
 private boolean validar(){
 boolean bResultado=true;
-if (((JTextField)FechaEntrevista.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
+if (((JTextField)FechaEvaluacion.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
         {oFunc.SubSistemaMensajeError("Ingrese Fecha de Entrevista");bResultado = false;}
-    if(txtNorden.getText().isEmpty()){bResultado = false;}
-    if(txtEdad.getText().isEmpty()){bResultado = false;}
+    if(n_orden.getText().isEmpty()){bResultado = false;}
+    if(edad.getText().isEmpty()){bResultado = false;}
    
-    if(atxtObservaciones.getText().isEmpty()){bResultado = false;}
+    if(observaciones.getText().isEmpty()){bResultado = false;}
     
     if(!bgAprobo.getSelection().isSelected()){
         oFunc.SubSistemaMensajeError("Seleccione si aprobo o no aprobo");
@@ -991,7 +1017,7 @@ public boolean OrdenExiste()
     {
         boolean bResultado=false;
         String sQuery;
-        sQuery  = "Select n_orden from informe_psicologico_estres Where n_orden="+txtNorden.getText();
+        sQuery  = "Select n_orden from alto_riesgo Where n_orden="+n_orden.getText();
         oConn.FnBoolQueryExecute(sQuery);
         try {
             if (oConn.setResult.next())
@@ -1016,18 +1042,18 @@ public boolean OrdenExiste()
                 Map parameters = new HashMap(); 
 
                 // Coloco los valores en los parámetros
-                parameters.put("Norden",cod);             
+                parameters.put("n_orden",cod);             
                 
 
                 try 
                 {
                     String master = System.getProperty("user.dir") +
-                                "/reportes/InformePsicologicoAdecoEstres.jasper";
+                                "/reportes/INFORME_PARA_TRABAJOS_DE_ALTO_RIESGO.jasper";
             
             System.out.println("master" + master);
             if (master == null) 
             {                
-                System.out.println("No encuentro el archivo del reporte InformePsicologico.");
+                System.out.println("No encuentro el archivo del reporte InformeAltoRiesgo.");
                 //System.exit(2);
             } 
 
@@ -1087,10 +1113,10 @@ int seleccion = JOptionPane.showOptionDialog(
 
 private void printer(Integer cod) {
         Map parameters = new HashMap();
-        parameters.put("Norden", cod);
+        parameters.put("n_orden", cod);
         try {
             String master = System.getProperty("user.dir")
-                    + "/reportes/InformePsicologicoAdecoEstres.jasper";
+                    + "/reportes/INFORME_PARA_TRABAJOS_DE_ALTO_RIESGO.jasper";
 
             System.out.println("master" + master);
             if (master == null) {
