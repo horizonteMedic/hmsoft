@@ -6426,17 +6426,25 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 //        if (txtContrata.getText().toString().trim().isEmpty()) {
 //            bResultado = false;
 //        }
-        if (cboEmpresa.getSelectedIndex() <= -1) {
+        if (cboEmpresa.getSelectedItem().toString().length() <1) {
             bResultado = false;
+           // System.out.println(cboEmpresa.getSelectedIndex());
+            //System.out.println(cboEmpresa.getSelectedItem());
+
         }
-        if (cboContrata.getSelectedIndex() <= -1) {
+        if (cboContrata.getSelectedItem().toString().length() <1) {
             bResultado = false;
+           // System.out.println(cboContrata.getSelectedIndex());
+           // System.out.println(cboContrata.getSelectedItem());
+
         }
         if (cboExamenMedico.getSelectedIndex() <= -1) {
             bResultado = false;
+
         }
         if (cboFormaPago.getSelectedIndex() <= -1) {
             bResultado = false;
+
         }
         if (!jCheckBox12.isSelected()) {
             if (cboAltura.getSelectedIndex() <= -1) {
@@ -6446,6 +6454,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                 bResultado = false;
             }
             if (cboMineralExp.getSelectedIndex() <= -1) {
+
                 bResultado = false;
             }
             if (chkAltaFist.isSelected() || chkAltaPsicosen.isSelected()
@@ -6459,6 +6468,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             }
             if (cboAutorizacion.getSelectedIndex() <= -1) {
                 bResultado = false;
+
             }
             if (cboFormaPago.getSelectedItem() != "CREDITO") {
                 if ("S/.0.00".equals(txtPrecio.getText()) || "0".equals(txtPrecio.getText()) || "".equals(txtPrecio.getText())) {
@@ -6471,6 +6481,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         if (((JTextField) txtFechaAlta.getDateEditor().getUiComponent()).getText().trim().length() < 2) {
             oFunc.SubSistemaMensajeError("Ingrese Fecha");
             bResultado = false;
+
         }
         return bResultado;
     }
