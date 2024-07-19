@@ -800,11 +800,14 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                     cargo.setText(oConn.setResult.getString("cargo_de"));
                     empresa.setText(oConn.setResult.getString("razon_empresa"));
                     edad.setText(oConn.setResult.getString("edad"));
+                    FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                     //n_orden.setEnabled(false);
                     perf_cumple.setSelected(true);
                     
+                    btnAgregar.setEnabled(true);
                     
-                    FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
+                    
+                    
                 }else{
                     oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
                 }
@@ -919,15 +922,16 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
         edad.setText(null);        
         empresa.setText(null);
         cargo.setText(null);
-        grado_estudio.setText(null);        
-        criterio_Nivel_alert_riesgo.setText(null);
+        grado_estudio.setText(null); 
+        FechaEvaluacion.setDate(null);
+        
+        /*criterio_Nivel_alert_riesgo.setText(null);
         criterio_Nivel_psicomotrocidad.setText(null);        
         analisis_foda_forta_oport.setText(null);
         analisis_foda_amenaz_debili.setText(null);
         observaciones.setText(null);
-        recomendaciones.setText(null);
-        FechaEvaluacion.setDate(null);
-        bgAprobo.clearSelection();
+        recomendaciones.setText(null);        
+        bgAprobo.clearSelection();*/
         imprimir.setText(null);        
         n_orden.setEnabled(true);
         n_orden.requestFocus();

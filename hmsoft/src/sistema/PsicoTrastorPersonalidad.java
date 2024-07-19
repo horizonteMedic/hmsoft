@@ -1051,9 +1051,9 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
         empresa.setText("");
         grado_estudios.setText("");
         fechaevaluacion.setDate(null);
-        analisis_resulta.setText("");
+        // analisis_resulta.setText("");
 //GRUPO A         
-        grup_a_paranoide_bajo.setSelected(false);
+       /* grup_a_paranoide_bajo.setSelected(false);
         grup_a_paranoide_medio.setSelected(false); 
         grup_a_paranoide_alto.setSelected(false);
         grup_a_esquizoide_bajo.setSelected(false);
@@ -1092,7 +1092,7 @@ public final class PsicoTrastorPersonalidad extends javax.swing.JInternalFrame {
         recomendacion.setText("");  
         perf_cumple.setSelected(false);  
         perf_no_cumple.setSelected(false); 
-        interpretacion_parainoide.setText(""); 
+        interpretacion_parainoide.setText(""); */
         imprimir.setText("");
     }
     

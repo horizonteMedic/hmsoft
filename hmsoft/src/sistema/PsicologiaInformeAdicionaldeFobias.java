@@ -798,7 +798,7 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
                     n_orden.setEnabled(false);
                     Conclusion_apto.setSelected(true);
                     criterio_inteligencia.requestFocus();
-                    
+                    btnAgregar.setEnabled(true);
                     FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
                     FechaEvaluacion.setEnabled(false);
                 }else{
@@ -904,25 +904,27 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
     // End of variables declaration//GEN-END:variables
     public void limpiar() {
         n_orden.setText(null);
-        recomendaciones.setText("");
+       // recomendaciones.setText("");
         nombres.setText(null);
         apellidos.setText(null);
         edad.setText(null);
         empresa.setText(null);
         cargo.setText(null);
         grado_estudio.setText(null);
-        criterio_inteligencia.setText(null);
+        FechaEvaluacion.setDate(null);
+       /* criterio_inteligencia.setText(null);
         criterio_fobias.setText(null);
         analisis_foda_forta_oport.setText(null);
         analisis_foda_amenaz_debili.setText(null);
         observaciones.setText(null);
-        recomendaciones.setText(null);
-        FechaEvaluacion.setDate(null);
-        bgAprobo.clearSelection();
+        recomendaciones.setText(null);        
+        bgAprobo.clearSelection();*/
         n_orden.setEnabled(true);
         n_orden.requestFocus();
         btnAgregar.setEnabled(true);
         imprimir.setText(null);
+        n_orden.setEditable(true);
+        n_orden.requestFocus();
     }
 
 public int calcularEdad(Calendar fechaNac){

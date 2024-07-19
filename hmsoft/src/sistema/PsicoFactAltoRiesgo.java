@@ -831,15 +831,16 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
                     cargo.setText(oConn.setResult.getString("cargo_de"));
                     empresa.setText(oConn.setResult.getString("razon_empresa"));
                     edad.setText(oConn.setResult.getString("edad"));
-                    n_orden.setEnabled(false);
+                    n_orden.setEnabled(true);
                     perf_cumple.setSelected(true);
                     FechaEvaluacion.setEnabled(false);
                     nombres.setEnabled(false);
+                    apellidos.setEnabled(false);
                     edad.setEnabled(false);                    
                     grado_estudio.setEnabled(false);
                     empresa.setEnabled(false);
                     cargo.setEnabled(false);
-                    
+                    btnAgregar.setEnabled(true);
                     
                     
                     FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
@@ -956,15 +957,14 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea recomendaciones;
     // End of variables declaration//GEN-END:variables
     public void limpiar() {
-        n_orden.setText(null);
-        recomendaciones.setText("");
+        n_orden.setText(null);        
         nombres.setText(null);
         apellidos.setText(null);      
         edad.setText(null);        
         empresa.setText(null);
         cargo.setText(null);
         grado_estudio.setText(null);        
-        crit_temor_riesgo_electrico.setText(null);
+        /*crit_temor_riesgo_electrico.setText(null);
         crit_temor_alturas_izaje.setText(null);
         crit_temor_espac_confi.setText(null);
         anali_foda_forta_oport.setText(null);
@@ -972,7 +972,7 @@ public final class PsicoFactAltoRiesgo extends javax.swing.JInternalFrame {
         observaciones.setText(null);
         recomendaciones.setText(null);
         FechaEvaluacion.setDate(null);       
-        bgAprobo.clearSelection();
+        bgAprobo.clearSelection();*/
         n_orden.setEnabled(true);
         imprimir.setText(null);
         n_orden.requestFocus();

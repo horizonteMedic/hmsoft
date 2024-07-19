@@ -828,14 +828,17 @@ public final class PsicoCuestionarioBerlin extends javax.swing.JInternalFrame {
                     cargo.setText(oConn.setResult.getString("cargo_de"));
                     empresa.setText(oConn.setResult.getString("razon_empresa"));
                     edad.setText(oConn.setResult.getString("edad"));
-                    n_orden.setEnabled(false);
-                    perf_cumple.setSelected(true);
+                    //no editables
+                    n_orden.setEnabled(false);                    
                     FechaEvaluacion.setEnabled(false);
                     nombres.setEnabled(false);
+                    apellidos.setEnabled(false); 
                     edad.setEnabled(false);                    
                     grado_estudio.setEnabled(false);
                     empresa.setEnabled(false);
                     cargo.setEnabled(false);
+                    //habilitar guardar cuando finalizaco un registro  y desea agregar otro 
+                    btnAgregar.setEnabled(true);
                     
                     
                     
@@ -955,16 +958,18 @@ public final class PsicoCuestionarioBerlin extends javax.swing.JInternalFrame {
         edad.setText(null);        
         empresa.setText(null);
         cargo.setText(null);
-        grado_estudio.setText(null);        
-        criterio_Apnea_obstructiva_sueño.setText(null);
+        grado_estudio.setText(null);
+        FechaEvaluacion.setDate(null);
+        
+        /*criterio_Apnea_obstructiva_sueño.setText(null);
         criterio_Fatiga_somnolencia.setText(null);
         criterio_Hipertension_arterial.setText(null);
         analisis_foda_forta_oport.setText(null);
         analisis_foda_amenaz_debili.setText(null);
         observaciones.setText(null);
         recomendaciones.setText(null);
-        FechaEvaluacion.setDate(null);        
-        bgAprobo.clearSelection();
+        bgAprobo.clearSelection();*/
+        imprimir.setText(null);
         n_orden.setEnabled(true);
         n_orden.requestFocus();
     }

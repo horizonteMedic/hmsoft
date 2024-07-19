@@ -2517,7 +2517,7 @@ private void printer1(Integer cod){
         txtcargo.setText(null);
         txtgradodeinstruccion.setText(null);
         FechaEvaluacion.setDate(null);
-        criterio_1.setText(null);
+       /* criterio_1.setText(null);
         criterio_2_1.setSelected(false);
         criterio_2_2.setSelected(false);
         criterio_2_3.setSelected(false);
@@ -2587,7 +2587,7 @@ private void printer1(Integer cod){
         criterio_11_1.setSelected (false);
         criterio_11_2.setSelected (false);
         criterio_11_3.setSelected (false);
-        criterio_11_4.setSelected (false);
+        criterio_11_4.setSelected (false); */
         txtImp.setText(null);   
         //Regresamos el Foco a N orden
         
@@ -2731,7 +2731,9 @@ private void printer1(Integer cod){
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query)){
                  oFunc.SubSistemaMensajeInformacion("Se ha actualizado con Éxito");
                   imp();
-                limpiar(); 
+                limpiar();
+                txtNorden.setEnabled(true);
+                txtNorden.requestFocus();
                                  
         }else{
              oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");

@@ -1156,7 +1156,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         grado_estudio.setText(null);       
         FechaEvaluacion.setDate(null);  
        // n_orden.setEnabled(true);
-        
+        /*
         asp_Intel_Pract_Func_bajo.setSelected(false); 
         asp_Intel_Pract_Func_medio.setSelected(false);        
         asp_Intel_Pract_Func_alto.setSelected(false);        
@@ -1202,7 +1202,7 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
         analisis_resultados.setText(""); 
         recomendaciones.setText(""); 
         conclusiones_cumple.setSelected(false); 
-        conclusiones_no_cumple.setSelected(false);
+        conclusiones_no_cumple.setSelected(false);*/
         imprimir.setText("");
         n_orden.requestFocus();
         

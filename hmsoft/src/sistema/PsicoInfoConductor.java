@@ -845,6 +845,7 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
                     grado_estudio.setEnabled(false);
                     empresa.setEnabled(false);
                     cargo.setEnabled(false);
+                    btnAgregar.setEnabled(true);
                     
                     
                     FechaEvaluacion.setDate(oConn.setResult.getDate("fecha_apertura_po"));
@@ -958,24 +959,25 @@ public final class PsicoInfoConductor extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea recomendacion;
     // End of variables declaration//GEN-END:variables
     public void limpiar() {
-        n_orden.setText(null);
-        recomendacion.setText("");
+        n_orden.setText(null);        
         nombres.setText(null);
         apellidos.setText(null);        
         edad.setText(null);        
         empresa.setText(null);
         cargo.setText(null);
         grado_estudio.setText(null);        
-        crit_atencion.setText(null);
+       /*crit_atencion.setText(null);
         crit_concetracion.setText(null);
         crit_segurid_control_conduc.setText(null);
         anali_foda_forta_oport.setText(null);
         anali_foda_amenaz_debili.setText(null);
         observacion.setText(null);
         recomendacion.setText(null);
+        */
         FechaEvaluacion.setDate(null);
         imprimir.setText(null);
         bgAprobo.clearSelection();
+        btnAgregar.setEnabled(true);
         n_orden.setEnabled(true);
         n_orden.requestFocus();
     }
