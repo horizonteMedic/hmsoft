@@ -394,7 +394,6 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         jLabel6.setText("Cod. Cliente:");
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Antecdentes Patológicos");
         setPreferredSize(new java.awt.Dimension(1060, 630));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
@@ -636,282 +635,282 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         jLabel73.setText("Reumatismo a repetición");
         jLabel73.setPreferredSize(new java.awt.Dimension(38, 11));
 
-        chk1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk1.setPreferredSize(new java.awt.Dimension(21, 14));
         chk1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk2.setPreferredSize(new java.awt.Dimension(21, 14));
         chk2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk4.setPreferredSize(new java.awt.Dimension(21, 14));
         chk4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk3.setPreferredSize(new java.awt.Dimension(21, 14));
         chk3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk8.setPreferredSize(new java.awt.Dimension(21, 14));
         chk8.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk7.setPreferredSize(new java.awt.Dimension(21, 14));
         chk7.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk6.setPreferredSize(new java.awt.Dimension(21, 14));
         chk6.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk5.setPreferredSize(new java.awt.Dimension(21, 14));
         chk5.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk12.setPreferredSize(new java.awt.Dimension(21, 14));
         chk12.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk11.setPreferredSize(new java.awt.Dimension(21, 14));
         chk11.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk10.setPreferredSize(new java.awt.Dimension(21, 14));
         chk10.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk9.setPreferredSize(new java.awt.Dimension(21, 14));
         chk9.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk16.setPreferredSize(new java.awt.Dimension(21, 14));
         chk16.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk15.setPreferredSize(new java.awt.Dimension(21, 14));
         chk15.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk14.setPreferredSize(new java.awt.Dimension(21, 14));
         chk14.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk13.setPreferredSize(new java.awt.Dimension(21, 14));
         chk13.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk20.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk20.setPreferredSize(new java.awt.Dimension(21, 14));
         chk20.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk19.setPreferredSize(new java.awt.Dimension(21, 14));
         chk19.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk18.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk18.setPreferredSize(new java.awt.Dimension(21, 14));
         chk18.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk17.setPreferredSize(new java.awt.Dimension(21, 14));
         chk17.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk24.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk24.setPreferredSize(new java.awt.Dimension(21, 14));
         chk24.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk24.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk22.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk22.setPreferredSize(new java.awt.Dimension(21, 14));
         chk22.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk22.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk21.setPreferredSize(new java.awt.Dimension(21, 14));
         chk21.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk21.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk36.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk36.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk36.setPreferredSize(new java.awt.Dimension(21, 14));
         chk36.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk36.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk31.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk31.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk31.setPreferredSize(new java.awt.Dimension(21, 14));
         chk31.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk31.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk32.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk32.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk32.setPreferredSize(new java.awt.Dimension(21, 14));
         chk32.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk32.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk29.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk29.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk29.setPreferredSize(new java.awt.Dimension(21, 14));
         chk29.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk29.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk30.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk30.setPreferredSize(new java.awt.Dimension(21, 14));
         chk30.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk30.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk28.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk28.setPreferredSize(new java.awt.Dimension(21, 14));
         chk28.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk28.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk27.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk27.setPreferredSize(new java.awt.Dimension(21, 14));
         chk27.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk27.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk26.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk26.setPreferredSize(new java.awt.Dimension(21, 14));
         chk26.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk26.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk25.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk25.setPreferredSize(new java.awt.Dimension(21, 14));
         chk25.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk25.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk23.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk23.setPreferredSize(new java.awt.Dimension(21, 14));
         chk23.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk23.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk37.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk37.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk37.setPreferredSize(new java.awt.Dimension(21, 14));
         chk37.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk37.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk35.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk35.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk35.setPreferredSize(new java.awt.Dimension(21, 14));
         chk35.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk35.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk34.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk34.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk34.setPreferredSize(new java.awt.Dimension(21, 14));
         chk34.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk34.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk39.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk39.setPreferredSize(new java.awt.Dimension(21, 14));
         chk39.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk39.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk38.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk38.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk38.setPreferredSize(new java.awt.Dimension(21, 14));
         chk38.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk38.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk33.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk33.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk33.setPreferredSize(new java.awt.Dimension(21, 14));
         chk33.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk33.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk40.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk40.setPreferredSize(new java.awt.Dimension(21, 14));
         chk40.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk40.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk44.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk44.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk44.setPreferredSize(new java.awt.Dimension(21, 14));
         chk44.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk44.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk42.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk42.setPreferredSize(new java.awt.Dimension(21, 14));
         chk42.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk42.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk41.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk41.setPreferredSize(new java.awt.Dimension(21, 14));
         chk41.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk41.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk56.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk56.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk56.setPreferredSize(new java.awt.Dimension(21, 14));
         chk56.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk56.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk51.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk51.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk51.setPreferredSize(new java.awt.Dimension(21, 14));
         chk51.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk51.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk52.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk52.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk52.setPreferredSize(new java.awt.Dimension(21, 14));
         chk52.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk52.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk49.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk49.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk49.setPreferredSize(new java.awt.Dimension(21, 14));
         chk49.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk49.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk50.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk50.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk50.setPreferredSize(new java.awt.Dimension(21, 14));
         chk50.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk50.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk48.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk48.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk48.setPreferredSize(new java.awt.Dimension(21, 14));
         chk48.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk48.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk47.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk47.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk47.setPreferredSize(new java.awt.Dimension(21, 14));
         chk47.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk47.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk46.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk46.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk46.setPreferredSize(new java.awt.Dimension(21, 14));
         chk46.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk46.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk45.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk45.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk45.setPreferredSize(new java.awt.Dimension(21, 14));
         chk45.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk45.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk43.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk43.setPreferredSize(new java.awt.Dimension(21, 14));
         chk43.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk43.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk57.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk57.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk57.setPreferredSize(new java.awt.Dimension(21, 14));
         chk57.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk57.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk55.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk55.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk55.setPreferredSize(new java.awt.Dimension(21, 14));
         chk55.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk55.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk54.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk54.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk54.setPreferredSize(new java.awt.Dimension(21, 14));
         chk54.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk54.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk59.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk59.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk59.setPreferredSize(new java.awt.Dimension(21, 14));
         chk59.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk59.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk58.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk58.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk58.setPreferredSize(new java.awt.Dimension(21, 14));
         chk58.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk58.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk53.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk53.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk53.setPreferredSize(new java.awt.Dimension(21, 14));
         chk53.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk53.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk60.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk60.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk60.setPreferredSize(new java.awt.Dimension(21, 14));
         chk60.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk60.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
@@ -925,7 +924,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         jLabel142.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel142.setText("COVID 19");
 
-        chkCovid.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chkCovid.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chkCovid.setPreferredSize(new java.awt.Dimension(21, 14));
         chkCovid.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
@@ -937,21 +936,21 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         buttonGroup1.add(chkCovidL);
         chkCovidL.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         chkCovidL.setText("LEVE");
-        chkCovidL.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chkCovidL.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chkCovidL.setPreferredSize(new java.awt.Dimension(21, 14));
         chkCovidL.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
         buttonGroup1.add(chkCovidM);
         chkCovidM.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         chkCovidM.setText("MODERADO");
-        chkCovidM.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chkCovidM.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chkCovidM.setPreferredSize(new java.awt.Dimension(21, 14));
         chkCovidM.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
         buttonGroup1.add(chkCovidS);
         chkCovidS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         chkCovidS.setText("SEVERO");
-        chkCovidS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chkCovidS.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chkCovidS.setPreferredSize(new java.awt.Dimension(21, 14));
         chkCovidS.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
@@ -1357,109 +1356,109 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Indicar las enfermedades que ah tenido o tiene, con cierta frecuencia"));
 
-        chk64.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk64.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk64.setPreferredSize(new java.awt.Dimension(21, 14));
         chk64.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk64.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk62.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk62.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk62.setPreferredSize(new java.awt.Dimension(21, 14));
         chk62.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk62.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk61.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk61.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk61.setPreferredSize(new java.awt.Dimension(21, 14));
         chk61.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk61.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
         jLabel13.setText("Perdida de memoria");
 
-        chk82.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk82.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk82.setPreferredSize(new java.awt.Dimension(21, 14));
         chk82.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk82.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk81.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk81.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk81.setPreferredSize(new java.awt.Dimension(21, 14));
         chk81.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk81.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk84.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk84.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk84.setPreferredSize(new java.awt.Dimension(21, 14));
         chk84.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk84.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk89.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk89.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk89.setPreferredSize(new java.awt.Dimension(21, 14));
         chk89.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk89.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk90.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk90.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk90.setPreferredSize(new java.awt.Dimension(21, 14));
         chk90.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk90.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk69.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk69.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk69.setPreferredSize(new java.awt.Dimension(21, 14));
         chk69.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk69.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk88.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk88.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk88.setPreferredSize(new java.awt.Dimension(21, 14));
         chk88.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk88.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk70.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk70.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk70.setPreferredSize(new java.awt.Dimension(21, 14));
         chk70.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk70.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk68.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk68.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk68.setPreferredSize(new java.awt.Dimension(21, 14));
         chk68.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk68.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk67.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk67.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk67.setPreferredSize(new java.awt.Dimension(21, 14));
         chk67.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk67.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk66.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk66.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk66.setPreferredSize(new java.awt.Dimension(21, 14));
         chk66.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk66.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk65.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk65.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk65.setPreferredSize(new java.awt.Dimension(21, 14));
         chk65.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk65.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk63.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk63.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk63.setPreferredSize(new java.awt.Dimension(21, 14));
         chk63.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk63.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk86.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk86.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk86.setPreferredSize(new java.awt.Dimension(21, 14));
         chk86.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk86.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk85.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk85.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk85.setPreferredSize(new java.awt.Dimension(21, 14));
         chk85.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk85.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk87.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk87.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk87.setPreferredSize(new java.awt.Dimension(21, 14));
         chk87.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk87.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk83.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk83.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk83.setPreferredSize(new java.awt.Dimension(21, 14));
         chk83.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk83.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk74.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk74.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk74.setPreferredSize(new java.awt.Dimension(21, 14));
         chk74.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk74.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
@@ -1489,37 +1488,37 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
         jLabel80.setText("Secreciones por el oído");
         jLabel80.setPreferredSize(new java.awt.Dimension(38, 11));
 
-        chk77.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk77.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk77.setPreferredSize(new java.awt.Dimension(21, 14));
         chk77.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk77.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk78.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk78.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk78.setPreferredSize(new java.awt.Dimension(21, 14));
         chk78.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk78.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk76.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk76.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk76.setPreferredSize(new java.awt.Dimension(21, 14));
         chk76.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk76.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk72.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk72.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk72.setPreferredSize(new java.awt.Dimension(21, 14));
         chk72.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk72.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk71.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk71.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk71.setPreferredSize(new java.awt.Dimension(21, 14));
         chk71.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk71.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk79.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk79.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk79.setPreferredSize(new java.awt.Dimension(21, 14));
         chk79.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk79.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk80.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk80.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk80.setPreferredSize(new java.awt.Dimension(21, 14));
         chk80.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk80.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
@@ -1531,12 +1530,12 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
 
         jLabel83.setText("Mareos- Desmayos- Vertigos");
 
-        chk73.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk73.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk73.setPreferredSize(new java.awt.Dimension(21, 14));
         chk73.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk73.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
 
-        chk75.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chk75.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chk75.setPreferredSize(new java.awt.Dimension(21, 14));
         chk75.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
         chk75.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/x.png"))); // NOI18N
@@ -2722,7 +2721,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel136)
                                     .addComponent(jLabel135))
                                 .addGap(48, 48, 48)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)))
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtVisionBinocular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel130))
@@ -3253,7 +3252,7 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        cerrarVentana();    // TODO add your handling code here:
+      //  cerrarVentana();    // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
   private void muestraVisual(){
         String sql = "SELECT n.n_orden, CASE WHEN oft.txtcercasincorregirod is not null THEN oft.txtcercasincorregirod else o.v_cerca_s_od end as v_cerca_s_od,\n" +

@@ -867,7 +867,6 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                             .addComponent(txtTiempoResidencia, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(chkSctr)
                                 .addGap(61, 61, 61)
                                 .addComponent(chkOtros1))
@@ -970,6 +969,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
 
         txtPuestoActual.setBackground(new java.awt.Color(153, 204, 255));
         txtPuestoActual.setText("N/A");
+        txtPuestoActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuestoActualActionPerformed(evt);
+            }
+        });
 
         jLabel23.setText("Tiempo :");
 
@@ -1107,7 +1111,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
 
         jLabel140.setText("=");
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Absentismo: Enfermedades y accidentes  (Asociados con  el trabajo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Absentismo: Enfermedades y accidentes  (Asociados con  el trabajo)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 255))); // NOI18N
 
         jLabel204.setText("Enfermedad, Accidente ");
 
@@ -1209,7 +1213,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medicamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medicamentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 255))); // NOI18N
 
         jLabel24.setText("Tipo :");
 
@@ -1748,7 +1752,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                     .addComponent(jLabel55, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMalEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                    .addComponent(txtMalEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                     .addComponent(txtFaltan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2323,6 +2327,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                 txtEctoscopiaFocusGained(evt);
             }
         });
+        txtEctoscopia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEctoscopiaActionPerformed(evt);
+            }
+        });
 
         jLabel86.setText("Ectoscopía :");
 
@@ -2746,6 +2755,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         txtAparatoDigestivo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtAparatoDigestivoFocusGained(evt);
+            }
+        });
+        txtAparatoDigestivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAparatoDigestivoActionPerformed(evt);
             }
         });
 
@@ -3353,7 +3367,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                                         .addComponent(txtAntPatologicos, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblFichaAPatologicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 184, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel155)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -4038,7 +4052,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel123)
                         .addGap(3, 3, 3)
-                        .addComponent(btnObsv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnObsv, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -4650,6 +4664,18 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         cerrarVentana();
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void txtPuestoActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPuestoActualActionPerformed
+
+    private void txtEctoscopiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEctoscopiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEctoscopiaActionPerformed
+
+    private void txtAparatoDigestivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAparatoDigestivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAparatoDigestivoActionPerformed
     private void Busca() {
         if (!txtEOrden.getText().isEmpty()) {
            String sql="Select * from anexo7c WHERE n.n_orden ='" + txtEOrden.getText().toUpperCase() + "'"; if (OrdenExiste()) {
@@ -5098,7 +5124,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                             + " WHEN l.rbrhnegativo = 'TRUE' THEN '-' END AS Grupofactor ,"
                          + "m.o_d_500,m.o_d_1000,m.o_d_2000,m.o_d_3000,m.o_d_4000,m.o_d_6000,m.o_d_8000,"
                          + "m.o_i_500,m.o_i_1000,m.o_i_2000,m.o_i_3000,m.o_i_4000,m.o_i_6000,m.o_i_8000,m.diagnostico ,funcion_abs.fvc,funcion_abs.fev1,"
-                         + "funcion_abs.fev1fvc,funcion_abs.fef25_75,funcion_abs.interpretacion "
+                         + "funcion_abs.fev1fvc,funcion_abs.fef25_75,funcion_abs.interpretacion,ra.info_general,ra.conclu "
                         + "FROM datos_paciente AS d INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa) "
                         + "INNER JOIN antecedentes_patologicos AS a ON(n.n_orden = a.n_orden) "
                         + "INNER JOIN triaje ON(n.n_orden = triaje.n_orden) "
@@ -5108,16 +5134,24 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                         + "INNER JOIN lab_clinico AS l ON(n.n_orden = l.n_orden)"
 //                      + "INNER JOIN ex_radiograficos_sanguineos AS e ON(n.n_orden = e.n_orden)"
                         + "INNER JOIN odontograma ON(n.n_orden = odontograma.n_orden)"
-                        + "INNER JOIN audiometria_po AS m ON(n.n_orden =m.n_orden)WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
-                
+                        + "INNER JOIN audiometria_po AS m ON(n.n_orden =m.n_orden)"
+                         +"LEFT JOIN radiografia AS ra on ra.n_orden = n.n_orden "
+                         + "WHERE n.n_orden ='" + txtNorden.getText().toString() + "'";
+                System.out.println(Consulta);
                 oConn.FnBoolQueryExecute(Consulta);
                 String sexo;
                 try {
                     if (oConn.setResult.next()) {
+                        if (oConn.setResult.getString("info_general") != null){
+                                txtObservacionesFichaMedica.append( "-INFORME RADIOGRAFICO : " +oConn.setResult.getString("info_general").concat("\n"));
+                            }
+                        if (oConn.setResult.getString("conclu") != null){
+                                txtObservacionesFichaMedica.append( "-CONCLUCIONES : " +oConn.setResult.getString("conclu").concat("\n"));
+                            }
                         if (oConn.setResult.getString("txtobservaciones") != null && !"NINGUNA".equals(oConn.setResult.getString("txtobservaciones")) ) {
-                            txtObservacionesFichaMedica.append("-ODONTOGRAMA : " + oConn.setResult.getString("txtobservaciones").concat("\n"));
-                            
+                            txtObservacionesFichaMedica.append("-ODONTOGRAMA : " + oConn.setResult.getString("txtobservaciones").concat("\n"));                            
                         }
+                        
                         //------radio
                         if(oConn.setResult.getString("txtvertices") != null && !"NO SE TOMÓ RX DE TORAX".equals(oConn.setResult.getString("txtvertices"))){
                            if (oConn.setResult.getString("txtvertices") != null && !"LIBRES".equals(oConn.setResult.getString("txtvertices"))) {

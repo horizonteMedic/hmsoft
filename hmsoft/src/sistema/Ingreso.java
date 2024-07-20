@@ -83,6 +83,9 @@ public final class Ingreso extends javax.swing.JFrame {
         }
         AutoCompleteDecorator.decorate(this.cboUsuarios);
     }
+       
+       
+       
     @Override
     public Image getIconImage() {
     Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -170,6 +173,11 @@ public final class Ingreso extends javax.swing.JFrame {
 
         txtFechaLogin.setEditable(false);
         txtFechaLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFechaLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaLoginActionPerformed(evt);
+            }
+        });
         txtFechaLogin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtFechaLoginKeyPressed(evt);
@@ -239,6 +247,11 @@ public final class Ingreso extends javax.swing.JFrame {
         btIngreso.add(chkAdmision);
         chkAdmision.setText("Admisión");
         chkAdmision.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        chkAdmision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAdmisionActionPerformed(evt);
+            }
+        });
         getContentPane().add(chkAdmision, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 57, -1, -1));
 
         btIngreso.add(chkFarmacia);
@@ -363,6 +376,14 @@ enter(evt);
     private void chkFarmaciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFarmaciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkFarmaciaActionPerformed
+
+    private void chkAdmisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAdmisionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkAdmisionActionPerformed
+
+    private void txtFechaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaLoginActionPerformed
     public static void main(String args[]) {
              new Ingreso().setVisible(true);
     }
@@ -467,7 +488,7 @@ int key = evt.getKeyCode();
                                     || "MPAZ".equals(user) || "MMARIÑOS".equals(user) || "JCARDENAS".equals(user)
                                     || "HCERNA".equals(user) || "JCERQUIN".equals(user) || "JCORDOVAP".equals(user)
                                     || "JCORDOVA".equals(user) || "KGUEVARA".equals(user) || "lobo".equals(user) || "MGAMBOA".equals(user)
-                                    || "KCANTARO".equals(user)|| "JBRINGAS".equals(user)||"PQUISPE".equals(user)) {
+                                    || "KCANTARO".equals(user)|| "JBRINGAS".equals(user)||"PQUISPE".equals(user)||"developer".equals(user)) {
                                 Ocupacional1 s = new Ocupacional1();
                                 s.setVisible(true);
 

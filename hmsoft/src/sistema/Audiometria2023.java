@@ -2442,7 +2442,7 @@ public final class Audiometria2023 extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
-             
+         
         if(!txtNumero.getText().isEmpty()){
             if(!OrdenExiste()){
             String Sql="SELECT datos_paciente.cod_pa, "
@@ -2473,6 +2473,11 @@ public final class Audiometria2023 extends javax.swing.JInternalFrame {
                         Fecha();
                         muestraAudiometria();
                         txtSAOtrossintomas.requestFocus();
+                        //agregar por defecto No para SINTOMAS ACTUALES
+                        
+                        
+                        
+                        
                      
                        }else{
                         oFunc.SubSistemaMensajeError("No se encuentra Registro: \n 1- Intente de nuevo \n 2- Si el error sigue Registre Usuario o \n    Aperture EX-Preocupacional de new");
@@ -2495,6 +2500,31 @@ public final class Audiometria2023 extends javax.swing.JInternalFrame {
         txtTXileno.setText("0");
         txtTPlaguic.setText("0");
         txtTOrganofos.setText("0");
+        //parte 1                     
+                        rbSASordera_no.setSelected(true);
+                        rbSAAcufenos_no.setSelected(true);
+                        rbSAVertigo_no.setSelected(true);
+                        rbSAOtalgia_no.setSelected(true);
+                        rbSASecrecion_no.setSelected(true);
+                        //parte 2
+                        rbAMRenitis_no.setSelected(true);
+                        rbAMSinusitis_no.setSelected(true);
+                        rbAMOtotoxicos_no.setSelected(true);
+                        rbAMMeningitis_no.setSelected(true);
+                        rbAMOtitis_no.setSelected(true);
+                        rbAMTec_no.setSelected(true);
+                        rbAMSordera_no.setSelected(true);
+                        rbAMParotiditis_no.setSelected(true);
+                        rbAMSarampion_no.setSelected(true);
+                        rbAMTbc_no.setSelected(true);
+                        //parte 3
+                        rbEOExposicion_si.setSelected(true);
+                        rbEOProtectores_si.setSelected(true);
+                        rbEOSustancias_si.setSelected(true);
+                        //parte 4
+                        rbAEPratica_no.setSelected(true);
+                        rbAEUso_no.setSelected(true);
+                        rbAEOtros_no.setSelected(true);
     }
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         txtNumero.requestFocusInWindow();

@@ -15,11 +15,11 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-public class CuestionarioAudiometría extends javax.swing.JInternalFrame {
+public class CuestionarioAudiometria extends javax.swing.JInternalFrame {
 
          clsConnection oConn = new clsConnection();
          clsFunciones  oFunc = new clsFunciones();
-    public CuestionarioAudiometría() {
+    public CuestionarioAudiometria() {
         initComponents();
         txtNorden.requestFocus();
     }

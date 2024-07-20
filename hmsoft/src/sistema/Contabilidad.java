@@ -5,6 +5,8 @@
  */
 package sistema;
 
+import Caja.RegistrarCliente;
+import Caja.Reporteador;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import java.awt.Button;
@@ -38,6 +40,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -59,9 +62,84 @@ public class Contabilidad extends javax.swing.JInternalFrame {
         initComponents();
        sbCargarOcupacional("");
        sbCargarContabilidad("");
+       cargarContratas();
+       cargarEmpresas();
+         AutoCompleteDecorator.decorate(this.contrata);
+         AutoCompleteDecorator.decorate(this.empresa);
 //         cPersonalizada("");
     }
-
+private void cargarContratas(){
+            try {
+                String sQuery;
+                // Prepara el Query
+                sQuery ="SELECT UPPER(razon_contrata) AS razon_contrata FROM contratas;";
+                
+                if (oConn1.FnBoolQueryExecute(sQuery))
+                {
+                    try
+                    {
+                        // Verifica resultados
+                        while (oConn1.setResult.next())
+                        {
+                            // Obtiene los datos de la Consulta
+                            contrata.addItem(oConn1.setResult.getString ("razon_contrata"));
+                            
+                        }
+                        
+                        // Cierra Resultados
+                        oConn1.setResult.close();
+                    }
+                    catch (SQLException ex)
+                    {
+                        //JOptionPane.showMessageDialorootPane,ex);
+                        oFunc.SubSistemaMensajeInformacion(ex.toString());
+                        Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                // selecciona
+                contrata.setSelectedIndex(0);
+                oConn1.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
+  private void cargarEmpresas(){
+            try {
+                String sQuery;
+                // Prepara el Query
+                sQuery ="SELECT UPPER(razon_empresa) AS razon_empresa FROM empresas";
+                
+                if (oConn1.FnBoolQueryExecute(sQuery))
+                {
+                    try
+                    {
+                        // Verifica resultados
+                        while (oConn1.setResult.next())
+                        {
+                            // Obtiene los datos de la Consulta
+                            empresa.addItem(oConn1.setResult.getString ("razon_empresa"));
+                            
+                        }
+                        
+                        // Cierra Resultados
+                        oConn1.setResult.close();
+                    }
+                    catch (SQLException ex)
+                    {
+                        //JOptionPane.showMessageDialorootPane,ex);
+                        oFunc.SubSistemaMensajeInformacion(ex.toString());
+                        Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                // selecciona
+                empresa.setSelectedIndex(0);
+                oConn1.sqlStmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,6 +210,10 @@ public class Contabilidad extends javax.swing.JInternalFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tbReporte1 = new javax.swing.JTable();
         jCheckBox12 = new javax.swing.JCheckBox();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        contrata = new javax.swing.JComboBox();
+        empresa = new javax.swing.JComboBox();
 
         setClosable(true);
 
@@ -392,7 +474,7 @@ public class Contabilidad extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -447,7 +529,7 @@ public class Contabilidad extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -497,7 +579,7 @@ public class Contabilidad extends javax.swing.JInternalFrame {
                                 .addComponent(btnExportarExel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("CARGA MASIVA");
@@ -662,36 +744,124 @@ public class Contabilidad extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel13.setText("Empresa :");
+
+        jLabel14.setText("Contrata :");
+
+        contrata.setEditable(true);
+        contrata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
+        contrata.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                contrataPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        contrata.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                contrataMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                contrataMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                contrataMousePressed(evt);
+            }
+        });
+        contrata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contrataActionPerformed(evt);
+            }
+        });
+        contrata.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                contrataKeyPressed(evt);
+            }
+        });
+
+        empresa.setEditable(true);
+        empresa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
+        empresa.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                empresaPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        empresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                empresaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                empresaMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                empresaMousePressed(evt);
+            }
+        });
+        empresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empresaActionPerformed(evt);
+            }
+        });
+        empresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                empresaKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jTabbedPane3)
+                .addContainerGap())
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(277, 277, 277)
+                        .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(btnExportarExel1))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(277, 277, 277)
-                                .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 400, Short.MAX_VALUE))
-                    .addComponent(jTabbedPane3))
-                .addContainerGap())
+                        .addComponent(btnExportarExel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(jLabel14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel13)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contrata, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jCheckBox12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btnExportarExel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnExportarExel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(contrata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBox12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -883,6 +1053,54 @@ public class Contabilidad extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         sbCargarContabilidad(txtBuscarCod1.getText());
     }//GEN-LAST:event_txtBuscarCod1KeyReleased
+
+    private void contrataPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_contrataPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_contrataPopupMenuWillBecomeInvisible
+
+    private void contrataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrataMouseClicked
+
+    }//GEN-LAST:event_contrataMouseClicked
+
+    private void contrataMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrataMouseEntered
+
+    }//GEN-LAST:event_contrataMouseEntered
+
+    private void contrataMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contrataMousePressed
+
+    }//GEN-LAST:event_contrataMousePressed
+
+    private void contrataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrataActionPerformed
+
+    }//GEN-LAST:event_contrataActionPerformed
+
+    private void contrataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contrataKeyPressed
+
+    }//GEN-LAST:event_contrataKeyPressed
+
+    private void empresaPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_empresaPopupMenuWillBecomeInvisible
+
+    }//GEN-LAST:event_empresaPopupMenuWillBecomeInvisible
+
+    private void empresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empresaMouseClicked
+
+    }//GEN-LAST:event_empresaMouseClicked
+
+    private void empresaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empresaMouseEntered
+
+    }//GEN-LAST:event_empresaMouseEntered
+
+    private void empresaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empresaMousePressed
+
+    }//GEN-LAST:event_empresaMousePressed
+
+    private void empresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empresaActionPerformed
+
+    }//GEN-LAST:event_empresaActionPerformed
+
+    private void empresaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_empresaKeyPressed
+
+    }//GEN-LAST:event_empresaKeyPressed
     
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
     private void cPersonalizada(String valor){
@@ -1206,6 +1424,8 @@ public class MyCellRenderer1 extends DefaultTableCellRenderer {
     txtBuscarCod1.setText(null);
     Fhasta1.setDate(null);
     Fdesde1.setDate(null);
+    empresa.setSelectedIndex(0);
+    contrata.setSelectedIndex(0);
          sbCargarContabilidad("");
     
     }
@@ -1398,9 +1618,16 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
                         + "INNER JOIN contabilidad AS c ON (c.c_n_orden = n.n_orden)";
                 Sql +=" WHERE n.fecha_apertura_po >= '"+Fdesde1.getDate().toString()+"'";
                 Sql +=" AND n.fecha_apertura_po <= '"+Fhasta1.getDate().toString()+"'";
-            
+                if(empresa.getSelectedItem().toString().length()>1 && contrata.getSelectedItem().toString().length()<1)
+                     Sql +=" AND n.razon_empresa = '"+empresa.getSelectedItem().toString()+"'";
+                if(empresa.getSelectedItem().toString().length()<1 && contrata.getSelectedItem().toString().length()>1)
+                     Sql +=" AND n.razon_contrata = '"+contrata.getSelectedItem().toString()+"'";
+                if(empresa.getSelectedItem().toString().length()>1 && contrata.getSelectedItem().toString().length()>1)
+                     Sql +=" AND n.razon_empresa = '"+empresa.getSelectedItem().toString()+"' AND "+ "n.razon_contrata = '"+contrata.getSelectedItem().toString()+"'";
                 System.out.println("la consulta es:"+Sql);
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                           
+
             if (oConn1.FnBoolQueryExecute(Sql)) {
                 try {
                     while (oConn1.setResult.next()) {
@@ -1556,6 +1783,8 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     private javax.swing.JButton btnMostrar;
     private javax.swing.JButton btnMostrar1;
     private javax.swing.JComboBox cboEstado;
+    private javax.swing.JComboBox contrata;
+    private javax.swing.JComboBox empresa;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox11;
     private javax.swing.JCheckBox jCheckBox12;
@@ -1563,6 +1792,8 @@ estiloCelda.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;

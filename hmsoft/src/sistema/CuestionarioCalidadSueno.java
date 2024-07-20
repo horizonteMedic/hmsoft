@@ -28,13 +28,13 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Administrador
  */
-public class CuestionarioCalidadSueño extends javax.swing.JInternalFrame {
+public class CuestionarioCalidadSueno extends javax.swing.JInternalFrame {
     clsConnection oConn = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
     clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     DefaultTableModel model;
 
-    public CuestionarioCalidadSueño() {
+    public CuestionarioCalidadSueno() {
         initComponents();
         txtMedico.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
     }
@@ -399,7 +399,7 @@ public class CuestionarioCalidadSueño extends javax.swing.JInternalFrame {
         );
 
         jPanel15.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "PREGUNTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "PREGUNTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel33.setText("<HTML>1. Durante el último mes, ¿Cuál ha sido, su hora de acostarse habitualmente en el campamento?</HTML>");
@@ -663,7 +663,7 @@ public class CuestionarioCalidadSueño extends javax.swing.JInternalFrame {
         Tabla.addTab("Examen parte I", jPanel3);
 
         jPanel16.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "PREGUNTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel16.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "PREGUNTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel35.setText("<HTML>10. Durante el último mes, cuántas veces ha tenido usted problemas para dormir, a causa de:</HTML>");
@@ -1151,13 +1151,13 @@ public class CuestionarioCalidadSueño extends javax.swing.JInternalFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
         );
 
         Tabla.addTab("Examen parte II", jPanel4);
 
         jPanel21.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "PREGUNTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "PREGUNTAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel108.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel108.setText("<HTML>13. Si se despierta en la noche, ¿Cuántas veces lo hace en promedio?</HTML>");
@@ -1317,7 +1317,7 @@ public class CuestionarioCalidadSueño extends javax.swing.JInternalFrame {
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbP16R2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                            .addComponent(rbP16R2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(rbP16R3, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1341,13 +1341,13 @@ public class CuestionarioCalidadSueño extends javax.swing.JInternalFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
         Tabla.addTab("Examen parte III", jPanel7);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "GRABAR/ACTUALIZAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "GRABAR/ACTUALIZAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         jLabel29.setText("Nombre y Apellidos del Médico – N° de Colegiatura :");
 
@@ -1456,8 +1456,6 @@ public class CuestionarioCalidadSueño extends javax.swing.JInternalFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
-
-        getAccessibleContext().setAccessibleName("CUESTIONARIO DE CALIDAD DE SUEÑO");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2009,7 +2007,7 @@ private void printer1(Integer cod){
         try {
             oConn.sqlStmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(CuestionarioCalidadSueño.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CuestionarioCalidadSueno.class.getName()).log(Level.SEVERE, null, ex);
         }
   
     dispose();
@@ -2187,12 +2185,6 @@ private void printer1(Integer cod){
     private javax.swing.JButton btnLimpiar;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel102;
-    private javax.swing.JLabel jLabel103;
-    private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
-    private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel125;
@@ -2216,10 +2208,6 @@ private void printer1(Integer cod){
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
@@ -2235,18 +2223,10 @@ private void printer1(Integer cod){
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel83;
-    private javax.swing.JLabel jLabel84;
-    private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
-    private javax.swing.JLabel jLabel90;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2254,44 +2234,6 @@ private void printer1(Integer cod){
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JRadioButton rbA39;
-    private javax.swing.JRadioButton rbA40;
-    private javax.swing.JRadioButton rbA41;
-    private javax.swing.JRadioButton rbA42;
-    private javax.swing.JRadioButton rbA43;
-    private javax.swing.JRadioButton rbA44;
-    private javax.swing.JRadioButton rbA45;
-    private javax.swing.JRadioButton rbA46;
-    private javax.swing.JRadioButton rbA47;
-    private javax.swing.JRadioButton rbA48;
-    private javax.swing.JRadioButton rbA49;
-    private javax.swing.JRadioButton rbA50;
-    private javax.swing.JRadioButton rbA51;
-    private javax.swing.JRadioButton rbA52;
-    private javax.swing.JRadioButton rbA53;
-    private javax.swing.JRadioButton rbA54;
-    private javax.swing.JRadioButton rbA55;
-    private javax.swing.JRadioButton rbA56;
-    private javax.swing.JRadioButton rbA57;
-    private javax.swing.JRadioButton rbA58;
-    private javax.swing.JRadioButton rbA59;
-    private javax.swing.JRadioButton rbA60;
-    private javax.swing.JRadioButton rbA61;
-    private javax.swing.JRadioButton rbA62;
-    private javax.swing.JRadioButton rbA63;
-    private javax.swing.JRadioButton rbA64;
-    private javax.swing.JRadioButton rbA65;
-    private javax.swing.JRadioButton rbA66;
-    private javax.swing.JRadioButton rbA67;
-    private javax.swing.JRadioButton rbA68;
-    private javax.swing.JRadioButton rbA69;
-    private javax.swing.JRadioButton rbA70;
-    private javax.swing.JRadioButton rbA71;
-    private javax.swing.JRadioButton rbA72;
-    private javax.swing.JRadioButton rbA73;
-    private javax.swing.JRadioButton rbA74;
-    private javax.swing.JRadioButton rbA75;
-    private javax.swing.JRadioButton rbA76;
     private javax.swing.JRadioButton rbP10A1;
     private javax.swing.JRadioButton rbP10A2;
     private javax.swing.JRadioButton rbP10A3;
@@ -2380,7 +2322,6 @@ private void printer1(Integer cod){
     private javax.swing.JTextField txtP6Otro;
     private javax.swing.JTextField txtP8;
     private javax.swing.JTextField txtP9;
-    private javax.swing.JTextField txtTotalPuntosAE4;
     private javax.swing.JTextField txtareatrabajo;
     private javax.swing.JTextField txtdni;
     private javax.swing.JTextField txtempresa;

@@ -206,7 +206,6 @@ public final class EmpresasLugaresGeograficos extends javax.swing.JInternalFrame
         pHO.add(btnEliminar);
 
         setClosable(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Historia Ocupacional");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -314,7 +313,7 @@ public final class EmpresasLugaresGeograficos extends javax.swing.JInternalFrame
                 .addGap(2, 2, 2)
                 .addComponent(FechaHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtdni_pa, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addComponent(txtdni_pa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
