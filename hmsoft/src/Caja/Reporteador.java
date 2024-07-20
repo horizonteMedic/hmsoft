@@ -2872,6 +2872,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "	     WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
 "             WHEN ca.chkevaluado = 'TRUE' THEN 'Evaluado'\n" +
 "             WHEN ca.chkconobservacion = 'TRUE' THEN 'Con Observaciones'\n" +
+"             WHEN fi.n_orden IS NOT NULL THEN 'INTERCONSULTA PENDIENTE'||':'||string_agg (fi.especialidad,'-') \n" +
 "             WHEN ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
 "              END as RESULTADO\n" +
 "FROM datos_paciente AS d\n" +
@@ -2880,7 +2881,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "left join anexo7c as a ON (a.n_orden=n.n_orden)\n" +
 "left join anexo_agroindustrial as aa ON (aa.n_orden=n.n_orden)\n" +
 "left join aptitud_medico_ocupacional11 as ca ON (ca.n_orden=n.n_orden)\n" +
-"left join observaciones as ob ON (ob.n_orden=n.n_orden)";
+"left join observaciones as ob ON (ob.n_orden=n.n_orden)\n" +
+"LEFT join ficha_interconsulta as fi ON (n.n_orden=fi.n_orden)";
                 if(cboContratas.getSelectedItem().toString().length()>2)
                     contrata=cboContratas.getSelectedItem().toString();
                 else
@@ -2900,7 +2902,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     vSql +=" AND n.fecha_apertura_po <= '"+Fhasta.getDate().toString()+"'";
                 }
                 
-                vSql+="  "+agregarConsulta+" order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
+                vSql+="  "+agregarConsulta+" group by n.n_orden,FECHAEVALUACION, EMPRESA,n.razon_contrata, NOMBRES, DNI_CARNETEXT,PUESTO, TIPODEEMO, ob.n_orden,ca.chkapto, \n" +
+"ca.chkapto_restriccion,ca.chkno_apto,ca.chkevaluado,ca.chkconobservacion, fi.n_orden, ca.n_orden, Grupoyfactor order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
                 System.out.println("la consulta aplicada es:"+vSql);
                 if (oConn.FnBoolQueryExecute(vSql)) {
                     try {
@@ -3187,7 +3190,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "             ELSE 'NO REGISTRO APTITUD'END AS RESTRICCIONESAPTITUD,\n" +
 "        CASE WHEN n.n_orden is not null THEN 'HORIZONTE MEDIC' END  AS CLINICA,\n" +
 "        CASE WHEN n.n_orden is not null THEN '969603777' END  AS TELEFONO,\n" +
-"        CASE WHEN n.n_orden is null THEN '' END  as FECHAVALIDACION     \n" +
+"        CASE WHEN n.n_orden is null THEN '' END  as FECHAVALIDACION, d.cel_pa    \n" +
 "FROM datos_paciente AS d\n" +
 "INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)\n" +
 "LEFT JOIN triaje AS t ON ( n.n_orden=t.n_orden)\n" +
@@ -3205,7 +3208,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "LEFT join aptitud_medico_ocupacional_agro as ama ON (n.n_orden=ama.n_orden)\n" +
 "LEFT join observaciones as ob ON (n.n_orden=ob.n_orden)\n" +
 "left join antecedentes_patologicos as v ON(n.n_orden = v.n_orden)\n" +
-"LEFT join ficha_interconsulta as fi ON (n.n_orden=fi.n_orden)WHERE n.razon_contrata ='RIPCONCIV CONSTRUCCIONES CIVILES CIA LTDA SUCURSAL DEL PERU'";
+"LEFT join ficha_interconsulta as fi ON (n.n_orden=fi.n_orden)"
+                    + "WHERE n.razon_contrata ='"+cboContratas.getSelectedItem().toString()+"'";
 
             if (((JTextField) Fdesde.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
                 vSql += " AND n.fecha_apertura_po >= '" + Fdesde.getDate().toString() + "'";
@@ -3216,7 +3220,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 
             vSql += "  " + agregarConsulta + " group by n.n_orden, ama.n_orden, nombres, FECHANACIMIENTO,edad,ama.chkapto, ama.chkapto_restriccion, ama.chkno_apto, fi.n_orden,\n" +
 "t.peso,t.talla, t.imc, lc.txtglucosabio, ab.txtcolesterol, ab.txttrigliseridos, o.v_lejos_s_od, o.v_lejos_s_oi, o.e_oculares, o.e_oculares1,\n" +
-"au.n_orden, au.diagnostico, au3.n_orden, au3.txtdiag_od, DXAUDIO,d.cod_pa,v.txtdosis\n" +
+"au.n_orden, au.diagnostico, au3.n_orden, au3.txtdiag_od, DXAUDIO,d.cod_pa,v.txtdosis, d.cel_pa \n" +
 "order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
             System.out.println("la consulta aplicada es:" + vSql);
             if (oConn.FnBoolQueryExecute(vSql)) {

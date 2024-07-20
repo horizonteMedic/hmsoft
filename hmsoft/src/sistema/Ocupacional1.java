@@ -147,6 +147,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
        LBioquimica lbi;
        Hematologia hema;
        Hepatitis hep;
+       ConsentimientoMuestraSangre cms;
       javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
         javax.swing.ImageIcon oNo = null;
         String ipa="",seded="";
@@ -492,6 +493,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         bHepatitis = new javax.swing.JMenuItem();
         bCoproparasitologico = new javax.swing.JMenuItem();
         bHematologia = new javax.swing.JMenuItem();
+        mCIMuestraSangre = new javax.swing.JMenuItem();
 
         Reporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guia.png"))); // NOI18N
         Reporte.setText("Reporte");
@@ -2572,6 +2574,16 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         FrmAnalisisClinicos2024.add(bHematologia);
 
         jMNuevosFormatos.add(FrmAnalisisClinicos2024);
+
+        mCIMuestraSangre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pildora.png"))); // NOI18N
+        mCIMuestraSangre.setText("19.Consentimeinto M.Sangre");
+        mCIMuestraSangre.setActionCommand("Cert. Conducción de Vehiculos");
+        mCIMuestraSangre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mCIMuestraSangreActionPerformed(evt);
+            }
+        });
+        jMNuevosFormatos.add(mCIMuestraSangre);
 
         MenuOcupacional.add(jMNuevosFormatos);
 
@@ -4870,6 +4882,22 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_bHematologiaActionPerformed
+
+    private void mCIMuestraSangreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mCIMuestraSangreActionPerformed
+        // TODO add your handling code here:
+        if(estacerrado(cms)){
+            cms =new ConsentimientoMuestraSangre();
+            Desktop.add(cms);
+            ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+            cms.setFrameIcon(ticon);
+            cms.setLocation(centradoXY(cms));
+            cms.show();
+            //fn.setVisible(true);
+        }else{
+            ph.moveToFront();
+            //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_mCIMuestraSangreActionPerformed
 @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -5081,6 +5109,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenu mBarrick;
     private javax.swing.JMenu mBarrick1;
     private javax.swing.JMenuItem mBioquimica;
+    private javax.swing.JMenuItem mCIMuestraSangre;
     private javax.swing.JMenuItem mCartaCompromisoAislamiento;
     private javax.swing.JMenuItem mCertificacionConduccion;
     private javax.swing.JMenuItem mCertificacionConduccion1;

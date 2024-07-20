@@ -1977,7 +1977,7 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
         String vSql = "SELECT d.apellidos_pa AS APELLIDOS,nombres_pa AS NOMBRES,n.razon_empresa,n.razon_contrata,n.txtobserv1,n.txtobserv2, n.n_orden AS N°, \n" +
 "       CASE WHEN d.sexo_pa='F' THEN 'FEMENINO' ELSE 'MASCULINO' END AS GENERO,d.cod_pa AS DNI,\n" +
 "	d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
-"        obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
+"        obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD1,\n" +
 "       CASE WHEN obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po)<=24 then '14-24'\n" +
 "	    WHEN obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po)<=59 then '25-59'\n" +
 "	    WHEN obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po)<=64 then '60-64'\n" +
@@ -2116,7 +2116,7 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "	CASE WHEN au.o_d_500='N/A' OR au.o_d_500 IS NULL THEN 'NO SE REALIZO AUDIOMETRIA' ELSE au.diagnostico END Audiometria,\n" +
 "	CASE WHEN f.fvc='N/A' or f.n_orden is null THEN 'NO SE REALIZO ESPIROMETRIA' ELSE a.txtconclusion END as Espirometria,\n" +
 "	odo.txtcariadasoturar,odo.txtobturacionesefectuadas,odo.txtausentes,\n" +
-"	CASE WHEN odo.txtobservaciones is null THEN 'NO PASO EXAMEN ODONTOLOGICO' else odo.txtobservaciones  END  AS conclusion,\n" +
+"	CASE WHEN odo.txtobservaciones is null THEN 'NO PASO EXAMEN ODONTOLOGICO' else odo.txtobservaciones  END  AS conclusionodo,\n" +
 "	CASE WHEN ip.aprobo_inf ='TRUE' THEN 'APTO'\n" +
 "	     WHEN ip.desaprobo_inf ='TRUE' THEN 'NO APTO'\n" +
 "	     ELSE 'NO REGISTRO EVAL.PSICOLOGICA' END as APTITUDPSICOLOGIA,\n" +
@@ -2150,6 +2150,7 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "             WHEN ap1.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
 "             WHEN ca.chkevaluado = 'TRUE' THEN 'Evaluado'\n" +
 "             WHEN ca.chkconobservacion = 'TRUE' THEN 'Con Observaciones'\n" +
+"             WHEN fi.n_orden IS NOT NULL THEN 'INTERCONSULTA PENDIENTE'||':'||string_agg (fi.especialidad,'-') \n" +
 "             WHEN ca.n_orden IS NULL THEN 'NO REGISTRO APTITUD'\n" +
 "              END as APTITUD_OCUP,\n" +
 "        CASE WHEN ca.atxtrestricciones IS NOT NULL THEN ca.atxtrestricciones\n" +
@@ -2189,7 +2190,8 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
 "Left join odontograma as odo ON (odo.n_orden=n.n_orden)\n" +
 "Left join perfil_hepatico as ph ON (ph.n_orden=n.n_orden)\n" +
 "Left join antecedentes_patologicos as apa ON (apa.n_orden=n.n_orden)\n" +
-"left join certificado_aptitud_medico_ocupacional as ap1 ON(ap1.n_orden=n.n_orden)" +
+"left join certificado_aptitud_medico_ocupacional as ap1 ON(ap1.n_orden=n.n_orden)\n" +
+"LEFT join ficha_interconsulta as fi ON (n.n_orden=fi.n_orden)" +
 "\n" +
 "WHERE ";
               
@@ -2214,7 +2216,21 @@ private static void createTituloCell(HSSFWorkbook wb, HSSFRow row, int column, s
                 vSql += " AND n.fecha_apertura_po <= '" + F_final.getDate().toString() + "'";
             }
         }
-           
+         vSql +=  " group by APELLIDOS,NOMBRES,n.razon_empresa,n.razon_contrata,n.txtobserv1,n.txtobserv2, N°, \n" +
+"       GENERO,DNI,FECHANACIMIENTO,EDAD1,RANGO,FECHAINICIO, FECHASALIDA,ESTADO,CLINICA,TIPODEEMO,ULTIMOEMO,FECHAVENCE,PLAZODIAS,STATUS,ENTREGADO, ACCION,\n" +
+"	a.txtantecedentesfamiliares,a.txtantecedentespersonales,  ANTECENFERMEDAD, ALERGIAS, PRESIONARTERIAL,t.peso,t.talla , t.imc,R_IMC, P_ABDOMINAL, FR, FC,\n" +
+"        t.temperatura,t.sat_02, Hemoglobina , CONCLUCION_HEMOGLOBINA ,lc.txthematocrito,lc.txtleucocitosematologia,lc.txthematiesematologia,\n" +
+"        lc.txteosinofiosematologia,lc.txtlinfocitosematologia,lc.txtmonocitosematologia,lc.txtabastonados, promielocitos, mieolocitosis,\n" +
+"        lc.txtsegmentadosematologia,vcm, hcm,chcm,lc.txtplaquetas,lc.txtvsg,grupo,factor, Glucosa,VALORES_GLUCOSA,UREA,Creatinina,CONCLUCION_CREATININA,  \n" +
+"        acidourico, total,dir,ind,fosfatasaalcaina,total2,alb,glb,ggtp, Colesterol, trigliceridos, LDL_COLESTEROL,  HDL_Colesterol, Analisis_cole, \n" +
+"        Analisis_trigli,  tgo, tgp,lc. txtleucocitossu,lc.txthematiessu,lc.txtcristalessu,lc.txtcelepitelialessu,lc.txtotrossu,lc.txtbacteriassu,lc.txtcocaina,\n" +
+"        lc.txtmarihuana,estasis,Metanfetaminas,Benzodiacepinas,Anfetamina,Combinado,torax,EKG_RESULTADO,lumbar,prueba_esfuerso,riesgo_coronario,\n" +
+"	Cerca_OD,Cerca_OI, Lejos_OD, Lejos_OI,Cerca_Corregida_OD, Cerca_Corregida_OI, Lejos_Corregida_OD,Lejos_Corregida_OI,Ishihara, Campimetria,Fondo_ojo,\n" +
+"	Nictometria, Estereopsis, Conc_diagnostica, Audiometria, Espirometria,odo.txtcariadasoturar,odo.txtobturacionesefectuadas,odo.txtausentes, conclusionodo,\n" +
+"	 APTITUDPSICOLOGIA,Ectoscopia,DIAGNOSTICO_MUSCULO_ESQUELETICO,osteomuscular,neurologico, dermatologico,espacios_confinados, APTITUD_TRAB_ALTURA_MINERIA,\n" +
+"	 ResultadodeEvaluaciones,CONCLUSIONESAPTITUD,RECOMENDACIONESAPTITUD,RESTRICCIONESAPTITUD, SEGUIMIENTO_OBSERVACIONES, ob.n_orden,ca.chkapto, ap1.chkapto, \n" +
+"	 ca.chkapto_restriccion, ap1.chkapto_restriccion,ca.chkno_apto, ap1.chkno_apto, ca.chkevaluado,ca.chkconobservacion,fi.n_orden, ca.n_orden \n" +
+"order by n.n_orden asc"; 
         //oFunc.SubSistemaMensajeInformacion(vSql); 
         System.out.println(vSql);
         if (oConn.FnBoolQueryExecute(vSql)) {

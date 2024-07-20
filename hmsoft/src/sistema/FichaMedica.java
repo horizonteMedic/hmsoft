@@ -6524,7 +6524,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
     }
 
     void editar() {
-
+        
         String Consulta = "SELECT d.cod_pa,d.nombres_pa,d.apellidos_pa,d.fecha_nacimiento_pa,d.sexo_pa,d.lugar_nac_pa,d.direccion_pa,\n"
                 + "d.tel_casa_pa,d.cel_pa,d.estado_civil_pa,d.nivel_est_pa,n.razon_empresa,n.razon_contrata,n.nom_examen,n.nom_ex,\n"
                 + "n.altura_po,n.mineral_po,n.cargo_de,n.area_o,ap.txtvhijosvivos,ap.txtvhijosfallecidos,ap.txtdhijosvivos,ap.txtdhijosfallecidos,\n"
@@ -6844,6 +6844,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
                 electroCardiograma();
                 examenOrina();
                 cargarAnalisisB();
+                electroCardiogramaP();
             } else {
                 oFunc.SubSistemaMensajeError("No se encuentra Registros(Registros Necesarios): \n 1- Laboratorio Clinico \n 2- Radiografía de Torax P.A");
             }
@@ -6862,6 +6863,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
             if (!Orden()) {
                 muestraVisual();
                 electroCardiograma();
+                electroCardiogramaP();
                 cargarExamSanguineos();
                 examenOrina();
                 cargarAnalisisB();
@@ -7997,6 +7999,35 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
                         contador++;
                     } else {
                         txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "ELECTROCARDIOGRAMA: " + oConn.setResult.getString("hallazgo") + "\n");
+                        contador++;
+                    }
+
+                }
+
+            } else {
+                oFunc.SubSistemaMensajeInformacion("Falto llenar ficha de electrocardiograma");
+            }
+            oConn.sqlStmt.close();
+        } catch (SQLException ex) {
+            oFunc.SubSistemaMensajeInformacion("Error:" + ex.getMessage().toString());
+        }
+    }
+    private void electroCardiogramaP() {
+
+        String Sql = "select conclusion,recomendaciones from informe_electrocardiograma_poderosa "
+                + "where n_orden='" + txtNorden.getText().toString() + "'";
+        oConn.FnBoolQueryExecute(Sql);
+
+        try {
+            if (oConn.setResult.next()) {
+
+                if ((oConn.setResult.getString("conclusion") != null && !"NORMAL.".equals(oConn.setResult.getString("conclusion")))) {
+                    if (oConn.setResult.getString("recomendaciones") != null) {
+                        txtObservacionesFichaMedica.append(String.valueOf(contador) + "-ELECTROCARDIOGRAMA PODEROSA: " + oConn.setResult.getString("conclusion") + "."
+                                + oConn.setResult.getString("recomendaciones") + "\n");
+                        contador++;
+                    } else {
+                        txtObservacionesFichaMedica.append(String.valueOf(contador) + "-" + "ELECTROCARDIOGRAMA PODERODA: " + oConn.setResult.getString("conclusion") + "\n");
                         contador++;
                     }
 
