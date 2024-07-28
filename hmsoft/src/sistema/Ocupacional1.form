@@ -1539,15 +1539,26 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+
+            <MenuItem class="javax.swing.JMenuItem" name="mCIMuestraSangre">
+
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem11">
+
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imagenes/pildora.png"/>
                 </Property>
+
+                <Property name="text" type="java.lang.String" value="19.Consentimeinto M.Sangre"/>
+                <Property name="actionCommand" type="java.lang.String" value="Cert. Conducci&#xf3;n de Vehiculos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mCIMuestraSangreActionPerformed"/>
                 <Property name="text" type="java.lang.String" value="19.Informe Radiografia"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem11ActionPerformed"/>
+
               </Events>
             </MenuItem>
           </SubComponents>

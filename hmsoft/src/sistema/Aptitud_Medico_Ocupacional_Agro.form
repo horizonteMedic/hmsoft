@@ -200,6 +200,8 @@
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="lblHora" min="-2" pref="93" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="chkSede" min="-2" pref="139" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -215,6 +217,7 @@
                           <Component id="btnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lblHora" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="chkSede" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -257,6 +260,12 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="chkSede">
+          <Properties>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="PARA HUAMACHUCO"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

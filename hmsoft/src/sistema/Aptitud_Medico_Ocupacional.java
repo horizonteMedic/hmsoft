@@ -70,7 +70,8 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
         txtImprimir1 = new javax.swing.JTextField();
         btnImprimir1 = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chkSede = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
@@ -225,7 +226,15 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
             }
         });
 
-        jCheckBox1.setText("PODEROSA");
+        chkSede.setSelected(true);
+        chkSede.setText("PARA HUAMCHUCO");
+        chkSede.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkSedeActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setText("PODEROSA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -242,18 +251,25 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTipoExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtImprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCheckBox1))
+                        .addGap(28, 28, 28)
+                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(chkSede)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtImprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnImprimir1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(691, Short.MAX_VALUE)
+                    .addComponent(jCheckBox2)
+                    .addGap(155, 155, 155)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,15 +281,22 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addComponent(txtTipoExamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEditar))
-                    .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chkSede))
                     .addComponent(btnImprimir1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(txtImprimir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBox1))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(12, Short.MAX_VALUE)
+                    .addComponent(jCheckBox2)
+                    .addGap(10, 10, 10)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Certifica que el Sr."));
@@ -977,8 +1000,8 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
                                         .addComponent(btnLimpiar)
                                         .addComponent(txtImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnImprimir))
-                                .addGap(0, 30, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                                .addGap(0, 32, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                         .addGap(3, 3, 3))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1428,6 +1451,10 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
        cerrarVentana(); // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void chkSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSedeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkSedeActionPerformed
+
   public boolean OrdenExiste()
     {
         boolean bResultado=false;
@@ -1497,7 +1524,6 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 //                    "','"+chkRestriccion.isSelected()+  "','"+chkNoApto.isSelected()+ "','"+lblHora.getText().toString()+"','"+FechaHasta.getDate()+"')"
 //          oFunc.SubSistemaMensajeError(strSqlStmt);
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
-                
 //                   oConn.setResult.next();
             
                     oFunc.SubSistemaMensajeInformacion("Aptitud Registrada");
@@ -1589,9 +1615,12 @@ private void Limpiar(){
                 
                   try 
                 {String direccionReporte;
-                    
-                         direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_F.jasper";
-                    
+                    if(chkSede.isSelected()){
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_FH.jasper";                 
+                    }else{
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_F.jasper";                  
+                    }
+                         
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -1611,7 +1640,7 @@ private void Limpiar(){
                 
                   try 
                 {String direccionReporte;
-                    if(jCheckBox1.isSelected()){
+                    if(jCheckBox2.isSelected()){
                          direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7CP.jasper";
                     }else{
                          direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7C.jasper";
@@ -1633,7 +1662,12 @@ private void Limpiar(){
                 parameters.put("Norden",cod);      
                     try 
                 {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_F.jasper";
+                    String direccionReporte ;
+                    if(chkSede.isSelected()){
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_FH.jasper";
+                    }else{
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_F.jasper";
+                    }
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                   JasperPrintManager.printReport(jasperPrint,true);
@@ -1830,7 +1864,8 @@ private void Limpiar(){
     private javax.swing.JCheckBox chkNinguno;
     private javax.swing.JCheckBox chkNoApto;
     private javax.swing.JCheckBox chkRestriccion;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox chkSede;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

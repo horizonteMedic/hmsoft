@@ -67,6 +67,7 @@ public class Aptitud_Medico_Ocupacional_Agro extends javax.swing.JInternalFrame 
         txtTipoExamen = new javax.swing.JTextField();
         lblHora = new javax.swing.JLabel();
         btnEditar = new javax.swing.JButton();
+        chkSede = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
@@ -166,6 +167,9 @@ public class Aptitud_Medico_Ocupacional_Agro extends javax.swing.JInternalFrame 
             }
         });
 
+        chkSede.setSelected(true);
+        chkSede.setText("PARA HUAMACHUCO");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -183,7 +187,9 @@ public class Aptitud_Medico_Ocupacional_Agro extends javax.swing.JInternalFrame 
                 .addComponent(txtTipoExamen, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chkSede, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +201,8 @@ public class Aptitud_Medico_Ocupacional_Agro extends javax.swing.JInternalFrame 
                         .addComponent(jLabel2)
                         .addComponent(txtTipoExamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnEditar))
-                    .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkSede))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1057,42 +1064,50 @@ private void Limpiar(){
     chk11.setSelected(false);
 
 }
-  private void print(Integer cod){
+    private void print(Integer cod) {
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
-                
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_Agroindustrial.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    JasperViewer viewer = new JasperViewer(myPrint, false);
-                    viewer.setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
-                   // viewer.setAlwaysOnTop(true);
-                    viewer.setVisible(true);
-                 } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                 
- 
- }
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+        try {
+            String direccionReporte;
+            if (chkSede.isSelected()) {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Aptitud_AgroindustrialH.jasper";
+            } else {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Aptitud_Agroindustrial.jasper";
+            }
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+            JasperViewer viewer = new JasperViewer(myPrint, false);
+            viewer.setTitle("CERTIFICADO DE APTITUD MEDICO OCUPACIONAL");
+            // viewer.setAlwaysOnTop(true);
+            viewer.setVisible(true);
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
    
-   private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_Agroindustrial.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                    
-                  JasperPrintManager.printReport(jasperPrint,true);
-                  
-                   } catch (JRException ex) {
-                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
-                }
-   }
+    private void printer(Integer cod) {
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        try {
+            String direccionReporte;
+            if (chkSede.isSelected()) {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Aptitud_AgroindustrialH.jasper";
+            } else {
+                direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Aptitud_Agroindustrial.jasper";
+            }
+
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
    Timer timer = new Timer(1000, new ActionListener() {
 
         @Override
@@ -1147,6 +1162,7 @@ private void Limpiar(){
     private javax.swing.JCheckBox chkNinguno;
     private javax.swing.JCheckBox chkNoApto;
     private javax.swing.JCheckBox chkRestriccion;
+    private javax.swing.JCheckBox chkSede;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

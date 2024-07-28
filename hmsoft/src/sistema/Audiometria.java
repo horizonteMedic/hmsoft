@@ -174,6 +174,8 @@ public final class Audiometria extends javax.swing.JInternalFrame {
         btnEditarAudiom = new javax.swing.JButton();
         btnDiagnostico = new javax.swing.JButton();
         chkNoAudio = new javax.swing.JCheckBox();
+        txtPerdidaGlob = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtNroOrden = new javax.swing.JTextField();
@@ -1307,6 +1309,11 @@ public final class Audiometria extends javax.swing.JInternalFrame {
             }
         });
 
+        txtPerdidaGlob.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtPerdidaGlob.setForeground(new java.awt.Color(255, 0, 51));
+
+        jLabel54.setText("% perdida global");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1316,7 +1323,11 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(245, 245, 245)
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel54)
+                                    .addComponent(txtPerdidaGlob, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
                                 .addComponent(btnActualizarAudiom)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnGuardar)
@@ -1432,8 +1443,7 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnDiagnostico)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(atxtObservacionesAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29))
+                                .addComponent(atxtObservacionesAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
@@ -1472,8 +1482,11 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnLimpiar)
                                     .addComponent(btnGuardar)
-                                    .addComponent(btnActualizarAudiom))
-                                .addGap(50, 50, 50))))))
+                                    .addComponent(btnActualizarAudiom)
+                                    .addComponent(jLabel54))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPerdidaGlob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(11, 11, 11))
         );
 
         jtAudiometria.addTab("Audiometría", jPanel2);
@@ -2819,6 +2832,7 @@ public final class Audiometria extends javax.swing.JInternalFrame {
         if(!txtNumero.getText().isEmpty()){
             txtOD501.requestFocus();}
         diagnosticoAudio1(); 
+        diagnosticoAudio2();
     }//GEN-LAST:event_txtOI8000ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -3080,6 +3094,7 @@ public final class Audiometria extends javax.swing.JInternalFrame {
     private void btnDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosticoActionPerformed
      
         diagnosticoAudio1();
+        diagnosticoAudio2();
       
     }//GEN-LAST:event_btnDiagnosticoActionPerformed
 
@@ -3622,6 +3637,7 @@ int seleccion = JOptionPane.showOptionDialog(
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
@@ -3751,6 +3767,7 @@ int seleccion = JOptionPane.showOptionDialog(
     private javax.swing.JTextField txtOI8001;
     private javax.swing.JTextField txtOcupacion;
     private javax.swing.JTextField txtOtoscopia;
+    private javax.swing.JTextField txtPerdidaGlob;
     private javax.swing.JTextField txtResponsable;
     private javax.swing.JTextField txtSexo;
     private javax.swing.JTextField txtTiempoExposicionTotalPonderado;
@@ -3766,6 +3783,7 @@ int seleccion = JOptionPane.showOptionDialog(
     // End of variables declaration//GEN-END:variables
     public void Limpiar(){
     txtDni.setText(null);
+    txtPerdidaGlob.setText(null);
     txtNombres.setText(null);
     FechaNacimiento.setDate(null);
     txtApellidos.setText(null);
@@ -4711,6 +4729,214 @@ public void diagnosticoAudio1(){
         }
     }
 //        oFunc.SubSistemaMensajeInformacion(prom +"-"+ prom1);
+}
+public void diagnosticoAudio2(){
+    if (!txtOD500.getText().equals("N/A")) {
+        float od500 = Float.parseFloat(txtOD500.getText().toString());
+        float od1000 = Float.parseFloat(txtOD1000.getText().toString());
+        float od2000 = Float.parseFloat(txtOD2000.getText().toString());
+        float od4000 = Float.parseFloat(txtOD4000.getText().toString());
+        
+        float oi500 = Float.parseFloat(txtOI500.getText().toString());
+        float oi1000 = Float.parseFloat(txtOI1000.getText().toString());
+        float oi2000 = Float.parseFloat(txtOI2000.getText().toString());
+        float oi4000 = Float.parseFloat(txtOI4000.getText().toString());
+        
+        float cod500 = 0,  coi500 = 0, cod1000 = 0, coi1000 = 0,cod2000= 0,coi2000= 0, cod4000 = 0,coi4000 = 0;
+        
+        if (od500 == 10) cod500=20;
+        if (od500 == 15) cod500=50;
+        if (od500 == 20) cod500=110;
+        if (od500 == 25) cod500=180;
+        if (od500 == 30) cod500=260;
+        if (od500 == 35) cod500=370;
+        if (od500 == 40) cod500=490;
+        if (od500 == 45) cod500=630;
+        if (od500 == 50) cod500=790;
+        if (od500 == 55) cod500=960;
+        if (od500 == 60) cod500=1130;
+        if (od500 == 65) cod500=1280;
+        if (od500 == 70) cod500=1380;
+        if (od500 == 75) cod500=1460;
+        if (od500 == 80) cod500=1480;
+        if (od500 == 85) cod500=1490;
+        if (od500 == 90 || od500 == 95) cod500=1500;
+        if (oi500 == 10) coi500=20;
+        if (oi500 == 15) coi500=50;
+        if (oi500 == 20) coi500=110;
+        if (oi500 == 25) coi500=180;
+        if (oi500 == 30) coi500=260;
+        if (oi500 == 35) coi500=370;
+        if (oi500 == 40) coi500=490;
+        if (oi500 == 45) coi500=630;
+        if (oi500 == 50) coi500=790;
+        if (oi500 == 55) coi500=960;
+        if (oi500 == 60) coi500=1130;
+        if (oi500 == 65) coi500=1280;
+        if (oi500 == 70) coi500=1380;
+        if (oi500 == 75) coi500=1460;
+        if (oi500 == 80) coi500=1480;
+        if (oi500 == 85) coi500=1490;
+        if (oi500 == 90 || od500 == 95) coi500=1500;
+        if (od1000 == 10) cod1000=30;
+        if (od1000 == 15) cod1000=90;
+        if (od1000 == 20) cod1000=210;
+        if (od1000 == 25) cod1000=360;
+        if (od1000 == 30) cod1000=540;
+        if (od1000 == 35) cod1000=770;
+        if (od1000 == 40) cod1000=1020;
+        if (od1000 == 45) cod1000=1300;
+        if (od1000 == 50) cod1000=1570;
+        if (od1000 == 55) cod1000=1900;
+        if (od1000 == 60) cod1000=2150;
+        if (od1000 == 65) cod1000=2350;
+        if (od1000 == 70) cod1000=2550;
+        if (od1000 == 75) cod1000=2720;
+        if (od1000 == 80) cod1000=2880;
+        if (od1000 == 85) cod1000=2980;
+        if (od1000 == 90) cod1000=2990;
+        if (od1000 == 95) cod1000=3000;
+        if (oi1000 == 10) coi1000=30;
+        if (oi1000 == 15) coi1000=90;
+        if (oi1000 == 20) coi1000=210;
+        if (oi1000 == 25) coi1000=360;
+        if (oi1000 == 30) coi1000=540;
+        if (oi1000 == 35) coi1000=770;
+        if (oi1000 == 40) coi1000=1020;
+        if (oi1000 == 45) coi1000=1300;
+        if (oi1000 == 50) coi1000=1570;
+        if (oi1000 == 55) coi1000=1900;
+        if (oi1000 == 60) coi1000=2150;
+        if (oi1000 == 65) coi1000=2350;
+        if (oi1000 == 70) coi1000=2550;
+        if (oi1000 == 75) coi1000=2720;
+        if (oi1000 == 80) coi1000=2880;
+        if (oi1000 == 85) coi1000=2980;
+        if (oi1000 == 90) coi1000=2990;
+        if (oi1000 == 95) coi1000=3000;
+        if (od2000 == 10) cod2000=40;
+        if (od2000 == 15) cod2000=130;
+        if (od2000 == 20) cod2000=290;
+        if (od2000 == 25) cod2000=490;
+        if (od2000 == 30) cod2000=730;
+        if (od2000 == 35) cod2000=980;
+        if (od2000 == 40) cod2000=1290;
+        if (od2000 == 45) cod2000=1730;
+        if (od2000 == 50) cod2000=2240;
+        if (od2000 == 55) cod2000=2570;
+        if (od2000 == 60) cod2000=2800;
+        if (od2000 == 65) cod2000=3020;
+        if (od2000 == 70) cod2000=3220;
+        if (od2000 == 75) cod2000=3400;
+        if (od2000 == 80) cod2000=3580;
+        if (od2000 == 85) cod2000=3750;
+        if (od2000 == 90) cod2000=3920;
+        if (od2000 == 95) cod2000=4000;
+        if (oi2000 == 10) coi2000=40;
+        if (oi2000 == 15) coi2000=130;
+        if (oi2000 == 20) coi2000=290;
+        if (oi2000 == 25) coi2000=490;
+        if (oi2000 == 30) coi2000=730;
+        if (oi2000 == 35) coi2000=980;
+        if (oi2000 == 40) coi2000=1290;
+        if (oi2000 == 45) coi2000=1730;
+        if (oi2000 == 50) coi2000=2240;
+        if (oi2000 == 55) coi2000=2570;
+        if (oi2000 == 60) coi2000=2800;
+        if (oi2000 == 65) coi2000=3020;
+        if (oi2000 == 70) coi2000=3220;
+        if (oi2000 == 75) coi2000=3400;
+        if (oi2000 == 80) coi2000=3580;
+        if (oi2000 == 85) coi2000=3750;
+        if (oi2000 == 90) coi2000=3920;
+        if (oi2000 == 95) coi2000=4000;
+        if (od4000 == 10) cod4000=10;
+        if (od4000 == 15) cod4000=30;
+        if (od4000 == 20) cod4000=90;
+        if (od4000 == 25) cod4000=170;
+        if (od4000 == 30) cod4000=270;
+        if (od4000 == 35) cod4000=380;
+        if (od4000 == 40) cod4000=500;
+        if (od4000 == 45) cod4000=640;
+        if (od4000 == 50) cod4000=800;
+        if (od4000 == 55) cod4000=970;
+        if (od4000 == 60) cod4000=1120;
+        if (od4000 == 65) cod4000=1250;
+        if (od4000 == 70) cod4000=1350;
+        if (od4000 == 75) cod4000=1420;
+        if (od4000 == 80) cod4000=1460;
+        if (od4000 == 85) cod4000=1480;
+        if (od4000 == 90) cod4000=1490;
+        if (od4000 == 95) cod4000=1500;
+        if (oi4000 == 10) coi4000=10;
+        if (oi4000 == 15) coi4000=30;
+        if (oi4000 == 20) coi4000=90;
+        if (oi4000 == 25) coi4000=170;
+        if (oi4000 == 30) coi4000=270;
+        if (oi4000 == 35) coi4000=380;
+        if (oi4000 == 40) coi4000=500;
+        if (oi4000 == 45) coi4000=640;
+        if (oi4000 == 50) coi4000=800;
+        if (oi4000 == 55) coi4000=970;
+        if (oi4000 == 60) coi4000=1120;
+        if (oi4000 == 65) coi4000=1250;
+        if (oi4000 == 70) coi4000=1350;
+        if (oi4000 == 75) coi4000=1420;
+        if (oi4000 == 80) coi4000=1460;
+        if (oi4000 == 85) coi4000=1480;
+        if (oi4000 == 90) coi4000=1490;
+        if (oi4000 == 95) coi4000=1500;
+        float may=0,may1=0,men=0,men1=0, pe=0, mo=0,res=0;
+        if(cod500>=cod1000 && cod500>=cod2000 && cod500>=cod4000){
+            may=cod500;
+        }else if(cod1000>=cod500 && cod1000>=cod2000 && cod1000>=cod4000 ){
+            may=cod1000;
+        }else if(cod2000>=cod500 && cod2000>=cod1000 && cod2000>=cod4000){
+            may=cod2000;
+        }else if(cod4000>=cod500 && cod4000>=cod1000 && cod4000>=cod2000){
+            may=cod4000;
+        }
+        if(cod500<=cod1000 && cod500<=cod2000 && cod500<=cod4000){
+            men=cod500;
+        }else if(cod1000<=cod500 && cod1000<=cod2000 && cod1000<=cod4000 ){
+            men=cod1000;
+        }else if(cod2000<=cod500 && cod2000<=cod1000 && cod2000<=cod4000){
+            men=cod2000;
+        }else if(cod4000<=cod500 && cod4000<=cod1000 && cod4000<=cod2000){
+            men=cod4000;
+        }
+        if(coi500>=oi1000 && coi500>=oi2000 && coi500>=oi4000){
+            may1=coi500;
+        }else if(coi1000>=coi500 && coi1000>=coi2000 && coi1000>=coi4000){
+            may1=coi1000;
+        }else if(coi2000>=coi500 && coi2000>=oi1000 && coi2000>=coi4000 ){
+            may1=coi2000;
+        }else if(coi4000>=coi500 && coi4000>=oi1000 && coi4000>=oi2000 ){
+            may1=coi4000;
+        }
+        if(coi500<=oi1000 && coi500<=oi2000 && coi500<=oi4000){
+            men1=coi500;
+        }else if(coi1000<=coi500 && coi1000<=coi2000 && coi1000<=coi4000){
+            men1=coi1000;
+        }else if(coi2000<=coi500 && coi2000<=oi1000 && coi2000<=coi4000 ){
+            men1=coi2000;
+        }else if(coi4000<=coi500 && coi4000<=oi1000 && coi4000<=oi2000 ){
+            men1=coi4000;
+        } 
+        if(may>may1){
+            mo=may*5;
+        }else if(may1>may){
+            mo=may1*5;
+        }else mo=may*5;
+            
+        if(men<men1){
+            pe=men*1;
+        }else if(men1<men){
+            pe=men1*1;
+        }else  pe=men*1;
+         res=(mo+pe)/600;
+         txtPerdidaGlob.setText(Float.toString(res));
+    }
 }
 private void imprimir1(){
 int seleccion = JOptionPane.showOptionDialog(
