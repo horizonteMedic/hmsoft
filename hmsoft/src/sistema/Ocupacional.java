@@ -949,7 +949,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1424, Short.MAX_VALUE)
+            .addComponent(barraPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 1427, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1006,7 +1006,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
                 .addComponent(jLabel4)
                 .addGap(35, 35, 35)
                 .addComponent(jbarra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 447, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 449, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(20, 20, 20))
         );
@@ -1033,7 +1033,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnCertificadoFisicoM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1424, Short.MAX_VALUE)
+            .addComponent(btnCertificadoFisicoM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1427, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
