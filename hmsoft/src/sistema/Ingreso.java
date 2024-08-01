@@ -438,7 +438,7 @@ int key = evt.getKeyCode();
             String sqlStmt;
             String area;
             // Prepara Variable para realizar el Query
-            sqlStmt = "Select rol_user, sistema, admision, farmacia, cmp_user, dni_user, nombre_user, apellido_user, usuario_user, pass_user from usuarios Where usuario_user='" + cboUsuarios.getSelectedItem() + "' And pass_user='" + String.valueOf(txtpass.getPassword()) + "'";
+            sqlStmt = "Select rol_user, sistema, admision, farmacia, cmp_user, dni_user, nombre_user, apellido_user, usuario_user, pass_user from usuarios Where usuario_user='" + cboUsuarios.getSelectedItem().toString().trim()+ "' And pass_user='" + String.valueOf(txtpass.getPassword()) + "'";
 
             oConn.FnBoolQueryExecute(sqlStmt);
 
