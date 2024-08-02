@@ -3141,8 +3141,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     return false;
                 }
             };
-            String vSql = "SELECT n.n_orden AS N°, fecha_apertura_po as FECHASOLICITUD,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES, d.cod_pa,\n" +
-"       d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+            String vSql = "SELECT n.n_orden AS N°, TO_CHAR(fecha_apertura_po,'YYYY/MM/DD') as FECHASOLICITUD,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES, d.cod_pa,\n" +
+"       TO_CHAR(d.fecha_nacimiento_pa,'YYYY/MM/DD') AS FECHANACIMIENTO,\n" +
 "       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
 "       n.razon_contrata,  n.cargo_de AS CARGO,\n" +
 "       CASE WHEN n.n_orden is null THEN '' END  as Tipotrabajo,\n" +
