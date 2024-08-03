@@ -3171,7 +3171,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "            WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
 "            WHEN fi.n_orden IS NOT NULL THEN 'INTERCONSULTA PENDIENTE'||':'||string_agg (fi.especialidad,'-') \n" + 
 "            WHEN ama.n_orden IS NULL THEN 'APTITUD PENDIENTE'\n" +
-"             END as APTITUD,ama.fecha AS FECHADEEVALUACION,\n" +
+"             END as APTITUD,TO_CHAR(ama.fecha,'YYYY/MM/DD') AS FECHADEEVALUACION,\n" +
 "       CASE WHEN t.peso is null THEN 'INF. NO TOMADA' ELSE t.peso END,\n" +
 "       CASE WHEN t.talla is null THEN 'INF. NO TOMADA' ELSE t.talla END,\n" +
 "       CASE WHEN t.imc is null THEN 'INF. NO TOMADA' ELSE t.imc END,\n" +
