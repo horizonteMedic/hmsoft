@@ -123,6 +123,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         jLabel24 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAgudezaVisualLejos = new javax.swing.JTextArea();
+        jCheckBoxNormal = new javax.swing.JCheckBox();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -690,6 +691,18 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         txtAgudezaVisualLejos.setRows(5);
         jScrollPane2.setViewportView(txtAgudezaVisualLejos);
 
+        jCheckBoxNormal.setText("Normal");
+        jCheckBoxNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBoxNormalMouseClicked(evt);
+            }
+        });
+        jCheckBoxNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxNormalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -735,8 +748,13 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                                         .addComponent(FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addContainerGap()
+                                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGap(28, 28, 28)
+                                            .addComponent(jCheckBoxNormal)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
@@ -844,12 +862,14 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxNormal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel24)
                                 .addGap(25, 25, 25))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar)
                             .addComponent(btnLimpiar)))
@@ -1220,6 +1240,14 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         cerrarVentana();        // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
 
+    private void jCheckBoxNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNormalActionPerformed
+     
+    }//GEN-LAST:event_jCheckBoxNormalActionPerformed
+
+    private void jCheckBoxNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBoxNormalMouseClicked
+        txtAgudezaVisualLejos.setText("Normal");
+    }//GEN-LAST:event_jCheckBoxNormalMouseClicked
+
     public void Deshabilitar(boolean ficha) {
         txtDni.setEnabled(false);
         txtNombres.setEnabled(false);
@@ -1232,6 +1260,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
     }
 
     public void Limpiar() {
+        jCheckBoxNormal.setSelected(false);
         txtDni.setText(null);
         txtNombres.setText(null);
         FechaNacimiento.setDate(null);
@@ -1344,6 +1373,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chkPterigionBilateral;
     private javax.swing.JCheckBox chkPterigionDerecho;
     private javax.swing.JCheckBox chkPterigionIzquierdo;
+    private javax.swing.JCheckBox jCheckBoxNormal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

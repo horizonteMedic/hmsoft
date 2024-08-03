@@ -3160,8 +3160,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     return false;
                 }
             };
-            String vSql = "SELECT n.n_orden AS N°, TO_CHAR(fecha_apertura_po,'YYYY/MM/DD') as FECHASOLICITUD,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES, d.cod_pa,\n" +
-"       TO_CHAR(d.fecha_nacimiento_pa,'YYYY/MM/DD') AS FECHANACIMIENTO,\n" +
+            String vSql = "SELECT n.n_orden AS N°, TO_CHAR(fecha_apertura_po,'DD/MM/YYYY') as FECHASOLICITUD,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES, d.cod_pa,\n" +
+"       TO_CHAR(d.fecha_nacimiento_pa,'DD/MM/YYYY') AS FECHANACIMIENTO,\n" +
 "       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
 "       n.razon_contrata,  n.cargo_de AS CARGO,\n" +
 "       CASE WHEN n.n_orden is null THEN '' END  as Tipotrabajo,\n" +
@@ -3171,7 +3171,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "            WHEN ama.chkno_apto = 'TRUE' THEN 'No Apto'\n" +
 "            WHEN fi.n_orden IS NOT NULL THEN 'INTERCONSULTA PENDIENTE'||':'||string_agg (fi.especialidad,'-') \n" + 
 "            WHEN ama.n_orden IS NULL THEN 'APTITUD PENDIENTE'\n" +
-"             END as APTITUD,TO_CHAR(ama.fecha,'YYYY/MM/DD') AS FECHADEEVALUACION,\n" +
+"             END as APTITUD,TO_CHAR(ama.fecha,'DD/MM/YYYY') AS FECHADEEVALUACION,\n" +
 "       CASE WHEN t.peso is null THEN 'INF. NO TOMADA' ELSE t.peso END,\n" +
 "       CASE WHEN t.talla is null THEN 'INF. NO TOMADA' ELSE t.talla END,\n" +
 "       CASE WHEN t.imc is null THEN 'INF. NO TOMADA' ELSE t.imc END,\n" +
@@ -3226,7 +3226,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "LEFT join observaciones as ob ON (n.n_orden=ob.n_orden)\n" +
 "left join antecedentes_patologicos as v ON(n.n_orden = v.n_orden)\n" +
 "LEFT join ficha_interconsulta as fi ON (n.n_orden=fi.n_orden)"
-                    + "WHERE n.razon_contrata ='"+cboContratas.getSelectedItem().toString()+"'";
+                    + "WHERE n.razon_contrata ='"+cboContratas.getSelectedItem().toString().trim()+"'";
 
             if (((JTextField) Fdesde.getDateEditor().getUiComponent()).getText().trim().length() > 2) {
                 vSql += " AND n.fecha_apertura_po >= '" + Fdesde.getDate().toString() + "'";
