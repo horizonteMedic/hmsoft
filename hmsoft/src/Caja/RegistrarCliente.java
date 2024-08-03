@@ -2657,27 +2657,27 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
 
                     //FechaNacimiento.setEnabled(true);
                     //Calendar fecha = new GregorianCalendar();
-                    txtNombre.setText(oConn1.setResult.getString("nombres_pa"));
+                    txtNombre.setText(oConn1.setResult.getString("nombres_pa").toUpperCase());
                     FechaNacimiento.setDate(oConn1.setResult.getDate("fecha_nacimiento_pa"));
-                    txtApellidos.setText(oConn1.setResult.getString("apellidos_pa"));
-                    cboSexo.setSelectedItem(oConn1.setResult.getString("sexo_pa"));
+                    txtApellidos.setText(oConn1.setResult.getString("apellidos_pa").toUpperCase());
+                    cboSexo.setSelectedItem(oConn1.setResult.getString("sexo_pa").toUpperCase());
 
-                    txtEmail.setText(oConn1.setResult.getString("email_pa"));
-                    txtLugarNacimiento.setText(oConn1.setResult.getString("lugar_nac_pa"));
-                    cboNivelEstudio.setSelectedItem(oConn1.setResult.getString("nivel_est_pa"));
-                    cboProfesion.setSelectedItem(oConn1.setResult.getString("ocupacion_pa"));
-                    cboEstadoCivil.setSelectedItem(oConn1.setResult.getString("estado_civil_pa"));
-                    txtDireccion.setText(oConn1.setResult.getString("direccion_pa"));
-                    cboDepartamento.setSelectedItem(oConn1.setResult.getString("departamento_pa"));
-                    cboProvincia.setSelectedItem(oConn1.setResult.getString("provincia_pa"));
-                    txtProvincia.setText(oConn1.setResult.getString("provincia_pa"));
-                    cboDistrito.setSelectedItem(oConn1.setResult.getString("distrito_pa"));
-                    txtDistrito.setText(oConn1.setResult.getString("distrito_pa"));
-                    cboCaserio.setSelectedItem(oConn1.setResult.getString("caserio_pa"));
-                    txtCaserio.setText(oConn1.setResult.getString("caserio_pa"));
-                    txtTelefonoCasa.setText(oConn1.setResult.getString("tel_casa_pa"));
-                    txtCelular.setText(oConn1.setResult.getString("cel_pa"));
-                    txtHistorial.setText(oConn1.setResult.getString("historial_pa"));
+                    txtEmail.setText(oConn1.setResult.getString("email_pa").toUpperCase());
+                    txtLugarNacimiento.setText(oConn1.setResult.getString("lugar_nac_pa").toUpperCase());
+                    cboNivelEstudio.setSelectedItem(oConn1.setResult.getString("nivel_est_pa").toUpperCase());
+                    cboProfesion.setSelectedItem(oConn1.setResult.getString("ocupacion_pa").toUpperCase());
+                    cboEstadoCivil.setSelectedItem(oConn1.setResult.getString("estado_civil_pa").toUpperCase());
+                    txtDireccion.setText(oConn1.setResult.getString("direccion_pa").toUpperCase());
+                    cboDepartamento.setSelectedItem(oConn1.setResult.getString("departamento_pa").toUpperCase());
+                    cboProvincia.setSelectedItem(oConn1.setResult.getString("provincia_pa").toUpperCase());
+                    txtProvincia.setText(oConn1.setResult.getString("provincia_pa").toUpperCase());
+                    cboDistrito.setSelectedItem(oConn1.setResult.getString("distrito_pa").toUpperCase());
+                    txtDistrito.setText(oConn1.setResult.getString("distrito_pa").toUpperCase());
+                    cboCaserio.setSelectedItem(oConn1.setResult.getString("caserio_pa").toUpperCase());
+                    txtCaserio.setText(oConn1.setResult.getString("caserio_pa").toUpperCase());
+                    txtTelefonoCasa.setText(oConn1.setResult.getString("tel_casa_pa").toUpperCase());
+                    txtCelular.setText(oConn1.setResult.getString("cel_pa").toUpperCase());
+                    txtHistorial.setText(oConn1.setResult.getString("historial_pa").toUpperCase());
                     btnAgregar.setEnabled(false);
                     txtDni.setEnabled(false);
                     btnLimpiar.setEnabled(false);
@@ -3488,8 +3488,8 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
             try {
                 if (oConn1.setResult.next()) {
 
-                    txtNombresAlta.setText(oConn1.setResult.getString("nombres_pa"));
-                    txtApellidosAlta.setText(oConn1.setResult.getString("apellidos_pa"));
+                    txtNombresAlta.setText(oConn1.setResult.getString("nombres_pa").toUpperCase());
+                    txtApellidosAlta.setText(oConn1.setResult.getString("apellidos_pa").toUpperCase());
                     String gs = oConn1.setResult.getString("Grupoyfactor");
                     oFunc.SubSistemaMensajeError(gs);
                     if (gs != null) {
@@ -3510,7 +3510,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     fecha();
                 } else {
 
-                    oFunc.SubSistemaMensajeError("Si es la primera vez \n Rebe de Registar este Paciente \n   Clic en en la Imagen");
+                    oFunc.SubSistemaMensajeError("Si es la primera vez \n Debe de Registar este Paciente \n   Clic en en la Imagen");
                     AltaDesabilitar();
                     AltaLimpiar();
                     txtDniAlta.requestFocus();

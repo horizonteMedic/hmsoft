@@ -201,7 +201,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
     chk14.setSelected(true);
     chk15.setSelected(true);
     chk16.setSelected(true);
-    
+    jCheckBoxSexo.setSelected(true);
     }
     
     public void valorsede(){
@@ -292,6 +292,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 if(chk3.isSelected()== true){
                     vSql += "d.nombres_pa||' '||d.apellidos_pa AS NOMBRES, ";
                 }
+                if(jCheckBoxSexo.isSelected()){
+                    vSql += " d.sexo_pa,  ";
+                }
+                
                 if(chk4.isSelected()== true){
                     vSql+= "n.cargo_de AS CARGO, ";
                 }
@@ -428,6 +432,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 if(chk3.isSelected()== true){
                     vSql += ",d.nombres_pa||' '||d.apellidos_pa AS NOMBRES ";
                 }
+                if(jCheckBoxSexo.isSelected()){
+                    vSql += " ,d.sexo_pa  ";
+                }
+                
                 if(chk2.isSelected()== true){
                     vSql += ",d.cod_pa AS DNI ";
                 }
@@ -1017,6 +1025,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
         chk15 = new javax.swing.JCheckBox();
         chk16 = new javax.swing.JCheckBox();
         chk17 = new javax.swing.JCheckBox();
+        jCheckBoxSexo = new javax.swing.JCheckBox();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -1368,6 +1377,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
 
         chk17.setText("Manip-Alimentos");
 
+        jCheckBoxSexo.setText("Sexo");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -1412,7 +1423,9 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(chk16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chk17)))
+                        .addComponent(chk17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBoxSexo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -1437,7 +1450,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     .addComponent(chk13)
                     .addComponent(chk15)
                     .addComponent(chk16)
-                    .addComponent(chk17))
+                    .addComponent(chk17)
+                    .addComponent(jCheckBoxSexo))
                 .addContainerGap())
         );
 
@@ -1451,6 +1465,11 @@ public class Reporteador extends javax.swing.JInternalFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         jButton3.setText("Nuevo reporte");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -3141,8 +3160,8 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     return false;
                 }
             };
-            String vSql = "SELECT n.n_orden AS N°, fecha_apertura_po as FECHASOLICITUD,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES, d.cod_pa,\n" +
-"       d.fecha_nacimiento_pa AS FECHANACIMIENTO,\n" +
+            String vSql = "SELECT n.n_orden AS N°, TO_CHAR(fecha_apertura_po,'YYYY/MM/DD') as FECHASOLICITUD,d.apellidos_pa ||' '|| d.nombres_pa AS NOMBRES, d.cod_pa,\n" +
+"       TO_CHAR(d.fecha_nacimiento_pa,'YYYY/MM/DD') AS FECHANACIMIENTO,\n" +
 "       obtener_edad(d.fecha_nacimiento_pa,n.fecha_apertura_po) AS EDAD,\n" +
 "       n.razon_contrata,  n.cargo_de AS CARGO,\n" +
 "       CASE WHEN n.n_orden is null THEN '' END  as Tipotrabajo,\n" +
@@ -3168,9 +3187,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 "       CASE WHEN ab.txtcolesterol IS NOT NULL THEN ab.txtcolesterol ELSE 'INF. NO TOMADA'\n" +
 "	     END  AS Colesterol,        \n" +
 "       CASE WHEN ab.txttrigliseridos IS NOT NULL THEN ab.txttrigliseridos ELSE '...'\n" +
-"	     END  AS trigliceridos, 	\n" +
-"       CASE WHEN o.e_oculares is not null THEN o.e_oculares ELSE '' END ||'.'||\n" +
-"       CASE WHEN o.e_oculares1 is not null THEN o.e_oculares1 ELSE '' END AS DXOFTALMO,\n" +
+"	     END  AS trigliceridos,o.agudezaVisualLejor AS DXOFTALMO,\n" +
 "       CASE WHEN au.n_orden is not null THEN au.diagnostico \n" +
 "             WHEN au3.n_orden is not null  THEN au3.txtdiag_od ||' '|| au3.txtdiag_od \n" +
 "             WHEN au1.chkdnormal='TRUE' THEN 'NORMAL'\n" +
@@ -3220,7 +3237,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
 
             vSql += "  " + agregarConsulta + " group by n.n_orden, ama.n_orden, nombres, FECHANACIMIENTO,edad,ama.chkapto, ama.chkapto_restriccion, ama.chkno_apto, fi.n_orden,\n" +
 "t.peso,t.talla, t.imc, lc.txtglucosabio, ab.txtcolesterol, ab.txttrigliseridos, o.v_lejos_s_od, o.v_lejos_s_oi, o.e_oculares, o.e_oculares1,\n" +
-"au.n_orden, au.diagnostico, au3.n_orden, au3.txtdiag_od, DXAUDIO,d.cod_pa,v.txtdosis, d.cel_pa \n" +
+"au.n_orden, au.diagnostico, au3.n_orden, au3.txtdiag_od, DXAUDIO,d.cod_pa,v.txtdosis, d.cel_pa,o.agudezaVisualLejor \n" +
 "order by n.n_orden asc";                     //oFunc.SubSistemaMensajeInformacion(vSql);
             System.out.println("la consulta aplicada es:" + vSql);
             if (oConn.FnBoolQueryExecute(vSql)) {
@@ -3251,6 +3268,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
             Logger.getLogger(Reporteador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRepDiario5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
     public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
@@ -3433,6 +3454,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox jCheckBoxAlta;
     private javax.swing.JCheckBox jCheckBoxAntigeno;
     private javax.swing.JCheckBox jCheckBoxIngres0;
+    private javax.swing.JCheckBox jCheckBoxSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
