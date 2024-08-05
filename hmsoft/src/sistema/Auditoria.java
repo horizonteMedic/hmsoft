@@ -32,6 +32,7 @@ public class Auditoria extends javax.swing.JInternalFrame {
     RadiografiaTorax rt;
     Audiometria audi;
     Odontograma odon;
+    FuncionRespiratoriaABS espiro;
     InformePsicologico infP;
     B_OIT boit;
     ExamenRadiograficoSanguineo exRadSan;
@@ -1801,7 +1802,23 @@ public void cerrarVentana(){
         
     }//GEN-LAST:event_btnAudiologiaActionPerformed
     private void btnEspirometriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEspirometriaActionPerformed
-         if(oPu.eDatos(txtEspirometria, "funcion_abs", "Espirometria", txtNorden)){verifica(txtNorden.getText().toString());}
+//if(oPu.eDatos(txtFichaAudiologica, "ficha_audiologica", "Ficha Audiometria", txtNorden)){verifica(txtNorden.getText().toString()); //verifica2();}
+        //if(oPu.eDatos(txtFichaAudiologica, "audiometria_po", "Examen Audiometrico", txtNorden)){verifica(txtNorden.getText().toString()); }}//verifica2();}
+                  if(estacerrado(espiro)){  
+          espiro =new FuncionRespiratoriaABS();
+          Desktop.add(espiro);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+        // audit.setFrameIcon(ticon);
+      espiro.setLocation(centradoXY(espiro));
+
+          espiro.show();
+          //fn.setVisible(true);
+       }
+             else{
+            espiro.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
     }//GEN-LAST:event_btnEspirometriaActionPerformed
     private void btnOdontogramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOdontogramaActionPerformed
          //if(oPu.eDatos(txtOdontograma, "odontograma", "Odontograma", txtNorden)){verifica(txtNorden.getText().toString());}
@@ -1962,7 +1979,22 @@ public void cerrarVentana(){
 
     private void btnAudiometriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAudiometriaActionPerformed
         // TODO add your handling code here:
-        if(oPu.eDatos(txtAudiometria, "audiometria_po", "Examen Audiometrico", txtNorden)){verifica(txtNorden.getText().toString());}// verifica2();}
+        if(estacerrado(audi)){  
+          audi =new Audiometria();
+          Desktop.add(audi);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+        // audit.setFrameIcon(ticon);
+      audi.setLocation(centradoXY(audi));
+
+          audi.show();
+          //fn.setVisible(true);
+       }
+             else{
+            audi.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+        // verifica2();}
     }//GEN-LAST:event_btnAudiometriaActionPerformed
 
     private void btnCertTrabAltBarrickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCertTrabAltBarrickActionPerformed

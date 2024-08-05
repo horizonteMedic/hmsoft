@@ -34,5 +34,6 @@ public class clsGlobales {
     public static Integer fdesde;
     public static Integer fHasta;
     public static Integer fSerie;
+    
    
 }
