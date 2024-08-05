@@ -2429,11 +2429,7 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
        private boolean validar(){
         boolean bResultado=true;
     if (((JTextField)FechaEvaluacion.getDateEditor().getUiComponent()).getText().trim().length()< 2 ) 
-        {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}
-    
-    
-    
-   
+        {oFunc.SubSistemaMensajeError("Ingrese Fecha ");bResultado = false;}  
    return bResultado;
 } 
 public void imp(){
