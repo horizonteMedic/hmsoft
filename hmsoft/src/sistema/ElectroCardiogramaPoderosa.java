@@ -7,6 +7,7 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -67,7 +68,11 @@ public final class ElectroCardiogramaPoderosa extends javax.swing.JInternalFrame
         Imagen imagen =new Imagen ();
         jPanel6.add(imagen);
         jPanel6.repaint();
-        
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
           
     }
 

@@ -6,6 +6,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -40,6 +41,11 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
        jtExamen.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/impresora.png")));
         responsables = getRowsToVector("select nombre_user||' '||apellido_user AS responsable FROM usuarios");
      CargarDatos("");
+     if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     @SuppressWarnings("unchecked")

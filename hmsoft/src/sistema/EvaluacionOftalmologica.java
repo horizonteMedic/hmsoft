@@ -7,6 +7,7 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.SQLException;
@@ -41,7 +42,11 @@ public final class EvaluacionOftalmologica extends javax.swing.JInternalFrame {
     public EvaluacionOftalmologica() {
         initComponents();
         Deshabilitar(true);
-    
+        if(clsGlobales.Norden>0)
+        {
+            txtNumero.setText(clsGlobales.Norden.toString());
+            btnEditarAudiomActionPerformed(null);
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -34,6 +34,11 @@ public class B_Certificacion_conduccion extends javax.swing.JInternalFrame {
     public B_Certificacion_conduccion() {
         initComponents();
         txtMedico.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
      private com.toedter.calendar.JDateChooser FechaNacimiento;
     /**

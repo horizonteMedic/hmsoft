@@ -49,6 +49,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         //Fecha();
         txtCertifica.setText( clsGlobales.sNomOperador  );
         sbCargarDatosAP();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarFMActionPerformed(null);
+        }
     }
 
     private void vExamenes(String Nro) {

@@ -47,6 +47,11 @@ public class Aptitud_Licencia_Conducir_Interna extends javax.swing.JInternalFram
         initComponents();
         txtCertifica.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
         timer.start();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

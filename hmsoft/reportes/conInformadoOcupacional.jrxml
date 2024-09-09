@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="605640aa-6f1b-44c1-a572-e4d7faa58e9c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="80"/>
+	<parameter name="Norden" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT d.cod_pa, d.nombres_pa||' '||d.apellidos_pa as nombre, d.fecha_nacimiento_pa,n.razon_empresa,
+ n.cargo_de,ci.fecha,ci.hora,(case when n.cod_sede=1 then CONCAT(n.n_orden,'-T')
+ else CONCAT(n.n_orden,'-H') END ) as numero,
+(case when n.cod_sede=1 then 'Guillermo Prescott N°127 Urb. Sto.Dominguito- Trujillo -Telef: 044 666120 -EMAIL: admision.trujillo@horizontemedic.com'
+when n.cod_sede=2 then 'Ubicanos en:Jr.Leoncio Prado N°786-Huamachuco-Telef:044 348070-969603777-EMAIL:admision@horizontemedic.com'
+when n.cod_sede=3 then 'Ubícanos en:Av.Huancavelica N°2225–El Tambo/Telf:064-659554/Cel: 969603777/email:citashuancayo@horizontemedic.com'
+end) as ubicacion,n.razon_contrata,
+(case when n.cod_sede=1 then 'TRUJILLO'
+when n.cod_sede=2 then 'HUAMACHUCO'
+when n.cod_sede=3 then 'HUANCAYO'
+end) as codSede
+                             FROM datos_paciente AS d
+                            INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)
+                            left JOIN consentimientoInformado AS ci ON (ci.n_orden = n.n_orden)
+                            WHERE n.n_orden =$P{Norden}]]>
+	</queryString>
+	<field name="cod_pa" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="fecha_nacimiento_pa" class="java.sql.Date"/>
+	<field name="razon_empresa" class="java.lang.String"/>
+	<field name="cargo_de" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<field name="hora" class="java.sql.Time"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="ubicacion" class="java.lang.String"/>
+	<field name="razon_contrata" class="java.lang.String"/>
+	<field name="codsede" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image>
+				<reportElement uuid="cc54384f-1a75-4207-8f5a-d95c2bbe70e9" x="2" y="4" width="248" height="88"/>
+				<imageExpression><![CDATA["C:\\hmsoft\\horiz.png"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement uuid="485c9e68-63d4-4142-82d5-87e2bebb5dec" x="443" y="44" width="112" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0317a090-9414-44de-8879-99216e35412a" x="5" y="7" width="550" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="11"/>
+				</textElement>
+				<text><![CDATA[CONSENTIMIENTO INFORMADO PARA AUTORIZAR EL EXAMEN MEDICO OCUPACIONAL]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="485" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="de0cdbef-4861-4c81-a527-641f058aea68" x="45" y="10" width="17" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Yo ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ec4bd957-8bf9-4cd7-b444-7706eb78e332" x="73" y="10" width="407" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="85c1eb6b-06cc-480c-beb1-f37a369bf1a2" x="45" y="43" width="221" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[identificado con documento de identidad N°:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="eb581ab7-ee19-4b19-8c62-f3d4f4e9693f" x="262" y="43" width="78" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_pa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="513e5238-7ea3-457b-8e69-24ec28867c11" x="349" y="43" width="131" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Con ocupacion laboral de:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d63827ba-be83-4b18-8b89-911ff04d921f" x="176" y="68" width="238" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargo_de}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="deedd3b7-5158-48e9-9a41-9e7a5cdc7b78" x="45" y="93" width="468" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[certifico que he sido informado/a acerca de la naturaleza y próposito del examen médico ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ec36639f-20fc-4a0e-abfc-ff0756396686" x="45" y="116" width="420" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[ocupacional asi como  pruebas complementarias determinada por la empresa:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b566f6c3-db13-4f10-8f91-661edfe87e2f" x="138" y="141" width="321" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razon_contrata}.equals("N/A")? $F{razon_empresa}:$F{razon_contrata}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6ac7afef-1b30-424b-a587-fa985be916d6" x="45" y="166" width="456" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[De acuerdo a los peligros y riesgos identificados en mi puesto de trabajo. En ese sentido en ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a6d36299-d55b-494c-aba8-697892bb857e" x="45" y="190" width="474" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[forma consiente y voluntaria doy mi consentimiento, para que se me realice el examen médico ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2fc9cb91-a047-4375-be35-b205bd077555" x="45" y="210" width="501" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[ocupacional de acuerdo a la Resolucion ministerial N°  312-2011/MINSA . Y doy fe que la ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8f6b789c-1e8c-4b43-9af5-14b10797c048" x="45" y="230" width="468" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[información  brindada a HORIZONTE MEDIC es veridica. Asi mismo, autorizo a HORIZONTE ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="050d5468-d65b-41aa-876f-8cc2461bcc97" x="45" y="250" width="474" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[MEDIC para que brinde mi historia clínica y toda información resultante de mi examen medico ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b14e6d48-5200-4ac4-b833-c99b7bb9f838" x="45" y="270" width="468" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[ocupacional al Medico Ocupacional de mi empresa para que tenga acceso a mi  Historia Clinica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1ff1642d-2a8b-41ff-96cd-c7ab9fce7afa" x="45" y="290" width="495" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[de acuerdo a la N.T.N° 022 MINSA/dgsp-V.02 y Ley N° 26842, Ley general de salud.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a092ca2-5fbc-442e-847f-6af6dfc3b15e" x="45" y="318" width="42" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement uuid="e10a2cb5-2ec3-4270-b0b5-67d978243c0a" x="189" y="318" width="128" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9ea8aa97-3b6b-4f52-b4ac-5c5c95ecf699" x="373" y="318" width="42" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Hora:]]></text>
+			</staticText>
+			<textField pattern="h.mm a">
+				<reportElement uuid="5b054778-dfa0-46bf-a6a5-9f838d140879" x="415" y="318" width="128" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hora}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="edc96cef-caf7-4268-9045-5c78b2fd42d0" x="83" y="364" width="100" height="89"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="fcece3f3-0f21-4ce7-85f4-93d1e936dce8" x="117" y="453" width="42" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Huella]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b2224a5c-0e16-4647-8539-2e5ec2164587" x="359" y="453" width="42" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Firma]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9f4f5af8-243d-4482-a07f-cb04bb2b6ba2" x="291" y="433" width="180" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[-----------------------------------------------]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="06505463-3447-44d8-b811-e5980e566504" x="89" y="318" width="90" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codsede}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="297aaa3f-e612-4424-b90e-819c1d0bfa76" x="178" y="318" width="5" height="20"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="646794ca-6454-4175-918b-7ecfef11ab62" x="2" y="15" width="555" height="20"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ubicacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -38,6 +38,11 @@ public final class AntecedentesEnfermedadesAltura extends javax.swing.JInternalF
 //        txtmedicacionActual.setEditable(false);
         
         txtNorden.requestFocus();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            brnEditarActionPerformed(null);
+        }
     }
     private void cuadros(boolean b){
         no1.setSelected(b);

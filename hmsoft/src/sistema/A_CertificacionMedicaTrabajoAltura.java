@@ -46,7 +46,11 @@ public class A_CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFra
         txtNomMedico.setText(clsGlobales.sNomOperador);
         txtCMP.setText(clsGlobales.sCMPOperador);
        timer.start();
-        
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

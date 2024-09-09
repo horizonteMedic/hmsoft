@@ -8,6 +8,7 @@ import Caja.AddCargos;
 import static Caja.RegistrarCliente.addExEn;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -43,7 +44,11 @@ public final class FichaMedica1 extends javax.swing.JInternalFrame {
         jtFichaMedica.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/invoice.png")));
         jtFichaMedica.setIconAt(2, new ImageIcon(ClassLoader.getSystemResource("imagenes/botiquin.png")));
         //Fecha();
-
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarFMActionPerformed(null);
+        }
     }
 
     private void vExamenes(String Nro) {

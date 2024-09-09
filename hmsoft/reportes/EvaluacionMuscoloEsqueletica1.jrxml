@@ -1,0 +1,2296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CertificadoAltura" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b0725a6a-eb5e-4f36-911a-de9fc970355f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="738"/>
+	<style name="miestilo">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==1)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00FFFF" backcolor="#00FFFF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==2)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#3399FF" backcolor="#3399FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==3)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#9900FF" backcolor="#9900FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==4)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0099" backcolor="#FF0099"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==5)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99FF00" backcolor="#99FF00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==6)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF3300" backcolor="#FF3300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==7)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF9900" backcolor="#FF9900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==8)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666666" backcolor="#666666"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==9)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0033" backcolor="#FF0033"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==10)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#009900" backcolor="#009900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==11)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#009999" backcolor="#009999"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==12)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#006699" backcolor="#006699"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==13)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666600" backcolor="#666600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==14)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99FF99" backcolor="#99FF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==15)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFF99" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==16)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666600" backcolor="#666600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==17)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#330066" backcolor="#330066"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==18)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#999900" backcolor="#999900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==19)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#663300" backcolor="#663300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==20)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC99FF" backcolor="#CC99FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==21)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#003300" backcolor="#003300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==22)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFCC66" backcolor="#FFCC66"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==23)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0099" backcolor="#FF0099"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==24)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC99FF" backcolor="#CC99FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==25)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#0000CC" backcolor="#0000CC"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==26)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF6666" backcolor="#FF6666"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==27)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00CC00" backcolor="#00CC00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==28)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC0033" backcolor="#CC0033"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==29)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF6600" backcolor="#FF6600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==30)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#999900" backcolor="#999900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==31)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#003366" backcolor="#003366"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==32)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99CC00" backcolor="#99CC00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==33)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFF66" backcolor="#FFFF66"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==34)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC3300" backcolor="#CC3300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==35)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00CCCC" backcolor="#00CCCC"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==36)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#009900" backcolor="#009900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==37)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666600" backcolor="#666600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==38)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF9999" backcolor="#FF9999"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==39)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#6600CC" backcolor="#6600CC"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==40)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CCFF99" backcolor="#CCFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==41)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#660000" backcolor="#660000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==42)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF9966" backcolor="#FF9966"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==43)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99FF99" backcolor="#99FF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==44)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC0066" backcolor="#3366FF">
+				<pen lineStyle="Double" lineColor="#CC0066"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==45)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#66FFFF" backcolor="#FFFF33">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==46)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00FF00" backcolor="#FF0066">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==47)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF3333" backcolor="#33FF33">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==48)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#3300FF" backcolor="#FF66FF">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==49)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#006600" backcolor="#00FFFF">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==50)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#0000FF" backcolor="#FFFF00">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+	</style>
+	<parameter name="Norden" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT d.apellidos_pa||' '||d.nombres_pa AS nombres, d.cod_pa, d.sexo_pa,
+e.*,n.color
+FROM datos_paciente  AS d
+INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)
+INNER JOIN evaluacion_musculo_esqueletica AS e ON(e.n_orden = n.n_orden)
+INNER JOIN usuarios AS u ON (u.dni_user = e.dni_user)
+WHERE e.n_orden = $P{Norden} limit 1]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="cod_pa" class="java.lang.Integer"/>
+	<field name="sexo_pa" class="java.lang.String"/>
+	<field name="cod_eval" class="java.lang.Integer"/>
+	<field name="n_orden" class="java.lang.Integer"/>
+	<field name="edad" class="java.lang.Integer"/>
+	<field name="t_servicio" class="java.lang.String"/>
+	<field name="f_examen" class="java.sql.Date"/>
+	<field name="rbsintoma_si" class="java.lang.Boolean"/>
+	<field name="rbsintoma_no" class="java.lang.Boolean"/>
+	<field name="txtsintomas" class="java.lang.String"/>
+	<field name="rbfaja_si" class="java.lang.Boolean"/>
+	<field name="rbfaja_no" class="java.lang.Boolean"/>
+	<field name="rbtecnicacarga_si" class="java.lang.Boolean"/>
+	<field name="rbtecnicacarga_no" class="java.lang.Boolean"/>
+	<field name="rbcapacitacioncarga_si" class="java.lang.Boolean"/>
+	<field name="rbcapacitacioncarga_no" class="java.lang.Boolean"/>
+	<field name="txtextencion_cabeza" class="java.lang.String"/>
+	<field name="txtflexion_cabeza" class="java.lang.String"/>
+	<field name="rbextension_cabeza_n" class="java.lang.Boolean"/>
+	<field name="rbextension_cabeza_r" class="java.lang.Boolean"/>
+	<field name="rbextension_cabeza_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_cabeza_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_cabeza_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_cabeza_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_hombro_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_hombro_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_hombro_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_hombro_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_hombro_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_hombro_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_hombro_n" class="java.lang.Boolean"/>
+	<field name="rbextension_hombro_r" class="java.lang.Boolean"/>
+	<field name="rbextension_hombro_m" class="java.lang.Boolean"/>
+	<field name="rbextension_hombro_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_hombro_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_hombro_m1" class="java.lang.Boolean"/>
+	<field name="rbabduccion_hombro_n" class="java.lang.Boolean"/>
+	<field name="rbabduccion_hombro_r" class="java.lang.Boolean"/>
+	<field name="rbabduccion_hombro_m" class="java.lang.Boolean"/>
+	<field name="rbabduccion_hombro_n1" class="java.lang.Boolean"/>
+	<field name="rbabduccion_hombro_r1" class="java.lang.Boolean"/>
+	<field name="rbabduccion_hombro_m1" class="java.lang.Boolean"/>
+	<field name="rbaduccion_hombro_n" class="java.lang.Boolean"/>
+	<field name="rbaduccion_hombro_r" class="java.lang.Boolean"/>
+	<field name="rbaduccion_hombro_m" class="java.lang.Boolean"/>
+	<field name="rbaduccion_hombro_n1" class="java.lang.Boolean"/>
+	<field name="rbaduccion_hombro_r1" class="java.lang.Boolean"/>
+	<field name="rbaduccion_hombro_m1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_hombro_n" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_hombro_r" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_hombro_m" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_hombro_n1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_hombro_r1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_hombro_m1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_hombro_n" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_hombro_r" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_hombro_m" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_hombro_n1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_hombro_r1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_hombro_m1" class="java.lang.Boolean"/>
+	<field name="rbflexion_brazo_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_brazo_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_brazo_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_brazo_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_brazo_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_brazo_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_brazo_n" class="java.lang.Boolean"/>
+	<field name="rbextension_brazo_r" class="java.lang.Boolean"/>
+	<field name="rbextension_brazo_m" class="java.lang.Boolean"/>
+	<field name="rbextension_brazo_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_brazo_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_brazo_m1" class="java.lang.Boolean"/>
+	<field name="rbpronacion_antebrazo_n" class="java.lang.Boolean"/>
+	<field name="rbpronacion_antebrazo_r" class="java.lang.Boolean"/>
+	<field name="rbpronacion_antebrazo_m" class="java.lang.Boolean"/>
+	<field name="rbpronacion_antebrazo_n1" class="java.lang.Boolean"/>
+	<field name="rbpronacion_antebrazo_r1" class="java.lang.Boolean"/>
+	<field name="rbpronacion_antebrazo_m1" class="java.lang.Boolean"/>
+	<field name="rbsupinacion_antebrazo_n" class="java.lang.Boolean"/>
+	<field name="rbsupinacion_antebrazo_r" class="java.lang.Boolean"/>
+	<field name="rbsupinacion_antebrazo_m" class="java.lang.Boolean"/>
+	<field name="rbsupinacion_antebrazo_n1" class="java.lang.Boolean"/>
+	<field name="rbsupinacion_antebrazo_r1" class="java.lang.Boolean"/>
+	<field name="rbsupinacion_antebrazo_m1" class="java.lang.Boolean"/>
+	<field name="rbflexion_munieca_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_munieca_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_munieca_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_munieca_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_munieca_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_munieca_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_munieca_n" class="java.lang.Boolean"/>
+	<field name="rbextension_munieca_r" class="java.lang.Boolean"/>
+	<field name="rbextension_munieca_m" class="java.lang.Boolean"/>
+	<field name="rbextension_munieca_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_munieca_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_munieca_m1" class="java.lang.Boolean"/>
+	<field name="rbdesvcubital_munieca_n" class="java.lang.Boolean"/>
+	<field name="rbdesvcubital_munieca_r" class="java.lang.Boolean"/>
+	<field name="rbdesvcubital_munieca_m" class="java.lang.Boolean"/>
+	<field name="rbdesvcubital_munieca_n1" class="java.lang.Boolean"/>
+	<field name="rbdesvcubital_munieca_r1" class="java.lang.Boolean"/>
+	<field name="rbdesvcubital_munieca_m1" class="java.lang.Boolean"/>
+	<field name="rbdesvradial_munieca_n" class="java.lang.Boolean"/>
+	<field name="rbdesvradial_munieca_r" class="java.lang.Boolean"/>
+	<field name="rbdesvradial_munieca_m" class="java.lang.Boolean"/>
+	<field name="rbdesvradial_munieca_n1" class="java.lang.Boolean"/>
+	<field name="rbdesvradial_munieca_r1" class="java.lang.Boolean"/>
+	<field name="rbdesvradial_munieca_m1" class="java.lang.Boolean"/>
+	<field name="rbphallen_si" class="java.lang.Boolean"/>
+	<field name="rbphallen_no" class="java.lang.Boolean"/>
+	<field name="rbtinel_si" class="java.lang.Boolean"/>
+	<field name="rbtinel_no" class="java.lang.Boolean"/>
+	<field name="rbflexion_torax_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_torax_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_torax_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_torax_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_torax_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_torax_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_torax_n" class="java.lang.Boolean"/>
+	<field name="rbextension_torax_r" class="java.lang.Boolean"/>
+	<field name="rbextension_torax_m" class="java.lang.Boolean"/>
+	<field name="rbextension_torax_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_torax_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_torax_m1" class="java.lang.Boolean"/>
+	<field name="rbrotacion_torax_n" class="java.lang.Boolean"/>
+	<field name="rbrotacion_torax_r" class="java.lang.Boolean"/>
+	<field name="rbrotacion_torax_m" class="java.lang.Boolean"/>
+	<field name="rbrotacion_torax_n1" class="java.lang.Boolean"/>
+	<field name="rbrotacion_torax_r1" class="java.lang.Boolean"/>
+	<field name="rbrotacion_torax_m1" class="java.lang.Boolean"/>
+	<field name="rbflexion_cadera_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_cadera_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_cadera_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_cadera_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_cadera_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_cadera_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_cadera_n" class="java.lang.Boolean"/>
+	<field name="rbextension_cadera_r" class="java.lang.Boolean"/>
+	<field name="rbextension_cadera_m" class="java.lang.Boolean"/>
+	<field name="rbextension_cadera_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_cadera_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_cadera_m1" class="java.lang.Boolean"/>
+	<field name="rbabduccion_cadera_n" class="java.lang.Boolean"/>
+	<field name="rbabduccion_cadera_r" class="java.lang.Boolean"/>
+	<field name="rbabduccion_cadera_m" class="java.lang.Boolean"/>
+	<field name="rbabduccion_cadera_n1" class="java.lang.Boolean"/>
+	<field name="rbabduccion_cadera_r1" class="java.lang.Boolean"/>
+	<field name="rbabduccion_cadera_m1" class="java.lang.Boolean"/>
+	<field name="rbaduccion_cadera_n" class="java.lang.Boolean"/>
+	<field name="rbaduccion_cadera_r" class="java.lang.Boolean"/>
+	<field name="rbaduccion_cadera_m" class="java.lang.Boolean"/>
+	<field name="rbaduccion_cadera_n1" class="java.lang.Boolean"/>
+	<field name="rbaduccion_cadera_r1" class="java.lang.Boolean"/>
+	<field name="rbaduccion_cadera_m1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_cadera_n" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_cadera_r" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_cadera_m" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_cadera_n1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_cadera_r1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_cadera_m1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_cadera_n" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_cadera_r" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_cadera_m" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_cadera_n1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_cadera_r1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_cadera_m1" class="java.lang.Boolean"/>
+	<field name="rbflexion_pierna_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_pierna_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_pierna_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_pierna_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_pierna_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_pierna_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_pierna_n" class="java.lang.Boolean"/>
+	<field name="rbextension_pierna_r" class="java.lang.Boolean"/>
+	<field name="rbextension_pierna_m" class="java.lang.Boolean"/>
+	<field name="rbextension_pierna_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_pierna_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_pierna_m1" class="java.lang.Boolean"/>
+	<field name="rbflexion_rodilla_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_rodilla_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_rodilla_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_rodilla_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_rodilla_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_rodilla_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_rodilla_n" class="java.lang.Boolean"/>
+	<field name="rbextension_rodilla_r" class="java.lang.Boolean"/>
+	<field name="rbextension_rodilla_m" class="java.lang.Boolean"/>
+	<field name="rbextension_rodilla_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_rodilla_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_rodilla_m1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_rodilla_n" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_rodilla_r" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_rodilla_m" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_rodilla_n1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_rodilla_r1" class="java.lang.Boolean"/>
+	<field name="rbrotacionint_rodilla_m1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_rodilla_n" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_rodilla_r" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_rodilla_m" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_rodilla_n1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_rodilla_r1" class="java.lang.Boolean"/>
+	<field name="rbrotacionext_rodilla_m1" class="java.lang.Boolean"/>
+	<field name="rbflexion_tobillo_n" class="java.lang.Boolean"/>
+	<field name="rbflexion_tobillo_r" class="java.lang.Boolean"/>
+	<field name="rbflexion_tobillo_m" class="java.lang.Boolean"/>
+	<field name="rbflexion_tobillo_n1" class="java.lang.Boolean"/>
+	<field name="rbflexion_tobillo_r1" class="java.lang.Boolean"/>
+	<field name="rbflexion_tobillo_m1" class="java.lang.Boolean"/>
+	<field name="rbextension_tobillo_n" class="java.lang.Boolean"/>
+	<field name="rbextension_tobillo_r" class="java.lang.Boolean"/>
+	<field name="rbextension_tobillo_m" class="java.lang.Boolean"/>
+	<field name="rbextension_tobillo_n1" class="java.lang.Boolean"/>
+	<field name="rbextension_tobillo_r1" class="java.lang.Boolean"/>
+	<field name="rbextension_tobillo_m1" class="java.lang.Boolean"/>
+	<field name="rbfuerzamuscular_1" class="java.lang.Boolean"/>
+	<field name="rbfuerzamuscular_2" class="java.lang.Boolean"/>
+	<field name="rbfuerzamuscular_3" class="java.lang.Boolean"/>
+	<field name="rbfuerzamuscular_4" class="java.lang.Boolean"/>
+	<field name="rbfuerzamuscular_5" class="java.lang.Boolean"/>
+	<field name="rbejecervical_normal" class="java.lang.Boolean"/>
+	<field name="rbejecervical_derecha" class="java.lang.Boolean"/>
+	<field name="rbejecervical_izq" class="java.lang.Boolean"/>
+	<field name="rbejedorsal_normal" class="java.lang.Boolean"/>
+	<field name="rbejedorsal_derecha" class="java.lang.Boolean"/>
+	<field name="rbejedorsal_izq" class="java.lang.Boolean"/>
+	<field name="rbejelumbar_normal" class="java.lang.Boolean"/>
+	<field name="rbejelumbar_derecha" class="java.lang.Boolean"/>
+	<field name="rbejelumbar_izq" class="java.lang.Boolean"/>
+	<field name="rbcifosis_si" class="java.lang.Boolean"/>
+	<field name="rbcifosis_no" class="java.lang.Boolean"/>
+	<field name="rbescoliosis_si" class="java.lang.Boolean"/>
+	<field name="rbescoliosis_no" class="java.lang.Boolean"/>
+	<field name="rblordosis_si" class="java.lang.Boolean"/>
+	<field name="rblordosis_no" class="java.lang.Boolean"/>
+	<field name="rbmixta_si" class="java.lang.Boolean"/>
+	<field name="rbmixta_no" class="java.lang.Boolean"/>
+	<field name="rbcervical_si" class="java.lang.Boolean"/>
+	<field name="rbcervical_no" class="java.lang.Boolean"/>
+	<field name="rbdorsal_si" class="java.lang.Boolean"/>
+	<field name="rbdorsal_no" class="java.lang.Boolean"/>
+	<field name="rblumbar_si" class="java.lang.Boolean"/>
+	<field name="rblumbra_no" class="java.lang.Boolean"/>
+	<field name="rblesagueder_si" class="java.lang.Boolean"/>
+	<field name="rblesagueder_no" class="java.lang.Boolean"/>
+	<field name="rblesagueizq_si" class="java.lang.Boolean"/>
+	<field name="rblesagueizq_no" class="java.lang.Boolean"/>
+	<field name="chktratamiento_si" class="java.lang.Boolean"/>
+	<field name="chktratamiento_no" class="java.lang.Boolean"/>
+	<field name="dni_user" class="java.lang.Integer"/>
+	<field name="txtdiagnostico" class="java.lang.String"/>
+	<field name="chkconclusion_si" class="java.lang.Boolean"/>
+	<field name="chkconclusion_no" class="java.lang.Boolean"/>
+	<field name="txtrecomendaciones" class="java.lang.String"/>
+	<field name="color" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="bcb86543-5a04-46b7-ae5a-d5737c294397" x="113" y="10" width="317" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EVALUACIÓN MUSCULO ESQUELETICA]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement uuid="5af61bb9-3997-4ff1-bf78-ab2796e02f83" style="miestilo" x="554" y="-18" width="5" height="52" forecolor="#FFFFFF"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="17e25304-aceb-4a93-ac46-1cd21066335f" style="miestilo" mode="Transparent" x="512" y="3" width="39" height="31"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{color}.equals(1)?"A":$F{color}.equals(2)?"B":
+$F{color}.equals(3)?"C":$F{color}.equals(4)?"D":
+$F{color}.equals(5)?"E":$F{color}.equals(6)?"F":
+$F{color}.equals(7)?"G":$F{color}.equals(8)?"H":
+$F{color}.equals(9)?"I":$F{color}.equals(10)?"J":
+$F{color}.equals(11)?"K":$F{color}.equals(12)?"L":
+$F{color}.equals(13)?"LL":$F{color}.equals(14)?"M":
+$F{color}.equals(15)?"N":$F{color}.equals(16)?"Ñ":
+$F{color}.equals(17)?"O":$F{color}.equals(18)?"P":
+$F{color}.equals(19)?"Q":$F{color}.equals(20)?"R":
+$F{color}.equals(21)?"S":$F{color}.equals(22)?"T":
+$F{color}.equals(23)?"U":$F{color}.equals(24)?"V":
+$F{color}.equals(25)?"W":$F{color}.equals(26)?"X":
+$F{color}.equals(27)?"Y":$F{color}.equals(28)?"Z":
+$F{color}.equals(29)?"CH":$F{color}.equals(30)?"AB":
+$F{color}.equals(31)?"AC":$F{color}.equals(32)?"AD":
+$F{color}.equals(33)?"AE":$F{color}.equals(34)?"AF":
+$F{color}.equals(35)?"AG":$F{color}.equals(36)?"AH":
+$F{color}.equals(37)?"AI":$F{color}.equals(38)?"AJ":
+$F{color}.equals(39)?"AK":$F{color}.equals(40)?"AL":
+$F{color}.equals(41)?"AM":$F{color}.equals(42)?"AN":
+$F{color}.equals(43)?"AÑ":$F{color}.equals(44)?"AO":
+$F{color}.equals(45)?"AP":$F{color}.equals(46)?"AQ":
+$F{color}.equals(47)?"AR":$F{color}.equals(48)?"AS":
+$F{color}.equals(49)?"AT":$F{color}.equals(50)?"AU":" "]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="758" splitType="Stretch">
+			<line>
+				<reportElement uuid="f6e0b129-89c7-42d5-9cfb-41c03a852648" x="0" y="1" width="1" height="755"/>
+			</line>
+			<line>
+				<reportElement uuid="1a2c8855-1a4d-4066-8f70-7828b7aff267" x="1" y="756" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="212dfa1f-58eb-43fb-aa5c-ed0aacf9ddcc" x="555" y="1" width="1" height="756"/>
+			</line>
+			<line>
+				<reportElement uuid="86e2fa90-0b72-49d3-94ac-2321ed577720" x="0" y="1" width="555" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="57f5310f-63e7-4d16-a7cf-fc4e3654147d" x="453" y="34" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8b367e4f-c84d-41e4-a1ad-559198734353" x="226" y="32" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extensión]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8b3cbbe1-d7c9-42f2-81ea-df7196158553" x="453" y="18" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="faa40599-8af4-4564-aed6-4874cd58fed7" x="1" y="1" width="554" height="14"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="88c9f7f3-fe2d-457f-b320-13eb5123bd00" x="66" y="17" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e8452fe2-3b8b-41fd-93bb-bb93ca1240bd" x="385" y="17" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0fb068f-ec59-40c2-b1d3-4d17d334adc0" x="226" y="17" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Flexión ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90885896-93d3-44a9-9a7b-8e544505b72f" x="335" y="17" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="91dc294c-ae71-4821-8606-f5b413fe18da" x="16" y="33" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b4f4b51c-c0da-4944-b16a-a60980c99ffc" x="491" y="33" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98fd1fd7-110b-47f2-adfe-2dd702215d00" x="438" y="17" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7974c1b6-b76d-49da-9d4c-a312c65163c6" x="385" y="33" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="b76decc4-05bc-40fe-865d-1bb8ab383892" x="179" y="34" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="a3b28123-701b-44a0-bb1a-42f213ba0c7a" x="128" y="18" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="e5891584-4a10-412d-82ba-e721a326cba3" x="438" y="33" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="750ab7df-02fc-4a87-9e4e-38b8c1df90ac" x="128" y="34" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="28f85d4d-6492-4c32-a5a6-824b0329d797" x="66" y="33" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="49154794-2e73-42f4-a9a6-d62ba178ad09" x="506" y="18" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0ce7696e-52b1-4640-b170-137a3db07fda" x="491" y="17" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="07406b6a-88ca-4485-80a4-6a4504bf7aa0" x="399" y="34" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c9d28dc8-da3d-4ecf-a99b-c530ba8bf430" x="164" y="33" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="9768fd80-90dd-4b60-98b1-b0cd29503414" x="179" y="18" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="b979e973-35e9-43f3-8311-1374aa02d9cf" x="164" y="17" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="99e12cc0-93b9-4a6f-bc71-2208e73e39db" x="113" y="17" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="794f6617-c78d-47bf-b6e9-ce5fb67ed828" x="80" y="34" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="dbdd2b10-411b-4964-8fd0-cfbfd37ddcb3" x="399" y="18" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="aee341ee-5516-4760-a64c-46d1ced29d03" x="16" y="17" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="fc50aef3-f85f-4e68-ac15-7caa5c747eb9" x="80" y="18" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0fd3e784-36a4-413f-9dbf-94aa829b7f70" x="335" y="33" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="adbefdfc-5a87-4df9-a92d-44825c249b25" x="113" y="33" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8eecb872-4736-4b9f-9b23-0ba44343c55e" x="506" y="34" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="1ed1a341-841c-48ab-8e3c-2e79fe2699d4" x="5" y="2" width="547" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[b) Pierna]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="3998533a-b5fb-4998-ae27-bb7cc482d4c3" x="1" y="48" width="554" height="15"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="5d9c58c0-ffe8-4ab5-828a-71e17d938f11" x="5" y="49" width="547" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[c) Rodilla]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="578a444f-f351-4467-bfb3-14e71ba582d0" x="226" y="65" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Flexión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2c71ebb3-9640-4456-8a4e-1856089e3890" x="385" y="65" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="30401875-c690-4262-8082-7e26411ae931" x="80" y="66" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c64e0685-b612-4c83-ba9c-a35e0e7392a0" x="164" y="65" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="018d9ca6-e56f-444c-a604-a72a8b02b222" x="179" y="66" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="49523e87-65ce-441d-895c-1dd3987d6113" x="399" y="82" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6537b77e-93f5-44f2-a80a-7342b2edc528" x="491" y="81" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7ab2203b-5d35-4058-97d9-8cce58726a83" x="226" y="81" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extensión]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="f0ffa37e-73da-4746-9024-a6beaa6e9e1a" x="453" y="66" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="3f4c2d11-cbf5-4e86-a8f2-6262f41e0c57" x="66" y="81" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="453bfc3f-5020-4ce8-98c3-60d50caa01a5" x="506" y="66" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4b6b0c0b-50b8-4c74-8218-58648ba10ce9" x="16" y="65" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="29da2230-6592-44bf-9838-4bd7fc4e8c93" x="453" y="82" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="2aabf298-08be-445a-a8ef-f501022e33d9" x="164" y="81" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6931fc30-0b70-4cd8-a854-eb99c08c1c4e" x="66" y="65" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="9297e070-34a9-47df-8ef1-c2653b9ab3b5" x="506" y="82" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="60ca6cda-4f5a-4212-b333-b112407027df" x="113" y="81" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bb3bcb42-c35e-49d5-9af8-66fa032cf152" x="491" y="65" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7753616a-9a71-41c8-8ef9-2f8cbc2c5427" x="113" y="65" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="fef7e523-37b6-4f3f-9613-f12d7aeb7c9e" x="128" y="82" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7455ba3a-61c9-4c72-85d0-a288e3e7a74f" x="179" y="82" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b1208e71-cfd2-4a64-961d-b7e2aecb9e66" x="128" y="66" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0a227ac6-8c9f-4194-a1e5-e5606d94ed49" x="16" y="81" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c699f66e-3e6c-4fb3-81af-de02e0920816" x="335" y="81" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="94ad49e9-e45a-4858-af81-ad7ede545558" x="80" y="82" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="cc81531f-dd44-464a-94b3-d8494a04435d" x="438" y="65" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="02dc269b-1ec5-44b4-913a-9bbd3d7ec628" x="438" y="81" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="96276958-389d-4892-b595-ebd897f44421" x="399" y="66" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="5f2c93e6-bc3c-4d59-bfd1-9e6e942745a5" x="335" y="65" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8c96ff0a-f154-45ef-9304-420ae8a61e15" x="385" y="81" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1f6cdf17-cbd0-4348-8a7f-af67d768acca" x="226" y="96" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rotación Interna ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7589713e-e41a-4b18-b82e-114183a98966" x="385" y="96" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="9c4e493e-75d7-4a29-99df-91ce41184fc8" x="80" y="97" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="d2c9cb8a-68af-44d6-bbb7-82eb1d17ee6c" x="164" y="96" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="753b51fe-0c38-4a0e-90d4-1c917067979d" x="179" y="97" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="50780b37-02ec-4a7e-9b38-5f4828898e75" x="399" y="113" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ba8c5584-c882-4146-8a7d-4c20c46ab529" x="491" y="112" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a340404-4dd0-4694-ad3e-84bafeca4947" x="226" y="112" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rotación Externa]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="af838623-e5ef-463d-ad7f-66f3b69719ba" x="453" y="97" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6465cbbe-cecd-40dc-be1f-e5f3470d14f8" x="66" y="112" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="bb113a06-6aa3-44bf-8eb5-5932af5dda83" x="506" y="97" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="b04591f7-292d-4456-bbc6-954f24c61ef5" x="16" y="96" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="c7ffadbe-0981-4141-a83f-82f75af060a2" x="453" y="113" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="98cdfc54-166e-4293-8e93-0ac9d5b25d7e" x="164" y="112" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2c6ae0b0-1260-47af-8b9d-9ec16926db31" x="66" y="96" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="c20bf2b2-bd89-4a11-9217-54d95e0712ad" x="506" y="113" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="7715c7be-3325-4361-a045-a0b94b8a8959" x="113" y="112" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7b724981-149a-42c4-bc3a-fbe90c48ab2c" x="491" y="96" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4450f5d7-94aa-4aa1-9242-855ed3bb05b7" x="113" y="96" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="bac1d75d-7794-4feb-83d8-5b8b10edeb74" x="128" y="113" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fe5cd2db-2ca0-4670-b89b-882199745277" x="179" y="113" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="d09e5461-dd79-4f91-a454-542874b777bf" x="128" y="97" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="2785e1b0-1bc5-4cd3-b179-a3523196ce80" x="16" y="112" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="faabd513-a4a7-4d56-9855-d9bd342ddce1" x="335" y="112" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="2c4d0c2c-41c3-45b7-b05e-179365334898" x="80" y="113" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="55e5e015-159a-443a-9b9f-88e5a9b2b594" x="438" y="96" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5c80d83a-75bf-45f5-842c-6cfd8bf0b57e" x="438" y="112" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="0704adb2-dbc0-4541-9d23-8574baaa1883" x="399" y="97" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="58fd13a2-dfb2-41db-8743-ec1971abf413" x="335" y="96" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6aef89f-5700-4894-b1ca-3c62eabf2479" x="385" y="112" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="dc8ed5e3-e264-407e-b190-21a6c5c5ef58" x="401" y="307" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b6c8cdca-5e9f-4683-9461-0b3f1b5cb7fa" x="347" y="307" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="35474370-02cf-4760-9193-b01cc948b96e" x="283" y="306" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mixta :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="6a9494c7-47e1-4777-901b-8a10bec2b47e" x="80" y="277" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="7e804fb1-701c-4b87-90bd-ab0e7f848593" x="191" y="277" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="452c7de1-3b8b-4bae-bbde-16add4e9ba09" x="347" y="293" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="3d5386f9-4ad9-4975-a661-1e9361ce47a0" x="401" y="278" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="692e873c-700b-458c-be70-d37e8cfa5111" x="16" y="276" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dorsal :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="322d85dc-c37b-407d-8327-b969f4f36380" x="401" y="293" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ed28b60c-ff61-4f9f-8836-4191e1ad9ead" x="128" y="292" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="d6f89c53-b839-426c-80f6-248f48410eb9" x="191" y="292" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fe88ae07-cd86-44dc-b071-7c9b45f88878" x="128" y="277" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="66c5b557-ab3a-47c3-9233-11e0239e8bec" x="16" y="291" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lumbar :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7b38fca3-1c25-49e1-bac6-d59730b43be9" x="283" y="292" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lordosis :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="b078ad4e-440a-4e06-a255-c28506449128" x="80" y="292" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="838e608b-2c26-4460-8ac8-55170b5a63b2" x="347" y="278" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c69cc6b5-c20e-4beb-9417-26b1344eb673" x="283" y="277" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Escoliosis:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="33e7f597-a2a4-4d96-b3b6-cf8f95585296" x="348" y="248" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f2eb58e5-4de2-414c-9f3e-c5491a5b91a5" x="164" y="247" width="97" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concavidad Izquierda]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="9d5cfb41-cee2-43c2-b4df-6fe481f3ea36" x="347" y="264" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="69cc9096-1b79-42e7-be1e-572b2869a6c7" x="401" y="264" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="bf0a47c4-bbd7-4623-9aba-d95fe683e8a9" x="69" y="247" width="41" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Normal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d4683bc4-d59f-4c90-83e6-68be2eb0bde0" x="117" y="247" width="39" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Derecha]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="2601c311-3cc9-434e-9c6e-e4b5687ef73d" x="128" y="263" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="344ea975-41b6-493e-8c74-a8ffd024e612" x="191" y="263" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="59ec293d-96d5-49ae-9c77-8458a8ff3ee9" x="16" y="262" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cervical :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d770d2a0-4ffd-4365-ba94-4d0b5a3530d3" x="283" y="263" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cifosis :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="0532fdd2-7567-4476-b870-c12f9effb7ed" x="80" y="263" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="1d480510-619c-4cd6-be0c-d238f2ed1917" x="401" y="248" width="13" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8101563d-465b-414c-b466-9c06c597c9a6" x="226" y="146" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Flexión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b6b6067d-546b-473c-8582-91bfb2e3bbff" x="385" y="146" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="f3acc1cf-0cbe-4ea4-839f-db665108c56b" x="80" y="147" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="47523510-8664-4741-9b50-2c7185c23e97" x="164" y="146" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="ed36377f-3daf-4360-b6f5-df68e4fadf0c" x="179" y="147" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="09339eeb-6a25-4f33-9e4e-3e9f833bedeb" x="399" y="162" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="3db4f3cb-5980-47a4-a0f1-6f9e284c0eca" x="491" y="161" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="635d5b70-60cb-4ff5-82eb-bc8c37867d2f" x="226" y="160" width="70" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Extensión]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="0f535018-23b8-4503-bef0-8fe0b3f65708" x="453" y="147" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="df200157-4413-4cf5-9df6-25f35da29948" x="66" y="161" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="b2bbf807-da49-49cc-8060-d42ae87ea43f" x="506" y="147" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="214942f7-6e49-41ff-900c-deb754df712a" x="16" y="146" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="f5f333f7-4945-4630-bc54-ca687dfde9aa" x="453" y="162" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="f4841334-2322-4aeb-bd75-c5befad938de" x="164" y="161" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="18d29b91-9bd7-42e2-92e6-580b6285dea9" x="66" y="146" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8d9cda0a-54e3-4b05-8194-d9424bf86bb3" x="506" y="162" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="1c051357-6176-436a-abfb-68a2100ec6d0" x="113" y="161" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="26b533f3-f93d-4a6a-b455-72a1efbb8a18" x="491" y="146" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="16c5041d-0fa5-4fc7-bcc9-e53f17abe1d4" x="113" y="146" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="e6de65f9-a83c-4188-987a-3791fdcc19ad" x="128" y="162" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c4d1f113-ce8a-4a38-bff3-e7100d292ffb" x="179" y="162" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c4d5841f-9bfd-4d19-b57e-3efd5a1f2e8d" x="128" y="147" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="bd9b1045-88ee-4656-9fab-2167ffedf9b9" x="16" y="161" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc8a0bd7-b507-4300-92f7-5deefb5e6349" x="335" y="161" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="5bc3aae3-4826-44bd-89fb-b3f1f2677279" x="80" y="162" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6d13d07c-936b-42f3-b233-78b1c05367df" x="438" y="146" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7dac4a11-f750-4ca5-99ab-b7550c346ca7" x="438" y="161" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="f7f9e1c5-98c9-4c33-9364-86ce44354fd0" x="399" y="147" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="68130474-ce31-4c8a-91ca-5d6a6f2400d0" x="335" y="146" width="47" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grado :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="88064324-b15b-48d2-9259-57164ffd0a3d" x="385" y="161" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8dc2aabe-54a2-4b7d-91b8-75a64c02878e" x="1" y="129" width="554" height="15"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f2665810-a28a-4136-8f1a-cfb97545574f" x="1" y="219" width="554" height="27"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="055f214f-506a-4c0f-aa75-53dc0eb81988" x="5" y="219" width="546" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5. Columna Vertebral]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d42f8cde-add8-4453-b1ae-5f4be97ad477" x="5" y="232" width="256" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.1. Desviación de eje:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f92363f2-c8f1-4bb6-8bc1-882c5d70b7ed" x="5" y="130" width="546" height="13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[d) Tobillo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="46c29384-0f03-4994-a73c-28f2489cb855" x="502" y="-49" width="49" height="18"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pag. 2]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="fcd7702e-ce7d-40d6-9476-04833180de6f" x="1" y="184" width="554" height="34"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="1c65a1a8-69ef-4301-86aa-3cf60e267439" x="213" y="184" width="70" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="81726f55-a287-496f-a748-300d501be8f1" x="283" y="184" width="69" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="efdbdedd-a19c-4f8d-b24c-251872871727" x="352" y="184" width="72" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="aae80c7a-7173-4d0a-88be-5e788d6b5080" x="424" y="184" width="68" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="e2fe5ac2-0f82-41dc-b1aa-0696ea2c41e7" x="492" y="184" width="62" height="16"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="933c6def-3297-40ef-8519-e41ead823900" x="213" y="200" width="70" height="18"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ff9c199c-94b6-4c68-8927-cf835a0ea93e" x="283" y="200" width="69" height="18"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="755fa0ec-9cf3-486b-9aad-5ef907351bd6" x="353" y="200" width="71" height="18"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="c8dcb9af-d16f-44ba-8ae0-f56da9a90a16" x="424" y="200" width="68" height="18"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="943faa15-9d78-4f4b-8e61-0ad59804bcde" x="12" y="184" width="201" height="34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fuerza Muscular ( Grado )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1adfe455-6ebf-49e9-a0ba-b89a14a4103f" x="283" y="232" width="268" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.2. Desviación de Columna :]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="99c65a1c-82ab-4ddd-84b6-3b1da028cb28" x="1" y="232" width="554" height="1"/>
+			</line>
+			<rectangle>
+				<reportElement uuid="03151a0f-a6dd-4594-9907-95e656bfba04" x="0" y="326" width="555" height="14"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="87ef0e62-199f-4f0d-8667-2a49bc95dab3" x="94" y="373" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="9623b019-0def-4750-835f-82d6d899944d" x="94" y="359" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ae607055-3811-4c27-a445-82ab63f062f7" x="94" y="388" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8c2746c0-42ef-4ea7-a521-23b12c262bbd" x="30" y="387" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lumbar :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a87bce21-d4bf-422f-a951-adde177e984c" x="95" y="343" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="036ec840-562f-496f-90f5-2d271e2954da" x="148" y="388" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="9ff40694-d32b-4097-b277-816f684b0034" x="30" y="358" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cervical :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="510be2c4-ee3f-487b-bcc2-5411ea86da3c" x="148" y="373" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="506777e4-0468-4f1a-b8f2-73d4f4b3789c" x="148" y="359" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="7c67c375-3ae9-4978-bd6a-71c6e53d8ef6" x="30" y="372" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dorsal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f4c1ee9b-674d-4d10-9e33-c5e040eefe9d" x="148" y="343" width="13" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="38022dc7-0783-426a-bb16-5d4aa60be0ba" x="282" y="327" width="268" height="13"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.4. Exploración :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b709bcef-edb5-4510-a269-38e9a0249cd7" x="4" y="327" width="76" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.3. Palpación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="379643c8-c776-43f5-a6f2-984a3b6b8cfc" x="90" y="328" width="74" height="11"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOLOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b39db6a-d0a9-41e0-b674-7e42e416ffe8" x="310" y="376" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Izquierdo :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9ec96e06-d058-462b-8244-62b34e471312" x="310" y="362" width="47" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Derecho :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ee7bbecf-6fa2-4816-943e-b46991e356d3" x="433" y="347" width="13" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="be01953f-4a54-42d2-98ac-1bf17dfe7679" x="379" y="377" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5e3d4658-60a8-4945-b11c-7c73261d84cc" x="433" y="377" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="eb79900d-d9fb-4218-9d48-4e6c64d5aef5" x="380" y="347" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0dfbdd38-a6e6-47a4-9791-80123bc326e8" x="283" y="347" width="76" height="13"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signo de Lasague  ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="6ac8ac3d-af4c-41fd-86f5-9631af3145da" x="433" y="363" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5775a12e-86ff-4049-9421-b8992659a9e1" x="379" y="363" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="68cc6b6b-e078-42a4-a4d2-3b86bc45fa77" x="0" y="404" width="555" height="59"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="1cef68ba-fd7d-42f0-832a-216be89ddec0" x="5" y="408" width="72" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIII. Diagnóstico :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="4922c156-ebc5-4d32-8071-19d56b6ab450" x="0" y="565" width="555" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="3c832861-1aeb-4d2b-b999-05f6c4ff79e0" x="229" y="569" width="13" height="11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="79f952dc-06c7-4889-8ad8-e37e8881b753" x="175" y="569" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="23f9d80d-9fc8-49ee-a9e1-5ae723afed9f" x="160" y="568" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b477c919-5c32-4724-b52d-e0d071669e81" x="213" y="568" width="12" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f7f73ba8-d491-4d15-9f3b-15e115ee81b5" x="4" y="567" width="76" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IX. Tratamiento :]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="32de6c85-59b5-4147-857b-afbbed9175d1" x="335" y="720" width="211" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="13d72bfb-c100-4947-aeac-d60cdcfaa93e" x="345" y="724" width="185" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MEDICO MEDICINA OCUPACIONAL]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="05dad803-d8c5-4584-aede-e64e93d27dbd" x="47" y="720" width="156" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="a187b817-585f-4404-8b11-fbc2b10776d3" x="54" y="724" width="134" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FIRMA DEL POSTULANTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="3b549480-6838-45f3-9e84-905d0e6b1fa2" x="0" y="585" width="555" height="22"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="64cd9c5d-2c0c-4db6-8a1a-c86eb4ac4cdd" x="175" y="591" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="66f7bbc8-9a5d-48de-b432-e60d864997d3" x="213" y="590" width="12" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22448510-87a9-45cf-96e6-8e1e856af519" x="160" y="590" width="11" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a79dedb4-b53b-4fb7-8060-64c8cfdf435b" x="4" y="589" width="137" height="13"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[XI. Conclusiones: Asintomatico :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="4abcacbe-ff8e-43f0-a52d-e4d915de36be" x="228" y="591" width="13" height="11"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="31793747-d22a-4d92-a02c-60f277fdb03e" x="6" y="463" width="165" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IX. Recomendaciones y plan de acción :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f4b9acd3-9db7-411f-8ba8-d73509c4fe1c" x="78" y="407" width="468" height="55"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtdiagnostico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="78cbea05-a195-4159-9a12-a412e994f763" x="5" y="477" width="545" height="87"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtrecomendaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d943f2e7-0000-4784-a076-161175004366" x="128" y="17" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_pierna_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="629ed14e-03af-4d98-8262-1b2ad394ead8" x="80" y="17" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_pierna_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eca22ab6-3830-42c9-8285-56399787ee03" x="179" y="17" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_pierna_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f93ef052-2622-4906-b148-85a231eaeac6" x="179" y="34" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_pierna_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5bad3771-d504-4688-95dc-8f3087b84703" x="128" y="34" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_pierna_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ff18dcab-a440-4c03-837e-78bc1909e0a4" x="80" y="34" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_pierna_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2d5dc0dd-779c-488c-8b34-4ffd0500cc9a" x="179" y="66" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_rodilla_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f150a592-9406-4efe-bcd1-72b33af0b8b6" x="128" y="66" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_rodilla_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="09f3f5de-f1e4-45ec-a541-d1a9c7c6992f" x="80" y="66" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_rodilla_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2e24c506-9b16-4fdb-968e-04fcf78622f2" x="179" y="81" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_rodilla_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fa179673-5dd6-41bd-b1c7-bd0d2edcd065" x="128" y="81" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_rodilla_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a3cbc89-0d02-4343-990e-d38de8d36233" x="80" y="81" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_rodilla_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="30cc89ee-00e2-4c69-a82e-18a560622d40" x="179" y="96" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionint_rodilla_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5ef6432d-0971-4bcd-aa52-e7ade52198c7" x="128" y="96" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionint_rodilla_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="075e4b86-23cd-4f5b-a4e3-5322bd5bcb81" x="80" y="96" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionint_rodilla_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a5e2f177-11a3-4a6e-837b-52fe0e32d88e" x="179" y="113" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionext_rodilla_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="42ebf184-dc65-44f7-860c-c50c32682437" x="128" y="113" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionext_rodilla_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f726841-1dd0-4569-8a9c-b8eab0657cd3" x="80" y="113" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionext_rodilla_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="129e607a-b93b-44ce-bb50-f73e79d2b72a" x="179" y="146" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_tobillo_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ccf3b469-71e1-4673-ae33-0071b591a615" x="128" y="146" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_tobillo_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="08ea8c1f-f3b0-4b58-922c-43b0c2cede11" x="80" y="146" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_tobillo_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a97335f6-208f-4966-b748-4ef7e282d46d" x="179" y="161" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_tobillo_m}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="502be85b-9d3c-4149-9466-4ebb018b6183" x="128" y="161" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_tobillo_r}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9e3d4d97-e110-4d57-af74-c46824716a1f" x="80" y="161" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_tobillo_n}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b92916b4-8a49-4cb0-9ce9-5aa24b3abf5c" x="506" y="17" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_pierna_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1116d5c2-43df-4d9a-82e2-7c6946f6be66" x="399" y="33" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_pierna_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e444cb67-0d2f-454c-81b9-c76708bf5516" x="453" y="17" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_pierna_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a5323e6-36db-4d54-a09d-bdc8de742696" x="399" y="18" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_pierna_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b0c67af6-0ced-40c1-8c57-c1b4e9f773b3" x="506" y="33" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_pierna_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d23642b8-ce6d-471e-b29c-d29462686e77" x="453" y="33" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_pierna_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="01d2e196-f22c-416a-961e-24d43f154eb9" x="399" y="65" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_rodilla_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b00ad830-c2f6-445b-854d-de5969b99592" x="453" y="65" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_rodilla_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="be72ea95-589d-4a9b-9b8d-0c6b9191ca02" x="506" y="65" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_rodilla_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d9b770a-e381-459c-8575-4b5d99f3f4de" x="399" y="81" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_rodilla_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4d47448c-ca63-4bb2-80d4-8b90df2fc8f8" x="453" y="81" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_rodilla_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="952aea63-87ae-42d5-a1b6-54ee88876302" x="506" y="81" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_rodilla_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6eacb174-2801-454f-95fc-38654f6fb94f" x="399" y="97" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionint_rodilla_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0e8697cd-426c-41d0-b30f-434afe38b2ea" x="453" y="97" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionint_rodilla_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0f5058e4-2aae-4c5b-b5b8-c4068721abd6" x="506" y="97" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionint_rodilla_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4e40c3f8-6c04-44d9-9216-b4dbf8d1e625" x="399" y="112" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionext_rodilla_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c3645207-af18-4a95-be6b-80759bb933b1" x="453" y="112" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionext_rodilla_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="33e56b65-c3c7-4cf0-9348-17edc22683ae" x="506" y="112" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbrotacionext_rodilla_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="990072f6-38a0-4d90-8e72-fd999723d533" x="399" y="146" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_tobillo_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b7bd9ddb-2fcf-413d-9034-29b2a073ae90" x="453" y="146" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_tobillo_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d344b878-2b1b-465c-a163-6b538dffb952" x="506" y="146" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbflexion_tobillo_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="75968aa7-fe21-4fc0-b7e0-99f37a999e60" x="399" y="162" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_tobillo_n1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b418b172-599b-42db-b74e-8fddde2518d9" x="453" y="162" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_tobillo_r1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="50a3feff-d970-4605-8822-1539aca3c8bb" x="506" y="162" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbextension_tobillo_m1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="14e53374-104c-4b2b-bbb5-fb435060ae75" x="80" y="262" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejecervical_normal}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eb1f4243-87ac-4c4b-8013-5bdad259efbb" x="128" y="263" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejecervical_derecha}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2c747b22-9249-4e0f-81d1-7825ebeb20a3" x="191" y="262" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejecervical_izq}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7f65aae8-5231-4585-af97-1e807ecf5758" x="80" y="276" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejedorsal_normal}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3c1fe903-8081-4874-8f98-54b84bfb4f2a" x="191" y="276" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejedorsal_izq}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="38b2d412-e9c8-407b-acbf-006e4469a994" x="128" y="277" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejedorsal_derecha}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="47576524-249e-4d77-bf83-4d6c6b6d7c91" x="80" y="291" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejelumbar_normal}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e53b97be-fa66-4d25-adca-06777be7efb5" x="191" y="291" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejelumbar_izq}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e1543751-4c17-4cdc-b794-8c136fc073b1" x="128" y="292" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbejelumbar_derecha}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="31246e26-518b-46f0-a00b-cbed277bc2a2" x="347" y="263" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbcifosis_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5b3de0f1-87f0-4344-8dab-71987efc6634" x="401" y="263" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbcifosis_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8025ed55-d15e-4da5-96d5-25e3bd63d95b" x="347" y="277" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbescoliosis_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9ca7194-50eb-4fe8-92ba-aebf6b04cbcc" x="401" y="277" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbescoliosis_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f09bb696-8550-4a55-8fb2-657f1c2fb5c4" x="347" y="292" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblordosis_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c47e818b-51ba-473a-ae92-9bf03fe36add" x="401" y="292" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblordosis_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c94bb8c0-7ba2-45e7-bc07-8546cd4962ce" x="347" y="307" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbmixta_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7f3a758f-8c63-4b72-901c-713576d18a0b" x="401" y="307" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbmixta_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="726287fc-3944-4ede-b11e-3c7c839525e6" x="379" y="362" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblesagueder_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="28c29aef-bfdc-41d3-bd8a-137ad4124701" x="433" y="362" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblesagueder_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="368300d9-1e8f-417d-8d14-617a022acc1a" x="379" y="377" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblesagueizq_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="31f96d7e-1204-42cf-85cf-6ca143a5e22f" x="433" y="377" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblesagueizq_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bbc2a351-d52a-443f-b4a2-c1f9f4e02ff7" x="94" y="359" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbcervical_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="449a1b9a-f046-4592-9753-e91b25585438" x="148" y="359" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbcervical_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5ec0eab8-4c3a-4ee9-9175-4aa1dbc243b0" x="94" y="372" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbdorsal_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b1881a6f-53f2-4aef-af2e-bed09d8e65bd" x="148" y="372" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbdorsal_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b3264c9d-ba03-416c-a6aa-e75d67f54b3a" x="94" y="387" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblumbar_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8fdc456a-7842-41ab-acc7-6b3c3cf46a3e" x="148" y="387" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rblumbra_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7bf147bf-83c8-4488-b479-845531f74949" x="175" y="568" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chktratamiento_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d5a9ea68-20da-431a-b199-f46408c90b4c" x="229" y="568" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chktratamiento_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="01f6ede2-1155-46e5-b561-9528544922f3" x="175" y="590" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chkconclusion_si}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e658e901-1f9d-4147-97a8-033834ae843e" x="228" y="590" width="13" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chkconclusion_no}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="118b0bd8-481e-4e89-b11d-3d9fb5861778" x="213" y="184" width="69" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="68585bfc-eef0-49a7-b937-32ae02e2b6d2" x="282" y="184" width="69" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5b2a5792-530d-48ff-9286-762fe4e86106" x="353" y="184" width="69" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c0c04b18-ded4-44fa-ae67-d7e48612645a" x="424" y="184" width="69" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="60250c87-8c19-4bf6-94c9-2c2566fd7e26" x="493" y="184" width="61" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b3fe75e0-7479-4b78-8d3c-f81d6d671ec9" x="213" y="200" width="69" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbfuerzamuscular_1}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e21744bb-b709-4510-8cd0-fcf8a33e7840" x="284" y="200" width="69" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbfuerzamuscular_2}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0786d2a2-63f6-4f7a-b4f3-184b20b45546" x="354" y="201" width="69" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbfuerzamuscular_3}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="61a59881-997b-43b5-953d-35a34385e831" x="424" y="200" width="69" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbfuerzamuscular_4}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="591802bc-fe91-4058-971b-ed04253ec719" x="493" y="201" width="62" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbfuerzamuscular_5}.equals(true)?"X":""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="3" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

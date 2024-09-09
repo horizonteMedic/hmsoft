@@ -5,6 +5,7 @@ import Caja.RegistrarCliente;
 import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.Component;
@@ -72,6 +73,10 @@ public final class LaboratorioClinico extends javax.swing.JInternalFrame {
         // jTextAreaIgg2.setVisible(false);
         AutoCompleteDecorator.decorate(this.jComboAsp);
         AutoCompleteDecorator.decorate(this.jComboBoxColor);
+        if(clsGlobales.Norden>0)
+        {
+            CargarLabAudi(clsGlobales.Norden.toString());
+        }
 
     }
 
@@ -2591,7 +2596,19 @@ private void colororina() {
             }
         }
     }
-
+    //Auditoria
+    private void CargarLabAudi(String N){
+        chkPositivo.setSelected(false);
+            chkNegativo.setSelected(false);
+            jCheckBox1.setSelected(false);
+            jCheckVposi.setSelected(false);
+            jCheckNe.setSelected(false);
+            jCheckNA.setSelected(false);
+            txtNorden.setText(N);
+            Editar();
+            sbCargarDatosTipoSangre(txtDni.getText());
+   }
+        
     private boolean Grabar() throws SQLException {
         boolean bResult = false;
 

@@ -486,7 +486,7 @@
                                       <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="chk_14" alignment="1" pref="211" max="32767" attributes="0"/>
+                                      <Component id="chk_14" alignment="1" pref="229" max="32767" attributes="0"/>
                                       <Component id="chk_15" alignment="1" max="32767" attributes="0"/>
                                       <Component id="chk_16" alignment="1" max="32767" attributes="0"/>
                                       <Component id="chk_13" alignment="1" max="32767" attributes="0"/>
@@ -543,7 +543,7 @@
                                           <Component id="chk_33" max="32767" attributes="0"/>
                                           <Component id="chk_32" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="chk_30" max="32767" attributes="0"/>
+                                              <Component id="chk_30" pref="107" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Component id="txtPromedioHrs" min="-2" pref="43" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>

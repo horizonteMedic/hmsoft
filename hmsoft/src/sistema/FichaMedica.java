@@ -9,6 +9,7 @@ import static Caja.RegistrarCliente.addExEn;
 import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -60,6 +61,11 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
         jtFichaMedica.setIconAt(1, new ImageIcon(ClassLoader.getSystemResource("imagenes/invoice.png")));
         jtFichaMedica.setIconAt(2, new ImageIcon(ClassLoader.getSystemResource("imagenes/botiquin.png")));
         //Fecha();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarFMActionPerformed(null);
+        }
     }
     Timer timer = new Timer(1000, new ActionListener() {
         @Override

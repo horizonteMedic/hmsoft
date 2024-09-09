@@ -6,6 +6,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.Component;
@@ -34,17 +35,22 @@ public final class FichaTriaje extends javax.swing.JInternalFrame {
         javax.swing.ImageIcon oNo = null;
 String[]Triaje = new String[]{};
      DefaultTableModel model;
+     
+     
    public FichaTriaje() {
       initComponents();
-   
-      
       CargarEmpresas();
       CargarContratas();
       CargarServicios();
        HabilitaReOr();
        sbCargarDatosOcupacional("");
        jtTriaje.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/reportes.png")));
+        if(clsGlobales.Norden>0)
+        {
+            CargarAsistencialAudi(clsGlobales.Norden.toString());
+        }
    }
+   
 
    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -842,6 +848,11 @@ String[]Triaje = new String[]{};
 
         jLabel35.setText("Codigo:");
 
+        txtBuscarCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarCodActionPerformed(evt);
+            }
+        });
         txtBuscarCod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarCodKeyReleased(evt);
@@ -1111,7 +1122,8 @@ String[]Triaje = new String[]{};
            CargarAsistencial();
         }
     }//GEN-LAST:event_txtNumeroActionPerformed
-  public void habilitaTriaje(boolean r){
+  
+    public void habilitaTriaje(boolean r){
    txtTalla.setEnabled(r);
    txtPesoTriaje.setEditable(r);
    txtCinturaTriaje.setEditable(r);
@@ -1130,6 +1142,120 @@ Date dateHoy = new Date();
        FechaTriaje.setDate(dateHoy);
         
 }
+    
+    private void CargarAsistencialAudi(String N){
+         String [] titulos={"N°Orden","Nombre","Fecha","Empresa","Contrata","T.Examen","Cargo","F.Aptitud","Estado","H.Entrada","H_Salida"};
+    String [] registros = new String[11];
+            String Sql = "select n_orden_ocupacional.n_orden, \n" +
+            "            datos_paciente.nombres_pa||''||datos_paciente.apellidos_pa AS nombres, \n" +
+            "            triaje.fecha_triaje,n_orden_ocupacional.razon_empresa,n_orden_ocupacional.razon_contrata,"
+             + "n_orden_ocupacional.nom_examen,n_orden_ocupacional.cargo_de,\n" +
+            "            n_orden_ocupacional.n_hora,ca.n_orden as aptitud,ca.horasalida,a.n_orden as anexo7d,o.n_orden as observados,ac.n_orden as anexoc,"
+            + "bc.n_orden as conduccion,ba.n_orden as altura,  "+
+                  "CASE WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+                    " WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                    " WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  END as estado, \n" +
+             "CASE  WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
+                    " WHEN ac.no_apto = 'TRUE' THEN 'No Apto' END as estadoac, \n" +
+            "CASE  WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
+                  " WHEN a.no_apto = 'TRUE' THEN 'No Apto' END as estadoad,"
+              + "CASE  WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
+                  " WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                    " WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                    " WHEN bc.chk_no = 'TRUE' THEN 'No Apto' END as estadobc,"
+            + "CASE  WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+                  " WHEN ba.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                    " WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                    " WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto' END as estadoba," 
+            + " o.examenes \n" +
+             " From datos_paciente \n" +
+"            inner join n_orden_ocupacional \n" +
+"            ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa)\n" +
+"            left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n_orden_ocupacional.n_orden)\n" +
+"            left join anexo7d as a ON (a.n_orden=n_orden_ocupacional.n_orden)\n" +
+"            left join observaciones as o ON (o.n_orden=n_orden_ocupacional.n_orden)\n" +
+           "left join anexoc as ac ON (ac.n_orden=n_orden_ocupacional.n_orden)"   +
+           " left join b_certificado_conduccion as bc ON (bc.n_orden=n_orden_ocupacional.n_orden)"+
+           " left join b_certificado_altura as ba ON (ba.n_orden=n_orden_ocupacional.n_orden)"   +  
+"            inner join triaje on (n_orden_ocupacional.n_orden = triaje.n_orden)\n" +
+"            where   triaje.n_orden ='" +N+"'"+
+"            ORDER BY triaje.n_orden desc limit 20";
+             oConn.FnBoolQueryExecute(Sql);
+            model = new DefaultTableModel(null,titulos){        
+              @Override
+          public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return false;
+    }};
+       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    if (oConn.FnBoolQueryExecute(Sql))
+        {
+             try  {
+                
+                while (oConn.setResult.next())
+                {        
+                    registros[0]= oConn.setResult.getString("n_orden");
+                    registros[1]= oConn.setResult.getString("nombres");
+                    registros[2]= formato.format(oConn.setResult.getDate("fecha_triaje"));
+                    registros[3]= oConn.setResult.getString("razon_empresa");
+                    registros[4]= oConn.setResult.getString("razon_contrata");
+                    String exa=oConn.setResult.getString("nom_examen");
+                    registros[5]= exa;
+                    registros[6]= oConn.setResult.getString("cargo_de");
+                    String s=oConn.setResult.getString("aptitud");
+                    String a=oConn.setResult.getString("anexo7d");
+                    String o=oConn.setResult.getString("observados");
+                    String ac=oConn.setResult.getString("anexoc");
+                    String bc=oConn.setResult.getString("conduccion");
+                    String ba=oConn.setResult.getString("altura");
+                    if(s != null ){
+                        registros[7]="COMPLETO";
+                        registros[8]= oConn.setResult.getString("estado");
+                    }else if( a != null && "ANEXO-7D".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadoad");
+                    }else if( o!= null){
+                            registros[7]="OBSERVADO";
+                            registros[8]= oConn.setResult.getString("examenes");
+                    }else if( ac!= null && "ANEXO-C".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadoac");
+                    }else  if( bc!= null && "PSICOSENSOMETRIA".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadobc");
+                    }else if( ba!= null && "TEST-ALTURA".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadoba");
+                    }else{ 
+                        registros[7]="FALTA";
+                        registros[8]= " ";
+                    }
+                    registros[9]= oConn.setResult.getString("n_hora");
+                    registros[10]= oConn.setResult.getString("horasalida");
+                    //registros[3]=oConn.setResult.getString("anexo7c");
+                    tbTriaje.setDefaultRenderer(Object.class, new MyCellRenderer());
+                     model.addRow(registros);
+                }
+                  // Coloca el Modelo de Nueva Cuenta
+                  tbTriaje.setModel(model);
+                  sbTablaTriaje();
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+     }
+   }
+
+    
    private void CargarAsistencial(){
         if (!txtNumero.getText().isEmpty()) {
                 if (!OrdenExiste()) {
@@ -1672,6 +1798,10 @@ boolean bResultado=true;
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();        // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void txtBuscarCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarCodActionPerformed
 
 
    

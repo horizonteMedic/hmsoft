@@ -7,6 +7,7 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.Date;
@@ -33,6 +34,11 @@ public final class Audiometria2023 extends javax.swing.JInternalFrame {
     public Audiometria2023() {
         initComponents();
         Deshabilitar(true);
+        if(clsGlobales.Norden>0)
+        {
+            txtNumero.setText(clsGlobales.Norden.toString());
+            btnEditarAudiomActionPerformed(null);
+        }
     
     }
     @SuppressWarnings("unchecked")
