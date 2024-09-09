@@ -7,6 +7,8 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
+
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.SQLException;
@@ -45,6 +47,29 @@ public final class Audiometria extends javax.swing.JInternalFrame {
       jtAudiometria.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/doc.png")));
     
        nombres = getRowsToVector("select nombre_user||' '||apellido_user as nombres from usuarios");
+       //jtAudiometria.setSelectedIndex(1);
+       if(clsGlobales.Norden>0)
+        {
+            txtNumero.setText(clsGlobales.Norden.toString());
+            btnEditarAudiomActionPerformed(null);
+        }
+       jtAudiometria.requestFocus();
+    }
+    
+    public Audiometria(int tabIndex) {
+        initComponents();
+        Deshabilitar(true);
+      sbCargarDatosAudiometria("");
+      jtAudiometria.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/doc.png")));
+    
+       nombres = getRowsToVector("select nombre_user||' '||apellido_user as nombres from usuarios");
+       jtAudiometria.setSelectedIndex(tabIndex);
+       if(clsGlobales.Norden>0)
+        {
+            txtNroOrden.setText(clsGlobales.Norden.toString());
+            btnEditarAudiologActionPerformed(null);
+        }
+       jtAudiometria.requestFocus();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -2945,7 +2970,6 @@ public final class Audiometria extends javax.swing.JInternalFrame {
                         txtOI6001.setText(oConn.setResult.getString("o_i1_6000"));
                         txtOI8001.setText(oConn.setResult.getString("o_i1_8000"));
                         txtDiagnostico.setText(oConn.setResult.getString("diagnostico"));
-                        txtDiagnostico.setText(null);
                         btnGuardar.setEnabled(false);
                         oConn.setResult.close();
                        }else{

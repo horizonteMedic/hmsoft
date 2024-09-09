@@ -53,6 +53,11 @@ public final class EmpresasLugaresGeograficos extends javax.swing.JInternalFrame
          new ajTextField.autocompleterText(txtAreaEmpresa, "area_o", "area_ocupacional");
          new ajTextField.autocompleterText(txtOcupacion, "ocupacion_pa", "ocupaciones_pa");
         empresas = getRowsToVector("SELECT razon_empresa FROM empresas UNION SELECT razon_contrata FROM contratas");
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

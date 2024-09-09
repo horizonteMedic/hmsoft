@@ -4,8 +4,17 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/Audiometria2021.java</file>
             <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/Caja/RegistrarCliente.java</file>
+=======
+            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Auditoria.java</file>
+            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Ocupacional1.java</file>
+        </group>
+        <group>
+            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Auditoria.java</file>
+            <file>file:/D:/Horizonte/hmsoft/hmsoft/src/sistema/Ocupacional1.java</file>
+>>>>>>> 421c2dece8eb404f3daaf69f1c8fc806d9a0af86
         </group>
     </open-files>
 </project-private>

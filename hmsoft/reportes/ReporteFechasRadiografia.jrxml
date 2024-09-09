@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteFechasRadiografia" language="groovy" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4a7f98d6-7b9b-4cb2-9a14-2d7dcb147346">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Fecha1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select d.nombres_pa||' '||d.apellidos_pa AS nombres,r.n_orden,  r.fecha_examen
+         FROM radiografia_torax AS r
+         INNER JOIN n_orden_ocupacional AS n ON (r.n_orden = n.n_orden)
+         INNER JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa)
+         WHERE
+    r.fecha_examen >= $P{Fecha1}
+AND
+    r.fecha_examen <= $P{Fecha2}]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="n_orden" class="java.lang.Integer"/>
+	<field name="fecha_examen" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="293" y="51" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Guillermo Prescott N°127 Urb. Sto. Dominguito - Trujillo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="de8fca2f-252f-4487-b80a-5ccf8b1af78e" x="293" y="40" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Telefono :  044-348070 / RPM #969603777]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="293" y="62" width="258" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Email: informes@horizontemedic.com / web: www.horizontemedic.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5f564673-70ba-417d-9f2e-d536e49e01d6" x="293" y="28" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Jr. Leoncio Prado N° 786 - Huamachuco]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="35ac554b-e0c3-4915-b049-dae53c07b691" x="0" y="0" width="224" height="84"/>
+				<imageExpression><![CDATA["C:\\reportes\\Logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="77" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="9707c431-0cba-4ee2-ad94-54a7b63d1a4c" x="299" y="53" width="61" height="12"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Fecha2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="84d23dd7-4693-4108-8ea6-c186a6632db8" x="201" y="53" width="62" height="12"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Fecha1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b99de470-1eb9-415a-b9d0-c809f9fd2ad3" x="152" y="11" width="221" height="35"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RADIOGRAFÍA DE TORAX P.A
+REPORTE POR FECHAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f71c080e-16ce-469b-8136-15aea107eed7" x="263" y="53" width="36" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hasta :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7f537ad1-e3a1-4cd8-93ea-ce825a7bfbc4" x="402" y="11" width="126" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Impresión Reporte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b746c1d-fe3a-40da-8067-2e5ef3100ac6" x="165" y="53" width="36" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desde :]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="7005b145-402f-4e06-b9a8-5889fbd3eccb" x="402" y="23" width="126" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="0fe74726-7771-4741-9e2e-8e14c78cbff3" x="0" y="2" width="274" height="20" forecolor="#919191" backcolor="#CCCCCC"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="aabd070c-a7e7-4657-b5a1-778455bbce4e" x="2" y="7" width="54" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nro Orden]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4599c9b9-dd62-4d43-8ac5-3fcef934f3d0" x="56" y="7" width="145" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="068d4cd8-c7a9-49dc-a461-363d998f21d2" x="220" y="7" width="54" height="15"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="4c90e5cc-f138-4fac-9284-5687748f43a5" x="2" y="0" width="43" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{n_orden}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="776e8eb3-a007-47c6-b7a8-7eeeeedaf4a7" x="56" y="0" width="170" height="14"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="6e8d0a9e-79e5-47c0-8777-bc397291ece6" x="226" y="0" width="50" height="14"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_examen}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="34" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<textField>
+				<reportElement uuid="5183ba07-7c23-4531-b19c-cbb0a3785d68" x="334" y="7" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6e81d053-48ae-4c73-babe-bcd79cd60ddc" x="273" y="7" width="61" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Registros :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6e81d053-48ae-4c73-babe-bcd79cd60ddc" x="181" y="7" width="61" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° de Hoja :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="60c6affa-fbc6-403c-9535-4e236ac77f44" x="242" y="7" width="19" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

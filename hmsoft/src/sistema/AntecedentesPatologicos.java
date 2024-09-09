@@ -8,6 +8,7 @@ import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.sql.SQLException;
@@ -43,7 +44,11 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
          sbCargarDatosAP();
         habitos();
         FechaNacimiento = new com.toedter.calendar.JDateChooser();
-         
+         if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
    }
 
  private com.toedter.calendar.JDateChooser FechaNacimiento;

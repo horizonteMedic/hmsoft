@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EvaluacionMusculoEsqueletica2021" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b0725a6a-eb5e-4f36-911a-de9fc970355f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="515"/>
+	<style name="miestilo">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==1)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00FFFF" backcolor="#00FFFF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==2)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#3399FF" backcolor="#3399FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==3)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#9900FF" backcolor="#9900FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==4)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0099" backcolor="#FF0099"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==5)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99FF00" backcolor="#99FF00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==6)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF3300" backcolor="#FF3300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==7)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF9900" backcolor="#FF9900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==8)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666666" backcolor="#666666"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==9)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0033" backcolor="#FF0033"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==10)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#009900" backcolor="#009900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==11)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#009999" backcolor="#009999"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==12)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#006699" backcolor="#006699"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==13)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666600" backcolor="#666600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==14)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99FF99" backcolor="#99FF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==15)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFF99" backcolor="#FFFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==16)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666600" backcolor="#666600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==17)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#330066" backcolor="#330066"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==18)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#999900" backcolor="#999900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==19)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#663300" backcolor="#663300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==20)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC99FF" backcolor="#CC99FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==21)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#003300" backcolor="#003300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==22)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFCC66" backcolor="#FFCC66"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==23)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0099" backcolor="#FF0099"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==24)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC99FF" backcolor="#CC99FF"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==25)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#0000CC" backcolor="#0000CC"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==26)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF6666" backcolor="#FF6666"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==27)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00CC00" backcolor="#00CC00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==28)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC0033" backcolor="#CC0033"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==29)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF6600" backcolor="#FF6600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==30)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#999900" backcolor="#999900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==31)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#003366" backcolor="#003366"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==32)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99CC00" backcolor="#99CC00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==33)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFF66" backcolor="#FFFF66"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==34)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC3300" backcolor="#CC3300"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==35)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00CCCC" backcolor="#00CCCC"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==36)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#009900" backcolor="#009900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==37)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#666600" backcolor="#666600"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==38)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF9999" backcolor="#FF9999"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==39)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#6600CC" backcolor="#6600CC"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==40)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CCFF99" backcolor="#CCFF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==41)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#660000" backcolor="#660000"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==42)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF9966" backcolor="#FF9966"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==43)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#99FF99" backcolor="#99FF99"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==44)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#CC0066" backcolor="#3366FF">
+				<pen lineStyle="Double" lineColor="#CC0066"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==45)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#66FFFF" backcolor="#FFFF33">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==46)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#00FF00" backcolor="#FF0066">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==47)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF3333" backcolor="#33FF33">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==48)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#3300FF" backcolor="#FF66FF">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==49)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#006600" backcolor="#00FFFF">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{color}==50)]]></conditionExpression>
+			<style mode="Opaque" forecolor="#0000FF" backcolor="#FFFF00">
+				<pen lineStyle="Double"/>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="estilo2">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{txtpuntaje}< $F{txtpuntaje}.valueOf( 14 ))&& new Boolean($F{sexo_pa}=="M")]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FF0000"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Norden" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT d.apellidos_pa||' '||d.nombres_pa AS nombres, d.cod_pa, d.sexo_pa,
+n.razon_empresa,n.razon_contrata,n.cargo_de,n.area_o,u.nombre_user||' '||u.apellido_user AS nom_medico, u.cmp_user,
+t.*,n.color
+FROM datos_paciente  AS d
+INNER JOIN n_orden_ocupacional AS n ON (d.cod_pa = n.cod_pa)
+INNER JOIN test_fatiga_somnolencia AS t ON(t.n_orden = n.n_orden)
+INNER JOIN usuarios AS u ON (u.dni_user = t.dni_user)
+WHERE t.n_orden = $P{Norden} limit 1]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="cod_pa" class="java.lang.Integer"/>
+	<field name="sexo_pa" class="java.lang.String"/>
+	<field name="razon_empresa" class="java.lang.String"/>
+	<field name="razon_contrata" class="java.lang.String"/>
+	<field name="cargo_de" class="java.lang.String"/>
+	<field name="area_o" class="java.lang.String"/>
+	<field name="nom_medico" class="java.lang.String"/>
+	<field name="cmp_user" class="java.lang.String"/>
+	<field name="cod_eval" class="java.lang.Integer"/>
+	<field name="n_orden" class="java.lang.Integer"/>
+	<field name="edad" class="java.lang.Integer"/>
+	<field name="f_examen" class="java.sql.Date"/>
+	<field name="rbs1nunca" class="java.lang.Boolean"/>
+	<field name="rbs1poca" class="java.lang.Boolean"/>
+	<field name="rbs1moderada" class="java.lang.Boolean"/>
+	<field name="rbs1alta" class="java.lang.Boolean"/>
+	<field name="rbs2nunca" class="java.lang.Boolean"/>
+	<field name="rbs2poca" class="java.lang.Boolean"/>
+	<field name="rbs2moderada" class="java.lang.Boolean"/>
+	<field name="rbs2alta" class="java.lang.Boolean"/>
+	<field name="rbs3nunca" class="java.lang.Boolean"/>
+	<field name="rbs3poca" class="java.lang.Boolean"/>
+	<field name="rbs3moderada" class="java.lang.Boolean"/>
+	<field name="rbs3alta" class="java.lang.Boolean"/>
+	<field name="rbs4nunca" class="java.lang.Boolean"/>
+	<field name="rbs4poca" class="java.lang.Boolean"/>
+	<field name="rbs4moderada" class="java.lang.Boolean"/>
+	<field name="rbs4alta" class="java.lang.Boolean"/>
+	<field name="rbs5nunca" class="java.lang.Boolean"/>
+	<field name="rbs5poca" class="java.lang.Boolean"/>
+	<field name="rbs5moderada" class="java.lang.Boolean"/>
+	<field name="rbs5alta" class="java.lang.Boolean"/>
+	<field name="rbs6nunca" class="java.lang.Boolean"/>
+	<field name="rbs6poca" class="java.lang.Boolean"/>
+	<field name="rbs6moderada" class="java.lang.Boolean"/>
+	<field name="rbs6alta" class="java.lang.Boolean"/>
+	<field name="rbs7nunca" class="java.lang.Boolean"/>
+	<field name="rbs7poca" class="java.lang.Boolean"/>
+	<field name="rbs7moderada" class="java.lang.Boolean"/>
+	<field name="rbs7alta" class="java.lang.Boolean"/>
+	<field name="rbs8nunca" class="java.lang.Boolean"/>
+	<field name="rbs8poca" class="java.lang.Boolean"/>
+	<field name="rbs8moderada" class="java.lang.Boolean"/>
+	<field name="rbs8alta" class="java.lang.Boolean"/>
+	<field name="rbs9nunca" class="java.lang.Boolean"/>
+	<field name="rbs9poca" class="java.lang.Boolean"/>
+	<field name="rbs9moderada" class="java.lang.Boolean"/>
+	<field name="rbs9alta" class="java.lang.Boolean"/>
+	<field name="rbsi" class="java.lang.Boolean"/>
+	<field name="rbno" class="java.lang.Boolean"/>
+	<field name="txtpuntaje" class="java.lang.String"/>
+	<field name="txtmedico" class="java.lang.String"/>
+	<field name="dni_user" class="java.lang.Integer"/>
+	<field name="color" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="43">
+			<image>
+				<reportElement uuid="b40735ba-263d-4046-b62b-587831d553fd" x="0" y="-16" width="134" height="49"/>
+				<imageExpression><![CDATA["C:\\reportes\\Logo.jpg"]]></imageExpression>
+			</image>
+			<rectangle radius="10">
+				<reportElement uuid="5af61bb9-3997-4ff1-bf78-ab2796e02f83" style="miestilo" x="555" y="-16" width="5" height="38" forecolor="#FFFFFF"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="17e25304-aceb-4a93-ac46-1cd21066335f" style="miestilo" mode="Transparent" x="512" y="-16" width="39" height="27"/>
+				<textElement textAlignment="Center">
+					<font size="20" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{color}.equals(1)?"A":$F{color}.equals(2)?"B":
+$F{color}.equals(3)?"C":$F{color}.equals(4)?"D":
+$F{color}.equals(5)?"E":$F{color}.equals(6)?"F":
+$F{color}.equals(7)?"G":$F{color}.equals(8)?"H":
+$F{color}.equals(9)?"I":$F{color}.equals(10)?"J":
+$F{color}.equals(11)?"K":$F{color}.equals(12)?"L":
+$F{color}.equals(13)?"LL":$F{color}.equals(14)?"M":
+$F{color}.equals(15)?"N":$F{color}.equals(16)?"Ñ":
+$F{color}.equals(17)?"O":$F{color}.equals(18)?"P":
+$F{color}.equals(19)?"Q":$F{color}.equals(20)?"R":
+$F{color}.equals(21)?"S":$F{color}.equals(22)?"T":
+$F{color}.equals(23)?"U":$F{color}.equals(24)?"V":
+$F{color}.equals(25)?"W":$F{color}.equals(26)?"X":
+$F{color}.equals(27)?"Y":$F{color}.equals(28)?"Z":
+$F{color}.equals(29)?"CH":$F{color}.equals(30)?"AB":
+$F{color}.equals(31)?"AC":$F{color}.equals(32)?"AD":
+$F{color}.equals(33)?"AE":$F{color}.equals(34)?"AF":
+$F{color}.equals(35)?"AG":$F{color}.equals(36)?"AH":
+$F{color}.equals(37)?"AI":$F{color}.equals(38)?"AJ":
+$F{color}.equals(39)?"AK":$F{color}.equals(40)?"AL":
+$F{color}.equals(41)?"AM":$F{color}.equals(42)?"AN":
+$F{color}.equals(43)?"AÑ":$F{color}.equals(44)?"AO":
+$F{color}.equals(45)?"AP":$F{color}.equals(46)?"AQ":
+$F{color}.equals(47)?"AR":$F{color}.equals(48)?"AS":
+$F{color}.equals(49)?"AT":$F{color}.equals(50)?"AU":" "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dc9dbd9e-75cc-4ab9-a2f4-4b0a4c82671e" x="480" y="-12" width="13" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b328e7f6-043b-4ce7-9214-5d778b377fb0" x="458" y="-12" width="21" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pag.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bcb86543-5a04-46b7-ae5a-d5737c294397" x="134" y="3" width="317" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TEST DE FATIGA Y SOMNOLENCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="860e0c72-7e09-4c46-894b-b1aa2c689579" x="456" y="18" width="47" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nº Ficha :]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="582bd3c9-ccef-4379-bfde-24af457879d3" x="500" y="11" width="51" height="23"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="17" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{n_orden}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="735" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="80c78a6f-77e0-4365-8a97-cc4240f2c958" x="367" y="50" width="159" height="14"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="893b4485-fa70-4e81-b50b-fcb44d8b5f28" x="31" y="2" width="87" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Apellidos y Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="083064ef-dfc8-4966-a4c7-3ee4c45d2da0" x="31" y="18" width="16" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7b2bb7ac-7308-468b-b3a1-b2d41daad96f" x="31" y="32" width="70" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Área de Trabajo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="11461196-a6f4-4438-8060-367d62684a74" x="31" y="49" width="40" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="d7f159a8-639e-4a5e-be0e-af7f838b52a4" x="121" y="1" width="270" height="12"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5461eaab-2790-491d-a2f0-88cb3926834d" x="424" y="1" width="103" height="12"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="c7c0fdab-47b8-464b-97c2-8a359a32b564" x="393" y="2" width="32" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="942bcded-6a86-4375-8c65-af00418330a6" x="246" y="18" width="23" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="79f9890c-d9f6-40ae-a5bf-173ba2151451" x="385" y="18" width="22" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6939815b-1bf3-4d57-b0cd-8fc8395ce44b" x="436" y="18" width="9" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5bc0b7dc-3cc4-4d66-a8a2-27de42d90ebe" x="488" y="18" width="9" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[F]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="909ac10f-a951-4967-aa1d-5cd4b05cd7e6" x="121" y="17" width="119" height="12"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="fe0888c9-5571-476c-83b9-ad68813243cd" x="281" y="17" width="90" height="12"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="41919c55-8650-4627-9e4a-2e650314ad18" x="452" y="19" width="24" height="9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="41919c55-8650-4627-9e4a-2e650314ad18" x="503" y="18" width="24" height="10"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="f805e351-3ccd-4af9-b062-c8f5afe966d5" x="121" y="32" width="169" height="14"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="54d3779a-773c-4859-9905-07140757088e" x="121" y="50" width="200" height="14"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="0eb46ff8-37ec-43b9-979c-6591ed356859" x="126" y="1" width="261" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="6b8edd8b-5f29-45ba-ac6a-48e8cc68195d" x="126" y="18" width="87" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_pa}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="72d0b44f-42b9-4fea-a0a6-56f2e544848e" x="290" y="18" width="31" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="e1dd4825-53da-4f75-8dc5-4c5a390685ae" x="314" y="18" width="23" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[AÑOS]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="06c06f44-4e5c-4578-a22a-7acbb4426a41" x="424" y="2" width="102" height="11"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{f_examen}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="250e6cb1-9e5a-4622-b756-857dbe68dc27" x="126" y="33" width="164" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area_o}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="3d508880-a6c1-434d-8de4-a16563a1e640" x="126" y="51" width="188" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razon_empresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d595296f-f7c2-4ebf-ba69-ad527a2f7742" x="458" y="18" width="15" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexo_pa}.equals("M")? "X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c5ab7a9f-3f48-4c2f-a763-0b3d24c52614" x="510" y="18" width="13" height="12"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexo_pa}.equals("F")? "X":""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d17c5ed4-b85b-421f-a3ad-1271f21d1c87" x="324" y="51" width="40" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Contrata]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="7ac53dde-886b-479b-a7bd-f662bbe42a76" x="371" y="51" width="156" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razon_contrata}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="dc4276c4-460d-44f7-8e24-4fc297d0a772" x="321" y="31" width="205" height="14"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="fb09d9dd-1e41-4ead-b09a-3d7ae138259c" x="294" y="31" width="27" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cargo]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="2a3f27dd-1c8e-4798-9bac-965f51cf1cc4" x="325" y="33" width="201" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cargo_de}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="31f8b92f-6a3c-4397-8bb2-5a06281c4da5" x="25" y="65" width="507" height="526"/>
+				<imageExpression><![CDATA["C:\\reportes\\Imagenes1\\tfs.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="230ab94e-6943-493d-b4ac-5dcdb5f087bf" x="58" y="681" width="184" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Firma del Trabajador Evaluado]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="f92b5e89-cdfa-45ed-b4be-b36797420625" x="58" y="680" width="184" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="9b305eeb-1b3b-419d-83a7-0b496747df30" x="328" y="680" width="184" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Firma y Sello del Médico]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="75a16658-9d95-4557-b783-cb9e9f7890ce" x="328" y="679" width="184" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="68f8478d-57aa-4961-9382-ca5f6de40e90" x="367" y="247" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs1nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a120b833-5dca-4b6b-b335-8c6fa9ea640b" x="410" y="247" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs1poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9728317a-e90e-4609-a4d4-e0847a3874cf" x="455" y="247" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs1moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ccf5402e-4d54-466f-b684-d22ebcedbc26" x="497" y="247" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs1alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3a2c8345-c692-48ac-97f0-2fd2d31deca8" x="455" y="269" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs2moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="32fd15d7-e93d-4317-b4bd-a4f704ee4744" x="367" y="269" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs2nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="be575a37-91ef-46b8-a8ed-30b56f3ffdc7" x="410" y="269" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs2poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d715a011-84e3-47ad-bdd5-a01a02c3da45" x="497" y="269" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs2alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ef43b016-3d5c-4694-be26-27d62b6d5b47" x="455" y="287" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs3moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="770bf84e-e300-478a-97a2-838bf850c8d7" x="367" y="287" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs3nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="91863608-4b5c-4acf-8eab-8c291fdbe22a" x="410" y="287" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs3poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fb6e4887-da2d-4edf-b949-d869fefa1bf0" x="497" y="287" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs3alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e256fe04-e0d3-4c73-8530-500c60dd4df5" x="497" y="308" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs4alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3a5b6514-02b6-4234-9451-7d2afc77eeb7" x="455" y="308" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs4moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3fa4e0a5-13ea-4fea-b86d-0c28efd4b1b3" x="367" y="308" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs4nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="72c2dcef-74db-427b-9f48-6a891cca9652" x="410" y="308" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs4poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4cf28fe4-f4bb-4cd4-bd4b-2d11375fea84" x="498" y="329" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs5alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a59b2b0c-75cb-486a-a8a0-52a4ea29cc75" x="456" y="329" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs5moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3ce999c1-22d5-4f4f-bf69-1acb50497e0a" x="368" y="329" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs5nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fc7f55d3-4a88-49a9-965f-e71adb01e791" x="411" y="329" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs5poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0a557aaf-8bab-444a-ae77-f6563285ba4e" x="498" y="351" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs6alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="26d8c55b-942b-41e1-baee-b376eecc44da" x="456" y="351" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs6moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="676a7de2-3803-428b-b9f8-bfd2d95cd7f9" x="368" y="351" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs6nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="54ed7f51-1872-4bbd-90d9-a3fcfb9d14f2" x="411" y="351" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs6poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4611f5ac-fa78-4a3e-af4c-e1cc188fe44f" x="498" y="369" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs7alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="23625be6-ed77-49e6-a04b-81329ef581b7" x="456" y="369" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs7moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d97480a7-8777-49a8-99b4-aa0c70a4f52a" x="368" y="369" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs7nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c11187d0-b163-427b-b1e8-6e7577efa846" x="411" y="369" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs7poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8e05eba4-f8b5-4de2-8dee-9e850196db94" x="498" y="392" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs8alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8e569324-7ebf-4eb8-8218-37f74e3e1ef3" x="456" y="392" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs8moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3f17db15-eb73-4800-a752-34895b9b4bd6" x="368" y="392" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs8nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c6dd6f87-326f-415c-bdc4-a758576b426b" x="411" y="392" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs8poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8f2e6a23-ff3b-4e0b-ac72-6404c6dd683c" x="498" y="412" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs9alta}.equals(true)? "3":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="730b00f4-f9c7-41eb-8291-2c6c8f2154ad" x="456" y="412" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs9moderada}.equals(true)? "2":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ee1690fd-1916-45a0-ba64-d6b2109c8fee" x="368" y="412" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs9nunca}.equals(true)? "0":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bd3097e5-6eea-4a8c-a76b-09a29f21a360" x="411" y="412" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbs9poca}.equals(true)? "1":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0be66ff4-66c0-40fd-a29a-2bfec4c0b2b6" x="228" y="501" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbsi}.equals(true)? "X":""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a2ea99e7-21af-4c89-8567-b417710d8dbc" x="313" y="502" width="15" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rbno}.equals(true)? "X":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="36c73fbe-f56d-4d2f-9cb5-b58d5bcb009a" x="368" y="430" width="88" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{txtpuntaje}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24">
+			<staticText>
+				<reportElement uuid="99a0f2f5-f589-4581-94b2-478580326812" x="-4" y="0" width="555" height="24"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ubícanos en: Jr. Leoncio Prado N°786 - Huamachuco - Tel.: 044-652832 /Guillermo Prescott N°127 Urb. Sto. Dominguito - Trujillo Tel.: 044-652832/ Cel. 990094744/969603777  E-MAIL: gerencia@horizontemedic.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

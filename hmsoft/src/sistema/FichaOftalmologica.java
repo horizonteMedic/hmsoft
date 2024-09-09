@@ -6,6 +6,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -39,7 +40,11 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         initComponents();
         Deshabilitar(true);
         sbCargarDatosOftalmologia("");
-
+        if(clsGlobales.Norden>0)
+        {
+            txtNumero.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

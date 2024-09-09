@@ -6,6 +6,7 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import autocomplete.AutoCompleteDBLink;
 import autocomplete.AutoTextComplete;
@@ -54,7 +55,11 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
      llenarNombreExamen();
               AutoCompleteDecorator.decorate(this.jComboBox1);
               AutoCompleteDecorator.decorate(this.cboExamen);
-
+              if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
    }
 
    @SuppressWarnings("unchecked")

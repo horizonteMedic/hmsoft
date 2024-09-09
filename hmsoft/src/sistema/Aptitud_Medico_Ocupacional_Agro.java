@@ -48,6 +48,11 @@ public class Aptitud_Medico_Ocupacional_Agro extends javax.swing.JInternalFrame 
         txtCertifica.setText( clsGlobales.sNomOperador  );
         Fecha();
         timer.start();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

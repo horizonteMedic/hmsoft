@@ -37,7 +37,11 @@ public class B_Uso_Respiradores extends javax.swing.JInternalFrame {
     public B_Uso_Respiradores() {
         
         initComponents();
-        
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**
