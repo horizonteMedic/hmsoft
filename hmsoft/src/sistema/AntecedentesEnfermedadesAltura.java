@@ -10,17 +10,25 @@ import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -1395,11 +1403,19 @@ public void cerrarVentana(){
     }//GEN-LAST:event_txtNordenActionPerformed
 
     private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
-        ReImp();
+     try {
+         ReImp();
+     } catch (IOException ex) {
+         Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+     }
     }//GEN-LAST:event_jLabel44MouseClicked
 
     private void txtIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIMPActionPerformed
-        print(Integer.parseInt(txtIMP.getText()));
+     try {
+         print(Integer.parseInt(txtIMP.getText()));
+     } catch (IOException ex) {
+         Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+     }
     }//GEN-LAST:event_txtIMPActionPerformed
 
     private void chkAgudezaVisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAgudezaVisActionPerformed
@@ -1445,12 +1461,20 @@ public void cerrarVentana(){
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         if (OrdenExiste()) {
-            Actualizar();
+            try {
+                Actualizar();
+            } catch (IOException ex) {
+                Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
-            if (Agregar()) {
-                limpiar();
-                txtNorden.requestFocus();
-                oFunc.SubSistemaMensajeInformacion("Agregado Correctamente");
+            try {
+                if (Agregar()) {
+                    limpiar();
+                    txtNorden.requestFocus();
+                    oFunc.SubSistemaMensajeInformacion("Agregado Correctamente");
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -1601,7 +1625,7 @@ public void direccion(){
             oFunc.SubSistemaMensajeInformacion("Anexo c:" + ex.getMessage().toString());
         }
 }
-    private void ReImp() {
+    private void ReImp() throws IOException {
         if (!txtIMP.getText().isEmpty()) {
             if (OrdenImp()) {
                 imprimir1();
@@ -1811,7 +1835,7 @@ public void direccion(){
     private javax.swing.JTextField txtOtros;
     private javax.swing.JTextField txtSexo;
     // End of variables declaration//GEN-END:variables
-private void imprimir(){
+private void imprimir() throws IOException{
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
     "¿Desea Imprimir Historia Ocupacional ?", //Mensaje
@@ -1834,7 +1858,7 @@ int seleccion = JOptionPane.showOptionDialog(
     }
 
 }
-private void imprimir1(){
+private void imprimir1() throws IOException{
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
     "¿Desea Imprimir Historia Ocupacional ?", //Mensaje
@@ -1857,12 +1881,94 @@ int seleccion = JOptionPane.showOptionDialog(
     }
 
 }
-private void printer(Integer cod){
-                Map parameters = new HashMap();
-    parameters.put("Norden", cod);
-    try {
-        String master = System.getProperty("user.dir")+ "/reportes/AnexoCB.jasper";
-        System.out.println("master" + master);
+private void printer(Integer cod) throws IOException{
+        String dni=oPe.consultarDni("antece_enfermedades_altura", String.valueOf(cod));
+        
+             //   String base64Huella=oPu.consumirApiHuella(dni);
+             //   String base64FirmaP=oPu.consumirApiFirmaEmp(dni);
+                String base64Sello="";
+     try {
+         base64Sello = oPe.consumirApiSello(String.valueOf(dni));
+     } catch (Exception ex) {
+         Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+     }
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+        /*
+              if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+                            
+     
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              
+              */
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                                             
+                
+
+        try {
+            String master="";
+            if(base64Sello.contains("OTROJASPER")){
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "AnexoCB.jasper";}
+            else{
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "AnexoCB_Digitalizado.jasper";
+            }       
+    
+          System.out.println("master" + master);
         if (master == null) {
             System.out.println("No encuentro el archivo AnexoCB.");
             //System.exit(2);
@@ -1886,16 +1992,93 @@ private void printer(Integer cod){
 
  
  }
-private void print(Integer cod){
-  //Integer n;
-               //n = Integer.parseInt(txtNorden.getText());
-                //Pasamos parametros al reporte Jasper. 
-              Map parameters = new HashMap();
-        // Coloco los valores en los parámetros
+private void print(Integer cod) throws IOException{
+        String dni=oPe.consultarDni("antece_enfermedades_altura", String.valueOf(cod));
+        
+             //   String base64Huella=oPu.consumirApiHuella(dni);
+             //   String base64FirmaP=oPu.consumirApiFirmaEmp(dni);
+                String base64Sello="";
+     try {
+         base64Sello = oPe.consumirApiSello(String.valueOf(dni));
+     } catch (Exception ex) {
+         Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+     }
+                
+        Map parameters = new HashMap();
         parameters.put("Norden", cod);
+        /*
+              if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+                            
+     
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              
+              */
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                                             
+                
 
         try {
-            String master = System.getProperty("user.dir")+ "/reportes/AnexoCB.jasper";
+            String master="";
+            if(base64Sello.contains("OTROJASPER")){
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "AnexoCB.jasper";}
+            else{
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "AnexoCB_Digitalizado.jasper";
+            }    
+
             System.out.println("master" + master);
             if (master == null) {
                 System.out.println("No encuentro el archivo No encuentro el archivo AnexoCB.");
@@ -1921,7 +2104,7 @@ private void print(Integer cod){
     }
 
     
- public boolean Agregar(){
+ public boolean Agregar() throws IOException, IOException{
     
  boolean bResultado=false;
  if(!txtNorden.getText().isEmpty()){
@@ -1932,7 +2115,7 @@ private void print(Integer cod){
          + "no5, si5, no6, si6, no7, si7, no8, si8, no9, si9, no10, si10, "
          + "no11, si11, no12, si12, no13, si13, no14, si14, no15, si15, no16, "
          + "si16,no17, si17, no18, si18, no19, si19, no20, si20, no21, si21, " 
-         + "no22, si22, no23, si23, no24, si24, no25, si25, no26, si26,txtotros, observaciones )";
+         + "no22, si22, no23, si23, no24, si24, no25, si25, no26, si26,txtotros, observaciones,user_registro )";
        Sql += "VALUES ('"+FechaExamen.getDate()+"','"+txtEdad.getText()+"','"+ clsGlobales.sDniOperador+"','"+txtDireccion.getText()+"','"+ txtEmail.getText()+"','";
        Sql += txtNorden.getText()+"','"+ chkApto.isSelected()+ "','"+chkInapto.isSelected()+"','";
        Sql += no1.isSelected()+"','"+ si1.isSelected()+"','"+ no2.isSelected()+"','"+si2.isSelected()+"','"+no3.isSelected()+"','" +si3.isSelected()+"','";
@@ -1943,7 +2126,7 @@ private void print(Integer cod){
        Sql += no16.isSelected()+"','"+ si16.isSelected()+"','"+ no17.isSelected()+"','"+si17.isSelected()+"','"+no18.isSelected()+"','" +si18.isSelected()+"','";
        Sql += no19.isSelected()+"','"+ si19.isSelected()+"','"+ no20.isSelected()+"','"+si20.isSelected()+"','"+no21.isSelected()+"','" +si21.isSelected()+"','";
        Sql += no22.isSelected()+"','"+ si22.isSelected()+"','"+ no23.isSelected()+"','"+si23.isSelected()+"','"+no24.isSelected()+"','" +si24.isSelected()+"','";
-       Sql += no25.isSelected()+"','"+ si25.isSelected()+"','"+ no26.isSelected()+"','"+si26.isSelected()+"','"+txtOtros.getText().toString()+"','"+txtObservaciones.getText()+"')";
+       Sql += no25.isSelected()+"','"+ si25.isSelected()+"','"+ no26.isSelected()+"','"+si26.isSelected()+"','"+txtOtros.getText().toString()+"','"+txtObservaciones.getText()+"','"+clsGlobales.sUser+"')";
 //               oFunc.SubSistemaMensajeInformacion(Sql);
        if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
@@ -1960,7 +2143,7 @@ private void print(Integer cod){
  }}
 return bResultado;
 }
- public void Actualizar(){
+ public void Actualizar() throws IOException{
      String sCodigo=txtNorden.getText();
         String strSqlStmt;
         

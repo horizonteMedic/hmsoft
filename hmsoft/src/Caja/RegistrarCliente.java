@@ -4,6 +4,10 @@ import Clases.DisableSSLVerification;
 import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
+import Digitalizacion.Camara;
+import Digitalizacion.CapturaHuella;
+import Digitalizacion.DemoButtons;
 import autocomplete.ajTextField;
 import autocomplete.ajTextFieldConsulta;
 import autocomplete.ajTextFieldInteger;
@@ -527,6 +531,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtFecha = new javax.swing.JLabel();
         txtHora = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -1147,6 +1152,11 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         );
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/camara.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/camactualizar.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -1162,6 +1172,13 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
         txtHora.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
         jLabel40.setText("Hora Registro:");
+
+        jButton4.setText("Huella");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1186,13 +1203,14 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                             .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGrabar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCerrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(873, 873, 873)
+                .addGap(858, 858, 858)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1220,7 +1238,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(117, 117, 117)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton4)
+                                        .addGap(76, 76, 76)
                                         .addComponent(txtHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnAgregar)
@@ -1237,7 +1257,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 125, Short.MAX_VALUE))
+                .addGap(0, 98, Short.MAX_VALUE))
         );
 
         jtRegistroGeneral.addTab("Registro Clientes en General", jPanel5);
@@ -4553,7 +4573,9 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosing
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+                clsGlobales.sDniPaciente=txtDni.getText().toString().trim();
+                DemoButtons firma=new DemoButtons();
+                firma.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cboFormaPagoPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboFormaPagoPopupMenuWillBecomeInvisible
@@ -4838,6 +4860,21 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
              Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        clsGlobales.sDniPaciente=txtDni.getText().toString().trim();
+        Camara cam= new Camara();
+        cam.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        clsGlobales.sDniPaciente=txtDni.getText().toString().trim();
+        
+        CapturaHuella cap= new CapturaHuella();
+        cap.setVisible(true);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
     private void printer(Integer cod) {
 
         Map parameters = new HashMap();
@@ -5500,6 +5537,7 @@ public final class RegistrarCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;

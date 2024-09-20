@@ -8,13 +8,19 @@ import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +30,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -3919,15 +3926,27 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
     }
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if(oPe.nOrden(txtNorden, "b_uso_respiradores"))  {
-           Actualizar();
+            try {
+                Actualizar();
+            } catch (IOException ex) {
+                Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
-           Agregar();
+            try {
+                Agregar();
+            } catch (IOException ex) {
+                Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
-        ReImp();
+        try {
+            ReImp();
+        } catch (IOException ex) {
+            Logger.getLogger(B_Uso_Respiradores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImpActionPerformed
 
     private void btnLimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimActionPerformed
@@ -4310,7 +4329,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
     txtNorden.setEditable(true);
     }  
     
-    private void Agregar() {
+    private void Agregar() throws IOException {
         if (!txtNorden.getText().isEmpty()) {
             if (!oPe.nOrden(txtNorden, "b_uso_respiradores")) {
                 if (validar()) {
@@ -4468,9 +4487,9 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                         Query += ",'" + FechaExpira.getDate().toString() + "'";
                     } 
             //
-                        strSqlStmt += ",chk_f_1, chk_f_2, chk_f_3, chk_f_4, chk_f_5, chk_f_6,chk_f_7, chk_f_8, chk_f_9";
+                        strSqlStmt += ",chk_f_1, chk_f_2, chk_f_3, chk_f_4, chk_f_5, chk_f_6,chk_f_7, chk_f_8, chk_f_9,b_uso_respiradores";
                         Query += ",'" + chk_f_1.isSelected() + "','" + chk_f_2.isSelected() + "','" + chk_f_3.isSelected() + "','" + chk_f_4.isSelected() + "','" + chk_f_5.isSelected() 
-                                 + "','" + chk_f_6.isSelected() + "','" + chk_f_7.isSelected() + "','" + chk_f_8.isSelected() + "','" + chk_f_9.isSelected() + "'";
+                                 + "','" + chk_f_6.isSelected() + "','" + chk_f_7.isSelected() + "','" + chk_f_8.isSelected() + "','" + chk_f_9.isSelected() + "','"+clsGlobales.sUser+"'";
             
            // oFunc.SubSistemaMensajeInformacion(strSqlStmt.concat(") ") + Query.concat(")"));
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
@@ -4511,7 +4530,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
 
         return bResultado;
     }
-    public void Actualizar(){
+    public void Actualizar() throws IOException{
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
         strSqlStmt="UPDATE b_uso_respiradores\n" +
@@ -4725,7 +4744,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
     }
   
       
-   public void imp(){
+   public void imp() throws IOException{
 if (imprimir1(Integer.valueOf(txtNorden.getText()))){
     if(imprimir2(Integer.valueOf(txtNorden.getText()))){
         imprimir3(Integer.valueOf(txtNorden.getText()));
@@ -4784,7 +4803,7 @@ int seleccion = JOptionPane.showOptionDialog(
     }
  return im;
 }
-private void imprimir3(Integer num){
+private void imprimir3(Integer num) throws IOException{
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
     "¿Ingrese la misma hoja para imprimir Reverso - Hoja 3 de 3 ?", //Mensaje
@@ -4834,20 +4853,59 @@ private void printer1(Integer cod){
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
-       private void printer3(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"usorespiradores3.jasper";
-                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+       private void printer3(Integer cod) throws IOException{
+           
+                   String dni=oPe.consultarDni("b_uso_respiradores", String.valueOf(cod));
+        
+             //   String base64Huella=oPu.consumirApiHuella(dni);
+             //   String base64FirmaP=oPu.consumirApiFirmaEmp(dni);
+                String base64Sello="";
+     try {
+         base64Sello = oPe.consumirApiSello(String.valueOf(dni));
+     } catch (Exception ex) {
+         Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
+     }
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+       
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                                             
+                
+
+        try {
+            String direccionReporte="";
+            if(base64Sello.contains("OTROJASPER")){
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"usorespiradores3.jasper";}
+            else{
+            direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "usorespiradores3_Digitalizado.jasper";
+            } 
+                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                   JasperPrintManager.printReport(jasperPrint,true);
                    } catch (JRException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }   
-   private void ReImp(){
+   private void ReImp() throws IOException{
 if(!txtImprimir.getText().isEmpty()){
             if(OrdenImp()){
                 if (imprimir1(Integer.valueOf(txtImprimir.getText()))){

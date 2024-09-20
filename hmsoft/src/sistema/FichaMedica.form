@@ -2541,7 +2541,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtMalEstado" pref="79" max="32767" attributes="0"/>
+                                      <Component id="txtMalEstado" pref="81" max="32767" attributes="0"/>
                                       <Component id="txtFaltan" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -6202,6 +6202,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Anexo 7D"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator17">
                           <Properties>
@@ -6215,6 +6218,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="&lt;html&gt;Certificaci&#xf3;n previa&lt;br&gt;Trabajo en altura"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="chkBoro">
                           <Properties>

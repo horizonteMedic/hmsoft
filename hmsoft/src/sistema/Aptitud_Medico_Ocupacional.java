@@ -10,10 +10,15 @@ import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -33,6 +39,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 
 /**
@@ -42,7 +49,9 @@ import net.sf.jasperreports.view.JasperViewer;
 public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {    
     clsConnection oConn = new clsConnection();
     clsFunciones  oFunc = new clsFunciones();
-    
+    String dniGlobal="";
+    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
+
     public Aptitud_Medico_Ocupacional() {
         initComponents();
         txtCertifica.setText( clsGlobales.sNomOperador  );
@@ -232,7 +241,7 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
         });
 
         chkSede.setSelected(true);
-        chkSede.setText("PARA HUAMCHUCO");
+        chkSede.setText("PARA HUAMACHUCO");
         chkSede.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkSedeActionPerformed(evt);
@@ -1130,7 +1139,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
         if (!txtNorden.getText().isEmpty()) {
             if (OrdenExiste()) {
-                ActualizarAptitud();
+                try {
+                    ActualizarAptitud();
+                } catch (Exception ex) {
+                    Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 try {
                     if (validar()) {
@@ -1145,7 +1158,9 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
                         }
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(ConstanciaCovid19.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
              
@@ -1162,6 +1177,7 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         if(!txtImprimir.getText().isEmpty()){
+            consultarDni(txtImprimir.getText().toString());
             print(Integer.valueOf(txtImprimir.getText().toString()));
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
@@ -1291,7 +1307,12 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 
     private void btnImprimir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir1ActionPerformed
          if(!txtImprimir1.getText().isEmpty()){
-            print1(Integer.valueOf(txtImprimir1.getText().toString()));
+             try {
+                             consultarDni(txtImprimir1.getText().toString());
+                 print1(Integer.valueOf(txtImprimir1.getText().toString()));
+             } catch (Exception ex) {
+                 Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
     }//GEN-LAST:event_btnImprimir1ActionPerformed
 
@@ -1518,11 +1539,12 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
   private boolean Grabar() throws SQLException{
         boolean bResult = false;
          String strSqlStmt ="INSERT INTO certificado_aptitud_medico_ocupacional(n_orden,cod_pa, fecha, nom_medico, atxtrestricciones, chkapto, "
-               + "chkapto_restriccion,chkno_apto,horasalida,fecha_hasta,txtrecomendaciones,txtconclusiones )";       
+               + "chkapto_restriccion,chkno_apto,horasalida,fecha_hasta,txtrecomendaciones,txtconclusiones,user_registro)";       
             strSqlStmt+= "values ("+ txtNorden.getText().toString()+",'"+txtDni.getText().toString()+"','"+Fecha.getDate()+
                     "','"+txtCertifica.getText().toString()+"','"+atxtRestricciones.getText().toString()+  "','"+chkApto.isSelected()+
                     "','"+chkRestriccion.isSelected()+  "','"+chkNoApto.isSelected()+ "','"+lblHora.getText().toString()+"'"
-                    + ",'"+FechaHasta.getDate()+"','"+atxtRecomendaciones.getText()+"','"+atxtConclusiones.getText()+"')";      
+                    + ",'"+FechaHasta.getDate()+"','"+atxtRecomendaciones.getText()+"','"+atxtConclusiones.getText()+"','"+clsGlobales.sUser+"')";
+            
 //       String strSqlStmt ="INSERT INTO certificado_aptitud_medico_ocupacional(n_orden,cod_pa, fecha, nom_medico, atxtrestricciones, chkapto, chkapto_restriccion,chkno_apto,horasalida,fecha_hasta )";       
 //            strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"','"+txtDni.getText().toString()+"','"+Fecha.getDate().toString()+
 //                    "','"+txtCertifica.getText().toString()+"','"+atxtRestricciones.getText().toString()+  "','"+chkApto.isSelected()+
@@ -1557,7 +1579,7 @@ boolean bResultado=true;
   
    return bResultado;
 }
-  private boolean imprimir(){
+  private boolean imprimir() throws Exception{
     boolean im = false;
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
@@ -1571,9 +1593,9 @@ int seleccion = JOptionPane.showOptionDialog(
     if (seleccion != -1)
     {
    if((seleccion + 1)==1)
-   {
+   {  consultarDni(txtNorden.getText().toString());
       printer(Integer.valueOf(txtNorden.getText().toString()));
-       im = true;
+      im = true;
    }
    else
    {
@@ -1583,6 +1605,47 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
+  
+  private void consultarDni(String dni){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select dni_user from usuarios where usuario_user=(select user_registro from certificado_aptitud_medico_ocupacional where n_orden="+dni+");";
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     dniGlobal=oConn.setResult.getString ("dni_user");
+                     
+                 }
+                 
+                 // Cierra Resultados
+              
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            oConn.sqlStmt.close();
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aptitud_Medico_Ocupacional.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // selecciona
+        //cboSede.setSelectedIndex(1);
+
+
+}
+  
+  
 private void Limpiar(){
     txtNorden.setText(null);
     txtTipoExamen.setText(null);
@@ -1638,19 +1701,49 @@ private void Limpiar(){
                  
  
  }
-   private void print1(Integer cod){
+   private void print1(Integer cod) throws Exception{
+                String base64Sello=oPe.consumirApiSello(dniGlobal);
 
                 Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);             
                 
+               if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                
                   try 
                 {String direccionReporte;
+                    if(base64Sello.contains("OTROJASPER")){
+
                     if(jCheckBox2.isSelected()){
                          direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7CP.jasper";
                     }else{
                          direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7C.jasper";
                     }
-                   
+                    }
+                    else{
+                         if(jCheckBox2.isSelected()){
+                         direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7CP_Digitalizado.jasper";
+                    }else{
+                         direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7C_Digitalizado.jasper";}
+                    }
+                        
                     
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
@@ -1662,6 +1755,102 @@ private void Limpiar(){
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
  }
+   private void printerPrueba(Integer cod) throws Exception{
+                String base64Huella=oPe.consumirApiHuella(String.valueOf(cod));
+                String base64Sello=oPe.consumirApiSello(String.valueOf(cod));
+                String base64FirmaP=oPe.consumirApiFirmaEmp(String.valueOf(cod));
+
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);              
+              if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+                            
+     
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+               
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+              
+                        
+                    try 
+                {                     
+                    String direccionReporte ;
+                    if(base64Huella.contains("OTROJASPER")|| base64Sello.contains("OTROJASPER")|| base64FirmaP.contains("OTROJASPER")){
+                    
+                    if(chkSede.isSelected()){
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_FH.jasper";
+                    }else{
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_F.jasper";
+                    }
+                    
+                    }else{
+                        if(chkSede.isSelected()){
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_FH_Digitalizado.jasper";
+                        }else{
+                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Aptitud_medico_ocupacional_F_Digitalizado.jasper";
+                        }
+                    }
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                  JasperPrintManager.printReport(jasperPrint,true);
+                   } catch (JRException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
+   }
+      
+   
    private void printer(Integer cod){
                  Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);      
@@ -1680,6 +1869,7 @@ private void Limpiar(){
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
+   
    Timer timer = new Timer(1000, new ActionListener() {
 
         @Override
@@ -1754,7 +1944,7 @@ private void Limpiar(){
             }
         
     }
-    public void ActualizarAptitud(){
+    public void ActualizarAptitud() throws Exception{
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
         strSqlStmt="UPDATE certificado_aptitud_medico_ocupacional\n" +
