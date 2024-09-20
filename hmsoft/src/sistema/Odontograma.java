@@ -6,6 +6,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOndontograma;
 import java.io.File;
 import java.sql.SQLException;
@@ -32,11 +33,16 @@ clsConnection oConn = new clsConnection();
   DefaultTableModel model;
 public Odontograma() {
         initComponents();
-jtOdontogramas.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/doc.png")));
-jtReportes.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/impresora.png")));
- sbImp();
-CargarDatos("");
-Fecha();
+        jtOdontogramas.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/doc.png")));
+        jtReportes.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/impresora.png")));
+         sbImp();
+        CargarDatos("");
+        Fecha();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            Editar();
+        }
     }
 
     @SuppressWarnings("unchecked")

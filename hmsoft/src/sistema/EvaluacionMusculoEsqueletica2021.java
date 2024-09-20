@@ -37,6 +37,11 @@ public class EvaluacionMusculoEsqueletica2021 extends javax.swing.JInternalFrame
     public EvaluacionMusculoEsqueletica2021() {
         initComponents();
         txtMedico.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
      private com.toedter.calendar.JDateChooser FechaNacimiento;
 

@@ -47,6 +47,11 @@ public class Hoja_Consulta_Externa extends javax.swing.JInternalFrame {
         initComponents();
         txtCertifica.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
         timer.start();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

@@ -14,6 +14,7 @@ public class clsGlobales {
     public static String sTotalVenta;
     public static boolean bVentaRealizada;
     public static String sDniOperador;
+    public static String sDniPaciente;
     public static String sNomOperador;
     public static String sUser;
     public static String sedeSede;
@@ -34,5 +35,7 @@ public class clsGlobales {
     public static Integer fdesde;
     public static Integer fHasta;
     public static Integer fSerie;
+    
+    public static Integer Norden=0;
    
 }

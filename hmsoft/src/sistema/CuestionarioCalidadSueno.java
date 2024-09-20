@@ -37,6 +37,11 @@ public class CuestionarioCalidadSueno extends javax.swing.JInternalFrame {
     public CuestionarioCalidadSueno() {
         initComponents();
         txtMedico.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
      private com.toedter.calendar.JDateChooser FechaNacimiento;
 

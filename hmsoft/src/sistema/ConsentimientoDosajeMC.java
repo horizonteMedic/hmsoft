@@ -7,6 +7,7 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -28,7 +29,11 @@ public final class ConsentimientoDosajeMC extends javax.swing.JInternalFrame {
     public ConsentimientoDosajeMC() {
         initComponents();
         sbCargarDatosMC("");
-        
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
  private com.toedter.calendar.JDateChooser FechaNacimiento;
     

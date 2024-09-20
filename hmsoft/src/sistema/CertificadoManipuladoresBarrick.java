@@ -8,6 +8,8 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
+
 import java.io.File;
 import java.sql.SQLException;
 import java.util.Date;
@@ -37,6 +39,11 @@ public class CertificadoManipuladoresBarrick extends javax.swing.JInternalFrame 
     public CertificadoManipuladoresBarrick() {
         initComponents();
         activar(false);
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

@@ -11,18 +11,34 @@ import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -33,6 +49,9 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
     public static frmObservaciones addObsv1;
     clsConnection oConn = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
+    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
+    String dniGlobal="";
+
     clsOperacionesUsuarios oPu = new clsOperacionesUsuarios();
     javax.swing.ImageIcon oIconoSi = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/chek.gif"));
     javax.swing.ImageIcon oIconoNo = new javax.swing.ImageIcon(ClassLoader.getSystemResource("imagenes/xx.png"));
@@ -49,6 +68,11 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
         //Fecha();
         txtCertifica.setText( clsGlobales.sNomOperador  );
         sbCargarDatosAP();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarFMActionPerformed(null);
+        }
     }
 
     private void vExamenes(String Nro) {
@@ -4196,7 +4220,12 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
 
     private void btnAnexo7C2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnexo7C2ActionPerformed
         Integer Norden = Integer.valueOf(txtEOrden.getText());
-        oPu.print(Norden, "Anexo02_1.jasper", "Anexo 7C Hoja Nro 2");
+        try {
+            printerInAnexo02_1(Norden);
+            // oPu.print(Norden, "Anexo02_1.jasper", "Anexo 7C Hoja Nro 2");
+        } catch (Exception ex) {
+            Logger.getLogger(FichaAgroindustriales.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnAnexo7C2ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -4659,6 +4688,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
          Integer Norden = Integer.valueOf(txtEOrden.getText());
         oPu.print(Norden, "Aptitud_Agroindustrial.jasper", "Aptitud Medica");
     }//GEN-LAST:event_btnAptitudMedicaActionPerformed
+       
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         // TODO add your handling code here:
@@ -5907,7 +5937,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
 "            n_orden, fecha, chkneoplasia, chkits, chkquemaduras, \n" +
 "            chkcirugias, chkapotros, chkresidenciasi, chkresidenciano, txttiemporesidencia, \n" +
 "            chkessalud, chkeps, chkotros, chksctr, chkotros1, txtpadre, txtmadre, \n" +
-"            txthermanos, txtesposa ";
+"            txthermanos, txtesposa,user_registro ";
                 String values = "VALUES ('" + txtNorden.getText().toString() + "','" + FechaFicha.getDate() + "','" 
                         + chkNeoplasia.isSelected() + "','" + chkITS.isSelected() + "','" + chkQuemaduras.isSelected() + "'";
                 values += ",'" + chkCirugias.isSelected() + "','" + chkAPOtros.isSelected() + "'";
@@ -5915,7 +5945,7 @@ public final class FichaAgroindustriales extends javax.swing.JInternalFrame {
                           "','" + chkEssalud.isSelected() + "'";
                 values += ",'" + chkEps.isSelected() + "','" + chkOtros.isSelected() + "','" + chkSctr.isSelected() + "','" + chkOtros1.isSelected() + 
                           "','" + txtPadre.getText().toString() + "','" + txtMadre.getText().toString() + "'";
-                values += ",'" + txtHermanos.getText().toString() + "','" + txtEsposa.getText().toString() +  "'";
+                values += ",'" + txtHermanos.getText().toString() + "','" + txtEsposa.getText().toString() + "','"+clsGlobales.sUser+"'";
                  if (!txtNeoplasia.getText().isEmpty()) {
                     insert += ",txtneoplasia ";
                     values += ",'" + txtNeoplasia.getText().toString() + "'";
@@ -6888,6 +6918,98 @@ public boolean OrdenExiste1()
     } 
         
 }
+     
+        private void printerInAnexo02_1(Integer cod) throws Exception {
+    String dni=oPu.consultarDni("anexo_agroindustrial", String.valueOf(cod));
+        
+                String base64Huella=oPu.consumirApiHuella(dni);
+                String base64FirmaP=oPu.consumirApiFirmaEmp(dni);
+                String base64Sello=oPu.consumirApiSello(String.valueOf(dni));
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+              if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+                            
+     
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                                             
+                
+
+        try {
+            String direccionReporte="";
+            if(base64Huella.contains("OTROJASPER") ||base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+            direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Anexo02_1.jasper";}
+            else{
+            direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Anexo02_1_Digitalizado.jasper";
+            }
+          //  String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "conInformadoOcupacional.jasper";
+            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+
+            JasperPrintManager.printReport(jasperPrint, true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+       
+    
+ 
  private boolean validarQui(){
 boolean bResultado=true;
   if(txtNorden.getText().isEmpty()){oFunc.SubSistemaMensajeError("Ingrese N° Orden"); bResultado = false;}
@@ -6945,7 +7067,7 @@ txtDiasDesanso.setText(null);
             diasdescanso = tbQuirurgicos.getModel().getValueAt(iFila, 3).toString();
         
            
-           strSqlStmt="INSERT INTO accidentes_trabajo(cod_anexo, enfermedad, asociadotrabajo, anio, diasdescanso)";
+           strSqlStmt="INSERT INTO accidentes_trabajo(cod_anexo, enfermedad, asociadotrabajo, anio, diasdescanso,user_registro)";
                                       
                     strSqlStmt = strSqlStmt + " Values ('";
 //                    oFunc.SubSistemaMensajeError(String.valueOf(num));
@@ -6953,7 +7075,7 @@ txtDiasDesanso.setText(null);
                     strSqlStmt += enfermedad+"','";
                     strSqlStmt += asociadotrabajo+"','";
                     strSqlStmt += anio+"','";
-                    strSqlStmt += diasdescanso+"')";
+                    strSqlStmt += diasdescanso+"','"+clsGlobales.sUser+"')";
                     
                     // Ejecuta la Sentencia
                     if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){

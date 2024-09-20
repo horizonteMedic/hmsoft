@@ -42,6 +42,11 @@ public final class B_OIT extends javax.swing.JInternalFrame {
         Fecha();
          txtMedico.setText(Clases.clsGlobales.sNomOperador);
          txtLector.setText(Clases.clsGlobales.sNomOperador);
+         if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
  void Fecha(){
 Date fechaDate = new Date();

@@ -6,6 +6,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.io.File;
 import java.sql.SQLException;
@@ -38,7 +39,11 @@ clsConnection oConn = new clsConnection();
         jtReporte.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/lapiz.png")));
          FechaNacimiento = new com.toedter.calendar.JDateChooser();
         CargarDatos("");
-        
+        if(clsGlobales.Norden>0)
+        {
+            txtNumero.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -766,7 +771,9 @@ clsConnection oConn = new clsConnection();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+  
+    
     private void chkNordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkNordenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkNordenActionPerformed

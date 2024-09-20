@@ -2,6 +2,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.Date;
@@ -21,6 +22,11 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
     public CuestionarioNordico() {
         initComponents();
         txtNorden.requestFocus();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
 

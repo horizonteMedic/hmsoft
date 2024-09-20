@@ -40,6 +40,11 @@ public class Certificacion_Trabajo_Altura_Poderosa extends javax.swing.JInternal
     public Certificacion_Trabajo_Altura_Poderosa() {
         initComponents();
         txtMedico.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
      private com.toedter.calendar.JDateChooser FechaNacimiento;
 

@@ -6,6 +6,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.Date;
@@ -38,7 +39,11 @@ public class b_Ficha_Sas extends javax.swing.JInternalFrame {
       txtNorden.requestFocus();
       txtMedico.setText(Clases.clsGlobales.sNomOperador);
       txtCMP.setText("CMP - "+ Clases.clsGlobales.sCMPOperador);
-      
+      if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
     private void accidente(boolean t){
     

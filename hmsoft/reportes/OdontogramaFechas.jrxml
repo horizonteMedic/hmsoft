@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OdontogramaFechas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="72a87e58-ebad-401a-a6cd-d0142295dc97">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Fecha1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select d.nombres_pa||' '||d.apellidos_pa AS nombres,n.razon_empresa,n.razon_contrata,o.n_orden,  o.fecha_od
+         FROM odontograma AS o
+         INNER JOIN n_orden_ocupacional AS n ON (o.n_orden = n.n_orden)
+         INNER JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa)
+         WHERE
+    o.fecha_od >= $P{Fecha1}
+AND
+    o.fecha_od <= $P{Fecha2}]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="razon_empresa" class="java.lang.String"/>
+	<field name="razon_contrata" class="java.lang.String"/>
+	<field name="n_orden" class="java.lang.Integer"/>
+	<field name="fecha_od" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<image>
+				<reportElement uuid="35ac554b-e0c3-4915-b049-dae53c07b691" x="0" y="0" width="224" height="84"/>
+				<imageExpression><![CDATA["C:\\reportes\\Logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="293" y="55" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sánchez Carrión - La Libertad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86167a86-91e7-4616-b150-82aa079ff337" x="293" y="66" width="258" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Email: admision@horizontemedic.com / web: www.horizontemedic.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5f564673-70ba-417d-9f2e-d536e49e01d6" x="293" y="32" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Jr. Leoncio Prado N° 786 - Huamachuco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="de8fca2f-252f-4487-b80a-5ccf8b1af78e" x="293" y="44" width="213" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Telefono :  044-348070 / RPM #969603777]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b99de470-1eb9-415a-b9d0-c809f9fd2ad3" x="167" y="0" width="221" height="35"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHA ODONTOGRAFICA DE PERSONAL
+REPORTE POR FECHAS
+]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="7005b145-402f-4e06-b9a8-5889fbd3eccb" x="417" y="12" width="126" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="84d23dd7-4693-4108-8ea6-c186a6632db8" x="216" y="42" width="62" height="12"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Fecha1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="9707c431-0cba-4ee2-ad94-54a7b63d1a4c" x="314" y="42" width="61" height="12"/>
+				<textElement>
+					<font size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Fecha2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2b746c1d-fe3a-40da-8067-2e5ef3100ac6" x="180" y="42" width="36" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Desde :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f71c080e-16ce-469b-8136-15aea107eed7" x="278" y="42" width="36" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hasta :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7f537ad1-e3a1-4cd8-93ea-ce825a7bfbc4" x="417" y="0" width="126" height="12"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Impresión Reporte]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="43fc1934-b35a-4b4e-953f-a7ee18cf4f07" x="0" y="2" width="551" height="20" backcolor="#CCCCCC"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="933161d8-4755-4b39-bb5a-3af5e3906c1d" x="144" y="7" width="51" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14ad1545-54f8-407f-a612-93a83a0fe334" x="74" y="7" width="34" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a82140d-f884-4929-99ab-5cffc169953b" x="313" y="7" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f9d235c-23ed-43b0-9c31-a0dd2e0c19a0" x="426" y="7" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Emp. Contratista]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b2019896-1185-478a-a7e3-af78d25b51b8" x="12" y="7" width="52" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nro Orden]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="5dad4cf2-c921-408f-bde8-c87514eeca38" x="144" y="2" width="159" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement uuid="7ef3e5a0-5481-4982-81c3-065d1e0a7f32" x="74" y="2" width="63" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_od}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f9b4db11-2dc7-40ac-b524-89e2fa3366c1" x="313" y="2" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razon_empresa}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="aafd5db6-e512-43cf-bcad-49ae31c7defd" x="426" y="2" width="125" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razon_contrata}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="01bdf803-597c-4f8c-9302-3b583c1210af" x="7" y="2" width="63" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{n_orden}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="3" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="a7dc9137-b6b0-45a7-bc25-5e5a4f013e58" x="196" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="f38d8d33-0fb0-4d92-bc2f-f0ae04cf3891" x="280" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="6" splitType="Stretch"/>
+	</summary>
+</jasperReport>

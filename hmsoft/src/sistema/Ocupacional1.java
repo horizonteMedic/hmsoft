@@ -77,6 +77,7 @@ public class Ocupacional1 extends javax.swing.JFrame {
     LaboratorioClinicoCovid lab;
     Eliminar Exc;
     Auditoria audit;
+    ConfigurarEmpleados configEmp;
     B_Certificacion_conduccion b_cercon;
     B_OIT b_oit;
     Frm_conalvias frm_conal;  
@@ -407,6 +408,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         jMenuItem7 = new javax.swing.JMenuItem();
         btnEliminarEx = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
         mFAgroindustrial = new javax.swing.JMenu();
         mFichaAnexo2 = new javax.swing.JMenuItem();
         mFichaAptitudAnexo2 = new javax.swing.JMenuItem();
@@ -1690,10 +1692,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(Desktop, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
@@ -1795,6 +1794,14 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             }
         });
         btnconfiguracionsistema.add(jMenuItem12);
+
+        jMenuItem13.setText("Config Empleados");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        btnconfiguracionsistema.add(jMenuItem13);
 
         MenuOcupacional.add(btnconfiguracionsistema);
 
@@ -4924,6 +4931,25 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
           //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+                       if(estacerrado(configEmp)){  
+          configEmp =new ConfigurarEmpleados();
+          Desktop.add(configEmp);          
+        ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
+        // audit.setFrameIcon(ticon);
+      configEmp.setLocation(centradoXY(configEmp));
+
+          configEmp.show();
+          //fn.setVisible(true);
+       }
+             else{
+            ph.moveToFront();
+         
+          //  JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+ 
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/med.png"));
@@ -5061,6 +5087,7 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

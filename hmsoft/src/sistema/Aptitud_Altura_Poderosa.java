@@ -47,6 +47,11 @@ public class Aptitud_Altura_Poderosa extends javax.swing.JInternalFrame {
         initComponents();
         txtCertifica.setText( clsGlobales.sNomOperador +" - "+ clsGlobales.sCMPOperador );
         timer.start();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**

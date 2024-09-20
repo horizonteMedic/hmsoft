@@ -447,6 +447,7 @@ int key = evt.getKeyCode();
                     clsGlobales.sNomOperador = oConn.setResult.getString("nombre_user").concat(" ").concat(oConn.setResult.getString("apellido_user"));
                     //area=oConn.setResult.getString("area");
                     clsGlobales.sDniOperador = oConn.setResult.getString("dni_user");
+                    clsGlobales.sUser=oConn.setResult.getString("usuario_user");
                     clsGlobales.sCMPOperador = oConn.setResult.getString("cmp_user");
                     clsGlobales.sRol = oConn.setResult.getString("rol_user");
 

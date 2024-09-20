@@ -6,26 +6,50 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
+import Digitalizacion.DisableSSLVerification;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import org.json.JSONObject;
+import sun.misc.BASE64Decoder;
+
 public final class FichaTriaje extends javax.swing.JInternalFrame {
+    
  clsConnection oConn = new clsConnection();
    clsFunciones  oFunc = new clsFunciones();
    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
@@ -34,17 +58,24 @@ public final class FichaTriaje extends javax.swing.JInternalFrame {
         javax.swing.ImageIcon oNo = null;
 String[]Triaje = new String[]{};
      DefaultTableModel model;
+    String base64Sello;
+    String base64FirmaP;
+    String base64Huella;
+     
    public FichaTriaje() {
       initComponents();
-   
-      
       CargarEmpresas();
       CargarContratas();
       CargarServicios();
        HabilitaReOr();
        sbCargarDatosOcupacional("");
        jtTriaje.setIconAt(0, new ImageIcon(ClassLoader.getSystemResource("imagenes/reportes.png")));
+        if(clsGlobales.Norden>0)
+        {
+            CargarAsistencialAudi(clsGlobales.Norden.toString());
+        }
    }
+   
 
    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -842,6 +873,11 @@ String[]Triaje = new String[]{};
 
         jLabel35.setText("Codigo:");
 
+        txtBuscarCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarCodActionPerformed(evt);
+            }
+        });
         txtBuscarCod.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarCodKeyReleased(evt);
@@ -1111,7 +1147,8 @@ String[]Triaje = new String[]{};
            CargarAsistencial();
         }
     }//GEN-LAST:event_txtNumeroActionPerformed
-  public void habilitaTriaje(boolean r){
+  
+    public void habilitaTriaje(boolean r){
    txtTalla.setEnabled(r);
    txtPesoTriaje.setEditable(r);
    txtCinturaTriaje.setEditable(r);
@@ -1130,6 +1167,157 @@ Date dateHoy = new Date();
        FechaTriaje.setDate(dateHoy);
         
 }
+    private void cargarDNI(Integer hc){
+      String sQuery;        
+        // Prepara el Query
+        sQuery ="select cod_pa as dni from n_orden_ocupacional where n_orden="+hc;
+        
+        if (oConn.FnBoolQueryExecute(sQuery))
+        {
+            try 
+            {
+                // Verifica resultados
+                 while (oConn.setResult.next())
+                 {                     
+                     // Obtiene los datos de la Consulta
+                     clsGlobales.sDniPaciente=oConn.setResult.getString ("dni");
+                     
+                 }
+                 
+                 // Cierra Resultados
+              
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeInformacion(ex.toString());
+                Logger.getLogger(Ingreso.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            oConn.sqlStmt.close();
+            oConn.setResult.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // selecciona
+
+
+
+}
+    private void CargarAsistencialAudi(String N){
+         String [] titulos={"N°Orden","Nombre","Fecha","Empresa","Contrata","T.Examen","Cargo","F.Aptitud","Estado","H.Entrada","H_Salida"};
+    String [] registros = new String[11];
+            String Sql = "select n_orden_ocupacional.n_orden, \n" +
+            "            datos_paciente.nombres_pa||''||datos_paciente.apellidos_pa AS nombres, \n" +
+            "            triaje.fecha_triaje,n_orden_ocupacional.razon_empresa,n_orden_ocupacional.razon_contrata,"
+             + "n_orden_ocupacional.nom_examen,n_orden_ocupacional.cargo_de,\n" +
+            "            n_orden_ocupacional.n_hora,ca.n_orden as aptitud,ca.horasalida,a.n_orden as anexo7d,o.n_orden as observados,ac.n_orden as anexoc,"
+            + "bc.n_orden as conduccion,ba.n_orden as altura,  "+
+                  "CASE WHEN ca.chkapto = 'TRUE' THEN 'Apto'\n" +
+                    " WHEN ca.chkapto_restriccion = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                    " WHEN ca.chkno_apto = 'TRUE' THEN 'No Apto'  END as estado, \n" +
+             "CASE  WHEN ac.apto = 'TRUE' THEN 'Apto'\n" +
+                    " WHEN ac.no_apto = 'TRUE' THEN 'No Apto' END as estadoac, \n" +
+            "CASE  WHEN a.apto = 'TRUE' THEN 'Apto'\n" +
+                  " WHEN a.no_apto = 'TRUE' THEN 'No Apto' END as estadoad,"
+              + "CASE  WHEN bc.chk_si = 'TRUE' THEN 'Apto'\n" +
+                  " WHEN bc.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                    " WHEN bc.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                    " WHEN bc.chk_no = 'TRUE' THEN 'No Apto' END as estadobc,"
+            + "CASE  WHEN ba.chk_si = 'TRUE' THEN 'Apto'\n" +
+                  " WHEN ba.chk_observado = 'TRUE' THEN 'Observado'\n" +
+                    " WHEN ba.chk_apto_r = 'TRUE' THEN 'Apto con Restriccion'\n" +
+                    " WHEN ba.chk_no_apto = 'TRUE' THEN 'No Apto' END as estadoba," 
+            + " o.examenes \n" +
+             " From datos_paciente \n" +
+"            inner join n_orden_ocupacional \n" +
+"            ON (datos_paciente.cod_pa = n_orden_ocupacional.cod_pa)\n" +
+"            left join certificado_aptitud_medico_ocupacional as ca ON (ca.n_orden=n_orden_ocupacional.n_orden)\n" +
+"            left join anexo7d as a ON (a.n_orden=n_orden_ocupacional.n_orden)\n" +
+"            left join observaciones as o ON (o.n_orden=n_orden_ocupacional.n_orden)\n" +
+           "left join anexoc as ac ON (ac.n_orden=n_orden_ocupacional.n_orden)"   +
+           " left join b_certificado_conduccion as bc ON (bc.n_orden=n_orden_ocupacional.n_orden)"+
+           " left join b_certificado_altura as ba ON (ba.n_orden=n_orden_ocupacional.n_orden)"   +  
+"            inner join triaje on (n_orden_ocupacional.n_orden = triaje.n_orden)\n" +
+"            where   triaje.n_orden ='" +N+"'"+
+"            ORDER BY triaje.n_orden desc limit 20";
+             oConn.FnBoolQueryExecute(Sql);
+            model = new DefaultTableModel(null,titulos){        
+              @Override
+          public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return false;
+    }};
+       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    if (oConn.FnBoolQueryExecute(Sql))
+        {
+             try  {
+                
+                while (oConn.setResult.next())
+                {        
+                    registros[0]= oConn.setResult.getString("n_orden");
+                    registros[1]= oConn.setResult.getString("nombres");
+                    registros[2]= formato.format(oConn.setResult.getDate("fecha_triaje"));
+                    registros[3]= oConn.setResult.getString("razon_empresa");
+                    registros[4]= oConn.setResult.getString("razon_contrata");
+                    String exa=oConn.setResult.getString("nom_examen");
+                    registros[5]= exa;
+                    registros[6]= oConn.setResult.getString("cargo_de");
+                    String s=oConn.setResult.getString("aptitud");
+                    String a=oConn.setResult.getString("anexo7d");
+                    String o=oConn.setResult.getString("observados");
+                    String ac=oConn.setResult.getString("anexoc");
+                    String bc=oConn.setResult.getString("conduccion");
+                    String ba=oConn.setResult.getString("altura");
+                    if(s != null ){
+                        registros[7]="COMPLETO";
+                        registros[8]= oConn.setResult.getString("estado");
+                    }else if( a != null && "ANEXO-7D".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadoad");
+                    }else if( o!= null){
+                            registros[7]="OBSERVADO";
+                            registros[8]= oConn.setResult.getString("examenes");
+                    }else if( ac!= null && "ANEXO-C".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadoac");
+                    }else  if( bc!= null && "PSICOSENSOMETRIA".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadobc");
+                    }else if( ba!= null && "TEST-ALTURA".equals(exa)){
+                            registros[7]="COMPLETO";
+                            registros[8]= oConn.setResult.getString("estadoba");
+                    }else{ 
+                        registros[7]="FALTA";
+                        registros[8]= " ";
+                    }
+                    registros[9]= oConn.setResult.getString("n_hora");
+                    registros[10]= oConn.setResult.getString("horasalida");
+                    //registros[3]=oConn.setResult.getString("anexo7c");
+                    tbTriaje.setDefaultRenderer(Object.class, new MyCellRenderer());
+                     model.addRow(registros);
+                }
+                  // Coloca el Modelo de Nueva Cuenta
+                  tbTriaje.setModel(model);
+                  sbTablaTriaje();
+                 // Cierra Resultados
+                 oConn.setResult.close();
+            } 
+            catch (SQLException ex) 
+            {
+                //JOptionPane.showMessageDialorootPane,ex);
+                oFunc.SubSistemaMensajeError(ex.toString());
+                Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+     try {
+         oConn.sqlStmt.close();
+     } catch (SQLException ex) {
+         Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+     }
+   }
+
+    
    private void CargarAsistencial(){
         if (!txtNumero.getText().isEmpty()) {
                 if (!OrdenExiste()) {
@@ -1351,11 +1539,109 @@ boolean bResultado=true;
        if (evt.getClickCount() == 2) 
         {  
             Integer cod  = Integer.valueOf( tbTriaje.getValueAt(tbTriaje.getSelectedRow(),0).toString());
-            oPe.print(cod, "Triaje.jasper", "Ficha Triaje");
+            cargarDNI(cod);
+           try {
+               //printa(cod);
+               oPe.print(cod, "Triaje.jasper", "Ficha Triaje");
+           } catch (Exception ex) {
+               Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+           }
             
         }
     }//GEN-LAST:event_tbTriajeMouseClicked
+         
+    private void printa(Integer cod) throws Exception{
+                consumirApiHuella();
+                consumirApiFirmaEmp();
+                consumirApiSello();
+                Map parameters = new HashMap(); 
+                parameters.put("Norden",cod);      
+                String direccionReporte="";
+              //  InputStream targetStream = IOUtils.toInputStream(base64String);  
+              //
+              if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
 
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+                            
+              
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+              
+              
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+                System.out.println("los parametros son: "+parameters);
+                  try 
+                {   
+                    if(!base64Huella.contains("OTROJASPER"))
+                    direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Triaje_digitalizado.jasper";
+                    else
+                    direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Triaje_1_sinfirma.jasper";
+                  System.out.println("ubicacion del jasper: "+direccionReporte);
+                     
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("FORMATO TRIAJE");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex) {
+                    Logger.getLogger(FichaTriaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ }
+       
+    
+    
     private void btnDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosticoActionPerformed
 //       if(!txtIccTriaje.getText().isEmpty() && !txtIccTriaje.getText().isEmpty()
 //               &&!txtSistolicaTriaje.getText().isEmpty()&&!txtDiastolicaTriaje.getText().isEmpty()
@@ -1672,6 +1958,10 @@ boolean bResultado=true;
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
         cerrarVentana();        // TODO add your handling code here:
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void txtBuscarCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarCodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarCodActionPerformed
 
 
    
@@ -2304,4 +2594,176 @@ public int calcularEdad(Calendar fechaNac){
     return diff_year;
 }
 
+
+                   
+      public void consumirApiHuella() throws Exception {
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+         try {
+            DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/detalleArchivoEmpleado/"+clsGlobales.sDniPaciente+"/HUELLA");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+                      if(code!=500){
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                System.out.println("Response line: " + responseLine.trim());
+                    response.append(responseLine.trim());
+                }
+                  System.out.println("Response: " + response.toString());
+                     JSONObject objectJson = new JSONObject(response.toString());
+                  System.out.println("Response: " + objectJson);
+                  System.out.println("Response: " + objectJson.getString("base64"));
+                     
+         
+                     base64Huella=(objectJson.getString("base64"));
+                 
+
+
+                    /*
+                    System.out.println("el campo es:"+objectJson.getLong("id_resp"));
+                    
+                    System.out.println("el campo es:"+objectJson.getString("rucEmpresa"));
+                    System.out.println("el campo es:"+objectJson.getString("rucContrata"));
+                    System.out.println("el campo es:"+objectJson.getString("cargo"));
+                    System.out.println("el campo es:"+objectJson.getString("area"));
+                    System.out.println("el campo es:"+objectJson.getString("tipoExamen"));
+                    System.out.println("el campo es:"+objectJson.getString("fechaReserva"));
+                      */
+            }
+            
+            
+            }
+            else
+                        base64Huella="OTROJASPER";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
+   
+   
+      public void consumirApiFirmaEmp() throws Exception {
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+         try {
+            DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/detalleArchivoEmpleado/"+clsGlobales.sDniPaciente+"/FIRMAP");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+                      if(code!=500){
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                System.out.println("Response line: " + responseLine.trim());
+                    response.append(responseLine.trim());
+                }
+                  System.out.println("Response: " + response.toString());
+                     JSONObject objectJson = new JSONObject(response.toString());
+                  System.out.println("Response: " + objectJson);
+                  System.out.println("Response: " + objectJson.getString("base64"));
+                     
+         
+                     base64FirmaP=(objectJson.getString("base64"));
+                 
+
+
+                    /*
+                    System.out.println("el campo es:"+objectJson.getLong("id_resp"));
+                    
+                    System.out.println("el campo es:"+objectJson.getString("rucEmpresa"));
+                    System.out.println("el campo es:"+objectJson.getString("rucContrata"));
+                    System.out.println("el campo es:"+objectJson.getString("cargo"));
+                    System.out.println("el campo es:"+objectJson.getString("area"));
+                    System.out.println("el campo es:"+objectJson.getString("tipoExamen"));
+                    System.out.println("el campo es:"+objectJson.getString("fechaReserva"));
+                      */
+            }
+            
+            
+            }
+            else
+                        base64FirmaP="OTROJASPER";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
+   
+    
+      public void consumirApiSello() throws Exception {
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+         try {
+            DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/detalleArchivoEmpleado/"+clsGlobales.sDniOperador+"/FIRMA");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+                      if(code!=500){
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                System.out.println("Response line: " + responseLine.trim());
+                    response.append(responseLine.trim());
+                }
+                  System.out.println("Response: " + response.toString());
+                     JSONObject objectJson = new JSONObject(response.toString());
+                  System.out.println("Response: " + objectJson);
+                  System.out.println("Response: " + objectJson.getString("base64"));
+                     
+         
+                     base64Sello=(objectJson.getString("base64"));
+                 
+
+
+                    /*
+                    System.out.println("el campo es:"+objectJson.getLong("id_resp"));
+                    
+                    System.out.println("el campo es:"+objectJson.getString("rucEmpresa"));
+                    System.out.println("el campo es:"+objectJson.getString("rucContrata"));
+                    System.out.println("el campo es:"+objectJson.getString("cargo"));
+                    System.out.println("el campo es:"+objectJson.getString("area"));
+                    System.out.println("el campo es:"+objectJson.getString("tipoExamen"));
+                    System.out.println("el campo es:"+objectJson.getString("fechaReserva"));
+                      */
+            }
+            
+            
+            }
+            else
+                        base64Sello="OTROJASPER";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+    }
+     
 }

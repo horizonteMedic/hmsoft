@@ -5,8 +5,13 @@
 package Clases;
 
 import com.toedter.calendar.JDateChooser;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +23,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import org.json.JSONObject;
 
 /**
  *
@@ -58,7 +64,6 @@ public class clsOperacionesUsuarios {
     return bResultado;
     }
      public void print(Integer cod, String Reporte, String Title){
-                
                 Map parameters = new HashMap(); 
                 parameters.put("Norden",cod);             
                 
@@ -159,6 +164,37 @@ public boolean nOrden(JTextField n, String t ){
         }
   return bResultado;
 }
+
+public boolean validar(JTextField n, String t, String columna ){
+  boolean bResultado = false;
+    if (!n.getText().isEmpty()) {
+            String sQuery;
+
+            sQuery = "Select "+columna+" from "+ t +" Where " + columna+" =" + n.getText().toString();
+              System.out.println(sQuery);
+            //Ejecuta el Query
+            oConn.FnBoolQueryExecute(sQuery);
+
+            // Capturo el Error
+            try {
+
+                // Verifico que haya habido resultados
+                if (oConn.setResult.next()) {
+                    // Resultado
+                    bResultado = true;
+                   // oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+                   // n.setText(null);
+                }
+
+                // Cierro los Resultados
+                oConn.setResult.close();
+
+            } catch (SQLException ex) {
+            }
+        }
+  return bResultado;
+}
+
 public boolean oFinalizado(JTextField n){
     boolean bResultado;
   
@@ -178,4 +214,211 @@ public boolean oFinalizado(JTextField n){
 
     }
 
+    public String consultarDni( String tabla, String columna ){
+  String bResultado = "";
+            String sQuery;
+
+            sQuery = "select dni_user from usuarios where usuario_user=(select user_registro from "+tabla+" where n_orden="+columna+");";
+              System.out.println(sQuery);
+            //Ejecuta el Query
+            oConn.FnBoolQueryExecute(sQuery);
+
+            // Capturo el Error
+            try {
+
+                // Verifico que haya habido resultados
+                if (oConn.setResult.next()) {
+                    // Resultado
+                    bResultado = oConn.setResult.getString("dni_user");
+                   // oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+                   // n.setText(null);
+                }
+
+                // Cierro los Resultados
+                oConn.setResult.close();
+
+            } catch (SQLException ex) {
+            }
+        
+  return bResultado;
+}
+      public String consumirApiSello(String dni) throws Exception {
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+      String base64Sello=null;
+         try {
+            Digitalizacion.DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/detalleArchivoEmpleado/"+dni+"/SELLOFIRMA");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+                      if(code!=500){
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                System.out.println("Response line: " + responseLine.trim());
+                    response.append(responseLine.trim());
+                }
+                  System.out.println("Response: " + response.toString());
+                     JSONObject objectJson = new JSONObject(response.toString());
+                  System.out.println("Response: " + objectJson);
+                  System.out.println("Response: " + objectJson.getString("base64"));
+                     
+         
+                     base64Sello=(objectJson.getString("base64"));
+                 
+
+
+                    /*
+                    System.out.println("el campo es:"+objectJson.getLong("id_resp"));
+                    
+                    System.out.println("el campo es:"+objectJson.getString("rucEmpresa"));
+                    System.out.println("el campo es:"+objectJson.getString("rucContrata"));
+                    System.out.println("el campo es:"+objectJson.getString("cargo"));
+                    System.out.println("el campo es:"+objectJson.getString("area"));
+                    System.out.println("el campo es:"+objectJson.getString("tipoExamen"));
+                    System.out.println("el campo es:"+objectJson.getString("fechaReserva"));
+                      */
+            }
+            
+            
+            }
+            else
+                        base64Sello="OTROJASPER";
+
+                      
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+         return base64Sello;
+    }
+         
+      
+      public String consumirApiHuella(String dni) throws Exception {
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+      String base64Huella=null;
+         try {
+            Digitalizacion.DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/detalleArchivoEmpleado/"+dni+"/HUELLA");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+                      if(code!=500){
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                System.out.println("Response line: " + responseLine.trim());
+                    response.append(responseLine.trim());
+                }
+                  System.out.println("Response: " + response.toString());
+                     JSONObject objectJson = new JSONObject(response.toString());
+                  System.out.println("Response: " + objectJson);
+                  System.out.println("Response: " + objectJson.getString("base64"));
+                     
+         
+                     base64Huella=(objectJson.getString("base64"));
+                 
+
+
+                    /*
+                    System.out.println("el campo es:"+objectJson.getLong("id_resp"));
+                    
+                    System.out.println("el campo es:"+objectJson.getString("rucEmpresa"));
+                    System.out.println("el campo es:"+objectJson.getString("rucContrata"));
+                    System.out.println("el campo es:"+objectJson.getString("cargo"));
+                    System.out.println("el campo es:"+objectJson.getString("area"));
+                    System.out.println("el campo es:"+objectJson.getString("tipoExamen"));
+                    System.out.println("el campo es:"+objectJson.getString("fechaReserva"));
+                      */
+            }
+            
+            
+            }
+            else
+                        base64Huella="OTROJASPER";
+
+                      
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+         return base64Huella;
+    }
+         
+      public String consumirApiFirmaEmp(String dni) throws Exception {
+      SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+      String base64FirmaE=null;
+         try {
+            Digitalizacion.DisableSSLVerification.disableSSL();  
+            URL url = new URL("https://hmintegracion.azurewebsites.net/api/v01/st/registros/detalleArchivoEmpleado/"+dni+"/FIRMAP");
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Content-Type", "application/json; utf-8");
+            con.setRequestProperty("Accept", "application/json");
+            con.setDoOutput(true);
+
+
+            int code = con.getResponseCode();
+            System.out.println("Response Code: " + code);
+                      if(code!=500){
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while ((responseLine = br.readLine()) != null) {
+                System.out.println("Response line: " + responseLine.trim());
+                    response.append(responseLine.trim());
+                }
+                  System.out.println("Response: " + response.toString());
+                     JSONObject objectJson = new JSONObject(response.toString());
+                  System.out.println("Response: " + objectJson);
+                  System.out.println("Response: " + objectJson.getString("base64"));
+                     
+         
+                     base64FirmaE=(objectJson.getString("base64"));
+                 
+
+
+                    /*
+                    System.out.println("el campo es:"+objectJson.getLong("id_resp"));
+                    
+                    System.out.println("el campo es:"+objectJson.getString("rucEmpresa"));
+                    System.out.println("el campo es:"+objectJson.getString("rucContrata"));
+                    System.out.println("el campo es:"+objectJson.getString("cargo"));
+                    System.out.println("el campo es:"+objectJson.getString("area"));
+                    System.out.println("el campo es:"+objectJson.getString("tipoExamen"));
+                    System.out.println("el campo es:"+objectJson.getString("fechaReserva"));
+                      */
+            }
+            
+            
+            }
+            else
+                        base64FirmaE="OTROJASPER";
+
+                      
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+         return base64FirmaE;
+    }
+      
+    
 }

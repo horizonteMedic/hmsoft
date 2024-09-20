@@ -6,6 +6,7 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.sql.SQLException;
 import java.util.Date;
@@ -17,6 +18,11 @@ public class ExamenRadiograficoSanguineo extends javax.swing.JInternalFrame {
      clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     public ExamenRadiograficoSanguineo() {
         initComponents();
+        if(clsGlobales.Norden>0)
+        {
+            txtNorden.setText(clsGlobales.Norden.toString());
+            btnEditarActionPerformed(null);
+        }
     }
 
     /**
