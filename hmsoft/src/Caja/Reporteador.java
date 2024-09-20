@@ -313,7 +313,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                     vSql+= "n.tipo_pago AS TIPOPAGO, ";
                 }
                 vSql+= "n.precio_po::numeric AS PRECIO "
-                        
+                     // de aca podrias simirlos    
                         + "FROM n_orden_ocupacional AS n "
                         + "LEFT JOIN datos_paciente AS d ON (n.cod_pa = d.cod_pa) "
                         + "LEFT JOIN lab_clinico AS l ON (n.n_orden = l.n_orden)"
@@ -1169,6 +1169,7 @@ public class Reporteador extends javax.swing.JInternalFrame {
                 cboContratasPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cboContratasPopupMenuWillBecomeVisible(evt);
             }
         });
         cboContratas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -3272,6 +3273,10 @@ public class Reporteador extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cboContratasPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cboContratasPopupMenuWillBecomeVisible
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboContratasPopupMenuWillBecomeVisible
     public void generar(JTable table) {
         HSSFWorkbook libro = new HSSFWorkbook();
         HSSFSheet hoja = libro.createSheet("Reporte");
