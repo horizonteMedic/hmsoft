@@ -1610,7 +1610,7 @@ int seleccion = JOptionPane.showOptionDialog(
       String sQuery;        
         // Prepara el Query
         sQuery ="select dni_user from usuarios where usuario_user=(select user_registro from certificado_aptitud_medico_ocupacional where n_orden="+dni+");";
-        
+        System.out.println(sQuery);
         if (oConn.FnBoolQueryExecute(sQuery))
         {
             try 
@@ -1744,7 +1744,7 @@ private void Limpiar(){
                          direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7C_Digitalizado.jasper";}
                     }
                         
-                    
+                    System.out.println(direccionReporte);
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
