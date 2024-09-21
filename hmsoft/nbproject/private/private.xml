@@ -5,13 +5,14 @@
         <group>
             <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/ConfigurarEmpleados.java</file>
             <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/Auditoria.java</file>
-            <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/FichaTriaje.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/ConfigurarEmpleados.java</file>
-            <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/Auditoria.java</file>
             <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/Caja/Admision.java</file>
             <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/Caja/RegistrarCliente.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/Aptitud_Medico_Ocupacional.java</file>
+            <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/Auditoria.java</file>
+            <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/FichaMedica.java</file>
+            <file>file:/C:/Users/josue/Documents/developer-hm/desktop/hmsoft/hmsoft/src/sistema/B_Uso_Respiradores.java</file>
         </group>
     </open-files>
 </project-private>

@@ -4905,6 +4905,7 @@ private void printer1(Integer cod){
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }   
+       
    private void ReImp() throws IOException{
 if(!txtImprimir.getText().isEmpty()){
             if(OrdenImp()){

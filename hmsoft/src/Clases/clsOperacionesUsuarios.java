@@ -242,7 +242,39 @@ public boolean oFinalizado(JTextField n){
         
   return bResultado;
 }
-      public String consumirApiSello(String dni) throws Exception {
+      
+      public String consultarDniEmpleado( String nameTabla, String nombreColumna, String valorColumna ){
+  String bResultado = "";
+            String sQuery;
+
+            sQuery = "select cod_pa from n_orden_ocupacional where n_orden=(select "+nombreColumna+" from "+nameTabla+" where "+nombreColumna+"="+valorColumna+" );";
+              System.out.println(sQuery);
+            //Ejecuta el Query
+            oConn.FnBoolQueryExecute(sQuery);
+
+            // Capturo el Error
+            try {
+
+                // Verifico que haya habido resultados
+                if (oConn.setResult.next()) {
+                    // Resultado
+                    bResultado = oConn.setResult.getString("cod_pa");
+                   // oFunc.SubSistemaMensajeError("Número de Orden Utilizado");
+                   // n.setText(null);
+                }
+
+                // Cierro los Resultados
+                oConn.setResult.close();
+
+            } catch (SQLException ex) {
+            }
+        
+  return bResultado;
+}
+      
+      
+    
+    public String consumirApiSello(String dni) throws Exception {
       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
       String base64Sello=null;
          try {
