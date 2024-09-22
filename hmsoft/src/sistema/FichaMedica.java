@@ -6231,9 +6231,9 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
 
         private void printerIn7cBoro(Integer cod) throws Exception {
     String dniUsuario=oPu.consultarDni("anexo7c", String.valueOf(cod));
-    String dniEmpleado=oPu.consultarDniEmpleado("anexo7c", "n_orden", String.valueOf(cod));
-                String base64Huella=oPu.consumirApiHuella(dniEmpleado);
-                String base64FirmaP=oPu.consumirApiFirmaEmp(dniEmpleado);
+    String dniPaciente=oPu.consultarDniPaciente("anexo7c", "n_orden", String.valueOf(cod));
+                String base64Huella=oPu.consumirApiHuella(dniPaciente);
+                String base64FirmaP=oPu.consumirApiFirmaEmp(dniPaciente);
                 String base64Sello=oPu.consumirApiSello(String.valueOf(dniUsuario));
                 
         Map parameters = new HashMap();
@@ -6320,12 +6320,12 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
     
         private void printerIn7c2(Integer cod) throws Exception {
     String dniUsuario=oPu.consultarDni("anexo7c", String.valueOf(cod));
-    String dniEmpleado=oPu.consultarDniEmpleado("anexo7c", "n_orden", String.valueOf(cod));
+    String dniPaciente=oPu.consultarDniPaciente("anexo7c", "n_orden", String.valueOf(cod));
 
        System.out.println("DNI del usuario:"+dniUsuario);
-       System.out.println("DNI del empleado:"+dniEmpleado);
-                String base64Huella=oPu.consumirApiHuella(dniEmpleado);
-                String base64FirmaP=oPu.consumirApiFirmaEmp(dniEmpleado);
+       System.out.println("DNI del empleado:"+dniPaciente);
+                String base64Huella=oPu.consumirApiHuella(dniPaciente);
+                String base64FirmaP=oPu.consumirApiFirmaEmp(dniPaciente);
                 String base64Sello=oPu.consumirApiSello(String.valueOf(dniUsuario));
                 
         Map parameters = new HashMap();
@@ -6415,10 +6415,10 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
     
     private void printerIn4(Integer cod) throws Exception {
     String dni=oPu.consultarDni("consentimientoInformado", String.valueOf(cod));
-        String dniEmpleado=oPu.consultarDniEmpleado("consentimientoInformado", "n_orden", String.valueOf(cod));
+        String dniPaciente=oPu.consultarDniPaciente("consentimientoInformado", "n_orden", String.valueOf(cod));
     
-                String base64Huella=oPu.consumirApiHuella(dniEmpleado);
-                String base64FirmaP=oPu.consumirApiFirmaEmp(dniEmpleado);
+                String base64Huella=oPu.consumirApiHuella(dniPaciente);
+                String base64FirmaP=oPu.consumirApiFirmaEmp(dniPaciente);
                 
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
@@ -6673,7 +6673,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
     private void printIn4(Integer cod) throws Exception {
 
     String dni=oPu.consultarDni("consentimientoInformado", String.valueOf(cod));
-    String dniEmpleado=oPu.consultarDniEmpleado("consentimientoInformado", "n_orden", String.valueOf(cod));
+    String dniEmpleado=oPu.consultarDniPaciente("consentimientoInformado", "n_orden", String.valueOf(cod));
     
                 String base64Huella=oPu.consumirApiHuella(dniEmpleado);
                 String base64FirmaP=oPu.consumirApiFirmaEmp(dniEmpleado);
@@ -9942,7 +9942,7 @@ public static int calcularEdad(String fecha) {
 
     private void printer5(Integer cod) throws Exception {
         String dniUsuario=oPu.consultarDni("consentimientobuenasalud", String.valueOf(cod));
-        String dniEmpleado=oPu.consultarDniEmpleado("consentimientobuenasalud", "n_orden", String.valueOf(cod));
+        String dniEmpleado=oPu.consultarDniPaciente("consentimientobuenasalud", "n_orden", String.valueOf(cod));
        
                 String base64Huella=oPu.consumirApiHuella(dniEmpleado);
                 String base64FirmaP=oPu.consumirApiFirmaEmp(dniEmpleado);
@@ -10012,7 +10012,7 @@ public static int calcularEdad(String fecha) {
     private void print5(Integer cod) throws Exception {
 
 String dni=oPu.consultarDni("consentimientobuenasalud", String.valueOf(cod));
-String dniEmpleado=oPu.consultarDniEmpleado("consentimientobuenasalud", "n_orden", String.valueOf(cod));
+String dniEmpleado=oPu.consultarDniPaciente("consentimientobuenasalud", "n_orden", String.valueOf(cod));
         
                 String base64Huella=oPu.consumirApiHuella(dniEmpleado);
                 String base64FirmaP=oPu.consumirApiFirmaEmp(dniEmpleado);

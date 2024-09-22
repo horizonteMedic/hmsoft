@@ -8,10 +8,17 @@ import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
 import autocomplete.ajTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +35,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -35,6 +44,8 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 public final class EmpresasLugaresGeograficos extends javax.swing.JInternalFrame {
     clsConnection oConn = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
+    clsOperacionesUsuarios oPu = new clsOperacionesUsuarios();
+
     DefaultTableModel model;
     DefaultTableModel llenar;
     String num;
@@ -1655,11 +1666,19 @@ void limpiar2(){
                     if (tbHT.getRowCount() > 0) {
                         eliminaHist_detalle();
                         if (GrabarHODetalle()) {
-                            imprimir(); 
+                            try { 
+                                imprimir();
+                            } catch (Exception ex) {
+                                Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             limpiar();
                         }
                     } else {
-                       imprimir(); 
+                        try { 
+                            imprimir();
+                        } catch (Exception ex) {
+                            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         limpiar();
                     }
                     oFunc.SubSistemaMensajeInformacion("Se Registro Correctamente");
@@ -1675,7 +1694,11 @@ void limpiar2(){
                 try {
                     if (GrabarHOInfo()) {
                         if (GrabarHODetalle()) {
-                            imprimir();                            
+                            try {                            
+                                imprimir();
+                            } catch (Exception ex) {
+                                Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             oFunc.SubSistemaMensajeInformacion("Se Registro Conrrectamente");
                             limpiar();
                             txtNorden.requestFocus();
@@ -1715,7 +1738,11 @@ void limpiar2(){
     }//GEN-LAST:event_txtimpKeyTyped
 
     private void btnimpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnimpMouseClicked
-      print(Integer.valueOf(txtimp.getText().toString()));
+        try {
+            print(Integer.valueOf(txtimp.getText().toString()));
+        } catch (Exception ex) {
+            Logger.getLogger(EmpresasLugaresGeograficos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnimpMouseClicked
 
     private void tbHTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHTMouseClicked
@@ -2245,10 +2272,10 @@ if(k==10){
     private boolean GrabarHOInfo() throws SQLException{
         boolean bResult = false;
         
-            String insert="INSERT INTO historia_oc_info(n_orden, area_o, fecha_ho";
+            String insert="INSERT INTO historia_oc_info(n_orden, area_o, fecha_ho,user_registro";
              String values ="Values('"+txtNorden.getText().toString()+"','"
                      +cboAreaTrabajo.getSelectedItem().toString()+"','"
-                     +FechaHistoria.getDate()+"','";
+                     +FechaHistoria.getDate()+"','"+clsGlobales.sUser+"','";
                     if(tbHT.getRowCount()< 1){
                     insert +=",na";
                     values +="NA','";
@@ -2702,7 +2729,7 @@ public void habilitar(boolean ficha){
     txtProteccion.setEnabled(ficha);
     
 }
- private void imprimir(){
+ private void imprimir() throws IOException, Exception{
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
     "¿Desea Imprimir Historia Ocupacional ?", //Mensaje
@@ -2730,13 +2757,64 @@ Date fechaDate = new Date();
 //SimpleDateFormat formateador = new SimpleDateFormat("'HUAMACHUCO - ' EEEEE dd MMMMM yyyy");
 FechaHistoria.setDate(fechaDate);
 }
-private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("id",cod);      
-                 try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/HistoriaOcupacional.jasper";
+private void printer(Integer cod) throws  IOException, Exception{
+String dniUsuario=oPu.consultarDni("historia_oc_info", String.valueOf(cod));
+    String dniPaciente=oPu.consultarDniPaciente("historia_oc_info", "n_orden", String.valueOf(cod));
+                //String base64Huella=oPu.consumirApiHuella(dniPaciente);
+                String base64FirmaP=oPu.consumirApiFirmaEmp(dniPaciente);
+                String base64Sello=oPu.consumirApiSello(String.valueOf(dniUsuario));
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                                             
+                
+
+        try {
+            String master="";
+            if(base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional.jasper";}
+            else{
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional_Digitalizado.jasper";
+            }
             
             System.out.println("master" + master);
             if (master == null) 
@@ -2767,21 +2845,64 @@ private void printer(Integer cod){
         
  
  }
-private void print(Integer cod){
-  //Integer n;
-               //n = Integer.parseInt(txtNorden.getText());
-                //Pasamos parametros al reporte Jasper. 
-                Map parameters = new HashMap(); 
+private void print(Integer cod) throws Exception{
+  String dniUsuario=oPu.consultarDni("historia_oc_info", String.valueOf(cod));
+    String dniPaciente=oPu.consultarDniPaciente("historia_oc_info", "n_orden", String.valueOf(cod));
+                //String base64Huella=oPu.consumirApiHuella(dniPaciente);
+                String base64FirmaP=oPu.consumirApiFirmaEmp(dniPaciente);
+                String base64Sello=oPu.consumirApiSello(String.valueOf(dniUsuario));
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
 
-                // Coloco los valores en los parámetros
-                parameters.put("id",cod);             
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                                             
                 
 
-                try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/HistoriaOcupacional.jasper";
-            
+        try {
+            String master="";
+            if(base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional.jasper";}
+            else{
+            master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional_Digitalizado.jasper";
+            }
             System.out.println("master" + master);
             if (master == null) 
             {                

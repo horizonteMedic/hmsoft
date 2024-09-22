@@ -213,7 +213,7 @@ public boolean oFinalizado(JTextField n){
         fecha.setDate(dateHoy);
 
     }
-
+ // obtiene el dni del usuario
     public String consultarDni( String tabla, String columna ){
   String bResultado = "";
             String sQuery;
@@ -243,7 +243,8 @@ public boolean oFinalizado(JTextField n){
   return bResultado;
 }
       
-      public String consultarDniEmpleado( String nameTabla, String nombreColumna, String valorColumna ){
+    // obtiene el dni del paciente 
+      public String consultarDniPaciente( String nameTabla, String nombreColumna, String valorColumna ){
   String bResultado = "";
             String sQuery;
 

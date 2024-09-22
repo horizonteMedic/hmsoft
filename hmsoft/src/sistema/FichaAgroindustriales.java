@@ -6921,7 +6921,7 @@ public boolean OrdenExiste1()
      
         private void printerInAnexo02_1(Integer cod) throws Exception {
     String dniUsuario=oPu.consultarDni("anexo_agroindustrial", String.valueOf(cod));
-    String dniEmpleado=oPu.consultarDniEmpleado("anexo_agroindustrial", "n_orden", String.valueOf(cod));
+    String dniEmpleado=oPu.consultarDniPaciente("anexo_agroindustrial", "n_orden", String.valueOf(cod));
    
                 String base64Huella=oPu.consumirApiHuella(dniEmpleado);
                 String base64FirmaP=oPu.consumirApiFirmaEmp(dniEmpleado);

@@ -4354,7 +4354,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                         Query += ",'" + Fecha.getDate().toString() + "'";
                     }
                     strSqlStmt += ",chk_1, chk_2, chk_3, chk_4, chk_5, chk_6, chk_7, chk_8, chk_9, chk_10, chk_11, chk_12, chk_13, chk_14, chk_15, chk_16, chk_17"
-                            + ", chk_18, chk_19, chk_20, chk_21, chk_22, chk_23, chk_24, chk_25, chk_26, chk_27, chk_28, chk_29, chk_30, chk_31, chk_32, chk_33,chk_34, chk_35"
+                            + ", chk_18, chk_19, chk_20, chk_21, chk_22, chk_23, chk_24, chk_25, chk_26, chk_27, chk_28, chk_29, chk_30, chk_31, chk_32, chk_33,chk_34, chk_35,user_registro"
                             + ", chk_36, chk_37, chk_38, chk_39, chk_40, chk_41, chk_42, chk_43";
                     Query +=   ",'" + chk_1.isSelected() + "','" + chk_2.isSelected() + "','" + chk_3.isSelected() + "','" + chk_4.isSelected() + "','" + chk_5.isSelected() + "','" + chk_6.isSelected()
                             + "','" + chk_7.isSelected() + "','" + chk_8.isSelected() + "','" + chk_9.isSelected() + "','" + chk_10.isSelected() + "','" + chk_11.isSelected() + "','" + chk_12.isSelected()
@@ -4362,7 +4362,7 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                             + "','" + chk_19.isSelected() + "','" + chk_20.isSelected() + "','" + chk_21.isSelected() + "','" + chk_22.isSelected() + "','" + chk_23.isSelected() + "','" + chk_24.isSelected()
                             + "','" + chk_25.isSelected() + "','" + chk_26.isSelected() + "','" + chk_27.isSelected() + "','" + chk_28.isSelected() + "','" + chk_29.isSelected() + "','" + chk_30.isSelected()
                             + "','" + chk_31.isSelected() + "','" + chk_32.isSelected() + "','" + chk_33.isSelected() + "','" + chk_34.isSelected() + "','" + chk_35.isSelected() + "','" + chk_36.isSelected()
-                            + "','" + chk_37.isSelected() + "','" + chk_38.isSelected() + "','" + chk_39.isSelected() + "','" + chk_40.isSelected() + "','" + chk_41.isSelected() + "','" + chk_42.isSelected() + "','" + chk_43.isSelected() + "'";
+                            + "','" + chk_37.isSelected() + "','" + chk_38.isSelected() + "','" + chk_39.isSelected() + "','" + chk_40.isSelected() + "','" + chk_41.isSelected() + "','" + chk_42.isSelected() + "','" + chk_43.isSelected() + "','"+clsGlobales.sUser+"'";
 
                     //chk_1_si
                     strSqlStmt += ",chk_1_si, chk_2_si, chk_3_si, chk_4_si, chk_5_si, chk_6_si, chk_7_si, chk_8_si, chk_9_si, chk_10_si, chk_11_si, chk_12_si, chk_13_si, chk_14_si, chk_15_si, chk_16_si, chk_17_si"
