@@ -50,6 +50,8 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
    public InformePsicologico() {
       initComponents();
    //new ajTextArea.autocompleterText(atxtIntelectual, "razon_empresa", "empresas");
+      chkI1.setSelected(true);
+      atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO.\n");
       sbCargarDatosInformePsicologico("");
      llenarComboBox();
      llenarNombreExamen();
@@ -465,6 +467,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         setTitle("Informe Psicológico");
 
         jPanel5.setForeground(new java.awt.Color(102, 102, 0));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos Necesarios"));
 
@@ -630,44 +633,24 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2))
         );
 
+        jPanel5.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 2, 680, -1));
+
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Datos Laborales"));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel12.setText("Ocupación:");
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         jLabel13.setText("Cargo Desempeñar :");
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         txtCargoDesempenar.setEditable(false);
+        jPanel2.add(txtCargoDesempenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 260, -1));
 
         txtOcupación.setEditable(false);
+        jPanel2.add(txtOcupación, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 210, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtOcupación, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCargoDesempenar, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)
-                        .addComponent(txtCargoDesempenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(txtOcupación, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2))
-        );
+        jPanel5.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 140, 680, 50));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Aprobo Test"));
 
@@ -696,6 +679,8 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jPanel5.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 522, -1, -1));
+
         atxtPsicomotricidad.setColumns(20);
         atxtPsicomotricidad.setRows(5);
         atxtPsicomotricidad.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -713,18 +698,24 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(atxtPsicomotricidad);
 
+        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(653, 403, 394, -1));
+
         btnCriterios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reportes.png"))); // NOI18N
         btnCriterios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCriteriosMouseClicked(evt);
             }
         });
+        jPanel5.add(btnCriterios, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 190, -1, -1));
 
         jLabel22.setText("Recomendaciones:");
+        jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 490, -1, -1));
 
         jLabel16.setText("Test de la figura humana de machover / inv Multifásico de Personalidad");
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 207, -1, -1));
 
         jLabel15.setText("Test de inteligencia de barranquilla / test de Otis Intermedia");
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 207, -1, -1));
 
         atxtPersonalidad.setColumns(20);
         atxtPersonalidad.setRows(5);
@@ -744,21 +735,29 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(atxtPersonalidad);
         atxtPersonalidad.getAccessibleContext().setAccessibleName("");
 
+        jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 225, 395, -1));
+
         jLabel19.setText("Test de Bender para adultos / test de Benton Forma C");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 381, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel17.setText("Área Personalidad");
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 191, -1, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("Área de Organicidad");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 366, -1, -1));
 
         jLabel21.setText("Prueba de Laberíntos de Weschler");
+        jPanel5.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 381, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel14.setText("Área Intelectual");
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 190, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel20.setText("Área de Psicomotricidad");
+        jPanel5.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(644, 365, -1, -1));
 
         atxtOrganicidad.setColumns(20);
         atxtOrganicidad.setRows(5);
@@ -776,6 +775,8 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane3.setViewportView(atxtOrganicidad);
+
+        jPanel5.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 399, 358, -1));
 
         atxtIntelectual.setColumns(20);
         atxtIntelectual.setForeground(new java.awt.Color(0, 102, 51));
@@ -796,6 +797,8 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(atxtIntelectual);
         atxtIntelectual.getAccessibleContext().setAccessibleName("");
 
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 225, 358, 104));
+
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agegar.png"))); // NOI18N
         btnAgregar.setMnemonic('g');
         btnAgregar.setText("Guardar");
@@ -804,6 +807,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
+        jPanel5.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 524, -1, -1));
 
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambiar.png"))); // NOI18N
         btnActualizar.setMnemonic('i');
@@ -813,6 +817,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
+        jPanel5.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(692, 524, -1, -1));
 
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setMnemonic('l');
@@ -822,14 +827,16 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        jPanel5.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 524, -1, -1));
 
         chkI1.setForeground(new java.awt.Color(0, 102, 51));
-        chkI1.setText("NORMAL");
+        chkI1.setText("PROMEDIO");
         chkI1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chkI1ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 190, -1, 15));
 
         chkI2.setForeground(new java.awt.Color(0, 102, 51));
         chkI2.setText("SUPERIOR");
@@ -838,6 +845,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI2ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 211, -1, 15));
 
         chkI3.setForeground(new java.awt.Color(0, 102, 51));
         chkI3.setText("N.INFERIOR");
@@ -846,6 +854,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI3ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 232, -1, 15));
 
         chkI4.setForeground(new java.awt.Color(0, 102, 51));
         chkI4.setText("ALTO");
@@ -854,6 +863,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI4ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 253, -1, 15));
 
         chkI5.setForeground(new java.awt.Color(0, 102, 51));
         chkI5.setText("P.SUPERIOR");
@@ -862,6 +872,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI5ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 274, -1, 15));
 
         chkI6.setForeground(new java.awt.Color(0, 102, 51));
         chkI6.setText("P. MEDIO");
@@ -870,6 +881,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI6ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI6, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 295, -1, 15));
 
         chkI7.setForeground(new java.awt.Color(0, 102, 51));
         chkI7.setText("P. BAJO");
@@ -878,6 +890,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI7ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI7, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 316, -1, 15));
 
         chkI8.setForeground(new java.awt.Color(0, 102, 51));
         chkI8.setText("BAJO");
@@ -886,6 +899,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI8ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 332, -1, 15));
 
         bg1.add(chkI9);
         chkI9.setForeground(new java.awt.Color(204, 0, 0));
@@ -895,6 +909,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI9ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, 15));
 
         bg1.add(chkI10);
         chkI10.setForeground(new java.awt.Color(204, 0, 0));
@@ -904,6 +919,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI10ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, 15));
 
         chkI11.setForeground(new java.awt.Color(0, 0, 255));
         chkI11.setText("P.N.ADECUADO");
@@ -912,6 +928,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI11ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, 15));
 
         chkI12.setForeground(new java.awt.Color(0, 0, 255));
         chkI12.setText("POSEE N.ALTO");
@@ -920,6 +937,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI12ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, 15));
 
         chkI13.setForeground(new java.awt.Color(0, 0, 255));
         chkI13.setText("POSEE N.BAJO");
@@ -928,6 +946,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI13ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, -1, 15));
 
         chkI14.setForeground(new java.awt.Color(255, 102, 0));
         chkI14.setText("Y NUMERICA");
@@ -936,6 +955,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI14ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI14, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, 15));
 
         chkI15.setForeground(new java.awt.Color(255, 102, 0));
         chkI15.setText("Y CALCULO");
@@ -944,6 +964,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI15ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI15, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, -1, 15));
 
         chkI16.setForeground(new java.awt.Color(0, 204, 51));
         chkI16.setText("ADECUADA, R...");
@@ -952,6 +973,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI16ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 110, 15));
 
         chkI17.setForeground(new java.awt.Color(0, 204, 51));
         chkI17.setText("INADECUADA");
@@ -960,6 +982,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkI17ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkI17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, 15));
 
         chkO1.setForeground(new java.awt.Color(0, 0, 255));
         chkO1.setText("O. EN TIEMPO");
@@ -968,6 +991,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkO1ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkO1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 365, -1, 15));
 
         chkO2.setForeground(new java.awt.Color(255, 0, 0));
         chkO2.setText("POSEE ALTO");
@@ -976,6 +1000,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkO2ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkO2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 399, -1, 15));
 
         chkO3.setForeground(new java.awt.Color(255, 0, 0));
         chkO3.setText("P.ADECUADO");
@@ -984,6 +1009,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkO3ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkO3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 420, -1, 15));
 
         chkO4.setForeground(new java.awt.Color(255, 0, 0));
         chkO4.setText("P.BAJO");
@@ -992,6 +1018,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkO4ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkO4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 441, -1, 15));
 
         chkO5.setForeground(new java.awt.Color(0, 102, 102));
         chkO5.setText("NO SE EVI....");
@@ -1000,6 +1027,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkO5ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkO5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 471, -1, 15));
 
         chkP1.setForeground(new java.awt.Color(102, 102, 0));
         chkP1.setText("NIVEL ALTO");
@@ -1008,6 +1036,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkP1ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 399, -1, 15));
 
         chkP2.setForeground(new java.awt.Color(102, 102, 0));
         chkP2.setText("NIVEL ADECUADO");
@@ -1016,6 +1045,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkP2ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 414, -1, 15));
 
         chkP3.setForeground(new java.awt.Color(102, 102, 0));
         chkP3.setText("NIVEL BAJO");
@@ -1024,6 +1054,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkP3ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkP3, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 429, -1, 15));
 
         chkP4.setForeground(new java.awt.Color(0, 153, 0));
         chkP4.setText("FACILIDAD ");
@@ -1032,6 +1063,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkP4ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkP4, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 489, -1, 15));
 
         chkP5.setForeground(new java.awt.Color(0, 153, 0));
         chkP5.setText("DIFICULTAD");
@@ -1040,6 +1072,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 chkP5ActionPerformed(evt);
             }
         });
+        jPanel5.add(chkP5, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 504, -1, 15));
 
         jComboBox1.setEditable(true);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
@@ -1079,6 +1112,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 jComboBox1KeyReleased(evt);
             }
         });
+        jPanel5.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 507, 366, -1));
 
         recomen.setColumns(20);
         recomen.setRows(5);
@@ -1097,12 +1131,15 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         });
         jScrollPane8.setViewportView(recomen);
 
+        jPanel5.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 535, 431, 53));
+
         btnMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
         btnMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMarcaMouseClicked(evt);
             }
         });
+        jPanel5.add(btnMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 507, -1, 22));
 
         jCheckBox29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jCheckBox29.setForeground(new java.awt.Color(0, 0, 153));
@@ -1112,238 +1149,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
                 jCheckBox29ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkI6)
-                            .addComponent(chkI3)
-                            .addComponent(chkI2)
-                            .addComponent(chkI1)
-                            .addComponent(chkI4)
-                            .addComponent(chkI5)
-                            .addComponent(chkI7)
-                            .addComponent(chkI8)
-                            .addComponent(chkO1)
-                            .addComponent(chkO2)
-                            .addComponent(chkO3)
-                            .addComponent(chkO4)
-                            .addComponent(chkO5)
-                            .addComponent(jCheckBox29))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnCriterios))
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel18)
-                                    .addComponent(jLabel19)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(123, 123, 123)
-                                .addComponent(jLabel22))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnMarca)))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAgregar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnActualizar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLimpiar))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkI9)
-                                            .addComponent(chkI10)))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(chkI11))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(chkI12))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(chkI13))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkI17)
-                                            .addComponent(chkI16)
-                                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                                .addGap(4, 4, 4)
-                                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(chkI14)
-                                                    .addComponent(chkI15)))))
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chkP2)
-                                            .addComponent(chkP1)
-                                            .addComponent(chkP3)
-                                            .addComponent(chkP4)
-                                            .addComponent(chkP5))))
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel16)
-                                            .addComponent(jLabel20)
-                                            .addComponent(jLabel21))
-                                        .addGap(25, 25, 25))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jCheckBox29)))
-                .addGap(1, 1, 1)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel14)
-                                .addComponent(btnCriterios))
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel17)
-                                .addComponent(chkI9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(chkI10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)
-                                .addComponent(chkI11, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkI12, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkI13, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkI14, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkI15, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkI16, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(chkI17, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addGap(2, 2, 2)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(chkI1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkI2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkI3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkI4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkI5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkI6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chkI7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(chkI8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel18)
-                        .addComponent(chkO1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel20))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel21))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(chkP1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(chkP2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(chkP3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(chkP4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, 0)
-                        .addComponent(chkP5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnAgregar)
-                                    .addComponent(btnActualizar)
-                                    .addComponent(btnLimpiar)))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(jLabel22))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(chkO2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkO3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chkO4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(15, 15, 15)
-                                .addComponent(chkO5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
+        jPanel5.add(jCheckBox29, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 28, -1, -1));
 
         jTabbedPane1.addTab("Informe", jPanel5);
 
@@ -1788,7 +1594,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         });
 
         jPanel17.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Intelectual:Capacidad ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Intelectual:Capacidad ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbNivIntelectual_S.setBackground(new java.awt.Color(153, 204, 255));
         bgACI_1.add(rbNivIntelectual_S);
@@ -2151,7 +1957,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         );
 
         jPanel18.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Afectiva-Personalidad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Afectiva-Personalidad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbEstabEmocional_S.setBackground(new java.awt.Color(153, 204, 255));
         bgAAP_1.add(rbEstabEmocional_S);
@@ -2559,7 +2365,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         );
 
         jPanel19.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área de Seguridad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área de Seguridad", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbNivProactividad_S.setBackground(new java.awt.Color(153, 204, 255));
         bgAS_1.add(rbNivProactividad_S);
@@ -2703,7 +2509,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
         );
 
         jPanel20.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Motivaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 204))); // NOI18N
+        jPanel20.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Área Cognitiva-Motivaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 204))); // NOI18N
 
         rbMotTrabajo_S.setBackground(new java.awt.Color(153, 204, 255));
         bgACM_1.add(rbMotTrabajo_S);
@@ -3717,10 +3523,12 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
     public void llenarComboBox() {
         jComboBox1.addItem("ORIENTACION Y CONSEJERIA PSICOLOGICA");
         jComboBox1.addItem("ASISTIR A TERAPIA PSICOLOGICA");
-        jComboBox1.addItem("ASISTIR A TALLERES DE CONTROL DE EMOCIONES");
+        jComboBox1.addItem("ASISTIR A TALLERES DE GESTIÓN EMOCIONAL");
         jComboBox1.addItem("ASISTIR A TALLERES DE HABILIDADES SOCIALES");
         jComboBox1.addItem("ASISTIR A TALLERES de AUTOESTIMA Y/O SUPERACION PERSONAL");
         jComboBox1.addItem("ASISTIR A TALLERES DE RELAJACION");
+        jComboBox1.addItem("REALIZAR ACTIVIDADES LUDICAS PARA REFORZAR SUS FUNCIONES COGNITIVAS");
+        jComboBox1.addItem("EVALUACION PSICOLOGICA ANUAL/PERIODICA");
     }
    private void atxtIntelectualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_atxtIntelectualFocusGained
     atxtIntelectual.setBackground(Color .ORANGE);
@@ -3791,7 +3599,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
 //                                + "- REALIZA LAS INSTRUCIONES BRINDAS BRINDADAS CON FACILIDAD.");
                         txtNorden.setEnabled(false);    
                         oPe.fecha(FechaEntrevista);
-                        
+                        chkI1.setSelected(true);
                         txtEdad.setText(String.valueOf(calcularEdad(FechaNacimiento.getCalendar())) );
                         
                        }else{
@@ -4020,11 +3828,22 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkI11ActionPerformed
 
     private void chkI1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI1ActionPerformed
-        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL NORMAL.\n");
+        //atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO.\n");
+    if (chkI1.isSelected()) {
+        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO.\n");
+    } else {
+        atxtIntelectual.setText(""); 
+    }
+        
     }//GEN-LAST:event_chkI1ActionPerformed
 
     private void chkI2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI2ActionPerformed
+        //atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL SUPERIOR.\n");
+    if (chkI2.isSelected()) {
         atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL SUPERIOR.\n");
+    } else {
+        atxtIntelectual.setText(""); 
+    }
     }//GEN-LAST:event_chkI2ActionPerformed
 
     private void chkI3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI3ActionPerformed
@@ -5888,7 +5707,7 @@ atxtPsicomotricidad.setText(null);
 //atxtRecomendaciones.setText(null);
 jComboBox1.setSelectedItem("");
 FechaEntrevista.setDate(null);
-chkI1.setSelected(false);
+/*chkI1.setSelected(false);
 chkI2.setSelected(false);
 chkI3.setSelected(false);
 chkI4.setSelected(false);
@@ -5913,7 +5732,7 @@ chkP1.setSelected(false);
 chkP2.setSelected(false);
 chkP3.setSelected(false);
 chkP4.setSelected(false);
-chkP5.setSelected(false);
+chkP5.setSelected(false);*/
 jCheckBox29.setSelected(false);
 txtNorden.setEnabled(true);
 txtNorden.requestFocus();

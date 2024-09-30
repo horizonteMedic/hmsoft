@@ -481,6 +481,11 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
 
         bgAprobo.add(conclusion_no_apto);
         conclusion_no_apto.setText("NO APTO");
+        conclusion_no_apto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conclusion_no_aptoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -850,6 +855,10 @@ public final class PsicologiaInformeAdicionaldeFobias extends javax.swing.JInter
     private void Conclusion_aptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Conclusion_aptoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Conclusion_aptoActionPerformed
+
+    private void conclusion_no_aptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conclusion_no_aptoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_conclusion_no_aptoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Conclusion_apto;
