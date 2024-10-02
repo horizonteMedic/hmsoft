@@ -218,7 +218,7 @@ public boolean oFinalizado(JTextField n){
   String bResultado = "";
             String sQuery;
 
-            sQuery = "select dni_user from usuarios where usuario_user=(select TRIM(UPPER(user_registro)) from "+tabla+" where n_orden="+columna+");";
+            sQuery = "select dni_user from usuarios where UPPER(usuario_user)=(select TRIM(UPPER(user_registro)) from "+tabla+" where n_orden="+columna+");";
               System.out.println(sQuery);
             //Ejecuta el Query
             oConn.FnBoolQueryExecute(sQuery);

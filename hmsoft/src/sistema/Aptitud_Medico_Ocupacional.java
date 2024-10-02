@@ -1609,7 +1609,7 @@ int seleccion = JOptionPane.showOptionDialog(
   private void consultarDni(String dni){
       String sQuery;        
         // Prepara el Query
-        sQuery ="select dni_user from usuarios where usuario_user=(select user_registro from certificado_aptitud_medico_ocupacional where n_orden="+dni+");";
+        sQuery ="select dni_user from usuarios where UPPER(usuario_user)=(select UPPER(user_registro) from certificado_aptitud_medico_ocupacional where n_orden="+dni+");";
         System.out.println(sQuery);
         if (oConn.FnBoolQueryExecute(sQuery))
         {

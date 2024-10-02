@@ -6302,7 +6302,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
 
         try {
             String direccionReporte="";
-            if(base64Huella.contains("OTROJASPER") ||base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+            if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
             direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "anexo7c2_boro.jasper";}
             else{
             direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "anexo7c2_boro_Digitalizado.jasper";

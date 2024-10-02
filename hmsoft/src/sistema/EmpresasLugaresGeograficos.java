@@ -2758,15 +2758,33 @@ Date fechaDate = new Date();
 FechaHistoria.setDate(fechaDate);
 }
 private void printer(Integer cod) throws  IOException, Exception{
-String dniUsuario=oPu.consultarDni("historia_oc_info", String.valueOf(cod));
-    String dniPaciente=oPu.consultarDniPaciente("historia_oc_info", "n_orden", String.valueOf(cod));
-                //String base64Huella=oPu.consumirApiHuella(dniPaciente);
+                String dniUsuario=oPu.consultarDni("historia_oc_info", String.valueOf(cod));
+                String dniPaciente=oPu.consultarDniPaciente("historia_oc_info", "n_orden", String.valueOf(cod));
+                String base64Huella=oPu.consumirApiHuella(dniPaciente);
                 String base64FirmaP=oPu.consumirApiFirmaEmp(dniPaciente);
                 String base64Sello=oPu.consumirApiSello(String.valueOf(dniUsuario));
                 
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
 
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
               if(!base64FirmaP.contains("OTROJASPER"))
               {
                 BufferedImage image = null;
@@ -2810,7 +2828,7 @@ String dniUsuario=oPu.consultarDni("historia_oc_info", String.valueOf(cod));
 
         try {
             String master="";
-            if(base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+            if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
             master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional.jasper";}
             else{
             master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional_Digitalizado.jasper";
@@ -2848,13 +2866,31 @@ String dniUsuario=oPu.consultarDni("historia_oc_info", String.valueOf(cod));
 private void print(Integer cod) throws Exception{
   String dniUsuario=oPu.consultarDni("historia_oc_info", String.valueOf(cod));
     String dniPaciente=oPu.consultarDniPaciente("historia_oc_info", "n_orden", String.valueOf(cod));
-                //String base64Huella=oPu.consumirApiHuella(dniPaciente);
+                String base64Huella=oPu.consumirApiHuella(dniPaciente);
                 String base64FirmaP=oPu.consumirApiFirmaEmp(dniPaciente);
                 String base64Sello=oPu.consumirApiSello(String.valueOf(dniUsuario));
                 
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
 
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
               if(!base64FirmaP.contains("OTROJASPER"))
               {
                 BufferedImage image = null;
@@ -2898,7 +2934,7 @@ private void print(Integer cod) throws Exception{
 
         try {
             String master="";
-            if(base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+            if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
             master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional.jasper";}
             else{
             master = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "HistoriaOcupacional_Digitalizado.jasper";

@@ -3,20 +3,29 @@ package sistema;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
+import sun.misc.BASE64Decoder;
 
 public class CuestionarioNordico extends javax.swing.JInternalFrame {
-
+    
+         clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
          clsConnection oConn = new clsConnection();
          clsFunciones  oFunc = new clsFunciones();
     public CuestionarioNordico() {
@@ -3361,9 +3370,17 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
        if(OrdenExiste()){   
-           Actualizar();
+           try {
+               Actualizar();
+           } catch (IOException ex) {
+               Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }else{
-          Guardar(); 
+           try { 
+               Guardar();
+           } catch (IOException ex) {
+               Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+           }
        }
         
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -3499,7 +3516,11 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkPH1ActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
-        ReImp();
+             try {
+                 ReImp();
+             } catch (IOException ex) {
+                 Logger.getLogger(CuestionarioNordico.class.getName()).log(Level.SEVERE, null, ex);
+             }
     }//GEN-LAST:event_btnImpActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -3829,7 +3850,7 @@ public class CuestionarioNordico extends javax.swing.JInternalFrame {
         }
 }
     
-void Guardar(){
+void Guardar() throws IOException{
     if(!txtNorden.getText().isEmpty()){
         if(validar()){
     String insert="INSERT INTO cuestionario_nordico("//
@@ -3852,7 +3873,7 @@ void Guardar(){
             + "chkph20, chkpcno1, chkpcno2, chkpcno3, chkpcno4, chkpcno5, chkpcno6,"//
             + "chkpcno7, chkpcsi1, chkpcsi2, chkpcsi3, chkpcsi4, chkpcsi5, chkpcsi6," //
             + "chkpcsi7, chkpc1, chkpc2, chkpc3, chkpc4, chkpc5, chkpc6, chkpc7," 
-            + "chkpc8, chkpc9,fecha_cuestionario)";
+            + "chkpc8, chkpc9,fecha_cuestionario,user_registro)";
      String values="VALUES ('"
              + txtNorden.getText().toString()+"','"+txtEdad.getText().toString()+"','"+txtHorasTrabaja.getText().toString()+"','"+txtTmeses.getText().toString()+"','"+txtTanos.getText().toString()+"','"
              + chkDiestro.isSelected()+"','"+chkZurdo.isSelected()+"','"+chkCuelloNo.isSelected()+"','"+chkCuelloSi.isSelected()+"','"+chkCNo1.isSelected()+"','"
@@ -3873,7 +3894,7 @@ void Guardar(){
              + chkPH20.isSelected()+"','"+chkPCNo1.isSelected()+"','"+chkPCNo2.isSelected()+"','"+chkPCNo3.isSelected()+"','"+chkPCNo4.isSelected()+"','"+chkPCNo5.isSelected()+"','"+chkPCNo6.isSelected()+"','"
              + chkPCNo7.isSelected()+"','"+chkPCSi1.isSelected()+"','"+chkPCSi2.isSelected()+"','"+chkPCSi3.isSelected()+"','"+chkPCSi4.isSelected()+"','"+chkPCSi5.isSelected()+"','"+chkPCSi6.isSelected()+"','"
              + chkPCSi7.isSelected()+"','"+chkPC1.isSelected()+"','"+chkPC2.isSelected()+"','"+chkPC3.isSelected()+"','"+chkPC4.isSelected()+"','"+chkPC5.isSelected()+"','"+chkPC6.isSelected()+"','"+chkPC7.isSelected()+"','"
-             + chkPC8.isSelected()+"','"+chkPC9.isSelected()+"','"+FechaExamen.getDate()+"')";
+             + chkPC8.isSelected()+"','"+chkPC9.isSelected()+"','"+FechaExamen.getDate()+"','"+clsGlobales.sUser+"')";
               if (oConn.FnBoolQueryExecuteUpdate(insert + values)){
                 imp();  
                 oFunc.SubSistemaMensajeInformacion("Agregado correctamente");
@@ -3891,7 +3912,7 @@ void Guardar(){
         }  
       }
 }
-private void Actualizar(){
+private void Actualizar() throws IOException{
     String sCodigo=txtNorden.getText();
         String strSqlStmt;
         strSqlStmt="UPDATE cuestionario_nordico\n" +
@@ -4035,7 +4056,7 @@ FechaExamen.setDate(fechaDate);
       txtNorden.requestFocusInWindow();
       
     }
- private void ReImp(){
+ private void ReImp() throws IOException{
 if(!txtnordenIMP.getText().isEmpty()){
             if(OrdenImp()){
                 if (imprimir1(Integer.valueOf(txtnordenIMP.getText()))){
@@ -4406,7 +4427,7 @@ public boolean OrdenImp()
     private javax.swing.JTextField txtTmeses;
     private javax.swing.JTextField txtnordenIMP;
     // End of variables declaration//GEN-END:variables
-public void imp(){
+public void imp() throws IOException{
 if (imprimir1(Integer.valueOf(txtNorden.getText()))){
     imprimir2(Integer.valueOf(txtNorden.getText()));
 }
@@ -4453,7 +4474,7 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
-private void imprimir2(Integer num){
+private void imprimir2(Integer num) throws IOException{
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
     "¿Ingrese la misma hoja para imprimir Reverso - Hoja 2 de 2 ?", //Mensaje
@@ -4490,12 +4511,88 @@ private void printer1(Integer cod){
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
-          private void printer2(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+          private void printer2(Integer cod) throws IOException{
+   String dniUsuario=oPe.consultarDni("antecedentes_patologicos", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("antecedentes_patologicos", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
                     try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioNordico2.jasper";
+                {   
+                    String direccionReporte="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioNordico2.jasper";}
+                     else
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioNordico2_Digitalizado.jasper";
+                        
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                   JasperPrintManager.printReport(jasperPrint,true);

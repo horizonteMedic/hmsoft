@@ -11,18 +11,25 @@ import Clases.clsGlobales;
 
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -2879,7 +2886,11 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
 
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
         if(OrdenExiste() ){
-            Actualizar();
+            try {
+                Actualizar();
+            } catch (IOException ex) {
+                Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
             if(!txtNorden.getText().isEmpty()){
               if(!OrdenExiste()){
@@ -2900,7 +2911,9 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
                        }
                     } catch (SQLException ex) {
                 Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }    catch (IOException ex) {
+                         Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+                     }
                  }  
             }   
          }
@@ -3010,7 +3023,11 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDnumerosdeAbortosKeyTyped
 
     private void btnIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMPActionPerformed
-        ReImp();     
+       try {     
+           ReImp();
+       } catch (IOException ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
              
     }//GEN-LAST:event_btnIMPActionPerformed
 
@@ -3019,7 +3036,11 @@ public final class AntecedentesPatologicos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtImpKeyTyped
 
     private void txtImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImpActionPerformed
-       ReImp();
+       try {
+           ReImp();
+       } catch (IOException ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_txtImpActionPerformed
 
     private void chkCigarrillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkCigarrillosActionPerformed
@@ -3460,7 +3481,7 @@ private boolean GrabarAPInfo() throws SQLException{
                      + "chk68, chk69, chk70, chk71, chk72, chk73, chk74, chk75, chk76,"
                      + "chk77, chk78, chk79, chk80, chk81, chk82, chk83, chk84, chk85, "
                      + "chk86, chk87, chk88, chk89, rbdrogasno, rbdrogassi, rblicorno,"
-                     + "rblicorsi, rbfumarno, rbfumarsi, ";                   
+                     + "rblicorsi, rbfumarno, rbfumarsi,user_registro, ";                   
                     
             String  Query="Values('"+txtNorden.getText().toString()+"','"+txtEdad.getText()+"','"+FechaPatologicos.getDate()+"','"+clsGlobales.sDniOperador+"','";
                     Query+= chk1.isSelected()+"','"+chk2.isSelected()+"','"+chk3.isSelected()+"','"+chk4.isSelected()+"','"+chk5.isSelected()+"','"+chk6.isSelected()+"','"+chk7.isSelected()+"','"+chk8.isSelected()+"','"+chk9.isSelected()+"','";
@@ -3473,7 +3494,7 @@ private boolean GrabarAPInfo() throws SQLException{
                     Query+= chk62.isSelected()+"','"+chk63.isSelected()+"','"+chk64.isSelected()+"','"+chk65.isSelected()+"','"+chk66.isSelected()+"','"+chk67.isSelected()+"','"+chk68.isSelected()+"','"+chk69.isSelected()+"','"+chk70.isSelected()+"','";
                     Query+= chk71.isSelected()+"','"+chk72.isSelected()+"','"+chk73.isSelected()+"','"+chk74.isSelected()+"','"+chk75.isSelected()+"','"+chk76.isSelected()+"','"+chk77.isSelected()+"','"+chk78.isSelected()+"','"+chk79.isSelected()+"','";
                     Query+= chk80.isSelected()+"','"+chk81.isSelected()+"','"+chk82.isSelected()+"','"+chk83.isSelected()+"','"+chk84.isSelected()+"','"+chk85.isSelected()+"','"+chk86.isSelected()+"','"+chk87.isSelected()+"','"+chk88.isSelected()+"','";
-                    Query+= chk89.isSelected()+"','"+rbDrogasNO.isSelected()+"','"+rbDrogasSI.isSelected()+"','"+rbLicorNO.isSelected()+"','"+rbLicorSI.isSelected()+"','"+rbFumarNO.isSelected()+"','"+rbFumarSI.isSelected()+"',";
+                    Query+= chk89.isSelected()+"','"+rbDrogasNO.isSelected()+"','"+rbDrogasSI.isSelected()+"','"+rbLicorNO.isSelected()+"','"+rbLicorSI.isSelected()+"','"+rbFumarNO.isSelected()+"','"+rbFumarSI.isSelected()+"','"+clsGlobales.sUser+"',";
                      if(txtDrogasFrecuencia.getText().trim().length()>= 1){
                          strSqlStmt+= "txtdrogasfrecuencia, ";
                          Query+= "'"+ txtDrogasFrecuencia.getText()+"',";                         
@@ -3701,7 +3722,7 @@ private boolean ActualizarAPInfo()throws SQLException{
                oConn.sqlStmt.close();
                return bResult;   
         }
-private void ReImp(){
+private void ReImp() throws IOException{
 if(!txtImp.getText().isEmpty()){
             if(OrdenImp()){
                 if (imprimir1(Integer.valueOf(txtImp.getText()))){
@@ -3764,7 +3785,7 @@ private boolean GrabarAPDetalle() {
                   }
          return bResult;
     }
-public void Actualizar(){
+public void Actualizar() throws IOException{
      if(!txtNorden.getText().isEmpty()){
                  if(validar()){ 
                      try {
@@ -4377,7 +4398,7 @@ txtOperacionQui.setText(null);
 txtdiasHospitalizacionQui.setText(null);
 txtComplicacionesQui.setText(null);
 }
-public void imp() {
+public void imp() throws IOException {
         if (imprimir1(Integer.valueOf(txtNorden.getText()))) {
             imprimir2(Integer.valueOf(txtNorden.getText()));
         }
@@ -4403,7 +4424,7 @@ public void imp() {
         }
         return im;
     }
-    private void imprimir2(Integer num) {
+    private void imprimir2(Integer num) throws IOException {
         int seleccion = JOptionPane.showOptionDialog(
                 this, // Componente padre
                 "¿Ingrese la misma hoja para imprimir Reverso - Hoja 2 de 2 ?", //Mensaje
@@ -4459,14 +4480,91 @@ public void cerrarVentana(){
     this.dispose();
       //  System.exit(0);
     }
-private void printer2(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+private void printer2(Integer cod) throws IOException{
+             String dniUsuario=oPe.consultarDni("antecedentes_patologicos", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("antecedentes_patologicos", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }  
                  try 
-                {
-                    String master = System.getProperty("user.dir") +
+                {String master="";
+                 if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+  
+                     master = System.getProperty("user.dir") +
                                 "/reportes/ficha_antecedente_patologico_2.jasper";
-            
+                              }
+                 else
+                     master = System.getProperty("user.dir") +
+                                "/reportes/ficha_antecedente_patologico_2_Digitalizado.jasper";                     
+                     
             System.out.println("master" + master);
             if (master == null) 
             {                
