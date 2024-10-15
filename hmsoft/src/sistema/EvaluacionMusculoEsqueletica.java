@@ -4870,8 +4870,8 @@ private void printer1(Integer cod){
                 }
  }
 private void printer2(Integer cod) throws IOException{
-                String dniUsuario=oPe.consultarDni("antecedentes_patologicos", String.valueOf(cod));
-                String dniPaciente=oPe.consultarDniPaciente("antecedentes_patologicos", "n_orden", String.valueOf(cod));
+                String dniUsuario=oPe.consultarDni("evaluacion_musculo_esqueletica", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("evaluacion_musculo_esqueletica", "n_orden", String.valueOf(cod));
                 String base64Huella="";
                 String base64FirmaP="";
                 String base64Sello=""; 

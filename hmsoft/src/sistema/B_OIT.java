@@ -9,14 +9,21 @@ package sistema;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
 import com.lowagie.text.Chunk;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JRException;
@@ -26,6 +33,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -35,6 +43,7 @@ public final class B_OIT extends javax.swing.JInternalFrame {
 
        clsConnection oConn = new clsConnection();
          clsFunciones  oFunc = new clsFunciones();
+        clsOperacionesUsuarios oPe= new clsOperacionesUsuarios();
    
          private com.toedter.calendar.JDateChooser FechaNacimiento;
     public B_OIT() {
@@ -2194,7 +2203,11 @@ boolean bResultado=true;
 }
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if(OrdenExiste())  {
-            Actualizar();
+            try {
+                Actualizar();
+            } catch (IOException ex) {
+                Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
         try {
             if (!txtNorden.getText().isEmpty()) {
@@ -2210,7 +2223,9 @@ boolean bResultado=true;
             }
         } catch (SQLException ex) {
             Logger.getLogger(ConsentimientoDosajeMC.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }   catch (IOException ex) {
+                Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -2219,11 +2234,21 @@ boolean bResultado=true;
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void txtimpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimpActionPerformed
-       if(!txtimp.getText().isEmpty()){print(Integer.valueOf(txtimp.getText().toString()));}
+       if(!txtimp.getText().isEmpty()){try {
+           print(Integer.valueOf(txtimp.getText().toString()));
+           } catch (IOException ex) {
+               Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
+           }
+}
     }//GEN-LAST:event_txtimpActionPerformed
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
-       if(!txtimp.getText().isEmpty()){print(Integer.valueOf(txtimp.getText().toString()));}
+       if(!txtimp.getText().isEmpty()){try {
+           print(Integer.valueOf(txtimp.getText().toString()));
+           } catch (IOException ex) {
+               Logger.getLogger(B_OIT.class.getName()).log(Level.SEVERE, null, ex);
+           }
+}
     }//GEN-LAST:event_btnImpActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -2512,7 +2537,7 @@ boolean bResultado=true;
                 + "  chk2_46, chk2_47, chk2_48, chk2_49, chk2_50, chk2_51, chk2_52, chk2_53, chk2_54, chk2_55, chk2_56, chk2_57, chk2_58, chk2_59, chk2_60, chk2_61,"
                 + "  chk2_62, chk2_63, chk2_64, chk2_65, chk2_66, chk2_67, chk2_68, chk2_69,"
                 + "  chk3_si, chk3_no, chk_01, chk_02, chk_03, chk_04, chk_05, chk_06, chk_07, chk_08, chk_09, chk_10, chk_11, chk_12, chk_13, chk_14,"
-                + "  chk_15, chk_16, chk_17, chk_18, chk_19, chk_20, chk_21, chk_22, chk_23, chk_24, chk_25, chk_26, chk_27, chk_28, chk_29";
+                + "  chk_15, chk_16, chk_17, chk_18, chk_19, chk_20, chk_21, chk_22, chk_23, chk_24, chk_25, chk_26, chk_27, chk_28, chk_29,user_registro";
         if (!txtDefectosTecnicos.getText().isEmpty()) {
             insert += " ,txt_defectostecnicos";
         }
@@ -2536,7 +2561,7 @@ boolean bResultado=true;
                + "','" + chk2_62.isSelected() + "','" + chk2_63.isSelected() + "','" + chk2_64.isSelected() + "','" + chk2_65.isSelected() + "','" + chk2_66.isSelected() + "','" + chk2_67.isSelected() + "','" + chk2_68.isSelected() + "','" + chk2_69.isSelected() 
                 + "','" + chk_3_si.isSelected() + "','" + chk_3_no.isSelected() + "','" + chk_01.isSelected() + "','" + chk_02.isSelected() + "','" + chk_03.isSelected() + "','" + chk_04.isSelected() + "','" + chk_05.isSelected() + "','" + chk_06.isSelected() + "','" + chk_07.isSelected() + "','" + chk_08.isSelected() + "','" + chk_09.isSelected() + "','" + chk_10.isSelected()
                 + "','" + chk_11.isSelected() + "','" + chk_12.isSelected() + "','" + chk_13.isSelected() + "','" + chk_14.isSelected() + "','" + chk_15.isSelected() + "','" + chk_16.isSelected() + "','" + chk_17.isSelected() + "','" + chk_18.isSelected() + "','" + chk_19.isSelected() + "','" + chk_20.isSelected() + "','" + chk_21.isSelected() + "','" + chk_22.isSelected()
-                + "','" + chk_23.isSelected() + "','" + chk_24.isSelected() + "','" + chk_25.isSelected() + "','" + chk_26.isSelected() + "','" + chk_27.isSelected()+ "','" + chk_28.isSelected()+ "','" + chk_29.isSelected();
+                + "','" + chk_23.isSelected() + "','" + chk_24.isSelected() + "','" + chk_25.isSelected() + "','" + chk_26.isSelected() + "','" + chk_27.isSelected()+ "','" + chk_28.isSelected()+ "','" + chk_29.isSelected()+"','"+clsGlobales.sUser;
         if (!txtDefectosTecnicos.getText().isEmpty()) {
             values += "',' " + txtDefectosTecnicos.getText().toString();
         }
@@ -2726,7 +2751,7 @@ txtNorden.requestFocus();
 jtOIT.setSelectedIndex(0);
 chkSinDatos.setSelected(false);
 }
-   private boolean imprimir(){
+   private boolean imprimir() throws IOException{
     boolean im = false;
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
@@ -2752,17 +2777,57 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
-   private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+   private void printer(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("oit", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
                     try 
                 {    
-                    String direccionReporte;
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
                     if(chkSinDatos.isSelected()){
                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT_B.jasper"; 
                     }else{
                      direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT.jasper";    
                     }
+                    }
+                   else{
+                    if(chkSinDatos.isSelected()){
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT_B_Digitalizado.jasper"; 
+                    }else{
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT_Digitalizado.jasper";    
+                    }                   
+                   }
+                       
                     
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
@@ -2771,20 +2836,56 @@ int seleccion = JOptionPane.showOptionDialog(
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }   
-    private void print(Integer cod){
+    private void print(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("oit", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
-                  try 
-                {
-                    String direccionReporte;
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
                     if(chkSinDatos.isSelected()){
-                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT_B.jasper";
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT_B.jasper"; 
                     }else{
-                        direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT.jasper";
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT.jasper";    
                     }
-                    
+                    }
+                   else{
+                    if(chkSinDatos.isSelected()){
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT_B_Digitalizado.jasper"; 
+                    }else{
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"OIT_Digitalizado.jasper";    
+                    }                   
+                   }                    
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -2842,7 +2943,7 @@ int seleccion = JOptionPane.showOptionDialog(
 
     }
 
-    public void Actualizar(){
+    public void Actualizar() throws IOException{
         String sCodigo=txtNorden.getText();
         String strSqlStmt = "UPDATE oit \n" +
            "   SET n_placa='" + txtNroPlaca.getText().toString() + "'"

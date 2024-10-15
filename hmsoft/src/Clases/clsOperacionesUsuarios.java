@@ -5,8 +5,13 @@
 package Clases;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -15,6 +20,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JRException;
@@ -24,6 +32,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.json.JSONObject;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -81,6 +90,160 @@ public class clsOperacionesUsuarios {
                      oFunc.SubSistemaMensajeError("No se pudo Cargar el Reporte : "+ Reporte);
                 }
      }
+     
+          public void prinDigitalizadoSelloEmpleado(Integer cod, String nameJasper, String Title, String nameTable) throws IOException{
+                String dniUsuario=consultarDni(nameTable, String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(clsOperacionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }       
+                
+                  try 
+                {       String direccionReporte="";
+                    if( base64Sello.contains("OTROJASPER")){
+                     direccionReporte= System.getProperty("user.dir")+File.separator+"reportes"+File.separator+nameJasper+".jasper";
+                     }
+                    else
+                     direccionReporte= System.getProperty("user.dir")+File.separator+"reportes"+File.separator+nameJasper+"_Digitalizado.jasper";
+                        
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle(Title);
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex){
+                    //Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
+                     oFunc.SubSistemaMensajeError("No se pudo Cargar el Reporte : "+ nameJasper);
+                }
+     }
+          
+          public void prinDigitalizadoEmpleadoPaciente(Integer cod, String nameJasper, String Title, String nameTable) throws IOException{
+                 String dniUsuario=consultarDni(nameTable, String.valueOf(cod));
+                String dniPaciente=consultarDniPaciente(nameTable, "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = consumirApiHuella(dniPaciente);
+           base64FirmaP=consumirApiFirmaEmp(dniPaciente);
+           base64Sello=consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(clsOperacionesUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
+                
+                  try 
+                {       String direccionReporte="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     direccionReporte= System.getProperty("user.dir")+File.separator+"reportes"+File.separator+nameJasper+".jasper";
+                     }
+                    else
+                     direccionReporte= System.getProperty("user.dir")+File.separator+"reportes"+File.separator+nameJasper+"_Digitalizado.jasper";
+                        
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle(Title);
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+                 } catch (JRException ex){
+                    //Logger.getLogger(formulario.class.getName()).log(Level.SEVERE, null, ex);
+                     oFunc.SubSistemaMensajeError("No se pudo Cargar el Reporte : "+ nameJasper);
+                }
+     }
+          
+                    
+          
+          
+     
        public void print1(String cod, String Reporte, String Title){
                 
                 Map parameters = new HashMap(); 

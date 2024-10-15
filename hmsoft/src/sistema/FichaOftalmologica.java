@@ -20,6 +20,16 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import org.apache.poi.hssf.record.BoundSheetRecord;
 
 /**
@@ -1111,9 +1121,17 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         if (evt.getClickCount() == 2) {
             Integer cod = Integer.valueOf(tbOftalmica.getValueAt(tbOftalmica.getSelectedRow(), 0).toString());
             if(OrdenObservacion()){
-                oPe.print(cod, "OftalmologiaLO.jasper", "Ficha Oftalmologíca");
+                try {
+                    oPe.prinDigitalizadoSelloEmpleado(cod, "OftalmologiaLO", "Ficha Oftalmologíca","oftalmologia_lo");
+                } catch (IOException ex) {
+                    Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else{
-                 oPe.print(cod, "Oftalmologia.jasper", "Ficha Oftalmologíca");
+                try {
+                    oPe.prinDigitalizadoSelloEmpleado(cod, "Oftalmologia", "Ficha Oftalmologíca","oftalmologia");
+                } catch (IOException ex) {
+                    Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+                }             
             }
             
            
@@ -1343,8 +1361,12 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
         //oFunc.SubSistemaMensajeInformacion(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
             oFunc.SubSistemaMensajeInformacion("Se ha actualizado la Entrada con Éxito");
-            oPe.print(Integer.parseInt(sCodigo), "Oftalmologia.jasper", "Ficha Oftalmologíca");
-            
+          try {
+              oPe.prinDigitalizadoSelloEmpleado(Integer.parseInt(sCodigo), "Oftalmologia", "Ficha Oftalmologíca","oftalmologia");
+          } catch (IOException ex) {
+              Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+          }
+                        
         } else {
             oFunc.SubSistemaMensajeError("No se pudo Agregar La Entrada");
         }
@@ -1583,8 +1605,8 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 String strSqlStmt;
                 String Query;
                 String cod=txtNumero.getText().toString();
-                strSqlStmt = "INSERT INTO oftalmologia(";
-                Query = "Values('";
+                strSqlStmt = "INSERT INTO oftalmologia(user_registro,";
+                Query = "Values('"+clsGlobales.sUser+"','";
                 if (txtNumero.getText().trim().length() >= 1) {
                     strSqlStmt += "n_orden";
                     Query += txtNumero.getText().toString() + "'";
@@ -1657,7 +1679,12 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                     txtNumero.setEnabled(true);
                     sbCargarDatosOftalmologia("");
                     txtNumero.requestFocus();
-                    oPe.print(Integer.parseInt(cod), "Oftalmologia.jasper", "Ficha Oftalmologíca");
+                    try {
+                        oPe.prinDigitalizadoSelloEmpleado(Integer.parseInt(cod), "Oftalmologia", "Ficha Oftalmologíca","oftalmologia");
+                    } catch (IOException ex) {
+                        Logger.getLogger(FichaOftalmologica.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
                 } else {
                     oFunc.SubSistemaMensajeError("No se pudo registrar La Entrada");
 
@@ -1678,8 +1705,8 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                 String strSqlStmt;
                 String Query;
                 String cod=txtNumero.getText().toString();
-                strSqlStmt = "INSERT INTO oftalmologia_lo(";
-                Query = "Values('";
+                strSqlStmt = "INSERT INTO oftalmologia_lo(user_registro,";
+                Query = "Values('"+clsGlobales.sUser+"','";
                 if (txtNumero.getText().trim().length() >= 1) {
                     strSqlStmt += "n_orden";
                     Query += txtNumero.getText().toString() + "'";

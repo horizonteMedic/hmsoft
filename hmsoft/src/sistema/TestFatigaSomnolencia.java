@@ -8,11 +8,18 @@ import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +30,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -1172,7 +1180,9 @@ public class TestFatigaSomnolencia extends javax.swing.JInternalFrame {
               strSqlStmt += ",rbno";Query += ",'"+rbNo.isSelected()+ "'";
               strSqlStmt += ",txtpuntaje";Query += ",'"+txtPuntaje.getText()+ "'";
                strSqlStmt += ",txtmedico";Query += ",'"+txtMedico.getText()+ "'";
-               strSqlStmt += ",dni_user";Query += ",'"+clsGlobales.sDniOperador+ "'";                           
+               strSqlStmt += ",dni_user";Query += ",'"+clsGlobales.sDniOperador+ "'";  
+               strSqlStmt += ",user_registro";Query += ",'"+clsGlobales.sUser+ "'";                           
+               
               if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
                     imp();
                     limpiar();   
@@ -1228,19 +1238,99 @@ int seleccion = JOptionPane.showOptionDialog(
     {
         if((seleccion + 1)==1)
         {
-           printer1(num);
+            try {
+                printer1(num);
+            } catch (IOException ex) {
+                Logger.getLogger(TestFatigaSomnolencia.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else   {
       // PRESIONO NO
        }
     }
 }
 
-private void printer1(Integer cod){
-    Map parameters = new HashMap(); 
-    parameters.put("Norden",cod);      
-        try {
-            String master = System.getProperty("user.dir") +
-                                "/reportes/TestFatigaSomnolenia.jasper";
+private void printer1(Integer cod) throws IOException{
+                String dniUsuario=oPe.consultarDni("test_fatiga_somnolencia", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("test_fatiga_somnolencia", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
+                    try 
+                {   
+                    String master="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"TestFatigaSomnolenia.jasper";}
+                     else
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"TestFatigaSomnolenia_Digitalizado.jasper";    
+    
             
             System.out.println("master" + master);
             if (master == null) {                

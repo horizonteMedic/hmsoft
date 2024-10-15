@@ -10,18 +10,25 @@ import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -1557,13 +1564,21 @@ public final class Anexo16A extends javax.swing.JInternalFrame {
 
     private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
         if(!txtIMP.getText().isEmpty()){
-        print(Integer.valueOf(txtIMP.getText()));
+            try {
+                print(Integer.valueOf(txtIMP.getText()));
+            } catch (IOException ex) {
+                Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jLabel44MouseClicked
 
     private void txtIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIMPActionPerformed
         if(!txtIMP.getText().isEmpty()){
-        print(Integer.valueOf(txtIMP.getText()));
+            try {
+                print(Integer.valueOf(txtIMP.getText()));
+            } catch (IOException ex) {
+                Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_txtIMPActionPerformed
 
@@ -1991,7 +2006,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtNorden.getText().toString()));
+       try {
+           printer(Integer.valueOf(txtNorden.getText().toString()));
+       } catch (IOException ex) {
+           Logger.getLogger(Anexo16A.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -2030,12 +2049,87 @@ int seleccion = JOptionPane.showOptionDialog(
 //
 // 
 // }
-private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+private void printer(Integer cod) throws IOException{
+                String dniUsuario=oPe.consultarDni("Anexo16A", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("Anexo16A", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
                     try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Anexo16A.jasper";
+                {   
+                    String direccionReporte="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Anexo16A.jasper";}
+                     else
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Anexo16A_Digitalizado.jasper";                   
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     
@@ -2045,16 +2139,87 @@ private void printer(Integer cod){
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
-private void print(Integer cod){
-  //Integer n;
-               //n = Integer.parseInt(txtNorden.getText());
-                //Pasamos parametros al reporte Jasper. 
-              Map parameters = new HashMap();
-        // Coloco los valores en los parámetros
-        parameters.put("Norden", cod);
+private void print(Integer cod) throws IOException{
+                String dniUsuario=oPe.consultarDni("Anexo16A", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("Anexo16A", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
 
-        try {
-            String master = System.getProperty("user.dir")+ "/reportes/Anexo16A.jasper";
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
+                    try 
+                {   
+                    String master="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Anexo16A.jasper";}
+                     else
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Anexo16A_Digitalizado.jasper";      
             System.out.println("master" + master);
             if (master == null) {
                 System.out.println("No encuentro el archivo No encuentro el archivo Anexo7D.");
@@ -2153,7 +2318,7 @@ private void print(Integer cod){
        if(!txtmedicacionActual.getText().isEmpty()){  
        Sql += "m_actual,";
        }
-       Sql += "observaciones )";
+       Sql += "observaciones,user_registro )";
        Sql += "VALUES ('"+FechaExamen.getDate()+"','"+txtEdad.getText()+"','"+ clsGlobales.sDniOperador+"','"+txtDireccion.getText()+"','";
        Sql += txtNorden.getText()+"','"+ chkApto.isSelected()+ "','"+chkInapto.isSelected()+"','";
        Sql += no1.isSelected()+"','"+ si1.isSelected()+"','"+ no2.isSelected()+"','"+si2.isSelected()+"','"+no3.isSelected()+"','" +si3.isSelected()+"','";
@@ -2166,7 +2331,7 @@ private void print(Integer cod){
        if(!txtmedicacionActual.getText().isEmpty()){
            Sql += txtmedicacionActual.getText()+"','";
        }
-       Sql +=txtObservaciones.getText()+"')";
+       Sql +=txtObservaciones.getText()+"','"+clsGlobales.sUser+"')";
               // oFunc.SubSistemaMensajeInformacion(Sql);
        if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");

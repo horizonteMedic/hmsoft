@@ -8,7 +8,13 @@ import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOndontograma;
+import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -25,11 +32,14 @@ import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 public final class Odontograma extends javax.swing.JInternalFrame {
 public JLabel diente;
 clsConnection oConn = new clsConnection();
  clsFunciones  oFunc = new clsFunciones();
  clsOndontograma oDon = new clsOndontograma();
+ clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
+ 
   DefaultTableModel model;
 public Odontograma() {
         initComponents();
@@ -1801,7 +1811,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtNorden.getText().toString()));
+       try {
+           printer(Integer.valueOf(txtNorden.getText().toString()));
+       } catch (IOException ex) {
+           Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+       }
        im = true;
    }
    else
@@ -1812,12 +1826,94 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
-   private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+   private void printer(Integer cod)throws IOException{
+       
+                String dniUsuario=oPe.consultarDni("odontograma", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("odontograma", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+       
+           BufferedImage image = null;
+           byte[] imageByte;
+           
+           BASE64Decoder decoder = new BASE64Decoder();
+           imageByte = decoder.decodeBuffer(base64Huella);
+           ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+           image = ImageIO.read(bis);
+           bis.close();
+           
+           
+           ByteArrayOutputStream baos = new ByteArrayOutputStream();
+           ImageIO.write(image, "png", baos);
+           InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+           
+                        
+           parameters.put("HuellaP",stream);
+     
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);  
+              }
                     try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Odontograma.jasper";
+                {   
+                     String direccionReporte="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                      direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Odontograma.jasper";
+                   
+                    }      
+                    else
+                      direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Odontograma_Digitalizado.jasper";
+  
+                                  
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                   JasperPrintManager.printReport(jasperPrint,true);
@@ -1898,9 +1994,17 @@ int seleccion = JOptionPane.showOptionDialog(
         {  
             Integer cod  = Integer.valueOf(tbImprimir.getValueAt(tbImprimir.getSelectedRow(),0).toString());
             if(OrdenLO()){
-                print1(cod);
+                try {
+                    print1(cod);
+                } catch (IOException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else{
-                print(cod);
+                try {
+                    print(cod);
+                } catch (IOException ex) {
+                    Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
             
@@ -1940,7 +2044,11 @@ int seleccion = JOptionPane.showOptionDialog(
     }//GEN-LAST:event_btnLevantarObservacionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    try {
         imp();
+    } catch (IOException ex) {
+        Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+    }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -2115,8 +2223,8 @@ int seleccion = JOptionPane.showOptionDialog(
               Values +=",'"+txtNormal.getText().toString()+"'";
               Insert +=",txtcoronas";
               Values +=",'"+txtCorona.getText().toString()+"'";
-              Insert +=",txtobservaciones)";
-              Values +=",'"+txtObservaciones.getText().toString()+"')";
+              Insert +=",txtobservaciones,user_registro)";
+              Values +=",'"+txtObservaciones.getText().toString()+"','"+clsGlobales.sUser+"')";
        
        
                 
@@ -2457,14 +2565,93 @@ int seleccion = JOptionPane.showOptionDialog(
            }     
     }
     
-    private void print(Integer cod){
+    private void print(Integer cod) throws IOException{
+  
+                String dniUsuario=oPe.consultarDni("odontograma", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("odontograma", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+       }
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
                 
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+       
+           BufferedImage image = null;
+           byte[] imageByte;
+           
+           BASE64Decoder decoder = new BASE64Decoder();
+           imageByte = decoder.decodeBuffer(base64Huella);
+           ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+           image = ImageIO.read(bis);
+           bis.close();
+           
+           
+           ByteArrayOutputStream baos = new ByteArrayOutputStream();
+           ImageIO.write(image, "png", baos);
+           InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+           
+                        
+           parameters.put("HuellaP",stream);
+     
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);  
+              }
                   try 
                 {
-                     String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Odontograma.jasper";
+                     String direccionReporte="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                      direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Odontograma.jasper";
+                   
+                    }      
+                    else
+                      direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Odontograma_Digitalizado.jasper";
+                      
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
                 JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -2484,14 +2671,92 @@ int seleccion = JOptionPane.showOptionDialog(
                  
  
  }
-     private void print1(Integer cod){
+     private void print1(Integer cod) throws IOException{
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+                String dniUsuario=oPe.consultarDni("odontograma", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("odontograma", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+       
+           BufferedImage image = null;
+           byte[] imageByte;
+           
+           BASE64Decoder decoder = new BASE64Decoder();
+           imageByte = decoder.decodeBuffer(base64Huella);
+           ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+           image = ImageIO.read(bis);
+           bis.close();
+           
+           
+           ByteArrayOutputStream baos = new ByteArrayOutputStream();
+           ImageIO.write(image, "png", baos);
+           InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+           
+                        
+           parameters.put("HuellaP",stream);
+     
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);  
+              }
                   try 
                 {
-                     String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Odontograma_lo.jasper";
+                     String direccionReporte="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                      direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Odontograma_lo.jasper";
+                   
+                    }      
+                    else
+                      direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"Odontograma_lo_Digitalizado.jasper";
                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                 JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
                 JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -2795,7 +3060,7 @@ boolean bResultado=true;
    return bResultado;
 }
 
-public void imp(){
+public void imp() throws IOException{
 if (imprimir1(Integer.valueOf(txtOrden.getText()))){
     imprimir2(Integer.valueOf(txtOrden.getText()));
 }
@@ -2831,8 +3096,12 @@ private boolean imprimir1(Integer num){
     {
    if((seleccion + 1)==1)
    {
-      print1(num);
-       im = true;
+       try {
+           print1(num);
+           im = true;
+       } catch (IOException ex) {
+           Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -2842,7 +3111,7 @@ private boolean imprimir1(Integer num){
     return im;
 
 }
-private void imprimir2(Integer num){
+private void imprimir2(Integer num) throws IOException{
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
     "¿Desea imprimir odontograma observado ?", //Mensaje

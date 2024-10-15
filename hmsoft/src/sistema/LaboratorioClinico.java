@@ -12,7 +12,12 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -35,6 +41,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 //
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -2858,7 +2865,11 @@ private void colororina() {
     }//GEN-LAST:event_chkOrdenActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        ReImp();
+        try {
+            ReImp();
+        } catch (IOException ex) {
+            Logger.getLogger(LaboratorioClinico.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void txtHemoglobinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHemoglobinaActionPerformed
@@ -4139,7 +4150,7 @@ private void colororina() {
         return bResultado;
     }
 
-    private void ReImp() {
+    private void ReImp() throws IOException {
         if (txtImp.getText().isEmpty()) {
             oFunc.SubSistemaMensajeError("Ingrese Numero");
         }
@@ -4677,6 +4688,8 @@ private void colororina() {
                 }
                 strSqlStmt += ",chkpositivo";
                 Query += ",'" + chkPositivo.isSelected() + "'";
+                strSqlStmt += ",user_registro";
+                Query += ",'"+clsGlobales.sUser+"'";                
                 strSqlStmt += ",chknegativo";
                 Query += ",'" + chkNegativo.isSelected() + "'";
                 if (txtVIH.getText().trim().length() >= 1) {
@@ -4900,7 +4913,7 @@ private void colororina() {
 
     }
 
-    private void imprimir() {
+    private void imprimir() throws IOException {
         int seleccion = JOptionPane.showOptionDialog(
                 this, // Componente padre
                 "¿Desea Imprimir ?", //Mensaje
@@ -4920,13 +4933,51 @@ private void colororina() {
 
     }
 
-    private void printer(Integer cod) {
+    private void printer(Integer cod) throws IOException {
+                String dniUsuario=oPe.consultarDni("lab_clinico", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        try {
-            String master = System.getProperty("user.dir")
-                    + "/reportes/LaboratorioClinico.jasper";
 
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+              
+        try {
+            String master="";
+            if( base64Sello.contains("OTROJASPER")){
+
+             master= System.getProperty("user.dir")
+                    + "/reportes/LaboratorioClinico.jasper";
+            }
+            else
+             master= System.getProperty("user.dir")
+                    + "/reportes/LaboratorioClinico_Digitalizado.jasper";                
+                
             System.out.println("master" + master);
             if (master == null) {
                 System.out.println("No encuentro el archivo del reporte Laboratorio Clinico.");
@@ -4952,16 +5003,50 @@ private void colororina() {
 
     }
 
-    private void print(Integer cod) {
-        //Integer n;
-        //n = Integer.parseInt(txtNorden.getText());
-        //Pasamos parametros al reporte Jasper. 
+    private void print(Integer cod) throws IOException {
+                String dniUsuario=oPe.consultarDni("lab_clinico", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
-        // Coloco los valores en los parámetros
         parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+              
         try {
-            String master = System.getProperty("user.dir")
+            String master="";
+            if( base64Sello.contains("OTROJASPER")){
+
+             master= System.getProperty("user.dir")
                     + "/reportes/LaboratorioClinico.jasper";
+            }
+            else
+             master= System.getProperty("user.dir")
+                    + "/reportes/LaboratorioClinico_Digitalizado.jasper";     
             System.out.println("master" + master);
             if (master == null) {
                 System.out.println("No encuentro el archivo del reporte Laboratorio Clinico.");

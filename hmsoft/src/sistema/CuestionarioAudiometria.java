@@ -3,20 +3,29 @@ package sistema;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 public class CuestionarioAudiometria extends javax.swing.JInternalFrame {
+         clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
 
          clsConnection oConn = new clsConnection();
          clsFunciones  oFunc = new clsFunciones();
@@ -1530,7 +1539,7 @@ void Guardar(){
 "            chksi14, chkno14, txtrcual14, txtrdonde14, txtrque14, chksi15, \n" +
 "            chkno15, txtrcuantos15, chkcaza16, txtcaza16, chktiro16, txttiro16, \n" +
 "            chkdiscoteca16, txtdiscoteca16, chkauriculares16, txtauriculares16, \n" +
-"            chkmilitar16, txtmilitar16, chkboxeo16, txtboxeo16)";
+"            chkmilitar16, txtmilitar16, chkboxeo16, txtboxeo16,user_registro)";
      String values="VALUES ('"+ txtNorden.getText().toString()+"', '"+txtEdad.getText().toString()+"', '"+FechaExamen.getDate()+"', '"
              + chk_si1.isSelected()+"','"+chk_no1.isSelected()+"', '"
              +txtCualP1.getText().toString()+"', '"+txtCuandoP1.getText().toString()+"', '"+txtQueP1.getText().toString()+"', '"
@@ -1555,7 +1564,7 @@ void Guardar(){
              +chkDiscotecas16.isSelected()+"', '"+txtDiscoteca16.getText().toString()+"', '"
              +chkAuriculares16.isSelected()+"', '"+txtAuriculares16.getText().toString()+"', '"
              +chkMilitar16.isSelected()+"', '"+txtMilitar16.getText().toString()+"', '"
-             +chkboxeo16.isSelected()+"','"+txtBoxeo16.getText().toString()+"')";
+             +chkboxeo16.isSelected()+"','"+txtBoxeo16.getText().toString()+"','"+clsGlobales.sUser+"')";
              
               if (oConn.FnBoolQueryExecuteUpdate(insert + values)){
                 imp();  
@@ -1738,7 +1747,11 @@ FechaExamen.setDate(fechaDate);
       
     }
  private void ReImp(){
-   print(Integer.valueOf(txtnordenIMP.getText()));
+             try {
+                 print(Integer.valueOf(txtnordenIMP.getText()));
+             } catch (IOException ex) {
+                 Logger.getLogger(CuestionarioAudiometria.class.getName()).log(Level.SEVERE, null, ex);
+             }
 
 }
 public boolean OrdenImp()
@@ -1969,8 +1982,12 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer1(num);
-       im = true;
+       try {
+           printer1(num);
+           im = true;
+       } catch (IOException ex) {
+           Logger.getLogger(CuestionarioAudiometria.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -1982,12 +1999,88 @@ int seleccion = JOptionPane.showOptionDialog(
 }
 
   
-private void printer1(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+private void printer1(Integer cod) throws IOException{
+   String dniUsuario=oPe.consultarDni("cuestionario_audiometria", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("cuestionario_audiometria", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
                     try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioAudiometria.jasper";
+                {   String direccionReporte="";     
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                    direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioAudiometria.jasper";
+                    }
+                    else
+                    direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioAudiometria_Digitalizado.jasper";
+                        
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                   
@@ -1997,14 +2090,90 @@ private void printer1(Integer cod){
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
-    private void print(Integer cod){
+    private void print(Integer cod) throws IOException{
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+   String dniUsuario=oPe.consultarDni("cuestionario_audiometria", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("cuestionario_audiometria", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioAudiometria.jasper";
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
+                    try 
+                {   String direccionReporte="";     
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                    direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioAudiometria.jasper";
+                    }
+                    else
+                    direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CuestionarioAudiometria_Digitalizado.jasper";
+                        
+                    
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);

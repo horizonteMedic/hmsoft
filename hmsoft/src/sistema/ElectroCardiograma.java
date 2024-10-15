@@ -2188,7 +2188,7 @@ private void reporte(Integer cod){
           if(!OrdenExiste()){
             if (validar()){
         String Sql ="INSERT INTO informe_electrocardiograma(n_orden, fecha_informe, ritmo, p_r, f_c, q_t_c, q_r_s,"
-               + "eje, hallazgo, recomendaciones, edad_elec)";
+               + "eje, hallazgo, recomendaciones, edad_elec,user_registro)";
          Sql+="Values('"+txtNorden.getText()+"','"+FechaExamen.getDate()+"','"
                      +txtRitmo.getText().toString()+ "','"
                      +txtPR.getText()+ "','"
@@ -2199,7 +2199,7 @@ private void reporte(Integer cod){
                      +txtHallazgo.getText().toString()+"','"
                      //+txtConclusion.getText().toString()+"','"
                      +txtRecomenDaciones.getText().toString()+"','"
-                     +txtEdad.getText().toString()+"')";
+                     +txtEdad.getText().toString()+"','"+clsGlobales.sUser+"')";
                 //  oFunc.SubSistemaMensajeInformacion(Sql);
                       if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                         sbCargarDatosElectro("");  

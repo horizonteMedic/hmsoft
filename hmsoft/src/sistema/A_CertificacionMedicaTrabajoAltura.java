@@ -13,6 +13,11 @@ import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -28,6 +34,7 @@ import javax.swing.Timer;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -2659,7 +2666,11 @@ public class A_CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFra
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        print(Integer.valueOf(txtImprimir.getText().toString()));
+        try {
+            print(Integer.valueOf(txtImprimir.getText().toString()));
+        } catch (IOException ex) {
+            Logger.getLogger(A_CertificacionMedicaTrabajoAltura.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void chkOR2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkOR2ActionPerformed
@@ -3039,7 +3050,7 @@ public class A_CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFra
                     if(!txtOtraRestriccion.getText().isEmpty()){Sql +=  "otrarestriccion,";}
                     if(!txtObservaciones.getText().isEmpty()){Sql +=  "observaciones,";}
                     Sql += "p_no1,a_no11, a_si11, a_no12, a_si12, a_no13, a_si13, \n" +
-                "       a_no14, a_si14, a_no15, a_si15)";
+                "       a_no14, a_si14, a_no15, a_si15,user_registro)";
                 Sql += "VALUES ('"+txtNorden.getText()+"','"+FechaCertificacion.getDate()+"','"+txtExperiencia.getText()+"','"+ rbPrimeraActitud.isSelected() +"','"+rbRevalidacion.isSelected()+"','"+txtEdad.getText().toString()+"','"+clsGlobales.sDniOperador+"','";
                 Sql += r_no1.isSelected()+"','"+ r_no2.isSelected()+ "','"+r_no3.isSelected()+"','";
                 Sql += r_si12.isSelected()+"','"+ r_si11.isSelected()+"','"+ r_si10.isSelected()+"','"+r_si9.isSelected()+"','"+r_si8.isSelected()+"','" +r_si7.isSelected()+"','";
@@ -3059,7 +3070,7 @@ public class A_CertificacionMedicaTrabajoAltura extends javax.swing.JInternalFra
                 Sql+= p_no1.isSelected()+"','"+ a_no11.isSelected()+"','"+ a_si11.isSelected()+"','"+ a_no12.isSelected()+"',"
                         + "'"+ a_si12.isSelected()+"','"+ a_no13.isSelected()+"','"+ a_si13.isSelected()+"','"+ a_no14.isSelected()+"',"
                         + "'"+ a_si14.isSelected()+"','"+ a_no15.isSelected()+"','";
-                Sql += a_si15.isSelected()+"')";
+                Sql += a_si15.isSelected()+"','"+clsGlobales.sUser+"')";
 
                         //oFunc.SubSistemaMensajeInformacion(Sql);
                 if (oConn.FnBoolQueryExecuteUpdate(Sql)){
@@ -3125,7 +3136,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtNorden.getText()));
+       try {
+           printer(Integer.valueOf(txtNorden.getText()));
+       } catch (IOException ex) {
+           Logger.getLogger(A_CertificacionMedicaTrabajoAltura.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -3134,13 +3149,51 @@ int seleccion = JOptionPane.showOptionDialog(
     }
 
 }
-private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                 try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/A_CertificacionMedicaPTA.jasper";
+private void printer(Integer cod) throws IOException{
+           String dniUsuario=oPe.consultarDni("certificacion_medica_altura", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+              
+        try {
+            String master="";
+            if( base64Sello.contains("OTROJASPER")){
+
+             master= System.getProperty("user.dir")
+                    + "/reportes/A_CertificacionMedicaPTA.jasper";
+            }
+            else
+             master= System.getProperty("user.dir")
+                    + "/reportes/A_CertificacionMedicaPTA_Digitalizado.jasper"; 
+                  
             
             System.out.println("master" + master);
             if (master == null) 
@@ -3171,20 +3224,50 @@ private void printer(Integer cod){
         
  
  }
-private void print(Integer cod){
-  //Integer n;
-               //n = Integer.parseInt(txtNorden.getText());
-                //Pasamos parametros al reporte Jasper. 
-                Map parameters = new HashMap(); 
+private void print(Integer cod) throws IOException{
+ String dniUsuario=oPe.consultarDni("certificacion_medica_altura", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
 
-                // Coloco los valores en los parámetros
-                parameters.put("Norden",cod);             
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
 
-                try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/A_CertificacionMedicaPTA.jasper";
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+              
+        try {
+            String master="";
+            if( base64Sello.contains("OTROJASPER")){
+
+             master= System.getProperty("user.dir")
+                    + "/reportes/A_CertificacionMedicaPTA.jasper";
+            }
+            else
+             master= System.getProperty("user.dir")
+                    + "/reportes/A_CertificacionMedicaPTA_Digitalizado.jasper"; 
             
             System.out.println("master" + master);
             if (master == null) 

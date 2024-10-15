@@ -46,7 +46,7 @@ public final class Ingreso extends javax.swing.JFrame {
        public Ingreso()  {
             
         initComponents(); 
-           
+           System.out.println("LLego antes de la carga del properties");
         Properties props = new Properties();
        
         FileInputStream in = null;
@@ -75,11 +75,12 @@ public final class Ingreso extends javax.swing.JFrame {
         }
         else
         {
-           initComponents(); 
+           //initComponents(); 
            lbliduser.setVisible(false);
             fecha();
             CargarUsuarios();
             CargarSedes();
+            System.out.println("LLego despues de la carga del properties");
         }
         AutoCompleteDecorator.decorate(this.cboUsuarios);
     }

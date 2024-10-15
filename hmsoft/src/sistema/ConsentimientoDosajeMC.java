@@ -8,20 +8,29 @@ import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 public final class ConsentimientoDosajeMC extends javax.swing.JInternalFrame {
+    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
 
    clsConnection oConn = new clsConnection();
          clsFunciones  oFunc = new clsFunciones();
@@ -432,7 +441,11 @@ public final class ConsentimientoDosajeMC extends javax.swing.JInternalFrame {
     private void tbConsentimientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbConsentimientoMousePressed
         if (evt.getClickCount() == 2) {
             Integer num = Integer.valueOf(tbConsentimiento.getValueAt(tbConsentimiento.getSelectedRow(), 0).toString());
-            reporte(num);
+            try {
+                reporte(num);
+            } catch (IOException ex) {
+                Logger.getLogger(ConsentimientoDosajeMC.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_tbConsentimientoMousePressed
 
@@ -499,17 +512,97 @@ public final class ConsentimientoDosajeMC extends javax.swing.JInternalFrame {
                 oFunc.SubSistemaMensajeInformacion("Ficha consentimiento panel 5d:" + ex.getMessage().toString());}
         }
     }//GEN-LAST:event_btnEditarActionPerformed
-private void reporte(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+private void reporte(Integer cod) throws IOException{
+   String dniUsuario=oPe.consultarDni("consentimiento_dosaje", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("consentimiento_dosaje", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
                  try 
                 {
-                    String master ;
+                    String master ="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     
                     if(chkMarihuna.isSelected())
                        master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje1.jasper";
                     else{
-                        master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje.jasper";
+                        master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje.jasper";}
                     }
+                    else{
+                    if(chkMarihuna.isSelected())
+                       master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje1_Digitalizado.jasper";
+                    else{
+                        master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje_Digitalizado.jasper";}                    
+                    }
+                    
             
             System.out.println("master" + master);
             if (master == null) 
@@ -663,10 +756,10 @@ private boolean Grabar() throws SQLException{
         boolean bResult = false;
               
        String strSqlStmt ="INSERT INTO consentimiento_dosaje("
-               + "n_orden,fecha_dosaje, chk1_si, chk2_si, chk3_si, chk1_no, chk2_no,chk3_no,edad_dosaje)";       
+               + "n_orden,fecha_dosaje, chk1_si, chk2_si, chk3_si, chk1_no, chk2_no,chk3_no,edad_dosaje,user_registro)";       
             strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"','"+FechaDosaje.getDate()+"','";
             strSqlStmt += chk1_SI.isSelected()+"','" +chk2_SI.isSelected()+"','"+chk3_SI.isSelected()+"','"; 
-            strSqlStmt += chk1_NO.isSelected()+"','" +chk2_NO.isSelected()+"','"+chk3_NO.isSelected()+"','"+txtEdad.getText()+"')";   
+            strSqlStmt += chk1_NO.isSelected()+"','" +chk2_NO.isSelected()+"','"+chk3_NO.isSelected()+"','"+txtEdad.getText()+"','"+clsGlobales.sUser+"')";   
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)){
                 
                    //oConn.setResult.next();
@@ -764,7 +857,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtNorden.getText()));
+       try {
+           printer(Integer.valueOf(txtNorden.getText()));
+       } catch (IOException ex) {
+           Logger.getLogger(ConsentimientoDosajeMC.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -773,16 +870,96 @@ int seleccion = JOptionPane.showOptionDialog(
     }
 
 }
-private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+private void printer(Integer cod) throws IOException{
+   String dniUsuario=oPe.consultarDni("consentimiento_dosaje", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("consentimiento_dosaje", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }     
                  try 
                 {
-                    String master;
+                    
+                    String master ="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     
                     if(chkMarihuna.isSelected())
                        master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje1.jasper";
                     else{
-                        master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje.jasper";
+                        master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje.jasper";}
+                    }
+                    else{
+                    if(chkMarihuna.isSelected())
+                       master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje1_Digitalizado.jasper";
+                    else{
+                       master = System.getProperty("user.dir") +"/reportes/ConsentimientoDosaje_Digitalizado.jasper";}                    
                     }
             
             System.out.println("master" + master);

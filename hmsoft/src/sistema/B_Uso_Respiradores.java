@@ -4354,8 +4354,8 @@ private com.toedter.calendar.JDateChooser FechaNacimiento;
                         Query += ",'" + Fecha.getDate().toString() + "'";
                     }
                     strSqlStmt += ",chk_1, chk_2, chk_3, chk_4, chk_5, chk_6, chk_7, chk_8, chk_9, chk_10, chk_11, chk_12, chk_13, chk_14, chk_15, chk_16, chk_17"
-                            + ", chk_18, chk_19, chk_20, chk_21, chk_22, chk_23, chk_24, chk_25, chk_26, chk_27, chk_28, chk_29, chk_30, chk_31, chk_32, chk_33,chk_34, chk_35,user_registro"
-                            + ", chk_36, chk_37, chk_38, chk_39, chk_40, chk_41, chk_42, chk_43";
+                            + ", chk_18, chk_19, chk_20, chk_21, chk_22, chk_23, chk_24, chk_25, chk_26, chk_27, chk_28, chk_29, chk_30, chk_31, chk_32, chk_33,chk_34, chk_35"
+                            + ", chk_36, chk_37, chk_38, chk_39, chk_40, chk_41, chk_42, chk_43,user_registro";
                     Query +=   ",'" + chk_1.isSelected() + "','" + chk_2.isSelected() + "','" + chk_3.isSelected() + "','" + chk_4.isSelected() + "','" + chk_5.isSelected() + "','" + chk_6.isSelected()
                             + "','" + chk_7.isSelected() + "','" + chk_8.isSelected() + "','" + chk_9.isSelected() + "','" + chk_10.isSelected() + "','" + chk_11.isSelected() + "','" + chk_12.isSelected()
                             + "','" + chk_13.isSelected() + "','" + chk_14.isSelected() + "','" + chk_15.isSelected() + "','" + chk_16.isSelected() + "','" + chk_17.isSelected() + "','" + chk_18.isSelected()

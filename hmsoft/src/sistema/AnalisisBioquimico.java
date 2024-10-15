@@ -10,7 +10,12 @@ import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -25,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -625,7 +632,11 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
          if(OrdenExiste()){
              Actualizar();
          }else{
-              Agregar();
+             try {
+                 Agregar();
+             } catch (IOException ex) {
+                 Logger.getLogger(AnalisisBioquimico.class.getName()).log(Level.SEVERE, null, ex);
+             }
          }
        
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -674,7 +685,11 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
          if (evt.getClickCount() == 2) 
         {  
             Integer cod  = Integer.valueOf( tbExamen.getValueAt(tbExamen.getSelectedRow(),0).toString());
-            print(cod);
+             try {
+                 print(cod);
+             } catch (IOException ex) {
+                 Logger.getLogger(AnalisisBioquimico.class.getName()).log(Level.SEVERE, null, ex);
+             }
             
         }
     }//GEN-LAST:event_tbExamenMousePressed
@@ -717,7 +732,7 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_btnEditarActionPerformed
- private void Agregar(){
+ private void Agregar() throws IOException{
  if(!txtNorden.getText().isEmpty()){ 
      if(validar()){
             String insert="INSERT INTO analisis_bioquimicos(n_orden, fecha_ab, txtreponsable";
@@ -728,7 +743,9 @@ public final class AnalisisBioquimico extends javax.swing.JInternalFrame {
                     if(!txtHDLColesterol.getText().isEmpty()){insert += ",txthdlcolesterol"; values += ",'"+txtHDLColesterol.getText().toString()+"'";}
                     if(!txtVLDLColesterol.getText().isEmpty()){insert += ",txtvldlcolesterol"; values += ",'"+txtVLDLColesterol.getText().toString()+"'";}
                     if(!txtTrigliseridos.getText().isEmpty()){insert += ",txttrigliseridos"; values += ",'"+txtTrigliseridos.getText().toString()+"'";}
-                   // oFunc.SubSistemaMensajeError(insert.concat(")") + values.concat(")"));    
+                   insert += ",user_registro"; values += ",'"+clsGlobales.sUser+"'";
+
+// oFunc.SubSistemaMensajeError(insert.concat(")") + values.concat(")"));    
                     if (oConn.FnBoolQueryExecuteUpdate(insert.concat(") ") + values.concat(")"))){
                         imprimir();
                         oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
@@ -901,7 +918,7 @@ void Limpiar(){
        txtTrigliseridos.setText(null);
        txtNorden.requestFocus();
 
-}   private boolean imprimir(){
+}   private boolean imprimir() throws IOException{
     boolean im = false;
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
@@ -927,12 +944,47 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
-   private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
+   private void printer(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("analisis_bioquimicos", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
                     try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"AnalisisBioquimicos.jasper";
+                {     String direccionReporte =""; 
+                    if( base64Sello.contains("OTROJASPER")){
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"AnalisisBioquimicos.jasper";
+                           }
+                    else
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"AnalisisBioquimicos_Digitalizado.jasper";
+                        
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                   JasperPrintManager.printReport(jasperPrint,true);
@@ -940,14 +992,47 @@ int seleccion = JOptionPane.showOptionDialog(
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
- private void print(Integer cod){
+ private void print(Integer cod) throws IOException{
+   String dniUsuario=oPe.consultarDni("analisis_bioquimicos", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"AnalisisBioquimicos.jasper";
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
+                    try 
+                {     String direccionReporte =""; 
+                    if( base64Sello.contains("OTROJASPER")){
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"AnalisisBioquimicos.jasper";
+                           }
+                    else
+                     direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"AnalisisBioquimicos_Digitalizado.jasper";
+                        
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);

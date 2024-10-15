@@ -9,14 +9,21 @@ package sistema;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -25,6 +32,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -34,6 +42,7 @@ public class CertificadoManipuladoresBarrick extends javax.swing.JInternalFrame 
 
     clsConnection oConn = new clsConnection();
  clsFunciones  oFunc = new clsFunciones();
+        clsOperacionesUsuarios oPe= new clsOperacionesUsuarios();
  
 
     public CertificadoManipuladoresBarrick() {
@@ -390,13 +399,13 @@ private boolean Grabar() throws SQLException{
 
         String strSqlStmt = "INSERT INTO certificado_manipuladores_barrick(\n"
                 + "n_orden, fecha_examen, chkapto, chknoapto, txtobservaciones, \n"
-                + "       txtrecomendaciones)";
+                + "       txtrecomendaciones,user_registro)";
         strSqlStmt += "values ('" + txtNorden.getText() + ""
                 + "','" + FechaHoy.getDate()
                 + "','" + chkApto.isSelected()
                 + "','" + chkNoApto.isSelected()
                 + "','" + txtObservaciones.getText()
-                + "','" + txtRecomendaciones.getText() + "')";
+                + "','" + txtRecomendaciones.getText() +"','"+clsGlobales.sUser+"')";
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
 //                   oConn.setResult.next();
             bResult = true;
@@ -414,7 +423,11 @@ private boolean Grabar() throws SQLException{
     }
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
          if(OrdenExiste()){  
-            Actualizar();
+             try {
+                 Actualizar();
+             } catch (IOException ex) {
+                 Logger.getLogger(CertificadoManipuladoresBarrick.class.getName()).log(Level.SEVERE, null, ex);
+             }
          }else{
               if(!txtNorden.getText().isEmpty()){
             try {
@@ -426,7 +439,9 @@ private boolean Grabar() throws SQLException{
                 
             } catch (SQLException ex) {
                 Logger.getLogger(CertificadoManipuladoresBarrick.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }     catch (IOException ex) {
+                      Logger.getLogger(CertificadoManipuladoresBarrick.class.getName()).log(Level.SEVERE, null, ex);
+                  }
            }
          }
        
@@ -471,7 +486,11 @@ private boolean Grabar() throws SQLException{
 
     private void btnImpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImpActionPerformed
           if(!txtimp.getText().isEmpty()){
-            print(Integer.valueOf(txtimp.getText()));
+              try {
+                  print(Integer.valueOf(txtimp.getText()));
+              } catch (IOException ex) {
+                  Logger.getLogger(CertificadoManipuladoresBarrick.class.getName()).log(Level.SEVERE, null, ex);
+              }
             
             
         }
@@ -485,14 +504,47 @@ private boolean Grabar() throws SQLException{
         // TODO add your handling code here:
         cerrarVentana();
     }//GEN-LAST:event_formInternalFrameClosing
-    private void print(Integer cod){
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+    private void print(Integer cod) throws IOException{
+    String dniUsuario=oPe.consultarDni("certificado_manipuladores_barrick", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
                 try 
-                {
-                 
-                        String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "CertificadoMedicoManipuladores_Barrick.jasper";
+                {String direccionReporte="";
+                        if( base64Sello.contains("OTROJASPER")){
+                         direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "CertificadoMedicoManipuladores_Barrick.jasper";
+                                   }
+                        else
+                          direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "CertificadoMedicoManipuladores_Barrick_Digitalizado.jasper";
+                           
                         JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                         JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
                         JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -507,7 +559,7 @@ private boolean Grabar() throws SQLException{
  
  }
        
-    private void Actualizar(){
+    private void Actualizar() throws IOException{
         String sCodigo=txtNorden.getText();
         String strSqlStmt;
         strSqlStmt="UPDATE certificado_manipuladores_barrick\n" +
@@ -535,7 +587,7 @@ private boolean Grabar() throws SQLException{
             }
     }
     
-    private boolean imprimir(){
+    private boolean imprimir() throws IOException{
     boolean im = false;
 int seleccion = JOptionPane.showOptionDialog(
     this, // Componente padre
@@ -562,12 +614,47 @@ int seleccion = JOptionPane.showOptionDialog(
     return im;
 
 }
-   private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                    try 
-                {        
-                        String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "CertificadoMedicoManipuladores_Barrick.jasper";
+   private void printer(Integer cod) throws IOException{
+    String dniUsuario=oPe.consultarDni("certificado_manipuladores_barrick", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+                try 
+                {String direccionReporte="";
+                        if( base64Sello.contains("OTROJASPER")){
+                         direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "CertificadoMedicoManipuladores_Barrick.jasper";
+                                   }
+                        else
+                          direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "CertificadoMedicoManipuladores_Barrick_Digitalizado.jasper";
+                           
                         JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                         JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
                         JasperPrintManager.printReport(myPrint,true);

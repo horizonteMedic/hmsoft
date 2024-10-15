@@ -10,10 +10,16 @@ import Clases.GestorTime;
 import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.Timer;
@@ -33,6 +40,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 
 /**
@@ -42,6 +50,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class Aptitud_Medico_Ocupacional11 extends javax.swing.JInternalFrame {    
     clsConnection oConn = new clsConnection();
     clsFunciones  oFunc = new clsFunciones();
+    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     
     public Aptitud_Medico_Ocupacional11() {
         initComponents();
@@ -1451,7 +1460,11 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
 
     private void btnImprimir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir1ActionPerformed
         if(!txtImprimir1.getText().isEmpty()){
-            print1(Integer.valueOf(txtImprimir1.getText().toString()));
+            try {
+                print1(Integer.valueOf(txtImprimir1.getText().toString()));
+            } catch (IOException ex) {
+                Logger.getLogger(Aptitud_Medico_Ocupacional11.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnImprimir1ActionPerformed
 
@@ -1525,12 +1538,12 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
   private boolean Grabar() throws SQLException{
         boolean bResult = false;
          String strSqlStmt ="INSERT INTO aptitud_medico_ocupacional11(n_orden,cod_pa, fecha, nom_medico, atxtrestricciones, chkapto, "
-               + "chkapto_restriccion,chkno_apto,chkevaluado,chkconobservacion,horasalida,fecha_hasta,txtrecomendaciones,txtconclusiones )";       
+               + "chkapto_restriccion,chkno_apto,chkevaluado,chkconobservacion,horasalida,fecha_hasta,txtrecomendaciones,txtconclusiones,user_registro )";       
             strSqlStmt+= "values ("+ txtNorden.getText()+",'"+txtDni.getText()+"','"+Fecha.getDate()+
                     "','"+txtCertifica.getText()+"','"+atxtRestricciones.getText()+  "','"+chkApto.isSelected()+
                     "','"+chkRestriccion.isSelected()+  "','"+chkNoApto.isSelected()+ "','"+ chkEvaluado.isSelected()+ 
                     "','"+chkConObservacion.isSelected()+ "','"+lblHora.getText()+"'"
-                    + ",'"+FechaHasta.getDate()+"','"+atxtRecomendaciones.getText()+"','"+atxtConclusiones.getText()+"')";      
+                    + ",'"+FechaHasta.getDate()+"','"+atxtRecomendaciones.getText()+"','"+atxtConclusiones.getText()+"','"+clsGlobales.sUser+"')";      
 //       String strSqlStmt ="INSERT INTO certificado_aptitud_medico_ocupacional(n_orden,cod_pa, fecha, nom_medico, atxtrestricciones, chkapto, chkapto_restriccion,chkno_apto,horasalida,fecha_hasta )";       
 //            strSqlStmt+= "values ('"+ txtNorden.getText().toString()+"','"+txtDni.getText().toString()+"','"+Fecha.getDate().toString()+
 //                    "','"+txtCertifica.getText().toString()+"','"+atxtRestricciones.getText().toString()+  "','"+chkApto.isSelected()+
@@ -1643,14 +1656,52 @@ private void Limpiar(){
                  
  
  }
-   private void print1(Integer cod){
+   private void print1(Integer cod) throws IOException{
 
-                Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+                String dniUsuario=oPe.consultarDni("aptitud_medico_ocupacional11", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ResumenAnexo7C_OHLA.jasper";
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }
+              
+        try {
+            String direccionReporte="";
+            if( base64Sello.contains("OTROJASPER")){
+
+             direccionReporte= System.getProperty("user.dir")
+                    + "/reportes/ResumenAnexo7C_OHLA.jasper";
+            }
+            else
+             direccionReporte= System.getProperty("user.dir")
+                    + "/reportes/ResumenAnexo7C_OHLA_Digitalizado.jasper";                
+                
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
