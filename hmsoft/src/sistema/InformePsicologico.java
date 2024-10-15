@@ -3866,15 +3866,25 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkI2ActionPerformed
 
     private void chkI3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI3ActionPerformed
-        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL NORMAL INFERIOR.\n");
+        //atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL NORMAL INFERIOR.\n");
+    if (chkI3.isSelected()) {
+        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL NORMAL INFERIOR. \n");
+    } else {
+        atxtIntelectual.setText(""); 
+    }
     }//GEN-LAST:event_chkI3ActionPerformed
 
     private void chkI4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI4ActionPerformed
-        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL ALTO.\n");
+      //  atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL ALTO.\n");
+    if (chkI4.isSelected()) {
+        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL ALTO. \n");
+    } else {
+        atxtIntelectual.setText(""); 
+    }  
     }//GEN-LAST:event_chkI4ActionPerformed
 
     private void chkI12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI12ActionPerformed
-        atxtIntelectual.append("- POSEE UN NIVEL ALTO EN COMPRENSION VERBAL ");
+    atxtIntelectual.append("- POSEE UN NIVEL ALTO EN COMPRENSION VERBAL ");
     }//GEN-LAST:event_chkI12ActionPerformed
 
     private void chkI13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI13ActionPerformed
@@ -3938,7 +3948,7 @@ public final class InformePsicologico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_chkP5ActionPerformed
 
     private void chkI5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI5ActionPerformed
-        atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO SUPERIOR.\n");
+       // atxtIntelectual.setText("- EL EVALUADO POSEE UN NIVEL INTELECTUAL PROMEDIO SUPERIOR.\n");
     }//GEN-LAST:event_chkI5ActionPerformed
 
     private void chkI6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkI6ActionPerformed
