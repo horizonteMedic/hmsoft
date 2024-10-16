@@ -357,6 +357,61 @@ public void vExamenes(String Nro){
    // txtEtipoExamen.setEditable(true);
         txtNorden.requestFocus();
     }
+   
+        private void habilitar(){
+    
+    btnTriaje.setEnabled(true);
+    btnLaboratorio.setEnabled(true);
+    btnElectro.setEnabled(true);
+    btnRadiografia.setEnabled(true);
+    btnAudiologia.setEnabled(true);
+    btnAudiometria.setEnabled(true);
+    btnEspirometria.setEnabled(true);
+    btnOdontograma.setEnabled(true);
+    btnPsicologia.setEnabled(true);
+    btnAnexo7D.setEnabled(true);
+    btnHistoriaOcupacional.setEnabled(true);
+    btnFichaAP.setEnabled(true);
+    btnCuestionario.setEnabled(true);
+    btnCertiAltura.setEnabled(true);
+    btnDosaje.setEnabled(true);
+    btnSas.setEnabled(true);
+    btnAnexo7C.setEnabled(true);
+    btnExRxSanguineos.setEnabled(true);
+    btnOftalmologia.setEnabled(true);
+    //modificacion
+    btnCertTrabAltBarrick.setEnabled(true);
+    btnCertCondVehBarrick.setEnabled(true);
+    btnUsoRespirador.setEnabled(true);
+    btnAcctitudMedOcupa.setEnabled(true);
+    btnFichaOIT.setEnabled(true);
+    btnCuestAudiometria.setEnabled(true);
+    btnMusculoEsqueletico.setEnabled(true);
+   
+    btnFichaMedicaAgro.setEnabled(true);
+
+    btnAudiometria2021.setEnabled(true);
+    btnEvMuscEsqueletico.setEnabled(true);
+    btnCertAlturaPs.setEnabled(true);
+    btnTestFatSomnolencia.setEnabled(true);
+    btnEvalOftalmologica.setEnabled(true);
+    btnCertManipuladores.setEnabled(true);
+    btnAptitudAPS.setEnabled(true);
+    btnCerLicenciaPS.setEnabled(true);
+    btnConsultaExPS.setEnabled(true);
+    btnCertTrabCalientePS.setEnabled(true);
+    btnPerfilBio.setEnabled(true);
+    btnCertiAptiOH.setEnabled(true);
+    btnElectroCardOH.setEnabled(true);
+    btnEnfermAltu.setEnabled(true);
+    //
+    txtNorden.setEditable(true);
+   // txtENombre.setEditable(true);
+   // txtEtipoExamen.setEditable(true);
+        txtNorden.requestFocus();
+    }
+   
+    
     public void verifica(String orden){
         if (!orden.isEmpty()) {
             if (OrdenExiste(orden)) {
@@ -665,7 +720,7 @@ public boolean OrdenExiste(String orden)
                 btnLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 1, 27, -1));
+        getContentPane().add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 4, 27, 20));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 26, 1297, -1));
 
         jLabel143.setText("Hist. Ocupacional : ");
@@ -1741,7 +1796,8 @@ public void cerrarVentana(){
         return p;
     }
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        Limpiar2();
+        //Limpiar2();
+        habilitar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
     private void btnTriajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTriajeActionPerformed
           
