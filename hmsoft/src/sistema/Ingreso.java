@@ -485,12 +485,15 @@ int key = evt.getKeyCode();
                             Ingreso.this.dispose();
                             JOptionPane.showMessageDialog(null, "Bienvenido al Sistema " + clsGlobales.sNomOperador);
                             String user = oConn.setResult.getString("usuario_user");
-                            if ("JAZABACHE".equals(user) || "HM".equals(user) || "AGARCIA".equals(user) || "KREYES".equals(user)
+                           /* if ("JAZABACHE".equals(user) || "HM".equals(user) || "AGARCIA".equals(user) || "KREYES".equals(user)
                                     || "MHERRERA".equals(user) || "JPOMA".equals(user) || "VERAG".equals(user)
                                     || "MPAZ".equals(user) || "MMARIÑOS".equals(user) || "JCARDENAS".equals(user)
                                     || "HCERNA".equals(user) || "JCERQUIN".equals(user) || "JCORDOVAP".equals(user)
                                     || "JCORDOVA".equals(user) || "KGUEVARA".equals(user) || "lobo".equals(user) || "MGAMBOA".equals(user)
-                                    || "KCANTARO".equals(user)|| "JBRINGAS".equals(user)||"PQUISPE".equals(user)||"DEVELOPER".equals(user)) {
+                                    || "KCANTARO".equals(user)|| "JBRINGAS".equals(user)||"PQUISPE".equals(user)||"DEVELOPER".equals(user)) 
+                           */
+                           if(true)
+                           {
                                 Ocupacional1 s = new Ocupacional1();
                                 s.setVisible(true);
 

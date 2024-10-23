@@ -6,14 +6,21 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import com.toedter.calendar.JDateChooser;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JRException;
@@ -23,6 +30,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -1552,13 +1560,21 @@ public class Parasitologia extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_FechaExPropertyChange
 
     private void txtImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImprimirActionPerformed
-        // TODO add your handling code here:
-        print (Integer.parseInt(txtImprimir.getText()));
+        try {
+            // TODO add your handling code here:
+            print (Integer.parseInt(txtImprimir.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(Parasitologia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_txtImprimirActionPerformed
 
     private void btnImprimir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir1ActionPerformed
-        // TODO add your handling code here:
-        print (Integer.parseInt(txtImprimir.getText()));
+        try {
+            // TODO add your handling code here:
+            print (Integer.parseInt(txtImprimir.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(Parasitologia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimir1ActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -2362,7 +2378,7 @@ public class Parasitologia extends javax.swing.JInternalFrame {
 "            txtrestosa, txtleucocitos, txthematies, txtlugol, txtcolor1, \n" +
 "            txtaspecto1, txtmoco_fecal1, txtsangrev1, txtrestosa1, txtleucocitos1, \n" +
 "            txthematies1, txtlugol1, txtcolor2, txtaspecto2, txtmoco_fecal2, \n" +
-"            txtsangrev2, txtrestosa2, txtleucocitos2, txthematies2, txtlugol2,txtgrasa,txtgrasa1,txtgrasa2)";
+"            txtsangrev2, txtrestosa2, txtleucocitos2, txthematies2, txtlugol2,txtgrasa,txtgrasa1,txtgrasa2,user_registro)";
         strSqlStmt += " values(" + txtNorden.getText() + ",'"
                 + FechaEx.getDate() + "','"
                 + txtColor.getText() + "','"
@@ -2391,8 +2407,7 @@ public class Parasitologia extends javax.swing.JInternalFrame {
                 + txtLugol2.getText() + "','"
                 + txtGrasa.getText() + "','"
                 + txtGrasa1.getText() + "','"
-                + txtGrasa2.getText() + "'"
-                + " ) ";
+                + txtGrasa2.getText() + "','"+clsGlobales.sUser+"') ";
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
 //                   oConn.setResult.next();
             oFunc.SubSistemaMensajeInformacion("Examen Registrada");
@@ -2528,7 +2543,11 @@ public class Parasitologia extends javax.swing.JInternalFrame {
             {
            if((seleccion + 1)==1)
            {
-              printer(Integer.valueOf(txtNorden.getText()));
+               try {
+                   printer(Integer.valueOf(txtNorden.getText()));
+               } catch (IOException ex) {
+                   Logger.getLogger(Parasitologia.class.getName()).log(Level.SEVERE, null, ex);
+               }
                im = true;
            }
            else
@@ -2539,19 +2558,57 @@ public class Parasitologia extends javax.swing.JInternalFrame {
             return im;
 
         }
-    private void printer(Integer cod) {
+    private void printer(Integer cod) throws IOException {
+        String dniUsuario=oPe.consultarDni("ac_coproparasitologico", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        String direccionReporte;
-        try {
-            if(jCheckBox1.isSelected()){
-                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico.jasper";
-            }else{
-                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
-            }
-                    
-            
-            
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
+                    if(jCheckBox1.isSelected()){
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico.jasper";
+                    }else{
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
+                    }
+                   }
+                   else{
+                    if(jCheckBox1.isSelected()){
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico_Digitalizado.jasper";
+                    }else{
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado_Digitalizado.jasper";
+                    }
+                   }
+
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
 
@@ -2562,17 +2619,57 @@ public class Parasitologia extends javax.swing.JInternalFrame {
         }
     }
 
-    private void print(Integer cod) {
+    private void print(Integer cod) throws IOException {
 
+        String dniUsuario=oPe.consultarDni("ac_coproparasitologico", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        String direccionReporte;
-        try {
-            if(jCheckBox1.isSelected()){
-                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico.jasper";
-            }else{
-                direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
-            }
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
+                    if(jCheckBox1.isSelected()){
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico.jasper";
+                    }else{
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado.jasper";
+                    }
+                   }
+                   else{
+                    if(jCheckBox1.isSelected()){
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "Coproparasitologico_Digitalizado.jasper";
+                    }else{
+                    direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "ParasitologiaSeriado_Digitalizado.jasper";
+                    }
+                   }
             
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);

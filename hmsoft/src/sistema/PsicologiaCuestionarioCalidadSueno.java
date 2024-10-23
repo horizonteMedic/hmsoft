@@ -8,11 +8,18 @@ import Clases.clsConnection;
 import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +30,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -2403,7 +2411,10 @@ public class PsicologiaCuestionarioCalidadSueno extends javax.swing.JInternalFra
               strSqlStmt += ",criterio_11_2";Query += ",'"+criterio_11_2.isSelected()+ "'";
               strSqlStmt += ",criterio_11_3";Query += ",'"+criterio_11_3.isSelected()+ "'";
               strSqlStmt += ",criterio_11_4";Query += ",'"+criterio_11_4.isSelected()+ "'";
+              strSqlStmt += ",user_registro";Query += ",'"+clsGlobales.sUser+"'";
 
+              
+              
               System.out.println("el comando es: " + strSqlStmt.concat(") ") + Query.concat(")"));
                 
                                   
@@ -2460,8 +2471,12 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer1(num);
+       try {
+           printer1(num);
 //       im = true;
+       } catch (IOException ex) {
+           Logger.getLogger(PsicologiaCuestionarioCalidadSueno.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -2472,13 +2487,49 @@ int seleccion = JOptionPane.showOptionDialog(
 
 }
 
-private void printer1(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("n_orden",cod);      
-                 try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/CUESTIONARIO_CALIDAD_DE_SUEÑO.jasper";
+private void printer1(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("calidad_sueño", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String master="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CUESTIONARIO_CALIDAD_DE_SUEÑO.jasper";                 
+                    }
+                   else{
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"CUESTIONARIO_CALIDAD_DE_SUEÑO_Digitalizado.jasper";  
+                   }
+ 
             
             System.out.println("master" + master);
             if (master == null) 

@@ -6,6 +6,7 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import autocomplete.AutoCompleteDBLink;
 import autocomplete.AutoTextComplete;
@@ -14,7 +15,12 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -33,6 +40,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import org.jdom.Parent;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -696,7 +704,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                 if (validar()){
                     String Sql ="INSERT INTO Especificos(\n" +
                     "n_orden, criterio_Nivel_alert_riesgo, criterio_Nivel_psicomotrocidad, analisis_foda_forta_oport, analisis_foda_amenaz_debili, observaciones, \n" +
-                    "recomendaciones, perf_cumple, perf_no_cumple)" ;
+                    "recomendaciones, perf_cumple, perf_no_cumple,user_registro)" ;
                     Sql+="Values('"
                     +n_orden.getText()+"','"                    
                     +criterio_Nivel_alert_riesgo.getText()+ "','"
@@ -706,7 +714,7 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
                     +observaciones.getText()+"','"
                     +recomendaciones.getText()+"','"
                     +perf_cumple.isSelected()+"','"
-                    +perf_no_cumple.isSelected()+"')";
+                    +perf_no_cumple.isSelected()+"','"+clsGlobales.sUser+"')";
                     //oFunc.SubSistemaMensajeInformacion(Sql);
                     if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                         //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
@@ -828,7 +836,11 @@ public final class PsicoTrabajoEspecificos extends javax.swing.JInternalFrame {
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         // TODO add your handling code here:
         if(OrdenImp()){
-           print (Integer.valueOf(imprimir.getText()));
+            try {
+                print (Integer.valueOf(imprimir.getText()));
+            } catch (IOException ex) {
+                Logger.getLogger(PsicoTrabajoEspecificos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else{
            oFunc.SubSistemaMensajeError("Codigo no existe"); 
         }
@@ -995,21 +1007,49 @@ public boolean OrdenExiste()
 
 
 
- private void print(Integer cod){
-  //Integer n;
-               //n = Integer.parseInt(txtNorden.getText());
-                //Pasamos parametros al reporte Jasper. 
-                Map parameters = new HashMap(); 
+ private void print(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("Especificos", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
 
-                // Coloco los valores en los parámetros
-                parameters.put("n_orden",cod);             
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
 
-                try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/TRABAJOS_EN_ESPECIFICO.jasper";
-                         
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String master="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"TRABAJOS_EN_ESPECIFICO.jasper";                 
+                    }
+                   else{
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"TRABAJOS_EN_ESPECIFICO_Digitalizado.jasper";  
+                   }
+               
 
             System.out.println("master" + master);
             if (master == null) 
@@ -1063,7 +1103,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(num);
+       try {
+           printer(num);
+       } catch (IOException ex) {
+           Logger.getLogger(PsicoTrabajoEspecificos.class.getName()).log(Level.SEVERE, null, ex);
+       }
       
    }
    else
@@ -1074,13 +1118,48 @@ int seleccion = JOptionPane.showOptionDialog(
 
 }
 
-private void printer(Integer cod) {
-        Map parameters = new HashMap();
-        parameters.put("n_orden", cod);
-        try {
-            String master = System.getProperty("user.dir")
-                    + "/reportes/TRABAJOS_EN_ESPECIFICO.jasper";
+private void printer(Integer cod) throws IOException {
+       String dniUsuario=oPe.consultarDni("Especificos", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
 
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String master="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"TRABAJOS_EN_ESPECIFICO.jasper";                 
+                    }
+                   else{
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"TRABAJOS_EN_ESPECIFICO_Digitalizado.jasper";  
+                   }
             System.out.println("master" + master);
             if (master == null) {
                 System.out.println("No encuentro el archivo del ficha psicologicaespecificos.");

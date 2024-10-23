@@ -7,21 +7,31 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
+import Clases.clsOperacionesUsuarios;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 public final class ConsentimientoDosajeMCBoroo extends javax.swing.JInternalFrame {
-
+    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     clsConnection oConn = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
     DefaultTableModel model;
@@ -588,7 +598,11 @@ public final class ConsentimientoDosajeMCBoroo extends javax.swing.JInternalFram
     private void tbConsentimientoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbConsentimientoMousePressed
         if (evt.getClickCount() == 2) {
             Integer num = Integer.valueOf(tbConsentimiento.getValueAt(tbConsentimiento.getSelectedRow(), 0).toString());
-            reporte(num);
+            try {
+                reporte(num);
+            } catch (IOException ex) {
+                Logger.getLogger(ConsentimientoDosajeMCBoroo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_tbConsentimientoMousePressed
 
@@ -603,12 +617,89 @@ public final class ConsentimientoDosajeMCBoroo extends javax.swing.JInternalFram
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDniActionPerformed
-    private void reporte(Integer cod) {
+    private void reporte(Integer cod) throws IOException {
+                String dniUsuario=oPe.consultarDni("consentimiento_dosaje_boroo", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("consentimiento_dosaje_boroo", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        try {
-            String master = System.getProperty("user.dir")
-                    + "/reportes/ConsentimientoDosajeBoroo.jasper";
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
+                    try 
+                {   
+                    String master="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ConsentimientoDosajeBoroo.jasper";}
+                     else
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ConsentimientoDosajeBoroo_Digitalizado.jasper";
+   
+ 
 
             System.out.println("master" + master);
             if (master == null) {
@@ -787,7 +878,7 @@ private boolean Grabar() throws SQLException {
         String strSqlStmt = "INSERT INTO consentimiento_dosaje_boroo(n_orden, chk1_si, chk1_no, chk2_si, chk2_no, chk3_si, \n"
                 + "            chk3_no, txt_chk3, chk4_si, chk4_no, txt_chk4, chk5_si, chk5_no, \n"
                 + "            txt_chk5, chk6_si, chk6_no, txt_chk6, chk7_si, chk7_no, txt_chk7, \n"
-                + "            txt_chk71, txt_chk72, fecha_dosaje, edad_dosaje)";
+                + "            txt_chk71, txt_chk72, fecha_dosaje, edad_dosaje,user_registro)";
         strSqlStmt += "values ('" + txtNorden.getText() + "','";
         strSqlStmt += chk1_SI.isSelected() + "','" + chk1_NO.isSelected() + "','";
         strSqlStmt += chk2_SI.isSelected() + "','" + chk2_NO.isSelected() + "','";
@@ -802,7 +893,7 @@ private boolean Grabar() throws SQLException {
         strSqlStmt += chk7_SI.isSelected() + "','" + chk7_NO.isSelected() + "','";
         strSqlStmt += txt_chk7.getText() + "','" + txt_chk71.getText() + "','";
         strSqlStmt += txt_chk72.getText() + "','" + FechaDosaje.getDate() + "','";
-        strSqlStmt += txtEdad.getText() + "')";
+        strSqlStmt += txtEdad.getText() + "','"+clsGlobales.sUser+"')";
 
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
 
@@ -889,19 +980,100 @@ private boolean Grabar() throws SQLException {
                 "Si");
         if (seleccion != -1) {
             if ((seleccion + 1) == 1) {
-                printer(Integer.valueOf(txtNorden.getText()));
+                try {
+                    printer(Integer.valueOf(txtNorden.getText()));
+                } catch (IOException ex) {
+                    Logger.getLogger(ConsentimientoDosajeMCBoroo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } else {
                 // PRESIONO NO
             }
         }
     }
 
-    private void printer(Integer cod) {
+    private void printer(Integer cod) throws IOException {
+                String dniUsuario=oPe.consultarDni("consentimiento_dosaje_boroo", String.valueOf(cod));
+                String dniPaciente=oPe.consultarDniPaciente("consentimiento_dosaje_boroo", "n_orden", String.valueOf(cod));
+                String base64Huella="";
+                String base64FirmaP="";
+                String base64Sello=""; 
+       try {
+           base64Huella = oPe.consumirApiHuella(dniPaciente);
+           base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        try {
-            String master = System.getProperty("user.dir")
-                    + "/reportes/ConsentimientoDosajeBoroo.jasper";
+               if(!base64Huella.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Huella);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("HuellaP",stream);             
+              }
+              if(!base64FirmaP.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64FirmaP);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("FirmaP",stream);             
+              }
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }    
+                    try 
+                {   
+                    String master="";
+                    if(base64Huella.contains("OTROJASPER") || base64FirmaP.contains("OTROJASPER") || base64Sello.contains("OTROJASPER")){
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ConsentimientoDosajeBoroo.jasper";}
+                     else
+                     master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"ConsentimientoDosajeBoroo_Digitalizado.jasper";
+   
+ 
             System.out.println("master" + master);
             if (master == null) {
                 System.out.println("No encuentro el archivo del reporte Consentimiento Dosaje.");

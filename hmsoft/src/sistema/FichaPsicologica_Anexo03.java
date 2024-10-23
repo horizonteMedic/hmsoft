@@ -12,7 +12,12 @@ import Clases.clsFunciones;
 import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -35,6 +41,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -46,6 +53,7 @@ public final class FichaPsicologica_Anexo03 extends javax.swing.JInternalFrame {
     clsConnection oConn = new clsConnection();
     clsFunciones oFunc = new clsFunciones();
     clsOperacionesUsuarios oPu = new clsOperacionesUsuarios();
+    clsOperacionesUsuarios oPe = new clsOperacionesUsuarios();
     
     boolean ordenVer=true;
      DefaultTableModel model;
@@ -1874,13 +1882,21 @@ FechaFicha.setDate(fechaDate);
 
     private void txtIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIMPActionPerformed
         if(!txtIMP.getText().isEmpty()){
-            print(Integer.valueOf(txtIMP.getText()));
+            try {
+                print(Integer.valueOf(txtIMP.getText()));
+            } catch (IOException ex) {
+                Logger.getLogger(FichaPsicologica_Anexo03.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_txtIMPActionPerformed
 
     private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
         if(!txtIMP.getText().isEmpty()){
-            print(Integer.valueOf(txtIMP.getText()));
+            try {
+                print(Integer.valueOf(txtIMP.getText()));
+            } catch (IOException ex) {
+                Logger.getLogger(FichaPsicologica_Anexo03.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jLabel44MouseClicked
    
@@ -2318,6 +2334,8 @@ FechaFicha.setDate(fechaDate);
             values += ",'"+txtAreaCognitiva.getText()+"'";
             insert += ",area_emocional "; 
             values += ",'"+txtAreaEmocional.getText()+"'";
+            insert += ",user_registro"; 
+            values += ",'"+clsGlobales.sUser+"'";            
                 //oFunc.SubSistemaMensajeInformacion(insert.concat(")") + values.concat(")"));
                 if (oConn.FnBoolQueryExecute(insert.concat(")") + values.concat(") RETURNING cod_anexo03"))) {
                     oConn.setResult.next();
@@ -2794,7 +2812,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printer(Integer.valueOf(txtNorden.getText().toString()));
+       try {
+           printer(Integer.valueOf(txtNorden.getText().toString()));
+       } catch (IOException ex) {
+           Logger.getLogger(FichaPsicologica_Anexo03.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -2803,11 +2825,48 @@ int seleccion = JOptionPane.showOptionDialog(
     }
 
 }
-private void printer(Integer cod){
-                Map parameters = new HashMap();
-    parameters.put("Norden", cod);
-    try {
-        String master = System.getProperty("user.dir")+ "/reportes/FichaPsicologicaOcupacional.jasper";
+private void printer(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("ficha_psicologica_anexo03", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String master="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"FichaPsicologicaOcupacional.jasper";                 
+                    }
+                   else{
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"FichaPsicologicaOcupacional_Digitalizado.jasper";  
+                   }
         System.out.println("master" + master);
         if (master == null) {
             System.out.println("No encuentro el archivo Anexo7D.");
@@ -2833,13 +2892,48 @@ private void printer(Integer cod){
 
  
  }
-private void print(Integer cod){
-  Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);             
+private void print(Integer cod) throws IOException{
+   String dniUsuario=oPe.consultarDni("ficha_psicologica_anexo03", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"FichaPsicologicaOcupacional.jasper";
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"FichaPsicologicaOcupacional.jasper";                 
+                    }
+                   else{
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"FichaPsicologicaOcupacional_Digitalizado.jasper";  
+                   }
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);

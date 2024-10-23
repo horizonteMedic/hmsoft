@@ -6,6 +6,7 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import autocomplete.AutoCompleteDBLink;
 import autocomplete.AutoTextComplete;
@@ -15,7 +16,12 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -34,6 +41,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import org.jdom.Parent;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -1136,7 +1144,11 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             {
            if((seleccion + 1)==1)
            {
-              printer(Integer.valueOf(n_orden.getText()));
+               try {
+                   printer(Integer.valueOf(n_orden.getText()));
+               } catch (IOException ex) {
+                   Logger.getLogger(PsicologiaAversionRiesgo.class.getName()).log(Level.SEVERE, null, ex);
+               }
                im = true;
            }
            else
@@ -1373,7 +1385,9 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                 strSqlStmt += ",recomendaciones";Query += ",'"+    recomendaciones.getText()+"'";
                 strSqlStmt += ",conclusiones_cumple";Query += ",'"+    conclusiones_cumple.isSelected()+"'";         
                 strSqlStmt += ",conclusiones_no_cumple";Query += ",'"+    conclusiones_no_cumple.isSelected()+"'";  
+                strSqlStmt += ",user_registro";Query += ",'"+clsGlobales.sUser+"'";  
                     
+                
                 System.out.println("el comando es: " + strSqlStmt.concat(") ") + Query.concat(")"));
 //        
              if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))){
@@ -1398,12 +1412,48 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
             }
     }
    
-       private void printer(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("n_orden",cod);      
+       private void printer(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("Aversionalriesgo", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
                     try 
-                {                     
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_EVALUACIÓN_PSICOLÓGICA_DE_AVERSIÓN_AL_RIESGO.jasper";
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_EVALUACIÓN_PSICOLÓGICA_DE_AVERSIÓN_AL_RIESGO.jasper";                 
+                    }
+                   else{
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_EVALUACIÓN_PSICOLÓGICA_DE_AVERSIÓN_AL_RIESGO_Digitalizado.jasper";  
+                   }             
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     
@@ -1413,14 +1463,49 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
    }
-       private void print(Integer cod){
+       private void print(Integer cod) throws IOException{
+       String dniUsuario=oPe.consultarDni("Aversionalriesgo", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
 
-                Map parameters = new HashMap(); 
-                parameters.put("n_orden",cod);             
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
-                  try 
-                {
-                    String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_EVALUACIÓN_PSICOLÓGICA_DE_AVERSIÓN_AL_RIESGO.jasper";
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_EVALUACIÓN_PSICOLÓGICA_DE_AVERSIÓN_AL_RIESGO.jasper";                 
+                    }
+                   else{
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"INFORME_DE_EVALUACIÓN_PSICOLÓGICA_DE_AVERSIÓN_AL_RIESGO_Digitalizado.jasper";  
+                   }             
+
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
                     JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
                     JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -1586,13 +1671,21 @@ public final class PsicologiaAversionRiesgo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_FechaEvaluacionPropertyChange
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
-        // TODO add your handling code here:
-        print (Integer.valueOf(imprimir.getText()));
+        try {
+            // TODO add your handling code here:
+            print (Integer.valueOf(imprimir.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(PsicologiaAversionRiesgo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void btnImprimir5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir5ActionPerformed
-        // TODO add your handling code here:
-        print (Integer.valueOf(imprimir.getText()));
+        try {
+            // TODO add your handling code here:
+            print (Integer.valueOf(imprimir.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(PsicologiaAversionRiesgo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimir5ActionPerformed
 
     private void conclusiones_no_cumpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conclusiones_no_cumpleActionPerformed

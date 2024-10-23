@@ -550,7 +550,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldPswActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-               if(jTextFieldDni.getText().toString().length()>1)
+               if(jTextFieldDni.getText().toString().length()>=1)
         {
         FileNameExtensionFilter filtro= new FileNameExtensionFilter("Solo imagenes","png","jpg");
 

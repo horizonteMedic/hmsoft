@@ -6,12 +6,19 @@ package sistema;
 import Caja.RegistrarCliente;
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import autocomplete.AutoCompleteDBLink;
 import autocomplete.AutoTextComplete;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -29,6 +37,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdom.Parent;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -1676,7 +1685,11 @@ public final class InformePsicologicoPoderosa extends javax.swing.JInternalFrame
     }//GEN-LAST:event_btnLimpiarEPActionPerformed
 
     private void txtImpEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtImpEPActionPerformed
-        printerEP(Integer.parseInt(txtImpEP.getText()));
+        try {
+            printerEP(Integer.parseInt(txtImpEP.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(InformePsicologicoPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_txtImpEPActionPerformed
 
     private void txtImpEPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtImpEPKeyTyped
@@ -1684,7 +1697,11 @@ public final class InformePsicologicoPoderosa extends javax.swing.JInternalFrame
     }//GEN-LAST:event_txtImpEPKeyTyped
 
     private void btnIMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMPActionPerformed
-        printerEP(Integer.parseInt(txtImpEP.getText()));
+        try {
+            printerEP(Integer.parseInt(txtImpEP.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(InformePsicologicoPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnIMPActionPerformed
 
     private void btnAgregarEPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEPActionPerformed
@@ -1701,7 +1718,7 @@ public final class InformePsicologicoPoderosa extends javax.swing.JInternalFrame
 "            rbp8, rbp9, rbp10, rbp11, rbp12, rbp13, rbp14, rbp15, rbp16, \n" +
 "            rbp17, rbp18, rbp19, rbp20, rbp21, rbp22, rbp23, rbp24, rbp25, \n" +
 "            txtfortalezas_o, txtamenazas_d, txtobservaciones, txtrecomendaciones, \n" +
-"            rbapto, rbnoapto, rbexcelente, rbapto_observacion,chklicencia,chktrabcalientes)\n" +
+"            rbapto, rbnoapto, rbexcelente, rbapto_observacion,chklicencia,chktrabcalientes,user_registro)\n" +
             "    VALUES ('"+txtNordenEP.getText()+"', '"+txtEdadEP.getText()+"','"+FechaEntrevistaEP.getDate()+"',"
           + " '"+rbCoefIntelectual_S.isSelected()+"', '"+rbCoefIntelectual_NPS.isSelected()+"', '"+rbCoefIntelectual_NP.isSelected()+"',"
           + " '"+rbCoefIntelectual_NPI.isSelected()+"', '"+rbCoefIntelectual_I.isSelected()+"', '"+rbComp_S.isSelected()+"', \n" +
@@ -1731,7 +1748,7 @@ public final class InformePsicologicoPoderosa extends javax.swing.JInternalFrame
               + "'"+rbNoEP.isSelected()+"','"+rbExcelente.isSelected()+"',"
               + "'"+rbAptoconObservacion.isSelected()+"',"
               + "'"+chkLicencia.isSelected()+"',"
-              + "'"+chkTrabCalientes.isSelected()+"');";
+              + "'"+chkTrabCalientes.isSelected()+"','"+clsGlobales.sUser+"');";
 //                     oFunc.SubSistemaMensajeInformacion(Sql);
                       if (oConn.FnBoolQueryExecuteUpdate(Sql)){
                 //oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
@@ -2030,20 +2047,49 @@ public boolean OrdenExisteEP()
         return bResultado;        
     }
 
- private void print(Integer cod){
-  //Integer n;
-               //n = Integer.parseInt(txtNorden.getText());
-                //Pasamos parametros al reporte Jasper. 
-                Map parameters = new HashMap(); 
+ private void print(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("evaluacion_psicologica_poderosa", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
 
-                // Coloco los valores en los parámetros
-                parameters.put("Norden",cod);             
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
                 
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
 
-                try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/InformePsicologico.jasper";
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String master="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"InformePsicologico.jasper";                 
+                    }
+                   else{
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"InformePsicologico_Digitalizado.jasper";  
+                   }
+
             
             System.out.println("master" + master);
             if (master == null) 
@@ -2095,7 +2141,11 @@ int seleccion = JOptionPane.showOptionDialog(
     {
    if((seleccion + 1)==1)
    {
-      printerEP(Integer.valueOf(txtNordenEP.getText()));
+       try {
+           printerEP(Integer.valueOf(txtNordenEP.getText()));
+       } catch (IOException ex) {
+           Logger.getLogger(InformePsicologicoPoderosa.class.getName()).log(Level.SEVERE, null, ex);
+       }
    }
    else
    {
@@ -2104,14 +2154,50 @@ int seleccion = JOptionPane.showOptionDialog(
     }
 
 }
- private void printerEP(Integer cod){
-                 Map parameters = new HashMap(); 
-                parameters.put("Norden",cod);      
-                 try 
-                {
-                    String master = System.getProperty("user.dir") +
-                                "/reportes/EvaluacionPsicologica_p.jasper";
-            
+ private void printerEP(Integer cod) throws IOException{
+        String dniUsuario=oPe.consultarDni("evaluacion_psicologica_poderosa", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
+        Map parameters = new HashMap();
+        parameters.put("Norden", cod);
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String master="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"EvaluacionPsicologica_p.jasper";                 
+                    }
+                   else{
+                       master = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"EvaluacionPsicologica_p_Digitalizado.jasper";  
+                   }
+
+
             System.out.println("master" + master);
             if (master == null) 
             {                

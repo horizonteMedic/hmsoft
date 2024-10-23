@@ -6,14 +6,21 @@ package sistema;
 
 import Clases.clsConnection;
 import Clases.clsFunciones;
+import Clases.clsGlobales;
 import Clases.clsOperacionesUsuarios;
 import com.toedter.calendar.JDateChooser;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JRException;
@@ -23,6 +30,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import sun.misc.BASE64Decoder;
 
 /**
  *
@@ -482,8 +490,12 @@ public class PerfilHepatico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtImprimir1ActionPerformed
 
     private void btnImprimir6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimir6ActionPerformed
-        // TODO add your handling code here:
-        print (Integer.parseInt(txtImprimir1.getText()));
+        try {
+            // TODO add your handling code here:
+            print (Integer.parseInt(txtImprimir1.getText()));
+        } catch (IOException ex) {
+            Logger.getLogger(PerfilHepatico.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimir6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -690,7 +702,11 @@ public class PerfilHepatico extends javax.swing.JInternalFrame {
             {
            if((seleccion + 1)==1)
            {
-              printer(Integer.valueOf(txtNorden.getText().toString()));
+               try {
+                   printer(Integer.valueOf(txtNorden.getText().toString()));
+               } catch (IOException ex) {
+                   Logger.getLogger(PerfilHepatico.class.getName()).log(Level.SEVERE, null, ex);
+               }
                im = true;
            }
            else
@@ -701,12 +717,49 @@ public class PerfilHepatico extends javax.swing.JInternalFrame {
             return im;
 
         }
-    private void printer(Integer cod) {
+    private void printer(Integer cod) throws IOException {
+        String dniUsuario=oPe.consultarDni("perfil_hepatico", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        String direccionReporte;
-        try {
-            direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "PerfilHepatico.jasper";
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"PerfilHepatico.jasper";                 
+                    }
+                   else{
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"PerfilHepatico_Digitalizado.jasper"; 
+                      
+                   }   
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
             JasperPrintManager.printReport(jasperPrint, true);
@@ -716,13 +769,49 @@ public class PerfilHepatico extends javax.swing.JInternalFrame {
         }
     }
 
-    private void print(Integer cod) {
+    private void print(Integer cod) throws IOException {
+        String dniUsuario=oPe.consultarDni("perfil_hepatico", String.valueOf(cod));
+                String base64Sello=""; 
+       try {
+
+           base64Sello=oPe.consumirApiSello(String.valueOf(dniUsuario));           
+       } catch (Exception ex) {
+           Logger.getLogger(AntecedentesPatologicos.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+                
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        String direccionReporte;
-        try {
-            direccionReporte= System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "PerfilHepatico.jasper";
-            
+
+              if(!base64Sello.contains("OTROJASPER"))
+              {
+                BufferedImage image = null;
+                byte[] imageByte;
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64Sello);
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+                
+                
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "png", baos); 
+                InputStream stream = new ByteArrayInputStream(baos.toByteArray());
+                
+                
+                parameters.put("Sello",stream);             
+              }   
+                    try 
+                {    
+                    String direccionReporte="";
+                   if( base64Sello.contains("OTROJASPER")){
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"PerfilHepatico.jasper";                 
+                    }
+                   else{
+                       direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"PerfilHepatico_Digitalizado.jasper"; 
+                      
+                   } 
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint myPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
             JasperViewer viewer = new JasperViewer(myPrint, false);
@@ -772,7 +861,7 @@ public class PerfilHepatico extends javax.swing.JInternalFrame {
         String strSqlStmt = "INSERT INTO perfil_hepatico(\n" +
 "            n_orden,fecha_examen, txtr_tgo, txtr_tgp, txtr_ggt, \n" +
 "            txtr_fosfalcalina, txtr_bilirrtotal, txtr_bilirrdirecta, txtr_bilirrindirecta, \n" +
-"            txtr_protetotales, txtr_albumina, txtr_globulina)";
+"            txtr_protetotales, txtr_albumina, txtr_globulina,user_registro)";
         strSqlStmt += " values(" + txtNorden.getText() + ",'"
                 + FechaEx.getDate() + "','"
                 + txtTGO.getText() + "','"
@@ -784,8 +873,8 @@ public class PerfilHepatico extends javax.swing.JInternalFrame {
                 + txtBilirrubinaIndirecta.getText() + "','"
                 + txtProteinasTotales.getText() + "','"
                 + txtAlbumina.getText() + "','"
-                + txtGlobulinaSerica.getText() + "'"
-                + " ) ";
+                + txtGlobulinaSerica.getText() + "','"+clsGlobales.sUser
+                + "') ";
         // System.out.println(strSqlStmt);
 //        oFunc.SubSistemaMensajeError(strSqlStmt);
         if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt)) {
