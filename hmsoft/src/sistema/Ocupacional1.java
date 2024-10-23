@@ -4921,7 +4921,6 @@ manager.addKeyEventDispatcher(new KeyEventDispatcher(){
         ImageIcon ticon = new ImageIcon(ClassLoader.getSystemResource("imagenes/enfermera.png"));
         // audit.setFrameIcon(ticon);
       audit.setLocation(centradoXY(audit));
-
           audit.show();
           //fn.setVisible(true);
        }

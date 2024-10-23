@@ -6311,7 +6311,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
             JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
 
-            JasperPrintManager.printReport(jasperPrint, true);
+           JasperPrintManager.printReport(jasperPrint, true);
 
         } catch (JRException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
@@ -6932,7 +6932,7 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
                 + "LEFT JOIN audiometria_2021 AS au ON(n.n_orden =au.n_orden)\n" 
                 + "LEFT JOIN oftalmologia2021 AS oft ON(n.n_orden =oft.n_orden)"
                 + "WHERE a.n_orden ='" + txtNorden.getText().toString() + "'";
-
+System.out.println(Consulta);
         oConn.FnBoolQueryExecute(Consulta);
 
         try {
