@@ -249,6 +249,11 @@ public class Aptitud_Medico_Ocupacional extends javax.swing.JInternalFrame {
         });
 
         jCheckBox2.setText("PODEROSA");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1480,6 +1485,10 @@ public static com.toedter.calendar.JDateChooser FechaNacimiento;
     private void chkSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSedeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkSedeActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
   public boolean OrdenExiste()
     {
