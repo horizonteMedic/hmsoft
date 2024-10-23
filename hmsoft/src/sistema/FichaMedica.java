@@ -6308,10 +6308,17 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
             direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "anexo7c2_boro_Digitalizado.jasper";
             }
           //  String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "conInformadoOcupacional.jasper";
-            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("anexo");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+          
+          //JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            //JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
 
-           JasperPrintManager.printReport(jasperPrint, true);
+    //       JasperPrintManager.printReport(jasperPrint, true);
 
         } catch (JRException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);
@@ -6402,10 +6409,16 @@ public final class FichaMedica extends javax.swing.JInternalFrame {
                     System.out.println(direccionReporte);
 
           //  String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "conInformadoOcupacional.jasper";
-            JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("anexo");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);
+         // JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+           // JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
 
-            JasperPrintManager.printReport(jasperPrint, true);
+           // JasperPrintManager.printReport(jasperPrint, true);
 
         } catch (JRException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);

@@ -38,6 +38,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import sun.misc.BASE64Decoder;
 
 /**
@@ -7000,9 +7001,15 @@ public boolean OrdenExiste1()
             }
           //  String direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "conInformadoOcupacional.jasper";
             JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("Ficha Agroindustrial");
+                    viewer.setVisible(true);
+                         
+//JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+            //JasperPrint jasperPrint = JasperFillManager.fillReport(myReport, parameters, clsConnection.oConnection);
 
-            JasperPrintManager.printReport(jasperPrint, true);
+            //JasperPrintManager.printReport(jasperPrint, true);
 
         } catch (JRException ex) {
             Logger.getLogger(FichaMedica.class.getName()).log(Level.SEVERE, null, ex);

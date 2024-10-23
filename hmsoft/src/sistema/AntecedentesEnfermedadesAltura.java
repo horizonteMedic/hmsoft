@@ -1883,11 +1883,15 @@ int seleccion = JOptionPane.showOptionDialog(
 }
 private void printer(Integer cod) throws IOException{
         String dni=oPe.consultarDni("antece_enfermedades_altura", String.valueOf(cod));
-        
-             //   String base64Huella=oPu.consumirApiHuella(dni);
-             //   String base64FirmaP=oPu.consumirApiFirmaEmp(dni);
+        String dniPaciente=oPe.consultarDniPaciente("antece_enfermedades_altura","n_orden", String.valueOf(cod));
+
+            
                 String base64Sello="";
+                String base64Huella="";
+                String base64FirmaP="";
      try {
+              base64Huella=oPe.consumirApiHuella(dniPaciente);
+              base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
          base64Sello = oPe.consumirApiSello(String.valueOf(dni));
      } catch (Exception ex) {
          Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
@@ -1895,7 +1899,7 @@ private void printer(Integer cod) throws IOException{
                 
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        /*
+        
               if(!base64Huella.contains("OTROJASPER"))
               {
                 BufferedImage image = null;
@@ -1937,7 +1941,7 @@ private void printer(Integer cod) throws IOException{
                 parameters.put("FirmaP",stream);             
               }
               
-              */
+              
               if(!base64Sello.contains("OTROJASPER"))
               {
                 BufferedImage image = null;
@@ -1993,12 +1997,16 @@ private void printer(Integer cod) throws IOException{
  
  }
 private void print(Integer cod) throws IOException{
-        String dni=oPe.consultarDni("antece_enfermedades_altura", String.valueOf(cod));
-        
-             //   String base64Huella=oPu.consumirApiHuella(dni);
-             //   String base64FirmaP=oPu.consumirApiFirmaEmp(dni);
+       String dni=oPe.consultarDni("antece_enfermedades_altura", String.valueOf(cod));
+        String dniPaciente=oPe.consultarDniPaciente("antece_enfermedades_altura","n_orden", String.valueOf(cod));
+
+            
                 String base64Sello="";
+                String base64Huella="";
+                String base64FirmaP="";
      try {
+              base64Huella=oPe.consumirApiHuella(dniPaciente);
+              base64FirmaP=oPe.consumirApiFirmaEmp(dniPaciente);
          base64Sello = oPe.consumirApiSello(String.valueOf(dni));
      } catch (Exception ex) {
          Logger.getLogger(AntecedentesEnfermedadesAltura.class.getName()).log(Level.SEVERE, null, ex);
@@ -2006,7 +2014,7 @@ private void print(Integer cod) throws IOException{
                 
         Map parameters = new HashMap();
         parameters.put("Norden", cod);
-        /*
+        
               if(!base64Huella.contains("OTROJASPER"))
               {
                 BufferedImage image = null;
@@ -2048,7 +2056,7 @@ private void print(Integer cod) throws IOException{
                 parameters.put("FirmaP",stream);             
               }
               
-              */
+              
               if(!base64Sello.contains("OTROJASPER"))
               {
                 BufferedImage image = null;
@@ -2068,8 +2076,6 @@ private void print(Integer cod) throws IOException{
                 
                 parameters.put("Sello",stream);             
               }
-                                             
-                
 
         try {
             String master="";
