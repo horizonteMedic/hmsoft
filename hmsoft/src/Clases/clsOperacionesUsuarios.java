@@ -492,7 +492,8 @@ public boolean oFinalizado(JTextField n){
                       
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e);
+            base64Sello="OTROJASPER";
+           // System.out.println("ERROR DEL JASPER AL CONSUMIR SELLO");
         }
          return base64Sello;
     }
@@ -553,6 +554,7 @@ public boolean oFinalizado(JTextField n){
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
+            base64Huella="OTROJASPER";
         }
          return base64Huella;
     }
@@ -612,6 +614,7 @@ public boolean oFinalizado(JTextField n){
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
+            base64FirmaE="OTROJASPER";
         }
          return base64FirmaE;
     }

@@ -37,5 +37,6 @@ public class clsGlobales {
     public static Integer fSerie;
     
     public static Integer Norden=0;
+    public static boolean bConfigEmpleado;
    
 }

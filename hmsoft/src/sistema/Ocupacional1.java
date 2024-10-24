@@ -167,8 +167,10 @@ public class Ocupacional1 extends javax.swing.JFrame {
         
       lblUsuarioCaja.setText(clsGlobales.sNomOperador);
             KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-//y enseguida registramos nuestro dispatcher
-manager.addKeyEventDispatcher(new KeyEventDispatcher(){
+            jMenuItem13.setVisible(clsGlobales.bConfigEmpleado);
+            
+            //y enseguida registramos nuestro dispatcher
+            manager.addKeyEventDispatcher(new KeyEventDispatcher(){
             @Override
         public boolean dispatchKeyEvent(KeyEvent e) {
                 //como dije, solo las notificaciones del tipo "typed" son las que actualizan los componentes

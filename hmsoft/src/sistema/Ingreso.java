@@ -438,8 +438,10 @@ int key = evt.getKeyCode();
             // System.out.println("nombre de la sede :"+nombresede);
             String sqlStmt;
             String area;
+            Boolean sistema=false;
+            Boolean sistema_alterno=false;
             // Prepara Variable para realizar el Query
-            sqlStmt = "Select rol_user, sistema, admision, farmacia, cmp_user, dni_user, nombre_user, apellido_user, usuario_user, pass_user from usuarios Where usuario_user='" + cboUsuarios.getSelectedItem().toString().trim()+ "' And pass_user='" + String.valueOf(txtpass.getPassword()) + "'";
+            sqlStmt = "Select rol_user, sistema, admision, farmacia, cmp_user, dni_user, nombre_user, apellido_user, usuario_user, pass_user,sistema,sistema_alterno,config_usuario from usuarios Where usuario_user='" + cboUsuarios.getSelectedItem().toString().trim()+ "' And pass_user='" + String.valueOf(txtpass.getPassword()) + "'";
 
             oConn.FnBoolQueryExecute(sqlStmt);
 
@@ -451,6 +453,9 @@ int key = evt.getKeyCode();
                     clsGlobales.sUser=oConn.setResult.getString("usuario_user");
                     clsGlobales.sCMPOperador = oConn.setResult.getString("cmp_user");
                     clsGlobales.sRol = oConn.setResult.getString("rol_user");
+                    clsGlobales.bConfigEmpleado = oConn.setResult.getBoolean("config_usuario");                    
+                    sistema=oConn.setResult.getBoolean("sistema");
+                    sistema_alterno=oConn.setResult.getBoolean("sistema_alterno");
 
                     if (chkAdmision.isSelected() == true) {
                         if (ADMISION_CODIGO == oConn.setResult.getBoolean("admision")) {
@@ -492,13 +497,14 @@ int key = evt.getKeyCode();
                                     || "JCORDOVA".equals(user) || "KGUEVARA".equals(user) || "lobo".equals(user) || "MGAMBOA".equals(user)
                                     || "KCANTARO".equals(user)|| "JBRINGAS".equals(user)||"PQUISPE".equals(user)||"DEVELOPER".equals(user)) 
                            */
-                           if(true)
+                           if(sistema_alterno)
                            {
-                                Ocupacional1 s = new Ocupacional1();
+                                 Ocupacional s = new Ocupacional();
                                 s.setVisible(true);
+                                
 
                             } else {
-                                Ocupacional s = new Ocupacional();
+                                Ocupacional1 s = new Ocupacional1();
                                 s.setVisible(true);
                             }
 

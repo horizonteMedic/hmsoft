@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaAudiologica" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f5d32ba3-66fa-4a1d-b829-37a8e8c9d076">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.024520183047606"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="121"/>
+	<property name="ireport.y" value="333"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Nicolas de pierola - Trujillo"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -243,6 +245,15 @@
 	<parameter name="Norden" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="Sello" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FirmaP" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HuellaP" class="java.io.InputStream">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT  f.n_orden, f.fecha_examen, f.tiempo_trabajo, f.tiempo_exposicion_total_ponderado,
         f.edad_fa, f.chk_tapones, f.chkgrajeras, f.chkintenso, f.chkmoderado, f.chknomolesto,f.txtmarca, f.txtmodelo, f.fechacalibracion, f.chk1_si, f.chk2_si, f.chk3_si,
@@ -251,146 +262,578 @@
         f.chk6_no, f.chk7_no, f.chk8_no, f.chk9_no, f.chk10_no, f.chk11_no, f.chk12_no,d.nombres_pa,d.sexo_pa,d.apellidos_pa,
         n.razon_empresa, n.cargo_de, n.razon_contrata, n.nom_examen,f.txtdod250,f.txtdod500,f.txtdod1000,   n.color,     	f.txtdoi250,f.txtdoi500,f.txtdoi1000,f.txtldumbraldiscriminacion,f.txtliumbraldiscriminacion,f.txtldporcentagediscriminacion,f.txtliporcentagediscriminacion,
 f.txtldconfort,f.txtliconfort,f.txtlddisconfort,f.txtlidisconfort,f.txtresponsable	,f.txtconclusiones,f.txtmedico,f.txtotoscopia,a.*
+,(select nombre_sede from sede where cod_sede=n.cod_sede) as nombre_sede,
+(select direccion from sede where cod_sede=4) as dir_tru_pierola,
+(select email from sede where cod_sede=4) as email_tru_pierola,
+(select telefono from sede where cod_sede=4) as telf_tru_pierola,
+(select direccion from sede where cod_sede=3) as dir_huancayo,
+(select email from sede where cod_sede=3) as email_huancayo,
+(select telefono from sede where cod_sede=3) as telf_huancayo,
+(select direccion from sede where cod_sede=2) as dir_huamachuco,
+(select email from sede where cod_sede=2) as email_huamachuco,
+(select telefono from sede where cod_sede=2) as telf_huamachuco,
+(select direccion from sede where cod_sede=1) as dir_trujillo,
+(select email from sede where cod_sede=1) as email_trujillo,
+(select telefono from sede where cod_sede=1) as telf_trujillo,
+(select celular from sede where cod_sede=2) as cel_huamachuco,
+(select celular from sede where cod_sede=4) as cel_trujillo_pie
 FROM datos_paciente AS d
 INNER JOIN n_orden_ocupacional AS n ON(d.cod_pa = n.cod_pa)
 INNER JOIN audiometria_po AS a ON(n.n_orden = a.n_orden)
 INNER JOIN ficha_audiologica AS f ON(n.n_orden = f.n_orden)
 WHERE f.n_orden = $P{Norden}]]>
 	</queryString>
-	<field name="n_orden" class="java.lang.Integer"/>
-	<field name="fecha_examen" class="java.sql.Date"/>
-	<field name="tiempo_trabajo" class="java.lang.Integer"/>
-	<field name="tiempo_exposicion_total_ponderado" class="java.lang.String"/>
-	<field name="edad_fa" class="java.lang.String"/>
-	<field name="chk_tapones" class="java.lang.Boolean"/>
-	<field name="chkgrajeras" class="java.lang.Boolean"/>
-	<field name="chkintenso" class="java.lang.Boolean"/>
-	<field name="chkmoderado" class="java.lang.Boolean"/>
-	<field name="chknomolesto" class="java.lang.Boolean"/>
-	<field name="txtmarca" class="java.lang.String"/>
-	<field name="txtmodelo" class="java.lang.String"/>
-	<field name="fechacalibracion" class="java.sql.Date"/>
-	<field name="chk1_si" class="java.lang.Boolean"/>
-	<field name="chk2_si" class="java.lang.Boolean"/>
-	<field name="chk3_si" class="java.lang.Boolean"/>
-	<field name="chk4_si" class="java.lang.Boolean"/>
-	<field name="chk5_si" class="java.lang.Boolean"/>
-	<field name="chk6_si" class="java.lang.Boolean"/>
-	<field name="chk7_si" class="java.lang.Boolean"/>
-	<field name="chk8_si" class="java.lang.Boolean"/>
-	<field name="chk9_si" class="java.lang.Boolean"/>
-	<field name="chk10_si" class="java.lang.Boolean"/>
-	<field name="chk11_si" class="java.lang.Boolean"/>
-	<field name="chk12_si" class="java.lang.Boolean"/>
-	<field name="chk1_no" class="java.lang.Boolean"/>
-	<field name="chk2_no" class="java.lang.Boolean"/>
-	<field name="chk3_no" class="java.lang.Boolean"/>
-	<field name="chk4_no" class="java.lang.Boolean"/>
-	<field name="chk5_no" class="java.lang.Boolean"/>
-	<field name="chk6_no" class="java.lang.Boolean"/>
-	<field name="chk7_no" class="java.lang.Boolean"/>
-	<field name="chk8_no" class="java.lang.Boolean"/>
-	<field name="chk9_no" class="java.lang.Boolean"/>
-	<field name="chk10_no" class="java.lang.Boolean"/>
-	<field name="chk11_no" class="java.lang.Boolean"/>
-	<field name="chk12_no" class="java.lang.Boolean"/>
-	<field name="nombres_pa" class="java.lang.String"/>
-	<field name="sexo_pa" class="java.lang.String"/>
-	<field name="apellidos_pa" class="java.lang.String"/>
-	<field name="razon_empresa" class="java.lang.String"/>
-	<field name="cargo_de" class="java.lang.String"/>
-	<field name="razon_contrata" class="java.lang.String"/>
-	<field name="nom_examen" class="java.lang.String"/>
-	<field name="txtdod250" class="java.lang.String"/>
-	<field name="txtdod500" class="java.lang.String"/>
-	<field name="txtdod1000" class="java.lang.String"/>
-	<field name="color" class="java.lang.Integer"/>
-	<field name="txtdoi250" class="java.lang.String"/>
-	<field name="txtdoi500" class="java.lang.String"/>
-	<field name="txtdoi1000" class="java.lang.String"/>
-	<field name="txtldumbraldiscriminacion" class="java.lang.String"/>
-	<field name="txtliumbraldiscriminacion" class="java.lang.String"/>
-	<field name="txtldporcentagediscriminacion" class="java.lang.String"/>
-	<field name="txtliporcentagediscriminacion" class="java.lang.String"/>
-	<field name="txtldconfort" class="java.lang.String"/>
-	<field name="txtliconfort" class="java.lang.String"/>
-	<field name="txtlddisconfort" class="java.lang.String"/>
-	<field name="txtlidisconfort" class="java.lang.String"/>
-	<field name="txtresponsable" class="java.lang.String"/>
-	<field name="txtconclusiones" class="java.lang.String"/>
-	<field name="txtmedico" class="java.lang.String"/>
-	<field name="txtotoscopia" class="java.lang.String"/>
-	<field name="cod_au" class="java.lang.Integer"/>
-	<field name="num_ticket" class="java.lang.Integer"/>
-	<field name="fecha_au" class="java.sql.Date"/>
-	<field name="o_d_500" class="java.lang.String"/>
-	<field name="o_d_1000" class="java.lang.String"/>
-	<field name="o_d_2000" class="java.lang.String"/>
-	<field name="o_d_3000" class="java.lang.String"/>
-	<field name="o_d_4000" class="java.lang.String"/>
-	<field name="o_d_6000" class="java.lang.String"/>
-	<field name="o_d_8000" class="java.lang.String"/>
-	<field name="o_i_500" class="java.lang.String"/>
-	<field name="o_i_1000" class="java.lang.String"/>
-	<field name="o_i_2000" class="java.lang.String"/>
-	<field name="o_i_3000" class="java.lang.String"/>
-	<field name="o_i_4000" class="java.lang.String"/>
-	<field name="o_i_6000" class="java.lang.String"/>
-	<field name="o_i_8000" class="java.lang.String"/>
-	<field name="o_d1_500" class="java.lang.String"/>
-	<field name="o_d1_1000" class="java.lang.String"/>
-	<field name="o_d1_2000" class="java.lang.String"/>
-	<field name="o_d1_3000" class="java.lang.String"/>
-	<field name="o_d1_4000" class="java.lang.String"/>
-	<field name="o_d1_6000" class="java.lang.String"/>
-	<field name="o_d1_8000" class="java.lang.String"/>
-	<field name="o_i1_500" class="java.lang.String"/>
-	<field name="o_i1_1000" class="java.lang.String"/>
-	<field name="o_i1_2000" class="java.lang.String"/>
-	<field name="o_i1_3000" class="java.lang.String"/>
-	<field name="o_i1_4000" class="java.lang.String"/>
-	<field name="o_i1_6000" class="java.lang.String"/>
-	<field name="o_i1_8000" class="java.lang.String"/>
-	<field name="diagnostico" class="java.lang.String"/>
+	<field name="n_orden" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="n_orden"/>
+		<property name="com.jaspersoft.studio.field.label" value="n_orden"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="fecha_examen" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_examen"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_examen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="tiempo_trabajo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="tiempo_trabajo"/>
+		<property name="com.jaspersoft.studio.field.label" value="tiempo_trabajo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="tiempo_exposicion_total_ponderado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tiempo_exposicion_total_ponderado"/>
+		<property name="com.jaspersoft.studio.field.label" value="tiempo_exposicion_total_ponderado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="edad_fa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="edad_fa"/>
+		<property name="com.jaspersoft.studio.field.label" value="edad_fa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk_tapones" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk_tapones"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk_tapones"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chkgrajeras" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chkgrajeras"/>
+		<property name="com.jaspersoft.studio.field.label" value="chkgrajeras"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chkintenso" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chkintenso"/>
+		<property name="com.jaspersoft.studio.field.label" value="chkintenso"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chkmoderado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chkmoderado"/>
+		<property name="com.jaspersoft.studio.field.label" value="chkmoderado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chknomolesto" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chknomolesto"/>
+		<property name="com.jaspersoft.studio.field.label" value="chknomolesto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtmarca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtmarca"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtmarca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtmodelo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtmodelo"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtmodelo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="fechacalibracion" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechacalibracion"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechacalibracion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk1_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk1_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk1_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk2_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk2_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk2_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk3_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk3_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk3_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk4_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk4_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk4_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk5_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk5_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk5_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk6_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk6_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk6_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk7_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk7_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk7_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk8_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk8_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk8_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk9_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk9_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk9_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk10_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk10_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk10_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk11_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk11_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk11_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk12_si" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk12_si"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk12_si"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk1_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk1_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk1_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk2_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk2_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk2_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk3_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk3_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk3_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk4_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk4_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk4_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk5_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk5_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk5_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk6_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk6_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk6_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk7_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk7_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk7_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk8_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk8_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk8_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk9_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk9_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk9_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk10_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk10_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk10_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk11_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk11_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk11_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="chk12_no" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="chk12_no"/>
+		<property name="com.jaspersoft.studio.field.label" value="chk12_no"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="nombres_pa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombres_pa"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombres_pa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datos_paciente"/>
+	</field>
+	<field name="sexo_pa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sexo_pa"/>
+		<property name="com.jaspersoft.studio.field.label" value="sexo_pa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datos_paciente"/>
+	</field>
+	<field name="apellidos_pa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellidos_pa"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellidos_pa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="datos_paciente"/>
+	</field>
+	<field name="razon_empresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="razon_empresa"/>
+		<property name="com.jaspersoft.studio.field.label" value="razon_empresa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="n_orden_ocupacional"/>
+	</field>
+	<field name="cargo_de" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cargo_de"/>
+		<property name="com.jaspersoft.studio.field.label" value="cargo_de"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="n_orden_ocupacional"/>
+	</field>
+	<field name="razon_contrata" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="razon_contrata"/>
+		<property name="com.jaspersoft.studio.field.label" value="razon_contrata"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="n_orden_ocupacional"/>
+	</field>
+	<field name="nom_examen" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_examen"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom_examen"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="n_orden_ocupacional"/>
+	</field>
+	<field name="txtdod250" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtdod250"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtdod250"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtdod500" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtdod500"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtdod500"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtdod1000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtdod1000"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtdod1000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="color" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="color"/>
+		<property name="com.jaspersoft.studio.field.label" value="color"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="n_orden_ocupacional"/>
+	</field>
+	<field name="txtdoi250" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtdoi250"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtdoi250"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtdoi500" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtdoi500"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtdoi500"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtdoi1000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtdoi1000"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtdoi1000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtldumbraldiscriminacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtldumbraldiscriminacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtldumbraldiscriminacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtliumbraldiscriminacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtliumbraldiscriminacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtliumbraldiscriminacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtldporcentagediscriminacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtldporcentagediscriminacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtldporcentagediscriminacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtliporcentagediscriminacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtliporcentagediscriminacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtliporcentagediscriminacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtldconfort" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtldconfort"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtldconfort"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtliconfort" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtliconfort"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtliconfort"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtlddisconfort" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtlddisconfort"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtlddisconfort"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtlidisconfort" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtlidisconfort"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtlidisconfort"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtresponsable" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtresponsable"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtresponsable"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtconclusiones" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtconclusiones"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtconclusiones"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtmedico" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtmedico"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtmedico"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="txtotoscopia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="txtotoscopia"/>
+		<property name="com.jaspersoft.studio.field.label" value="txtotoscopia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ficha_audiologica"/>
+	</field>
+	<field name="cod_au" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cod_au"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod_au"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="COLUMN_65" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="n_orden"/>
+		<property name="com.jaspersoft.studio.field.label" value="n_orden"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="num_ticket" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="num_ticket"/>
+		<property name="com.jaspersoft.studio.field.label" value="num_ticket"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="fecha_au" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_au"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_au"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d_500" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d_500"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d_500"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d_1000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d_1000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d_1000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d_2000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d_2000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d_2000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d_3000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d_3000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d_3000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d_4000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d_4000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d_4000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d_6000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d_6000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d_6000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d_8000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d_8000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d_8000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i_500" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i_500"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i_500"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i_1000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i_1000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i_1000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i_2000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i_2000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i_2000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i_3000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i_3000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i_3000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i_4000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i_4000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i_4000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i_6000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i_6000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i_6000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i_8000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i_8000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i_8000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d1_500" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d1_500"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d1_500"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d1_1000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d1_1000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d1_1000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d1_2000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d1_2000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d1_2000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d1_3000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d1_3000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d1_3000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d1_4000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d1_4000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d1_4000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d1_6000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d1_6000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d1_6000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_d1_8000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_d1_8000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_d1_8000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i1_500" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i1_500"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i1_500"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i1_1000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i1_1000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i1_1000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i1_2000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i1_2000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i1_2000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i1_3000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i1_3000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i1_3000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i1_4000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i1_4000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i1_4000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i1_6000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i1_6000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i1_6000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="o_i1_8000" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="o_i1_8000"/>
+		<property name="com.jaspersoft.studio.field.label" value="o_i1_8000"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="diagnostico" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnostico"/>
+		<property name="com.jaspersoft.studio.field.label" value="diagnostico"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="audiometria_po"/>
+	</field>
+	<field name="nombre_sede" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre_sede"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre_sede"/>
+	</field>
+	<field name="dir_tru_pierola" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dir_tru_pierola"/>
+		<property name="com.jaspersoft.studio.field.label" value="dir_tru_pierola"/>
+	</field>
+	<field name="email_tru_pierola" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email_tru_pierola"/>
+		<property name="com.jaspersoft.studio.field.label" value="email_tru_pierola"/>
+	</field>
+	<field name="telf_tru_pierola" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telf_tru_pierola"/>
+		<property name="com.jaspersoft.studio.field.label" value="telf_tru_pierola"/>
+	</field>
+	<field name="dir_huancayo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dir_huancayo"/>
+		<property name="com.jaspersoft.studio.field.label" value="dir_huancayo"/>
+	</field>
+	<field name="email_huancayo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email_huancayo"/>
+		<property name="com.jaspersoft.studio.field.label" value="email_huancayo"/>
+	</field>
+	<field name="telf_huancayo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telf_huancayo"/>
+		<property name="com.jaspersoft.studio.field.label" value="telf_huancayo"/>
+	</field>
+	<field name="dir_huamachuco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dir_huamachuco"/>
+		<property name="com.jaspersoft.studio.field.label" value="dir_huamachuco"/>
+	</field>
+	<field name="email_huamachuco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email_huamachuco"/>
+		<property name="com.jaspersoft.studio.field.label" value="email_huamachuco"/>
+	</field>
+	<field name="telf_huamachuco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telf_huamachuco"/>
+		<property name="com.jaspersoft.studio.field.label" value="telf_huamachuco"/>
+	</field>
+	<field name="dir_trujillo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dir_trujillo"/>
+		<property name="com.jaspersoft.studio.field.label" value="dir_trujillo"/>
+	</field>
+	<field name="email_trujillo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="email_trujillo"/>
+		<property name="com.jaspersoft.studio.field.label" value="email_trujillo"/>
+	</field>
+	<field name="telf_trujillo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telf_trujillo"/>
+		<property name="com.jaspersoft.studio.field.label" value="telf_trujillo"/>
+	</field>
+	<field name="cel_huamachuco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cel_huamachuco"/>
+		<property name="com.jaspersoft.studio.field.label" value="cel_huamachuco"/>
+	</field>
+	<field name="cel_trujillo_pie" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cel_trujillo_pie"/>
+		<property name="com.jaspersoft.studio.field.label" value="cel_trujillo_pie"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="94" splitType="Stretch">
-			<staticText>
-				<reportElement x="291" y="55" width="213" height="15" uuid="de8fca2f-252f-4487-b80a-5ccf8b1af78e"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Telefono :  044-348070 /  990094744]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="291" y="43" width="213" height="15" uuid="5f564673-70ba-417d-9f2e-d536e49e01d6"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Jr. Leoncio Prado N° 786 - Huamachuco]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="291" y="66" width="213" height="15" uuid="86167a86-91e7-4616-b150-82aa079ff337"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Guillermo Prescott N°127 Urb. Sto. Dominguito - Trujillo]]></text>
-			</staticText>
 			<image>
-				<reportElement x="10" y="10" width="224" height="84" uuid="35ac554b-e0c3-4915-b049-dae53c07b691"/>
+				<reportElement x="1" y="7" width="224" height="84" uuid="35ac554b-e0c3-4915-b049-dae53c07b691"/>
 				<imageExpression><![CDATA["C:\\reportes\\Logo.jpg"]]></imageExpression>
 			</image>
-			<staticText>
-				<reportElement x="291" y="77" width="258" height="15" uuid="86167a86-91e7-4616-b150-82aa079ff337"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Email: admision@horizontemedic.com / web: www.horizontemedic.com]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="466" y="0" width="65" height="23" uuid="04ba6a5c-d1a9-47dd-8c81-862ee8611427"/>
+				<reportElement x="450" y="54" width="94" height="23" uuid="04ba6a5c-d1a9-47dd-8c81-862ee8611427"/>
 				<textElement>
 					<font size="18" isBold="true" isUnderline="true" isStrikeThrough="false"/>
 				</textElement>
@@ -430,19 +873,96 @@ $F{color}.equals(45)?"AP":$F{color}.equals(46)?"AQ":
 $F{color}.equals(47)?"AR":$F{color}.equals(48)?"AS":
 $F{color}.equals(49)?"AT":$F{color}.equals(50)?"AU":" "]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="180" y="28" width="254" height="10" uuid="c89dd824-9da7-4c99-a7ce-58ee49b54e4e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dir_tru_pierola}.concat("  Cel. ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="38" width="71" height="10" uuid="410e16d1-5b45-4e9e-8766-6250d3179ce8"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telf_tru_pierola}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="8" width="288" height="10" uuid="a01494e0-7b9d-4f8d-a11d-d976bdf2b792"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dir_huancayo}.concat("  Telf. ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="38" width="181" height="10" uuid="f0b96b21-74ba-4784-b51b-6cab7d6e2aed"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dir_trujillo}.concat("  Telf. ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="8" width="73" height="10" uuid="3f8c1f91-f9e0-4f8b-bc40-8d239d9f3353"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telf_huancayo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="18" width="173" height="10" uuid="abf22635-ad08-4e8f-bcd5-f4002380c8b9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dir_huamachuco}.concat("  Cel. ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="18" width="124" height="10" uuid="5fb12263-1a1e-4bce-9115-44860fba044b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cel_huamachuco}.concat("  Telf. ")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="18" width="62" height="10" uuid="d55b46eb-a065-4b3b-b88e-7f0bfa35346f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telf_huamachuco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="228" y="48" width="124" height="10" uuid="c241bf95-e134-48f7-acc8-3be66ffb431d"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Web : www.horizontemedic.com]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="77" width="100" height="11" uuid="c4d31fb4-8c95-44ee-a1a7-224ed92ee5af"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_sede}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="403" y="28" width="72" height="10" uuid="207b9e79-1b3e-4c28-851c-07bdd37e7341"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cel_trujillo_pie}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="45" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<staticText>
-				<reportElement x="225" y="15" width="139" height="20" uuid="955de0d4-f0cf-4c88-ac84-d318c001693e"/>
+				<reportElement x="216" y="-9" width="139" height="20" uuid="955de0d4-f0cf-4c88-ac84-d318c001693e"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[FICHA AUDIOLOGICA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="382" y="15" width="175" height="16" forecolor="#FF0000" uuid="05063263-e4fe-4c5c-b2db-464b7084e020"/>
+				<reportElement x="373" y="2" width="175" height="16" forecolor="#FF0000" uuid="05063263-e4fe-4c5c-b2db-464b7084e020"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -689,45 +1209,45 @@ total ponderado 8h/d]]></text>
 				</textElement>
 				<text><![CDATA[dd / mm / aa]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="326" y="4" width="75" height="20" uuid="94bcf47a-45e4-40da-a8b9-71a02d5be319"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{n_orden}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="54" y="34" width="100" height="13" uuid="a76b0dbf-28df-452e-87e2-f4bc8132f216"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{fecha_examen}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="104" y="66" width="289" height="14" uuid="473b616a-05c8-447e-816c-cc894c5e00f8"/>
 				<textFieldExpression><![CDATA[$F{apellidos_pa}.concat(" ").concat($F{nombres_pa})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="99" y="83" width="47" height="14" uuid="76ce99d6-9abd-4d75-8b18-eaee4c6777d0"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{edad_fa}.concat(" AÑOS")]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="181" y="82" width="57" height="14" uuid="6e75cc95-fe3f-436f-9ccf-046b5596afe6"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{sexo_pa}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="316" y="97" width="149" height="20" uuid="0676264f-6812-459b-a1eb-acf1ffa04f6f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{razon_empresa}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="99" y="98" width="157" height="20" uuid="11d61d19-dae3-4358-b5bc-48d05d991bfe"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{razon_contrata}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="294" y="82" width="141" height="15" uuid="b7ed79e5-c0e0-4925-bb8e-cee4cba3fe6d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
@@ -740,8 +1260,10 @@ total ponderado 8h/d]]></text>
 				<textFieldExpression><![CDATA[$F{tiempo_trabajo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="518" y="100" width="34" height="16" uuid="18287b31-5245-4c23-948d-7a8a9c367347"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="512" y="101" width="42" height="16" uuid="18287b31-5245-4c23-948d-7a8a9c367347"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{tiempo_exposicion_total_ponderado}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -796,7 +1318,7 @@ total ponderado 8h/d]]></text>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="511" splitType="Stretch">
+		<band height="549" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="0" width="555" height="139" uuid="7c31efa0-336f-4ada-aae3-13c7c7f3fc3a"/>
 			</rectangle>
@@ -1436,120 +1958,120 @@ realiza la audiometría]]></text>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{chk12_no}.equals(true)? "X":""]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="104" y="396" width="444" height="20" uuid="c93f313d-9120-4bc5-9204-bfcbb0a20b6f"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{diagnostico}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="104" y="478" width="252" height="20" uuid="7a802b94-2607-4238-b626-0e466262d17e"/>
 				<textFieldExpression><![CDATA[$F{txtmedico}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="104" y="430" width="252" height="20" uuid="7d9d3b61-1942-416a-ae7f-25209248a69d"/>
 				<textFieldExpression><![CDATA[$F{txtresponsable}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="66" y="119" width="483" height="20" uuid="b2f45798-596c-4979-b5f0-1ba1d0f4e777"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtotoscopia}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="375" y="180" width="51" height="15" uuid="dc69870b-6328-4da8-aba9-8daba7e907f5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtdod250}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="374" y="197" width="51" height="14" uuid="f9837c64-4b6f-4d72-86f1-a6f3c85dfda3"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtdod500}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="375" y="215" width="50" height="11" uuid="20e960af-e47d-438a-8f34-2013acc1733b"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtdod1000}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="499" y="182" width="55" height="13" uuid="bb723e67-748a-45ff-9da1-a3a1dc5fbde3"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtdoi250}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="499" y="198" width="53" height="13" uuid="676acb14-8a1b-44eb-961e-d239eb15a693"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtdoi500}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="499" y="215" width="56" height="13" uuid="60f27c7a-3a95-42dd-8fd9-257e2f0da754"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtdoi1000}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="434" y="279" width="52" height="20" uuid="ded32b3b-464c-433e-8d1b-9b0cbda0fdbc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtldumbraldiscriminacion}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="501" y="279" width="48" height="20" uuid="57fc9061-8980-421a-8ec4-9b5ba97e25e1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtliumbraldiscriminacion}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="434" y="305" width="52" height="20" uuid="873968de-073b-44a8-8a1b-1cc690783d40"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtldporcentagediscriminacion}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="501" y="305" width="48" height="20" uuid="0d4f0b84-3ef5-4907-be45-2843c3d9ae57"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtliporcentagediscriminacion}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="434" y="330" width="52" height="20" uuid="270ef9ce-5afb-4e98-ba0a-a91acead82c6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtldconfort}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="501" y="330" width="48" height="20" uuid="cb2355a4-bbf3-443c-a0b0-6dbc70a8f175"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtliconfort}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="434" y="354" width="52" height="20" uuid="6584867b-d39a-42f9-9a14-df76922a0f9b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{txtlddisconfort}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+			<textField isBlankWhenNull="true">
 				<reportElement x="501" y="354" width="48" height="20" uuid="c7a00c63-091a-460b-b6ec-8af93bf42303"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
@@ -7036,6 +7558,18 @@ realiza la audiometría]]></text>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{o_i1_2000}.equals( "0" )?"]":""]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="375" y="417" width="111" height="45" uuid="b7012ed4-e04e-4231-b26b-9f45ed93b2f0"/>
+				<imageExpression><![CDATA[$P{Sello}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="270" y="499" width="51" height="50" uuid="b6ad01ed-4b38-4aad-ade3-3efa5f63cfb1"/>
+				<imageExpression><![CDATA[$P{FirmaP}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="169" y="498" width="100" height="50" uuid="c470916d-648c-4db9-b0e4-56167fb52047"/>
+				<imageExpression><![CDATA[$P{FirmaP}]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 	<columnFooter>

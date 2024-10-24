@@ -1672,6 +1672,7 @@ public final class FichaOftalmologica extends javax.swing.JInternalFrame {
                     strSqlStmt += ",agudezaVisualLejor";
                     Query += ",'" + txtAgudezaVisualLejos.getText().toString().trim() + "'";
                 }
+                System.out.println(strSqlStmt.concat(") ") + Query.concat(")"));
                 if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt.concat(") ") + Query.concat(")"))) {
                     oFunc.SubSistemaMensajeInformacion("Se ha registrado la Entrada con Éxito");
                     
