@@ -119,6 +119,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jTextFieldCmp = new javax.swing.JTextField();
+        jRadioButtonSistemaAlterno = new javax.swing.JRadioButton();
 
         setClosable(true);
         setTitle("Configuracion Empleados");
@@ -215,7 +216,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
             }
         });
 
-        jRadioButtonEstado.setText("ESTADO");
+        jRadioButtonEstado.setText("HABILITAR USUARIO");
         jRadioButtonEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonEstadoActionPerformed(evt);
@@ -306,6 +307,8 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
 
         jLabel10.setText("CMP:");
 
+        jRadioButtonSistemaAlterno.setText("SISTEMA ALTERNO");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -313,6 +316,11 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelSello, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -334,12 +342,17 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextFieldProfesion, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(157, 157, 157)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButtonEstado)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldRol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jRadioButtonSistema)
@@ -369,22 +382,13 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTextFieldCmp, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                                        .addComponent(btnGrabar)))))
-                        .addGap(28, 28, 28))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldRol, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelSello, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84))))
+                                        .addComponent(btnGrabar)))
+                                .addGap(28, 28, 28))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButtonEstado)
+                                    .addComponent(jRadioButtonSistemaAlterno))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -413,20 +417,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
                             .addComponent(jRadioButtonConfigEmp)
                             .addComponent(jTextFieldCmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
-                            .addComponent(btnGrabar))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jRadioButtonEstado))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextFieldRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnGrabar)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,6 +437,24 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnLimpiar)
                                     .addComponent(jTextFieldPsw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jComboBoxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButtonSistemaAlterno)))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jRadioButtonEstado))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextFieldRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -498,6 +507,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
 
         btnRegistrar();
+        limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -512,6 +522,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
 
     private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
      btnActualizar();
+     limpiar();
     }//GEN-LAST:event_btnGrabarActionPerformed
 
     private void jTextFieldDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDniActionPerformed
@@ -707,7 +718,9 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
     jRadioButtonAdmision.setSelected(true);
     jRadioButtonFarmacia.setSelected(true);      
     jRadioButtonConfigEmp.setSelected(true);
-    jRadioButtonEstado.setSelected(true);        
+    jRadioButtonEstado.setSelected(true);  
+    jRadioButtonSistemaAlterno.setSelected(false);
+
     }
     
     private void btnRegistrar(){
@@ -733,6 +746,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
             strSqlStmt += ",admision";Query += ",'"+jRadioButtonAdmision.isSelected()+ "'";
             strSqlStmt += ",farmacia";Query += ",'"+jRadioButtonFarmacia.isSelected()+ "'";
             strSqlStmt += ",config_usuario";Query += ",'"+jRadioButtonConfigEmp.isSelected()+ "'";
+            strSqlStmt += ",sistema_alterno";Query += ",'"+jRadioButtonSistemaAlterno.isSelected()+ "'";
 
        
             System.out.println("el comando es: " + strSqlStmt.concat(") ") + Query.concat(")")); 
@@ -782,6 +796,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
             Query += ",admision='"+jRadioButtonAdmision.isSelected()+ "'";
             Query += ",farmacia='"+jRadioButtonFarmacia.isSelected()+ "'";
             Query += ",config_usuario='"+jRadioButtonConfigEmp.isSelected()+ "'";
+            Query += ",sistema_alterno='"+jRadioButtonSistemaAlterno.isSelected()+ "'";
            
             Query +=" WHERE dni_user=" + jTextFieldDni.getText().toString().trim() ;
             if (oConn.FnBoolQueryExecuteUpdate(strSqlStmt + Query)){
@@ -874,6 +889,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
                                 jRadioButtonAdmision.setSelected(oConn.setResult.getBoolean("admision"));
                                 jRadioButtonFarmacia.setSelected(oConn.setResult.getBoolean("farmacia"));
                                 jRadioButtonConfigEmp.setSelected(oConn.setResult.getBoolean("config_usuario"));
+                                jRadioButtonSistemaAlterno.setSelected(oConn.setResult.getBoolean("sistema_alterno"));                              
                                 jRadioButtonEstado.setSelected(oConn.setResult.getBoolean("estado"));
                                 jTextFieldRol.setText(oConn.setResult.getString ("rol_user"));
 
@@ -923,6 +939,7 @@ public class ConfigurarEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButtonEstado;
     private javax.swing.JRadioButton jRadioButtonFarmacia;
     private javax.swing.JRadioButton jRadioButtonSistema;
+    private javax.swing.JRadioButton jRadioButtonSistemaAlterno;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEmpleados;
     private javax.swing.JTextField jTextFieldApellidos;
