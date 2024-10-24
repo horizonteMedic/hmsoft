@@ -30,6 +30,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import sun.misc.BASE64Decoder;
 
 /**
@@ -4834,8 +4835,10 @@ private void printer1(Integer cod){
                 {                     
                     String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"UsoRespiradores.jasper";
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                  JasperPrintManager.printReport(jasperPrint,true);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("USO DE RESPIRADORES 1");
+                    viewer.setVisible(true);
                    } catch (JRException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4847,8 +4850,10 @@ private void printer1(Integer cod){
                 {                     
                     String direccionReporte = System.getProperty("user.dir")+File.separator+"reportes"+File.separator+"usoderespiradores2.jasper";
                     JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                  JasperPrintManager.printReport(jasperPrint,true);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("USO DE RESPIRADORES 2");
+                    viewer.setVisible(true);
                    } catch (JRException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -4898,9 +4903,12 @@ private void printer1(Integer cod){
             else{
             direccionReporte = System.getProperty("user.dir") + File.separator + "reportes" + File.separator + "usorespiradores3_Digitalizado.jasper";
             } 
-                 JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
-                    JasperPrint jasperPrint= JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
-                  JasperPrintManager.printReport(jasperPrint,true);
+                    JasperReport myReport = (JasperReport) JRLoader.loadObjectFromFile(direccionReporte);
+                    JasperPrint myPrint = JasperFillManager.fillReport(myReport,parameters,clsConnection.oConnection);
+                    JasperViewer viewer = new JasperViewer(myPrint, false);
+                    viewer.setTitle("USO DE RESPIRADORES");
+                   // viewer.setAlwaysOnTop(true);
+                    viewer.setVisible(true);            
                    } catch (JRException ex) {
                     Logger.getLogger(Odontograma.class.getName()).log(Level.SEVERE, null, ex);
                 }
